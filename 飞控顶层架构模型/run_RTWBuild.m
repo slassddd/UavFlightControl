@@ -1,0 +1,1 @@
+rtwbuild('RefModel_SystemArchitecture')

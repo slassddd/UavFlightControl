@@ -1,0 +1,1 @@
+figure;plot(-IMU_o.az(1:2:end));hold on;plot(IMU_filt.az);hold on;legend('原始数据','滤波数据')
