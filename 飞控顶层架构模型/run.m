@@ -10,16 +10,9 @@ SetGlobalParam();
 if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_PARAM.ModeSel.simMode,'simulink_flightdata') % 飞行数据仿真
     %% 载入飞行数据并生成仿真格式数据
     tspan = [3,inf]; % sec
-    %     dataFileNames = {[ GLOBAL_PARAM.SubFolderName.FlightData,'\','仿真数据_log_59']};
-    %     dataFileNames = {['仿真数据_log_home50']};
-    dataFileNames = {['20200214 四川\仿真数据_log_11_30066定高模式前飞加速至8m左右']};
-    dataFileNames = {['20200322\仿真数据_log_3_v31113固件全流程找风向飞行（换新飞控）']};
-    dataFileNames = {['20200402\仿真数据_log_2_快速滚转时姿态角度不能及时回中']};
-    dataFileNames = {['20200403\仿真数据_log_1_V1000_21号_v31122固件_飞行测试_全流程飞行']};    
-    dataFileNames = {['20200413\仿真数据_log_1_宝坻 V1000-27#V31129固件全流程测试0413']};    
+    dataFileNames = {['20200418\仿真数据_log_1_V1000-24#V31132固件管家点击起飞后飞机快速向右后方移动']};    
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
-%         [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i)] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
         [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i}] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
     end
     tspan = tspan_set{1};
@@ -184,27 +177,6 @@ if plotEnable
             fig.Name = '滤波值 vs 测量值';
             myplot_sensor_filter_compare(sensors,navFilterMARGRes(i_sim),plotOpt,idx_color,idx_style,stepSpace);
         end
-        %
-        if 0 % ----------- 角速度补偿结果 -------------
-            figure;
-            time = IN_SENSOR.IMU1.time;
-            gyro = [IN_SENSOR.IMU1.gyro_x,IN_SENSOR.IMU1.gyro_y,IN_SENSOR.IMU1.gyro_z];
-            plot(time,gyro,'r');hold on;
-            gyro_correct = [navFilterMARGRes(i_sim).Algo.dWB_00,...
-                navFilterMARGRes(i_sim).Algo.dWB_11,...
-                navFilterMARGRes(i_sim).Algo.dWB_22]*pi/180;
-            plot(time,gyro-gyro_correct(1:end-1,:),'k');
-            legend('原始值','原始值','原始值','矫正值','矫正值','矫正值')
-            ylabel('gyro (rad/s)')
-            xlabel('time (s)')
-            hold on;grid on
-        end
-        % --------------- 算法对比 -----------------
-        if 0
-            figure(213)
-            myplot_navfilter(navFilterMARGRes(i_sim),plotOpt,1,idx_style,stepSpace); % 显示组合导航数据
-            myplot_navfilter(sensors(1),plotOpt,3,2,stepSpace); % 显示组合导航数据
-        end
         if 0
             load([GLOBAL_PARAM.SubFolderName.FlightData,'\','仿真数据_log0_0107_PX4'])
             % 姿态
@@ -231,17 +203,6 @@ if plotEnable
             subplot(326)
             plot(NKF1(1:end-1,2)*1e-6,NKF1(1:end-1,12));hold on;
             plot(navFilterMARGRes.Algo.time_algo,out.NavFilterRes.state.Data(:,7));hold on;
-        end
-        if 0
-            figure
-            subplot(311)
-            plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.algo_curr_pos_2,'r');hold on;
-            plot(sensors.GPS.time_ublox,sensors.GPS.ublox_height,'b--');hold on;
-            ylabel('高度')
-            subplot(312)
-            plot(sensors.Baro.time_baro,sensors.Baro.altitue,'r');hold on;
-            plot(sensors.GPS.time_ublox,sensors.GPS.ublox_height,'b--');hold on;
-            ylabel('高度')
         end
           
         if 1

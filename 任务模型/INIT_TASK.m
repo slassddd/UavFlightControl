@@ -2,7 +2,7 @@
 load('IOBusInfo_V1000')
 %% 航线算法参数
 Ts_Task.Ts_base = 0.036;
-TASK_SET.PathPlanner.reachFlag_point_dist = 30;
+TASK_SET.PathPlanner.reachFlag_point_dist = 30; % 到达点的距离判定 [m]
 TASK_SET.PathPlanner.reachFlag_line_dist = 0.5;
 TASK_SET.PathPlanner.reachDetermineMode = 2; % 0:判断点距  1：判断过线   2：判断点距和过线
 TASK_SET.PathPlanner.turnMode = 0; % 0:过点  1:切线

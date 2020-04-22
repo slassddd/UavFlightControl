@@ -11,4 +11,3 @@ INIT_FlightPerformance
 out = sim('TESTENV_Task');
 %% Êý¾Ý»­Í¼
 plot_simdata
-

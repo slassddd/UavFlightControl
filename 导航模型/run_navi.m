@@ -1,4 +1,4 @@
-if 0
+if 1
     clear,clc
     clear global
     dataFileNames = {['20200322\仿真数据_log_3_v31113固件全流程找风向飞行（换新飞控）']};
@@ -6,6 +6,7 @@ if 0
     dataFileNames = {['20200403\仿真数据_log_1_V1000_21号_v31122固件_飞行测试_全流程飞行']};
     dataFileNames = {['20200409\仿真数据_log_1_27#挂载配重全流程飞行']}; 
     dataFileNames = {['20200410\仿真数据_log_1_宝坻 V1000-27#V31127固件第1架次飞行']}; 
+    dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
 else
     dataFileNames = saveFileName;
 end

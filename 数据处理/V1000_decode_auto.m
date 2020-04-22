@@ -437,3 +437,16 @@ temp = reshape([data(1:1:end,40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 IN_SENSOR.um482.numSv = numSv; % create struct
 % /* +===========+================================+=============+============+==============+ */
+% /* |@@Engine@@+-------------------------------+-------------+--------------| */
+temp = reshape([data(1:2:end,137:138)'],1,[]);
+servo_out0=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+Engine.servo_out0 = servo_out0; % create struct
+temp = reshape([data(1:2:end,139:140)'],1,[]);
+servo_out1=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+Engine.servo_out1 = servo_out1; % create struct
+temp = reshape([data(1:2:end,141:142)'],1,[]);
+servo_out2=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+Engine.servo_out2 = servo_out2; % create struct
+temp = reshape([data(1:2:end,143:144)'],1,[]);
+servo_out3=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+Engine.servo_out3 = servo_out3; % create struct
