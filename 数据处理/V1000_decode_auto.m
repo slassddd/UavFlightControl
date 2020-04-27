@@ -176,12 +176,42 @@ SL.Debug_Task_RTInfo.Task = Task; % create struct
 temp = reshape([data(14:16:end,227:228)'],1,[]);
 Payload=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 SL.Debug_Task_RTInfo.Payload = Payload; % create struct
-temp = reshape([data(10:16:end,227:228)'],1,[]);
-GSCmd=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+temp = reshape([data(10:16:end,227:227)'],1,[]);
+GSCmd=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.Debug_Task_RTInfo.GSCmd = GSCmd; % create struct
-temp = reshape([data(9:16:end,231:232)'],1,[]);
-Warning=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+temp = reshape([data(10:16:end,228:228)'],1,[]);
+Warning=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.Debug_Task_RTInfo.Warning = Warning; % create struct
+temp = reshape([data(9:16:end,231:231)'],1,[]);
+ComStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.ComStatus = ComStatus; % create struct
+temp = reshape([data(9:16:end,232:232)'],1,[]);
+FenseStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.FenseStatus = FenseStatus; % create struct
+temp = reshape([data(12:16:end,231:231)'],1,[]);
+StallStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.StallStatus = StallStatus; % create struct
+temp = reshape([data(12:16:end,232:232)'],1,[]);
+SensorStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.SensorStatus = SensorStatus; % create struct
+temp = reshape([data(9:16:end,235:235)'],1,[]);
+BatteryStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.BatteryStatus = BatteryStatus; % create struct
+temp = reshape([data(9:16:end,236:236)'],1,[]);
+FixWingHeightStatus=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.FixWingHeightStatus = FixWingHeightStatus; % create struct
+temp = reshape([data(16:16:end,243:243)'],1,[]);
+FindWind=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.FindWind = FindWind; % create struct
+temp = reshape([data(16:16:end,244:244)'],1,[]);
+LandCond1_Acc_H=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.LandCond1_Acc_H = LandCond1_Acc_H; % create struct
+temp = reshape([data(1:16:end,243:243)'],1,[]);
+LandCond1_Vd_H=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.LandCond1_Vd_H = LandCond1_Vd_H; % create struct
+temp = reshape([data(1:16:end,244:244)'],1,[]);
+LandCond3_near=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.Debug_Task_RTInfo.LandCond3_near = LandCond3_near; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* ------------------------------algo sl output -------------------------------------------| */
 % /* ------------+RefModel_SystemArchitecture_Y.OUT_TASKMODE---------------------------------| */
@@ -352,19 +382,19 @@ IMU_filt.gz = gz; % create struct
 % /* |-----------+--------------------------------+-------------+------------+--------------| */
 % /* |@@Bus_TASK_WindParam@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(13:16:end,235:236)'],1,[]);
-sailWindSpeed=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+sailWindSpeed=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
 Bus_TASK_WindParam.sailWindSpeed = sailWindSpeed; % create struct
 temp = reshape([data(14:16:end,233:234)'],1,[]);
-sailWindHeading=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+sailWindHeading=double(typecast(uint8(temp),'int16')')/32768*10.0000000000;
 Bus_TASK_WindParam.sailWindHeading = sailWindHeading; % create struct
 temp = reshape([data(14:16:end,235:236)'],1,[]);
-windSpeedMax=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+windSpeedMax=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
 Bus_TASK_WindParam.windSpeedMax = windSpeedMax; % create struct
 temp = reshape([data(15:16:end,233:234)'],1,[]);
-windSpeedMin=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+windSpeedMin=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
 Bus_TASK_WindParam.windSpeedMin = windSpeedMin; % create struct
 temp = reshape([data(15:16:end,235:236)'],1,[]);
-maxWindHeading=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+maxWindHeading=double(typecast(uint8(temp),'int16')')/32768*10.0000000000;
 Bus_TASK_WindParam.maxWindHeading = maxWindHeading; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* ------------------------------algo sl imu log ----------------------------------------- */20200401

@@ -1,8 +1,15 @@
-function plotEnum(data)
-enumName = class(data);
+function plotEnum(varargin)
+if nargin == 1
 % fig = figure;
 % fig.Name = enumName;
-plot(data,'o');
+    data = varargin{1};
+    plot(data,'o');
+elseif nargin == 2
+    time = varargin{1};
+    data = varargin{2};
+    plot(time,data,'o');
+end
+enumName = class(data);
 grid on
 yticks(unique( int16(data)))
 nTickLabel = length(yticks);

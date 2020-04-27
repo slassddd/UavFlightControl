@@ -39,6 +39,7 @@ for i = 1:nRefModel
     DependencySet.ERTFilePackagingFormat{i} = get_param(DependencySet.RefModeNamesNoType{i},'ERTFilePackagingFormat');
     DependencySet.CombineOutputUpdateFcns{i} = get_param(DependencySet.RefModeNamesNoType{i},'CombineOutputUpdateFcns');
     DependencySet.MaxIdLength(i) = get_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength');
+    DependencySet.EnableMultiTasking{i} = get_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking');
 end
 SolverType = DependencySet.SolverType';
 Solver = DependencySet.Solver';
@@ -50,8 +51,9 @@ TargetLang = DependencySet.TargetLang';
 ERTFilePackagingFormat = DependencySet.ERTFilePackagingFormat';
 CombineOutputUpdateFcns = DependencySet.CombineOutputUpdateFcns';
 MaxIdLength = DependencySet.MaxIdLength';
+EnableMultiTasking = DependencySet.EnableMultiTasking';
 T = table(SolverType,Solver,SampleTime,EanbleMultiTask,DeviceVendor,SystemTargetFile,...
-    TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength);
+    TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength,EnableMultiTasking);
 T.Properties.RowNames = DependencySet.RefModeNamesNoType'
 %% Õ≥“ª…Ë÷√
 for i = 1:nRefModel
@@ -67,4 +69,6 @@ for i = 1:nRefModel
     set_param(DependencySet.RefModeNamesNoType{i},'ModelReferenceNumInstancesAllowed','Single'); % ModelReference\Total number of instances allowed per top model
     set_param(DependencySet.RefModeNamesNoType{i},'LogVarNameModifier','none'); % Code Generation\Interface\MAT-file variable name modifer
     set_param(DependencySet.RefModeNamesNoType{i},'MatFileLogging','off'); % Code Generation\Interface\MAT-file logging
+    
+    set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
 end

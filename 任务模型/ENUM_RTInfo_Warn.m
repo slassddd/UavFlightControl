@@ -10,6 +10,7 @@ classdef ENUM_RTInfo_Warn < Simulink.IntEnumType
         Warn_Station_Not_Connect (5),
         Warn_Path_Not_Valid (6),
         Warn_Stalling (7),
+        Warn_FilterInit_Not_Complete (8),
     end
 end
 

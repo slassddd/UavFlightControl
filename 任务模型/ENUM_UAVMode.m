@@ -9,4 +9,3 @@ classdef ENUM_UAVMode < Simulink.IntEnumType
         Fix2Rotor (4)
     end
 end
-

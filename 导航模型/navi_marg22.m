@@ -210,6 +210,11 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
+    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+        tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
+    else
+        tmpK_residual = [1,1,1];
+    end
     for ii = 3
 %         gErr = abs(norm(meanAcc)-9.8);
 %         if gErr < 1
@@ -219,11 +224,12 @@ if rem(step_imu,kScale_imu) == 0
 %         tmpK_bias = single(gErr^2);
 %         tmpK = single(gErr^3);
 %         else
+        
         tmpK_bias = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^1.5);
         tmpK = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^3);
 %         end
-        filter_marg.AccelerometerBiasNoise(ii) = tmpK_bias*filter_marg.AccelerometerBiasNoise(ii);
-        filter_marg.AccelerometerNoise(ii) = tmpK*filter_marg.AccelerometerNoise(ii);
+        filter_marg.AccelerometerBiasNoise(ii) = tmpK_residual(ii)*tmpK_bias*filter_marg.AccelerometerBiasNoise(ii);
+        filter_marg.AccelerometerNoise(ii) = tmpK_residual(ii)*tmpK*filter_marg.AccelerometerNoise(ii);
     end
     for ii = 1:3
         tmpK = (1+2*abs(meanGyro(ii)))^2;

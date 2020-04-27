@@ -63,8 +63,8 @@ switch pathExmpale
             4*1e2,2*1e3,pathHeight;
             4*1e2,3*1e3,pathHeight;
             5*1e2,3*1e3,pathHeight;
-            5*1e2,2*1e3,pathHeight;
-            6*1e2,2*1e3,pathHeight;];
+            10*1e2,2*1e3,pathHeight;
+            16*1e2,2*1e3,pathHeight;];
 end
 TASK_SET.PATH.paths_ddm = TASK_SET.PATH.paths_m;
 TASK_SET.PATH.paths_ddm(1,:) = TASK_SET.PATH.home;
@@ -87,6 +87,7 @@ for i = 1:TASK_SET.PATH.maxNum
     STRUCT_mavlink_mission_item_def_ARRAY(i).y = TASK_SET.PATH.paths_ddm(i,2);  % longitude
     STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
 end
+STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_TakeOff = 23;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_AirStandBy = 28;

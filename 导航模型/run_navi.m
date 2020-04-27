@@ -1,4 +1,4 @@
-if 1
+if 0
     clear,clc
     clear global
     dataFileNames = {['20200322\仿真数据_log_3_v31113固件全流程找风向飞行（换新飞控）']};

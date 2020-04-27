@@ -26,7 +26,7 @@ TASK_SET.PathPlanner.minGroundSpeedInFix = 15;  % 固定翼模式下最小地速
 TASK_SET.PathPlanner.minHeightInFix = 30;   % 固定翼模式下最小高度,该值不应大于雷达高度最大测量范围，V1000雷达大概37m
 TASK_SET.PathPlanner.threshold_deg_attiStable = 15;   % 俯仰滚转稳定判定阈值
 TASK_SET.PathPlanner.cruiseSpeed_cruise = 19; % 固定翼巡航速度
-TASK_SET.PathPlanner.fenseDist = 10e3; % 电子篱笆距离home点距离
+TASK_SET.PathPlanner.fenseDist = 20e3; % 电子篱笆距离home点距离
 TASK_SET.PathPlanner.low_battery_alarm_set = 20; % 低电量报警百分比
 TASK_SET.PathPlanner.severe_low_battery_alarm_set = 10; % 严重低电量报警百分比
 TASK_SET.PathPlanner.enterStallAirSpeed = 8; % 判断进入失速的空速阈值
@@ -44,6 +44,7 @@ TASK_SET.PathPlanner.windSpeed_sailAgainstWindWhenBeyone = 3; % 使能找风出航的风
 TASK_SET.PathPlanner.SailModeByWind = ENUM_SailMode.AgainstWind; % 出航方式
 TASK_SET.PathPlanner.isInterpPathPoints = true; % 是否启用航线平滑过渡
 TASK_SET.PathPlanner.getOutOfRemote = true; % 是否摆脱遥控器，用于程序中自动手动切换
-TASK_SET.PathPlanner.isHoverUpDownWithHome = false; % 是否以home点作为盘旋上升下降的中心
+TASK_SET.PathPlanner.isHoverUpDownWithHome = true; % 是否以home点作为盘旋上升下降的中心
+TASK_SET.PathPlanner.enableFenseDistUpdate = false; % 使能电子围栏有效距离随航点自适应改变
 
 TaskParam = TASK_SET.PathPlanner;
