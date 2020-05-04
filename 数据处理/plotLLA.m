@@ -26,8 +26,8 @@ figure;
 % end
 plot(tempPre1,tempPre0,'ro');hold on;
 plot(tempCur1,tempCur0,'b*');hold on;
-plot(tempPre1,tempPre0,'r-');hold on;
-plot(tempCur1,tempCur0,'b--');hold on;
+% plot(tempPre1,tempPre0,'r-');hold on;
+% plot(tempCur1,tempCur0,'b--');hold on;
 grid on;
 axis equal
 legend('前置航点','当前航点')

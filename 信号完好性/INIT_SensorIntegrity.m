@@ -29,8 +29,8 @@ end
 SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 80;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 35;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 25;
-SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 13;
-SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 5;
+SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 8;
+SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;
 SENSOR_INTEGRITY_PARAM.um482.threshold_numSv = 20;
 SENSOR_INTEGRITY_PARAM.um482.threshold_pDop = 5;
 %

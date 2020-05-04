@@ -212,6 +212,12 @@ SL.Debug_Task_RTInfo.LandCond1_Vd_H = LandCond1_Vd_H; % create struct
 temp = reshape([data(1:16:end,244:244)'],1,[]);
 LandCond3_near=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.Debug_Task_RTInfo.LandCond3_near = LandCond3_near; % create struct
+temp = reshape([data(2:16:end,243:244)'],1,[]);
+maxDist_Path2Home=double(typecast(uint8(temp),'int16')')/32768*32000.0000000000;
+SL.Debug_Task_RTInfo.maxDist_Path2Home = maxDist_Path2Home; % create struct
+temp = reshape([data(3:16:end,243:244)'],1,[]);
+realtimeFenseDist=double(typecast(uint8(temp),'int16')')/32768*32000.0000000000;
+SL.Debug_Task_RTInfo.realtimeFenseDist = realtimeFenseDist; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* ------------------------------algo sl output -------------------------------------------| */
 % /* ------------+RefModel_SystemArchitecture_Y.OUT_TASKMODE---------------------------------| */
