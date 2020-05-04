@@ -11,7 +11,7 @@ sensorFs.airspeedUpdateFs = 62.5;
 ALGO_SET.fuse_enable.mag = 1;
 ALGO_SET.fuse_enable.gps = 1;
 ALGO_SET.fuse_enable.alt = 1;
-ALGO_SET.fuse_enable.um482 = 0;
+ALGO_SET.fuse_enable.um482 = 1;
 % 传感器选择
 ALGO_SET.SensorSelect.IMU = 1;  % -1:不使用  0:融合  N:使用第N个
 ALGO_SET.SensorSelect.Mag = 2;  % -1:不使用  0:融合  N:使用第N个

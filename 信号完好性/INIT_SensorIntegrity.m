@@ -17,20 +17,20 @@ switch baseMode
         % 0.4 base
         SENSOR_INTEGRITY_PARAM.IMU.threshold_lostTime = 3;
         SENSOR_INTEGRITY_PARAM.Mag.threshold_lostTime = 10;
-        SENSOR_INTEGRITY_PARAM.GPS.threshold_lostTime = 5;
+        SENSOR_INTEGRITY_PARAM.GPS.threshold_lostTime = 15;
         SENSOR_INTEGRITY_PARAM.Baro.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM.Radar.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM.Remote.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM.GroundStation.threshold_lostTime = 5;
-        SENSOR_INTEGRITY_PARAM.Airspeed.threshold_lostTime = 5;
-        SENSOR_INTEGRITY_PARAM.um482.threshold_lostTime = 5;
+        SENSOR_INTEGRITY_PARAM.Airspeed.threshold_lostTime = 10;
+        SENSOR_INTEGRITY_PARAM.um482.threshold_lostTime = 15;
 end
 % 信号质量降级报警阈值
 SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 80;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 35;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 25;
-SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 8;
-SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;
-SENSOR_INTEGRITY_PARAM.um482.threshold_numSv = 20;
+SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 10;
+SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 5;
+SENSOR_INTEGRITY_PARAM.um482.threshold_numSv = 12;
 SENSOR_INTEGRITY_PARAM.um482.threshold_pDop = 5;
 %

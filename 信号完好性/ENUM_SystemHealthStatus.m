@@ -7,6 +7,7 @@ classdef ENUM_SystemHealthStatus < Simulink.IntEnumType
         CanNotByFix (4),    % 信号丢失
         CanNotFly (5),   % 不能飞行
         LostControl (6),  % 失控
+        DontTakeOff (7), % 若未起飞，则不能起飞；若已在空中，则继续执行任务
     end
 end
 

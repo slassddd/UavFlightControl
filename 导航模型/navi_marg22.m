@@ -275,9 +275,21 @@ if residual_ublox1 && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHe
     end
 end
 % um482融合
-if MARGParam.fuse_enable.um482 && residual_um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
-        um482UpdateFlag && MARGParam.fuse_enable.gps % gps 更新
-    Rpos_um482 = double(Sensors.um482.pDop*Rpos_um482);
+%  && residual_um482
+if MARGParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
+        um482UpdateFlag && ...% gps 更新
+        um482_BESTPOS == ENUM_BESTPOS.POS_SOLUTION_NARROW_INT
+    switch um482_BESTPOS
+        case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT
+            sigmaLat = max(0.02,Sensors.um482.delta_lat);
+            sigmaLon = max(0.02,Sensors.um482.delta_lon);
+            sigmaAlt = max(0.05,Sensors.um482.delta_height);
+        otherwise
+            sigmaLat = max(1,Sensors.um482.delta_lat);
+            sigmaLon = max(1,Sensors.um482.delta_lon);
+            sigmaAlt = max(1.6,Sensors.um482.delta_height);
+    end
+    Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
     filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
