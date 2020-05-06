@@ -278,13 +278,13 @@ end
 %  && residual_um482
 if MARGParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
         um482UpdateFlag && ...% gps 更新
-        um482_BESTPOS == ENUM_BESTPOS.POS_SOLUTION_NARROW_INT
+        um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE % 无解
     switch um482_BESTPOS
-        case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT
+        case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解
             sigmaLat = max(0.02,Sensors.um482.delta_lat);
             sigmaLon = max(0.02,Sensors.um482.delta_lon);
             sigmaAlt = max(0.05,Sensors.um482.delta_height);
-        otherwise
+        otherwise % 其他可用解
             sigmaLat = max(1,Sensors.um482.delta_lat);
             sigmaLon = max(1,Sensors.um482.delta_lon);
             sigmaAlt = max(1.6,Sensors.um482.delta_height);

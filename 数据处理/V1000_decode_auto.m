@@ -366,25 +366,6 @@ temp = reshape([data(13:16:end,233:234)'],1,[]);
 curAccZ=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
 SL.OUT_TASKFLIGHTPARAM.curAccZ = curAccZ; % create struct
 % /* +===========+================================+=============+============+==============+ */
-% /* |@@IMU_filt@@-----------+--------------------------------+-------------+------------+--------------| */
-temp = reshape([data(2:2:end,27:30)'],1,[]);
-ax=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.ax = ax; % create struct
-temp = reshape([data(2:2:end,31:34)'],1,[]);
-ay=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.ay = ay; % create struct
-temp = reshape([data(2:2:end,35:38)'],1,[]);
-az=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.az = az; % create struct
-temp = reshape([data(1:2:end,27:30)'],1,[]);
-gx=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.gx = gx; % create struct
-temp = reshape([data(1:2:end,31:34)'],1,[]);
-gy=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.gy = gy; % create struct
-temp = reshape([data(1:2:end,35:38)'],1,[]);
-gz=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IMU_filt.gz = gz; % create struct
 % /* |-----------+--------------------------------+-------------+------------+--------------| */
 % /* |@@Bus_TASK_WindParam@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(13:16:end,235:236)'],1,[]);

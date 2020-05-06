@@ -1,12 +1,9 @@
 if 0
     clear,clc
     clear global
-    dataFileNames = {['20200322\仿真数据_log_3_v31113固件全流程找风向飞行（换新飞控）']};
-%     dataFileNames = {['20200402\仿真数据_log_2_快速滚转时姿态角度不能及时回中']};
-    dataFileNames = {['20200403\仿真数据_log_1_V1000_21号_v31122固件_飞行测试_全流程飞行']};
-    dataFileNames = {['20200409\仿真数据_log_1_27#挂载配重全流程飞行']}; 
-    dataFileNames = {['20200410\仿真数据_log_1_宝坻 V1000-27#V31127固件第1架次飞行']}; 
     dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
+    %% AUTOCODE %%
+    
 else
     dataFileNames = saveFileName;
 end
@@ -16,7 +13,7 @@ SetGlobalParam();
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,inf]; % sec
+tspan0 = [0,100]; % sec
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i}] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
