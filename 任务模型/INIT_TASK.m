@@ -40,11 +40,12 @@ TASK_SET.PathPlanner.maxClimbSpeed_fixMode = 3; % 固定翼盘旋上升下降过程中的最大
 TASK_SET.PathPlanner.heightCmd_FinalLand = -100; % 着陆模式时的目标高度（没错，给了个大的负值！）
 TASK_SET.PathPlanner.heightThreshold_LandSuccess = 0.15; % 
 TASK_SET.PathPlanner.VdCmdSwitchHeight_NearGroundWhenLand = 3; % 着陆速度衰减的高度
-TASK_SET.PathPlanner.windSpeed_sailAgainstWindWhenBeyone = 3; % 使能找风出航的风速阈值
+TASK_SET.PathPlanner.windSpeed_sailAgainstWindWhenBeyone = 0.5; % 使能找风出航的风速阈值
 TASK_SET.PathPlanner.SailModeByWind = ENUM_SailMode.AgainstWind; % 出航方式
 TASK_SET.PathPlanner.isInterpPathPoints = true; % 是否启用航线平滑过渡
 TASK_SET.PathPlanner.getOutOfRemote = true; % 是否摆脱遥控器，用于程序中自动手动切换
 TASK_SET.PathPlanner.isHoverUpDownWithHome = true; % 是否以home点作为盘旋上升下降的中心
 TASK_SET.PathPlanner.enableFenseDistUpdate = false; % 使能电子围栏有效距离随航点自适应改变
+TASK_SET.PathPlanner.timeThreshold_Fix2Rotor = 5; % 固定翼转旋翼阈值,[sec]
 
 TaskParam = TASK_SET.PathPlanner;
