@@ -207,7 +207,7 @@ if plotEnable
             plot(NKF1(1:end-1,2)*1e-6,NKF1(1:end-1,12));hold on;
             plot(navFilterMARGRes.Algo.time_algo,out.NavFilterRes.state.Data(:,7));hold on;
         end
-          
+           
         if 1
             % 算法对比： 离线 vs 在线
             SinglePlot_Online_Vs_Offline
