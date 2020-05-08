@@ -1,3 +1,4 @@
+Ts_FlightPerf.Ts_base = 0.036;
 FlightPerfParam.powerRate_FixCruise = 0.01; % 固定翼巡航耗电率,[%/sec]
 FlightPerfParam.powerRate_RotorNoWind = 0.05; % 旋翼耗电率,[%/sec]
 FlightPerfParam.reservedPowerRate = 20; % 预留电量百分比,[%]

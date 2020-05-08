@@ -289,7 +289,12 @@ if MARGParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == EN
             sigmaLon = max(1,Sensors.um482.delta_lon);
             sigmaAlt = max(1.6,Sensors.um482.delta_height);
     end
-    Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
+    % 由于um482和ublox在高度方向存在近似常值偏差，因此在ublox建康时为了保证一致性，不融合482的高度
+    if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health
+        Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
+    else 
+        Rpos_um482 = double(diag([sigmaLat,sigmaLon,10]).^2);
+    end
     filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
@@ -304,7 +309,10 @@ if false && radarUpdateFlag && measureReject.range_notJump  %
 end
 % 气压高融合
 if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
-        not(measureReject.lla_notJump && MARGParam.fuse_enable.gps && Sensors.ublox1.pDop < 5) % || clock_sec >= 700
+        MARGParam.fuse_enable.gps && ...
+        SensorSignalIntegrity.SensorStatus.baro1 ~= ENUM_SensorHealthStatus.Health && ...
+        SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health && ...
+        SensorSignalIntegrity.SensorStatus.um482 ~= ENUM_SensorHealthStatus.Health% || clock_sec >= 700% || clock_sec >= 700
     step_baro = step_baro + 1;
     step_alt = step_alt + 1;
     if rem(step_baro,kScale_baro) == 0
@@ -321,13 +329,14 @@ eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
-fuseVdWithEKFandGPS = false;
-if fuseVdWithEKFandGPS && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+fuseVdWithEKFandGPS = true;
+if fuseVdWithEKFandGPS && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health &&...
+        SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
     k = max(1,abs(accel(3)-9.8));
     temp = min(0.6,1/k^0.8);
     fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
-    meanVd = 0.9*meanVd + 0.1*fuseVd;
-    stateEst(10) = meanVd;
+%     meanVd = 0.5*meanVd + 0.5*ublox1_gpsvel(3);
+    stateEst(10) = fuseVd;
 end
 accel_pre = accel;
 gyro_pre = gyro;

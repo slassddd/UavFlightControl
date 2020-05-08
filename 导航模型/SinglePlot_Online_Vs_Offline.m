@@ -98,7 +98,7 @@ if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.height);hold on;
 end
 xlabel('time (s)')
-ylabel('相对Home点高度 [m]')
+ylabel('海拔高度 [m]')
 grid on;
 legend('在线','离线','ublox')
 %% 速度

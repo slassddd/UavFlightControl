@@ -3,7 +3,6 @@ if 0
     clear global
     dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
     %% AUTOCODE %%
-    
 else
     dataFileNames = saveFileName;
 end
@@ -13,7 +12,7 @@ SetGlobalParam();
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,inf]; % sec
+tspan0 = [0,500]; % sec
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i}] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);

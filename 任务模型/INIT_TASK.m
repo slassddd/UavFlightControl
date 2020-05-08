@@ -47,5 +47,7 @@ TASK_SET.PathPlanner.getOutOfRemote = true; % 是否摆脱遥控器，用于程序中自动手动
 TASK_SET.PathPlanner.isHoverUpDownWithHome = true; % 是否以home点作为盘旋上升下降的中心
 TASK_SET.PathPlanner.enableFenseDistUpdate = false; % 使能电子围栏有效距离随航点自适应改变
 TASK_SET.PathPlanner.timeThreshold_Fix2Rotor = 5; % 固定翼转旋翼阈值,[sec]
+TASK_SET.PathPlanner.cruiseSpeed_rotorMode = 5; % 旋翼模式平飞速度，[m/s]
+TASK_SET.PathPlanner.minAirspeed_fixAllowed = 18; % 最低固定翼容许空速，[m/s]
 
 TaskParam = TASK_SET.PathPlanner;
