@@ -98,6 +98,7 @@ for i = 1:size(decodeString)
                     number1 = 32768;
                 elseif strcmp(typef,'S32') || strcmp(typef,'U32')
                     number1 = 1e7;
+%                 elseif strcmp(typef,'S16') || strcmp(typef,'U16')    
                 end
             otherwise
         end
@@ -139,7 +140,10 @@ for i = 1:size(decodeString)
 end
 autoDecodeFileName = 'V1000_decode_auto.m';
 fileID = fopen(autoDecodeFileName,'w');
-
+baseTimeStr = sprintf('baseIMUtime = IN_SENSOR.IMU1.time;\n');
+fwrite(fileID,baseTimeStr);    
+baseTimeStr = sprintf('baseIMUtime = IN_SENSOR.IMU1.time;\n');
+fwrite(fileID,baseTimeStr);    
 for i = 1:length(out_decodeString)
     fwrite(fileID,out_decodeString{i});    
 end

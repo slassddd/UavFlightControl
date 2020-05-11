@@ -264,12 +264,17 @@ if residual_ublox1 && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHe
     if ~ZVCenable
         Rpos = double(Sensors.ublox1.pDop*Rpos);
         if rem(step_ublox,kScale_ublox) == 0
+%             if clock_sec < 600
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
+%             else
+%                 filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),1e10*double(Rvel));
+%             end
         end
     else
         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
-        if rem(step_ublox,kScale_ublox) == 0
+        if rem(step_ublox,kScale_ublox) == 0 
+            
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
         end
     end

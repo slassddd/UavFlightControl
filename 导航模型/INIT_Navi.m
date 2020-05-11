@@ -51,7 +51,7 @@ switch example
         ALGO_SET.noise_std.std_alt = 1;
         ALGO_SET.noise_std.std_range = 0.3;
         ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
-        ALGO_SET.noise_std.std_gpsvel_um482 = [0.1,0.1,0.1]; 
+        ALGO_SET.noise_std.std_gpsvel_um482 = [0.2,0.2,0.2]; 
     case 7 % ×îÐÂ¹Ì¼þ 0407
         ALGO_SET.noise_std.std_gyro = 3e-1*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s

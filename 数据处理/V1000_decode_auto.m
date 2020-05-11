@@ -1,4 +1,5 @@
-% /* ------------------------------algo sl  log ---------------------------------------------- */20200312
+baseIMUtime = IN_SENSOR.IMU1.time;
+baseIMUtime = IN_SENSOR.IMU1.time;% /* ------------------------------algo sl  log ---------------------------------------------- */20200312
 % /*-----------------------RefModel_SystemArchitecture_Y.OUT_SensorSignalIntegrity.-----------*/
 % /* |@@SL.SensorSelect@@+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(16:16:end,223:224)'],1,[]);
@@ -467,3 +468,44 @@ Engine.servo_out2 = servo_out2; % create struct
 temp = reshape([data(1:2:end,143:144)'],1,[]);
 servo_out3=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 Engine.servo_out3 = servo_out3; % create struct
+% /*             ----------RefModel_SystemArchitecture_Y.OUT_BATTERY.-----------------------| */										
+% /* |@@SL.PowerConsume@@-------------------------+-------------+------------+--------------| */
+temp = reshape([data(5:16:end,243:244)'],1,[]);
+AllTheTimeVoltage=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.PowerConsume.AllTheTimeVoltage = AllTheTimeVoltage; % create struct
+temp = reshape([data(6:16:end,243:246)'],1,[]);
+AllTheTimeCurrent=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.PowerConsume.AllTheTimeCurrent = AllTheTimeCurrent; % create struct
+temp = reshape([data(5:16:end,245:245)'],1,[]);
+AllTheTimePowerConsume=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.AllTheTimePowerConsume = AllTheTimePowerConsume; % create struct
+temp = reshape([data(5:16:end,246:246)'],1,[]);
+GroundStandby=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.GroundStandby = GroundStandby; % create struct
+temp = reshape([data(7:16:end,243:243)'],1,[]);
+TakeOff=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.TakeOff = TakeOff; % create struct
+temp = reshape([data(7:16:end,244:244)'],1,[]);
+HoverAdjust=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.HoverAdjust = HoverAdjust; % create struct
+temp = reshape([data(7:16:end,245:245)'],1,[]);
+Rotor2fix=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.Rotor2fix = Rotor2fix; % create struct
+temp = reshape([data(7:16:end,246:246)'],1,[]);
+HoverUp=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.HoverUp = HoverUp; % create struct
+temp = reshape([data(8:16:end,243:243)'],1,[]);
+PathFollow=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.PathFollow = PathFollow; % create struct
+temp = reshape([data(8:16:end,244:244)'],1,[]);
+GoHome=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.GoHome = GoHome; % create struct
+temp = reshape([data(8:16:end,245:245)'],1,[]);
+HoverDown=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.HoverDown = HoverDown; % create struct
+temp = reshape([data(8:16:end,246:246)'],1,[]);
+Fix2Rotor=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.Fix2Rotor = Fix2Rotor; % create struct
+temp = reshape([data(9:16:end,243:243)'],1,[]);
+Land=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
+SL.PowerConsume.Land = Land; % create struct
