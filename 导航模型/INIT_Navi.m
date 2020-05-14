@@ -22,13 +22,27 @@ ALGO_SET.SensorSelect.Camera = 1;  % -1:不使用  0:融合  N:使用第N个
 ALGO_SET.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 
 % 噪声传感器
-example = 8;
+example = 9;
 switch example
-    case 9 % 
+    case 10 % test
         ALGO_SET.noise_std.std_gyro = 3e-2*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 1e-6*pi/180*[1,1,1]; % rad/s
-        ALGO_SET.noise_std.std_acc = 5e-2*[1,1,1];  % m/s^2
-        ALGO_SET.noise_std.std_acc_bias = 3e-5*[1,1,1]; % m/s^2
+        ALGO_SET.noise_std.std_acc = 5e-1*[1,1,1];  % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 3e-4*[1,1,1]; % m/s^2
+        ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
+        ALGO_SET.noise_std.std_mag = 1*[1,1,1]; %
+        ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
+        ALGO_SET.noise_std.std_lla = [1.6,1.6,2.5];
+        ALGO_SET.noise_std.std_gpsvel = 1*[0.1,0.1,0.16];
+        ALGO_SET.noise_std.std_alt = 1;
+        ALGO_SET.noise_std.std_range = 0.3;
+        ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
+        ALGO_SET.noise_std.std_gpsvel_um482 = [0.2,0.2,0.2];     
+    case 9 % 0513
+        ALGO_SET.noise_std.std_gyro = 3e-2*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_gyro_bias = 1e-6*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_acc = 5e-1*[1,1,1];  % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 3e-4*[1,1,1]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
         ALGO_SET.noise_std.std_mag = 3*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 3e-3*[1,1,1];
@@ -36,8 +50,8 @@ switch example
         ALGO_SET.noise_std.std_gpsvel = 1*[0.1,0.1,0.16];
         ALGO_SET.noise_std.std_alt = 1;
         ALGO_SET.noise_std.std_range = 0.3;
-        ALGO_SET.noise_std.std_lla_um482 = [0.03,0.03,0.05];
-        ALGO_SET.noise_std.std_gpsvel_um482 = [0.1,0.1,0.1]; 
+        ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
+        ALGO_SET.noise_std.std_gpsvel_um482 = [0.2,0.2,0.2]; 
     case 8 % 最新固件 0410
         ALGO_SET.noise_std.std_gyro = 3e-2*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 1e-6*pi/180*[1,1,1]; % rad/s
@@ -178,9 +192,9 @@ switch example
         ALGO_SET.noise_std.std_range = 1;
 end
 % errorstate
-ALGO_SET.ErrorState.noise_std.std_gyro = 5e-2*pi/180*[1,1,1]; % rad/s
+ALGO_SET.ErrorState.noise_std.std_gyro = 1e-2*pi/180*[1,1,1]; % rad/s
 ALGO_SET.ErrorState.noise_std.std_gyro_bias = 1e-6*pi/180*[1,1,1]; % rad/s
-ALGO_SET.ErrorState.noise_std.std_acc = 1e-2*[1,1,1];  % m/s^2
+ALGO_SET.ErrorState.noise_std.std_acc = 1e-3*[1,1,1];  % m/s^2
 ALGO_SET.ErrorState.noise_std.std_acc_bias = 1e-6*[1,1,1]; % m/s^2
 ALGO_SET.ErrorState.noise_std.std_magNED = 1e-8*[1,1,1];  %
 ALGO_SET.ErrorState.noise_std.std_mag = 2*[1,1,1]; %
@@ -220,3 +234,8 @@ MARGParam.enableZeroVelCorrect = true;
 %
 MVOParam = MARGParam;
 MVOParam.P0_MARG = diag(ALGO_SET.P0_errorstate17);
+MVOParam.std_gyro = ALGO_SET.ErrorState.noise_std.std_gyro;
+MVOParam.std_gyro_bias = ALGO_SET.ErrorState.noise_std.std_gyro_bias;
+MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
+MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
+MVOParam.std_acc_bias = ALGO_SET.ErrorState.noise_std.std_acc_bias;
