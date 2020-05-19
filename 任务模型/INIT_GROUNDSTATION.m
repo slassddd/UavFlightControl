@@ -31,8 +31,8 @@ switch pathExmpale
         lon_left = 1e3;
         lon_right = 2e3;
         lat_space = 200;
-%         lon_right = 1.5e3;
-%         lat_space = 50;
+        %         lon_right = 1.5e3;
+        %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         nPoints = 11;
         for i = 2:nPoints
@@ -52,13 +52,24 @@ switch pathExmpale
         end
         angle = 0*pi;
         DCM = [cos(angle) sin(angle);
-              -sin(angle) cos(angle);];
-        TASK_SET.PATH.paths_m(1:nPoints,1:2) = TASK_SET.PATH.paths_m(1:nPoints,1:2)*DCM;        
+            -sin(angle) cos(angle);];
+        TASK_SET.PATH.paths_m(1:nPoints,1:2) = TASK_SET.PATH.paths_m(1:nPoints,1:2)*DCM;
     case 3
         TASK_SET.PATH.paths_m(1:9,:) = [...
             1*1e2,0*1e3,pathHeight;
             1*1e2,1*1e3,pathHeight;
             2*1e2,1*1e3,pathHeight;
+            2*1e2,2*1e3,pathHeight;
+            4*1e2,2*1e3,pathHeight;
+            4*1e2,3*1e3,pathHeight;
+            5*1e2,3*1e3,pathHeight;
+            10*1e2,2*1e3,pathHeight;
+            16*1e2,2*1e3,pathHeight;];
+    case 4
+        TASK_SET.PATH.paths_m(1:9,:) = [...
+            0,0,pathHeight;
+            -1500,1500,pathHeight;
+            -1600,1600,pathHeight;
             2*1e2,2*1e3,pathHeight;
             4*1e2,2*1e3,pathHeight;
             4*1e2,3*1e3,pathHeight;
@@ -76,18 +87,95 @@ for i = 2:TASK_SET.PATH.maxNum
     end
 end
 %%
-% STRUCT_mission_item_def(TASK_SET.PATH.maxNum) = STRUCT_mission_item_def;
-for i = 1:TASK_SET.PATH.maxNum
-    STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
-    STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);
-    STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
-    STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
-    STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
-    STRUCT_mavlink_mission_item_def_ARRAY(i).x = TASK_SET.PATH.paths_ddm(i,1);  % lattitude
-    STRUCT_mavlink_mission_item_def_ARRAY(i).y = TASK_SET.PATH.paths_ddm(i,2);  % longitude
-    STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
+pathSimMode = 'sim'; % 'sim' 'flight'
+switch pathSimMode
+    case 'sim'
+        for i = 1:TASK_SET.PATH.maxNum
+            STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
+            STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);
+            STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
+            STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+            STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
+            STRUCT_mavlink_mission_item_def_ARRAY(i).x = TASK_SET.PATH.paths_ddm(i,1);  % lattitude
+            STRUCT_mavlink_mission_item_def_ARRAY(i).y = TASK_SET.PATH.paths_ddm(i,2);  % longitude
+            STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
+        end
+    case 'flight'
+        filename = '地面站log_20200519_条带航线.log';
+        LogWPdata = importGroundStationLog(filename);
+        for i = 1:TASK_SET.PATH.maxNum
+            if i <= length(LogWPdata)
+                STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
+                STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = LogWPdata(i).param1;
+                STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
+                STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+                STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
+                STRUCT_mavlink_mission_item_def_ARRAY(i).x = LogWPdata(i).lat;  % lattitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).y = LogWPdata(i).lon;  % longitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).z = LogWPdata(i).height;  % altitude
+            else
+                STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
+                STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);
+                STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
+                STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+                STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
+                STRUCT_mavlink_mission_item_def_ARRAY(i).x = TASK_SET.PATH.paths_ddm(i,1);  % lattitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).y = TASK_SET.PATH.paths_ddm(i,2);  % longitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
+            end
+        end
+%         %%
+%         iidx = 1;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.034;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.365;  % longitude
+%         iidx = 2;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03764725;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.34561920;  % longitude
+%         iidx = 3;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 2;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03217697;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35288239;  % longitude
+%         iidx = 4;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02701187;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35978699;  % longitude
+%         iidx = 5;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02634048;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35826111;  % longitude
+%         iidx = 6;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02728271;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35700226;  % longitude
+%         iidx = 7;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 2;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03092575;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.36529541;  % longitude
+%         iidx = 8;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03281403;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37191772;  % longitude
+%         iidx = 9;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03363800;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37052917;  % longitude
+%         iidx = 10;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03316879;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.36888123;  % longitude
+%         iidx = 11;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03038025;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37359619;  % longitude
+%         iidx = 12;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03136063;  % lattitude
+%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37480927;  % longitude
 end
-STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
+%%
+% STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_TakeOff = 23;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_AirStandBy = 28;

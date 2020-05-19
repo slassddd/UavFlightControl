@@ -14,13 +14,18 @@ switch plotmode
         plot(shot_lon,shot_lat,'b*');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
         for i = 1:TASK_SET.PATH.maxNum
-            if TASK_SET.PATH.paths_m(i,1) ~= TASK_SET.PATH.nanFlag
-                plot(TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i,1),'ro');hold on;
+            curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
+            curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
+            if curlat ~= TASK_SET.PATH.nanFlag
+                
+                plot(curlon,curlat,'ro');hold on;
                 if TASK_SET.PATH.paths_m(i+1,1) ~= TASK_SET.PATH.nanFlag && i > 1
                     plot([TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i+1,2)],...
-                          [TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i+1,1)],'r--');hold on;
+                        [TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i+1,1)],'r--');hold on;
+                else
+                    
                 end
-            end    
+            end
         end
         xlabel('lon')
         ylabel('lat')

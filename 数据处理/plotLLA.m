@@ -15,7 +15,7 @@ tempCur0 = curPathPoint_LLA0;
 % tempPre0 = diff(prePathPoint_LLA0);tempPre0(tempPre0==0)=[];
 % tempCur1 = diff(curPathPoint_LLA1);tempCur1(tempCur1==0)=[];
 % tempCur0 = diff(curPathPoint_LLA0);tempCur0(tempCur0==0)=[];
-figure;
+figure(211);
 % for i = 1:20:length(tempPre1)
 %     plot(tempPre1(i),tempPre0(i),'ro');hold on;
 %     plot(tempCur1(i),tempCur0(i),'b*');hold on;
@@ -24,6 +24,13 @@ figure;
 %     xlabel(num2str(i))
 %     drawnow
 % end
+tempVar = unique(tempPre1);
+temp = size(tempVar);
+num = find(tempPre1==tempVar(4));
+idxEnd = num(1);
+plot(tempPre1(1:idxEnd),tempPre0(1:idxEnd),'ro');hold on;
+plot(tempCur1(1:idxEnd),tempCur0(1:idxEnd),'b*');hold on;
+
 plot(tempPre1,tempPre0,'ro');hold on;
 plot(tempCur1,tempCur0,'b*');hold on;
 % plot(tempPre1,tempPre0,'r-');hold on;
@@ -61,6 +68,12 @@ if 1 % 画当前位置和盘旋中心
     elseif length(tempCur1)>length(tempCur0)
         tempCur1(end) = [];
     end
+    figure(211);
+    plot(tempPre1,tempPre0,'ko');hold on;
+    plot(tempCur1,tempCur0,'b');hold on;
+    plot(homeLat,homeLon,'r*');hold on;
+    grid on;
+    axis equal    
     figure;
     subplot(121)
     plot(tempPre1,tempPre0,'ko');hold on;

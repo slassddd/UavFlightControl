@@ -1,5 +1,6 @@
 baseIMUtime = IN_SENSOR.IMU1.time;
-baseIMUtime = IN_SENSOR.IMU1.time;% /* ------------------------------algo sl  log ---------------------------------------------- */20200312
+baseIMUtime = IN_SENSOR.IMU1.time;
+% /* ------------------------------algo sl  log ---------------------------------------------- */20200312
 % /*-----------------------RefModel_SystemArchitecture_Y.OUT_SensorSignalIntegrity.-----------*/
 % /* |@@SL.SensorSelect@@+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(16:16:end,223:224)'],1,[]);
@@ -509,3 +510,7 @@ SL.PowerConsume.Fix2Rotor = Fix2Rotor; % create struct
 temp = reshape([data(9:16:end,243:243)'],1,[]);
 Land=double(typecast(uint8(temp),'int8')')/1*1.0000000000;
 SL.PowerConsume.Land = Land; % create struct
+% /* |@@SL.OUT_NAVI2FIRM@@+-----------------------+-------------+------------+--------------| */
+temp = reshape([data(16:16:end,245:245)'],1,[]);
+isNavFilterGood=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.OUT_NAVI2FIRM.isNavFilterGood = isNavFilterGood; % create struct
