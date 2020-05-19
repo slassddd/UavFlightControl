@@ -17,11 +17,12 @@ switch plotmode
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
             curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
             if curlat ~= TASK_SET.PATH.nanFlag
-                
                 plot(curlon,curlat,'ro');hold on;
-                if TASK_SET.PATH.paths_m(i+1,1) ~= TASK_SET.PATH.nanFlag && i > 1
-                    plot([TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i+1,2)],...
-                        [TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i+1,1)],'r--');hold on;
+                if STRUCT_mavlink_mission_item_def_ARRAY(i+1).x ~= TASK_SET.PATH.nanFlag && i > 1
+                    nextlat = STRUCT_mavlink_mission_item_def_ARRAY(i+1).x;
+                    nextlon = STRUCT_mavlink_mission_item_def_ARRAY(i+1).y;
+                    plot([curlon,nextlon],...
+                        [curlat,nextlat],'r--');hold on;
                 else
                     
                 end
@@ -43,15 +44,32 @@ switch plotmode
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
         for i = 1:TASK_SET.PATH.maxNum
-            if TASK_SET.PATH.paths_m(i,1) ~= TASK_SET.PATH.nanFlag
-                plot3(TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i,3),'ro');hold on;
-                if TASK_SET.PATH.paths_m(i+1,1) ~= TASK_SET.PATH.nanFlag && i > 1
-                    plot3([TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i+1,2)],...
-                          [TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i+1,1)],...
-                          [TASK_SET.PATH.paths_ddm(i,3),TASK_SET.PATH.paths_ddm(i+1,3)],'r--');hold on;
+            curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
+            curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
+            curheight = STRUCT_mavlink_mission_item_def_ARRAY(i).z;
+            if curlat ~= TASK_SET.PATH.nanFlag
+                plot3(curlon,curlat,curheight,'ro');hold on;
+                if STRUCT_mavlink_mission_item_def_ARRAY(i+1).x ~= TASK_SET.PATH.nanFlag && i > 1
+                    nextlat = STRUCT_mavlink_mission_item_def_ARRAY(i+1).x;
+                    nextlon = STRUCT_mavlink_mission_item_def_ARRAY(i+1).y;
+                    nextheight = STRUCT_mavlink_mission_item_def_ARRAY(i+1).z;
+                    plot3([curlon,nextlon],...
+                        [curlat,nextlat],[curheight,nextheight],'r--');hold on;
+                else
+                    
                 end
             end
-        end
+        end        
+%         for i = 1:TASK_SET.PATH.maxNum
+%             if TASK_SET.PATH.paths_m(i,1) ~= TASK_SET.PATH.nanFlag
+%                 plot3(TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i,3),'ro');hold on;
+%                 if TASK_SET.PATH.paths_m(i+1,1) ~= TASK_SET.PATH.nanFlag && i > 1
+%                     plot3([TASK_SET.PATH.paths_ddm(i,2),TASK_SET.PATH.paths_ddm(i+1,2)],...
+%                           [TASK_SET.PATH.paths_ddm(i,1),TASK_SET.PATH.paths_ddm(i+1,1)],...
+%                           [TASK_SET.PATH.paths_ddm(i,3),TASK_SET.PATH.paths_ddm(i+1,3)],'r--');hold on;
+%                 end
+%             end
+%         end
         xlabel('lon')
         ylabel('lat')
         grid on;
