@@ -87,7 +87,7 @@ for i = 2:TASK_SET.PATH.maxNum
     end
 end
 %%
-pathSimMode = 'flight'; % 'sim' 'flight'
+pathSimMode = 'sim'; % 'sim' 'flight'
 switch pathSimMode
     case 'sim'
         for i = 1:TASK_SET.PATH.maxNum
@@ -101,7 +101,7 @@ switch pathSimMode
             STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
         end
     case 'flight'
-        filename = '地面站log_20200519_条带航线.log';
+        filename = '地面站log_20200519_条带航线1.log';
         LogWPdata = importGroundStationLog(filename);
         for i = 1:TASK_SET.PATH.maxNum
             if i <= length(LogWPdata)

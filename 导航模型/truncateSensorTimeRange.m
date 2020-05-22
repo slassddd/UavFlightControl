@@ -1,4 +1,5 @@
 function out = truncateSensorTimeRange(sensors,tspan)
+sensors.Algo_sl.time = sensors.Algo.time_algo(1:2:end);
 %
 sensors.IMU.ax(sensors.IMU.time_imu<tspan(1),:) = [];
 sensors.IMU.ay(sensors.IMU.time_imu<tspan(1),:) = [];
@@ -56,12 +57,24 @@ sensors.Algo.dWB_00(sensors.Algo.time_algo<tspan(1),:) = [];
 sensors.Algo.dWB_11(sensors.Algo.time_algo<tspan(1),:) = [];
 sensors.Algo.dWB_22(sensors.Algo.time_algo<tspan(1),:) = [];
 
+
+sensors.Algo_sl.algo_NAV_alt(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_lat(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_lon(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_pitch(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_roll(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_Vd(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_Ve(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_Vn(sensors.Algo_sl.time<tspan(1),:) = [];
+sensors.Algo_sl.algo_NAV_yaw(sensors.Algo_sl.time<tspan(1),:) = [];
+
 sensors.IMU.time_imu(sensors.IMU.time_imu<tspan(1),:) = [];
 sensors.Mag.time_mag(sensors.Mag.time_mag<tspan(1),:) = [];
 sensors.GPS.time_ublox(sensors.GPS.time_ublox<tspan(1),:) = [];
 sensors.Baro.time_baro(sensors.Baro.time_baro<tspan(1),:) = [];
 sensors.Radar.time_radar(sensors.Radar.time_radar<tspan(1),:) = [];
 sensors.Algo.time_algo(sensors.Algo.time_algo<tspan(1),:) = [];
+sensors.Algo_sl.time(sensors.Algo_sl.time<tspan(1),:) = [];
 
 sensors.IMU.ax(sensors.IMU.time_imu>tspan(2),:) = [];
 sensors.IMU.ay(sensors.IMU.time_imu>tspan(2),:) = [];
@@ -119,12 +132,23 @@ sensors.Algo.dWB_00(sensors.Algo.time_algo>tspan(2),:) = [];
 sensors.Algo.dWB_11(sensors.Algo.time_algo>tspan(2),:) = [];
 sensors.Algo.dWB_22(sensors.Algo.time_algo>tspan(2),:) = [];
 
+sensors.Algo_sl.algo_NAV_alt(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_lat(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_lon(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_pitch(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_roll(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_Vd(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_Ve(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_Vn(sensors.Algo_sl.time>tspan(2),:) = [];
+sensors.Algo_sl.algo_NAV_yaw(sensors.Algo_sl.time>tspan(2),:) = [];
+
 sensors.IMU.time_imu(sensors.IMU.time_imu>tspan(2),:) = [];
 sensors.Mag.time_mag(sensors.Mag.time_mag>tspan(2),:) = [];
 sensors.GPS.time_ublox(sensors.GPS.time_ublox>tspan(2),:) = [];
 sensors.Baro.time_baro(sensors.Baro.time_baro>tspan(2),:) = [];
 sensors.Radar.time_radar(sensors.Radar.time_radar>tspan(2),:) = [];
 sensors.Algo.time_algo(sensors.Algo.time_algo>tspan(2),:) = [];
+sensors.Algo_sl.time(sensors.Algo_sl.time>tspan(2),:) = [];
 
 out = sensors;
 

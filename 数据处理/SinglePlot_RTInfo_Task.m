@@ -11,7 +11,7 @@ ylabelstr = children;
 typeCells = {
     'ENUM_RTInfo_Task','ENUM_RTInfo_PayLoad','ENUM_RTInfo_GSCmd','ENUM_RTInfo_Warn',...
     'ENUM_ComStatus','ENUM_RTInfo_Fense','ENUM_RTInfo_Stall','ENUM_RTInfo_SensorHealth',...
-    'ENUM_BatteryStatus','ENUM_RTInfo_FixHeight','ENUM_FindWind','boolean','boolean','boolean','double','double'};
+    'ENUM_BatteryStatus','ENUM_RTInfo_FixHeight','ENUM_FindWind','boolean','boolean','boolean','double','double','double'};
 if length(typeCells) ~= nChildren
     warning('维数错误');
 end

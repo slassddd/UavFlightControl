@@ -84,6 +84,7 @@ for i_file = 1:nFile
     V1000_decode_simulation
     V1000_decode_fusionDebug
     V1000_decode_auto
+    SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);
     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
     figure;
     plot(IN_SENSOR.ublox1.time, velHeading,'r');hold on;
