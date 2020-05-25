@@ -162,7 +162,7 @@ end
 [res_um482, resCov_um482] = residualgps(filter_marg, double(um482_lla), ...
     double(Rpos_um482), double(um482_gpsvel), double(Rvel_um482));
 normalizedRes_um482 = res_um482 ./ sqrt( diag(resCov_um482).' );
-residual_um482 = any(abs(normalizedRes_um482(1:3))<6);
+residual_um482 = any(abs(normalizedRes_um482(1:3))<100);
 if ~residual_um482
     um482_resReject_num = um482_resReject_num + 1;
 end
@@ -262,7 +262,7 @@ if residual_ublox1 && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHe
         ublox1UpdateFlag && MARGParam.fuse_enable.gps % && clock_sec < 700% gps 更新
     step_ublox = step_ublox + 1;
     if ~ZVCenable
-        Rpos = double(Sensors.ublox1.pDop*Rpos);
+        Rpos = double(Sensors.ublox1.pDop^1.5*Rpos);
         if rem(step_ublox,kScale_ublox) == 0
 %             if clock_sec < 600
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
@@ -315,7 +315,6 @@ end
 % 气压高融合
 if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
         MARGParam.fuse_enable.gps && ...
-        SensorSignalIntegrity.SensorStatus.baro1 ~= ENUM_SensorHealthStatus.Health && ...
         SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health && ...
         SensorSignalIntegrity.SensorStatus.um482 ~= ENUM_SensorHealthStatus.Health% || clock_sec >= 700% || clock_sec >= 700
     step_baro = step_baro + 1;
