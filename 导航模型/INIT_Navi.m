@@ -199,12 +199,12 @@ ALGO_SET.ErrorState.noise_std.std_acc_bias = 1e-6*[1,1,1]; % m/s^2
 ALGO_SET.ErrorState.noise_std.std_magNED = 1e-8*[1,1,1];  %
 ALGO_SET.ErrorState.noise_std.std_mag = 2*[1,1,1]; %
 ALGO_SET.ErrorState.noise_std.std_mag_bias = 1e-2*[1,1,1];
-ALGO_SET.ErrorState.noise_std.std_lla = [1.6,1.6,125];
+ALGO_SET.ErrorState.noise_std.std_lla = [1.6,1.6,3];
 ALGO_SET.ErrorState.noise_std.std_gpsvel = [0.1,0.1,0.2];
 ALGO_SET.ErrorState.noise_std.std_alt = 2;
 ALGO_SET.ErrorState.noise_std.std_range = 2;
 ALGO_SET.ErrorState.noise_std.std_lla_um482 = [0.02,0.02,0.05];
-ALGO_SET.ErrorState.noise_std.std_gpsvel_um482 = [0.1,0.1,0.1];
+ALGO_SET.ErrorState.noise_std.std_gpsvel_um482 = [0.2,0.2,0.2];
 % MARG滤波器
 % 1. marg滤波器启动时，第一个角速度和加速度会与0进行平均
 ALGO_SET.P0_marg22 = diag([ 2e-4*[2;1;1;3];... % quat
@@ -216,7 +216,7 @@ ALGO_SET.P0_marg22 = diag([ 2e-4*[2;1;1;3];... % quat
     1e-2*ones(3,1);... % dmag
     ]);
 % errorState滤波器
-ALGO_SET.P0_errorstate17 = diag([1e-4*ones(3,1);... % quat
+ALGO_SET.P0_errorstate17 = diag([1e-3*ones(3,1);... % quat
     2e0*ones(3,1);... % pos
     1e-4*ones(3,1);... % vel
     1e-4*ones(3,1);... % dw

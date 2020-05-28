@@ -43,7 +43,7 @@ switch plotmode
         plot3(lon,lat,height,'b');hold on;
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
-        for i = 1:TASK_SET.PATH.maxNum
+        for i = 1:TASK_SET.PATH.maxNum-1
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
             curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
             curheight = STRUCT_mavlink_mission_item_def_ARRAY(i).z;

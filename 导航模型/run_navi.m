@@ -2,6 +2,8 @@ if 0
     clear,clc
     clear global
     dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
+    dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
+    dataFileNames = {['SubFolder_飞行数据\20200527\仿真数据_log14']};    
     %% AUTOCODE %%
 else
     dataFileNames = saveFileName;

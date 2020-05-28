@@ -1,6 +1,6 @@
-function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
-    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude)
-persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag
+function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_mvo17(...
+    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MVOParam, um482_BESTPOS,isBadAttitude)
+persistent filter_errorstate accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag
 persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
 persistent accDegradeFlag meanVd
 persistent dHeight_GPS_sub_Baro
@@ -8,6 +8,7 @@ persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
 %%
+isFilterGood = 1;
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
 IMU1_accel = double([Sensors.IMU1.accel_x, Sensors.IMU1.accel_y, Sensors.IMU1.accel_z]);
@@ -79,7 +80,7 @@ kScale_ublox = 1;
 
 baseFs = 1/Ts/kScale_imu;
 %
-if isempty(filter_marg)
+if isempty(filter_errorstate)
     step = 1;
     step_imu = 1;
     step_mag = 1;
@@ -88,20 +89,18 @@ if isempty(filter_marg)
     step_radar = 1;
     step_baro = 1;
     step_board = 1;
-    filter_marg = insfilterMARG; %slMARG; %
-    filter_marg.IMUSampleRate = double(baseFs);
-    filter_marg.ReferenceLocation = refloc;filter_marg.ReferenceLocation(3) = 0;
-    filter_marg.State = double(X0_marg22);
-    filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
-    filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
-    filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
-    filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
-    filter_marg.MagnetometerBiasNoise = double(MARGParam.std_mag_bias.^2);
-    filter_marg.GeomagneticVectorNoise = double(MARGParam.std_magNED.^2);
-%     if isBadAttitude
-        MARGParam.P0_MARG(1:4) = [1,0.1,0.1,1];
-%     end
-    filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
+    filter_errorstate = insfilterErrorState; %slMARG; %
+    filter_errorstate.IMUSampleRate = double(baseFs);
+    filter_errorstate.ReferenceLocation = refloc;filter_errorstate.ReferenceLocation(3) = 0;
+    filter_errorstate.State = double(X0_marg22(1:17));
+    filter_errorstate.State(end) = 1;
+    filter_errorstate.AccelerometerBiasNoise = double(MVOParam.std_acc_bias.^2);
+    filter_errorstate.AccelerometerNoise = double(MVOParam.std_acc.^2);
+    filter_errorstate.GyroscopeBiasNoise = double(MVOParam.std_gyro_bias.^2);
+    filter_errorstate.GyroscopeNoise = double(MVOParam.std_gyro.^2);
+    MVOParam.P0_MARG(1:4) = [1,0.1,0.1,1];
+    filter_errorstate.StateCovariance = double(diag(MVOParam.P0_MARG));
+    
     accel_pre = accel;
     gyro_pre = gyro;
     mag_pre = mag;
@@ -126,13 +125,13 @@ if isempty(filter_marg)
     magRejectForEver = false;
 end
 %% 测量协方差
-Rmag = double(diag(MARGParam.std_mag.^2));
-Rpos = double(diag(MARGParam.std_lla.^2));
-Rvel = double(diag(MARGParam.std_gpsvel.^2));
-Rpos_um482 = double(diag(MARGParam.std_lla_um482.^2));
-Rvel_um482 = double(diag(MARGParam.std_gpsvel_um482.^2));
-Ralt = double(MARGParam.std_alt^2);
-Rrange = double(MARGParam.std_range^2);
+% Rmag = double(diag(MVOParam.std_mag.^2));
+Rpos = double(diag(MVOParam.std_lla.^2));
+Rvel = double(diag(MVOParam.std_gpsvel.^2));
+Rpos_um482 = double(diag(MVOParam.std_lla_um482.^2));
+Rvel_um482 = double(diag(MVOParam.std_gpsvel_um482.^2));
+Ralt = double(MVOParam.std_alt^2);
+Rrange = double(MVOParam.std_range^2);
 
 %% 测量值拒绝 （注意：判断上限值应该 包容最大运动能力，下限值应该小于噪声影响）
 maxSpeed = 30;%30*dt_base;
@@ -151,7 +150,7 @@ measureReject.range_notJump = ...
     abs(norm(range_pre-range)) < posJumpThreshold;
 %% 残差拒绝
 % ublox1
-[res_ublox1, resCov_ublox1] = residualgps(filter_marg, double(ublox1_lla), ...
+[res_ublox1, resCov_ublox1] = residualgps(filter_errorstate, double(ublox1_lla), ...
     double(Rpos), double(ublox1_gpsvel), double(Rvel));
 normalizedRes_ublox1 = res_ublox1 ./ sqrt( diag(resCov_ublox1).' );
 residual_ublox1 = any(abs(normalizedRes_ublox1(1:3))<6);
@@ -159,23 +158,14 @@ if ~residual_ublox1
     ublox1_resReject_num = ublox1_resReject_num + 1;
 end
 % um482
-[res_um482, resCov_um482] = residualgps(filter_marg, double(um482_lla), ...
+[res_um482, resCov_um482] = residualgps(filter_errorstate, double(um482_lla), ...
     double(Rpos_um482), double(um482_gpsvel), double(Rvel_um482));
 normalizedRes_um482 = res_um482 ./ sqrt( diag(resCov_um482).' );
-residual_um482 = any(abs(normalizedRes_um482(1:3))<100);
+residual_um482 = any(abs(normalizedRes_um482(1:3))<6);
 if ~residual_um482
     um482_resReject_num = um482_resReject_num + 1;
 end
-% mag
-[res_mag, resCov_mag] = residualmag(filter_marg, double(mag), double(Rmag));
-normalizedRes_mag = res_mag./ sqrt( diag(resCov_mag).' );
-residual_mag = all(abs(normalizedRes_mag)<3);
-if ~residual_mag
-    mag_resReject_num = mag_resReject_num + 1;
-    if mag_resReject_num > 50 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
-        magRejectForEver = true;
-    end
-end
+
 OUT_ECAS.nUbloxRejectByResidual = ublox1_resReject_num;
 OUT_ECAS.nUm482RejectByResidual = um482_resReject_num;
 OUT_ECAS.nMagRejectByResidual = mag_resReject_num;
@@ -188,7 +178,7 @@ stayStillCondition.isStatic = stayStillCondition.acc && ...
     stayStillCondition.gyro && ...
     stayStillCondition.gpsvel;
 ZVCenable = false;
-if stayStillCondition.isStatic && MARGParam.enableZeroVelCorrect
+if stayStillCondition.isStatic && MVOParam.enableZeroVelCorrect
     staticTime = staticTime + Ts;
     if staticTime > 2
         ZVCenable = true; % 零速校正使能
@@ -196,14 +186,8 @@ if stayStillCondition.isStatic && MARGParam.enableZeroVelCorrect
 else
     staticTime = 0;
 end
-% ZVCenable = false;
+ZVCenable = false; %%
 %% 滤波
-ublox1_is_available = ...
-    SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health || ...
-    SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Degrade;
-um482_is_available = ...
-    SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health || ...
-    SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Degrade;
 % SensorUpdateFlag
 % if imuUpdateFlag
 step_imu = step_imu + 1;
@@ -212,85 +196,50 @@ temp_acc = 10;
 meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
-    filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
-    filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
-    filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
-    filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
-    if ublox1_is_available
+    filter_errorstate.AccelerometerBiasNoise = double(MVOParam.std_acc_bias.^2);
+    filter_errorstate.AccelerometerNoise = double(MVOParam.std_acc.^2);
+    filter_errorstate.GyroscopeBiasNoise = double(MVOParam.std_gyro_bias.^2);
+    filter_errorstate.GyroscopeNoise = double(MVOParam.std_gyro.^2);
+    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
     else
         tmpK_residual = [1,1,1];
     end
     for ii = 3
-%         gErr = abs(norm(meanAcc)-9.8);
-%         if gErr < 1
-%             gErr = single(1);
-%         end
-%         if gErr < 1
-%         tmpK_bias = single(gErr^2);
-%         tmpK = single(gErr^3);
-%         else
-        
         tmpK_bias = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^1.5);
         tmpK = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^3);
-%         end
-        filter_marg.AccelerometerBiasNoise(ii) = tmpK_residual(ii)*tmpK_bias*filter_marg.AccelerometerBiasNoise(ii);
-        filter_marg.AccelerometerNoise(ii) = tmpK_residual(ii)*tmpK*filter_marg.AccelerometerNoise(ii);
+        filter_errorstate.AccelerometerBiasNoise(ii) = tmpK_residual(ii)*tmpK_bias*filter_errorstate.AccelerometerBiasNoise(ii);
+        filter_errorstate.AccelerometerNoise(ii) = tmpK_residual(ii)*tmpK*filter_errorstate.AccelerometerNoise(ii);
     end
     for ii = 1:3
         tmpK = (1+2*abs(meanGyro(ii)))^2;
-        filter_marg.GyroscopeBiasNoise = tmpK*double(MARGParam.std_gyro_bias.^2);
-        filter_marg.GyroscopeNoise = tmpK*double(MARGParam.std_gyro.^2);
+        filter_errorstate.GyroscopeBiasNoise = tmpK*double(MVOParam.std_gyro_bias.^2);
+        filter_errorstate.GyroscopeNoise = tmpK*double(MVOParam.std_gyro.^2);
     end
-    
-    %     for ii = 1:3
-    %         kscale = 2;
-    %         if abs(normalizedRes_ublox1(ii+3))>kscale
-    %             kVel = max(1,norm(ublox1_gpsvel));
-    %             tmpK_bias = max(1,(10*(abs(normalizedRes_ublox1(ii+3))-kscale)/1)^3);
-    %             tmpK = max(1,(10*(abs(normalizedRes_ublox1(ii+3))-kscale)/1)^3);
-    %             filter_marg.AccelerometerBiasNoise(ii) = kVel*tmpK_bias*filter_marg.AccelerometerBiasNoise(ii);
-    %             filter_marg.AccelerometerNoise(ii) = kVel*tmpK*filter_marg.AccelerometerNoise(ii);
-    %         end
-    %     end
-    filter_marg.predict(double(meanAcc),double(meanGyro));  %
+   
+    filter_errorstate.predict(double(meanAcc),double(meanGyro));  %
     accDegradeFlag = false;
 end
-% 磁力计融合
-if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-    step_mag = step_mag + 1;
-    if rem(step_mag,kScale_mag) == 0 % && alt < 5
-        filter_marg.fusemag(double(mag),double(Rmag));
-    end
-end
 % ublox1融合
-if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
-        ublox1UpdateFlag && MARGParam.fuse_enable.gps % && clock_sec < 700% gps 更新
+if residual_ublox1 && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && measureReject.lla_notJump && ...
+        ublox1UpdateFlag && MVOParam.fuse_enable.gps % && clock_sec < 700% gps 更新
     step_ublox = step_ublox + 1;
     if ~ZVCenable
-        Rpos = double(Sensors.ublox1.pDop^1.5*Rpos);
-        if Sensors.ublox1.pDop > 3
-            Rvel = double(Sensors.ublox1.pDop^1.5*Rvel);
-        end
+        Rpos = double(Sensors.ublox1.pDop*Rpos);
         if rem(step_ublox,kScale_ublox) == 0
-%             if clock_sec < 600
-            filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
-%             else
-%                 filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),1e10*double(Rvel));
-%             end
+            filter_errorstate.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
         end
     else
         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
         if rem(step_ublox,kScale_ublox) == 0 
-            
-            filter_marg.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
+            filter_errorstate.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
         end
     end
 end
 % um482融合
 %  && residual_um482
-if MARGParam.fuse_enable.um482 && um482_is_available && ...
+if MVOParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE % 无解
     switch um482_BESTPOS
@@ -304,44 +253,33 @@ if MARGParam.fuse_enable.um482 && um482_is_available && ...
             sigmaAlt = max(1.6,Sensors.um482.delta_height);
     end
     % 由于um482和ublox在高度方向存在近似常值偏差，因此在ublox建康时为了保证一致性，不融合482的高度
-%     if ~ublox1_is_available
-%         Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
-%     else
-%         Rpos_um482 = double(diag([sigmaLat,sigmaLon,10]).^2);
-%     end
-    Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
-    if Sensors.um482.pDop > 3
-        Rvel_um482 = double(Sensors.um482.pDop^1.5*Rvel_um482);
+    if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health
+        Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
+    else 
+        Rpos_um482 = double(diag([sigmaLat,sigmaLon,10]).^2);
     end
-    filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
+    filter_errorstate.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
-if false && radarUpdateFlag && measureReject.range_notJump  %
-    step_radar = step_radar + 1;
-    if rem(step_radar,kScale_radar) == 0
-        idx_alt = 7; % 高度的状态序号
-        posd = -range-dHeight_GPS_sub_Baro;
-        Rposd = Rrange;
-        filter_marg.correct(idx_alt,double(posd),double(Rposd));
-    end
-end
 % 气压高融合
-if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
-        MARGParam.fuse_enable.gps && ...
-        ~ublox1_is_available && ...
-        ~um482_is_available % || clock_sec >= 700% || clock_sec >= 700
+if baroUpdateFlag && measureReject.baroAlt_notJump && MVOParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
+        MVOParam.fuse_enable.gps && ...
+        SensorSignalIntegrity.SensorStatus.baro1 ~= ENUM_SensorHealthStatus.Health && ...
+        SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health && ...
+        SensorSignalIntegrity.SensorStatus.um482 ~= ENUM_SensorHealthStatus.Health% || clock_sec >= 700% || clock_sec >= 700
     step_baro = step_baro + 1;
     step_alt = step_alt + 1;
     if rem(step_baro,kScale_baro) == 0
         idx_alt = 7; % 高度的状态序号
         posd = -alt-dHeight_GPS_sub_Baro;
         Rposd = Ralt;
-        filter_marg.correct(idx_alt,double(posd),double(Rposd));
+        filter_errorstate.correct(idx_alt,double(posd),double(Rposd));
     end
 end
-
-stateEst = filter_marg.State;
-stateCovarianceDiagEst = diag(filter_marg.StateCovariance).^0.5;
+stateEst = zeros(22,1);
+% stateCovarianceDiag = zeros(1,22);
+stateEst(1:17,1) = filter_errorstate.State;
+stateCovarianceDiagEst = [diag(filter_errorstate.StateCovariance).^0.5;zeros(6,1)];
 eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
@@ -363,10 +301,11 @@ alt_pre = alt;
 range_pre = range;
 innov.ublox1 = normalizedRes_ublox1;
 innov.um482 = normalizedRes_um482;
-innov.mag = normalizedRes_mag;
+innov.mag = zeros(1,3);
 innov.baro = 0;
 innov.radar = 0;
 step = step + 1;
+
 stepInfo.step = step;
 stepInfo.step_imu = step_imu;
 stepInfo.step_mag = step_mag;

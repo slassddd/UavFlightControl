@@ -1,25 +1,46 @@
+%% 绘图控制
+plotenable.um482 = false;
+plotenable.WindParam = false;
+plotenable.ublox1 = false;
+plotenable.SensorStatus = false;
+plotenable.RTInfo_Task = false;
+plotenable.gpsCompare = false;
+plotenable.PowerConsumer = true;
+%%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
-fullNameOfLog = [PathName,FileNames];
-%
-SingPlot_um482(IN_SENSOR.um482)
-SingPlot_WindParam(IN_SENSOR.IMU1.time,Bus_TASK_WindParam)
-SingPlot_ublox1(IN_SENSOR.ublox1)
-SinglePlot_SensorStatus(IN_SENSOR.IMU1.time,SL.SensorStatus)
-SinglePlot_RTInfo_Task(IN_SENSOR.IMU1.time,SL.Debug_Task_RTInfo)
-SingPlot_gpsCompare(IN_SENSOR.um482,IN_SENSOR.ublox1)
-T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
-
-tmpIdx = strfind(FileNames,'.');
-FileNames(tmpIdx:end) = [];
-
+% fullNameOfLog = [PathName,FileNames];
+if plotenable.um482
+    SingPlot_um482(IN_SENSOR.um482)
+end
+if plotenable.WindParam
+    SingPlot_WindParam(IN_SENSOR.IMU1.time,Bus_TASK_WindParam)
+end
+if plotenable.ublox1
+    SingPlot_ublox1(IN_SENSOR.ublox1)
+end
+if plotenable.SensorStatus
+    SinglePlot_SensorStatus(IN_SENSOR.IMU1.time,SL.SensorStatus)
+end
+if plotenable.RTInfo_Task
+    SinglePlot_RTInfo_Task(IN_SENSOR.IMU1.time,SL.Debug_Task_RTInfo)
+end
+if plotenable.gpsCompare
+    SingPlot_gpsCompare(IN_SENSOR.um482,IN_SENSOR.ublox1)
+end
+if plotenable.PowerConsumer
+    T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+end
+tempFileNames = FileName;
+tmpIdx = strfind(tempFileNames,'.');
+tempFileNames(tmpIdx:end) = [];
 proj = currentProject;
 perfSavePath = [char(proj.RootFolder),'\SubFolder_飞行数据\飞行性能数据',];
-perfMatFileName = [perfSavePath,'\perfDataMat_',FileNames,'.mat'];
+perfMatFileName = [perfSavePath,'\perfDataMat_',tempFileNames,'.mat'];
 save(perfMatFileName,'T')
 % try
-%     
+%
 %     perfDataAll = load(perfMatFileName);
 %     isExit_perfDataAll = true;
 %     fprintf('载入已保存的性能数据\n')

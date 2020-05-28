@@ -1,0 +1,660 @@
+ INFO 2020-05-19T16:37:01.463 Select Task "a0acc828199a439d89016ee70123ceb0" 
+ INFO 2020-05-19T16:37:01.473 UAVManager version: " UAVManager Professional Update 292" 
+DEBUG 2020-05-19T16:37:01.513 Create Serial Link 2 
+DEBUG 2020-05-19T16:37:02.134 Uas Create 
+DEBUG 2020-05-19T16:37:02.334 connect 289 fmuavconnectobj.cpp 0 
+DEBUG 2020-05-19T16:37:02.825 connect 289 fmuavconnectobj.cpp 0 
+ INFO 2020-05-19T16:37:03.944 ours== "\xE3X\xEF\xA4\x89\xF5\x80""b\xF1\r\xD7""1ked\x9E" theirs== "\xE3X\xEF\xA4\x89\xF5\x80""b\xF1\r\xD7""1ked\x9E" 
+ INFO 2020-05-19T16:37:04.044 The plane version: "V1000_Autopilot_v51133" 
+DEBUG 2020-05-19T16:37:04.144 Connect 445 fmuavconnectobj.cpp 
+DEBUG 2020-05-19T16:37:04.446 CFmTaskUpload::CFmTaskUpload false 
+DEBUG 2020-05-19T16:37:04.456 CFmLandingSettings::InitPage "" 8 
+DEBUG 2020-05-19T16:37:04.456 fmlandingsettings.cpp CFmLandingSettings::SetFlightMissionFilePath 271 SetFlightMissionFilePath "C:/Users/admin/UAVBouteiller_Test/Project/15611512333/Smart_Airline/宝盛V1000带状航线/宝盛V1000带状航线.fm" 
+ INFO 2020-05-19T16:37:04.456 fmlandingsettings.cpp 286 CFmLandingSettings::SetFlightMissionFilePath | SQL text= "select flight_task_id, break_point_lat, break_point_lng, last_waypoint_index, entry_direction, mission_waypoint_start, mission_waypoint_end from flight_mission where flight_task_id = 'a0acc828199a439d89016ee70123ceb0' order by created_at DESC" 
+DEBUG 2020-05-19T16:37:04.466 65 CFmPrepareTaskPage::CFmPrepareTaskPage -99999 
+ INFO 2020-05-19T16:37:05.505 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:06.145 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:06.315 Virtual load:Request real_camera flag 
+ INFO 2020-05-19T16:37:08.255 Virtual load:real_camera status true 
+ INFO 2020-05-19T16:37:08.335 Simulation mode:Request isFCSimuEnabled flag 
+ INFO 2020-05-19T16:37:08.617 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:09.127 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:09.826 RTK TCP Port Fail QHostAddress("192.168.1.1") 9901 
+ INFO 2020-05-19T16:37:10.336 Simulation mode:Simulation mode communicate timeout 0 
+ INFO 2020-05-19T16:37:10.427 Virtual load:Set real_camera flag to 0 
+ INFO 2020-05-19T16:37:10.637 Virtual load:Set real_camera flag 0 success 
+ INFO 2020-05-19T16:37:10.857 Virtual load:Set load type success 
+ INFO 2020-05-19T16:37:11.047 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:12.067 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:13.067 Safy pin remove before unlock 
+ INFO 2020-05-19T16:37:14.949 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:15.958 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:18.848 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:19.895 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:21.776 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:22.751 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:24.421 CFmLandingSettings::InitPage "fb735f6be0774d598f90d1e5e1b26403" 8 
+DEBUG 2020-05-19T16:37:24.421 fmtaskupload.cpp CFmTaskUpload::slotWholeRouteMode 1546 slotWholeRouteMode 1 -1 0 
+DEBUG 2020-05-19T16:37:24.421 fmlandingsettings.cpp CFmLandingSettings::SetFlightMissionFilePath 271 SetFlightMissionFilePath "C:/Users/admin/UAVBouteiller_Test/Project/15611512333/Smart_Airline/宝盛V1000带状航线/宝盛V1000带状航线.fm" 
+ INFO 2020-05-19T16:37:24.421 fmlandingsettings.cpp 286 CFmLandingSettings::SetFlightMissionFilePath | SQL text= "select flight_task_id, break_point_lat, break_point_lng, last_waypoint_index, entry_direction, mission_waypoint_start, mission_waypoint_end from flight_mission where flight_task_id = 'a0acc828199a439d89016ee70123ceb0' order by created_at DESC" 
+DEBUG 2020-05-19T16:37:25.461 Set Landing Point: lng "116.36686500" ,Lat "40.03543760" ,Alt "68.072" ,AMSL "77.789" ,HAE "-9.717" 
+DEBUG 2020-05-19T16:37:25.491 UpdateLandingPos: "116.36686500" "40.03543760" "77.789" 
+DEBUG 2020-05-19T16:37:25.491 1266 CFmPrepareTaskPage::slotLandingSettingFinished 77.7888 
+DEBUG 2020-05-19T16:37:25.491 205 CFmPrepareTaskPage::SetBarometerValue 77.7888 
+DEBUG 2020-05-19T16:37:25.491 slotLandingSettingFinished 
+ INFO 2020-05-19T16:37:25.661 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:26.654 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:27.443 776 fmlandingsettings.cpp CFmLandingSettings::SendInfoToUasInstance Start Setting Transform Altitude 50 
+DEBUG 2020-05-19T16:37:27.833 GetElevationByPolygon Result = True 
+DEBUG 2020-05-19T16:37:27.833 V Series maxPos = 116.37 40.0624 47.8794 
+DEBUG 2020-05-19T16:37:27.833 V Series minPos = 116.389 40.0397 33.0196 
+DEBUG 2020-05-19T16:37:27.833 1620 fmlandingsettings.cpp V series Plane Equel Height 505 BarometerValue 77.7888 
+ INFO 2020-05-19T16:37:27.843 Send home point 
+FATAL 2020-05-19T16:37:27.843 Send Multirotor WP 0 "40.03543854" "116.36686707" "427.21" Parameter1 1 0 Speed 13.5 WP command 16 unequal high 0 return method 1 Airline Type 0 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 427.211 
+DEBUG 2020-05-19T16:37:27.843 801 fmlandingsettings.cpp CFmLandingSettings::slotSetTransformSuccess Transform Altitude Setting Success 
+ INFO 2020-05-19T16:37:28.133 Send home point success 
+ INFO 2020-05-19T16:37:28.133 Send flightMissionID: "fb735f6be0774d598f90d1e5e1b26403" 
+ INFO 2020-05-19T16:37:28.465 Send flightMissionID success 
+DEBUG 2020-05-19T16:37:28.475 CFmPrepareTaskPage::SetCurrentPage 1 77.7888 
+ INFO 2020-05-19T16:37:28.645 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:29.574 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:30.566 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:31.596 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:33.486 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:34.498 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:36.438 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:36.478 CFmC5CameraParamAck::DoCommand fmackbase.cpp 1 
+DEBUG 2020-05-19T16:37:36.478 Request C5[A6000] Params shot 0 session 9 extra_param 0 
+DEBUG 2020-05-19T16:37:36.478 CFmManualCheckPage::_RequestCameraParam fmmanualcheckpage.cpp Request C5[A6000] paramter 1 
+DEBUG 2020-05-19T16:37:36.638 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-19T16:37:36.648 fmmultirotorpilot param.m_nCommand== 0 param address== 0x1e35ac7fa00 
+DEBUG 2020-05-19T16:37:36.668 CFmC5CameraParamAck::slotCommandAck fmackbase.cpp 155 0 
+DEBUG 2020-05-19T16:37:36.668 CFmManualCheckPage::slotUasReceiveCommand fmmanualcheckpage.cpp 
+DEBUG 2020-05-19T16:37:36.668 CFmC5CameraParamAck::slotMultirotorC5A6000InfoAck fmackbase.cpp 0 0 
+DEBUG 2020-05-19T16:37:36.668 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp 1 
+DEBUG 2020-05-19T16:37:36.668 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp 1 
+DEBUG 2020-05-19T16:37:36.668 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp nShutterResult =  0 
+DEBUG 2020-05-19T16:37:36.668 CFmManualCheckPage::slotCameraParamOperateFailed fmmanualcheckpage.cpp 1 
+ INFO 2020-05-19T16:37:36.668 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:36.828 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 3 0 50 
+ INFO 2020-05-19T16:37:36.828 fmmultirotorpilot param.m_nCommand== 0 param address== 0x1e35ac7eec0 
+ INFO 2020-05-19T16:37:36.828 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:37.457 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:37.546 CFmManualCheckPage::slotTestShotBtnClicked fmmanualcheckpage.cpp ShotCount: 1 
+DEBUG 2020-05-19T16:37:37.546 Send Take Picture shot 1 session 255 extra_param 0 ShotID 1 
+DEBUG 2020-05-19T16:37:37.666 CFmD200Test5A6000CameraAck::slotTestCameraResult fmackbase.cpp CFmD200Test5A6000CameraAck::slotTestCameraResult: 1 
+DEBUG 2020-05-19T16:37:37.666 CFmD200Test5A6000CameraAck::slotTestCameraResult fmackbase.cpp CFmD200Test5A6000CameraAck::slotTestCameraResult: 2 
+ INFO 2020-05-19T16:37:40.348 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:41.388 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:43.249 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:44.248 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:45.159 CFmPrepareTaskPage::SetCurrentPage 3 77.7888 
+DEBUG 2020-05-19T16:37:45.159 130 fmtaskupload.cpp CFmTaskUpload::setLandingPosFlightHeight 427.211 
+DEBUG 2020-05-19T16:37:45.159 106 CFmTaskUpload::InitPage 77.7888 
+DEBUG 2020-05-19T16:37:45.159 fmtaskupload.cpp CFmTaskUpload::InitTaskInfoTable 135 InitTaskInfoTable false 77.7888 0 
+DEBUG 2020-05-19T16:37:45.159 fmtaskupload.cpp CFmTaskUpload::InitTaskInfoTable 234 InitTaskInfoTable MissionType= 0 false 
+ INFO 2020-05-19T16:37:45.239 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:46.148 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:47.231 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:48.140 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:37:49.153 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:37:50.348 slotShowUploadTasknInfo: "正在上传任务信息..." 
+DEBUG 2020-05-19T16:37:50.348 314 CFmTaskUpload::_CheckConditionValid TargetFlightHeight BarometerValue 427.211 77.7888 
+DEBUG 2020-05-19T16:37:50.348 CFmTaskUpload::_CheckConditionValid false false 120 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 427.211 
+DEBUG 2020-05-19T16:37:50.358 UploadPhotoDistance 64 
+DEBUG 2020-05-19T16:37:50.571 slotUploadPhotoDistanceResult: true 
+DEBUG 2020-05-19T16:37:50.571 Upload Photo Distance success, upload route point count: 85 
+DEBUG 2020-05-19T16:37:50.571 Send Count 85 
+DEBUG 2020-05-19T16:37:50.711 slotUploadWayPointCountResult: true 
+FATAL 2020-05-19T16:37:50.711 Send Multirotor WP 1 "40.05821991" "116.36457825" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:50.830 Send Multirotor WP 2 "40.05277252" "116.37425995" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:50.921 Send Multirotor WP 3 "40.05373764" "116.37548828" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.010 Send Multirotor WP 4 "40.05453491" "116.37406921" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.130 Send Multirotor WP 5 "40.04565048" "116.36276245" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.230 Send Multirotor WP 6 "40.04624939" "116.36118317" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.320 Send Multirotor WP 7 "40.04721451" "116.36241150" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.440 Send Multirotor WP 8 "40.04143143" "116.37767792" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.630 Send Multirotor WP 9 "40.04228592" "116.37904358" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.820 Send Multirotor WP 10 "40.04288483" "116.37746429" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:51.930 Send Multirotor WP 11 "40.03637695" "116.36711121" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:52.133 Send Multirotor WP 12 "40.03754425" "116.36623383" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:52.323 Send Multirotor WP 13 "40.03840256" "116.36759186" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:52.516 Send Multirotor WP 14 "40.01459503" "116.38556671" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:52.726 Send Multirotor WP 15 "40.01372528" "116.38421631" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:52.926 Send Multirotor WP 16 "40.01489258" "116.38333893" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:53.116 Send Multirotor WP 17 "40.02773285" "116.40319061" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:53.306 Send Multirotor WP 18 "40.02904892" "116.40175629" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:53.555 Send Multirotor WP 19 "40.01752472" "116.38393402" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:53.725 Send Multirotor WP 20 "40.01635742" "116.38481903" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:53.905 Send Multirotor WP 21 "40.01722717" "116.38616180" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.145 Send Multirotor WP 22 "40.03799820" "116.37048340" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.305 Send Multirotor WP 23 "40.03714371" "116.36912537" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.406 Send Multirotor WP 24 "40.03597260" "116.37000275" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.526 Send Multirotor WP 25 "40.04324341" "116.38156891" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.616 Send Multirotor WP 26 "40.04264450" "116.38314819" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.716 Send Multirotor WP 27 "40.04179001" "116.38179016" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.806 Send Multirotor WP 28 "40.04770660" "116.36617279" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:54.926 Send Multirotor WP 29 "40.04674149" "116.36493683" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.116 Send Multirotor WP 30 "40.04614258" "116.36651611" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.216 Send Multirotor WP 31 "40.05475235" "116.37747955" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.336 Send Multirotor WP 32 "40.05395126" "116.37889862" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.526 Send Multirotor WP 33 "40.05298615" "116.37766266" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.666 Send Multirotor WP 34 "40.05960464" "116.36589813" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:55.826 Send Multirotor WP 35 "40.06099319" "116.36721802" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.015 Send Multirotor WP 36 "40.05320358" "116.38107300" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.105 Send Multirotor WP 37 "40.05416870" "116.38230133" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.225 Send Multirotor WP 38 "40.05496597" "116.38088226" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.418 Send Multirotor WP 39 "40.04663849" "116.37027740" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.518 Send Multirotor WP 40 "40.04723358" "116.36869812" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.728 Send Multirotor WP 41 "40.04820251" "116.36992645" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:56.927 Send Multirotor WP 42 "40.04215240" "116.38589478" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:57.104 Send Multirotor WP 43 "40.04300690" "116.38725281" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:57.304 Send Multirotor WP 44 "40.04360580" "116.38568115" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:57.524 Send Multirotor WP 45 "40.03556824" "116.37289429" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:57.773 Send Multirotor WP 46 "40.03673935" "116.37201691" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:57.933 Send Multirotor WP 47 "40.03759384" "116.37337494" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.123 Send Multirotor WP 48 "40.01985931" "116.38675690" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.303 Send Multirotor WP 49 "40.01898956" "116.38541412" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.525 Send Multirotor WP 50 "40.02016068" "116.38453674" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.615 Send Multirotor WP 51 "40.03036499" "116.40031433" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.715 Send Multirotor WP 52 "40.03168106" "116.39887238" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.835 Send Multirotor WP 53 "40.02279282" "116.38513184" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:58.935 Send Multirotor WP 54 "40.02162552" "116.38600922" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.025 Send Multirotor WP 55 "40.02249527" "116.38735962" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.125 Send Multirotor WP 56 "40.03718948" "116.37626648" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.215 Send Multirotor WP 57 "40.03633499" "116.37490845" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.305 Send Multirotor WP 58 "40.03516769" "116.37578583" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.415 Send Multirotor WP 59 "40.04396439" "116.38978577" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.525 Send Multirotor WP 60 "40.04336548" "116.39136505" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.624 Send Multirotor WP 61 "40.04251099" "116.38999939" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.714 Send Multirotor WP 62 "40.04869461" "116.37368774" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:37:59.894 Send Multirotor WP 63 "40.04772949" "116.37245941" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.024 Send Multirotor WP 64 "40.04713058" "116.37403107" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.124 Send Multirotor WP 65 "40.05517960" "116.38428497" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.314 Send Multirotor WP 66 "40.05438232" "116.38570404" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.417 Send Multirotor WP 67 "40.05341721" "116.38447571" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.527 Send Multirotor WP 68 "40.06238174" "116.36853790" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.717 Send Multirotor WP 69 "40.06377029" "116.36986542" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:00.927 Send Multirotor WP 70 "40.05363083" "116.38787842" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:01.117 Send Multirotor WP 71 "40.05459976" "116.38910675" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:01.316 Send Multirotor WP 72 "40.05539703" "116.38768768" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:01.526 Send Multirotor WP 73 "40.04762268" "116.37779236" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:01.716 Send Multirotor WP 74 "40.04822159" "116.37621307" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:01.986 Send Multirotor WP 75 "40.04918671" "116.37744141" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:02.216 Send Multirotor WP 76 "40.04286957" "116.39411163" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:02.429 Send Multirotor WP 77 "40.04372787" "116.39546967" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:02.619 Send Multirotor WP 78 "40.04432297" "116.39389038" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:02.809 Send Multirotor WP 79 "40.03476334" "116.37867737" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:02.909 Send Multirotor WP 80 "40.03593063" "116.37779999" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:03.009 Send Multirotor WP 81 "40.03678513" "116.37915802" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:03.119 Send Multirotor WP 82 "40.02512741" "116.38795471" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:03.219 Send Multirotor WP 83 "40.02425766" "116.38661194" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:03.339 Send Multirotor WP 84 "40.02542877" "116.38572693" "427.21" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-19T16:38:03.429 Send Multirotor WP 85 "40.03299713" "116.39743805" "427.21" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+DEBUG 2020-05-19T16:38:03.538 Show Upload Result: true 
+DEBUG 2020-05-19T16:38:03.538 DownloadWayPointCount 
+DEBUG 2020-05-19T16:38:03.538 slotShowUploadTasknInfo: "验证任务信息..." 
+FATAL 2020-05-19T16:38:03.628 OriginPointCount: 85 ReceivePointCount: 85 
+DEBUG 2020-05-19T16:38:03.738 CFMGetMissionItemAck::slotGetWayPoint 1 "40.05821991" "116.36457825" "427.21" 
+DEBUG 2020-05-19T16:38:03.738 slotGetWayPoint current seq, total count: 1 85 
+DEBUG 2020-05-19T16:38:03.838 CFMGetMissionItemAck::slotGetWayPoint 2 "40.05277252" "116.37425995" "427.21" 
+DEBUG 2020-05-19T16:38:03.838 slotGetWayPoint current seq, total count: 2 85 
+DEBUG 2020-05-19T16:38:03.928 CFMGetMissionItemAck::slotGetWayPoint 3 "40.05373764" "116.37548828" "427.21" 
+DEBUG 2020-05-19T16:38:03.928 slotGetWayPoint current seq, total count: 3 85 
+DEBUG 2020-05-19T16:38:04.098 CFMGetMissionItemAck::slotGetWayPoint 4 "40.05453491" "116.37406921" "427.21" 
+DEBUG 2020-05-19T16:38:04.098 slotGetWayPoint current seq, total count: 4 85 
+DEBUG 2020-05-19T16:38:04.238 CFMGetMissionItemAck::slotGetWayPoint 5 "40.04565048" "116.36276245" "427.21" 
+DEBUG 2020-05-19T16:38:04.238 slotGetWayPoint current seq, total count: 5 85 
+DEBUG 2020-05-19T16:38:04.440 CFMGetMissionItemAck::slotGetWayPoint 6 "40.04624939" "116.36118317" "427.21" 
+DEBUG 2020-05-19T16:38:04.440 slotGetWayPoint current seq, total count: 6 85 
+DEBUG 2020-05-19T16:38:04.620 CFMGetMissionItemAck::slotGetWayPoint 7 "40.04721451" "116.36241150" "427.21" 
+DEBUG 2020-05-19T16:38:04.620 slotGetWayPoint current seq, total count: 7 85 
+DEBUG 2020-05-19T16:38:04.740 CFMGetMissionItemAck::slotGetWayPoint 8 "40.04143143" "116.37767792" "427.21" 
+DEBUG 2020-05-19T16:38:04.740 slotGetWayPoint current seq, total count: 8 85 
+DEBUG 2020-05-19T16:38:04.929 CFMGetMissionItemAck::slotGetWayPoint 9 "40.04228592" "116.37904358" "427.21" 
+DEBUG 2020-05-19T16:38:04.929 slotGetWayPoint current seq, total count: 9 85 
+DEBUG 2020-05-19T16:38:05.119 CFMGetMissionItemAck::slotGetWayPoint 10 "40.04288483" "116.37746429" "427.21" 
+DEBUG 2020-05-19T16:38:05.119 slotGetWayPoint current seq, total count: 10 85 
+DEBUG 2020-05-19T16:38:05.339 CFMGetMissionItemAck::slotGetWayPoint 11 "40.03637695" "116.36711121" "427.21" 
+DEBUG 2020-05-19T16:38:05.339 slotGetWayPoint current seq, total count: 11 85 
+DEBUG 2020-05-19T16:38:05.529 CFMGetMissionItemAck::slotGetWayPoint 12 "40.03754425" "116.36623383" "427.21" 
+DEBUG 2020-05-19T16:38:05.529 slotGetWayPoint current seq, total count: 12 85 
+DEBUG 2020-05-19T16:38:05.739 CFMGetMissionItemAck::slotGetWayPoint 13 "40.03840256" "116.36759186" "427.21" 
+DEBUG 2020-05-19T16:38:05.739 slotGetWayPoint current seq, total count: 13 85 
+DEBUG 2020-05-19T16:38:05.939 CFMGetMissionItemAck::slotGetWayPoint 14 "40.01459503" "116.38556671" "427.21" 
+DEBUG 2020-05-19T16:38:05.949 slotGetWayPoint current seq, total count: 14 85 
+DEBUG 2020-05-19T16:38:06.209 CFMGetMissionItemAck::slotGetWayPoint 15 "40.01372528" "116.38421631" "427.21" 
+DEBUG 2020-05-19T16:38:06.209 slotGetWayPoint current seq, total count: 15 85 
+DEBUG 2020-05-19T16:38:06.421 CFMGetMissionItemAck::slotGetWayPoint 16 "40.01489258" "116.38333893" "427.21" 
+DEBUG 2020-05-19T16:38:06.421 slotGetWayPoint current seq, total count: 16 85 
+DEBUG 2020-05-19T16:38:06.621 CFMGetMissionItemAck::slotGetWayPoint 17 "40.02773285" "116.40319061" "427.21" 
+DEBUG 2020-05-19T16:38:06.621 slotGetWayPoint current seq, total count: 17 85 
+DEBUG 2020-05-19T16:38:06.841 CFMGetMissionItemAck::slotGetWayPoint 18 "40.02904892" "116.40175629" "427.21" 
+DEBUG 2020-05-19T16:38:06.841 slotGetWayPoint current seq, total count: 18 85 
+DEBUG 2020-05-19T16:38:07.031 CFMGetMissionItemAck::slotGetWayPoint 19 "40.01752472" "116.38393402" "427.21" 
+DEBUG 2020-05-19T16:38:07.031 slotGetWayPoint current seq, total count: 19 85 
+DEBUG 2020-05-19T16:38:07.241 CFMGetMissionItemAck::slotGetWayPoint 20 "40.01635742" "116.38481903" "427.21" 
+DEBUG 2020-05-19T16:38:07.241 slotGetWayPoint current seq, total count: 20 85 
+DEBUG 2020-05-19T16:38:07.341 CFMGetMissionItemAck::slotGetWayPoint 21 "40.01722717" "116.38616180" "427.21" 
+DEBUG 2020-05-19T16:38:07.341 slotGetWayPoint current seq, total count: 21 85 
+DEBUG 2020-05-19T16:38:07.431 CFMGetMissionItemAck::slotGetWayPoint 22 "40.03799820" "116.37048340" "427.21" 
+DEBUG 2020-05-19T16:38:07.431 slotGetWayPoint current seq, total count: 22 85 
+DEBUG 2020-05-19T16:38:07.521 CFMGetMissionItemAck::slotGetWayPoint 23 "40.03714371" "116.36912537" "427.21" 
+DEBUG 2020-05-19T16:38:07.521 slotGetWayPoint current seq, total count: 23 85 
+DEBUG 2020-05-19T16:38:07.621 CFMGetMissionItemAck::slotGetWayPoint 24 "40.03597260" "116.37000275" "427.21" 
+DEBUG 2020-05-19T16:38:07.621 slotGetWayPoint current seq, total count: 24 85 
+DEBUG 2020-05-19T16:38:07.741 CFMGetMissionItemAck::slotGetWayPoint 25 "40.04324341" "116.38156891" "427.21" 
+DEBUG 2020-05-19T16:38:07.741 slotGetWayPoint current seq, total count: 25 85 
+DEBUG 2020-05-19T16:38:07.840 CFMGetMissionItemAck::slotGetWayPoint 26 "40.04264450" "116.38314819" "427.21" 
+DEBUG 2020-05-19T16:38:07.840 slotGetWayPoint current seq, total count: 26 85 
+DEBUG 2020-05-19T16:38:07.930 CFMGetMissionItemAck::slotGetWayPoint 27 "40.04179001" "116.38179016" "427.21" 
+DEBUG 2020-05-19T16:38:07.930 slotGetWayPoint current seq, total count: 27 85 
+DEBUG 2020-05-19T16:38:08.030 CFMGetMissionItemAck::slotGetWayPoint 28 "40.04770660" "116.36617279" "427.21" 
+DEBUG 2020-05-19T16:38:08.030 slotGetWayPoint current seq, total count: 28 85 
+DEBUG 2020-05-19T16:38:08.130 CFMGetMissionItemAck::slotGetWayPoint 29 "40.04674149" "116.36493683" "427.21" 
+DEBUG 2020-05-19T16:38:08.130 slotGetWayPoint current seq, total count: 29 85 
+DEBUG 2020-05-19T16:38:08.320 CFMGetMissionItemAck::slotGetWayPoint 30 "40.04614258" "116.36651611" "427.21" 
+DEBUG 2020-05-19T16:38:08.320 slotGetWayPoint current seq, total count: 30 85 
+DEBUG 2020-05-19T16:38:08.421 CFMGetMissionItemAck::slotGetWayPoint 31 "40.05475235" "116.37747955" "427.21" 
+DEBUG 2020-05-19T16:38:08.421 slotGetWayPoint current seq, total count: 31 85 
+DEBUG 2020-05-19T16:38:08.521 CFMGetMissionItemAck::slotGetWayPoint 32 "40.05395126" "116.37889862" "427.21" 
+DEBUG 2020-05-19T16:38:08.521 slotGetWayPoint current seq, total count: 32 85 
+DEBUG 2020-05-19T16:38:08.621 CFMGetMissionItemAck::slotGetWayPoint 33 "40.05298615" "116.37766266" "427.21" 
+DEBUG 2020-05-19T16:38:08.621 slotGetWayPoint current seq, total count: 33 85 
+DEBUG 2020-05-19T16:38:08.741 CFMGetMissionItemAck::slotGetWayPoint 34 "40.05960464" "116.36589813" "427.21" 
+DEBUG 2020-05-19T16:38:08.741 slotGetWayPoint current seq, total count: 34 85 
+DEBUG 2020-05-19T16:38:08.931 CFMGetMissionItemAck::slotGetWayPoint 35 "40.06099319" "116.36721802" "427.21" 
+DEBUG 2020-05-19T16:38:08.931 slotGetWayPoint current seq, total count: 35 85 
+DEBUG 2020-05-19T16:38:09.131 CFMGetMissionItemAck::slotGetWayPoint 36 "40.05320358" "116.38107300" "427.21" 
+DEBUG 2020-05-19T16:38:09.131 slotGetWayPoint current seq, total count: 36 85 
+DEBUG 2020-05-19T16:38:09.341 CFMGetMissionItemAck::slotGetWayPoint 37 "40.05416870" "116.38230133" "427.21" 
+DEBUG 2020-05-19T16:38:09.341 slotGetWayPoint current seq, total count: 37 85 
+DEBUG 2020-05-19T16:38:09.521 CFMGetMissionItemAck::slotGetWayPoint 38 "40.05496597" "116.38088226" "427.21" 
+DEBUG 2020-05-19T16:38:09.521 slotGetWayPoint current seq, total count: 38 85 
+DEBUG 2020-05-19T16:38:09.741 CFMGetMissionItemAck::slotGetWayPoint 39 "40.04663849" "116.37027740" "427.21" 
+DEBUG 2020-05-19T16:38:09.741 slotGetWayPoint current seq, total count: 39 85 
+DEBUG 2020-05-19T16:38:09.931 CFMGetMissionItemAck::slotGetWayPoint 40 "40.04723358" "116.36869812" "427.21" 
+DEBUG 2020-05-19T16:38:09.931 slotGetWayPoint current seq, total count: 40 85 
+DEBUG 2020-05-19T16:38:10.120 CFMGetMissionItemAck::slotGetWayPoint 41 "40.04820251" "116.36992645" "427.21" 
+DEBUG 2020-05-19T16:38:10.120 slotGetWayPoint current seq, total count: 41 85 
+DEBUG 2020-05-19T16:38:10.423 CFMGetMissionItemAck::slotGetWayPoint 42 "40.04215240" "116.38589478" "427.21" 
+DEBUG 2020-05-19T16:38:10.423 slotGetWayPoint current seq, total count: 42 85 
+DEBUG 2020-05-19T16:38:10.623 CFMGetMissionItemAck::slotGetWayPoint 43 "40.04300690" "116.38725281" "427.21" 
+DEBUG 2020-05-19T16:38:10.623 slotGetWayPoint current seq, total count: 43 85 
+DEBUG 2020-05-19T16:38:10.832 CFMGetMissionItemAck::slotGetWayPoint 44 "40.04360580" "116.38568115" "427.21" 
+DEBUG 2020-05-19T16:38:10.832 slotGetWayPoint current seq, total count: 44 85 
+DEBUG 2020-05-19T16:38:11.022 CFMGetMissionItemAck::slotGetWayPoint 45 "40.03556824" "116.37289429" "427.21" 
+DEBUG 2020-05-19T16:38:11.022 slotGetWayPoint current seq, total count: 45 85 
+DEBUG 2020-05-19T16:38:11.242 CFMGetMissionItemAck::slotGetWayPoint 46 "40.03673935" "116.37201691" "427.21" 
+DEBUG 2020-05-19T16:38:11.242 slotGetWayPoint current seq, total count: 46 85 
+DEBUG 2020-05-19T16:38:11.332 CFMGetMissionItemAck::slotGetWayPoint 47 "40.03759384" "116.37337494" "427.21" 
+DEBUG 2020-05-19T16:38:11.332 slotGetWayPoint current seq, total count: 47 85 
+DEBUG 2020-05-19T16:38:11.432 CFMGetMissionItemAck::slotGetWayPoint 48 "40.01985931" "116.38675690" "427.21" 
+DEBUG 2020-05-19T16:38:11.432 slotGetWayPoint current seq, total count: 48 85 
+DEBUG 2020-05-19T16:38:11.542 CFMGetMissionItemAck::slotGetWayPoint 49 "40.01898956" "116.38541412" "427.21" 
+DEBUG 2020-05-19T16:38:11.542 slotGetWayPoint current seq, total count: 49 85 
+DEBUG 2020-05-19T16:38:11.632 CFMGetMissionItemAck::slotGetWayPoint 50 "40.02016068" "116.38453674" "427.21" 
+DEBUG 2020-05-19T16:38:11.632 slotGetWayPoint current seq, total count: 50 85 
+DEBUG 2020-05-19T16:38:11.832 CFMGetMissionItemAck::slotGetWayPoint 51 "40.03036499" "116.40031433" "427.21" 
+DEBUG 2020-05-19T16:38:11.832 slotGetWayPoint current seq, total count: 51 85 
+DEBUG 2020-05-19T16:38:11.932 CFMGetMissionItemAck::slotGetWayPoint 52 "40.03168106" "116.39887238" "427.21" 
+DEBUG 2020-05-19T16:38:11.932 slotGetWayPoint current seq, total count: 52 85 
+DEBUG 2020-05-19T16:38:12.022 CFMGetMissionItemAck::slotGetWayPoint 53 "40.02279282" "116.38513184" "427.21" 
+DEBUG 2020-05-19T16:38:12.022 slotGetWayPoint current seq, total count: 53 85 
+DEBUG 2020-05-19T16:38:12.152 CFMGetMissionItemAck::slotGetWayPoint 54 "40.02162552" "116.38600922" "427.21" 
+DEBUG 2020-05-19T16:38:12.152 slotGetWayPoint current seq, total count: 54 85 
+DEBUG 2020-05-19T16:38:12.322 CFMGetMissionItemAck::slotGetWayPoint 55 "40.02249527" "116.38735962" "427.21" 
+DEBUG 2020-05-19T16:38:12.322 slotGetWayPoint current seq, total count: 55 85 
+DEBUG 2020-05-19T16:38:12.544 CFMGetMissionItemAck::slotGetWayPoint 56 "40.03718948" "116.37626648" "427.21" 
+DEBUG 2020-05-19T16:38:12.544 slotGetWayPoint current seq, total count: 56 85 
+DEBUG 2020-05-19T16:38:12.754 CFMGetMissionItemAck::slotGetWayPoint 57 "40.03633499" "116.37490845" "427.21" 
+DEBUG 2020-05-19T16:38:12.754 slotGetWayPoint current seq, total count: 57 85 
+DEBUG 2020-05-19T16:38:12.934 CFMGetMissionItemAck::slotGetWayPoint 58 "40.03516769" "116.37578583" "427.21" 
+DEBUG 2020-05-19T16:38:12.934 slotGetWayPoint current seq, total count: 58 85 
+DEBUG 2020-05-19T16:38:13.123 CFMGetMissionItemAck::slotGetWayPoint 59 "40.04396439" "116.38978577" "427.21" 
+DEBUG 2020-05-19T16:38:13.123 slotGetWayPoint current seq, total count: 59 85 
+DEBUG 2020-05-19T16:38:13.333 CFMGetMissionItemAck::slotGetWayPoint 60 "40.04336548" "116.39136505" "427.21" 
+DEBUG 2020-05-19T16:38:13.333 slotGetWayPoint current seq, total count: 60 85 
+DEBUG 2020-05-19T16:38:13.553 CFMGetMissionItemAck::slotGetWayPoint 61 "40.04251099" "116.38999939" "427.21" 
+DEBUG 2020-05-19T16:38:13.553 slotGetWayPoint current seq, total count: 61 85 
+DEBUG 2020-05-19T16:38:13.743 CFMGetMissionItemAck::slotGetWayPoint 62 "40.04869461" "116.37368774" "427.21" 
+DEBUG 2020-05-19T16:38:13.743 slotGetWayPoint current seq, total count: 62 85 
+DEBUG 2020-05-19T16:38:13.933 CFMGetMissionItemAck::slotGetWayPoint 63 "40.04772949" "116.37245941" "427.21" 
+DEBUG 2020-05-19T16:38:13.933 slotGetWayPoint current seq, total count: 63 85 
+DEBUG 2020-05-19T16:38:14.123 CFMGetMissionItemAck::slotGetWayPoint 64 "40.04713058" "116.37403107" "427.21" 
+DEBUG 2020-05-19T16:38:14.123 slotGetWayPoint current seq, total count: 64 85 
+DEBUG 2020-05-19T16:38:14.333 CFMGetMissionItemAck::slotGetWayPoint 65 "40.05517960" "116.38428497" "427.21" 
+DEBUG 2020-05-19T16:38:14.333 slotGetWayPoint current seq, total count: 65 85 
+DEBUG 2020-05-19T16:38:14.526 CFMGetMissionItemAck::slotGetWayPoint 66 "40.05438232" "116.38570404" "427.21" 
+DEBUG 2020-05-19T16:38:14.526 slotGetWayPoint current seq, total count: 66 85 
+DEBUG 2020-05-19T16:38:14.746 CFMGetMissionItemAck::slotGetWayPoint 67 "40.05341721" "116.38447571" "427.21" 
+DEBUG 2020-05-19T16:38:14.746 slotGetWayPoint current seq, total count: 67 85 
+DEBUG 2020-05-19T16:38:14.936 CFMGetMissionItemAck::slotGetWayPoint 68 "40.06238174" "116.36853790" "427.21" 
+DEBUG 2020-05-19T16:38:14.936 slotGetWayPoint current seq, total count: 68 85 
+DEBUG 2020-05-19T16:38:15.145 CFMGetMissionItemAck::slotGetWayPoint 69 "40.06377029" "116.36986542" "427.21" 
+DEBUG 2020-05-19T16:38:15.145 slotGetWayPoint current seq, total count: 69 85 
+DEBUG 2020-05-19T16:38:15.335 CFMGetMissionItemAck::slotGetWayPoint 70 "40.05363083" "116.38787842" "427.21" 
+DEBUG 2020-05-19T16:38:15.335 slotGetWayPoint current seq, total count: 70 85 
+DEBUG 2020-05-19T16:38:15.435 CFMGetMissionItemAck::slotGetWayPoint 71 "40.05459976" "116.38910675" "427.21" 
+DEBUG 2020-05-19T16:38:15.435 slotGetWayPoint current seq, total count: 71 85 
+DEBUG 2020-05-19T16:38:15.535 CFMGetMissionItemAck::slotGetWayPoint 72 "40.05539703" "116.38768768" "427.21" 
+DEBUG 2020-05-19T16:38:15.535 slotGetWayPoint current seq, total count: 72 85 
+DEBUG 2020-05-19T16:38:15.645 CFMGetMissionItemAck::slotGetWayPoint 73 "40.04762268" "116.37779236" "427.21" 
+DEBUG 2020-05-19T16:38:15.645 slotGetWayPoint current seq, total count: 73 85 
+DEBUG 2020-05-19T16:38:15.745 CFMGetMissionItemAck::slotGetWayPoint 74 "40.04822159" "116.37621307" "427.21" 
+DEBUG 2020-05-19T16:38:15.745 slotGetWayPoint current seq, total count: 74 85 
+DEBUG 2020-05-19T16:38:15.835 CFMGetMissionItemAck::slotGetWayPoint 75 "40.04918671" "116.37744141" "427.21" 
+DEBUG 2020-05-19T16:38:15.835 slotGetWayPoint current seq, total count: 75 85 
+DEBUG 2020-05-19T16:38:15.935 CFMGetMissionItemAck::slotGetWayPoint 76 "40.04286957" "116.39411163" "427.21" 
+DEBUG 2020-05-19T16:38:15.935 slotGetWayPoint current seq, total count: 76 85 
+DEBUG 2020-05-19T16:38:16.025 CFMGetMissionItemAck::slotGetWayPoint 77 "40.04372787" "116.39546967" "427.21" 
+DEBUG 2020-05-19T16:38:16.025 slotGetWayPoint current seq, total count: 77 85 
+DEBUG 2020-05-19T16:38:16.145 CFMGetMissionItemAck::slotGetWayPoint 78 "40.04432297" "116.39389038" "427.21" 
+DEBUG 2020-05-19T16:38:16.145 slotGetWayPoint current seq, total count: 78 85 
+DEBUG 2020-05-19T16:38:16.335 CFMGetMissionItemAck::slotGetWayPoint 79 "40.03476334" "116.37867737" "427.21" 
+DEBUG 2020-05-19T16:38:16.335 slotGetWayPoint current seq, total count: 79 85 
+DEBUG 2020-05-19T16:38:16.437 CFMGetMissionItemAck::slotGetWayPoint 80 "40.03593063" "116.37779999" "427.21" 
+DEBUG 2020-05-19T16:38:16.437 slotGetWayPoint current seq, total count: 80 85 
+DEBUG 2020-05-19T16:38:16.557 CFMGetMissionItemAck::slotGetWayPoint 81 "40.03678513" "116.37915802" "427.21" 
+DEBUG 2020-05-19T16:38:16.557 slotGetWayPoint current seq, total count: 81 85 
+DEBUG 2020-05-19T16:38:16.757 CFMGetMissionItemAck::slotGetWayPoint 82 "40.02512741" "116.38795471" "427.21" 
+DEBUG 2020-05-19T16:38:16.757 slotGetWayPoint current seq, total count: 82 85 
+DEBUG 2020-05-19T16:38:16.927 CFMGetMissionItemAck::slotGetWayPoint 83 "40.02425766" "116.38661194" "427.21" 
+DEBUG 2020-05-19T16:38:16.927 slotGetWayPoint current seq, total count: 83 85 
+DEBUG 2020-05-19T16:38:17.036 CFMGetMissionItemAck::slotGetWayPoint 84 "40.02542877" "116.38572693" "427.21" 
+DEBUG 2020-05-19T16:38:17.036 slotGetWayPoint current seq, total count: 84 85 
+DEBUG 2020-05-19T16:38:17.243 CFMGetMissionItemAck::slotGetWayPoint 85 "40.03299713" "116.39743805" "427.21" 
+DEBUG 2020-05-19T16:38:17.243 slotGetWayPoint current seq, total count: 85 85 
+DEBUG 2020-05-19T16:38:17.243 SendWPCount, DownloadWPCount: 85 85 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 1 < "40.05821900,116.36457500,427.21" > < "40.05821991,116.36457825,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 1 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 2 < "40.05277100,116.37426000,427.21" > < "40.05277252,116.37425995,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 2 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 3 < "40.05373700,116.37549000,427.21" > < "40.05373764,116.37548828,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 3 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 4 < "40.05453500,116.37407100,427.21" > < "40.05453491,116.37406921,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 4 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 5 < "40.04565100,116.36275900,427.21" > < "40.04565048,116.36276245,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 5 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 6 < "40.04624800,116.36118100,427.21" > < "40.04624939,116.36118317,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 6 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 7 < "40.04721400,116.36241100,427.21" > < "40.04721451,116.36241150,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 7 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 8 < "40.04143000,116.37767900,427.21" > < "40.04143143,116.37767792,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 8 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 9 < "40.04228500,116.37904000,427.21" > < "40.04228592,116.37904358,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 9 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 10 < "40.04288300,116.37746300,427.21" > < "40.04288483,116.37746429,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 10 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 11 < "40.03637700,116.36711500,427.21" > < "40.03637695,116.36711121,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 11 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 12 < "40.03754600,116.36623200,427.21" > < "40.03754425,116.36623383,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 12 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 13 < "40.03840200,116.36759300,427.21" > < "40.03840256,116.36759186,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 13 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 14 < "40.01459400,116.38556400,427.21" > < "40.01459503,116.38556671,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 14 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 15 < "40.01372400,116.38421900,427.21" > < "40.01372528,116.38421631,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 15 true 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | send point | download point: 16 < "40.01489300,116.38333700,427.21" > < "40.01489258,116.38333893,427.21" > 
+DEBUG 2020-05-19T16:38:17.243 VerifyWp: index | result: 16 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 17 < "40.02773100,116.40319400,427.21" > < "40.02773285,116.40319061,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 17 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 18 < "40.02904800,116.40175500,427.21" > < "40.02904892,116.40175629,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 18 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 19 < "40.01752600,116.38393500,427.21" > < "40.01752472,116.38393402,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 19 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 20 < "40.01635800,116.38481700,427.21" > < "40.01635742,116.38481903,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 20 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 21 < "40.01722700,116.38616200,427.21" > < "40.01722717,116.38616180,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 21 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 22 < "40.03799800,116.37048400,427.21" > < "40.03799820,116.37048340,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 22 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 23 < "40.03714200,116.36912300,427.21" > < "40.03714371,116.36912537,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 23 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 24 < "40.03597400,116.37000600,427.21" > < "40.03597260,116.37000275,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 24 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 25 < "40.04324400,116.38157100,427.21" > < "40.04324341,116.38156891,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 25 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 26 < "40.04264600,116.38314800,427.21" > < "40.04264450,116.38314819,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 26 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 27 < "40.04179000,116.38178700,427.21" > < "40.04179001,116.38179016,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 27 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 28 < "40.04770700,116.36616900,427.21" > < "40.04770660,116.36617279,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 28 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 29 < "40.04674100,116.36493900,427.21" > < "40.04674149,116.36493683,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 29 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 30 < "40.04614400,116.36651700,427.21" > < "40.04614258,116.36651611,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 30 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 31 < "40.05475100,116.37747600,427.21" > < "40.05475235,116.37747955,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 31 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 32 < "40.05395200,116.37889500,427.21" > < "40.05395126,116.37889862,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 32 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 33 < "40.05298600,116.37766500,427.21" > < "40.05298615,116.37766266,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 33 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 34 < "40.05960600,116.36589600,427.21" > < "40.05960464,116.36589813,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 34 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 35 < "40.06099400,116.36721800,427.21" > < "40.06099319,116.36721802,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 35 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 36 < "40.05320200,116.38107000,427.21" > < "40.05320358,116.38107300,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 36 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 37 < "40.05416700,116.38230000,427.21" > < "40.05416870,116.38230133,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 37 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 38 < "40.05496600,116.38088100,427.21" > < "40.05496597,116.38088226,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 38 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 39 < "40.04663700,116.37027500,427.21" > < "40.04663849,116.37027740,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 39 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 40 < "40.04723500,116.36869800,427.21" > < "40.04723358,116.36869812,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 40 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 41 < "40.04820100,116.36992800,427.21" > < "40.04820251,116.36992645,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 41 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 42 < "40.04215100,116.38589400,427.21" > < "40.04215240,116.38589478,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 42 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 43 < "40.04300600,116.38725500,427.21" > < "40.04300690,116.38725281,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 43 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 44 < "40.04360400,116.38567800,427.21" > < "40.04360580,116.38568115,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 44 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 45 < "40.03557000,116.37289700,427.21" > < "40.03556824,116.37289429,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 45 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 46 < "40.03673900,116.37201400,427.21" > < "40.03673935,116.37201691,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 46 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 47 < "40.03759400,116.37337500,427.21" > < "40.03759384,116.37337494,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 47 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 48 < "40.01986100,116.38676000,427.21" > < "40.01985931,116.38675690,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 48 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 49 < "40.01899100,116.38541500,427.21" > < "40.01898956,116.38541412,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 49 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 50 < "40.02016000,116.38453300,427.21" > < "40.02016068,116.38453674,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 50 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 51 < "40.03036400,116.40031600,427.21" > < "40.03036499,116.40031433,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 51 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 52 < "40.03168000,116.39887600,427.21" > < "40.03168106,116.39887238,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 52 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 53 < "40.02279400,116.38513100,427.21" > < "40.02279282,116.38513184,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 53 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 54 < "40.02162500,116.38601300,427.21" > < "40.02162552,116.38600922,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 54 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 55 < "40.02249500,116.38735900,427.21" > < "40.02249527,116.38735962,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 55 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 56 < "40.03719100,116.37626700,427.21" > < "40.03718948,116.37626648,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 56 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 57 < "40.03633500,116.37490600,427.21" > < "40.03633499,116.37490845,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 57 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 58 < "40.03516600,116.37578800,427.21" > < "40.03516769,116.37578583,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 58 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 59 < "40.04396400,116.38978600,427.21" > < "40.04396439,116.38978577,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 59 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 60 < "40.04336600,116.39136300,427.21" > < "40.04336548,116.39136505,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 60 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 61 < "40.04251100,116.39000200,427.21" > < "40.04251099,116.38999939,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 61 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 62 < "40.04869400,116.37368600,427.21" > < "40.04869461,116.37368774,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 62 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 63 < "40.04772800,116.37245600,427.21" > < "40.04772949,116.37245941,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 63 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 64 < "40.04713100,116.37403300,427.21" > < "40.04713058,116.37403107,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 64 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 65 < "40.05518100,116.38428600,427.21" > < "40.05517960,116.38428497,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 65 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 66 < "40.05438300,116.38570500,427.21" > < "40.05438232,116.38570404,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 66 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 67 < "40.05341700,116.38447500,427.21" > < "40.05341721,116.38447571,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 67 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 68 < "40.06238100,116.36854000,427.21" > < "40.06238174,116.36853790,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 68 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 69 < "40.06376900,116.36986200,427.21" > < "40.06377029,116.36986542,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 69 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 70 < "40.05363200,116.38788000,427.21" > < "40.05363083,116.38787842,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 70 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 71 < "40.05459800,116.38911000,427.21" > < "40.05459976,116.38910675,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 71 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 72 < "40.05539600,116.38769100,427.21" > < "40.05539703,116.38768768,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 72 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 73 < "40.04762400,116.37779200,427.21" > < "40.04762268,116.37779236,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 73 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 74 < "40.04822100,116.37621400,427.21" > < "40.04822159,116.37621307,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 74 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 75 < "40.04918700,116.37744400,427.21" > < "40.04918671,116.37744141,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 75 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 76 < "40.04287100,116.39410900,427.21" > < "40.04286957,116.39411163,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 76 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 77 < "40.04372700,116.39547000,427.21" > < "40.04372787,116.39546967,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 77 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 78 < "40.04432400,116.39389400,427.21" > < "40.04432297,116.39389038,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 78 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 79 < "40.03476200,116.37867900,427.21" > < "40.03476334,116.37867737,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 79 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 80 < "40.03593100,116.37779700,427.21" > < "40.03593063,116.37779999,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 80 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 81 < "40.03678700,116.37915800,427.21" > < "40.03678513,116.37915802,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 81 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 82 < "40.02512800,116.38795700,427.21" > < "40.02512741,116.38795471,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 82 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 83 < "40.02425800,116.38661200,427.21" > < "40.02425766,116.38661194,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 83 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 84 < "40.02542700,116.38573000,427.21" > < "40.02542877,116.38572693,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 84 true 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | send point | download point: 85 < "40.03299600,116.39743600,427.21" > < "40.03299713,116.39743805,427.21" > 
+DEBUG 2020-05-19T16:38:17.253 VerifyWp: index | result: 85 true 
+DEBUG 2020-05-19T16:38:17.253 slotCheckWayPointResult: true 
+DEBUG 2020-05-19T16:38:17.253 slotTaskUploadRet: true 
+ INFO 2020-05-19T16:38:22.353 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:23.354 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:24.264 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:25.256 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:26.265 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:27.307 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:28.136 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:29.137 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:30.177 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:31.138 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:32.048 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:33.039 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:33.149 CFmSumaryofBeforFlight::slotCommandAckSuccess m_bSafetyPinRemoved== true m_bSendUnlockAirplane== true 
+DEBUG 2020-05-19T16:38:33.149 fmsfmainwidget.cpp CFmSfMainWidget::EnabledFlightMode 2869 CFmSfMainWidget::EnabledFlightMode true 85 false 1 85 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-19T16:38:33.149 fmflightcommandbasewidget.cpp CFmFlightCommandBaseWidget::SetStartEndWPIndex 48 SetStartEndWPIndex 0 84 
+DEBUG 2020-05-19T16:38:33.159 fmsfmainwidget.cpp CFmSfMainWidget::EnabledFlightMode 2869 CFmSfMainWidget::EnabledFlightMode true 85 false 1 85 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-19T16:38:33.159 fmflightcommandbasewidget.cpp CFmFlightCommandBaseWidget::SetStartEndWPIndex 48 SetStartEndWPIndex 0 84 
+ INFO 2020-05-19T16:38:34.079 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-19T16:38:36.953 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotBtnTakeOffClicked 787 slotBtnTakeOffClicked 
+DEBUG 2020-05-19T16:38:36.953 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_SendTakeOffCommand 490 send TakeOff Command 
+DEBUG 2020-05-19T16:38:37.179 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 999 CommandID: 23 
+DEBUG 2020-05-19T16:38:37.179 fmpreparetaskpage.cpp CFmPrepareTaskPage::WriteFlightInfo2DB 609 CFmPrepareTaskPage::WriteFlightInfo2DB 1 85 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-19T16:38:37.179 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 1125 send Command success 
+ INFO 2020-05-19T16:38:37.968 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:38.958 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:40.048 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:40.881 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:41.871 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:42.866 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:43.867 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:38:44.758 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:40:26.060 APM DISARM System 
+ INFO 2020-05-19T16:40:26.437 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-19T16:40:27.677 The plane version: "V1000_Autopilot_v51133" 
+DEBUG 2020-05-19T16:40:27.792 Connect 445 fmuavconnectobj.cpp 

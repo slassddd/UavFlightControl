@@ -39,13 +39,12 @@ else
      subFoldName = PathName;
 end
 for i_file = 1:nFile
-    clear IN_SENSOR SL sensors % 清理数据，防止不同文件间数据赋值错误
     if ~iscell(FileNames)
         FileName = FileNames;
     else
         FileName = FileNames{i_file};
     end  
-    BLOCK_SIZE = 288; % 256，288
+    BLOCK_SIZE = 296; % 256，288
     fp = fopen([PathName,'\\',FileName],'r');
     datas{i_file} = fread(fp);
     fclose(fp);
@@ -85,7 +84,6 @@ for i_file = 1:nFile
     V1000_decode_simulation
     V1000_decode_fusionDebug
     V1000_decode_auto
-    SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);
     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
     figure;
     plot(IN_SENSOR.ublox1.time, velHeading,'r');hold on;
@@ -298,8 +296,6 @@ for i_file = 1:nFile
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(dataDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
-    %
-    run_PlotFlightData
 end
 cd(evokeDir)
 timeSpend = toc;

@@ -1,0 +1,1848 @@
+ INFO 2020-05-18T16:42:34.272 Select Task "db5df1d8b72d452da000739b769294e8" 
+ INFO 2020-05-18T16:42:34.272 UAVManager version: " UAVManager Professional Update T548" 
+DEBUG 2020-05-18T16:42:34.317 Create Serial Link 2 
+DEBUG 2020-05-18T16:42:35.067 Uas Create 
+DEBUG 2020-05-18T16:42:35.258 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:35.258 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0ddcf690 
+DEBUG 2020-05-18T16:42:35.378 connect 289 fmuavconnectobj.cpp 0 
+DEBUG 2020-05-18T16:42:35.868 connect 289 fmuavconnectobj.cpp 0 
+DEBUG 2020-05-18T16:42:36.258 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:36.258 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567e2e0 
+ INFO 2020-05-18T16:42:36.947 ours== "\xD0\x07""Fj\x07LB\xF1""7n\xA8""2\x01n\x0BQ" theirs== "\xD0\x07""Fj\x07LB\xF1""7n\xA8""2\x01n\x0BQ" 
+ INFO 2020-05-18T16:42:37.097 The plane version: "V1000_Autopilot_v51133" 
+DEBUG 2020-05-18T16:42:37.197 Connect 445 fmuavconnectobj.cpp 
+DEBUG 2020-05-18T16:42:37.269 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:37.269 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f8a0 
+ INFO 2020-05-18T16:42:37.339 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:37.659 CFmTaskUpload::CFmTaskUpload false 
+DEBUG 2020-05-18T16:42:37.669 CFmLandingSettings::InitPage "" 8 
+DEBUG 2020-05-18T16:42:37.669 fmlandingsettings.cpp CFmLandingSettings::SetFlightMissionFilePath 271 SetFlightMissionFilePath "C:/Users/admin/UAVBouteiller_Test/Project/15611512333/Smart_Airline/宝盛V1000带状航线/宝盛V1000带状航线.fm" 
+ INFO 2020-05-18T16:42:37.669 fmlandingsettings.cpp 286 CFmLandingSettings::SetFlightMissionFilePath | SQL text= "select flight_task_id, break_point_lat, break_point_lng, last_waypoint_index, entry_direction, mission_waypoint_start, mission_waypoint_end from flight_mission where flight_task_id = 'db5df1d8b72d452da000739b769294e8' order by created_at DESC" 
+DEBUG 2020-05-18T16:42:37.689 65 CFmPrepareTaskPage::CFmPrepareTaskPage -99999 
+DEBUG 2020-05-18T16:42:38.738 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:38.738 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f360 
+ INFO 2020-05-18T16:42:38.778 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:38.798 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:39.359 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:39.359 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567eb20 
+ INFO 2020-05-18T16:42:39.369 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:39.499 Virtual load:Request real_camera flag 
+ INFO 2020-05-18T16:42:39.779 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:40.279 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:40.279 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567fde0 
+ INFO 2020-05-18T16:42:40.279 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:41.128 Safy pin remove before unlock 
+ INFO 2020-05-18T16:42:41.440 Virtual load:real_camera status true 
+ INFO 2020-05-18T16:42:41.500 Simulation mode:Request isFCSimuEnabled flag 
+DEBUG 2020-05-18T16:42:41.700 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:41.700 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f5a0 
+ INFO 2020-05-18T16:42:41.740 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:42.260 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:42.260 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0ddcf5d0 
+ INFO 2020-05-18T16:42:42.270 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:42.680 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:43.010 RTK TCP Port Fail QHostAddress("192.168.1.1") 9901 
+DEBUG 2020-05-18T16:42:43.361 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:43.361 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567dfe0 
+ INFO 2020-05-18T16:42:43.401 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:43.501 Simulation mode:Simulation mode communicate timeout 0 
+ INFO 2020-05-18T16:42:43.681 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:44.361 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:44.361 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567fba0 
+ INFO 2020-05-18T16:42:44.381 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:45.372 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:45.372 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567e220 
+ INFO 2020-05-18T16:42:45.502 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:46.362 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:46.362 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f1e0 
+ INFO 2020-05-18T16:42:46.362 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:46.572 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:47.363 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:47.363 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567e3a0 
+ INFO 2020-05-18T16:42:47.363 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:47.613 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:48.362 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:48.362 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567e5e0 
+ INFO 2020-05-18T16:42:48.372 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:49.462 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:49.462 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016f150 
+ INFO 2020-05-18T16:42:49.462 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:49.572 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:50.360 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:50.360 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016e3d0 
+ INFO 2020-05-18T16:42:50.375 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:50.496 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:51.363 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:51.363 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016ee50 
+ INFO 2020-05-18T16:42:51.363 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:52.472 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:52.472 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567e6a0 
+ INFO 2020-05-18T16:42:52.472 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:52.472 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:53.473 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:53.473 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988f510 
+ INFO 2020-05-18T16:42:53.473 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:53.473 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:54.474 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:54.484 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988f8d0 
+ INFO 2020-05-18T16:42:54.484 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:54.484 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:55.454 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:55.464 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988fa50 
+ INFO 2020-05-18T16:42:55.474 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:56.464 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:56.464 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988fb10 
+ INFO 2020-05-18T16:42:56.474 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:57.365 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:57.465 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:57.465 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988fbd0 
+ INFO 2020-05-18T16:42:57.475 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:58.374 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:58.564 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:58.564 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e2988fd50 
+ INFO 2020-05-18T16:42:58.584 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:42:59.385 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:42:59.565 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:42:59.565 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e29890590 
+ INFO 2020-05-18T16:42:59.575 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:00.394 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:00.464 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:00.464 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e29890710 
+ INFO 2020-05-18T16:43:00.474 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:01.287 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:01.466 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:01.466 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e29d938f0 
+ INFO 2020-05-18T16:43:01.496 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:02.276 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:02.566 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:02.566 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ffdbf50 
+ INFO 2020-05-18T16:43:02.566 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:03.576 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:03.576 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f060 
+ INFO 2020-05-18T16:43:03.596 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:04.276 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:04.565 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:04.565 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0ddcf090 
+ INFO 2020-05-18T16:43:04.575 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:05.205 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:05.568 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:05.568 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf1e0 
+ INFO 2020-05-18T16:43:05.578 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:06.567 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:06.567 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddafba0 
+ INFO 2020-05-18T16:43:06.647 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:07.117 CFmLandingSettings::InitPage "8e4d89c3bda84312b8c5b85e1430998b" 8 
+DEBUG 2020-05-18T16:43:07.117 fmtaskupload.cpp CFmTaskUpload::slotWholeRouteMode 1546 slotWholeRouteMode 1 -1 0 
+DEBUG 2020-05-18T16:43:07.117 fmlandingsettings.cpp CFmLandingSettings::SetFlightMissionFilePath 271 SetFlightMissionFilePath "C:/Users/admin/UAVBouteiller_Test/Project/15611512333/Smart_Airline/宝盛V1000带状航线/宝盛V1000带状航线.fm" 
+ INFO 2020-05-18T16:43:07.117 fmlandingsettings.cpp 286 CFmLandingSettings::SetFlightMissionFilePath | SQL text= "select flight_task_id, break_point_lat, break_point_lng, last_waypoint_index, entry_direction, mission_waypoint_start, mission_waypoint_end from flight_mission where flight_task_id = 'db5df1d8b72d452da000739b769294e8' order by created_at DESC" 
+DEBUG 2020-05-18T16:43:07.571 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:07.571 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf960 
+ INFO 2020-05-18T16:43:07.571 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:08.181 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:08.671 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:08.671 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567eee0 
+ INFO 2020-05-18T16:43:08.761 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:09.180 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:09.652 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:09.652 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddafde0 
+ INFO 2020-05-18T16:43:09.662 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:10.561 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:10.561 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f120 
+ INFO 2020-05-18T16:43:10.561 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:11.091 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:11.653 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:11.653 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016e250 
+ INFO 2020-05-18T16:43:11.663 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:12.083 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:12.653 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:12.663 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016f750 
+ INFO 2020-05-18T16:43:12.663 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:13.664 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:13.664 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016e0d0 
+ INFO 2020-05-18T16:43:13.664 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:14.213 Set Landing Point: lng "116.36687530" ,Lat "40.03539580" ,Alt "51.234" ,AMSL "60.951" ,HAE "-9.717" 
+DEBUG 2020-05-18T16:43:14.243 UpdateLandingPos: "116.36687530" "40.03539580" "60.951" 
+DEBUG 2020-05-18T16:43:14.253 1266 CFmPrepareTaskPage::slotLandingSettingFinished 60.9508 
+DEBUG 2020-05-18T16:43:14.253 205 CFmPrepareTaskPage::SetBarometerValue 60.9508 
+DEBUG 2020-05-18T16:43:14.253 slotLandingSettingFinished 
+DEBUG 2020-05-18T16:43:14.769 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:14.769 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddafea0 
+ INFO 2020-05-18T16:43:14.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:15.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:15.671 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:15.671 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddafc60 
+ INFO 2020-05-18T16:43:15.691 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:15.981 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:16.660 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:16.660 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567ed60 
+ INFO 2020-05-18T16:43:16.660 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:17.762 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:17.762 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f2a0 
+ INFO 2020-05-18T16:43:17.762 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:19.334 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:19.334 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e0567f420 
+ INFO 2020-05-18T16:43:19.374 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:19.474 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:19.777 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:19.777 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf660 
+ INFO 2020-05-18T16:43:19.789 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:19.885 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:20.762 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:20.762 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e7ec8d0f0 
+ INFO 2020-05-18T16:43:20.772 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:21.755 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:21.755 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e7ec8bd70 
+ INFO 2020-05-18T16:43:21.757 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:21.886 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:22.755 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:22.755 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016ed90 
+ INFO 2020-05-18T16:43:22.765 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:22.885 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:23.756 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:23.756 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016ddd0 
+ INFO 2020-05-18T16:43:23.776 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:24.854 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:24.854 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e5016e610 
+ INFO 2020-05-18T16:43:24.854 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:25.765 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:25.765 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e7ec8b3b0 
+ INFO 2020-05-18T16:43:25.775 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:25.775 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:26.775 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:26.775 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf720 
+ INFO 2020-05-18T16:43:26.785 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:26.785 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:27.868 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:27.868 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf5a0 
+ INFO 2020-05-18T16:43:27.888 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:28.867 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:28.867 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddaf8a0 
+ INFO 2020-05-18T16:43:28.887 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:29.890 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:29.890 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e4ddafa20 
+ INFO 2020-05-18T16:43:29.890 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:29.890 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:30.380 776 fmlandingsettings.cpp CFmLandingSettings::SendInfoToUasInstance Start Setting Transform Altitude 50 
+DEBUG 2020-05-18T16:43:30.640 GetElevationByPolygon Result = True 
+DEBUG 2020-05-18T16:43:30.640 V Series maxPos = 116.346 40.0376 48.8897 
+DEBUG 2020-05-18T16:43:30.640 V Series minPos = 116.382 40.028 35.0004 
+DEBUG 2020-05-18T16:43:30.640 1620 fmlandingsettings.cpp V series Plane Equel Height 350 BarometerValue 60.9508 
+ INFO 2020-05-18T16:43:30.650 Send home point 
+FATAL 2020-05-18T16:43:30.650 Send Multirotor WP 0 "40.03539658" "116.36687469" "289.05" Parameter1 1 0 Speed 13.5 WP command 16 unequal high 0 return method 1 Airline Type 0 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 289.049 
+DEBUG 2020-05-18T16:43:30.650 801 fmlandingsettings.cpp CFmLandingSettings::slotSetTransformSuccess Transform Altitude Setting Success 
+ INFO 2020-05-18T16:43:30.700 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:30.780 Send home point success 
+ INFO 2020-05-18T16:43:30.780 Send flightMissionID: "8e4d89c3bda84312b8c5b85e1430998b" 
+DEBUG 2020-05-18T16:43:30.870 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:30.870 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e7ec8c1f0 
+ INFO 2020-05-18T16:43:30.870 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:30.989 Send flightMissionID success 
+DEBUG 2020-05-18T16:43:30.999 CFmPrepareTaskPage::SetCurrentPage 1 60.9508 
+ INFO 2020-05-18T16:43:31.680 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:31.870 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:31.870 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e7ec8b470 
+DEBUG 2020-05-18T16:43:31.880 CFmC5CameraParamAck::DoCommand fmackbase.cpp 1 
+DEBUG 2020-05-18T16:43:31.880 Request C5[A6000] Params shot 0 session 9 extra_param 0 
+DEBUG 2020-05-18T16:43:31.880 CFmManualCheckPage::_RequestCameraParam fmmanualcheckpage.cpp Request C5[A6000] paramter 1 
+ INFO 2020-05-18T16:43:31.880 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:32.620 CFmC5CameraParamAck::DoCommand fmackbase.cpp 1 
+DEBUG 2020-05-18T16:43:32.620 Request C5[A6000] Params shot 0 session 9 extra_param 0 
+ INFO 2020-05-18T16:43:32.680 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:32.870 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 0 0 0 0 
+ INFO 2020-05-18T16:43:32.870 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f00f0 
+DEBUG 2020-05-18T16:43:32.870 CFmC5CameraParamAck::slotMultirotorC5A6000InfoAck fmackbase.cpp 0 0 
+DEBUG 2020-05-18T16:43:32.870 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp 1 
+DEBUG 2020-05-18T16:43:32.880 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp 1 
+DEBUG 2020-05-18T16:43:32.880 CFmManualCheckPage::slotShutterResult fmmanualcheckpage.cpp nShutterResult =  0 
+DEBUG 2020-05-18T16:43:32.880 CFmManualCheckPage::slotCameraParamOperateFailed fmmanualcheckpage.cpp 1 
+ INFO 2020-05-18T16:43:32.880 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:33.311 CFmC5CameraParamAck::DoCommand fmackbase.cpp 1 
+DEBUG 2020-05-18T16:43:33.311 Request C5[A6000] Params shot 0 session 9 extra_param 0 
+DEBUG 2020-05-18T16:43:33.651 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:33.651 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f09f0 
+ INFO 2020-05-18T16:43:33.661 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:33.681 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:33.781 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:33.781 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0e70 
+ INFO 2020-05-18T16:43:33.781 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:33.871 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:33.871 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0f30 
+ INFO 2020-05-18T16:43:33.871 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:33.971 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:33.971 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0870 
+ INFO 2020-05-18T16:43:33.971 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.021 CFmC5CameraParamAck::DoCommand fmackbase.cpp 1 
+DEBUG 2020-05-18T16:43:34.021 Request C5[A6000] Params shot 0 session 9 extra_param 0 
+DEBUG 2020-05-18T16:43:34.431 CFmManualCheckPage::slotTestShotBtnClicked fmmanualcheckpage.cpp ShotCount: 1 
+DEBUG 2020-05-18T16:43:34.431 Send Take Picture shot 1 session 255 extra_param 0 ShotID 1 
+DEBUG 2020-05-18T16:43:34.461 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:34.461 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0db0 
+ INFO 2020-05-18T16:43:34.471 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.561 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:34.561 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0c30 
+ INFO 2020-05-18T16:43:34.561 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.611 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:34.611 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0cf0 
+ INFO 2020-05-18T16:43:34.641 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.641 CFmD200Test5A6000CameraAck::slotTestCameraResult fmackbase.cpp CFmD200Test5A6000CameraAck::slotTestCameraResult: 1 
+ INFO 2020-05-18T16:43:34.641 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.661 Multirotor MAVLINK_MSG_ID_CAMERA_INFO_ACK: 0 0 47 0 6 53 
+ INFO 2020-05-18T16:43:34.661 fmmultirotorpilot param.m_nCommand== 0 param address== 0x14e414f0330 
+ INFO 2020-05-18T16:43:34.671 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:34.721 CFmManualCheckPage::slotCameraParamOperateFailed fmmanualcheckpage.cpp 0 
+DEBUG 2020-05-18T16:43:34.721 CFmManualCheckPage::slotCameraParamOperateFailed fmmanualcheckpage.cpp 0 
+ INFO 2020-05-18T16:43:35.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:36.302 CFmD200Test5A6000CameraAck::slotTestCameraResult fmackbase.cpp CFmD200Test5A6000CameraAck::slotTestCameraResult: 2 
+ INFO 2020-05-18T16:43:36.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:37.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:38.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:39.623 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:40.502 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:41.483 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:42.476 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:43.467 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:44.417 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:47.401 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:48.381 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:51.275 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:52.274 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:53.266 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:54.265 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:54.769 CFmPrepareTaskPage::SetCurrentPage 3 60.9508 
+DEBUG 2020-05-18T16:43:54.769 130 fmtaskupload.cpp CFmTaskUpload::setLandingPosFlightHeight 289.049 
+DEBUG 2020-05-18T16:43:54.770 106 CFmTaskUpload::InitPage 60.9508 
+DEBUG 2020-05-18T16:43:54.770 fmtaskupload.cpp CFmTaskUpload::InitTaskInfoTable 135 InitTaskInfoTable false 60.9508 0 
+DEBUG 2020-05-18T16:43:54.770 fmtaskupload.cpp CFmTaskUpload::InitTaskInfoTable 234 InitTaskInfoTable MissionType= 0 false 
+ INFO 2020-05-18T16:43:55.256 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:56.176 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:43:57.175 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:43:57.348 slotShowUploadTasknInfo: "正在上传任务信息..." 
+DEBUG 2020-05-18T16:43:57.348 314 CFmTaskUpload::_CheckConditionValid TargetFlightHeight BarometerValue 289.049 60.9508 
+DEBUG 2020-05-18T16:43:57.348 CFmTaskUpload::_CheckConditionValid false false 120 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.348 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 484 CFmTaskUpload::_CheckConditionValid equalLine setZ 289.049 
+DEBUG 2020-05-18T16:43:57.358 UploadPhotoDistance 42 
+DEBUG 2020-05-18T16:43:57.578 slotUploadPhotoDistanceResult: true 
+DEBUG 2020-05-18T16:43:57.578 Upload Photo Distance success, upload route point count: 91 
+DEBUG 2020-05-18T16:43:57.578 Send Count 91 
+DEBUG 2020-05-18T16:43:57.757 slotUploadWayPointCountResult: true 
+FATAL 2020-05-18T16:43:57.757 Send Multirotor WP 1 "40.03764725" "116.34561920" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:57.957 Send Multirotor WP 2 "40.03217697" "116.35288239" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:58.147 Send Multirotor WP 3 "40.02701187" "116.35978699" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:58.337 Send Multirotor WP 4 "40.02634048" "116.35826111" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:58.557 Send Multirotor WP 5 "40.02728271" "116.35700226" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:58.757 Send Multirotor WP 6 "40.03092575" "116.36529541" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:58.957 Send Multirotor WP 7 "40.03281403" "116.37191772" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.147 Send Multirotor WP 8 "40.03363800" "116.37052917" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.253 Send Multirotor WP 9 "40.03316879" "116.36888123" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.369 Send Multirotor WP 10 "40.03038025" "116.37359619" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.459 Send Multirotor WP 11 "40.03136063" "116.37480927" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.625 Send Multirotor WP 12 "40.03218460" "116.37341309" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.745 Send Multirotor WP 13 "40.02854919" "116.36893463" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.845 Send Multirotor WP 14 "40.02775955" "116.37001801" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:43:59.965 Send Multirotor WP 15 "40.03231812" "116.37563324" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.065 Send Multirotor WP 16 "40.03149414" "116.37702942" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.145 Send Multirotor WP 17 "40.03051376" "116.37581635" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.245 Send Multirotor WP 18 "40.03446198" "116.36913300" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.345 Send Multirotor WP 19 "40.03493118" "116.37078094" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.445 Send Multirotor WP 20 "40.03410721" "116.37217712" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.535 Send Multirotor WP 21 "40.03196716" "116.36466217" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.645 Send Multirotor WP 22 "40.02870560" "116.35723877" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.745 Send Multirotor WP 23 "40.02776337" "116.35849762" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.835 Send Multirotor WP 24 "40.02843475" "116.36002350" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:00.964 Send Multirotor WP 25 "40.03299713" "116.35391998" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.144 Send Multirotor WP 26 "40.03846359" "116.34666443" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.247 Send Multirotor WP 27 "40.03928375" "116.34770966" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.346 Send Multirotor WP 28 "40.03381729" "116.35496521" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.556 Send Multirotor WP 29 "40.02985764" "116.36026001" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.756 Send Multirotor WP 30 "40.02918625" "116.35873413" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:01.936 Send Multirotor WP 31 "40.03012848" "116.35747528" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:02.056 Send Multirotor WP 32 "40.03301239" "116.36402893" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:02.246 Send Multirotor WP 33 "40.03540421" "116.37242889" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:02.436 Send Multirotor WP 34 "40.03622818" "116.37104034" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:02.645 Send Multirotor WP 35 "40.03575897" "116.36939240" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:02.835 Send Multirotor WP 36 "40.03064728" "116.37803650" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.055 Send Multirotor WP 37 "40.03162766" "116.37924957" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.249 Send Multirotor WP 38 "40.03245163" "116.37785339" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.457 Send Multirotor WP 39 "40.02697372" "116.37110138" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.657 Send Multirotor WP 40 "40.02618408" "116.37218475" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.857 Send Multirotor WP 41 "40.03258514" "116.38007355" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:03.957 Send Multirotor WP 42 "40.03176117" "116.38146973" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.157 Send Multirotor WP 43 "40.03078079" "116.38025665" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.247 Send Multirotor WP 44 "40.03705215" "116.36964417" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.347 Send Multirotor WP 45 "40.03752136" "116.37129211" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.457 Send Multirotor WP 46 "40.03669739" "116.37268829" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.557 Send Multirotor WP 47 "40.03405380" "116.36339569" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.647 Send Multirotor WP 48 "40.03155136" "116.35770416" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.846 Send Multirotor WP 49 "40.03060913" "116.35897064" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:04.956 Send Multirotor WP 50 "40.03128052" "116.36049652" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.056 Send Multirotor WP 51 "40.03463745" "116.35600281" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.245 Send Multirotor WP 52 "40.04010010" "116.34875488" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.348 Send Multirotor WP 53 "40.04092026" "116.34980011" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.458 Send Multirotor WP 54 "40.03545761" "116.35704803" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.648 Send Multirotor WP 55 "40.03270340" "116.36072540" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.838 Send Multirotor WP 56 "40.03203201" "116.35919952" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:05.958 Send Multirotor WP 57 "40.03297424" "116.35794067" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:06.148 Send Multirotor WP 58 "40.03509521" "116.36276245" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:06.338 Send Multirotor WP 59 "40.03799438" "116.37294006" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:06.458 Send Multirotor WP 60 "40.03881836" "116.37155151" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:06.648 Send Multirotor WP 61 "40.03834915" "116.36990356" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:06.838 Send Multirotor WP 62 "40.03091431" "116.38247681" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:07.057 Send Multirotor WP 63 "40.03189468" "116.38368225" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:07.247 Send Multirotor WP 64 "40.03271866" "116.38229370" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:07.439 Send Multirotor WP 65 "40.02539444" "116.37326050" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:07.649 Send Multirotor WP 66 "40.02460480" "116.37434387" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:07.859 Send Multirotor WP 67 "40.03285217" "116.38451385" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.069 Send Multirotor WP 68 "40.03202820" "116.38590240" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.259 Send Multirotor WP 69 "40.03104782" "116.38469696" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.449 Send Multirotor WP 70 "40.03964233" "116.37015533" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.668 Send Multirotor WP 71 "40.04011154" "116.37180328" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.848 Send Multirotor WP 72 "40.03928757" "116.37319946" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:08.958 Send Multirotor WP 73 "40.03613663" "116.36212921" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.038 Send Multirotor WP 74 "40.03439713" "116.35817719" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.138 Send Multirotor WP 75 "40.03345871" "116.35943604" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.257 Send Multirotor WP 76 "40.03412628" "116.36096191" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.450 Send Multirotor WP 77 "40.03627777" "116.35809326" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.557 Send Multirotor WP 78 "40.04174042" "116.35084534" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.647 Send Multirotor WP 79 "40.04255676" "116.35189056" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.747 Send Multirotor WP 80 "40.03709412" "116.35913086" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.847 Send Multirotor WP 81 "40.03554916" "116.36119843" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:09.957 Send Multirotor WP 82 "40.03488159" "116.35967255" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.057 Send Multirotor WP 83 "40.03582382" "116.35841370" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.247 Send Multirotor WP 84 "40.03717804" "116.36149597" "289.05" Parameter1 2 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.337 Send Multirotor WP 85 "40.04058456" "116.37345123" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.467 Send Multirotor WP 86 "40.04140854" "116.37206268" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.557 Send Multirotor WP 87 "40.04093933" "116.37040710" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.746 Send Multirotor WP 88 "40.03118134" "116.38691711" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:10.866 Send Multirotor WP 89 "40.03216553" "116.38812256" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:11.056 Send Multirotor WP 90 "40.03298950" "116.38673401" "289.05" Parameter1 0 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+FATAL 2020-05-18T16:44:11.248 Send Multirotor WP 91 "40.02381897" "116.37542725" "289.05" Parameter1 1 0 Speed 18 WP command 1 unequal high 0 return method 0 Airline Type 3 Headless mode 0 Heading angle 0 Gimbal angle 0 returnHomeHeight 100000 
+DEBUG 2020-05-18T16:44:11.349 Show Upload Result: true 
+DEBUG 2020-05-18T16:44:11.349 DownloadWayPointCount 
+DEBUG 2020-05-18T16:44:11.349 slotShowUploadTasknInfo: "验证任务信息..." 
+FATAL 2020-05-18T16:44:11.459 OriginPointCount: 91 ReceivePointCount: 91 
+DEBUG 2020-05-18T16:44:11.657 CFMGetMissionItemAck::slotGetWayPoint 1 "40.03764725" "116.34561920" "289.05" 
+DEBUG 2020-05-18T16:44:11.658 slotGetWayPoint current seq, total count: 1 91 
+DEBUG 2020-05-18T16:44:11.869 CFMGetMissionItemAck::slotGetWayPoint 2 "40.03217697" "116.35288239" "289.05" 
+DEBUG 2020-05-18T16:44:11.869 slotGetWayPoint current seq, total count: 2 91 
+DEBUG 2020-05-18T16:44:12.059 CFMGetMissionItemAck::slotGetWayPoint 3 "40.02701187" "116.35978699" "289.05" 
+DEBUG 2020-05-18T16:44:12.059 slotGetWayPoint current seq, total count: 3 91 
+DEBUG 2020-05-18T16:44:12.289 CFMGetMissionItemAck::slotGetWayPoint 4 "40.02634048" "116.35826111" "289.05" 
+DEBUG 2020-05-18T16:44:12.289 slotGetWayPoint current seq, total count: 4 91 
+DEBUG 2020-05-18T16:44:12.469 CFMGetMissionItemAck::slotGetWayPoint 5 "40.02728271" "116.35700226" "289.05" 
+DEBUG 2020-05-18T16:44:12.469 slotGetWayPoint current seq, total count: 5 91 
+DEBUG 2020-05-18T16:44:12.659 CFMGetMissionItemAck::slotGetWayPoint 6 "40.03092575" "116.36529541" "289.05" 
+DEBUG 2020-05-18T16:44:12.659 slotGetWayPoint current seq, total count: 6 91 
+DEBUG 2020-05-18T16:44:12.869 CFMGetMissionItemAck::slotGetWayPoint 7 "40.03281403" "116.37191772" "289.05" 
+DEBUG 2020-05-18T16:44:12.869 slotGetWayPoint current seq, total count: 7 91 
+DEBUG 2020-05-18T16:44:13.059 CFMGetMissionItemAck::slotGetWayPoint 8 "40.03363800" "116.37052917" "289.05" 
+DEBUG 2020-05-18T16:44:13.059 slotGetWayPoint current seq, total count: 8 91 
+DEBUG 2020-05-18T16:44:13.271 CFMGetMissionItemAck::slotGetWayPoint 9 "40.03316879" "116.36888123" "289.05" 
+DEBUG 2020-05-18T16:44:13.271 slotGetWayPoint current seq, total count: 9 91 
+DEBUG 2020-05-18T16:44:13.461 CFMGetMissionItemAck::slotGetWayPoint 10 "40.03038025" "116.37359619" "289.05" 
+DEBUG 2020-05-18T16:44:13.461 slotGetWayPoint current seq, total count: 10 91 
+DEBUG 2020-05-18T16:44:13.661 CFMGetMissionItemAck::slotGetWayPoint 11 "40.03136063" "116.37480927" "289.05" 
+DEBUG 2020-05-18T16:44:13.661 slotGetWayPoint current seq, total count: 11 91 
+DEBUG 2020-05-18T16:44:13.771 CFMGetMissionItemAck::slotGetWayPoint 12 "40.03218460" "116.37341309" "289.05" 
+DEBUG 2020-05-18T16:44:13.771 slotGetWayPoint current seq, total count: 12 91 
+DEBUG 2020-05-18T16:44:13.971 CFMGetMissionItemAck::slotGetWayPoint 13 "40.02854919" "116.36893463" "289.05" 
+DEBUG 2020-05-18T16:44:13.971 slotGetWayPoint current seq, total count: 13 91 
+DEBUG 2020-05-18T16:44:14.151 CFMGetMissionItemAck::slotGetWayPoint 14 "40.02775955" "116.37001801" "289.05" 
+DEBUG 2020-05-18T16:44:14.151 slotGetWayPoint current seq, total count: 14 91 
+DEBUG 2020-05-18T16:44:14.271 CFMGetMissionItemAck::slotGetWayPoint 15 "40.03231812" "116.37563324" "289.05" 
+DEBUG 2020-05-18T16:44:14.271 slotGetWayPoint current seq, total count: 15 91 
+DEBUG 2020-05-18T16:44:14.391 CFMGetMissionItemAck::slotGetWayPoint 16 "40.03149414" "116.37702942" "289.05" 
+DEBUG 2020-05-18T16:44:14.391 slotGetWayPoint current seq, total count: 16 91 
+DEBUG 2020-05-18T16:44:14.461 CFMGetMissionItemAck::slotGetWayPoint 17 "40.03051376" "116.37581635" "289.05" 
+DEBUG 2020-05-18T16:44:14.461 slotGetWayPoint current seq, total count: 17 91 
+DEBUG 2020-05-18T16:44:14.558 CFMGetMissionItemAck::slotGetWayPoint 18 "40.03446198" "116.36913300" "289.05" 
+DEBUG 2020-05-18T16:44:14.558 slotGetWayPoint current seq, total count: 18 91 
+DEBUG 2020-05-18T16:44:14.678 CFMGetMissionItemAck::slotGetWayPoint 19 "40.03493118" "116.37078094" "289.05" 
+DEBUG 2020-05-18T16:44:14.678 slotGetWayPoint current seq, total count: 19 91 
+DEBUG 2020-05-18T16:44:14.778 CFMGetMissionItemAck::slotGetWayPoint 20 "40.03410721" "116.37217712" "289.05" 
+DEBUG 2020-05-18T16:44:14.778 slotGetWayPoint current seq, total count: 20 91 
+DEBUG 2020-05-18T16:44:14.868 CFMGetMissionItemAck::slotGetWayPoint 21 "40.03196716" "116.36466217" "289.05" 
+DEBUG 2020-05-18T16:44:14.868 slotGetWayPoint current seq, total count: 21 91 
+DEBUG 2020-05-18T16:44:14.958 CFMGetMissionItemAck::slotGetWayPoint 22 "40.02870560" "116.35723877" "289.05" 
+DEBUG 2020-05-18T16:44:14.958 slotGetWayPoint current seq, total count: 22 91 
+DEBUG 2020-05-18T16:44:15.058 CFMGetMissionItemAck::slotGetWayPoint 23 "40.02776337" "116.35849762" "289.05" 
+DEBUG 2020-05-18T16:44:15.068 slotGetWayPoint current seq, total count: 23 91 
+DEBUG 2020-05-18T16:44:15.148 CFMGetMissionItemAck::slotGetWayPoint 24 "40.02843475" "116.36002350" "289.05" 
+DEBUG 2020-05-18T16:44:15.148 slotGetWayPoint current seq, total count: 24 91 
+DEBUG 2020-05-18T16:44:15.270 CFMGetMissionItemAck::slotGetWayPoint 25 "40.03299713" "116.35391998" "289.05" 
+DEBUG 2020-05-18T16:44:15.270 slotGetWayPoint current seq, total count: 25 91 
+DEBUG 2020-05-18T16:44:15.370 CFMGetMissionItemAck::slotGetWayPoint 26 "40.03846359" "116.34666443" "289.05" 
+DEBUG 2020-05-18T16:44:15.380 slotGetWayPoint current seq, total count: 26 91 
+DEBUG 2020-05-18T16:44:15.460 CFMGetMissionItemAck::slotGetWayPoint 27 "40.03928375" "116.34770966" "289.05" 
+DEBUG 2020-05-18T16:44:15.460 slotGetWayPoint current seq, total count: 27 91 
+DEBUG 2020-05-18T16:44:15.570 CFMGetMissionItemAck::slotGetWayPoint 28 "40.03381729" "116.35496521" "289.05" 
+DEBUG 2020-05-18T16:44:15.570 slotGetWayPoint current seq, total count: 28 91 
+DEBUG 2020-05-18T16:44:15.760 CFMGetMissionItemAck::slotGetWayPoint 29 "40.02985764" "116.36026001" "289.05" 
+DEBUG 2020-05-18T16:44:15.760 slotGetWayPoint current seq, total count: 29 91 
+DEBUG 2020-05-18T16:44:15.880 CFMGetMissionItemAck::slotGetWayPoint 30 "40.02918625" "116.35873413" "289.05" 
+DEBUG 2020-05-18T16:44:15.880 slotGetWayPoint current seq, total count: 30 91 
+DEBUG 2020-05-18T16:44:16.070 CFMGetMissionItemAck::slotGetWayPoint 31 "40.03012848" "116.35747528" "289.05" 
+DEBUG 2020-05-18T16:44:16.070 slotGetWayPoint current seq, total count: 31 91 
+DEBUG 2020-05-18T16:44:16.260 CFMGetMissionItemAck::slotGetWayPoint 32 "40.03301239" "116.36402893" "289.05" 
+DEBUG 2020-05-18T16:44:16.260 slotGetWayPoint current seq, total count: 32 91 
+DEBUG 2020-05-18T16:44:16.499 CFMGetMissionItemAck::slotGetWayPoint 33 "40.03540421" "116.37242889" "289.05" 
+DEBUG 2020-05-18T16:44:16.499 slotGetWayPoint current seq, total count: 33 91 
+DEBUG 2020-05-18T16:44:16.669 CFMGetMissionItemAck::slotGetWayPoint 34 "40.03622818" "116.37104034" "289.05" 
+DEBUG 2020-05-18T16:44:16.669 slotGetWayPoint current seq, total count: 34 91 
+DEBUG 2020-05-18T16:44:16.859 CFMGetMissionItemAck::slotGetWayPoint 35 "40.03575897" "116.36939240" "289.05" 
+DEBUG 2020-05-18T16:44:16.859 slotGetWayPoint current seq, total count: 35 91 
+DEBUG 2020-05-18T16:44:17.069 CFMGetMissionItemAck::slotGetWayPoint 36 "40.03064728" "116.37803650" "289.05" 
+DEBUG 2020-05-18T16:44:17.079 slotGetWayPoint current seq, total count: 36 91 
+DEBUG 2020-05-18T16:44:17.260 CFMGetMissionItemAck::slotGetWayPoint 37 "40.03162766" "116.37924957" "289.05" 
+DEBUG 2020-05-18T16:44:17.260 slotGetWayPoint current seq, total count: 37 91 
+DEBUG 2020-05-18T16:44:17.451 CFMGetMissionItemAck::slotGetWayPoint 38 "40.03245163" "116.37785339" "289.05" 
+DEBUG 2020-05-18T16:44:17.451 slotGetWayPoint current seq, total count: 38 91 
+DEBUG 2020-05-18T16:44:17.651 CFMGetMissionItemAck::slotGetWayPoint 39 "40.02697372" "116.37110138" "289.05" 
+DEBUG 2020-05-18T16:44:17.651 slotGetWayPoint current seq, total count: 39 91 
+DEBUG 2020-05-18T16:44:17.861 CFMGetMissionItemAck::slotGetWayPoint 40 "40.02618408" "116.37218475" "289.05" 
+DEBUG 2020-05-18T16:44:17.861 slotGetWayPoint current seq, total count: 40 91 
+DEBUG 2020-05-18T16:44:18.071 CFMGetMissionItemAck::slotGetWayPoint 41 "40.03258514" "116.38007355" "289.05" 
+DEBUG 2020-05-18T16:44:18.071 slotGetWayPoint current seq, total count: 41 91 
+DEBUG 2020-05-18T16:44:18.261 CFMGetMissionItemAck::slotGetWayPoint 42 "40.03176117" "116.38146973" "289.05" 
+DEBUG 2020-05-18T16:44:18.261 slotGetWayPoint current seq, total count: 42 91 
+DEBUG 2020-05-18T16:44:18.451 CFMGetMissionItemAck::slotGetWayPoint 43 "40.03078079" "116.38025665" "289.05" 
+DEBUG 2020-05-18T16:44:18.451 slotGetWayPoint current seq, total count: 43 91 
+DEBUG 2020-05-18T16:44:18.651 CFMGetMissionItemAck::slotGetWayPoint 44 "40.03705215" "116.36964417" "289.05" 
+DEBUG 2020-05-18T16:44:18.651 slotGetWayPoint current seq, total count: 44 91 
+DEBUG 2020-05-18T16:44:18.870 CFMGetMissionItemAck::slotGetWayPoint 45 "40.03752136" "116.37129211" "289.05" 
+DEBUG 2020-05-18T16:44:18.870 slotGetWayPoint current seq, total count: 45 91 
+DEBUG 2020-05-18T16:44:18.970 CFMGetMissionItemAck::slotGetWayPoint 46 "40.03669739" "116.37268829" "289.05" 
+DEBUG 2020-05-18T16:44:18.970 slotGetWayPoint current seq, total count: 46 91 
+DEBUG 2020-05-18T16:44:19.060 CFMGetMissionItemAck::slotGetWayPoint 47 "40.03405380" "116.36339569" "289.05" 
+DEBUG 2020-05-18T16:44:19.060 slotGetWayPoint current seq, total count: 47 91 
+DEBUG 2020-05-18T16:44:19.150 CFMGetMissionItemAck::slotGetWayPoint 48 "40.03155136" "116.35770416" "289.05" 
+DEBUG 2020-05-18T16:44:19.150 slotGetWayPoint current seq, total count: 48 91 
+DEBUG 2020-05-18T16:44:19.272 CFMGetMissionItemAck::slotGetWayPoint 49 "40.03060913" "116.35897064" "289.05" 
+DEBUG 2020-05-18T16:44:19.272 slotGetWayPoint current seq, total count: 49 91 
+DEBUG 2020-05-18T16:44:19.372 CFMGetMissionItemAck::slotGetWayPoint 50 "40.03128052" "116.36049652" "289.05" 
+DEBUG 2020-05-18T16:44:19.372 slotGetWayPoint current seq, total count: 50 91 
+DEBUG 2020-05-18T16:44:19.462 CFMGetMissionItemAck::slotGetWayPoint 51 "40.03463745" "116.35600281" "289.05" 
+DEBUG 2020-05-18T16:44:19.462 slotGetWayPoint current seq, total count: 51 91 
+DEBUG 2020-05-18T16:44:19.561 CFMGetMissionItemAck::slotGetWayPoint 52 "40.04010010" "116.34875488" "289.05" 
+DEBUG 2020-05-18T16:44:19.561 slotGetWayPoint current seq, total count: 52 91 
+DEBUG 2020-05-18T16:44:19.661 CFMGetMissionItemAck::slotGetWayPoint 53 "40.04092026" "116.34980011" "289.05" 
+DEBUG 2020-05-18T16:44:19.661 slotGetWayPoint current seq, total count: 53 91 
+DEBUG 2020-05-18T16:44:19.771 CFMGetMissionItemAck::slotGetWayPoint 54 "40.03545761" "116.35704803" "289.05" 
+DEBUG 2020-05-18T16:44:19.781 slotGetWayPoint current seq, total count: 54 91 
+DEBUG 2020-05-18T16:44:19.871 CFMGetMissionItemAck::slotGetWayPoint 55 "40.03270340" "116.36072540" "289.05" 
+DEBUG 2020-05-18T16:44:19.871 slotGetWayPoint current seq, total count: 55 91 
+DEBUG 2020-05-18T16:44:19.961 CFMGetMissionItemAck::slotGetWayPoint 56 "40.03203201" "116.35919952" "289.05" 
+DEBUG 2020-05-18T16:44:19.961 slotGetWayPoint current seq, total count: 56 91 
+DEBUG 2020-05-18T16:44:20.061 CFMGetMissionItemAck::slotGetWayPoint 57 "40.03297424" "116.35794067" "289.05" 
+DEBUG 2020-05-18T16:44:20.061 slotGetWayPoint current seq, total count: 57 91 
+DEBUG 2020-05-18T16:44:20.151 CFMGetMissionItemAck::slotGetWayPoint 58 "40.03509521" "116.36276245" "289.05" 
+DEBUG 2020-05-18T16:44:20.161 slotGetWayPoint current seq, total count: 58 91 
+DEBUG 2020-05-18T16:44:20.261 CFMGetMissionItemAck::slotGetWayPoint 59 "40.03799438" "116.37294006" "289.05" 
+DEBUG 2020-05-18T16:44:20.261 slotGetWayPoint current seq, total count: 59 91 
+DEBUG 2020-05-18T16:44:20.371 CFMGetMissionItemAck::slotGetWayPoint 60 "40.03881836" "116.37155151" "289.05" 
+DEBUG 2020-05-18T16:44:20.371 slotGetWayPoint current seq, total count: 60 91 
+DEBUG 2020-05-18T16:44:20.461 CFMGetMissionItemAck::slotGetWayPoint 61 "40.03834915" "116.36990356" "289.05" 
+DEBUG 2020-05-18T16:44:20.461 slotGetWayPoint current seq, total count: 61 91 
+DEBUG 2020-05-18T16:44:20.551 CFMGetMissionItemAck::slotGetWayPoint 62 "40.03091431" "116.38247681" "289.05" 
+DEBUG 2020-05-18T16:44:20.551 slotGetWayPoint current seq, total count: 62 91 
+DEBUG 2020-05-18T16:44:20.741 CFMGetMissionItemAck::slotGetWayPoint 63 "40.03189468" "116.38368225" "289.05" 
+DEBUG 2020-05-18T16:44:20.741 slotGetWayPoint current seq, total count: 63 91 
+DEBUG 2020-05-18T16:44:20.871 CFMGetMissionItemAck::slotGetWayPoint 64 "40.03271866" "116.38229370" "289.05" 
+DEBUG 2020-05-18T16:44:20.871 slotGetWayPoint current seq, total count: 64 91 
+DEBUG 2020-05-18T16:44:21.061 CFMGetMissionItemAck::slotGetWayPoint 65 "40.02539444" "116.37326050" "289.05" 
+DEBUG 2020-05-18T16:44:21.061 slotGetWayPoint current seq, total count: 65 91 
+DEBUG 2020-05-18T16:44:21.263 CFMGetMissionItemAck::slotGetWayPoint 66 "40.02460480" "116.37434387" "289.05" 
+DEBUG 2020-05-18T16:44:21.263 slotGetWayPoint current seq, total count: 66 91 
+DEBUG 2020-05-18T16:44:21.463 CFMGetMissionItemAck::slotGetWayPoint 67 "40.03285217" "116.38451385" "289.05" 
+DEBUG 2020-05-18T16:44:21.463 slotGetWayPoint current seq, total count: 67 91 
+DEBUG 2020-05-18T16:44:21.653 CFMGetMissionItemAck::slotGetWayPoint 68 "40.03202820" "116.38590240" "289.05" 
+DEBUG 2020-05-18T16:44:21.653 slotGetWayPoint current seq, total count: 68 91 
+DEBUG 2020-05-18T16:44:21.863 CFMGetMissionItemAck::slotGetWayPoint 69 "40.03104782" "116.38469696" "289.05" 
+DEBUG 2020-05-18T16:44:21.863 slotGetWayPoint current seq, total count: 69 91 
+DEBUG 2020-05-18T16:44:22.053 CFMGetMissionItemAck::slotGetWayPoint 70 "40.03964233" "116.37015533" "289.05" 
+DEBUG 2020-05-18T16:44:22.053 slotGetWayPoint current seq, total count: 70 91 
+DEBUG 2020-05-18T16:44:22.273 CFMGetMissionItemAck::slotGetWayPoint 71 "40.04011154" "116.37180328" "289.05" 
+DEBUG 2020-05-18T16:44:22.273 slotGetWayPoint current seq, total count: 71 91 
+DEBUG 2020-05-18T16:44:22.462 CFMGetMissionItemAck::slotGetWayPoint 72 "40.03928757" "116.37319946" "289.05" 
+DEBUG 2020-05-18T16:44:22.462 slotGetWayPoint current seq, total count: 72 91 
+DEBUG 2020-05-18T16:44:22.652 CFMGetMissionItemAck::slotGetWayPoint 73 "40.03613663" "116.36212921" "289.05" 
+DEBUG 2020-05-18T16:44:22.652 slotGetWayPoint current seq, total count: 73 91 
+DEBUG 2020-05-18T16:44:22.852 CFMGetMissionItemAck::slotGetWayPoint 74 "40.03439713" "116.35817719" "289.05" 
+DEBUG 2020-05-18T16:44:22.852 slotGetWayPoint current seq, total count: 74 91 
+DEBUG 2020-05-18T16:44:23.082 CFMGetMissionItemAck::slotGetWayPoint 75 "40.03345871" "116.35943604" "289.05" 
+DEBUG 2020-05-18T16:44:23.082 slotGetWayPoint current seq, total count: 75 91 
+DEBUG 2020-05-18T16:44:23.265 CFMGetMissionItemAck::slotGetWayPoint 76 "40.03412628" "116.36096191" "289.05" 
+DEBUG 2020-05-18T16:44:23.265 slotGetWayPoint current seq, total count: 76 91 
+DEBUG 2020-05-18T16:44:23.465 CFMGetMissionItemAck::slotGetWayPoint 77 "40.03627777" "116.35809326" "289.05" 
+DEBUG 2020-05-18T16:44:23.465 slotGetWayPoint current seq, total count: 77 91 
+DEBUG 2020-05-18T16:44:23.655 CFMGetMissionItemAck::slotGetWayPoint 78 "40.04174042" "116.35084534" "289.05" 
+DEBUG 2020-05-18T16:44:23.655 slotGetWayPoint current seq, total count: 78 91 
+DEBUG 2020-05-18T16:44:23.774 CFMGetMissionItemAck::slotGetWayPoint 79 "40.04255676" "116.35189056" "289.05" 
+DEBUG 2020-05-18T16:44:23.774 slotGetWayPoint current seq, total count: 79 91 
+DEBUG 2020-05-18T16:44:23.864 CFMGetMissionItemAck::slotGetWayPoint 80 "40.03709412" "116.35913086" "289.05" 
+DEBUG 2020-05-18T16:44:23.864 slotGetWayPoint current seq, total count: 80 91 
+DEBUG 2020-05-18T16:44:23.964 CFMGetMissionItemAck::slotGetWayPoint 81 "40.03554916" "116.36119843" "289.05" 
+DEBUG 2020-05-18T16:44:23.964 slotGetWayPoint current seq, total count: 81 91 
+DEBUG 2020-05-18T16:44:24.054 CFMGetMissionItemAck::slotGetWayPoint 82 "40.03488159" "116.35967255" "289.05" 
+DEBUG 2020-05-18T16:44:24.054 slotGetWayPoint current seq, total count: 82 91 
+DEBUG 2020-05-18T16:44:24.184 CFMGetMissionItemAck::slotGetWayPoint 83 "40.03582382" "116.35841370" "289.05" 
+DEBUG 2020-05-18T16:44:24.184 slotGetWayPoint current seq, total count: 83 91 
+DEBUG 2020-05-18T16:44:24.244 CFMGetMissionItemAck::slotGetWayPoint 84 "40.03717804" "116.36149597" "289.05" 
+DEBUG 2020-05-18T16:44:24.244 slotGetWayPoint current seq, total count: 84 91 
+DEBUG 2020-05-18T16:44:24.364 CFMGetMissionItemAck::slotGetWayPoint 85 "40.04058456" "116.37345123" "289.05" 
+DEBUG 2020-05-18T16:44:24.364 slotGetWayPoint current seq, total count: 85 91 
+DEBUG 2020-05-18T16:44:24.464 CFMGetMissionItemAck::slotGetWayPoint 86 "40.04140854" "116.37206268" "289.05" 
+DEBUG 2020-05-18T16:44:24.464 slotGetWayPoint current seq, total count: 86 91 
+DEBUG 2020-05-18T16:44:24.554 CFMGetMissionItemAck::slotGetWayPoint 87 "40.04093933" "116.37040710" "289.05" 
+DEBUG 2020-05-18T16:44:24.554 slotGetWayPoint current seq, total count: 87 91 
+DEBUG 2020-05-18T16:44:24.654 CFMGetMissionItemAck::slotGetWayPoint 88 "40.03118134" "116.38691711" "289.05" 
+DEBUG 2020-05-18T16:44:24.654 slotGetWayPoint current seq, total count: 88 91 
+DEBUG 2020-05-18T16:44:24.774 CFMGetMissionItemAck::slotGetWayPoint 89 "40.03216553" "116.38812256" "289.05" 
+DEBUG 2020-05-18T16:44:24.774 slotGetWayPoint current seq, total count: 89 91 
+DEBUG 2020-05-18T16:44:24.954 CFMGetMissionItemAck::slotGetWayPoint 90 "40.03298950" "116.38673401" "289.05" 
+DEBUG 2020-05-18T16:44:24.954 slotGetWayPoint current seq, total count: 90 91 
+DEBUG 2020-05-18T16:44:25.054 CFMGetMissionItemAck::slotGetWayPoint 91 "40.02381897" "116.37542725" "289.05" 
+DEBUG 2020-05-18T16:44:25.054 slotGetWayPoint current seq, total count: 91 91 
+DEBUG 2020-05-18T16:44:25.054 SendWPCount, DownloadWPCount: 91 91 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 1 < "40.03764700,116.34562200,289.05" > < "40.03764725,116.34561920,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 1 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 2 < "40.03217600,116.35288000,289.05" > < "40.03217697,116.35288239,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 2 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 3 < "40.02701000,116.35978900,289.05" > < "40.02701187,116.35978699,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 3 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 4 < "40.02633900,116.35826300,289.05" > < "40.02634048,116.35826111,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 4 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 5 < "40.02728100,116.35700300,289.05" > < "40.02728271,116.35700226,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 5 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 6 < "40.03092700,116.36529700,289.05" > < "40.03092575,116.36529541,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 6 true 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | send point | download point: 7 < "40.03281300,116.37192100,289.05" > < "40.03281403,116.37191772,289.05" > 
+DEBUG 2020-05-18T16:44:25.054 VerifyWp: index | result: 7 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 8 < "40.03363700,116.37052800,289.05" > < "40.03363800,116.37052917,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 8 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 9 < "40.03316800,116.36887900,289.05" > < "40.03316879,116.36888123,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 9 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 10 < "40.03037900,116.37359800,289.05" > < "40.03038025,116.37359619,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 10 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 11 < "40.03136000,116.37480700,289.05" > < "40.03136063,116.37480927,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 11 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 12 < "40.03218300,116.37341400,289.05" > < "40.03218460,116.37341309,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 12 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 13 < "40.02854800,116.36893300,289.05" > < "40.02854919,116.36893463,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 13 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 14 < "40.02776000,116.37001600,289.05" > < "40.02775955,116.37001801,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 14 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 15 < "40.03231800,116.37563300,289.05" > < "40.03231812,116.37563324,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 15 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 16 < "40.03149400,116.37702700,289.05" > < "40.03149414,116.37702942,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 16 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 17 < "40.03051300,116.37581800,289.05" > < "40.03051376,116.37581635,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 17 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 18 < "40.03446300,116.36913400,289.05" > < "40.03446198,116.36913300,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 18 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 19 < "40.03493200,116.37078300,289.05" > < "40.03493118,116.37078094,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 19 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 20 < "40.03410800,116.37217700,289.05" > < "40.03410721,116.37217712,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 20 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 21 < "40.03196900,116.36466400,289.05" > < "40.03196716,116.36466217,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 21 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 22 < "40.02870500,116.35723700,289.05" > < "40.02870560,116.35723877,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 22 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 23 < "40.02776300,116.35849700,289.05" > < "40.02776337,116.35849762,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 23 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 24 < "40.02843300,116.36002300,289.05" > < "40.02843475,116.36002350,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 24 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 25 < "40.03299600,116.35392200,289.05" > < "40.03299713,116.35391998,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 25 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 26 < "40.03846500,116.34666600,289.05" > < "40.03846359,116.34666443,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 26 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 27 < "40.03928400,116.34771000,289.05" > < "40.03928375,116.34770966,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 27 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 28 < "40.03381600,116.35496400,289.05" > < "40.03381729,116.35496521,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 28 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 29 < "40.02985700,116.36025800,289.05" > < "40.02985764,116.36026001,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 29 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 30 < "40.02918600,116.35873200,289.05" > < "40.02918625,116.35873413,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 30 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 31 < "40.03012800,116.35747200,289.05" > < "40.03012848,116.35747528,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 31 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 32 < "40.03301100,116.36403100,289.05" > < "40.03301239,116.36402893,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 32 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 33 < "40.03540300,116.37243200,289.05" > < "40.03540421,116.37242889,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 33 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 34 < "40.03622700,116.37103800,289.05" > < "40.03622818,116.37104034,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 34 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 35 < "40.03575800,116.36938900,289.05" > < "40.03575897,116.36939240,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 35 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 36 < "40.03064700,116.37803700,289.05" > < "40.03064728,116.37803650,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 36 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 37 < "40.03162800,116.37924600,289.05" > < "40.03162766,116.37924957,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 37 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 38 < "40.03245200,116.37785300,289.05" > < "40.03245163,116.37785339,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 38 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 39 < "40.02697200,116.37109800,289.05" > < "40.02697372,116.37110138,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 39 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 40 < "40.02618300,116.37218100,289.05" > < "40.02618408,116.37218475,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 40 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 41 < "40.03258600,116.38007200,289.05" > < "40.03258514,116.38007355,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 41 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 42 < "40.03176200,116.38146600,289.05" > < "40.03176117,116.38146973,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 42 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 43 < "40.03078100,116.38025700,289.05" > < "40.03078079,116.38025665,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 43 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 44 < "40.03705300,116.36964500,289.05" > < "40.03705215,116.36964417,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 44 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 45 < "40.03752200,116.37129300,289.05" > < "40.03752136,116.37129211,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 45 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 46 < "40.03669900,116.37268700,289.05" > < "40.03669739,116.37268829,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 46 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 47 < "40.03405300,116.36339700,289.05" > < "40.03405380,116.36339569,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 47 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 48 < "40.03155200,116.35770700,289.05" > < "40.03155136,116.35770416,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 48 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 49 < "40.03061000,116.35896700,289.05" > < "40.03060913,116.35897064,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 49 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 50 < "40.03128100,116.36049300,289.05" > < "40.03128052,116.36049652,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 50 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 51 < "40.03463600,116.35600600,289.05" > < "40.03463745,116.35600281,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 51 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 52 < "40.04010200,116.34875400,289.05" > < "40.04010010,116.34875488,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 52 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 53 < "40.04092100,116.34979800,289.05" > < "40.04092026,116.34980011,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 53 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 54 < "40.03545600,116.35704800,289.05" > < "40.03545761,116.35704803,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 54 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 55 < "40.03270400,116.36072800,289.05" > < "40.03270340,116.36072540,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 55 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 56 < "40.03203300,116.35920200,289.05" > < "40.03203201,116.35919952,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 56 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 57 < "40.03297600,116.35794100,289.05" > < "40.03297424,116.35794067,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 57 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 58 < "40.03509500,116.36276400,289.05" > < "40.03509521,116.36276245,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 58 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 59 < "40.03799400,116.37294200,289.05" > < "40.03799438,116.37294006,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 59 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 60 < "40.03881700,116.37154900,289.05" > < "40.03881836,116.37155151,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 60 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 61 < "40.03834800,116.36990000,289.05" > < "40.03834915,116.36990356,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 61 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 62 < "40.03091500,116.38247600,289.05" > < "40.03091431,116.38247681,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 62 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 63 < "40.03189600,116.38368600,289.05" > < "40.03189468,116.38368225,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 63 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 64 < "40.03272000,116.38229200,289.05" > < "40.03271866,116.38229370,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 64 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 65 < "40.02539500,116.37326300,289.05" > < "40.02539444,116.37326050,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 65 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 66 < "40.02460600,116.37434500,289.05" > < "40.02460480,116.37434387,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 66 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 67 < "40.03285400,116.38451200,289.05" > < "40.03285217,116.38451385,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 67 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 68 < "40.03203000,116.38590500,289.05" > < "40.03202820,116.38590240,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 68 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 69 < "40.03104900,116.38469600,289.05" > < "40.03104782,116.38469696,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 69 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 70 < "40.03964300,116.37015500,289.05" > < "40.03964233,116.37015533,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 70 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 71 < "40.04011200,116.37180400,289.05" > < "40.04011154,116.37180328,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 71 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 72 < "40.03928900,116.37319800,289.05" > < "40.03928757,116.37319946,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 72 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 73 < "40.03613700,116.36213000,289.05" > < "40.03613663,116.36212921,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 73 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 74 < "40.03439900,116.35817600,289.05" > < "40.03439713,116.35817719,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 74 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 75 < "40.03345700,116.35943600,289.05" > < "40.03345871,116.35943604,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 75 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 76 < "40.03412800,116.36096300,289.05" > < "40.03412628,116.36096191,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 76 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 77 < "40.03627600,116.35809000,289.05" > < "40.03627777,116.35809326,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 77 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 78 < "40.04173900,116.35084300,289.05" > < "40.04174042,116.35084534,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 78 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 79 < "40.04255700,116.35188700,289.05" > < "40.04255676,116.35189056,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 79 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 80 < "40.03709600,116.35913200,289.05" > < "40.03709412,116.35913086,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 80 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 81 < "40.03555100,116.36119700,289.05" > < "40.03554916,116.36119843,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 81 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 82 < "40.03488100,116.35967100,289.05" > < "40.03488159,116.35967255,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 82 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 83 < "40.03582300,116.35841100,289.05" > < "40.03582382,116.35841370,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 83 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 84 < "40.03717900,116.36149700,289.05" > < "40.03717804,116.36149597,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 84 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 85 < "40.04058400,116.37345300,289.05" > < "40.04058456,116.37345123,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 85 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 86 < "40.04140700,116.37205900,289.05" > < "40.04140854,116.37206268,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 86 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 87 < "40.04093800,116.37041000,289.05" > < "40.04093933,116.37040710,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 87 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 88 < "40.03118300,116.38691500,289.05" > < "40.03118134,116.38691711,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 88 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 89 < "40.03216400,116.38812500,289.05" > < "40.03216553,116.38812256,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 89 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 90 < "40.03298800,116.38673100,289.05" > < "40.03298950,116.38673401,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 90 true 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | send point | download point: 91 < "40.02381800,116.37542800,289.05" > < "40.02381897,116.37542725,289.05" > 
+DEBUG 2020-05-18T16:44:25.064 VerifyWp: index | result: 91 true 
+DEBUG 2020-05-18T16:44:25.064 slotCheckWayPointResult: true 
+DEBUG 2020-05-18T16:44:25.064 slotTaskUploadRet: true 
+ INFO 2020-05-18T16:44:30.497 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:31.469 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:32.468 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:33.469 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:34.369 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:35.370 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:36.380 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:37.372 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:38.412 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:39.275 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:40.280 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:44:41.271 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:45:14.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:45:19.474 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:45:21.475 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:45:54.575 CFmSumaryofBeforFlight::slotCommandAckSuccess m_bSafetyPinRemoved== true m_bSendUnlockAirplane== true 
+ INFO 2020-05-18T16:45:54.786 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:45:54.915 fmsfmainwidget.cpp CFmSfMainWidget::EnabledFlightMode 2869 CFmSfMainWidget::EnabledFlightMode true 91 false 1 91 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-18T16:45:54.915 fmflightcommandbasewidget.cpp CFmFlightCommandBaseWidget::SetStartEndWPIndex 48 SetStartEndWPIndex 0 90 
+DEBUG 2020-05-18T16:45:54.925 fmsfmainwidget.cpp CFmSfMainWidget::EnabledFlightMode 2869 CFmSfMainWidget::EnabledFlightMode true 91 false 1 91 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-18T16:45:54.925 fmflightcommandbasewidget.cpp CFmFlightCommandBaseWidget::SetStartEndWPIndex 48 SetStartEndWPIndex 0 90 
+DEBUG 2020-05-18T16:45:58.984 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotBtnTakeOffClicked 787 slotBtnTakeOffClicked 
+DEBUG 2020-05-18T16:45:58.984 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_SendTakeOffCommand 490 send TakeOff Command 
+DEBUG 2020-05-18T16:45:59.194 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 999 CommandID: 23 
+DEBUG 2020-05-18T16:45:59.194 fmpreparetaskpage.cpp CFmPrepareTaskPage::WriteFlightInfo2DB 609 CFmPrepareTaskPage::WriteFlightInfo2DB 1 91 "-99999.990000" "-99999.990000" 0 -99999 
+DEBUG 2020-05-18T16:45:59.194 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 1125 send Command success 
+ INFO 2020-05-18T16:45:59.667 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:00.683 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:01.623 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:02.573 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:03.602 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:04.612 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:05.641 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:06.620 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T16:46:18.374 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotBtnStartMissionClicked 870 -----------isInVisualMode== false 
+DEBUG 2020-05-18T16:46:18.374 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_SendPauseContinueCommand 519 send StartMission Command 
+DEBUG 2020-05-18T16:46:18.584 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 999 CommandID: 29 
+DEBUG 2020-05-18T16:46:18.584 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 1125 send Command success 
+ INFO 2020-05-18T16:46:19.297 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:20.300 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:21.383 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:22.190 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:23.190 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:24.200 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:25.182 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:34.089 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:34.989 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:35.879 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:36.898 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:37.898 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:38.894 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:39.876 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:40.818 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:41.820 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:42.776 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:43.805 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:44.884 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:45.681 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:46.691 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:47.721 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:48.681 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:49.712 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:50.621 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:51.582 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:52.591 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:53.639 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:54.601 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:55.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:56.504 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:57.622 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:58.481 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:46:59.503 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:47:00.422 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:47:01.393 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:47:19.187 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:47:36.671 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:47:55.328 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:13.002 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:24.702 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:25.737 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:26.700 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:27.620 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:28.610 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:29.600 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:30.594 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:31.605 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:32.504 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:33.487 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:34.517 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:35.486 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:48:49.202 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:49:06.862 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:49:24.530 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:49:43.127 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:00.707 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:19.278 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:26.190 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:27.190 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:28.110 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:29.110 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:30.088 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:32.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:36.016 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:36.996 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:38.918 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:40.887 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:46.783 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:50:54.616 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:05.378 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:06.416 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:07.306 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:08.296 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:13.300 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:25.880 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:30.797 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:37.708 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:42.613 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:43.622 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:44.515 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:45.515 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:46.495 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:47.503 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:48.483 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:49.553 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:50.411 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:51.442 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:52.401 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:53.383 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:54.313 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:55.313 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:56.315 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:51:57.307 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:07.105 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:13.021 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:24.702 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:31.608 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:39.381 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:40.400 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:41.281 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:43.292 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:52:51.115 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:00.904 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:05.819 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:06.781 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:07.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:11.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:12.734 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:13.719 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:18.606 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:27.378 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:30.305 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:32.309 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:33.282 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:34.182 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:35.182 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:37.192 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:40.096 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:54.780 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:56.845 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:57.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:53:58.725 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:01.654 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:04.584 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:05.596 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:06.501 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:07.521 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:08.491 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:12.391 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:13.382 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:14.461 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:15.421 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:16.285 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:17.308 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:18.298 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:25.092 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:31.014 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:48.601 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:50.640 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:53.482 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:54.486 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:55.481 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:56.481 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:57.491 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:54:58.417 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:01.399 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:03.382 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:04.322 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:05.302 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:06.322 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:07.212 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:21.882 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:24.899 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:35.652 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:36.613 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:37.603 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:38.573 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:39.663 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:41.513 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:42.516 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:44.516 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:46.423 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:47.393 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:48.413 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:51.315 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:52.292 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:53.312 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:54.192 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:55.192 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:55:57.184 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:01.088 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:07.025 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:18.693 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:31.391 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:33.401 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:34.418 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:36.279 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:37.311 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:44.197 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:45.197 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:46.097 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:47.077 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:48.097 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:50.090 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:51.011 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:52.021 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:53.030 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:54.019 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:55.050 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:55.910 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:56.920 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:56:59.790 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:01.800 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:02.796 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:03.815 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:04.715 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:05.715 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:06.715 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:08.725 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:12.593 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:28.279 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:31.225 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:48.788 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:53.830 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:54.690 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:55.599 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:57:56.599 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:06.540 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:19.107 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:22.130 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:23.131 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:24.001 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:25.001 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:26.020 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:28.025 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:30.010 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:40.708 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:41.708 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:42.718 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:43.608 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:44.588 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:45.599 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:46.502 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:47.502 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:48.487 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:49.512 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:50.509 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:51.424 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:58:52.414 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:01.218 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:04.221 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:18.868 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:29.624 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:32.515 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:33.516 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:34.486 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:36.511 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:55.110 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T16:59:56.999 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:06.784 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:10.743 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:12.704 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:13.694 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:22.493 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:26.389 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:27.393 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:28.333 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:29.313 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:30.324 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:31.383 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:32.343 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:35.264 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:36.194 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:37.123 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:38.123 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:39.168 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:48.897 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:00:54.910 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:06.491 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:14.385 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:16.346 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:17.294 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:18.294 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:20.194 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:25.097 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:26.132 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:27.112 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:34.940 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:42.693 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:44.693 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:45.839 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:46.611 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:47.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:48.589 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:49.600 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:50.600 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:51.492 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:52.520 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:53.510 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:54.489 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:55.420 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:56.470 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:01:57.416 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:01.307 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:09.167 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:10.113 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:13.123 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:14.010 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:18.975 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:24.824 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:25.804 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:26.814 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:27.724 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:28.714 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:29.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:30.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:36.482 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:48.313 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:55.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:58.127 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:02:59.118 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:00.258 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:00.997 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:01.998 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:02.987 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:04.020 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:04.908 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:05.929 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:06.899 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:07.909 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:09.799 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:12.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:19.597 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:23.519 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:25.489 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:26.533 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:27.463 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:28.393 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:31.311 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:36.211 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:49.015 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:03:55.806 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:06.631 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:08.550 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:09.520 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:10.620 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:13.418 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:16.427 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:17.318 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:18.299 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:19.318 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:20.307 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:24.198 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:25.208 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:26.148 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:27.138 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:28.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:29.097 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:30.100 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:41.901 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:42.972 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:52.605 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:56.531 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:04:58.428 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:01.411 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:07.208 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:08.221 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:13.119 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:15.125 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:19.132 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:22.939 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:23.899 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:24.939 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:25.829 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:26.813 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:27.835 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:30.726 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:31.727 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:32.702 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:33.612 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:34.622 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:36.628 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:43.424 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:05:55.199 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:02.997 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:12.838 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:17.721 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:18.834 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:19.614 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:20.774 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:21.654 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:23.553 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:26.514 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:27.536 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:28.446 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:29.526 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:30.426 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:31.429 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:32.398 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:33.299 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:34.314 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:35.314 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:36.344 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:37.264 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:38.295 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:39.235 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:47.013 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:06:49.034 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:06.623 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:12.528 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:25.245 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:38.959 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:42.799 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:52.720 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:53.662 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:54.509 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:55.500 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:56.529 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:58.567 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:07:59.427 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:00.427 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:01.467 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:02.433 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:03.458 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:04.297 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:09.215 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:10.223 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:11.218 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:12.218 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:13.147 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:14.118 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:19.009 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:31.733 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:36.603 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:55.208 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:08:59.125 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:11.833 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:12.839 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:13.799 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:14.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:17.728 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:20.608 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:22.646 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:26.543 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:29.414 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:30.400 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:31.412 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:32.432 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:48.035 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:49.021 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:50.041 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:51.011 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:51.932 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:52.941 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:53.926 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:54.945 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:55.825 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:56.812 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:57.838 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:58.829 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:09:59.829 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:06.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:08.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:25.206 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:29.106 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:30.104 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:31.094 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:34.994 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:10:42.835 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:00.434 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:01.427 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:19.025 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:22.904 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:23.924 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:24.915 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:25.825 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:26.821 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:27.932 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:30.720 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:31.702 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:32.741 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:33.722 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:34.632 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:36.631 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:37.603 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:55.214 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:11:57.106 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:00.126 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:03.016 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:04.027 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:06.933 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:08.903 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:12.824 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:13.804 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:14.714 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:15.714 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:17.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:31.428 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:32.348 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:33.328 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:34.329 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:35.339 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:36.339 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:37.255 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:38.214 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:39.243 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:40.224 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:41.254 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:42.113 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:43.123 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:44.103 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:45.132 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:49.129 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:12:53.898 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:05.623 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:06.624 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:07.614 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:08.524 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:09.534 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:10.530 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:11.522 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:12.502 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:14.414 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:15.415 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:17.347 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:25.251 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:33.029 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:42.830 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:46.713 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:47.724 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:48.644 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:49.634 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:50.628 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:51.631 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:52.636 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:53.504 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:13:54.535 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:01.472 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:08.201 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:11.098 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:13.129 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:14.208 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:15.118 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:16.058 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:19.038 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:20.918 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:36.631 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:38.518 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:39.547 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:41.447 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:43.446 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:55.111 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:57.121 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:14:59.097 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:01.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:03.002 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:12.753 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:15.716 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:16.726 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:17.606 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:18.647 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:19.636 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:20.645 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:24.617 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:25.519 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:26.419 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:27.424 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:28.399 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:29.407 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:31.323 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:32.314 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:33.314 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:34.303 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:35.312 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:36.232 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:40.121 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:44.032 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:45.022 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:46.012 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:48.921 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:52.849 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:55.850 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:15:57.728 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:04.605 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:06.524 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:07.538 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:08.534 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:10.513 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:13.416 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:15.357 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:17.308 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:25.120 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:26.126 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:29.070 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:31.019 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:32.025 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:34.982 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:35.904 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:36.943 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:42.714 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:47.720 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:48.610 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:49.610 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:51.521 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:56.423 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:57.433 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:58.432 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:16:59.452 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:01.322 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:02.309 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:10.142 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:18.922 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:28.703 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:36.529 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:48.309 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:55.102 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:56.109 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:57.118 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:58.113 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:17:59.018 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:00.024 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:01.054 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:03.918 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:04.917 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:05.907 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:06.847 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:07.827 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:10.751 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:11.761 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:12.731 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:13.722 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:14.711 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:15.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:16.649 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:31.364 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:37.220 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:18:48.912 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:03.648 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:06.534 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:25.107 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:30.011 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:42.717 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:56.419 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:57.427 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:58.327 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:19:59.337 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:00.337 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:01.369 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:02.218 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:03.260 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:04.228 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:05.245 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:06.153 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:07.137 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:08.144 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:13.030 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:14.912 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:15.922 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:16.953 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:17.902 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:18.919 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:19.831 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:36.539 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:49.224 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:20:55.126 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:12.769 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:16.631 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:27.354 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:28.334 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:29.314 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:31.334 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:46.949 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:48.820 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:51.745 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:52.715 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:53.725 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:54.755 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:55.715 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:56.644 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:57.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:58.629 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:21:59.630 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:00.509 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:01.529 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:02.547 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:03.558 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:04.530 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:06.458 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:16.252 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:19.108 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:21.171 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:23.043 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:24.022 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:25.023 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:26.033 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:26.959 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:42.617 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:22:52.436 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:01.252 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:15.829 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:16.824 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:17.874 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:18.834 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:19.724 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:20.721 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:21.763 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:24.653 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:25.646 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:26.605 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:27.635 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:28.516 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:29.523 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:37.331 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:48.116 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:23:54.914 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:05.727 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:06.852 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:07.652 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:08.642 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:12.530 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:17.531 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:18.446 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:19.405 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:20.325 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:21.355 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:22.327 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:23.317 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:24.336 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:25.247 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:26.253 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:27.252 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:28.226 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:29.249 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:30.252 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:31.132 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:44.854 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:45.835 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:46.745 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:47.725 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:48.705 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:49.724 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:50.725 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:24:51.614 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:06.337 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:07.349 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:23.936 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:24.914 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:32.716 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:33.716 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:34.756 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:35.626 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:36.636 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:38.623 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:39.543 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:40.543 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:41.559 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:42.549 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:43.422 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:44.421 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:45.417 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:54.260 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:57.138 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:25:59.140 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:00.142 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:01.051 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:02.101 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:03.041 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:12.857 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:18.653 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:31.360 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:37.261 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:49.931 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:26:54.833 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:09.530 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:12.426 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:13.446 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:16.349 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:18.321 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:20.228 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:22.232 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:23.212 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:24.132 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:26.145 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:30.045 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:31.031 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:32.011 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:32.931 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:33.931 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:34.937 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:35.939 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:36.829 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:37.869 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:39.959 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:41.738 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:48.618 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:27:54.442 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:28:07.274 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:28:19.915 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:28:24.848 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:28:43.327 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:28:45.331 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:00.918 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T17:29:09.235 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCurWpChanged 1614 seq 1001 return home 
+DEBUG 2020-05-18T17:29:09.237 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_RecordBreakPoint 1844 _RecordBreakPoint 8 True -100000 -100000 40.024 116.376 
+DEBUG 2020-05-18T17:29:09.237 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_RecordBreakPoint 1882 Distance greater than 10 meters.RecordBreakpoint:  91 ,Distance =  25.3876 ;Current point =  "40.023985" , "116.375631" ;Last Point= "40.023818" , "116.375428" 
+DEBUG 2020-05-18T17:29:09.237 fmsfmainwidget.cpp CFmSfMainWidget::RecordBreakpoint 4093 RecordBreakpoint 90 "116.375631" "40.023985" 
+ INFO 2020-05-18T17:29:09.751 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:10.731 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:11.731 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:12.731 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:13.609 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:14.618 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:15.650 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:16.620 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:17.532 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:18.539 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:19.540 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:37.255 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:29:54.714 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:13.454 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:30.931 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:37.719 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:38.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:39.739 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:40.659 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:41.642 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+DEBUG 2020-05-18T17:30:42.062 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotBtnPauseContinueClicked 853 slotBtnPauseContinueClicked: "116.367092" "40.036044" 
+DEBUG 2020-05-18T17:30:42.062 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::_SendPauseContinueCommand 513 send Pause Command 
+DEBUG 2020-05-18T17:30:42.242 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 999 CommandID: 28 
+DEBUG 2020-05-18T17:30:42.242 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 1020 Pause Successful true 
+DEBUG 2020-05-18T17:30:42.242 fmd200flightcommandwidget.cpp CFmD200FlightCommandWidget::slotCommandAckSuccess 1125 send Command success 
+ INFO 2020-05-18T17:30:42.651 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:43.619 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:44.579 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:45.539 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:46.549 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:47.553 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:48.512 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:49.434 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:50.419 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:51.451 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:52.451 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:53.462 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:54.332 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:55.332 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:56.352 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:57.342 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:58.249 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:30:59.260 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:31:07.026 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:31:24.646 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:31:43.258 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:00.821 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:18.448 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:31.144 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:36.035 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:37.045 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:37.936 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:32:54.625 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:33:13.133 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:33:30.722 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:33:49.312 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:34:06.943 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:34:24.565 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:34:43.141 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:35:00.770 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:35:19.265 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:35:36.827 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:35:54.419 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:36:13.055 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:36:30.657 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:36:49.228 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:37:06.848 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:37:25.349 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:37:42.970 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:00.532 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:06.432 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:09.351 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:11.366 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:19.171 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:36.748 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:38:55.349 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:39:12.955 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:39:30.535 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:39:49.064 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:40:06.634 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:40:25.294 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:40:42.859 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:41:01.468 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:41:19.027 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:41:36.655 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:41:55.164 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:42:12.752 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:42:31.365 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:42:48.993 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:43:06.553 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:43:25.143 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:43:42.759 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:44:01.251 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:44:18.839 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:44:36.456 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:44:55.078 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:45:12.641 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:45:31.310 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:45:48.864 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:07.358 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:24.956 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:42.561 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:45.465 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:48.470 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:46:50.356 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:01.151 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:02.136 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:06.045 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:07.055 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:37.301 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:47:54.860 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:48:12.467 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:48:31.056 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:48:48.659 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:49:07.257 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:49:24.862 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:49:43.354 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:00.932 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:18.553 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:37.150 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:48.967 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:51.878 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:53.809 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:50:54.731 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:51:13.340 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:51:30.956 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:51:48.441 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:52:07.068 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:52:24.677 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:52:43.258 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:53:00.864 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:53:19.393 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:53:37.159 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:53:54.554 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:54:13.142 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:54:30.758 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:54:49.380 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:55:07.073 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:55:24.541 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:55:43.062 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:56:00.651 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:56:19.264 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:56:36.851 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
+ INFO 2020-05-18T17:56:55.469 v1000 log: camera param1 recv is fail,because recvParam==Q_NULLPTR 
