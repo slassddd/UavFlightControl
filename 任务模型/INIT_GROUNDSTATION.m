@@ -191,7 +191,7 @@ TASK_SET.MavLinkInfo.CustomCmdInfo.num_ReGoIntoPath = 1003; % 开始或重新开始
 TASK_SET.MavLinkInfo.CustomCmdInfo.num_HoverAdjust = 1004; % 定点悬停调整
 TASK_SET.MavLinkInfo.CustomCmdInfo.num_Rotor2Fix = 1006; % 旋翼转固定翼
 TASK_SET.MavLinkInfo.CustomCmdInfo.num_CircleHover = 1007; % 定点绕圈盘旋
-TASK_SET.MavLinkInfo.CustomCmdInfo.num_GroundStandBy = 1008; % 定点绕圈盘旋
+TASK_SET.MavLinkInfo.CustomCmdInfo.num_GroundStandBy = uint8(ENUM_MavlinkStandardCmd.MavCmd_EnterGroundStandby); % 进入地面模式
 % 控制指令 -------------------------------------------------------------
 % 内置指令
 CMD_GoHome = STRUCT_mavlink_msg_id_command_long;
