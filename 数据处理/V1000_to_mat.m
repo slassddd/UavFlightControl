@@ -299,7 +299,9 @@ for i_file = 1:nFile
     cd(dataDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
     %
+    try
     run_PlotFlightData
+    end
 end
 cd(evokeDir)
 timeSpend = toc;

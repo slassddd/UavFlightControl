@@ -122,6 +122,10 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Event_GSKeyMove_East (217),
         Event_GSKeyMove_South (218),
         Event_GSKeyMove_West (219),
+        If_AutoMode_Rotor2Fix_ToGo_SuspendTaskToHomeThenLand_Yes (220),
+        If_AutoMode_Rotor2Fix_ToGo_SuspendTaskToLand_Yes (221),
+        If_AutoMode_Rotor2Fix_ToGo_Fix2Rotor2HoverAdjust_Yes (222),
+        If_AutoMode_Rotor2Fix_ToGo_Fix2Rotor2Home2Land_Yes (223),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

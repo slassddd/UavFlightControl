@@ -10,6 +10,7 @@ classdef ENUM_AutoModeType < Simulink.IntEnumType
         SuspendTaskToHomeThenLand (5),
         Fix2Rotor2HoverAdjust (6),
         PauseInAir (7),
+        Fix2Rotor2Home2Land (8),
     end
 end
 

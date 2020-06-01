@@ -1,10 +1,10 @@
 %% 绘图控制
-plotenable.um482 = false;
-plotenable.WindParam = false;
-plotenable.ublox1 = false;
-plotenable.SensorStatus = false;
-plotenable.RTInfo_Task = false;
-plotenable.gpsCompare = false;
+plotenable.um482 = true;
+plotenable.WindParam = true;
+plotenable.ublox1 = true;
+plotenable.SensorStatus = true;
+plotenable.RTInfo_Task = true;
+plotenable.gpsCompare = true;
 plotenable.PowerConsumer = true;
 %%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
@@ -31,6 +31,7 @@ if plotenable.gpsCompare
 end
 if plotenable.PowerConsumer
     T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+%     T = SingPlot_PowerConsumer0(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
 end
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');

@@ -1,6 +1,4 @@
 % 算法对比： 离线 vs 在线
-% sensors = sensors_SET(1);
-% sensors = sensors_SET(2);
 if ~exist('i_sim')
     i_sim = 1;
 end
@@ -51,20 +49,24 @@ grid on;
 legend('在线','离线')
 %% 位置
 tempLLA = [sensors.Algo_sl.algo_NAV_lat,sensors.Algo_sl.algo_NAV_lon,sensors.Algo_sl.algo_NAV_alt];
-tempLLA = calValidLLA(tempLLA);
+[tempLLA,LL0] = calValidLLA(tempLLA);
 sensors.Algo_sl.posmNED = tempLLA;
 tempLLA = [IN_SENSOR.ublox1.Lat,IN_SENSOR.ublox1.Lon,IN_SENSOR.ublox1.height];
-tempLLA = calValidLLA(tempLLA,sensors.Algo_sl.posmNED(1,1:2));
+tempLLA = calValidLLA(tempLLA,LL0(1:2));
 tempUbloxLLA = tempLLA;
 tempLLA = [IN_SENSOR.um482.Lat,IN_SENSOR.um482.Lon,IN_SENSOR.um482.height];
-tempLLA = calValidLLA(tempLLA,sensors.Algo_sl.posmNED(1,1:2));
+tempLLA = calValidLLA(tempLLA,LL0(1:2));
 tempUm482LLA = tempLLA;
+tempLLA = [navFilterMARGRes.Algo.algo_curr_pos_0,navFilterMARGRes.Algo.algo_curr_pos_1,navFilterMARGRes.Algo.algo_curr_pos_2];
+tempLLA = calValidLLA(tempLLA,LL0(1:2));
+tempOfflineAlgoLLA = tempLLA;
 subplot(332)
 if onlineFlag
     plot(sensors.IMU.time_imu(tmpStartIdx:4:end)-t0_cor,sensors.Algo_sl.posmNED(idx_sel,1));hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.posmNED(:,1));hold on;
+    plot(navFilterMARGRes.Algo.time_algo,tempOfflineAlgoLLA(:,1));hold on;
+%     plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.posmNED(:,1));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,1));hold on;
@@ -81,7 +83,8 @@ if onlineFlag
     plot(sensors.IMU.time_imu(tmpStartIdx:4:end)-t0_cor,sensors.Algo_sl.posmNED(idx_sel,2));hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.posmNED(:,2));hold on;
+    plot(navFilterMARGRes.Algo.time_algo,tempOfflineAlgoLLA(:,2));hold on;
+%     plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.posmNED(:,2));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,2));hold on;
@@ -101,7 +104,10 @@ if onlineFlag
     plot(sensors.IMU.time_imu(tmpStartIdx:4:end)-t0_cor,data(idx_sel));hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo,-out(i_sim).NavFilterRes.state.Data(:,7));hold on;
+    tempheight = -navFilterMARGRes.Algo.posmNED(:,3);
+    tempheight(tempheight == 0) = nan;
+    plot(navFilterMARGRes.Algo.time_algo,tempheight);hold on;
+%     plot(navFilterMARGRes.Algo.time_algo,-out(i_sim).NavFilterRes.state.Data(:,7));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.height);hold on;
@@ -171,13 +177,14 @@ grid on;
 legend('在线','离线','ublox','um482')
 
 %%
-function tempLLA = calValidLLA(tempLLA,LL0)
+function [tempLLA,LL0] = calValidLLA(tempLLA,LL0)
 tempZeroData = tempLLA(tempLLA(:,1)==0,:);
 tempLLA(tempLLA(:,1)==0,:) = nan*tempZeroData;
 tempZeroNum = size(tempZeroData,1);
 try
-    tempLLA(tempZeroNum+1:end,:) = lla2flat(tempLLA(tempZeroNum+1:end,:),LL0,0,0);    
+    LL0 = LL0;
 catch
-    tempLLA(tempZeroNum+1:end,:) = lla2flat(tempLLA(tempZeroNum+1:end,:),tempLLA(tempZeroNum+1,1:2),0,0);
+    LL0 = tempLLA(tempZeroNum+1,1:2);    
 end
+tempLLA(tempZeroNum+1:end,:) = lla2flat(tempLLA(tempZeroNum+1:end,:),LL0,0,0);
 end
