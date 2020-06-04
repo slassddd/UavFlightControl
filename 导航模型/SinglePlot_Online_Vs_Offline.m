@@ -55,7 +55,8 @@ tempLLA = [IN_SENSOR.ublox1.Lat,IN_SENSOR.ublox1.Lon,IN_SENSOR.ublox1.height];
 tempLLA = calValidLLA(tempLLA,LL0(1:2));
 tempUbloxLLA = tempLLA;
 tempLLA = [IN_SENSOR.um482.Lat,IN_SENSOR.um482.Lon,IN_SENSOR.um482.height];
-tempLLA = calValidLLA(tempLLA,LL0(1:2));
+idxUm482 = find(tempLLA(:,1) ~= 0 & tempLLA(:,2) ~= 0);
+tempLLA = calValidLLA(tempLLA(idxUm482,:),LL0(1:2));
 tempUm482LLA = tempLLA;
 tempLLA = [navFilterMARGRes.Algo.algo_curr_pos_0,navFilterMARGRes.Algo.algo_curr_pos_1,navFilterMARGRes.Algo.algo_curr_pos_2];
 tempLLA = calValidLLA(tempLLA,LL0(1:2));
@@ -72,7 +73,7 @@ if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,1));hold on;
 end
 if um482Flag % um482
-    plot(IN_SENSOR.um482.time,tempUm482LLA(:,1));hold on;
+    plot(IN_SENSOR.um482.time(idxUm482),tempUm482LLA(:,1));hold on;
 end
 xlabel('time (s)')
 ylabel('Pn [m]')
@@ -90,7 +91,7 @@ if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,2));hold on;
 end
 if um482Flag % um482
-    plot(IN_SENSOR.um482.time,tempUm482LLA(:,2));hold on;
+    plot(IN_SENSOR.um482.time(idxUm482),tempUm482LLA(:,2));hold on;
 end
 xlabel('time (s)')
 ylabel('Pe [m]')

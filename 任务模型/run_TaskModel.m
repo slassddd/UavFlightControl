@@ -15,3 +15,4 @@ out = sim('TESTENV_Task');
 toc
 %% Êý¾Ý»­Í¼
 plot_simdata
+plot_taskLogTable

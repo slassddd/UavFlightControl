@@ -227,8 +227,12 @@ if ~isempty(idxPhase)
     test = 1;
 else
     nPhase = 1;
-    temp = length(timeAll)-1;
-    idxSel{1} = 1:temp;
+    if length(timeAll) > 1
+        temp = length(timeAll)-1;
+        idxSel{1} = 1:temp;
+    else
+        idxSel{1} = 1;
+    end
 end
 for i_p = 1:nPhase
     tempStruct(i_p).time = timeAll(idxSel{i_p});
@@ -253,14 +257,14 @@ for i_p = 1:nPhase
     if i_p == 1
         Struct = tempStruct;
     else
-        Struct.du = Struct.du + tempStruct(i_p).du;
-        Struct.pErr = Struct.pErr + tempStruct(i_p).pErr;
-        Struct.powerPerSec_up = Struct.powerPerSec_up + tempStruct(i_p).powerPerSec_up;
-        Struct.powerPerSec_mid = Struct.powerPerSec_mid + tempStruct(i_p).powerPerSec_mid;
-        Struct.powerPerSec_low = Struct.powerPerSec_low + tempStruct(i_p).powerPerSec_low;
-        Struct.duPerPower_low = Struct.duPerPower_low + tempStruct(i_p).duPerPower_low;
-        Struct.powerPerSec_mid = Struct.powerPerSec_mid + tempStruct(i_p).powerPerSec_mid;
-        Struct.duPerPower_up = Struct.duPerPower_up + tempStruct(i_p).duPerPower_up;
+        Struct.du = [Struct.du, tempStruct(i_p).du];
+        Struct.pErr = [Struct.pErr, tempStruct(i_p).pErr];
+        Struct.powerPerSec_up = [Struct.powerPerSec_up, tempStruct(i_p).powerPerSec_up];
+        Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
+        Struct.powerPerSec_low = [Struct.powerPerSec_low, tempStruct(i_p).powerPerSec_low];
+        Struct.duPerPower_low = [Struct.duPerPower_low, tempStruct(i_p).duPerPower_low];
+        Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
+        Struct.duPerPower_up = [Struct.duPerPower_up, tempStruct(i_p).duPerPower_up];
         Struct.averageCurrent = [Struct.averageCurrent tempStruct(i_p).averageCurrent];
         Struct.averageVoltage = [Struct.averageVoltage tempStruct(i_p).averageVoltage];
         Struct.averagePower = [Struct.averagePower tempStruct(i_p).averagePower];
@@ -268,7 +272,15 @@ for i_p = 1:nPhase
 end
 Struct.t0 = tempStruct(1).t0;
 Struct.tf = tempStruct(end).tf;
-Struct.averageCurrent = abs(mean(Struct.averageCurrent)/1000);
-Struct.averageVoltage = mean(Struct.averageVoltage)/1000;
-Struct.averagePower = abs(mean(Struct.averagePower)/1000/1000);
-Struct.estimateWh = 1/3600 * Struct.du * abs(Struct.averagePower);
+Struct.du = round(sum(Struct.du),2);
+Struct.pErr = round(sum(Struct.pErr),2);
+Struct.powerPerSec_up = round(mean(Struct.powerPerSec_up),3);
+Struct.powerPerSec_mid = round(mean(Struct.powerPerSec_mid),3);
+Struct.powerPerSec_low = round(mean(Struct.powerPerSec_low),3);
+Struct.duPerPower_low = round(mean(Struct.duPerPower_low),3);
+Struct.powerPerSec_mid = round(mean(Struct.powerPerSec_mid),3);
+Struct.duPerPower_up = round(mean(Struct.duPerPower_up),3);
+Struct.averageCurrent = round(abs(mean(Struct.averageCurrent)/1000),3);
+Struct.averageVoltage = round(mean(Struct.averageVoltage)/1000,3);
+Struct.averagePower = round(abs(mean(Struct.averagePower)/1000/1000),3);
+Struct.estimateWh = round(1/3600 * Struct.du * abs(Struct.averagePower),3);

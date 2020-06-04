@@ -167,6 +167,10 @@ switch um482_BESTPOS
         sigmaLat = max(1,Sensors.um482.delta_lat);
         sigmaLon = max(1,Sensors.um482.delta_lon);
         sigmaAlt = max(1.2,Sensors.um482.delta_height);
+        
+%         sigmaLat = max(0.1,Sensors.um482.delta_lat);
+%         sigmaLon = max(0.1,Sensors.um482.delta_lon);
+%         sigmaAlt = max(0.12,Sensors.um482.delta_height);        
     otherwise % 其他可用解
         sigmaLat = max(0.6,Sensors.um482.delta_lat);
         sigmaLon = max(0.6,Sensors.um482.delta_lon);
@@ -242,11 +246,13 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
-    if ublox1_is_available
-        tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
-    else
-        tmpK_residual = [1,1,1];
-    end
+%     if ublox1_is_available
+%         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
+%         tmpK_residual(tmpK_residual<1) = 1;
+%     else
+%         tmpK_residual = [1,1,1];
+%     end
+    tmpK_residual = [1,1,1];
     for ii = 3
         if ii == 3
             tmpK_bias = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^1.5);

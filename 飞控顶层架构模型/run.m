@@ -13,7 +13,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['20200418\仿真数据_log_1_V1000-24#V31132固件管家点击起飞后飞机快速向右后方移动']};    
     dataFileNames = {['SubFolder_飞行数据\20200506\仿真数据_90dae1f08ccd46efba27d5c1121debf6']};    
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
-    dataFileNames = {['SubFolder_飞行数据\20200531\仿真数据_2020-05-31 09-34-03 直线飞不爬升']};    
+    dataFileNames = {['SubFolder_飞行数据\20200604\仿真数据_log_宝坻 V1000-55# 手动飞行 重心76mm']};    
     
     
 %     dataFileNames = {['20200501\仿真数据_lgo2 ']};    
@@ -120,7 +120,7 @@ switch GLOBAL_PARAM.ModeSel.simMode
         % end
         % out = parsim(SIM_FLIGHTDATA_IN,'RunInBackground','on',...
         %                                'TransferBaseWorkspaceVariables','on');
-        out = sim(modelname);
+        tic,out = sim(modelname);toc
         %% 数据后处理
         [navFilterMARGRes,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_Navi.Ts_Base);
         %%
@@ -211,7 +211,6 @@ if plotEnable
             plot(NKF1(1:end-1,2)*1e-6,NKF1(1:end-1,12));hold on;
             plot(navFilterMARGRes.Algo.time_algo,out.NavFilterRes.state.Data(:,7));hold on;
         end
-           
         if 1
             % 算法对比： 离线 vs 在线
             SinglePlot_Online_Vs_Offline

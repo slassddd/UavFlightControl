@@ -98,7 +98,7 @@ if isempty(filter_errorstate)
     filter_errorstate.AccelerometerNoise = double(MVOParam.std_acc.^2);
     filter_errorstate.GyroscopeBiasNoise = double(MVOParam.std_gyro_bias.^2);
     filter_errorstate.GyroscopeNoise = double(MVOParam.std_gyro.^2);
-    MVOParam.P0_MARG(1:4) = [1,0.1,0.1,1];
+    MVOParam.P0_MARG(1:4) = [0.1,0.1,0.1,0.1];
     filter_errorstate.StateCovariance = double(diag(MVOParam.P0_MARG));
     
     accel_pre = accel;
@@ -108,7 +108,7 @@ if isempty(filter_errorstate)
     gpsvel_pre = ublox1_gpsvel;
     alt_pre = alt;
     range_pre = range;
-    meanAcc = single([0,0,0]);
+    meanAcc = single([0,0,9.8]);
     meanGyro = single([0,0,0]);
     meanMag = single([0,0,0]);
     
@@ -200,11 +200,13 @@ if rem(step_imu,kScale_imu) == 0
     filter_errorstate.AccelerometerNoise = double(MVOParam.std_acc.^2);
     filter_errorstate.GyroscopeBiasNoise = double(MVOParam.std_gyro_bias.^2);
     filter_errorstate.GyroscopeNoise = double(MVOParam.std_gyro.^2);
-    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-        tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
-    else
-        tmpK_residual = [1,1,1];
-    end
+%     if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+%         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
+%         tmpK_residual(tmpK_residual<1) = 1;
+%     else
+%         tmpK_residual = [1,1,1];
+%     end
+    tmpK_residual = [1,1,1];
     for ii = 3
         tmpK_bias = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^1.5);
         tmpK = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^3);
@@ -259,6 +261,23 @@ if MVOParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENU
         Rpos_um482 = double(diag([sigmaLat,sigmaLon,10]).^2);
     end
     filter_errorstate.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
+end
+% 姿态融合——磁力计和加计ecompass
+if ~magRejectForEver && magUpdateFlag
+    %% 利用磁力计/加计计算粗姿态辅助更新姿态四元数，防止初始化过程造成的一些问题
+    enableMagQuatFuse = true; 
+    if enableMagQuatFuse && ... % 使能
+            stayStillCondition.isStatic && ... % 静态
+            SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health % 磁力计健康
+        tempMeanAcc = meanAcc;
+        quat = compact(ecompass(double(tempMeanAcc),double(mag)));
+        dcm = quat2dcm_e(quat);
+        filter_errorstate.fusemvo([0,0,0],1e10*[1 1 1],dcm,0.01*eye(3));
+        %         for i_q = 1:4
+        %             Rq = 0.05^2;
+%         	filter_errorstate.correct(i_q,quat(i_q),Rq);
+%         end
+    end
 end
 % 雷达高融合
 % 气压高融合
@@ -370,4 +389,19 @@ lla(:,2) = dLon*180/pi + ll0(2);
 %
 %     % check and fix angle wrapping in longitude
 %     [~, lla(:,2)] = wraplongitude( lla(:,2), 'deg', '180' );
+end
+%%
+function dcm = quat2dcm_e(quat)
+qin = quatnormalize( quat );
+dcm = zeros(3,3);
+
+dcm(1,1,:) = qin(:,1).^2 + qin(:,2).^2 - qin(:,3).^2 - qin(:,4).^2;
+dcm(1,2,:) = 2.*(qin(:,2).*qin(:,3) + qin(:,1).*qin(:,4));
+dcm(1,3,:) = 2.*(qin(:,2).*qin(:,4) - qin(:,1).*qin(:,3));
+dcm(2,1,:) = 2.*(qin(:,2).*qin(:,3) - qin(:,1).*qin(:,4));
+dcm(2,2,:) = qin(:,1).^2 - qin(:,2).^2 + qin(:,3).^2 - qin(:,4).^2;
+dcm(2,3,:) = 2.*(qin(:,3).*qin(:,4) + qin(:,1).*qin(:,2));
+dcm(3,1,:) = 2.*(qin(:,2).*qin(:,4) + qin(:,1).*qin(:,3));
+dcm(3,2,:) = 2.*(qin(:,3).*qin(:,4) - qin(:,1).*qin(:,2));
+dcm(3,3,:) = qin(:,1).^2 - qin(:,2).^2 - qin(:,3).^2 + qin(:,4).^2;
 end

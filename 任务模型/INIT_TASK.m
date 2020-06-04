@@ -2,6 +2,7 @@
 load('IOBusInfo_V1000')
 %% º½ÏßËã·¨²ÎÊı
 Ts_Task.Ts_base = 0.036;
+
 TASK_SET.PathPlanner.reachFlag_point_dist = 30; % µ½´ïµãµÄ¾àÀëÅĞ¶¨ [m]
 TASK_SET.PathPlanner.reachFlag_line_dist = 0.5;
 TASK_SET.PathPlanner.reachDetermineMode = 2; % 0:ÅĞ¶Ïµã¾à  1£ºÅĞ¶Ï¹ıÏß   2£ºÅĞ¶Ïµã¾àºÍ¹ıÏß
@@ -27,7 +28,7 @@ TASK_SET.PathPlanner.minHeightInFix = 30;   % ¹Ì¶¨ÒíÄ£Ê½ÏÂ×îĞ¡¸ß¶È,¸ÃÖµ²»Ó¦´óÓÚÀ
 TASK_SET.PathPlanner.threshold_deg_attiStable = 15;   % ¸©Ñö¹ö×ªÎÈ¶¨ÅĞ¶¨ãĞÖµ
 TASK_SET.PathPlanner.cruiseSpeed_cruise = 19; % ¹Ì¶¨ÒíÑ²º½ËÙ¶È
 TASK_SET.PathPlanner.fenseDist = 20e3; % µç×ÓÀé°Ê¾àÀëhomeµã¾àÀë
-TASK_SET.PathPlanner.low_battery_alarm_set = 20; % µÍµçÁ¿±¨¾¯°Ù·Ö±È
+TASK_SET.PathPlanner.low_battery_alarm_set = 30; % µÍµçÁ¿±¨¾¯°Ù·Ö±È
 TASK_SET.PathPlanner.severe_low_battery_alarm_set = 10; % ÑÏÖØµÍµçÁ¿±¨¾¯°Ù·Ö±È
 TASK_SET.PathPlanner.enterStallAirSpeed = 8; % ÅĞ¶Ï½øÈëÊ§ËÙµÄ¿ÕËÙãĞÖµ
 TASK_SET.PathPlanner.enterStallGroundSpeed = 2; % ÅĞ¶Ï½øÈëÊ§ËÙµÄµØËÙãĞÖµ
@@ -50,5 +51,7 @@ TASK_SET.PathPlanner.timeThreshold_Fix2Rotor = 4; % ¹Ì¶¨Òí×ªĞıÒíãĞÖµ,[sec]
 TASK_SET.PathPlanner.cruiseSpeed_rotorMode = 5; % ĞıÒíÄ£Ê½Æ½·ÉËÙ¶È£¬[m/s]
 TASK_SET.PathPlanner.minAirspeed_fixAllowed = 18; % ×îµÍ¹Ì¶¨ÒíÈİĞí¿ÕËÙ£¬[m/s]
 TASK_SET.PathPlanner.windSpeed_WindSafe = 13.8; % ´ó·ç·µº½·çËÙãĞÖµ£¬[m/s]
+TASK_SET.PathPlanner.logDataBufferSize = 32; % Êı¾İ¼ÇÂ¼buffer size
+TASK_SET.PathPlanner.logDataOutSize = 3; % Êı¾İ¼ÇÂ¼output size
 
 TaskParam = TASK_SET.PathPlanner;

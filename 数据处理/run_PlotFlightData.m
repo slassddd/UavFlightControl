@@ -31,7 +31,6 @@ if plotenable.gpsCompare
 end
 if plotenable.PowerConsumer
     T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
-%     T = SingPlot_PowerConsumer0(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
 end
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');
@@ -55,5 +54,7 @@ save(perfMatFileName,'T')
 %     perfDataAll(1) = perfInfo;
 % end
 
-% figure;
-% plotEnum(IN_SENSOR.IMU1.time,SL.Debug_Task_RTInfo.Task)
+figure;
+tempTime = IN_SENSOR.IMU1.time(1:16:end);
+tempTime(end) = [];
+plotEnum(tempTime,SL.Debug_Task_RTInfo.Task)
