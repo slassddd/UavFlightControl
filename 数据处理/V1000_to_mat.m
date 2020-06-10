@@ -45,7 +45,7 @@ for i_file = 1:nFile
     else
         FileName = FileNames{i_file};
     end  
-    BLOCK_SIZE = 288; % 256£¬288
+    BLOCK_SIZE = 296; % 256£¬288, 296
     fp = fopen([PathName,'\\',FileName],'r');
     datas{i_file} = fread(fp);
     fclose(fp);

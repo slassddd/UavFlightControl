@@ -9,6 +9,7 @@ flag_struct = '@@';
 validVarNum = 0;
 template1 = 'temp = reshape([data(%d:%d:end,%d:%d)''],1,[]);\n';
 template2 = '%s=double(typecast(uint8(temp),''%s'')'')/%d*%.10f;\n';
+template3 = 'temp = reshape([data(%s,%d:%d)''],1,[]);\n';
 structName = 'TempName';
 for i = 1:size(decodeString)
     %     fprintf('%s\n',decodeString{i});
@@ -54,10 +55,15 @@ for i = 1:size(decodeString)
         type0 = content(1:sep1Place(1)-1);
         if length(sep1Place) == 2
             typef = content(sep1Place(1)+1:sep1Place(2)-1);
-            scaleData = str2num(content(sep1Place(2)+1:end));
+            ttemp = content(sep1Place(2)+1:end);
+            ttemp = strrep(ttemp,'f','');
+            scaleData = eval(ttemp);
         else
             typef = content(sep1Place(1)+1:end);
             scaleData = 1;
+        end
+        if isempty(scaleData)
+            error('')
         end
         fprintf('[%s:%s:%d]\t',type0,typef,scaleData);
         switch typef
@@ -125,19 +131,22 @@ for i = 1:size(decodeString)
         sep1Place = strfind(content,':');
         block_cnt = str2num(content(1:sep1Place(1)-1));
         block_idx = str2num(content(sep1Place(1)+1:sep1Place(2)-1));
-        if block_idx == 0
-            block_idx = block_cnt+1;
-        end
+%         if block_idx == 0
+%             block_idx = block_cnt+1;
+%         end
         bloack_offset = str2num(content(sep1Place(2)+1:end));
         fprintf('[%d:%d:%d]\n',block_cnt,block_idx,bloack_offset);
         %% Éú³Édecode´úÂë ------------------------
-%         out_decodeString{2*validVarNum-1,1} = sprintf(template1,block_idx,block_cnt+1,bloack_offset+1,bloack_offset+2);
-%         out_decodeString{2*validVarNum,1} = sprintf(template2,varname,typeSymble,number1,scaleData);        
-        out_decodeString{3*validVarNum-2,1} = sprintf(template1,block_idx,block_cnt+1,bloack_offset+1,bloack_offset+1+biasNum);
+        indexStr = sprintf('find(mod(Count,%d)==%d)',block_cnt+1,block_idx);
+        out_decodeString{3*validVarNum-2,1} = sprintf( template3,indexStr,bloack_offset+1,bloack_offset+1+biasNum);
+%         fprintf('%s\n',varname);
+        fprintf('\t%s\n',out_decodeString{3*validVarNum-2,1});
+%         out_decodeString{3*validVarNum-2,1} = sprintf(template1,block_idx,block_cnt+1,bloack_offset+1,bloack_offset+1+biasNum);
+%         fprintf('2: %s\n',out_decodeString{3*validVarNum-2,1});
         out_decodeString{3*validVarNum-1,1} = sprintf(template2,varname,typeSymble,number1,scaleData);
         out_decodeString{3*validVarNum,1} = sprintf('%s.%s = %s; %% create struct\n',structName,varname,varname);
     end
-end
+end   
 autoDecodeFileName = 'V1000_decode_auto.m';
 fileID = fopen(autoDecodeFileName,'w');
 baseTimeStr = sprintf('baseIMUtime = IN_SENSOR.IMU1.time;\n');

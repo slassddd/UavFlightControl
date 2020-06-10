@@ -29,8 +29,8 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 2e3;
-        lat_space = 200;
+        lon_right = 1.5e3;
+        lat_space = 100;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
@@ -50,6 +50,7 @@ switch pathExmpale
             end
             TASK_SET.PATH.paths_m(i,:) = [numLine*lat_space, lon_pos, pathHeight];
         end
+%         TASK_SET.PATH.paths_m(5,:) = TASK_SET.PATH.paths_m(4,:);
         angle = 0*pi;
         DCM = [cos(angle) sin(angle);
             -sin(angle) cos(angle);];
@@ -87,7 +88,7 @@ for i = 2:TASK_SET.PATH.maxNum
     end
 end
 %%
-pathSimMode = 'sim'; % 'sim' 'flight'
+pathSimMode = 'flight'; % 'sim' 'flight'
 switch pathSimMode
     case 'sim'
         for i = 1:TASK_SET.PATH.maxNum
@@ -101,7 +102,7 @@ switch pathSimMode
             STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
         end
     case 'flight'
-        filename = '地面站log_20200519_条带航线1.log';
+        filename = 'bb3a77e6787849198733a699b82b4be3(7).log';
         LogWPdata = importGroundStationLog(filename);
         for i = 1:TASK_SET.PATH.maxNum
             if i <= length(LogWPdata)

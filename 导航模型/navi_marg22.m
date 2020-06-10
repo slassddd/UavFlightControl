@@ -164,9 +164,9 @@ switch um482_BESTPOS
         %         sigmaLat = max(0.02,Sensors.um482.delta_lat);
         %         sigmaLon = max(0.02,Sensors.um482.delta_lon);
         %         sigmaAlt = max(0.05,Sensors.um482.delta_height);       
-        sigmaLat = max(1,Sensors.um482.delta_lat);
-        sigmaLon = max(1,Sensors.um482.delta_lon);
-        sigmaAlt = max(1.2,Sensors.um482.delta_height);
+        sigmaLat = max(0.8,Sensors.um482.delta_lat);
+        sigmaLon = max(0.8,Sensors.um482.delta_lon);
+        sigmaAlt = max(1,Sensors.um482.delta_height);
         
 %         sigmaLat = max(0.1,Sensors.um482.delta_lat);
 %         sigmaLon = max(0.1,Sensors.um482.delta_lon);
@@ -202,7 +202,7 @@ normalizedRes_mag = res_mag./ sqrt( diag(resCov_mag).' );
 residual_mag = all(abs(normalizedRes_mag)<3);
 if ~residual_mag
     mag_resReject_num = mag_resReject_num + 1;
-    if mag_resReject_num > 50 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
+    if mag_resReject_num > 5000 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
         magRejectForEver = true;
     end
 end
@@ -237,8 +237,8 @@ um482_is_available = ...
 % SensorUpdateFlag
 % if imuUpdateFlag
 step_imu = step_imu + 1;
-temp_gyro = 5;
-temp_acc = 5;
+temp_gyro = 3;
+temp_acc = 3;
 meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
@@ -294,7 +294,7 @@ if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.m
 end
 % ublox1融合
 if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
-        ublox1UpdateFlag && MARGParam.fuse_enable.gps % && clock_sec < 700% gps 更新
+        ublox1UpdateFlag && MARGParam.fuse_enable.gps % && clock_sec < 200% gps 更新
     step_ublox = step_ublox + 1;
     if ~ZVCenable
         Rpos = double(Sensors.ublox1.pDop^1.5*Rpos);
@@ -358,13 +358,18 @@ posNED = stateEst(5:7)';
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = true;
 if fuseVdWithEKFandGPS
-    k = max(1,abs(accel(3)-9.8));
-    temp = min(0.6,1/k^0.8);
-    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-        fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
-        stateEst(10) = fuseVd;
+    if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
+            (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
+        k = max(1,abs(accel(3)-9.8));
+        temp = min(0.6,1/k^0.8);
+        if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+            fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+            stateEst(10) = fuseVd;
+        end
+    else
+        
     end
-%     if SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
+    %     if SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
 %         fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
 %         stateEst(10) = fuseVd;
 %     end    

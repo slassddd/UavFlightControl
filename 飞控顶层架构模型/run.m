@@ -15,7 +15,6 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200604\仿真数据_log_宝坻 V1000-55# 手动飞行 重心76mm']};    
     
-    
 %     dataFileNames = {['20200501\仿真数据_lgo2 ']};    
      
     nFlightDataFile = length(dataFileNames);
