@@ -122,7 +122,7 @@ switch GLOBAL_PARAM.ModeSel.simMode
         tic,out = sim(modelname);toc
         %% 数据后处理
         [navFilterMARGRes,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_Navi.Ts_Base);
-        %%
+        %%  
         timeSpend = toc;
         fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
     case 'simulink_simdata'

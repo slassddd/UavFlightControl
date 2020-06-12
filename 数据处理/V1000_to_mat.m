@@ -85,7 +85,17 @@ for i_file = 1:nFile
     V1000_decode_simulation
     V1000_decode_fusionDebug
     V1000_decode_auto
-    SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);
+    SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
+    %% 对齐数据
+    Bus_TASK_WindParam = alignDimension(Bus_TASK_WindParam);
+    IN_SENSOR.baro1 = alignDimension(IN_SENSOR.baro1);
+    IN_SENSOR.mag1 = alignDimension(IN_SENSOR.mag1);
+    IN_SENSOR.mag2 = alignDimension(IN_SENSOR.mag2);
+    IN_SENSOR.um482 = alignDimension(IN_SENSOR.um482);
+    IN_SENSOR.radar1 = alignDimension(IN_SENSOR.radar1);
+    IN_SENSOR.ublox1 = alignDimension(IN_SENSOR.ublox1);
+    IN_SENSOR.airspeed1 = alignDimension(IN_SENSOR.airspeed1);
+    %%
     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
     figure;
     plot(IN_SENSOR.ublox1.time, velHeading,'r');hold on;
@@ -287,6 +297,7 @@ for i_file = 1:nFile
     tempSensor = sensors(i_file);
     clear sensors
     sensors = tempSensor;
+
     save(saveFileName{i_file},'IN_SENSOR','sensors','Out_initValue','stepInfo','Out_Sensors')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];

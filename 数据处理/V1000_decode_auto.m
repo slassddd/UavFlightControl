@@ -550,17 +550,17 @@ temp = reshape([data(find(mod(Count,4)==2),115:116)'],1,[]);
 message=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 SL.Debug_TaskLogData.message = message; % create struct
 temp = reshape([data(find(mod(Count,4)==2),117:120)'],1,[]);
-var10=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+var10=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.Debug_TaskLogData.var10 = var10; % create struct
 temp = reshape([data(find(mod(Count,4)==2),121:124)'],1,[]);
-var11=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+var11=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.Debug_TaskLogData.var11 = var11; % create struct
 temp = reshape([data(find(mod(Count,4)==2),125:128)'],1,[]);
-var12=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+var12=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.Debug_TaskLogData.var12 = var12; % create struct
 temp = reshape([data(find(mod(Count,4)==2),129:132)'],1,[]);
-var13=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+var13=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.Debug_TaskLogData.var13 = var13; % create struct
 temp = reshape([data(find(mod(Count,4)==2),133:136)'],1,[]);
-var14=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+var14=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.Debug_TaskLogData.var14 = var14; % create struct

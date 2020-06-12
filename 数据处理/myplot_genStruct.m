@@ -54,6 +54,7 @@ data = [sensors(i_file).Algo.algo_curr_pos_0,sensors(i_file).Algo.algo_curr_pos_
 data0 = data(1,:);
 sensors(i_file).Algo.posmNED = lla2flat(data,data0(1:2),0,0);
 % ------- sl算法 ---------
+% sensors(i_file) = addStructDataTime(sensors(i_file),IN_SENSOR.IMU1.time);
 data = data_slalgo_txt; 
 header = 'sensors(i_file).Algo_sl';
 for i_child = 1:length(data)
@@ -61,7 +62,25 @@ for i_child = 1:length(data)
     str = sprintf('%s.%s = %s;',header,childName,childName);
     eval(str);
 end
-data = [sensors(i_file).Algo_sl.algo_NAV_lat,sensors(i_file).Algo_sl.algo_NAV_lon,sensors(i_file).Algo_sl.algo_NAV_alt];
+%% 数据对齐
+sensors.Algo_sl = alignDimension(sensors.Algo_sl);
+%%
+try
+    tempData1 = sensors(i_file).Algo_sl.algo_NAV_lat;
+    tempData2 = sensors(i_file).Algo_sl.algo_NAV_lon;
+    tempData3 = sensors(i_file).Algo_sl.algo_NAV_alt;
+    tempLen(1) = length(tempData1);
+    tempLen(2) = length(tempData2);
+    tempLen(3) = length(tempData3);
+    idxEnd = max(tempLen);
+    tempData1(idxEnd) = tempData1(idxEnd-1);
+    tempData2(idxEnd) = tempData2(idxEnd-1);
+    tempData3(idxEnd) = tempData3(idxEnd-1);
+    data = [tempData1 tempData2 tempData3];
+%     data = [sensors(i_file).Algo_sl.algo_NAV_lat(1:idxEnd),sensors(i_file).Algo_sl.algo_NAV_lon(1:idxEnd),sensors(i_file).Algo_sl.algo_NAV_alt(1:idxEnd)];
+catch
+    
+end
 data0 = data(1,:);
 sensors(i_file).Algo_sl.posmNED = lla2flat(data,data0(1:2),0,0);
 %%
@@ -82,6 +101,7 @@ if 0
     plot(sensors(i_file).Algo.time_algo,sensors(i_file).Algo.posmNED(:,1));hold on;plot(sensors(i_file).GPS.time_ublox,sensors(i_file).GPS.posmNED(:,1));hold on;
     plot(sensors(i_file).Algo.time_algo,sensors(i_file).Algo.algo_curr_pos_0,'r');hold on;plot(sensors(i_file).GPS.time_ublox,sensors(i_file).GPS.ublox_lat,'k');hold on;
 end
-
+%% 数据对齐
+%%
 
  

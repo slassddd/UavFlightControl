@@ -32,6 +32,10 @@ end
 if plotenable.PowerConsumer
     T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
 end
+if plotenable.TaskLogData
+    SingPlot_TaskLogData;
+end
+
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');
 tempFileNames(tmpIdx:end) = [];

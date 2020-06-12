@@ -330,7 +330,9 @@ idxspan = [1:stepSpace:stepNum];
 for i = 1:size(data,2)
     iplot = iplot + 1;
     subplot(nrow,3,iplot)
+    try
     plot(time(idxspan),data(idxspan,i),'color',plotOpt.color{idx_color},'linewidth',plotOpt.linewidth(1),'linestyle',plotOpt.linestyle{idx_style});
+    end
     hold(plotOpt.hold);
     grid(plotOpt.grid);
     xlabel(plotOpt.xlabel)
