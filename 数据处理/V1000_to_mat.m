@@ -298,7 +298,7 @@ for i_file = 1:nFile
     clear sensors
     sensors = tempSensor;
 
-    save(saveFileName{i_file},'IN_SENSOR','sensors','Out_initValue','stepInfo','Out_Sensors')
+    save(saveFileName{i_file},'IN_SENSOR','sensors','','Out_initValue','stepInfo','Out_Sensors')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系

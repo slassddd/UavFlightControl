@@ -6,6 +6,8 @@ plotenable.SensorStatus = true;
 plotenable.RTInfo_Task = true;
 plotenable.gpsCompare = true;
 plotenable.PowerConsumer = true;
+plotenable.TaskLogData = true;
+plotenable.FlightPerf = true;
 %%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
@@ -35,6 +37,9 @@ end
 if plotenable.TaskLogData
     SingPlot_TaskLogData;
 end
+if plotenable.FlightPerf
+    SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
+end
 
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');
@@ -59,6 +64,4 @@ save(perfMatFileName,'T')
 % end
 
 figure;
-tempTime = IN_SENSOR.IMU1.time(1:16:end);
-tempTime(end) = [];
-plotEnum(tempTime,SL.Debug_Task_RTInfo.Task)
+plotEnum(SL.Debug_Task_RTInfo.time_cal,SL.Debug_Task_RTInfo.Task)

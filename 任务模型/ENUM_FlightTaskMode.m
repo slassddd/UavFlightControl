@@ -3,7 +3,7 @@ classdef ENUM_FlightTaskMode < Simulink.IntEnumType
     %   此处显示详细说明
     enumeration
         NoneFlightTaskMode (0),
-        GroundStandByMode (1),
+        GroundStandByMode (1), % 解锁状态下的地面模式
         TakeOffMode (2),
         Rotor2Fix_Mode (3),
         HoverAdjustMode (4),
@@ -17,6 +17,7 @@ classdef ENUM_FlightTaskMode < Simulink.IntEnumType
         FenceRecoverMode (12),
         SpotCircleMode (13),
         StallRecovery (14),
+%         GroundLock (15), % 锁定状态下的地面模式
         
         Test_HeightKeep (101),
         Test_AttitudeKeep (102),

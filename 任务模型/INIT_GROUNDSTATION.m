@@ -88,7 +88,7 @@ for i = 2:TASK_SET.PATH.maxNum
     end
 end
 %%
-pathSimMode = 'flight'; % 'sim' 'flight'
+pathSimMode = 'sim'; % 'sim' 'flight'
 switch pathSimMode
     case 'sim'
         for i = 1:TASK_SET.PATH.maxNum
