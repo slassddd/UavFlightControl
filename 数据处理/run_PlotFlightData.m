@@ -40,7 +40,6 @@ end
 if plotenable.FlightPerf
     SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
 end
-
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');
 tempFileNames(tmpIdx:end) = [];
@@ -48,20 +47,7 @@ proj = currentProject;
 perfSavePath = [char(proj.RootFolder),'\SubFolder_飞行数据\飞行性能数据',];
 perfMatFileName = [perfSavePath,'\perfDataMat_',tempFileNames,'.mat'];
 save(perfMatFileName,'T')
-% try
-%
-%     perfDataAll = load(perfMatFileName);
-%     isExit_perfDataAll = true;
-%     fprintf('载入已保存的性能数据\n')
-% catch
-%     isExit_perfDataAll = false;
-%     fprintf('性能数据文件不存在，新建\n')
-% end
-% if isExit_perfDataAll
-%     perfDataAll(end+1) = perfInfo;
-% else
-%     perfDataAll(1) = perfInfo;
-% end
-
+% figure;
+% plotEnum(SL.Debug_Task_RTInfo.time_cal,SL.Debug_Task_RTInfo.Task)
 figure;
-plotEnum(SL.Debug_Task_RTInfo.time_cal,SL.Debug_Task_RTInfo.Task)
+plotEnum(SL.OUT_TASKMODE.time_cal,ENUM_FlightTaskMode(SL.OUT_TASKMODE.flightTaskMode))
