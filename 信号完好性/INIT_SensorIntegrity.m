@@ -37,4 +37,5 @@ SENSOR_INTEGRITY_PARAM.um482.threshold_numSv = 15;
 SENSOR_INTEGRITY_PARAM.um482.threshold_pDop = 5;
 SENSOR_INTEGRITY_PARAM.um482.degrade_numSv = 20;
 SENSOR_INTEGRITY_PARAM.um482.degrade_pDop = 5;
+SENSOR_INTEGRITY_PARAM.Radar.faultThreshold = 100; % 近距离时radar可能测量到负值，此时radar固件直接输出一个固定的大值，faultThreshold应小于上述值
 %

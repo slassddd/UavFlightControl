@@ -1,6 +1,43 @@
 baseIMUtime = IN_SENSOR.IMU1.time;
 baseIMUtime = IN_SENSOR.IMU1.time;
 % /* ------------------------------algo sl  log ---------------------------------------------- */20200312
+% /* |@@SL.SystemInfo@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,1)==0),1:2)'],1,[]);
+save_count=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.save_count = save_count; % create struct
+temp = reshape([data(find(mod(Count,1)==0),251:254)'],1,[]);
+save_time=double(typecast(uint8(temp),'uint32')')/1*1.0000000000;
+SL.SystemInfo.save_time = save_time; % create struct
+temp = reshape([data(find(mod(Count,8)==0),255:256)'],1,[]);
+FCVERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.FCVERSION = FCVERSION; % create struct
+temp = reshape([data(find(mod(Count,8)==1),255:256)'],1,[]);
+GPSVERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.GPSVERSION = GPSVERSION; % create struct
+temp = reshape([data(find(mod(Count,8)==2),255:256)'],1,[]);
+LOADERVERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.LOADERVERSION = LOADERVERSION; % create struct
+temp = reshape([data(find(mod(Count,8)==3),255:256)'],1,[]);
+MCU2VERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.MCU2VERSION = MCU2VERSION; % create struct
+temp = reshape([data(find(mod(Count,8)==4),255:256)'],1,[]);
+ALGO_LOGICVERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.ALGO_LOGICVERSION = ALGO_LOGICVERSION; % create struct
+temp = reshape([data(find(mod(Count,8)==5),255:256)'],1,[]);
+ALGO_DRIVERVERSION=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.SystemInfo.ALGO_DRIVERVERSION = ALGO_DRIVERVERSION; % create struct
+temp = reshape([data(find(mod(Count,4)==3),121:124)'],1,[]);
+task_1ms_total_cnt=double(typecast(uint8(temp),'uint32')')/1*1.0000000000;
+SL.SystemInfo.task_1ms_total_cnt = task_1ms_total_cnt; % create struct
+temp = reshape([data(find(mod(Count,4)==3),125:128)'],1,[]);
+task_4ms_total_cnt=double(typecast(uint8(temp),'uint32')')/1*1.0000000000;
+SL.SystemInfo.task_4ms_total_cnt = task_4ms_total_cnt; % create struct
+temp = reshape([data(find(mod(Count,4)==3),129:132)'],1,[]);
+task_12ms_total_cnt=double(typecast(uint8(temp),'uint32')')/1*1.0000000000;
+SL.SystemInfo.task_12ms_total_cnt = task_12ms_total_cnt; % create struct
+temp = reshape([data(find(mod(Count,4)==3),133:136)'],1,[]);
+task_100ms_total_cnt=double(typecast(uint8(temp),'uint32')')/1*1.0000000000;
+SL.SystemInfo.task_100ms_total_cnt = task_100ms_total_cnt; % create struct
 % /*-----------------------RefModel_SystemArchitecture_Y.OUT_SensorSignalIntegrity.-----------*/
 % /* |@@SL.SensorSelect@@+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,16)==0),223:224)'],1,[]);
