@@ -63,7 +63,7 @@ for i_child = 1:length(data)
     eval(str);
 end
 %% Êý¾Ý¶ÔÆë
-sensors.Algo_sl = alignDimension(sensors.Algo_sl);
+sensors(i_file).Algo_sl = alignDimension(sensors(i_file).Algo_sl);
 %%
 try
     tempData1 = sensors(i_file).Algo_sl.algo_NAV_lat;

@@ -202,7 +202,7 @@ normalizedRes_mag = res_mag./ sqrt( diag(resCov_mag).' );
 residual_mag = all(abs(normalizedRes_mag)<3);
 if ~residual_mag
     mag_resReject_num = mag_resReject_num + 1;
-    if mag_resReject_num > 5000 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
+    if mag_resReject_num > 1e6 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
         magRejectForEver = true;
     end
 end
@@ -293,8 +293,10 @@ if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.m
     end
 end
 % ublox1融合
-if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
-        ublox1UpdateFlag && MARGParam.fuse_enable.gps % && clock_sec < 200% gps 更新
+% if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
+%         ublox1UpdateFlag && MARGParam.fuse_enable.gps
+if ublox1_is_available && measureReject.lla_notJump && ...
+        ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
     if ~ZVCenable
         Rpos = double(Sensors.ublox1.pDop^1.5*Rpos);

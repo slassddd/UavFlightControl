@@ -1,4 +1,4 @@
-% 将数据文件夹放在程序目录中，数据文件夹应能够体现数据特征，如型号、日期等
+ % 将数据文件夹放在程序目录中，数据文件夹应能够体现数据特征，如型号、日期等
 % clear,clc
 tic
 evokeDir = cd; % 调用该函数时matlab的当前文件夹位置
@@ -46,7 +46,7 @@ for i_file = 1:nFile
     else
         FileName = FileNames{i_file};
     end  
-    BLOCK_SIZE = 288; % 256，288
+    BLOCK_SIZE = 296; % 256，288
     fp = fopen([PathName,'\\',FileName],'r');
     datas{i_file} = fread(fp);
     fclose(fp);

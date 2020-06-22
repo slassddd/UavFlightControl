@@ -21,3 +21,7 @@ T_taskLog_MavCmd = parserTaskLogData(taskLogDataRes,matchMessages);
 matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_FlightMode];
 T_taskLog_FlightMode = parserTaskLogData(taskLogDataRes,matchMessages);
+matchMessages = [...
+    ENUM_TaskLogBlockName.TASKLOG_ParserInput;
+    ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
+TT = parserTaskLogData(taskLogDataRes,matchMessages);

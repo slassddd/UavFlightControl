@@ -1,6 +1,57 @@
 baseIMUtime = IN_SENSOR.IMU1.time;
 baseIMUtime = IN_SENSOR.IMU1.time;
 % /* ------------------------------algo sl  log ---------------------------------------------- */20200312
+% /* |@@MagCalib.mag1@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==0),109:110)'],1,[]);
+x=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag1.x = x; % create struct
+temp = reshape([data(find(mod(Count,4)==0),111:112)'],1,[]);
+y=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag1.y = y; % create struct
+temp = reshape([data(find(mod(Count,4)==0),113:114)'],1,[]);
+z=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag1.z = z; % create struct
+% /* |@@MagCalib.mag2@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==0),115:116)'],1,[]);
+x=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag2.x = x; % create struct
+temp = reshape([data(find(mod(Count,4)==0),117:118)'],1,[]);
+y=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag2.y = y; % create struct
+temp = reshape([data(find(mod(Count,4)==0),119:120)'],1,[]);
+z=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag2.z = z; % create struct
+% /* |@@MagCalib.mag3@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==0),121:122)'],1,[]);
+x=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag3.x = x; % create struct
+temp = reshape([data(find(mod(Count,4)==0),123:124)'],1,[]);
+y=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag3.y = y; % create struct
+temp = reshape([data(find(mod(Count,4)==0),125:126)'],1,[]);
+z=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag3.z = z; % create struct
+% /* |@@MagCalib.mag_cal_0@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,2)==1),167:168)'],1,[]);
+x=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_0.x = x; % create struct
+temp = reshape([data(find(mod(Count,2)==1),169:170)'],1,[]);
+y=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_0.y = y; % create struct
+temp = reshape([data(find(mod(Count,2)==1),171:172)'],1,[]);
+z=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_0.z = z; % create struct
+% /* |@@MagCalib.mag_cal_1@@+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,2)==1),191:192)'],1,[]);
+x=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_1.x = x; % create struct
+temp = reshape([data(find(mod(Count,2)==1),193:194)'],1,[]);
+y=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_1.y = y; % create struct
+temp = reshape([data(find(mod(Count,2)==1),195:196)'],1,[]);
+z=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+MagCalib.mag_cal_1.z = z; % create struct
+% /* |-----------+--------------------------------+-------------+------------+--------------| */
 % /* |@@SL.SystemInfo@@+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,1)==0),1:2)'],1,[]);
 save_count=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
