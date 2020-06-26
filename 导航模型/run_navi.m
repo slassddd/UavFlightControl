@@ -173,7 +173,7 @@ if plotEnable
     sensors = sensors_SET(1);
     % ------------  传感器数据 ---------------
     fig = figure(102);
-    GLOBAL_PARAM.hPlot.PlotSensor({'IMU1;IMU2','mag2','ublox1','baro1','radar1','airspeed1'},IN_SENSOR(1),2,2,fig)
+    GLOBAL_PARAM.hPlot.PlotSensor({'IMU1;IMU2;IMU3','mag1;mag2','ublox1','baro1','radar1','airspeed1'},IN_SENSOR(1),2,2,fig)
     if 0
         fig = figure(103);
         GLOBAL_PARAM.hPlot.PlotPosition({'ublox1;um482'},IN_SENSOR(1),'XY',2,2,fig);

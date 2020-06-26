@@ -8,7 +8,7 @@ sensorFs.baroUpdateFs = 125;
 sensorFs.radarUpdateFs = 62.5;
 sensorFs.airspeedUpdateFs = 62.5;
 % ≤‚¡ø—°‘Ò
-ALGO_SET.fuse_enable.mag = 1;
+ALGO_SET.fuse_enable.mag = 3;
 ALGO_SET.fuse_enable.gps = 1;
 ALGO_SET.fuse_enable.alt = 1;
 ALGO_SET.fuse_enable.um482 = 1;

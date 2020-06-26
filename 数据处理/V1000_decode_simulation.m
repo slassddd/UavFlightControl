@@ -9,13 +9,14 @@ SYSTEM.FC_VERSION=typecast(uint8(temp),'uint16');
 
 IN_SENSOR.time=save_time;
 IN_SENSOR.IMU1.time=save_time;
-IN_SENSOR.IMU2.time=save_time;
-IN_SENSOR.IMU3.time=save_time;
+IN_SENSOR.IMU2.time=save_time(1:4:end);
+IN_SENSOR.IMU3.time=save_time(1:4:end);
 IN_SENSOR.baro1.time=save_time(1:2:end);
 IN_SENSOR.mag1.time=save_time(1:4:end);
 IN_SENSOR.mag2.time = IN_SENSOR.mag1.time;
 IN_SENSOR.radar1.time = save_time(1:4:end);
 IN_SENSOR.ublox1.time = save_time(1:4:end);
+IN_SENSOR.um482.time = save_time(1:4:end);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU1
 % 原始数据
@@ -46,12 +47,32 @@ temp = reshape([data(1:1:end,37:38)'],1,[]);
 IN_SENSOR.IMU1.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
-disp('IMU2还未解析')
-IN_SENSOR.IMU2 = IN_SENSOR.IMU1;
+temp = reshape([data(find(mod(Count,4)==1),277:278)'],1,[]);
+IN_SENSOR.IMU2.accel_x=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==1),279:280)'],1,[]);
+IN_SENSOR.IMU2.accel_y=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==1),281:282)'],1,[]);
+IN_SENSOR.IMU2.accel_z=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==1),283:284)'],1,[]);
+IN_SENSOR.IMU2.gyro_x=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+temp = reshape([data(find(mod(Count,4)==1),285:286)'],1,[]);
+IN_SENSOR.IMU2.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+temp = reshape([data(find(mod(Count,4)==1),287:288)'],1,[]);
+IN_SENSOR.IMU2.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU3
-disp('IMU3还未解析')
-IN_SENSOR.IMU3 = IN_SENSOR.IMU1;
+temp = reshape([data(find(mod(Count,4)==2),277:278)'],1,[]);
+IN_SENSOR.IMU3.accel_x=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==2),279:280)'],1,[]);
+IN_SENSOR.IMU3.accel_y=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==2),281:282)'],1,[]);
+IN_SENSOR.IMU3.accel_z=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+temp = reshape([data(find(mod(Count,4)==2),283:284)'],1,[]);
+IN_SENSOR.IMU3.gyro_x=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+temp = reshape([data(find(mod(Count,4)==2),285:286)'],1,[]);
+IN_SENSOR.IMU3.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+temp = reshape([data(find(mod(Count,4)==2),287:288)'],1,[]);
+IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %baro1
 temp=reshape([data(index_21,41:42)'],1,[]);
@@ -180,7 +201,6 @@ IN_SENSOR.ublox1.sAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
 IN_SENSOR.ublox1.headAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % um482
-IN_SENSOR.um482.time = IN_SENSOR.time;
 % temp = reshape([data(1:1:end,239:242)'],1,[]);
 % lon=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 % IN_SENSOR.um482.Lon = lon; % create struct
@@ -217,78 +237,42 @@ IN_SENSOR.um482.time = IN_SENSOR.time;
 % temp = reshape([data(1:1:end,40:40)'],1,[]);
 % numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 % IN_SENSOR.um482.numSv = numSv; % create struct
-temp = reshape([data(1:1:end,239:242)'],1,[]);
-Lon=double(typecast(uint8(temp),'single')')/1*0.0000001000;
+temp = reshape([data(find(mod(Count,4)==0),239:242)'],1,[]);
+Lon=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 IN_SENSOR.um482.Lon = Lon; % create struct
-temp = reshape([data(1:1:end,257:260)'],1,[]);
-Lat=double(typecast(uint8(temp),'single')')/1*0.0000001000;
+temp = reshape([data(find(mod(Count,4)==0),257:260)'],1,[]);
+Lat=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 IN_SENSOR.um482.Lat = Lat; % create struct
-temp = reshape([data(1:1:end,261:264)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),261:264)'],1,[]);
 height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.height = height; % create struct
-temp = reshape([data(1:1:end,265:268)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),265:268)'],1,[]);
 velN=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.velN = velN; % create struct
-temp = reshape([data(1:1:end,269:272)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),269:272)'],1,[]);
 velE=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.velE = velE; % create struct
-temp = reshape([data(1:1:end,273:276)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),273:276)'],1,[]);
 velD=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.velD = velD; % create struct
-temp = reshape([data(1:1:end,277:280)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),277:280)'],1,[]);
 delta_lon=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.delta_lon = delta_lon; % create struct
-temp = reshape([data(1:1:end,281:284)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),281:284)'],1,[]);
 delta_lat=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.delta_lat = delta_lat; % create struct
-temp = reshape([data(1:1:end,285:288)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),285:288)'],1,[]);
 delta_height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.um482.delta_height = delta_height; % create struct
-temp = reshape([data(1:1:end,237:238)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),237:238)'],1,[]);
 pDop=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
 IN_SENSOR.um482.pDop = pDop; % create struct
-temp = reshape([data(1:1:end,39:39)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),39:39)'],1,[]);
 BESTPOS=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 IN_SENSOR.um482.BESTPOS = BESTPOS; % create struct
-temp = reshape([data(1:1:end,40:40)'],1,[]);
+temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 IN_SENSOR.um482.numSv = numSv; % create struct
-% disp('um482还未解析')
-% IN_SENSOR.um482.time = save_time(1:4:end);
-% temp=reshape([data(index_41,109:112)'],1,[]);
-% ublox_iTOW=double(typecast(uint8(temp),'int32')');
-% temp=reshape([data(index_41,113:116)'],1,[]);
-% IN_SENSOR.um482.velE=double(typecast(uint8(temp),'int32')')*1e-3;
-% temp=reshape([data(index_41,117:120)'],1,[]);
-% IN_SENSOR.um482.velN=double(typecast(uint8(temp),'int32')')*1e-3;
-% temp=reshape([data(index_41,121:124)'],1,[]);
-% IN_SENSOR.um482.velD=double(typecast(uint8(temp),'int32')')*1e-3;
-% temp=reshape([data(index_41,125:128)'],1,[]);
-% IN_SENSOR.um482.Lon=double(typecast(uint8(temp),'int32')')*1e-7;
-% temp=reshape([data(index_41,129:132)'],1,[]);
-% IN_SENSOR.um482.Lat=double(typecast(uint8(temp),'int32')')*1e-7;
-% temp=reshape([data(index_41,133:136)'],1,[]);
-% IN_SENSOR.um482.height=double(typecast(uint8(temp),'int32')')*1e-3;
-% temp=reshape([data(index_40,127:128)'],1,[]);
-% IN_SENSOR.um482.pDop=double(typecast(uint8(temp),'uint16')')*1e-2;
-% temp=reshape([data(index_40,129)'],-3,[]);
-% IN_SENSOR.um482.numSv=typecast(uint8(temp),'uint8')';
-% IN_SENSOR.um482.delta_lat = single(zeros(size(IN_SENSOR.um482.time)));
-% IN_SENSOR.um482.delta_lon = single(zeros(size(IN_SENSOR.um482.time)));
-% IN_SENSOR.um482.delta_height = single(zeros(size(IN_SENSOR.um482.time)));
-% 
-% IN_SENSOR.um482.velE = 0*IN_SENSOR.um482.velE;
-% IN_SENSOR.um482.velN = 0*IN_SENSOR.um482.velN;
-% IN_SENSOR.um482.velD = 0*IN_SENSOR.um482.velD;
-% IN_SENSOR.um482.Lon = 0*IN_SENSOR.um482.Lon;
-% IN_SENSOR.um482.Lat = 0*IN_SENSOR.um482.Lat;
-% IN_SENSOR.um482.height = 0*IN_SENSOR.um482.height;
-% IN_SENSOR.um482.pDop = 0*IN_SENSOR.um482.pDop;
-% IN_SENSOR.um482.numSv = 0*IN_SENSOR.um482.numSv;
-% IN_SENSOR.um482.delta_lat = 0*IN_SENSOR.um482.delta_lat;
-% IN_SENSOR.um482.delta_lon = 0*IN_SENSOR.um482.delta_lon;
-% IN_SENSOR.um482.delta_height = 0*IN_SENSOR.um482.delta_height;
-% IN_SENSOR.um482.BESTPOS = 0*IN_SENSOR.um482.numSv;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % airspeed
 IN_SENSOR.airspeed1.time = IN_SENSOR.ublox1.time;

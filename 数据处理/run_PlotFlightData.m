@@ -8,11 +8,18 @@ plotenable.gpsCompare = true;
 plotenable.PowerConsumer = true;
 plotenable.TaskLogData = true;
 plotenable.FlightPerf = true;
+plotenable.IMU = true;
 %%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if false
+    SinglePlot_HomePoint
+end
+if plotenable.IMU
+    SinglePlot_IMU
+end
 if plotenable.um482
     SingPlot_um482(IN_SENSOR.um482)
 end

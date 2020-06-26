@@ -360,17 +360,17 @@ posNED = stateEst(5:7)';
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = true;
 if fuseVdWithEKFandGPS
-    if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
-            (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
-        k = max(1,abs(accel(3)-9.8));
-        temp = min(0.6,1/k^0.8);
-        if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-            fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
-            stateEst(10) = fuseVd;
-        end
-    else
-        
+    %     if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
+    %             (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
+    k = max(1,abs(accel(3)-9.8));
+    temp = min(0.6,1/k^0.8);
+    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+        fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+        stateEst(10) = fuseVd;
     end
+%     else
+%         
+%     end
     %     if SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
 %         fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
 %         stateEst(10) = fuseVd;

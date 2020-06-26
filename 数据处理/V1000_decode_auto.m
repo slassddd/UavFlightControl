@@ -483,6 +483,64 @@ temp = reshape([data(find(mod(Count,16)==15),235:236)'],1,[]);
 maxWindHeading=double(typecast(uint8(temp),'int16')')/32768*10.0000000000;
 Bus_TASK_WindParam.maxWindHeading = maxWindHeading; % create struct
 % /* +===========+================================+=============+============+==============+ */
+% /* |@@IMUData@@-----------+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,1)==0),3:6)'],1,[]);
+ax=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.ax = ax; % create struct
+temp = reshape([data(find(mod(Count,1)==0),7:10)'],1,[]);
+ay=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.ay = ay; % create struct
+temp = reshape([data(find(mod(Count,1)==0),11:14)'],1,[]);
+az=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.az = az; % create struct
+temp = reshape([data(find(mod(Count,1)==0),15:18)'],1,[]);
+gx=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.gx = gx; % create struct
+temp = reshape([data(find(mod(Count,1)==0),19:22)'],1,[]);
+gy=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.gy = gy; % create struct
+temp = reshape([data(find(mod(Count,1)==0),23:26)'],1,[]);
+gz=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.gz = gz; % create struct
+% /* |-----------+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==1),239:242)'],1,[]);
+a2x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a2x = a2x; % create struct
+temp = reshape([data(find(mod(Count,4)==1),257:260)'],1,[]);
+a2y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a2y = a2y; % create struct
+temp = reshape([data(find(mod(Count,4)==1),261:264)'],1,[]);
+a2z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a2z = a2z; % create struct
+temp = reshape([data(find(mod(Count,4)==1),265:268)'],1,[]);
+g2x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g2x = g2x; % create struct
+temp = reshape([data(find(mod(Count,4)==1),269:272)'],1,[]);
+g2y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g2y = g2y; % create struct
+temp = reshape([data(find(mod(Count,4)==1),273:276)'],1,[]);
+g2z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g2z = g2z; % create struct
+% /* |-----------+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==2),239:242)'],1,[]);
+a3x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a3x = a3x; % create struct
+temp = reshape([data(find(mod(Count,4)==2),257:260)'],1,[]);
+a3y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a3y = a3y; % create struct
+temp = reshape([data(find(mod(Count,4)==2),261:264)'],1,[]);
+a3z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.a3z = a3z; % create struct
+temp = reshape([data(find(mod(Count,4)==2),265:268)'],1,[]);
+g3x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g3x = g3x; % create struct
+temp = reshape([data(find(mod(Count,4)==2),269:272)'],1,[]);
+g3y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g3y = g3y; % create struct
+temp = reshape([data(find(mod(Count,4)==2),273:276)'],1,[]);
+g3z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+IMUData.g3z = g3z; % create struct
+% /* |-----------+--------------------------------+-------------+------------+--------------| */
 % /* ------------------------------algo sl imu log ----------------------------------------- */20200401
 % /* |@@imu_filt@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,1)==0),27:28)'],1,[]);
@@ -515,43 +573,6 @@ mavlink_msg_groundHomeLLA2=double(typecast(uint8(temp),'int16')')/32768*5000.000
 SL.HomePointFromGS.mavlink_msg_groundHomeLLA2 = mavlink_msg_groundHomeLLA2; % create struct
 % /* +===========+================================+=============+============+===============+ */
 % /* +===========+================================+=============+============+===============+ */
-% /* |@@IN_SENSOR.um482@@+-------------------------------+-------------+--------------| */
-temp = reshape([data(find(mod(Count,1)==0),239:242)'],1,[]);
-Lon=double(typecast(uint8(temp),'uint32')')/10000000*1.0000000000;
-IN_SENSOR.um482.Lon = Lon; % create struct
-temp = reshape([data(find(mod(Count,1)==0),257:260)'],1,[]);
-Lat=double(typecast(uint8(temp),'uint32')')/10000000*1.0000000000;
-IN_SENSOR.um482.Lat = Lat; % create struct
-temp = reshape([data(find(mod(Count,1)==0),261:264)'],1,[]);
-height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.height = height; % create struct
-temp = reshape([data(find(mod(Count,1)==0),265:268)'],1,[]);
-velN=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.velN = velN; % create struct
-temp = reshape([data(find(mod(Count,1)==0),269:272)'],1,[]);
-velE=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.velE = velE; % create struct
-temp = reshape([data(find(mod(Count,1)==0),273:276)'],1,[]);
-velD=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.velD = velD; % create struct
-temp = reshape([data(find(mod(Count,1)==0),277:280)'],1,[]);
-delta_lon=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.delta_lon = delta_lon; % create struct
-temp = reshape([data(find(mod(Count,1)==0),281:284)'],1,[]);
-delta_lat=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.delta_lat = delta_lat; % create struct
-temp = reshape([data(find(mod(Count,1)==0),285:288)'],1,[]);
-delta_height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-IN_SENSOR.um482.delta_height = delta_height; % create struct
-temp = reshape([data(find(mod(Count,1)==0),237:238)'],1,[]);
-pDop=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
-IN_SENSOR.um482.pDop = pDop; % create struct
-temp = reshape([data(find(mod(Count,1)==0),39:39)'],1,[]);
-BESTPOS=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
-IN_SENSOR.um482.BESTPOS = BESTPOS; % create struct
-temp = reshape([data(find(mod(Count,1)==0),40:40)'],1,[]);
-numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
-IN_SENSOR.um482.numSv = numSv; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* |@@Engine@@+-------------------------------+-------------+--------------| */
 temp = reshape([data(find(mod(Count,2)==1),137:138)'],1,[]);
@@ -695,3 +716,40 @@ SL.mavlink_mission_item_def.y = y; % create struct
 temp = reshape([data(find(mod(Count,8)==3),207:208)'],1,[]);
 z=double(typecast(uint8(temp),'int16')')/32768*5000.0000000000;
 SL.mavlink_mission_item_def.z = z; % create struct
+% /* |@@SL.TEST482@@+------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==0),239:242)'],1,[]);
+Lon=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
+SL.TEST482.Lon = Lon; % create struct
+temp = reshape([data(find(mod(Count,4)==0),257:260)'],1,[]);
+Lat=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
+SL.TEST482.Lat = Lat; % create struct
+temp = reshape([data(find(mod(Count,4)==0),261:264)'],1,[]);
+height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.height = height; % create struct
+temp = reshape([data(find(mod(Count,4)==0),265:268)'],1,[]);
+velN=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.velN = velN; % create struct
+temp = reshape([data(find(mod(Count,4)==0),269:272)'],1,[]);
+velE=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.velE = velE; % create struct
+temp = reshape([data(find(mod(Count,4)==0),273:276)'],1,[]);
+velD=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.velD = velD; % create struct
+temp = reshape([data(find(mod(Count,4)==0),277:280)'],1,[]);
+delta_lon=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.delta_lon = delta_lon; % create struct
+temp = reshape([data(find(mod(Count,4)==0),281:284)'],1,[]);
+delta_lat=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.delta_lat = delta_lat; % create struct
+temp = reshape([data(find(mod(Count,4)==0),285:288)'],1,[]);
+delta_height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.TEST482.delta_height = delta_height; % create struct
+temp = reshape([data(find(mod(Count,4)==0),237:238)'],1,[]);
+pDop=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.TEST482.pDop = pDop; % create struct
+temp = reshape([data(find(mod(Count,4)==0),39:39)'],1,[]);
+BESTPOS=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.TEST482.BESTPOS = BESTPOS; % create struct
+temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
+numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.TEST482.numSv = numSv; % create struct
