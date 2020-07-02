@@ -363,11 +363,18 @@ if fuseVdWithEKFandGPS
     %     if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
     %             (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
     k = max(1,abs(accel(3)-9.8));
-    temp = min(0.6,1/k^0.8);
-    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-        fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
-        stateEst(10) = fuseVd;
-    end
+    temp = min(0.2,1/k^0.8);
+%     if k > 3
+        if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+            fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+            stateEst(10) = fuseVd;
+        else
+            if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
+                fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
+                stateEst(10) = fuseVd;
+            end
+        end
+%     end
 %     else
 %         
 %     end

@@ -33,14 +33,15 @@ end
 i = i + 1;
 speed = vecnorm([structData.velN(idx_nz),structData.velE(idx_nz)],2,2);
 subplot(nrow,ncol,i)
-plot(time(idx_nz),speed);
+plot(time(idx_nz),speed);hold on;
 grid on;
     xlabel('time (sec)');
     ylabel('speed [m/s]')
 % 经纬图
 i = i + 1;
 subplot(nrow,ncol,i)
-plot(structData.Lon(idx_nz),structData.Lat(idx_nz));
+plot(structData.Lon(idx_nz),structData.Lat(idx_nz),'b.');
+hold on
 grid on;
 xlabel('Lon [deg]');
 ylabel('Lat [deg]');
@@ -93,7 +94,7 @@ grid on;
 % 经纬图
 i = i + 1;
 subplot(nrow,ncol,i)
-plot(structData.Lon(idx_nz),structData.Lat(idx_nz));hold on;
+plot(structData.Lon(idx_nz),structData.Lat(idx_nz),'r.');hold on;
 grid on;
 xlabel('Lon [deg]');
 ylabel('Lat [deg]');

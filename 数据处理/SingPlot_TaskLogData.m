@@ -25,3 +25,12 @@ matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput;
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
 TT = parserTaskLogData(taskLogDataRes,matchMessages);
+%% 解析POS的时间
+idxsel_shot = find(T_taskLog_Payload.message == ENUM_RTInfo_Task.TaskLog_Payload_Camera_Shot);
+time_shot = T_taskLog_Payload.("记录时间")(idxsel_shot);
+num_shot = T_taskLog_Payload.var1(idxsel_shot,1);
+pos_data = [time_shot,num_shot];
+[~,ia] = unique(num_shot);
+pos_data = pos_data(ia,:);
+pos_data(end,:) = [];
+% save('pos_timestamp.txt','pos_data','-ascii')

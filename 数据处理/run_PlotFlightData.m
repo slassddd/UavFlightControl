@@ -38,7 +38,7 @@ end
 if plotenable.gpsCompare
     SingPlot_gpsCompare(IN_SENSOR.um482,IN_SENSOR.ublox1)
 end
-if plotenable.PowerConsumer
+if plotenable.PowerConsumer    
     T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
 end
 if plotenable.TaskLogData
