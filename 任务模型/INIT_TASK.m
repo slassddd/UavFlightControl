@@ -53,5 +53,6 @@ TASK_SET.PathPlanner.minAirspeed_fixAllowed = 18; % 最低固定翼容许空速，[m/s]
 TASK_SET.PathPlanner.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
 TASK_SET.PathPlanner.logDataBufferSize = 32; % 数据记录buffer size
 TASK_SET.PathPlanner.logDataOutSize = 3; % 数据记录output size
-
+TASK_SET.PathPlanner.horiDist_verticalMove = 350; % 垂直运动模式参数：水平距离阈值
+TASK_SET.PathPlanner.vertDist_verticalMove = 40; % 垂直运动模式参数：高度阈值
 TaskParam = TASK_SET.PathPlanner;

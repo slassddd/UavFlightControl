@@ -7,12 +7,14 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线
 deg2m = 1/111e3;
-TASK_SET.PATH.home = [40.035 116.367 0]; %  lat lon alt
+pathHeight = 209;
+homeHeight = pathHeight + 200;
+TASK_SET.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
 TASK_SET.PATH.nanFlag = TASK_SET.PathPlanner.nanFlag;
 TASK_SET.PATH.maxNum = TASK_SET.PathPlanner.maxPathPointNum;
 TASK_SET.PATH.speed = 18;
 TASK_SET.PATH.paths_m = TASK_SET.PATH.nanFlag*ones(TASK_SET.PATH.maxNum,3);
-pathHeight = 209;
+
 pathExmpale = 2;
 switch pathExmpale
     case 1
@@ -29,12 +31,13 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 1.5e3;
-        lat_space = 100;
+        lon_right = 2e3;
+        lat_space = 200;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
-        nPoints = 11;
+        TASK_SET.PATH.paths_m(1,3) = pathHeight;
+        nPoints = 21;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
@@ -82,7 +85,7 @@ TASK_SET.PATH.paths_ddm = TASK_SET.PATH.paths_m;
 TASK_SET.PATH.paths_ddm(1,:) = TASK_SET.PATH.home;
 for i = 2:TASK_SET.PATH.maxNum
     if TASK_SET.PATH.paths_m(i,1) ~= TASK_SET.PATH.nanFlag
-        TASK_SET.PATH.paths_ddm(i,1) = TASK_SET.PATH.home(1) + TASK_SET.PATH.paths_m(i,1)*deg2m - 0.005;
+        TASK_SET.PATH.paths_ddm(i,1) = TASK_SET.PATH.home(1) + TASK_SET.PATH.paths_m(i,1)*deg2m - 0.01;
         TASK_SET.PATH.paths_ddm(i,2) = TASK_SET.PATH.home(2) + TASK_SET.PATH.paths_m(i,2)*deg2m/cos(TASK_SET.PATH.home(1)*pi/180) - 0.014;
         TASK_SET.PATH.paths_ddm(i,3) = TASK_SET.PATH.paths_m(i,3);
     end

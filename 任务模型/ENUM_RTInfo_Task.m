@@ -147,6 +147,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Land_HasLandCond_H_Continue (242),
         Land_HasLandCond_NearGround_Continue (243),
         StallRecovery_Exit (244),
+        VerticalMove_Enter (245),
+        VerticalMove_Exit (246),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
@@ -212,11 +214,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Input_HomeChange_Path (2217),
         TaskLog_Input_HomeChange_TakeOff (2218),
         TaskLog_Input_HomeChange_KeyBoard (2219),
-        % 电子篱笆
-        Fense_Enter_BeforeUnlock (501),
-        Fense_Enter_Unlock (502),
-        Fense_Enter_Unlock_InFense (502),
-        Fense_Enter_Unlock_OutOfFense (503),
+        
         % 严重警告
         NotDefined_Fcn_isAllowedToEnterThisMode (5001),
         NotDefined_State_ValidPathNum (5002),
@@ -236,7 +234,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Enter_StallDetect_Stall (5016),
         Exit_StallDetect_Stall (5017),
         Enter_SignalIntegrity_Abnormal (5018),
-        Exit_SignalIntegrity_Abnormal (5019),
+        Exit_SignalIntegrity_Abnormal (5019),            
         Enter_SystemLockInTheAir_Protect_LockedInTheAir (5020),
         Enter_SystemLockInTheAir_Protect_UnLockedInTheAir (5021),
         Enter_HeightTooLowInFix_Protect_HasBeenTooLow (5022),

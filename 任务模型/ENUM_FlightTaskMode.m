@@ -17,6 +17,7 @@ classdef ENUM_FlightTaskMode < Simulink.IntEnumType
         FenceRecoverMode (12),
         SpotCircleMode (13),
         StallRecovery (14),
+        VerticalMove (15),
 %         GroundLock (15), % 锁定状态下的地面模式
         
         Test_HeightKeep (101),
