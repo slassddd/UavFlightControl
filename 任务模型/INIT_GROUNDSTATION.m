@@ -8,7 +8,7 @@ STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMM
 %% º½Ïß
 deg2m = 1/111e3;
 pathHeight = 209;
-homeHeight = pathHeight + 200;
+homeHeight = pathHeight + 0*200;
 TASK_SET.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
 TASK_SET.PATH.nanFlag = TASK_SET.PathPlanner.nanFlag;
 TASK_SET.PATH.maxNum = TASK_SET.PathPlanner.maxPathPointNum;
