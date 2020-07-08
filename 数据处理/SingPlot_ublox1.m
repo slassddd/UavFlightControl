@@ -12,7 +12,9 @@ ylabelstr = {'time','velE [m/s]','velN [m/s]','velD [m/s]','Lon [deg]','Lat [deg
 idx_nz = (structData.Lon ~= 0);
 for i = 1:nChildren
     subplot(nrow,ncol,i)
+    try
     plot(time(idx_nz),structData.(children{i})(idx_nz));
+    end
     grid on;
     xlabel('time (sec)');
     ylabel(ylabelstr{i})
@@ -28,7 +30,9 @@ grid on;
 % 经纬图
 i = i + 1;
 subplot(nrow,ncol,i)
+try
 plot(structData.Lon(idx_nz),structData.Lat(idx_nz));
+end
 grid on;
 xlabel('Lon [deg]');
 ylabel('Lat [deg]');

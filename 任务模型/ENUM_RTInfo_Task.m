@@ -149,6 +149,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         StallRecovery_Exit (244),
         VerticalMove_Enter (245),
         VerticalMove_Exit (246),
+        Not_Allowed_TakeOff (247),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

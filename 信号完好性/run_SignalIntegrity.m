@@ -74,7 +74,7 @@ dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200623\·ÂÕæÊı¾İ_31#Æ
 % dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200623\·ÂÕæÊı¾İ_31#ÆğÂä 17 2020-06-23 12-29-23']};
 % dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200623\·ÂÕæÊı¾İ_31#ÆğÂä 18 2020-06-23 12-33-23']};
 % dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200623\·ÂÕæÊı¾İ_31#ÆğÂä 19 2020-06-23 12-37-21']};
-% dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200623\·ÂÕæÊı¾İ_31#ÆğÂä 20 2020-06-23 12-41-43']};
+dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20200708\·ÂÕæÊı¾İ_log_4_Ìì½ò±¦Ûæ V10011¹Ì¼ş ²âÊÔ']};
 
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile

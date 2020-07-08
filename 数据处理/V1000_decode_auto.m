@@ -716,40 +716,83 @@ SL.mavlink_mission_item_def.y = y; % create struct
 temp = reshape([data(find(mod(Count,8)==3),207:208)'],1,[]);
 z=double(typecast(uint8(temp),'int16')')/32768*5000.0000000000;
 SL.mavlink_mission_item_def.z = z; % create struct
-% /* |@@SL.TEST482@@+------------+-------------+------------+--------------| */
+% /* |@@SL.TEST.um482@@+------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,4)==0),239:242)'],1,[]);
 Lon=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
-SL.TEST482.Lon = Lon; % create struct
+SL.TEST.um482.Lon = Lon; % create struct
 temp = reshape([data(find(mod(Count,4)==0),257:260)'],1,[]);
 Lat=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
-SL.TEST482.Lat = Lat; % create struct
+SL.TEST.um482.Lat = Lat; % create struct
 temp = reshape([data(find(mod(Count,4)==0),261:264)'],1,[]);
 height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.height = height; % create struct
+SL.TEST.um482.height = height; % create struct
 temp = reshape([data(find(mod(Count,4)==0),265:268)'],1,[]);
 velN=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.velN = velN; % create struct
+SL.TEST.um482.velN = velN; % create struct
 temp = reshape([data(find(mod(Count,4)==0),269:272)'],1,[]);
 velE=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.velE = velE; % create struct
+SL.TEST.um482.velE = velE; % create struct
 temp = reshape([data(find(mod(Count,4)==0),273:276)'],1,[]);
 velD=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.velD = velD; % create struct
+SL.TEST.um482.velD = velD; % create struct
 temp = reshape([data(find(mod(Count,4)==0),277:280)'],1,[]);
 delta_lon=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.delta_lon = delta_lon; % create struct
+SL.TEST.um482.delta_lon = delta_lon; % create struct
 temp = reshape([data(find(mod(Count,4)==0),281:284)'],1,[]);
 delta_lat=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.delta_lat = delta_lat; % create struct
+SL.TEST.um482.delta_lat = delta_lat; % create struct
 temp = reshape([data(find(mod(Count,4)==0),285:288)'],1,[]);
 delta_height=double(typecast(uint8(temp),'single')')/1*1.0000000000;
-SL.TEST482.delta_height = delta_height; % create struct
+SL.TEST.um482.delta_height = delta_height; % create struct
 temp = reshape([data(find(mod(Count,4)==0),237:238)'],1,[]);
 pDop=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
-SL.TEST482.pDop = pDop; % create struct
+SL.TEST.um482.pDop = pDop; % create struct
 temp = reshape([data(find(mod(Count,4)==0),39:39)'],1,[]);
 BESTPOS=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
-SL.TEST482.BESTPOS = BESTPOS; % create struct
+SL.TEST.um482.BESTPOS = BESTPOS; % create struct
 temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
-SL.TEST482.numSv = numSv; % create struct
+SL.TEST.um482.numSv = numSv; % create struct
+% /* |@@SL.TEST.ublox@@+------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==1),109:112)'],1,[]);
+iTOW=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.iTOW = iTOW; % create struct
+temp = reshape([data(find(mod(Count,4)==1),113:116)'],1,[]);
+velN=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.velN = velN; % create struct
+temp = reshape([data(find(mod(Count,4)==1),117:120)'],1,[]);
+velE=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.velE = velE; % create struct
+temp = reshape([data(find(mod(Count,4)==1),121:124)'],1,[]);
+velD=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.velD = velD; % create struct
+temp = reshape([data(find(mod(Count,4)==1),125:128)'],1,[]);
+lon=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.lon = lon; % create struct
+temp = reshape([data(find(mod(Count,4)==1),129:132)'],1,[]);
+lat=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.lat = lat; % create struct
+temp = reshape([data(find(mod(Count,4)==1),133:136)'],1,[]);
+height=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.height = height; % create struct
+temp = reshape([data(find(mod(Count,16)==13),243:246)'],1,[]);
+hMSL=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.hMSL = hMSL; % create struct
+temp = reshape([data(find(mod(Count,4)==0),127:128)'],1,[]);
+pDOP=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.TEST.ublox.pDOP = pDOP; % create struct
+temp = reshape([data(find(mod(Count,4)==0),129:129)'],1,[]);
+numSV=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.TEST.ublox.numSV = numSV; % create struct
+temp = reshape([data(find(mod(Count,4)==0),131:134)'],1,[]);
+hAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.hAcc = hAcc; % create struct
+temp = reshape([data(find(mod(Count,8)==1),197:200)'],1,[]);
+vAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.vAcc = vAcc; % create struct
+temp = reshape([data(find(mod(Count,8)==1),201:204)'],1,[]);
+headAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.headAcc = headAcc; % create struct
+temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
+sAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+SL.TEST.ublox.sAcc = sAcc; % create struct

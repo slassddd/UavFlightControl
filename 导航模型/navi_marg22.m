@@ -276,6 +276,7 @@ if rem(step_imu,kScale_imu) == 0
 end
 % 磁力计融合
 if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新    
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));

@@ -128,56 +128,10 @@ switch pathSimMode
                 STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
             end
         end
-%         %%
-%         iidx = 1;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.034;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.365;  % longitude
-%         iidx = 2;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03764725;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.34561920;  % longitude
-%         iidx = 3;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 2;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03217697;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35288239;  % longitude
-%         iidx = 4;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02701187;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35978699;  % longitude
-%         iidx = 5;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02634048;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35826111;  % longitude
-%         iidx = 6;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.02728271;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.35700226;  % longitude
-%         iidx = 7;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 2;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03092575;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.36529541;  % longitude
-%         iidx = 8;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03281403;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37191772;  % longitude
-%         iidx = 9;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03363800;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37052917;  % longitude
-%         iidx = 10;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03316879;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.36888123;  % longitude
-%         iidx = 11;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 1;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03038025;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37359619;  % longitude
-%         iidx = 12;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).param1 = 0;
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).x = 40.03136063;  % lattitude
-%         STRUCT_mavlink_mission_item_def_ARRAY(iidx).y = 116.37480927;  % longitude
 end
+                STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 100;
 %%
 % STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;

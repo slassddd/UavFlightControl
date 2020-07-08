@@ -93,7 +93,28 @@ for i_file = 1:nFile
     IN_SENSOR.mag2 = alignDimension(IN_SENSOR.mag2);
     IN_SENSOR.um482 = alignDimension(IN_SENSOR.um482);
     IN_SENSOR.radar1 = alignDimension(IN_SENSOR.radar1);
-    IN_SENSOR.ublox1 = alignDimension(IN_SENSOR.ublox1);
+    %%
+    clear temp1
+    temp = IN_SENSOR.ublox1.vAcc;
+    templen = length(temp);
+    temp1(1:2:2*templen-1) = temp;
+    temp1(2:2:2*templen) = temp;
+    IN_SENSOR.ublox1.vAcc = temp1';
+    clear temp1
+    temp = IN_SENSOR.ublox1.sAcc;
+    templen = length(temp);
+    temp1(1:2:2*templen-1) = temp;
+    temp1(2:2:2*templen) = temp;
+    IN_SENSOR.ublox1.sAcc = temp1';
+    clear temp1
+    temp = IN_SENSOR.ublox1.headAcc;
+    templen = length(temp);
+    temp1(1:2:2*templen-1) = temp;
+    temp1(2:2:2*templen) = temp;
+    IN_SENSOR.ublox1.headAcc = temp1';    
+    clear temp1
+    %%
+%     IN_SENSOR.ublox1 = alignDimension(IN_SENSOR.ublox1);
     IN_SENSOR.airspeed1 = alignDimension(IN_SENSOR.airspeed1);
     %%
     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
