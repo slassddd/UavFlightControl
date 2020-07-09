@@ -131,7 +131,7 @@ switch pathSimMode
 end
                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 100;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 500;
 %%
 % STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;
