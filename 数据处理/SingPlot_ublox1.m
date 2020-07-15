@@ -8,7 +8,7 @@ ncol = ceil(nChildren/nrow);
 fig = figure;
 fig.Name = mfilename;
 ylabelstr = {'time','velE [m/s]','velN [m/s]','velD [m/s]','Lon [deg]','Lat [deg]','height [m]',...
-    'pDop','numSv','hAcc','vAcc','sAcc','headAcc'};
+    'pDop','numSv','hAcc','vAcc','headAcc','sAcc'};
 idx_nz = (structData.Lon ~= 0);
 for i = 1:nChildren
     subplot(nrow,ncol,i)

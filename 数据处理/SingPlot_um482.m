@@ -12,7 +12,8 @@ ylabelstr = {...
     'velN [m/s]','velE [m/s]','velD [m/s]','dLon [m]',...
     'dLat [m]','dH [m]','pDop','bestpos',...
     'numSv'};
-idx_nz = (structData.Lon ~= 0);
+% idx_nz = (structData.Lon ~= 0);
+idx_nz = [1:length(structData.Lon)];
 for i = 1:nChildren
     subplot(nrow,ncol,i)
     plot(time(idx_nz),structData.(children{i})(idx_nz));

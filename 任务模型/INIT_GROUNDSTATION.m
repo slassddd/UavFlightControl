@@ -31,7 +31,7 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 2e3;
+        lon_right = 1.5e3;
         lat_space = 200;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
@@ -129,9 +129,12 @@ switch pathSimMode
             end
         end
 end
-                STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
-                STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 500;
+%                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
+%                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 300;
+                
+                STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
+                STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;
 %%
 % STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
 TASK_SET.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;

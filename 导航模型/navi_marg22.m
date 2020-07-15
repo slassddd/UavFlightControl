@@ -98,9 +98,9 @@ if isempty(filter_marg)
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
     filter_marg.MagnetometerBiasNoise = double(MARGParam.std_mag_bias.^2);
     filter_marg.GeomagneticVectorNoise = double(MARGParam.std_magNED.^2);
-%     if isBadAttitude
-        MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
-%     end
+    %     if isBadAttitude
+    MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
+    %     end
     filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
     accel_pre = accel;
     gyro_pre = gyro;
@@ -133,7 +133,19 @@ Rpos_um482 = double(diag(MARGParam.std_lla_um482.^2));
 Rvel_um482 = double(diag(MARGParam.std_gpsvel_um482.^2));
 Ralt = double(MARGParam.std_alt^2);
 Rrange = double(MARGParam.std_range^2);
-
+%% ublox测量精度
+posVec = [Sensors.ublox1.hAcc,Sensors.ublox1.hAcc,Sensors.ublox1.vAcc];
+velVec = Sensors.ublox1.sAcc*ones(1,3);
+for i = 1:3
+    if posVec(i) < MARGParam.std_lla(i)
+        posVec(i) = MARGParam.std_lla(i);
+    end
+    if velVec(i) < MARGParam.std_gpsvel(i)
+        velVec(i) = MARGParam.std_gpsvel(i);
+    end    
+end
+Rpos = diag(posVec.^2);
+Rvel = double(diag(velVec.^2));
 %% 测量值拒绝 （注意：判断上限值应该 包容最大运动能力，下限值应该小于噪声影响）
 maxSpeed = 30;%30*dt_base;
 % GPS位置跳变拒绝——判断是否异常跳变
@@ -163,14 +175,14 @@ switch um482_BESTPOS
     case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解
         %         sigmaLat = max(0.02,Sensors.um482.delta_lat);
         %         sigmaLon = max(0.02,Sensors.um482.delta_lon);
-        %         sigmaAlt = max(0.05,Sensors.um482.delta_height);       
+        %         sigmaAlt = max(0.05,Sensors.um482.delta_height);
         sigmaLat = max(0.8,Sensors.um482.delta_lat);
         sigmaLon = max(0.8,Sensors.um482.delta_lon);
         sigmaAlt = max(1,Sensors.um482.delta_height);
         
-%         sigmaLat = max(0.1,Sensors.um482.delta_lat);
-%         sigmaLon = max(0.1,Sensors.um482.delta_lon);
-%         sigmaAlt = max(0.12,Sensors.um482.delta_height);        
+        %         sigmaLat = max(0.1,Sensors.um482.delta_lat);
+        %         sigmaLon = max(0.1,Sensors.um482.delta_lon);
+        %         sigmaAlt = max(0.12,Sensors.um482.delta_height);
     otherwise % 其他可用解
         sigmaLat = max(0.6,Sensors.um482.delta_lat);
         sigmaLon = max(0.6,Sensors.um482.delta_lon);
@@ -246,12 +258,12 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
-%     if ublox1_is_available
-%         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
-%         tmpK_residual(tmpK_residual<1) = 1;
-%     else
-%         tmpK_residual = [1,1,1];
-%     end
+    %     if ublox1_is_available
+    %         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
+    %         tmpK_residual(tmpK_residual<1) = 1;
+    %     else
+    %         tmpK_residual = [1,1,1];
+    %     end
     tmpK_residual = [1,1,1];
     for ii = 3
         if ii == 3
@@ -276,41 +288,39 @@ if rem(step_imu,kScale_imu) == 0
 end
 % 磁力计融合
 if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-% if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新    
+    % if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));
     end
     %% 利用磁力计/加计计算粗姿态辅助更新姿态四元数，防止初始化过程造成的一些问题
-    enableMagQuatFuse = false; 
+    enableMagQuatFuse = false;
     if enableMagQuatFuse && ... % 使能
             stayStillCondition.isStatic && ... % 静态
-            SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health % 磁力计健康
-        quat = compact(ecompass(double(meanAcc),double(mag))); 
+            SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health % && ...% 磁力计健康
+        %             (~ublox1_is_available && ~um482_is_available) % gps都是小
+        quat = compact(ecompass(double(meanAcc),double(mag)));
         for i_q = 1:4
             Rq = 0.05^2;
-        	filter_marg.correct(i_q,quat(i_q),Rq);
+            filter_marg.correct(i_q,quat(i_q),Rq);
         end
     end
 end
 % ublox1融合
 % if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
 %         ublox1UpdateFlag && MARGParam.fuse_enable.gps
+
 if ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
     if ~ZVCenable
-        Rpos = double(Sensors.ublox1.pDop^1.5*Rpos);
-        if Sensors.ublox1.pDop > 3
-            Rvel = double(Sensors.ublox1.pDop^1.5*Rvel);
-        end
         if rem(step_ublox,kScale_ublox) == 0
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
         end
     else
-        Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
-        Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
-        if rem(step_ublox,kScale_ublox) == 0 
+        %         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
+        %         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
+        if rem(step_ublox,kScale_ublox) == 0
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
         end
     end
@@ -319,13 +329,8 @@ end
 %  && residual_um482
 if MARGParam.fuse_enable.um482 && um482_is_available && ...
         um482UpdateFlag && ...% gps 更新
-        um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE % 无解
-    % 由于um482和ublox在高度方向存在近似常值偏差，因此在ublox建康时为了保证一致性，不融合482的高度    
-%     if ~ublox1_is_available
-%         Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
-%     else
-%         Rpos_um482 = double(diag([sigmaLat,sigmaLon,10]).^2);
-%     end
+        um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE && ...% 无解
+        Sensors.um482.pDop ~= 0 % um482在受强干扰时pDop会置0
     filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
@@ -354,7 +359,7 @@ if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt 
 end
 
 stateEst = filter_marg.State;
-stateCovarianceDiagEst = diag(filter_marg.StateCovariance).^0.5;
+stateCovarianceDiagEst = abs(diag(filter_marg.StateCovariance)).^0.5;
 eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
@@ -365,24 +370,24 @@ if fuseVdWithEKFandGPS
     %             (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
     k = max(1,abs(accel(3)-9.8));
     temp = min(0.2,1/k^0.8);
-%     if k > 3
-        if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-            fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+    %     if k > 3
+    if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
+        fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+        stateEst(10) = fuseVd;
+    else
+        if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
+            fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
             stateEst(10) = fuseVd;
-        else
-            if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
-                fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
-                stateEst(10) = fuseVd;
-            end
         end
-%     end
-%     else
-%         
-%     end
+    end
+    %     end
+    %     else
+    %
+    %     end
     %     if SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
-%         fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
-%         stateEst(10) = fuseVd;
-%     end    
+    %         fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
+    %         stateEst(10) = fuseVd;
+    %     end
 end
 accel_pre = accel;
 gyro_pre = gyro;
