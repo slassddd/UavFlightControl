@@ -211,11 +211,11 @@ end
 % mag
 [res_mag, resCov_mag] = residualmag(filter_marg, double(mag), double(Rmag));
 normalizedRes_mag = res_mag./ sqrt( diag(resCov_mag).' );
-residual_mag = all(abs(normalizedRes_mag)<3);
+residual_mag = all( abs(normalizedRes_mag)<8 );
 if ~residual_mag
     mag_resReject_num = mag_resReject_num + 1;
     if mag_resReject_num > 1e6 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
-        magRejectForEver = true;
+%         magRejectForEver = true;
     end
 end
 OUT_ECAS.nUbloxRejectByResidual = ublox1_resReject_num;
@@ -287,8 +287,8 @@ if rem(step_imu,kScale_imu) == 0
     accDegradeFlag = false;
 end
 % 磁力计融合
-if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-    % if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));
