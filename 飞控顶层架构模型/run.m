@@ -9,11 +9,11 @@ SetGlobalParam();
 %%
 if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_PARAM.ModeSel.simMode,'simulink_flightdata') % 飞行数据仿真
     %% 载入飞行数据并生成仿真格式数据
-    tspan = [0,700]; % sec
+    tspan = [0,inf]; % sec
     dataFileNames = {['20200418\仿真数据_log_1_V1000-24#V31132固件管家点击起飞后飞机快速向右后方移动']};    
     dataFileNames = {['SubFolder_飞行数据\20200506\仿真数据_90dae1f08ccd46efba27d5c1121debf6']};    
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
-    dataFileNames = {['SubFolder_飞行数据\20200604\仿真数据_log_宝坻 V1000-55# 手动飞行 重心76mm']};    
+    dataFileNames = {['SubFolder_飞行数据\20200720\仿真数据_5bd11c4543e747c29c5f9fe535b14e98']};
 %     dataFileNames = {['SubFolder_飞行数据\20200713\仿真数据_2020-07-13 16-43-48 大风返航']};    
 %     dataFileNames = {['20200501\仿真数据_lgo2 ']};    
      

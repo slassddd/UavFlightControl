@@ -9,11 +9,40 @@ plotenable.PowerConsumer = true;
 plotenable.TaskLogData = true;
 plotenable.FlightPerf = true;
 plotenable.IMU = true;
+% %% 绘图控制
+% plotenable.um482 = false;
+% plotenable.WindParam = false;
+% plotenable.ublox1 = true;
+% plotenable.SensorStatus = false;
+% plotenable.RTInfo_Task = false;
+% plotenable.gpsCompare = false;
+% plotenable.PowerConsumer = false;
+% plotenable.TaskLogData = true;
+% plotenable.FlightPerf = false;
+% plotenable.IMU = true;
 %%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if true
+    figure(201)
+    subplot(121)
+    absMag1 = vecnorm([IN_SENSOR.mag1.mag_x,IN_SENSOR.mag1.mag_y,IN_SENSOR.mag1.mag_z]');
+    plot(IN_SENSOR.mag1.time,absMag1);hold on;
+    absMag2 = vecnorm([IN_SENSOR.mag2.mag_x,IN_SENSOR.mag2.mag_y,IN_SENSOR.mag2.mag_z]');
+    plot(IN_SENSOR.mag2.time,absMag2);hold on;
+    try
+        absMag3 = vecnorm([mag3_x,mag3_y,mag3_z]');
+        plot(IN_SENSOR.mag3.time,absMag3);hold on;
+    end
+    legend('mag1','mag2')
+    xlabel('time(sec)')
+    ylabel('磁强度幅值(Guass)')
+    grid on;
+    subplot(122)
+    plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range)
+end
 if false
     SinglePlot_HomePoint
 end

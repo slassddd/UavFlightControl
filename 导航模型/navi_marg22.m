@@ -142,7 +142,7 @@ for i = 1:3
     end
     if velVec(i) < MARGParam.std_gpsvel(i)
         velVec(i) = MARGParam.std_gpsvel(i);
-    end    
+    end
 end
 Rpos = diag(posVec.^2);
 Rvel = double(diag(velVec.^2));
@@ -179,7 +179,6 @@ switch um482_BESTPOS
         sigmaLat = max(0.8,Sensors.um482.delta_lat);
         sigmaLon = max(0.8,Sensors.um482.delta_lon);
         sigmaAlt = max(1,Sensors.um482.delta_height);
-        
         %         sigmaLat = max(0.1,Sensors.um482.delta_lat);
         %         sigmaLon = max(0.1,Sensors.um482.delta_lon);
         %         sigmaAlt = max(0.12,Sensors.um482.delta_height);
@@ -287,8 +286,8 @@ if rem(step_imu,kScale_imu) == 0
     accDegradeFlag = false;
 end
 % 磁力计融合
-% if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));
