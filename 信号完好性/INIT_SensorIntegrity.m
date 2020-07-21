@@ -26,8 +26,8 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM.um482.threshold_lostTime = 15;
 end
 % 信号质量降级报警阈值
-SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 58;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 50;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 59;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 48;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 25;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 7;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;

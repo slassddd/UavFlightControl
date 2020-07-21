@@ -150,6 +150,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         VerticalMove_Enter (245),
         VerticalMove_Exit (246),
         Not_Allowed_TakeOff (247),
+        Land_No_GPS_Available (248),
+        Land_AtLeastOne_GPS_Available (249),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
