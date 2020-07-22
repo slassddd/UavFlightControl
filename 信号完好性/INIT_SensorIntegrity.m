@@ -27,7 +27,7 @@ switch baseMode
 end
 % 信号质量降级报警阈值
 SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 59;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 48;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 47;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 25;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 7;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;
