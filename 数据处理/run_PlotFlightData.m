@@ -26,22 +26,18 @@ tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
 if true
-    figure(201)
-    subplot(121)
-    absMag1 = vecnorm([IN_SENSOR.mag1.mag_x,IN_SENSOR.mag1.mag_y,IN_SENSOR.mag1.mag_z]');
-    plot(IN_SENSOR.mag1.time,absMag1);hold on;
-    absMag2 = vecnorm([IN_SENSOR.mag2.mag_x,IN_SENSOR.mag2.mag_y,IN_SENSOR.mag2.mag_z]');
-    plot(IN_SENSOR.mag2.time,absMag2);hold on;
-    try
-        absMag3 = vecnorm([mag3_x,mag3_y,mag3_z]');
-        plot(IN_SENSOR.mag3.time,absMag3);hold on;
-    end
-    legend('mag1','mag2')
-    xlabel('time(sec)')
-    ylabel('磁强度幅值(Guass)')
+    figure;
+    idx0_curLLA = round(0.5*length(SL.OUT_TASKFLIGHTPARAM.curLLA2));
+    idx0_NAV_alt = round(0.5*length(sensors.Algo_sl.algo_NAV_alt));
+    err = mean(SL.OUT_TASKFLIGHTPARAM.curLLA2(idx0_curLLA:end)) - mean(sensors.Algo_sl.algo_NAV_alt(idx0_NAV_alt:end));
+    plot(SL.OUT_TASKFLIGHTPARAM.time_cal,SL.OUT_TASKFLIGHTPARAM.curLLA2);hold on;
+    plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
+    plot(IN_SENSOR.radar1.time,sensors.Algo_sl.algo_NAV_alt+err);hold on;
     grid on;
-    subplot(122)
-    plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range)
+    legend('任务高度','雷达高','滤波高')
+end
+if true
+    SinglePlot_mag
 end
 if false
     SinglePlot_HomePoint

@@ -6,19 +6,22 @@ if nargin == 1
 end
 model_epoch = '2015v2';
 step = 10;
-geod_lat = [0:step:60];
-geod_lon = [70:step:130];
+geod_lat = [-90:step:90];
+geod_lon = [-180:step:180];
 height = 0;
 magDec = zeros(length(geod_lat),length(geod_lon));
+magMagnitude = zeros(length(geod_lat),length(geod_lon));
 for latIdx = 1:length(geod_lat)
     for lonIdx = 1:length(geod_lon)
-        [~, ~, magDec(latIdx,lonIdx)] = wrldmagm(height, geod_lat(latIdx),geod_lon(lonIdx), decimal_year, model_epoch);
+        [xyz, ~, magDec(latIdx,lonIdx)] = wrldmagm(height, geod_lat(latIdx),geod_lon(lonIdx), decimal_year, model_epoch);
+        magMagnitude(latIdx,lonIdx) = 1e-3*norm(xyz); % uT
     end
 end
 out.lat = geod_lat;
 out.lon = geod_lon;
 out.height = height;
 out.magDec = magDec;
+out.magMagnitude = magMagnitude;
 % TEST
 if 0
     decimal_year = 2020;

@@ -26,9 +26,11 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM.um482.threshold_lostTime = 15;
 end
 % 信号质量降级报警阈值
-SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 60;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 44;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 25;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 62;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 46;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 59;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 49;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 10;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 7;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;
 SENSOR_INTEGRITY_PARAM.GPS.degrade_numSv = 10;
@@ -38,4 +40,5 @@ SENSOR_INTEGRITY_PARAM.um482.threshold_pDop = 5;
 SENSOR_INTEGRITY_PARAM.um482.degrade_numSv = 16;
 SENSOR_INTEGRITY_PARAM.um482.degrade_pDop = 5;
 SENSOR_INTEGRITY_PARAM.Radar.faultThreshold = 400; % 近距离时radar可能测量到负值，此时radar固件直接输出一个固定的大值，faultThreshold应小于上述值
-%
+%%
+SENSOR_CALIB_PARAM.mag.magitude0 = 54; % 磁力计矫正参考模值[uT]

@@ -257,12 +257,12 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
-    %     if ublox1_is_available
-    %         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
-    %         tmpK_residual(tmpK_residual<1) = 1;
-    %     else
-    %         tmpK_residual = [1,1,1];
-    %     end
+%     if ublox1_is_available
+%         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
+%         tmpK_residual(tmpK_residual<1) = 1;
+%     else
+%         tmpK_residual = [1,1,1];
+%     end
     tmpK_residual = [1,1,1];
     for ii = 3
         if ii == 3
@@ -286,8 +286,8 @@ if rem(step_imu,kScale_imu) == 0
     accDegradeFlag = false;
 end
 % 磁力计融合
-if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-% if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));
