@@ -178,10 +178,11 @@ switch um482_BESTPOS
         %         sigmaAlt = max(0.05,Sensors.um482.delta_height);
         sigmaLat = max(0.8,Sensors.um482.delta_lat);
         sigmaLon = max(0.8,Sensors.um482.delta_lon);
-        sigmaAlt = max(0.7,Sensors.um482.delta_height);
-        %         sigmaLat = max(0.1,Sensors.um482.delta_lat);
-        %         sigmaLon = max(0.1,Sensors.um482.delta_lon);
-        %         sigmaAlt = max(0.12,Sensors.um482.delta_height);
+        sigmaAlt = max(0.2,Sensors.um482.delta_height);
+    case ENUM_BESTPOS.POS_SOLUTION_NARROW_FLOATE
+        sigmaLat = 1e1*max(0.8,Sensors.um482.delta_lat);
+        sigmaLon = 1e1*max(0.8,Sensors.um482.delta_lon);
+        sigmaAlt = 1e1*max(0.7,Sensors.um482.delta_height);        
     otherwise % 其他可用解
         sigmaLat = max(0.6,Sensors.um482.delta_lat);
         sigmaLon = max(0.6,Sensors.um482.delta_lon);
@@ -356,7 +357,6 @@ if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt 
         filter_marg.correct(idx_alt,double(posd),double(Rposd));
     end
 end
-
 stateEst = filter_marg.State;
 stateCovarianceDiagEst = abs(diag(filter_marg.StateCovariance)).^0.5;
 eulerd = double(euler(stateEst(1:4))*180/pi);

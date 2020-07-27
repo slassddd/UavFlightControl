@@ -33,7 +33,7 @@ switch example
         ALGO_SET.noise_std.std_mag = 2*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
         ALGO_SET.noise_std.std_lla = 1.2*[1.6,1.6,2.5];
-        ALGO_SET.noise_std.std_gpsvel = 1*[0.1,0.1,0.16];
+        ALGO_SET.noise_std.std_gpsvel = [0.2,0.2,0.3];
         ALGO_SET.noise_std.std_alt = 1;
         ALGO_SET.noise_std.std_range = 0.3;
         ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
