@@ -178,7 +178,7 @@ switch um482_BESTPOS
         %         sigmaAlt = max(0.05,Sensors.um482.delta_height);
         sigmaLat = max(0.8,Sensors.um482.delta_lat);
         sigmaLon = max(0.8,Sensors.um482.delta_lon);
-        sigmaAlt = max(1,Sensors.um482.delta_height);
+        sigmaAlt = max(0.7,Sensors.um482.delta_height);
         %         sigmaLat = max(0.1,Sensors.um482.delta_lat);
         %         sigmaLon = max(0.1,Sensors.um482.delta_lon);
         %         sigmaAlt = max(0.12,Sensors.um482.delta_height);
