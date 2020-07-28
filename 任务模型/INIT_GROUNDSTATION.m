@@ -37,7 +37,7 @@ switch pathExmpale
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 21;
+        nPoints = 19;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
@@ -131,7 +131,7 @@ switch pathSimMode
 end
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 300;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 0*300;
                 
                 STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
                 STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;

@@ -152,6 +152,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Not_Allowed_TakeOff (247),
         Land_No_GPS_Available (248),
         Land_AtLeastOne_GPS_Available (249),
+        Enter_AutoMode_HoverDown_ToCenter (250),
+        Enter_AutoMode_HoverDown_StraightForward (251),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
