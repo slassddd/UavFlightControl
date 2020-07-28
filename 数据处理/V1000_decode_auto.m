@@ -753,6 +753,10 @@ SL.TEST.um482.BESTPOS = BESTPOS; % create struct
 temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.TEST.um482.numSv = numSv; % create struct
+% /* |@@SL.TEST.radar@@+------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,4)==3),119:120)'],1,[]);
+Range=double(typecast(uint8(temp),'int16')')/1*0.0100000000;
+SL.TEST.radar.Range = Range; % create struct
 % /* |@@SL.TEST.ublox@@+------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,4)==1),109:112)'],1,[]);
 iTOW=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
@@ -785,14 +789,14 @@ temp = reshape([data(find(mod(Count,4)==0),129:129)'],1,[]);
 numSV=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.TEST.ublox.numSV = numSV; % create struct
 temp = reshape([data(find(mod(Count,4)==0),131:134)'],1,[]);
-hAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+hAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.TEST.ublox.hAcc = hAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),197:200)'],1,[]);
-vAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+vAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.TEST.ublox.vAcc = vAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),201:204)'],1,[]);
-headAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+headAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.TEST.ublox.headAcc = headAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
-sAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.TEST.ublox.sAcc = sAcc; % create struct

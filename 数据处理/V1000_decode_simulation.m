@@ -173,8 +173,8 @@ temp=reshape([data(index_43,117)'],1,[]);
 IN_SENSOR.radar1.SNR = uint8(temp');
 temp=reshape([data(index_43,118)'],1,[]);
 IN_SENSOR.radar1.Flag = uint8(temp');
-temp=reshape([data(index_43,119:120)'],1,[]);
-IN_SENSOR.radar1.Range = double(typecast(uint8(temp),'int16')')/32768*2000;
+temp = reshape([data(find(mod(Count,4)==3),119:120)'],1,[]);
+IN_SENSOR.radar1.Range = double(typecast(uint8(temp),'int16')')/1*0.0100000000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ublox
 temp=reshape([data(index_41,109:112)'],1,[]);
@@ -200,16 +200,16 @@ IN_SENSOR.ublox1.numSv=typecast(uint8(temp),'uint8')';
 % IN_SENSOR.ublox1.sAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
 % IN_SENSOR.ublox1.headAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
 temp = reshape([data(find(mod(Count,4)==0),131:134)'],1,[]);
-hAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+hAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.hAcc = hAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),197:200)'],1,[]);
-vAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+vAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.vAcc = vAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),201:204)'],1,[]);
-headAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+headAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.headAcc = headAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
-sAcc=double(typecast(uint8(temp),'int32')')/1*1.0000000000;
+sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.sAcc = sAcc; % create struct
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % um482
