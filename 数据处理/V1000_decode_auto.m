@@ -399,8 +399,8 @@ SL.OUT_TASKMODE.numTakeOff = numTakeOff; % create struct
 temp = reshape([data(find(mod(Count,16)==8),232:232)'],1,[]);
 isAllowedToPause=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.OUT_TASKMODE.isAllowedToPause = isAllowedToPause; % create struct
-% /* ------------+RefModel_SystemArchitecture_Y.OUT_FLIGHTPARAM------------------------------| */
-% /* |@@SL.OUT_TASKFLIGHTPARAM@@+--------------------------------+-------------+------------+---------------| */
+% /* ------------+RefModel_SystemArchitecture_Y.OUT_FLIGHTPARAM-------------+----------------------------| */
+% /* |@@SL.OUT_TASKFLIGHTPARAM@@+--------------------------------+-------------+----------------| */
 temp = reshape([data(find(mod(Count,16)==0),233:236)'],1,[]);
 curHomeLLA0=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.OUT_TASKFLIGHTPARAM.curHomeLLA0 = curHomeLLA0; % create struct
@@ -467,6 +467,12 @@ SL.OUT_TASKFLIGHTPARAM.curGroundSpeed = curGroundSpeed; % create struct
 temp = reshape([data(find(mod(Count,16)==13),233:234)'],1,[]);
 curAccZ=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
 SL.OUT_TASKFLIGHTPARAM.curAccZ = curAccZ; % create struct
+temp = reshape([data(find(mod(Count,4)==3),257:260)'],1,[]);
+groundHomeLLA2=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.OUT_TASKFLIGHTPARAM.groundHomeLLA2 = groundHomeLLA2; % create struct
+temp = reshape([data(find(mod(Count,4)==3),261:264)'],1,[]);
+curHeightForControl=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.OUT_TASKFLIGHTPARAM.curHeightForControl = curHeightForControl; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* |-----------+--------------------------------+-------------+------------+--------------| */
 % /* |@@Bus_TASK_WindParam@@-----------+--------------------------------+-------------+------------+--------------| */
