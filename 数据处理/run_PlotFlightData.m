@@ -25,6 +25,14 @@ tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if true % 高度
+    figure;
+    plot(SL.OUT_TASKFLIGHTPARAM.time_cal,SL.OUT_TASKFLIGHTPARAM.curLLA2);hold on;
+    plot(SL.OUT_TASKMODE.time_cal,SL.OUT_TASKMODE.heightCmd);hold on;
+    plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);
+    grid on;
+    legend('task综合高','高度指令','雷达高')
+end
 if true
     figure;
     idx0_curLLA = round(0.5*length(SL.OUT_TASKFLIGHTPARAM.curLLA2));

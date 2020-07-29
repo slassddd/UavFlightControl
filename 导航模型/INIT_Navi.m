@@ -14,7 +14,7 @@ ALGO_SET.fuse_enable.alt = 1;
 ALGO_SET.fuse_enable.um482 = 1;
 % 传感器选择
 ALGO_SET.SensorSelect.IMU = 1;  % -1:不使用  0:融合  N:使用第N个
-ALGO_SET.SensorSelect.Mag = 2;  % -1:不使用  0:融合  N:使用第N个
+ALGO_SET.SensorSelect.Mag = 1;  % -1:不使用  0:融合  N:使用第N个
 ALGO_SET.SensorSelect.GPS = 1;  % -1:不使用  0:融合  1:ublox1 100:高精度gps（um482）
 ALGO_SET.SensorSelect.Baro = 1;  % -1:不使用  0:融合  N:使用第N个
 ALGO_SET.SensorSelect.Radar = 1;  % -1:不使用  0:融合  N:使用第N个
@@ -30,14 +30,14 @@ switch example
         ALGO_SET.noise_std.std_acc = 8e-2*[1,1,1];  % m/s^2
         ALGO_SET.noise_std.std_acc_bias = 5e-4*[1,1,1]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
-        ALGO_SET.noise_std.std_mag = 2*[1,1,1]; %
+        ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
         ALGO_SET.noise_std.std_lla = 1.2*[1.6,1.6,2.5];
-        ALGO_SET.noise_std.std_gpsvel = [0.2,0.2,0.3];
+        ALGO_SET.noise_std.std_gpsvel = 2*[0.1,0.1,0.16];
         ALGO_SET.noise_std.std_alt = 1;
         ALGO_SET.noise_std.std_range = 0.3;
         ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
-        ALGO_SET.noise_std.std_gpsvel_um482 = [0.2,0.2,0.3];   
+        ALGO_SET.noise_std.std_gpsvel_um482 = 2*[0.1,0.1,0.16];   
     case 13 % v10011
         ALGO_SET.noise_std.std_gyro = 1e-1*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 3e-3*pi/180*[1,1,1]; % rad/s

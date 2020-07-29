@@ -396,6 +396,9 @@ SL.OUT_TASKMODE.isHeadingRotate_OnGround = isHeadingRotate_OnGround; % create st
 temp = reshape([data(find(mod(Count,16)==2),245:246)'],1,[]);
 numTakeOff=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 SL.OUT_TASKMODE.numTakeOff = numTakeOff; % create struct
+temp = reshape([data(find(mod(Count,16)==8),232:232)'],1,[]);
+isAllowedToPause=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.OUT_TASKMODE.isAllowedToPause = isAllowedToPause; % create struct
 % /* ------------+RefModel_SystemArchitecture_Y.OUT_FLIGHTPARAM------------------------------| */
 % /* |@@SL.OUT_TASKFLIGHTPARAM@@+--------------------------------+-------------+------------+---------------| */
 temp = reshape([data(find(mod(Count,16)==0),233:236)'],1,[]);

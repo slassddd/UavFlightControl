@@ -70,7 +70,7 @@ baroUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.baro1;
 % 雷达高度计更新
 range = radar1_range;
 radarUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.radar1;
-%
+% 滤波更新频率：n表示测量数据变化n次后进行一次相应的滤波更新
 kScale_imu = 1;
 kScale_mag = 3;
 kScale_baro = 3;
@@ -173,9 +173,6 @@ end
 % um482
 switch um482_BESTPOS
     case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解
-        %         sigmaLat = max(0.02,Sensors.um482.delta_lat);
-        %         sigmaLon = max(0.02,Sensors.um482.delta_lon);
-        %         sigmaAlt = max(0.05,Sensors.um482.delta_height);
         sigmaLat = max(0.8,Sensors.um482.delta_lat);
         sigmaLon = max(0.8,Sensors.um482.delta_lon);
         sigmaAlt = max(0.2,Sensors.um482.delta_height);
@@ -211,8 +208,11 @@ end
 % mag
 [res_mag, resCov_mag] = residualmag(filter_marg, double(mag), double(Rmag));
 normalizedRes_mag = res_mag./ sqrt( diag(resCov_mag).' );
-residual_mag = all( abs(normalizedRes_mag)<8 );
+residual_mag = all( abs(normalizedRes_mag)<10 );
 if ~residual_mag
+    kScale_mag = 12;
+else
+    kScale_mag = 3;
     mag_resReject_num = mag_resReject_num + 1;
     if mag_resReject_num > 1e6 % 如果拒绝次数过多，则认定传感器失效，永久拒绝
 %         magRejectForEver = true;
@@ -287,8 +287,8 @@ if rem(step_imu,kScale_imu) == 0
     accDegradeFlag = false;
 end
 % 磁力计融合
-% if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
-if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
         filter_marg.fusemag(double(mag),double(Rmag));
@@ -379,14 +379,6 @@ if fuseVdWithEKFandGPS
             stateEst(10) = fuseVd;
         end
     end
-    %     end
-    %     else
-    %
-    %     end
-    %     if SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
-    %         fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
-    %         stateEst(10) = fuseVd;
-    %     end
 end
 accel_pre = accel;
 gyro_pre = gyro;
