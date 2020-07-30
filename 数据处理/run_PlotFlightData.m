@@ -9,17 +9,6 @@ plotenable.PowerConsumer = true;
 plotenable.TaskLogData = true;
 plotenable.FlightPerf = true;
 plotenable.IMU = true;
-% %% 绘图控制
-% plotenable.um482 = false;
-% plotenable.WindParam = false;
-% plotenable.ublox1 = true;
-% plotenable.SensorStatus = false;
-% plotenable.RTInfo_Task = false;
-% plotenable.gpsCompare = false;
-% plotenable.PowerConsumer = false;
-% plotenable.TaskLogData = true;
-% plotenable.FlightPerf = false;
-% plotenable.IMU = true;
 %%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;

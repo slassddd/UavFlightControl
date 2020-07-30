@@ -401,6 +401,9 @@ stepInfo.step_alt = step_alt;
 stepInfo.step_radar = step_radar;
 stepInfo.step_baro = step_baro;
 stepInfo.step_board = step_board;
+if clock_sec > 200 && clock_sec <200.2
+    sl = 1;
+end
 end
 %% 子函数
 function eout = euler(quat)
