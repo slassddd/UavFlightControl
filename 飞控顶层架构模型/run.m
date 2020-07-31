@@ -15,8 +15,6 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200720\仿真数据_5bd11c4543e747c29c5f9fe535b14e98']};
 %     dataFileNames = {['SubFolder_飞行数据\20200713\仿真数据_2020-07-13 16-43-48 大风返航']};    
-%     dataFileNames = {['20200501\仿真数据_lgo2 ']};    
-     
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
         [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i}] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);

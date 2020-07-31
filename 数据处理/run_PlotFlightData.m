@@ -70,6 +70,7 @@ if plotenable.FlightPerf
     SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
 end
 tempFileNames = FileName;
+
 tmpIdx = strfind(tempFileNames,'.');
 tempFileNames(tmpIdx:end) = [];
 proj = currentProject;
