@@ -2,7 +2,7 @@ mag1Time = IN_SENSOR.mag1.time;
 mag2Time = IN_SENSOR.mag2.time;
 mag1Data = [IN_SENSOR.mag1.mag_x,IN_SENSOR.mag1.mag_y,IN_SENSOR.mag1.mag_z];
 mag2Data = [IN_SENSOR.mag2.mag_x,IN_SENSOR.mag2.mag_y,IN_SENSOR.mag2.mag_z];
-figure(201)
+figure(2011)
 subplot(321)
 plot(mag1Time,mag1Data(:,1));hold on;
 plot(mag2Time,mag2Data(:,1));hold on;
