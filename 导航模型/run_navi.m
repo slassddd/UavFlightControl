@@ -35,7 +35,7 @@ for i = 1:nFlightDataFile
             subplot(3,2,1)
             plot(IN_SENSOR_SET(jj).IMU1.time+t_cor(jj),IN_SENSOR_SET(jj).IMU1.accel_x);hold on;
             subplot(3,2,3)
-            plot(IN_SENSOR_SET(jj).IMU1.time+t_c or(jj),IN_SENSOR_SET(jj).IMU1.accel_y);hold on;
+            plot(IN_SENSOR_SET(jj).IMU1.time+t_cor(jj),IN_SENSOR_SET(jj).IMU1.accel_y);hold on;
             subplot(3,2,5)
             plot(IN_SENSOR_SET(jj).IMU1.time+t_cor(jj),IN_SENSOR_SET(jj).IMU1.accel_z);hold on;
             subplot(3,2,2)

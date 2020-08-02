@@ -286,10 +286,41 @@ temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 IN_SENSOR.um482.numSv = numSv; % create struct
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% airspeed
+% airspeed1
 IN_SENSOR.airspeed1.time = IN_SENSOR.ublox1.time;
 temp=reshape([data(index_42,181:182)'],1,[]);
 IN_SENSOR.airspeed1.airspeed=double(typecast(uint8(temp),'int16')')/32768*100;
+IN_SENSOR.airspeed1.airspeed_true = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.airspeed_indicate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.airspeed_calibrate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.temperature = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.status = 0*IN_SENSOR.airspeed1.airspeed;
+% airspeed2
+disp('airspeed2Î´¸³Öµ')
+IN_SENSOR.airspeed2.time = IN_SENSOR.ublox1.time;
+temp=reshape([data(index_42,181:182)'],1,[]);
+IN_SENSOR.airspeed2.airspeed=0*double(typecast(uint8(temp),'int16')')/32768*100;
+IN_SENSOR.airspeed2.airspeed_true = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.airspeed_indicate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.airspeed_calibrate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.temperature = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.status = 0*IN_SENSOR.airspeed1.airspeed;
+% airspeed3
+disp('airspeed3Î´¸³Öµ')
+IN_SENSOR.airspeed3.time = IN_SENSOR.ublox1.time;
+temp=reshape([data(index_42,181:182)'],1,[]);
+IN_SENSOR.airspeed3.airspeed=0*double(typecast(uint8(temp),'int16')')/32768*100;
+IN_SENSOR.airspeed3.airspeed_true = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.airspeed_indicate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.airspeed_calibrate = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.temperature = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.status = 0*IN_SENSOR.airspeed1.airspeed;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % laserDown1
 disp('laserDown1Î´¸³Öµ')
@@ -303,3 +334,16 @@ IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% radarLongForward1
+disp('radarLongForward1Î´¸³Öµ')
+IN_SENSOR.radarLongForward1.time = IN_SENSOR.radar1.time;
+IN_SENSOR.radarLongForward1.range = -1*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.radarLongForward1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.radarLongForward1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+% radarLongDown1
+disp('radarLongDown1Î´¸³Öµ')
+IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
+IN_SENSOR.radarLongDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
