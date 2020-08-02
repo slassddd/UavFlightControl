@@ -24,6 +24,8 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM.GroundStation.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM.Airspeed.threshold_lostTime = 10;
         SENSOR_INTEGRITY_PARAM.um482.threshold_lostTime = 15;
+        SENSOR_INTEGRITY_PARAM.laserDown.threshold_lostTime = 5;
+        SENSOR_INTEGRITY_PARAM.radarLong.threshold_lostTime = 5;
 end
 % 信号质量降级报警阈值
 SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 62;
