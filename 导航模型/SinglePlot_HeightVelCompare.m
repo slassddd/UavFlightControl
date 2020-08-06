@@ -5,9 +5,9 @@ fig = figure;
 fig.Name = '高度、速度对比';
 subplot(121)
 altHome0 = -243;
-plot(sensors.GPS.time_ublox,sensors.GPS.ublox_height,'r');hold on;
-plot(sensors.Baro.time_baro,sensors.Baro.altitue,'k');hold on;
-plot(sensors.Radar.time_radar,sensors.Radar.radar_Range,'b');hold on;
+plot(IN_SENSOR.um482.time,IN_SENSOR.um482.height,'r');hold on;
+plot(IN_SENSOR.baro1.time,IN_SENSOR.baro1.alt_baro,'k');hold on;
+plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range,'b');hold on;
 plot(navFilterMARGRes.Algo.time_algo,-out(i_sim).NavFilterRes.state.Data(:,7),'--');hold on;
 plot(sensors.IMU.time_imu(1:4:end),sensors.Algo_sl.algo_NAV_alt(idx_sel),'r--');hold on;
 %             ylim([-15,100])

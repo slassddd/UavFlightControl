@@ -28,10 +28,8 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM.radarLong.threshold_lostTime = 5;
 end
 % 信号质量降级报警阈值
-SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 62;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 46;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 59;
-SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 49;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_maxNormMag_uT = 60;
+SENSOR_INTEGRITY_PARAM.Mag.threshold_minNormMag_uT = 48;
 SENSOR_INTEGRITY_PARAM.Mag.threshold_gapBetweenMaxMin_uT = 10;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_numSv = 7;
 SENSOR_INTEGRITY_PARAM.GPS.threshold_pDop = 10;

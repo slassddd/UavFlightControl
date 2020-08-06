@@ -31,13 +31,13 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 1.5e3;
+        lon_right = 3.5e3;
         lat_space = 200;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 19;
+        nPoints = 89;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
@@ -132,7 +132,7 @@ end
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
 %% home点额外高度
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 1*300;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 0*300;
                 
                 STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
                 STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;

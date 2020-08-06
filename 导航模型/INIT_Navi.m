@@ -23,8 +23,8 @@ ALGO_SET.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 
 % 噪声传感器
 example = 16;
-switch example
-    case 16 % test
+switch example    
+    case 16 % 10014
         ALGO_SET.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_acc = 3e-2*[1,1,1];  % m/s^2

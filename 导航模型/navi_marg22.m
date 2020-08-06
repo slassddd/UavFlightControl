@@ -67,6 +67,7 @@ um482UpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.um482;
 % 气压高度计更新
 alt = baro1_alt;
 baroUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.baro1;
+airspeedUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.airspeed1;
 % 雷达高度计更新
 range = radar1_range;
 radarUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.radar1;
@@ -246,6 +247,7 @@ ublox1_is_available = ...
 um482_is_available = ...
     SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health || ...
     SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Degrade;
+airspeed1_is_available = SensorSignalIntegrity.SensorStatus.airspeed1 == ENUM_SensorHealthStatus.Health;
 % SensorUpdateFlag
 % if imuUpdateFlag
 step_imu = step_imu + 1;
@@ -307,9 +309,6 @@ if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.m
     end
 end
 % ublox1融合
-% if residual_ublox1 && ublox1_is_available && measureReject.lla_notJump && ...
-%         ublox1UpdateFlag && MARGParam.fuse_enable.gps
-
 if ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
@@ -357,6 +356,25 @@ if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt 
         filter_marg.correct(idx_alt,double(posd),double(Rposd));
     end
 end
+% 空速融合
+if false && airspeedUpdateFlag && ...
+        airspeed1_is_available && ...
+        ~ublox1_is_available && ...
+        ~um482_is_available % || clock_sec >= 700% || clock_sec >= 700
+    % 当GPS失效时，引入空速，抑制融合速度的漂移
+    tempLLA = filter_marg.ReferenceLocation;
+    Rvel_airspeed = diag([7,7,25]).^2;
+    stateEst = filter_marg.State;
+    euler_rad = double(euler(stateEst(1:4)));    
+    yaw = euler_rad(1) + 5*randn/3/57.3;
+    pitch = euler_rad(2); 
+    DCMbe = [cos(pitch) 0 -sin(pitch);0 1 0;sin(pitch) 0 cos(pitch)]*[cos(yaw) sin(yaw) 0;-sin(yaw) cos(yaw) 0;0 0 1]; % NED到Body的坐标转换矩阵
+    DCMeb = DCMbe'; % Body到NED的坐标转换矩阵
+    airspeed = Sensors.airspeed1.airspeed;
+    vel_airspeed = (DCMeb*[airspeed;0;0])';
+    filter_marg.fusegps(double(tempLLA),double(1e10),double(vel_airspeed),double(Rvel_airspeed));
+end
+%%
 stateEst = filter_marg.State;
 stateCovarianceDiagEst = abs(diag(filter_marg.StateCovariance)).^0.5;
 eulerd = double(euler(stateEst(1:4))*180/pi);
