@@ -2,8 +2,10 @@ plotmode = '3d';
 homeLLA = [STRUCT_mavlink_mission_item_def_ARRAY(1).x,...
     STRUCT_mavlink_mission_item_def_ARRAY(1).y,...
     STRUCT_mavlink_mission_item_def_ARRAY(1).z];
+breakLLA = unique( out.PathModeOut.LLATaskInterrupt.Data, 'rows' );
+breakLLA(breakLLA(:,1)==0,:) = [];
 switch plotmode
-    case '2d' 
+    case '2d'
         figure(1)
         lat = out.LLA.Data(:,1);
         lon = out.LLA.Data(:,2);
@@ -13,6 +15,7 @@ switch plotmode
         plot(lon,lat,'b');hold on;
         plot(shot_lon,shot_lat,'b*');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
+        plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
         for i = 1:TASK_SET.PATH.maxNum
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
             curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
@@ -42,6 +45,7 @@ switch plotmode
         height = out.LLA.Data(:,3);
         plot3(lon,lat,height,'b');hold on;
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
+        plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
         for i = 1:TASK_SET.PATH.maxNum-1
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
