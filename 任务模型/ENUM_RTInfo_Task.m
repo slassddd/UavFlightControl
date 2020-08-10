@@ -159,6 +159,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         VerticalMove_BeforeGoHome_Enter_No (254),
         VerticalMove_BeforePath_Enter_Yes (255),
         VerticalMove_BeforePath_Enter_No (256),
+        LargeAttitudeDetect_Enter_Normal (257),
+        LargeAttitudeDetect_Enter_Abnormal (258),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
