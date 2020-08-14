@@ -22,13 +22,27 @@ ALGO_SET.SensorSelect.Camera = 1;  % -1:不使用  0:融合  N:使用第N个
 ALGO_SET.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 
 % 噪声传感器
-example = 16;
+example = 17;
 switch example    
+    case 17 % test
+        ALGO_SET.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_acc = 3e-2*[1,1,1];  % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 5e-4*[1,1,5e0]; % m/s^2
+        ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
+        ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
+        ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
+        ALGO_SET.noise_std.std_lla = 1.2*[1.6,1.6,2.5];
+        ALGO_SET.noise_std.std_gpsvel = 1e-1*[0.1,0.1,0.16]; % 最小值限制
+        ALGO_SET.noise_std.std_alt = 1;
+        ALGO_SET.noise_std.std_range = 0.3;
+        ALGO_SET.noise_std.std_lla_um482 = [0.02,0.02,0.05];
+        ALGO_SET.noise_std.std_gpsvel_um482 = [0.05,0.05,0.08];  % 最小值限制
     case 16 % 10014
         ALGO_SET.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_acc = 3e-2*[1,1,1];  % m/s^2
-        ALGO_SET.noise_std.std_acc_bias = 1e-4*[1,1,1]; % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 5e-4*[1,1,5e0]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
         ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
