@@ -173,18 +173,18 @@ if ~residual_ublox1
 end
 % um482
 switch um482_BESTPOS
-    case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解
-        sigmaLat = max(0.8,Sensors.um482.delta_lat);
-        sigmaLon = max(0.8,Sensors.um482.delta_lon);
-        sigmaAlt = max(0.2,Sensors.um482.delta_height);
+    case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解        
+        sigmaLat = max(0.3,Sensors.um482.delta_lat);
+        sigmaLon = max(0.3,Sensors.um482.delta_lon);
+        sigmaAlt = max(0.2,Sensors.um482.delta_height);        
     case ENUM_BESTPOS.POS_SOLUTION_NARROW_FLOATE
         sigmaLat = 1e1*max(0.8,Sensors.um482.delta_lat);
         sigmaLon = 1e1*max(0.8,Sensors.um482.delta_lon);
-        sigmaAlt = 1e1*max(0.7,Sensors.um482.delta_height);        
+        sigmaAlt = 1e1*max(0.6,Sensors.um482.delta_height);        
     otherwise % 其他可用解
         sigmaLat = max(0.6,Sensors.um482.delta_lat);
         sigmaLon = max(0.6,Sensors.um482.delta_lon);
-        sigmaAlt = max(0.7,Sensors.um482.delta_height);
+        sigmaAlt = max(0.6,Sensors.um482.delta_height);
 end
 Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
 if Sensors.um482.pDop > 3
