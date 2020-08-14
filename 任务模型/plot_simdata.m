@@ -15,7 +15,9 @@ switch plotmode
         plot(lon,lat,'b');hold on;
         plot(shot_lon,shot_lat,'b*');hold on;
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
-        plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
+        if ~isempty(breakLLA)
+            plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
+        end
         for i = 1:TASK_SET.PATH.maxNum
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
             curlon = STRUCT_mavlink_mission_item_def_ARRAY(i).y;
@@ -45,7 +47,9 @@ switch plotmode
         height = out.LLA.Data(:,3);
         plot3(lon,lat,height,'b');hold on;
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
-        plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
+        if ~isempty(breakLLA)
+            plot(breakLLA(2),breakLLA(1),'Marker','diamond','color','g');hold on;
+        end
         plot(homeLLA(2),homeLLA(1),'r+');hold on;
         for i = 1:TASK_SET.PATH.maxNum-1
             curlat = STRUCT_mavlink_mission_item_def_ARRAY(i).x;
