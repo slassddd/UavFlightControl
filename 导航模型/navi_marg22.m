@@ -2,7 +2,6 @@ function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS
     Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude)
 persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag
 persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
-persistent accDegradeFlag meanVd
 persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
@@ -113,9 +112,6 @@ if isempty(filter_marg)
     meanAcc = single([0,0,0]);
     meanGyro = single([0,0,0]);
     meanMag = single([0,0,0]);
-    
-    accDegradeFlag = false;
-    meanVd = 0;
     
     dHeight_GPS_sub_Baro = ublox1_lla(3) - baro1_alt;
     
@@ -286,7 +282,6 @@ if rem(step_imu,kScale_imu) == 0
     fuseAcc = meanAcc;
     fuseGyro = meanGyro;
     filter_marg.predict(double(fuseAcc),double(fuseGyro));  %
-    accDegradeFlag = false;
 end
 % 磁力计融合
 if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新

@@ -163,6 +163,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         LargeAttitudeDetect_Enter_Abnormal (258),
         TaskLog_Protect_HeightInHoverUp_Normal (259),
         TaskLog_Protect_HeightInHoverUp_TooLow (260),
+        Enter_AutoMode_TakeOff_Waiting (261),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
