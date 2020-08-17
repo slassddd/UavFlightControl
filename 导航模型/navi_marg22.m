@@ -313,7 +313,7 @@ if ublox1_is_available && measureReject.lla_notJump && ...
         end
     else
         %         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
-        %         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
+        %         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos); 
         if rem(step_ublox,kScale_ublox) == 0
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
         end
