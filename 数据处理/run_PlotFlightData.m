@@ -14,6 +14,16 @@ tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if true % 空速
+    figure;
+    plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed);hold on;
+    plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_indicate);hold on;
+    plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_true,'--');hold on; 
+    legend('airspeed','airspeed_indicate','airspeed_true');
+    xlabel('time(s)')
+    ylabel('vel(m/s)')
+    grid on;
+end
 if true % 高度
     figure;
     plot(SL.OUT_TASKFLIGHTPARAM.time_cal,SL.OUT_TASKFLIGHTPARAM.curLLA2);hold on;

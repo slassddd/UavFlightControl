@@ -58,4 +58,5 @@ TASK_SET.PathPlanner.vertDist_verticalMove = 15; % 垂直运动模式参数：高度阈值
 TASK_SET.PathPlanner.test_homeHeightOffsetAbs = 0; % 测试参数（该参数作用在嵌入式中，所以仿真中不生效）：在0号航点的高度上增加该值，模拟特点航线
 TASK_SET.PathPlanner.isHoverDownToCenter = false; % 激活头顶切换旋翼
 TASK_SET.PathPlanner.runSingleTaskMode = ENUM_FlightTaskMode(0); % 运行单任务模式
+TASK_SET.PathPlanner.maxAirspeed_fixAllowed = 35; % 最高固定翼容许空速，[m/s]
 TaskParam = TASK_SET.PathPlanner;

@@ -331,13 +331,13 @@ temp = reshape([data(find(mod(Count,16)==2),231:232)'],1,[]);
 dz=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
 SL.OUT_TASKMODE.dz = dz; % create struct
 temp = reshape([data(find(mod(Count,16)==3),229:230)'],1,[]);
-groundspeedCmd=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
+groundspeedCmd=double(typecast(uint8(temp),'int16')')/32768*500.0000000000;
 SL.OUT_TASKMODE.groundspeedCmd = groundspeedCmd; % create struct
 temp = reshape([data(find(mod(Count,16)==3),231:232)'],1,[]);
-rollCmd=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
+rollCmd=double(typecast(uint8(temp),'int16')')/32768*500.0000000000;
 SL.OUT_TASKMODE.rollCmd = rollCmd; % create struct
 temp = reshape([data(find(mod(Count,16)==4),229:230)'],1,[]);
-turnRadiusCmd=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
+turnRadiusCmd=double(typecast(uint8(temp),'int16')')/32768*500.0000000000;
 SL.OUT_TASKMODE.turnRadiusCmd = turnRadiusCmd; % create struct
 temp = reshape([data(find(mod(Count,16)==4),231:232)'],1,[]);
 heightCmd=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
@@ -349,7 +349,7 @@ temp = reshape([data(find(mod(Count,16)==6),229:232)'],1,[]);
 turnCenterLL1=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
 SL.OUT_TASKMODE.turnCenterLL1 = turnCenterLL1; % create struct
 temp = reshape([data(find(mod(Count,16)==7),229:230)'],1,[]);
-dR_turn=double(typecast(uint8(temp),'int16')')/32768*10000.0000000000;
+dR_turn=double(typecast(uint8(temp),'int16')')/32768*500.0000000000;
 SL.OUT_TASKMODE.dR_turn = dR_turn; % create struct
 temp = reshape([data(find(mod(Count,16)==7),231:231)'],1,[]);
 uavMode=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
@@ -370,7 +370,7 @@ temp = reshape([data(find(mod(Count,16)==9),229:230)'],1,[]);
 maxClimbSpeed=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
 SL.OUT_TASKMODE.maxClimbSpeed = maxClimbSpeed; % create struct
 temp = reshape([data(find(mod(Count,16)==10),229:232)'],1,[]);
-prePathPoint_LLA0=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
+prePathPoint_LLA0=double(typecast(uint8(temp),'int32')')/10000000*10000.0000000000;
 SL.OUT_TASKMODE.prePathPoint_LLA0 = prePathPoint_LLA0; % create struct
 temp = reshape([data(find(mod(Count,16)==11),229:232)'],1,[]);
 prePathPoint_LLA1=double(typecast(uint8(temp),'int32')')/10000000*1.0000000000;
@@ -411,6 +411,9 @@ SL.OUT_TASKMODE.LLATaskInterrupt1 = LLATaskInterrupt1; % create struct
 temp = reshape([data(find(mod(Count,16)==14),289:292)'],1,[]);
 LLATaskInterrupt2=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.OUT_TASKMODE.LLATaskInterrupt2 = LLATaskInterrupt2; % create struct
+temp = reshape([data(find(mod(Count,16)==11),243:244)'],1,[]);
+airspeedCmd=double(typecast(uint8(temp),'int16')')/32768*500.0000000000;
+SL.OUT_TASKMODE.airspeedCmd = airspeedCmd; % create struct
 % /* ------------+RefModel_SystemArchitecture_Y.OUT_FLIGHTPARAM-------------+----------------------------| */
 % /* |@@SL.OUT_TASKFLIGHTPARAM@@+--------------------------------+-------------+----------------| */
 temp = reshape([data(find(mod(Count,16)==0),233:236)'],1,[]);
