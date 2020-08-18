@@ -399,6 +399,18 @@ SL.OUT_TASKMODE.numTakeOff = numTakeOff; % create struct
 temp = reshape([data(find(mod(Count,16)==8),232:232)'],1,[]);
 isAllowedToPause=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 SL.OUT_TASKMODE.isAllowedToPause = isAllowedToPause; % create struct
+temp = reshape([data(find(mod(Count,16)==11),291:292)'],1,[]);
+lastTargetPathPoint=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.OUT_TASKMODE.lastTargetPathPoint = lastTargetPathPoint; % create struct
+temp = reshape([data(find(mod(Count,16)==12),289:292)'],1,[]);
+LLATaskInterrupt0=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.OUT_TASKMODE.LLATaskInterrupt0 = LLATaskInterrupt0; % create struct
+temp = reshape([data(find(mod(Count,16)==13),289:292)'],1,[]);
+LLATaskInterrupt1=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.OUT_TASKMODE.LLATaskInterrupt1 = LLATaskInterrupt1; % create struct
+temp = reshape([data(find(mod(Count,16)==14),289:292)'],1,[]);
+LLATaskInterrupt2=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+SL.OUT_TASKMODE.LLATaskInterrupt2 = LLATaskInterrupt2; % create struct
 % /* ------------+RefModel_SystemArchitecture_Y.OUT_FLIGHTPARAM-------------+----------------------------| */
 % /* |@@SL.OUT_TASKFLIGHTPARAM@@+--------------------------------+-------------+----------------| */
 temp = reshape([data(find(mod(Count,16)==0),233:236)'],1,[]);
@@ -710,6 +722,9 @@ SL.OUT_FLIGHTPERF.batteryLifeToCompleteTask = batteryLifeToCompleteTask; % creat
 temp = reshape([data(find(mod(Count,8)==2),293:294)'],1,[]);
 batterylifeNeededToHome=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 SL.OUT_FLIGHTPERF.batterylifeNeededToHome = batterylifeNeededToHome; % create struct
+temp = reshape([data(find(mod(Count,16)==15),289:290)'],1,[]);
+batterylifeNeededToLand=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.OUT_FLIGHTPERF.batterylifeNeededToLand = batterylifeNeededToLand; % create struct
 % /* +===========+================================+=============+============+===============+ */
 % /*-----------------------RefModel_SystemArchitecture_U.IN_MAVLINK.------------------------- */
 % /* |@@SL.mavlink_mission_item_def@@+------------+-------------+------------+--------------| */
@@ -809,3 +824,35 @@ SL.TEST.ublox.headAcc = headAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
 sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.TEST.ublox.sAcc = sAcc; % create struct
+% /* |@@SL.TEST.airspeed1@@+------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,2)==0),177:178)'],1,[]);
+diff_press_filtered_pa=double(typecast(uint8(temp),'int16')')/32768*1000.0000000000;
+SL.TEST.airspeed1.diff_press_filtered_pa = diff_press_filtered_pa; % create struct
+temp = reshape([data(find(mod(Count,2)==0),179:180)'],1,[]);
+indicated_airspeed=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.TEST.airspeed1.indicated_airspeed = indicated_airspeed; % create struct
+temp = reshape([data(find(mod(Count,2)==0),181:182)'],1,[]);
+true_airspeed=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.TEST.airspeed1.true_airspeed = true_airspeed; % create struct
+temp = reshape([data(find(mod(Count,2)==0),183:184)'],1,[]);
+EAS_Algo=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
+SL.TEST.airspeed1.EAS_Algo = EAS_Algo; % create struct
+temp = reshape([data(find(mod(Count,2)==0),185:186)'],1,[]);
+EAS2TAS_Algo=double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+SL.TEST.airspeed1.EAS2TAS_Algo = EAS2TAS_Algo; % create struct
+temp = reshape([data(find(mod(Count,2)==0),189:190)'],1,[]);
+airspeed_used=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.TEST.airspeed1.airspeed_used = airspeed_used; % create struct
+temp = reshape([data(find(mod(Count,2)==0),191:192)'],1,[]);
+diff_press_pa_raw=double(typecast(uint8(temp),'int16')')/32768*1000.0000000000;
+SL.TEST.airspeed1.diff_press_pa_raw = diff_press_pa_raw; % create struct
+temp = reshape([data(find(mod(Count,2)==0),193:194)'],1,[]);
+diff_offset=double(typecast(uint8(temp),'int16')')/32768*300.0000000000;
+SL.TEST.airspeed1.diff_offset = diff_offset; % create struct
+% /* |@@SL.Debug_GroundStationShow@@+-------------+-------------+------------+---------------| */20200720
+temp = reshape([data(find(mod(Count,4)==3),221:222)'],1,[]);
+windSpeed_ms=double(typecast(uint8(temp),'int16')')/32768*30.0000000000;
+SL.Debug_GroundStationShow.windSpeed_ms = windSpeed_ms; % create struct
+temp = reshape([data(find(mod(Count,16)==11),221:222)'],1,[]);
+groundSpeed_ms=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
+SL.Debug_GroundStationShow.groundSpeed_ms = groundSpeed_ms; % create struct

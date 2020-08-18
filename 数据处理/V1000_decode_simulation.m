@@ -290,8 +290,13 @@ IN_SENSOR.um482.numSv = numSv; % create struct
 IN_SENSOR.airspeed1.time = IN_SENSOR.ublox1.time;
 temp=reshape([data(index_42,181:182)'],1,[]);
 IN_SENSOR.airspeed1.airspeed=double(typecast(uint8(temp),'int16')')/32768*100;
-IN_SENSOR.airspeed1.airspeed_true = 0*IN_SENSOR.airspeed1.airspeed;
-IN_SENSOR.airspeed1.airspeed_indicate = 0*IN_SENSOR.airspeed1.airspeed;
+temp = reshape([data(find(mod(Count,2)==0),183:184)'],1,[]);
+temp =double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
+IN_SENSOR.airspeed1.airspeed_indicate = temp(1:2:end);
+temp = reshape([data(find(mod(Count,2)==0),185:186)'],1,[]);
+temp = double(typecast(uint8(temp),'int16')')/32768*2.0000000000;
+EAS2TAS_Algo = temp(1:2:end);
+IN_SENSOR.airspeed1.airspeed_true = EAS2TAS_Algo.*IN_SENSOR.airspeed1.airspeed_indicate;
 IN_SENSOR.airspeed1.airspeed_calibrate = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.temperature = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
