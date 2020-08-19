@@ -859,3 +859,37 @@ SL.Debug_GroundStationShow.windSpeed_ms = windSpeed_ms; % create struct
 temp = reshape([data(find(mod(Count,16)==11),221:222)'],1,[]);
 groundSpeed_ms=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
 SL.Debug_GroundStationShow.groundSpeed_ms = groundSpeed_ms; % create struct
+% /* |@@SL.Filter@@+-------------+-------------+------------+---------------| */20200720
+temp = reshape([data(find(mod(Count,4)==0),209:212)'],1,[]);
+algo_NAV_lond=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+SL.Filter.algo_NAV_lond = algo_NAV_lond; % create struct
+temp = reshape([data(find(mod(Count,4)==0),213:216)'],1,[]);
+algo_NAV_latd=double(typecast(uint8(temp),'int32')')/10000000*10000000.0000000000;
+SL.Filter.algo_NAV_latd = algo_NAV_latd; % create struct
+temp = reshape([data(find(mod(Count,4)==1),209:210)'],1,[]);
+algo_NAV_yawd=double(typecast(uint8(temp),'int16')')/32768*200.0000000000;
+SL.Filter.algo_NAV_yawd = algo_NAV_yawd; % create struct
+temp = reshape([data(find(mod(Count,4)==1),211:212)'],1,[]);
+algo_NAV_pitchd=double(typecast(uint8(temp),'int16')')/32768*200.0000000000;
+SL.Filter.algo_NAV_pitchd = algo_NAV_pitchd; % create struct
+temp = reshape([data(find(mod(Count,4)==1),213:214)'],1,[]);
+algo_NAV_rolld=double(typecast(uint8(temp),'int16')')/32768*200.0000000000;
+SL.Filter.algo_NAV_rolld = algo_NAV_rolld; % create struct
+temp = reshape([data(find(mod(Count,4)==1),215:216)'],1,[]);
+algo_NAV_lond=double(typecast(uint8(temp),'int16')')/32768*200.0000000000;
+SL.Filter.algo_NAV_lond = algo_NAV_lond; % create struct
+temp = reshape([data(find(mod(Count,4)==1),217:218)'],1,[]);
+algo_NAV_latd=double(typecast(uint8(temp),'int16')')/32768*200.0000000000;
+SL.Filter.algo_NAV_latd = algo_NAV_latd; % create struct
+temp = reshape([data(find(mod(Count,4)==1),219:220)'],1,[]);
+algo_NAV_alt=double(typecast(uint8(temp),'int16')')/32768*2000.0000000000;
+SL.Filter.algo_NAV_alt = algo_NAV_alt; % create struct
+temp = reshape([data(find(mod(Count,4)==2),209:210)'],1,[]);
+algo_NAV_Vn=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.Filter.algo_NAV_Vn = algo_NAV_Vn; % create struct
+temp = reshape([data(find(mod(Count,4)==2),211:212)'],1,[]);
+algo_NAV_Ve=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.Filter.algo_NAV_Ve = algo_NAV_Ve; % create struct
+temp = reshape([data(find(mod(Count,4)==2),213:214)'],1,[]);
+algo_NAV_Vd=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
+SL.Filter.algo_NAV_Vd = algo_NAV_Vd; % create struct

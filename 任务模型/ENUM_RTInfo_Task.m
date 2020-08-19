@@ -164,6 +164,12 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Protect_HeightInHoverUp_Normal (259),
         TaskLog_Protect_HeightInHoverUp_TooLow (260),
         Enter_AutoMode_TakeOff_Waiting (261),
+        SingleMode_Change (262),
+        SingleMode_TakeOff_StopHere (263),
+        SingleMode_HovverAdjust_StopHere (264),
+        SingleMode_Rotor2Fix_StopHere (265),
+        
+        
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

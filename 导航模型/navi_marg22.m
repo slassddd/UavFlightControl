@@ -172,7 +172,7 @@ switch um482_BESTPOS
     case ENUM_BESTPOS.POS_SOLUTION_NARROW_INT % 高精度解        
         sigmaLat = max(0.3,Sensors.um482.delta_lat);
         sigmaLon = max(0.3,Sensors.um482.delta_lon);
-        sigmaAlt = max(0.2,Sensors.um482.delta_height);        
+        sigmaAlt = max(0.3,Sensors.um482.delta_height);        
     case ENUM_BESTPOS.POS_SOLUTION_NARROW_FLOATE
         sigmaLat = 1e1*max(0.8,Sensors.um482.delta_lat);
         sigmaLon = 1e1*max(0.8,Sensors.um482.delta_lon);
@@ -377,9 +377,9 @@ posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = true;
-if fuseVdWithEKFandGPS
+if fuseVdWithEKFandGPS && ...
+        (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 5)
     %     if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
-    %             (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 1.5)
     k = max(1,abs(accel(3)-9.8));
     temp = min(0.2,1/k^0.8);
     %     if k > 3

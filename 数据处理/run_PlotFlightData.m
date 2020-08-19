@@ -14,6 +14,9 @@ tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if true % 导航状态
+    SinglePlot_nav;
+end
 if true % 空速
     figure;
     plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed);hold on;

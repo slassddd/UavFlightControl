@@ -11,6 +11,7 @@ classdef ENUM_AutoModeType < Simulink.IntEnumType
         Fix2Rotor2HoverAdjust (6),
         PauseInAir (7),
         Fix2Rotor2Home2Land (8),
+        SingleModeRun (9),
     end
 end
 
