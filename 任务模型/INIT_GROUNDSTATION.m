@@ -31,13 +31,13 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 3.5e3;
-        lat_space = 200;
+        lon_right = 2e3;
+        lat_space = 100;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 29;
+        nPoints = 11;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
