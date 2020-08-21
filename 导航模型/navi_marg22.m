@@ -352,7 +352,7 @@ if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt 
     end
 end
 % 空速融合
-if false && airspeedUpdateFlag && ...
+if true && airspeedUpdateFlag && ...
         airspeed1_is_available && ...
         ~ublox1_is_available && ...
         ~um482_is_available % || clock_sec >= 700% || clock_sec >= 700
@@ -360,7 +360,7 @@ if false && airspeedUpdateFlag && ...
     tempLLA = filter_marg.ReferenceLocation;
     Rvel_airspeed = diag([7,7,25]).^2;
     stateEst = filter_marg.State;
-    euler_rad = double(euler(stateEst(1:4)));    
+    euler_rad = double (euler(stateEst(1:4)));    
     yaw = euler_rad(1) + 5*randn/3/57.3;
     pitch = euler_rad(2); 
     DCMbe = [cos(pitch) 0 -sin(pitch);0 1 0;sin(pitch) 0 cos(pitch)]*[cos(yaw) sin(yaw) 0;-sin(yaw) cos(yaw) 0;0 0 1]; % NED到Body的坐标转换矩阵
@@ -378,16 +378,16 @@ posNED = stateEst(5:7)';
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = true;
 if fuseVdWithEKFandGPS && ...
-        (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 5)
-    %     if SensorSignalIntegrity.SensorStatus.ublox1 ~= ENUM_SensorHealthStatus.Health || ...
+        (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));
-    temp = min(0.2,1/k^0.8);
-    %     if k > 3
+    temp = min(0.3,1/k^0.8);
     if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-        fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
-        stateEst(10) = fuseVd;
+        if ublox1UpdateFlag
+            fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
+            stateEst(10) = fuseVd;
+        end
     else
-        if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
+        if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && um482UpdateFlag
             fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
             stateEst(10) = fuseVd;
         end

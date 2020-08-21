@@ -15,7 +15,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200720\仿真数据_5bd11c4543e747c29c5f9fe535b14e98']};
     dataFileNames = {['SubFolder_飞行数据\20200731\仿真数据_2020-07-31 18-37-01 风速跳变得比较频繁']};
-    dataFileNames = {['SubFolder_飞行数据\20200818\仿真数据_log 地面仿真 空速']};
+    dataFileNames = {['SubFolder_飞行数据\20200820\无GPS\仿真数据_4 no gps 2020-08-20 16-33-18']};
 %     dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20200811 长江空间信息技术工程有限公司（武汉） 西藏\仿真数据_2020-08-09 11-59-55 风速显示异常']};
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
