@@ -1,5 +1,5 @@
 modelname = 'RefModel_SystemArchitecture';
-infofilename = 'SystemInfo.mat';
+infofilename = '飞控顶层架构模型/SystemInfo.mat';
 %% 载入模型
 load_system(modelname);
 open_system([modelname,'/SystemInfo/']);
