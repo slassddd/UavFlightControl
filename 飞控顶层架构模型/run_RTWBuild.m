@@ -1,3 +1,9 @@
+temp_old_pathname = cd;
+temp_pathname = mfilename('fullpath');
+temp = strfind(temp_pathname,'\');
+temp_pathname = temp_pathname(1:temp(end));
+cd(temp_pathname)
+%%
 modelname = 'RefModel_SystemArchitecture';
 infofilename = '飞控顶层架构模型/SystemInfo.mat';
 %% 载入模型
@@ -32,3 +38,5 @@ pause(2);
 rtwbuild(modelname)
 %% 保存系统信息
 save(infofilename,'SystemInfo')
+%% 跳转回原目录
+cd(temp_old_pathname)
