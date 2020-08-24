@@ -1,8 +1,12 @@
 SimulinkRunMode = 1;
-% [ALGO_SET,sensorFs] = step2_setALGOparam_flightData();
 %% 控制率初始化
 Ts_Control.Ts_base = 0.012;
-INIT_Control
+try
+    INIT_Control;
+catch
+    pause(2)
+    fprintf('No INIT_Control\n')
+end
 %% 框架模型
 Ts_Architechure.Ts_base = 0.012;
 %% 控制模块初始化
