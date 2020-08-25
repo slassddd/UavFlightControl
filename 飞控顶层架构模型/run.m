@@ -68,7 +68,6 @@ switch GLOBAL_PARAM.ModeSel.simMode
                 %                 filterdata = FilterDatas(i_mat);
                 % 滤波参数设置
                 N = size(IN_SENSOR.IMU1.time,1);
-                %                 [ALGO_SET,sensorFs] = step2_setALGOparam_flightData(PARALLEL_PARAM_SET(i_sim));
                 %% 组合导航初始化
                 INIT_Navi
                 % 运行滤波实例

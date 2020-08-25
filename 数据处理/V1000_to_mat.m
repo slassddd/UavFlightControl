@@ -9,7 +9,6 @@ if PathName~=0
     [FileNames,PathName,~] = uigetfile([PathName,'\\*.bin'],'MultiSelect','on'); % 
 else
     curProj = currentProject;
-%     cd(curProj.RootFolder)
     try % 直接进入可能的、存放数据的子文件夹
         subfolders = dir(curProj.RootFolder);
         for i = 1:length(subfolders)
@@ -332,9 +331,19 @@ for i_file = 1:nFile
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
     %
     try
-    run_PlotFlightData
+        run_PlotFlightData
     end
 end
 cd(evokeDir)
 timeSpend = toc;
 fprintf('数据载入完成，耗时 %.2f [s]\n',timeSpend);
+%% 选择挂载磁力计文件
+if true
+    [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
+    magFullPath = strcat(magFilePath,magFileName);
+    RM3100.k = 1/75;
+    RM3100.mag = RM3100.k*readMag_RM3100(magFullPath,1);
+    RM3100.norm = vecnorm(RM3100.mag,2,2);
+    SinglePlot_mag_RM3100
+end
+%% END 选择挂载磁力计文件
