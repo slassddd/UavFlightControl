@@ -15,7 +15,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200720\仿真数据_5bd11c4543e747c29c5f9fe535b14e98']};
     dataFileNames = {['SubFolder_飞行数据\20200731\仿真数据_2020-07-31 18-37-01 风速跳变得比较频繁']};
-    dataFileNames = {['SubFolder_飞行数据\20200820\无GPS\仿真数据_4 no gps 2020-08-20 16-33-18']};
+    dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
 %     dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20200811 长江空间信息技术工程有限公司（武汉） 西藏\仿真数据_2020-08-09 11-59-55 风速显示异常']};
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
@@ -61,11 +61,6 @@ switch GLOBAL_PARAM.ModeSel.simMode
         for i_mat = 1:nFlightDataFile
             for i_sim = 1:nSim
                 tic
-                % 数据摘取
-                %                 measureData = MeasureDatas(i_mat);
-                %                 simdata = SimDatas(i_mat);
-                %                 sensors = Sensors(i_mat);
-                %                 filterdata = FilterDatas(i_mat);
                 % 滤波参数设置
                 N = size(IN_SENSOR.IMU1.time,1);
                 %% 组合导航初始化
@@ -87,9 +82,11 @@ switch GLOBAL_PARAM.ModeSel.simMode
         Ts_Compass.Ts_base = 0.012;
         try
             INIT_Control;
-        catch
-            pause(2)
-            fprintf('No INIT_Control\n')
+        catch ME
+            fprintf('INIT_Control:\n')
+            fprintf(ME.message);
+            fprintf('\n')
+            return;
         end
         %% 框架模型
         Ts_Architechure.Ts_base = 0.012;
