@@ -302,6 +302,8 @@ IN_SENSOR.airspeed1.temperature = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.status = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed1.EAS2TAS_Algo = EAS2TAS_Algo;
+disp('airspeed1.EAS2TAS_AlgoÎ´¸³Öµ')
 % airspeed2
 disp('airspeed2Î´¸³Öµ')
 IN_SENSOR.airspeed2.time = IN_SENSOR.ublox1.time;
@@ -314,6 +316,7 @@ IN_SENSOR.airspeed2.temperature = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.status = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed2.EAS2TAS_Algo = 0*EAS2TAS_Algo;
 % airspeed3
 disp('airspeed3Î´¸³Öµ')
 IN_SENSOR.airspeed3.time = IN_SENSOR.ublox1.time;
@@ -326,6 +329,7 @@ IN_SENSOR.airspeed3.temperature = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.status = 0*IN_SENSOR.airspeed1.airspeed;
+IN_SENSOR.airspeed3.EAS2TAS_Algo = 0*EAS2TAS_Algo;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % laserDown1
 disp('laserDown1Î´¸³Öµ')
@@ -352,3 +356,7 @@ IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%IMU2
+disp('IMU1_ControlÎ´¸³Öµ')
+IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;

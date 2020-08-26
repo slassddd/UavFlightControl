@@ -338,12 +338,14 @@ cd(evokeDir)
 timeSpend = toc;
 fprintf('数据载入完成，耗时 %.2f [s]\n',timeSpend);
 %% 选择挂载磁力计文件
-if true
-    [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
-    magFullPath = strcat(magFilePath,magFileName);
-    RM3100.k = 1/75;
-    RM3100.mag = RM3100.k*readMag_RM3100(magFullPath,1);
-    RM3100.norm = vecnorm(RM3100.mag,2,2);
-    SinglePlot_mag_RM3100
+try
+    if true
+        [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
+        magFullPath = strcat(magFilePath,magFileName);
+        RM3100.k = 1/75;
+        RM3100.mag = RM3100.k*readMag_RM3100(magFullPath,1);
+        RM3100.norm = vecnorm(RM3100.mag,2,2);
+        SinglePlot_mag_RM3100
+    end
 end
 %% END 选择挂载磁力计文件
