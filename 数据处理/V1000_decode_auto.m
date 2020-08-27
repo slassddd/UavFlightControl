@@ -490,22 +490,22 @@ curHeightForControl=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 SL.OUT_TASKFLIGHTPARAM.curHeightForControl = curHeightForControl; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* |-----------+--------------------------------+-------------+------------+--------------| */
-% /* |@@Bus_TASK_WindParam@@-----------+--------------------------------+-------------+------------+--------------| */
+% /* |@@SL.TASK_WindParam@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,16)==13),235:236)'],1,[]);
 sailWindSpeed=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
-Bus_TASK_WindParam.sailWindSpeed = sailWindSpeed; % create struct
+SL.TASK_WindParam.sailWindSpeed = sailWindSpeed; % create struct
 temp = reshape([data(find(mod(Count,16)==14),233:234)'],1,[]);
 sailWindHeading=double(typecast(uint8(temp),'int16')')/32768*10.0000000000;
-Bus_TASK_WindParam.sailWindHeading = sailWindHeading; % create struct
+SL.TASK_WindParam.sailWindHeading = sailWindHeading; % create struct
 temp = reshape([data(find(mod(Count,16)==14),235:236)'],1,[]);
 windSpeedMax=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
-Bus_TASK_WindParam.windSpeedMax = windSpeedMax; % create struct
+SL.TASK_WindParam.windSpeedMax = windSpeedMax; % create struct
 temp = reshape([data(find(mod(Count,16)==15),233:234)'],1,[]);
 windSpeedMin=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
-Bus_TASK_WindParam.windSpeedMin = windSpeedMin; % create struct
+SL.TASK_WindParam.windSpeedMin = windSpeedMin; % create struct
 temp = reshape([data(find(mod(Count,16)==15),235:236)'],1,[]);
 maxWindHeading=double(typecast(uint8(temp),'int16')')/32768*10.0000000000;
-Bus_TASK_WindParam.maxWindHeading = maxWindHeading; % create struct
+SL.TASK_WindParam.maxWindHeading = maxWindHeading; % create struct
 % /* +===========+================================+=============+============+==============+ */
 % /* |@@IMUData@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,1)==0),3:6)'],1,[]);

@@ -14,6 +14,10 @@ tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
+if true % 航点
+    formatMavlinkFromFlightData
+    SingPlot_mavPathPoints
+end
 if true % 导航状态
     SinglePlot_nav;
 end
@@ -59,7 +63,8 @@ if plotenable.um482
     SingPlot_um482(IN_SENSOR.um482)
 end
 if plotenable.WindParam
-    SingPlot_WindParam(IN_SENSOR.IMU1.time,Bus_TASK_WindParam)
+    SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.TASK_WindParam)
+%     SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.GlobalWindEst)
 end
 if plotenable.ublox1
     SingPlot_ublox1(IN_SENSOR.ublox1)
@@ -73,14 +78,22 @@ end
 if plotenable.gpsCompare
     SingPlot_gpsCompare(IN_SENSOR.um482,IN_SENSOR.ublox1)
 end
-if plotenable.PowerConsumer    
-    T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+if plotenable.PowerConsumer
+    try
+        T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+    catch ME
+        disp('PowerConsumer 绘制失败')
+    end
 end
 if plotenable.TaskLogData
     SingPlot_TaskLogData;
 end
 if plotenable.FlightPerf
-    SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
+    try
+        SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
+    catch ME
+        disp('FlightPerf 绘制失败')
+    end
 end
 tempFileNames = FileName;
 

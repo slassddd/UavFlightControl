@@ -86,7 +86,7 @@ for i_file = 1:nFile
     V1000_decode_auto
     SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
     %% 对齐数据
-    Bus_TASK_WindParam = alignDimension(Bus_TASK_WindParam);
+    SL.TASK_WindParam = alignDimension(SL.TASK_WindParam);
     IN_SENSOR.baro1 = alignDimension(IN_SENSOR.baro1);
     IN_SENSOR.mag1 = alignDimension(IN_SENSOR.mag1);
     IN_SENSOR.mag2 = alignDimension(IN_SENSOR.mag2);
@@ -317,8 +317,12 @@ for i_file = 1:nFile
     tempSensor = sensors(i_file);
     clear sensors
     sensors = tempSensor;
-
-    save(saveFileName{i_file},'IN_SENSOR','sensors','','Out_initValue','stepInfo','Out_Sensors')
+    try
+        run_PlotFlightData
+%         saveFileName_Mavlink{i_file} = [subFoldName,'Mavlink_',temp,'.mat'];
+%         save(saveFileName{i_file},'IN_MAVLINK','IN_MAVLINK_mavlink_msg_id_command_long_time')
+    end
+    save(saveFileName{i_file},'IN_SENSOR','sensors','','Out_initValue','stepInfo','SL')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系
@@ -329,17 +333,13 @@ for i_file = 1:nFile
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(dataDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
-    %
-    try
-        run_PlotFlightData
-    end
 end
 cd(evokeDir)
 timeSpend = toc;
 fprintf('数据载入完成，耗时 %.2f [s]\n',timeSpend);
 %% 选择挂载磁力计文件
 try
-    if true
+    if false
         [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
         magFullPath = strcat(magFilePath,magFileName);
         RM3100.k = 1/75;

@@ -1,10 +1,10 @@
-% 数据处理: 提取日志文件中的有用数据
-V1000_to_mat
-if ~iscell(FileNames) % 当没有选择文件时，推出
+% 鏁版嵁澶勭悊: 鎻愬彇鏃ュ織鏂囦欢涓殑鏈夌敤鏁版嵁
+V1000_to_mat_archi
+if ~iscell(FileNames) % 褰撴病鏈夐�夋嫨鏂囦欢鏃讹紝鎺ㄥ嚭
     if FileNames==0
-        fprintf('没有选择文件\n');
+        fprintf('娌℃湁閫夋嫨鏂囦欢\n');
         return;
     end
 end
-% 进行组合导航验算
+% 杩涜缁勫悎瀵艰埅楠岀畻
 run_navi     

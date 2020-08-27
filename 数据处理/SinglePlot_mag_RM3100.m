@@ -1,6 +1,9 @@
 maxTime = IN_SENSOR.mag1.time(end);
 nData = size(RM3100.mag,1);
-mag1Time = linspace(0,maxTime,nData);
+t0_base = -0;
+Ts_RM3100 = 0.67;
+mag1Time = linspace(0,Ts_RM3100*nData,nData) + t0_base;
+% mag1Time = linspace(0,maxTime,nData);
 mag1Data = RM3100.mag/100;
 figure(2012)
 subplot(321)
