@@ -15,8 +15,10 @@ tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
 % fullNameOfLog = [PathName,FileNames];
 if true % 航点
-    formatMavlinkFromFlightData
-    SingPlot_mavPathPoints
+    try
+        formatMavlinkFromFlightData
+        SingPlot_mavPathPoints
+    end
 end
 if true % 导航状态
     SinglePlot_nav;
