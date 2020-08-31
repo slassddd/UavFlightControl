@@ -9,11 +9,15 @@ fig = figure;
 fig.Name = mfilename;
 ylabelstr = {'isAbleToCompleteTask','flagGoHomeNow','remainDistToGo_m [m]','remainTimeToSpend_sec [sec]','remainPowerWhenFinish_per [%]'...
     ,'economicAirspeed [m/s]','remainPathPoint',...
-    'batteryLifeToCompleteTask [%]','batterylifeNeededToHome [%]','time_cal [sec]'};
+    'batteryLifeToCompleteTask [%]','batterylifeNeededToHome [%]','batterylifeNeededToLand [%]','time_cal [sec]'};
 idx_nz = find(~isnan(time));
 for i = 1:nChildren
     subplot(nrow,ncol,i)
-    plot(time(idx_nz),structData.(children{i})(idx_nz));
+    try
+        plot(time(idx_nz),structData.(children{i})(idx_nz));
+    catch
+        plot(structData.(children{i}));
+    end
     grid on;
     xlabel('time (sec)');
     ylabel(ylabelstr{i})

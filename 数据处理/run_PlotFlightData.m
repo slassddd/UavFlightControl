@@ -83,6 +83,7 @@ end
 if plotenable.PowerConsumer
     try
         T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+        SL_LOAD.PowerConsumer = T;
     catch ME
         disp('PowerConsumer 绘制失败')
     end

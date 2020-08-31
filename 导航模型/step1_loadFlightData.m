@@ -1,6 +1,6 @@
-function [IN_SENSOR,IN_SENSOR_SIM,sensors,tspan,validflag,SL] = step1_loadFlightData(tspan,dataFileName,BUS_SENSOR)
+function [IN_SENSOR,IN_SENSOR_SIM,sensors,tspan,validflag,SL,SL_LOAD] = step1_loadFlightData(tspan,dataFileName,BUS_SENSOR)
 fprintf('载入飞行数据:%s\n',dataFileName)
-temp = load(dataFileName,'IN_SENSOR','sensors','SL');
+temp = load(dataFileName,'IN_SENSOR','sensors','SL','SL_LOAD');
 fprintf('完整数据的IMU时间范围 [%.2f, %.2f]\n',temp.sensors.IMU.time_imu(1),temp.sensors.IMU.time_imu(end))
 if tspan(2) > temp.sensors.IMU.time_imu(end)
     tspan(2) = temp.sensors.IMU.time_imu(end);
@@ -15,4 +15,5 @@ IN_SENSOR = temp.IN_SENSOR;
 IN_SENSOR_SIM = temp.IN_SENSOR_SIM;
 sensors = truncateSensorTimeRange(temp.sensors,tspan);
 SL = temp.SL;
+SL_LOAD = temp.SL_LOAD;
 

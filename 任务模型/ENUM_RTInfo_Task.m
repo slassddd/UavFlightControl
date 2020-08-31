@@ -170,6 +170,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         SingleMode_Rotor2Fix_StopHere (265),
         SingleMode_HoverUp_StopHere (266),
         SingleMode_Fix2Rotor_StopHere (267),
+        LoopPath_Complete_Num (268),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

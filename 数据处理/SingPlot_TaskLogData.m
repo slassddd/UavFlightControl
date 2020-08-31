@@ -25,6 +25,13 @@ matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput;
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
 TT = parserTaskLogData(taskLogDataRes,matchMessages);
+%
+SL_LOAD.TaskLog.T_taskLog_All = T_taskLog_All;
+SL_LOAD.TaskLog.T_taskLog_Protect = T_taskLog_Protect;
+SL_LOAD.TaskLog.T_taskLog_Payload = T_taskLog_Payload;
+SL_LOAD.TaskLog.T_taskLog_ParserInput = T_taskLog_ParserInput;
+SL_LOAD.TaskLog.T_taskLog_MavCmd = T_taskLog_MavCmd;
+SL_LOAD.TaskLog.T_taskLog_FlightMode = T_taskLog_FlightMode;
 %% 解析POS的时间
 if 0
     idxsel_shot = find(T_taskLog_Payload.message == ENUM_RTInfo_Task.TaskLog_Payload_Camera_Shot);

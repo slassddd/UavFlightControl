@@ -59,4 +59,5 @@ TASK_SET.PathPlanner.test_homeHeightOffsetAbs = 0; % ²âÊÔ²ÎÊı£¨¸Ã²ÎÊı×÷ÓÃÔÚÇ¶ÈëÊ
 TASK_SET.PathPlanner.isHoverDownToCenter = false; % ¼¤»îÍ·¶¥ÇĞ»»ĞıÒí
 TASK_SET.PathPlanner.runSingleTaskMode = ENUM_FlightTaskMode(0); % ÔËĞĞµ¥ÈÎÎñÄ£Ê½
 TASK_SET.PathPlanner.maxAirspeed_fixAllowed = 35; % ×î¸ß¹Ì¶¨ÒíÈİĞí¿ÕËÙ£¬[m/s]
+TASK_SET.PathPlanner.loopPathPoints = 0; % Ñ­»·Ö´ĞĞº½µã´ÎÊı: 0,1,²»ÖØ¸´Ö´ĞĞ£»nÖØ¸´Ö´ĞĞn´Î£»
 TaskParam = TASK_SET.PathPlanner;

@@ -1,6 +1,6 @@
 function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
     Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude)
-persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag
+persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag timeUpdate_ublox timeUpdate_um482
 persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
 persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
@@ -121,6 +121,8 @@ if isempty(filter_marg)
     
     staticTime = 0;
     magRejectForEver = false;
+    timeUpdate_ublox = clock_sec;
+    timeUpdate_um482 = clock_sec;
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -341,7 +343,7 @@ end
 if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
         MARGParam.fuse_enable.gps && ...
         ~ublox1_is_available && ...
-        ~um482_is_available % || clock_sec >= 700% || clock_sec >= 700
+        ~um482_is_available
     step_baro = step_baro + 1;
     step_alt = step_alt + 1;
     if rem(step_baro,kScale_baro) == 0
@@ -377,20 +379,26 @@ posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = true;
+dTime = 0;
 if fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));
-    temp = min(0.3,1/k^0.8);
+    temp = min(0.5,1/k^0.8);
     if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
         if ublox1UpdateFlag
+            thisTime = clock_sec;
+            dTime = thisTime - timeUpdate_ublox;
+            timeUpdate_ublox = thisTime;
+        end
+        if dTime < 0.25 % 更新率低时不进行平滑
             fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
             stateEst(10) = fuseVd;
         end
-    else
-        if  SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && um482UpdateFlag
-            fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
-            stateEst(10) = fuseVd;
-        end
+%     elseif SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health
+%         if um482UpdateFlag
+%             fuseVd = temp*stateEst(10) + (1-temp)*um482_gpsvel(3);
+%             stateEst(10) = fuseVd;
+%         end
     end
 end
 accel_pre = accel;
