@@ -10,11 +10,11 @@ else
 end
 %% 通用参数设置
 SetGlobalParam();
-%%
+%% 
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,1200]; % sec
+tspan0 = [0,1200]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i},timeSpanValidflag] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
