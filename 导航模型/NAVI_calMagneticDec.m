@@ -20,8 +20,8 @@ magDec_wrldmagm = zeros(length(geod_lat),length(geod_lon));
 magDec_igrfmagm = zeros(length(geod_lat),length(geod_lon));
 magMagnitude_wrldmagm = zeros(length(geod_lat),length(geod_lon));
 magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
-% switch model_sel
-%     case 'igrfmagm'
+switch model_sel
+    case 'igrfmagm'
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% igrfmagm
@@ -29,7 +29,7 @@ magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
                 magMagnitude_igrfmagm(latIdx,lonIdx) = 1e-3*norm(xyz_igrfmagm); % uT
             end
         end
-%     case 'wrldmagm'
+    case 'wrldmagm'
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% wrldmagm
@@ -37,7 +37,7 @@ magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
                 magMagnitude_wrldmagm(latIdx,lonIdx) = 1e-3*norm(xyz_wrldmagm); % uT
             end
         end
-% end
+end
 out.lat = geod_lat;
 out.lon = geod_lon;
 out.height = height;
