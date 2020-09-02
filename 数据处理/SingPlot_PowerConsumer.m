@@ -237,7 +237,10 @@ end
 for i_p = 1:nPhase
     tempStruct(i_p).time = timeAll(idxSel{i_p});
     tempStruct(i_p).idx = idxAll(idxSel{i_p});
-    
+    if isempty(tempStruct(i_p).time)
+        warning('SingPlot_PowerConsumer函数中错误')
+        continue; 
+    end
     tempStruct(i_p).t0 = tempStruct(i_p).time(1);
     tempStruct(i_p).tf = tempStruct(i_p).time(end);
     tempStruct(i_p).du = tempStruct(i_p).tf - tempStruct(i_p).t0;

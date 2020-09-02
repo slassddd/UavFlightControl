@@ -1,7 +1,7 @@
 maxTime = IN_SENSOR.mag1.time(end);
 nData = size(RM3100.mag,1);
 t0_base = -0;
-Ts_RM3100 = 0.67;
+Ts_RM3100 = 1/35;0.0286;1/17.5;0.0575;
 mag1Time = linspace(0,Ts_RM3100*nData,nData) + t0_base;
 % mag1Time = linspace(0,maxTime,nData);
 mag1Data = RM3100.mag/100;

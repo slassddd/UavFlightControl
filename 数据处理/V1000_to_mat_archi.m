@@ -341,7 +341,8 @@ try
         [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
         magFullPath = strcat(magFilePath,magFileName);
         RM3100.k = 1/75;
-        RM3100.mag = RM3100.k*readMag_RM3100(magFullPath,1);
+        RM3100.mag = RM3100.k*importdata(magFullPath); % 需手动对TXT数据文件进行修改，删除XYZ和：
+        RM3100.mag(:,3) = - RM3100.mag(:,3);
         RM3100.norm = vecnorm(RM3100.mag,2,2);
         SinglePlot_mag_RM3100
     end
