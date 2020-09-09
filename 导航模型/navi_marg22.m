@@ -378,7 +378,7 @@ eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
-fuseVdWithEKFandGPS = true;
+fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 dTime = 0;
 if fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)

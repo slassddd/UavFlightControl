@@ -11,10 +11,10 @@ tspan0 = [0,inf]; % sec
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20200820\4+1 起降\仿真数据_log 6 2020-08-20 11-40-02']};
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20200820\4+1 起降\仿真数据_log 5 2020-08-20 11-36-49']};
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20200904\仿真数据_1 2020年09月04日  宝坻  V1000-55# v31191固件  动态电量测试 2020-09-04 13-39-39']};
-
+dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20200907\仿真数据_第2架次-手动切换']};
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
-    [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i}] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
+    [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},validflag,SL,SL_LOAD] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
 end
 tspan = tspan_set{1};
 INIT_Navi

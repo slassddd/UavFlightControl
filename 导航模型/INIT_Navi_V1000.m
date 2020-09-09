@@ -330,6 +330,7 @@ MARGParam = ALGO_SET.noise_std; % 将用在stateflow或matlab function中的参�
 MARGParam.P0_MARG = diag(ALGO_SET.P0_marg22);
 MARGParam.fuse_enable = ALGO_SET.fuse_enable;
 MARGParam.enableZeroVelCorrect = true;
+MARGParam.enableVdFuser = true;
 %
 MVOParam = MARGParam;
 MVOParam.P0_MARG = diag(ALGO_SET.P0_errorstate17);

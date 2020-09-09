@@ -25,10 +25,10 @@ ALGO_SET.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 example = 17;
 switch example    
     case 17 % test
-        ALGO_SET.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
-        ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
-        ALGO_SET.noise_std.std_acc = 3e-1*[1,1,1];  % m/s^2
-        ALGO_SET.noise_std.std_acc_bias = 5e-3*[1,1,3]; % m/s^2
+        ALGO_SET.noise_std.std_gyro = 1e-2*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_gyro_bias = 6e-7*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_acc = 1e-1*[1,1,1];  % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 5e-7*[1,1,3]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
         ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
@@ -93,6 +93,7 @@ MARGParam = ALGO_SET.noise_std; % 将用在stateflow或matlab function中的参�
 MARGParam.P0_MARG = diag(ALGO_SET.P0_marg22);
 MARGParam.fuse_enable = ALGO_SET.fuse_enable;
 MARGParam.enableZeroVelCorrect = true;
+MARGParam.enableVdFuser = false;
 %
 MVOParam = MARGParam;
 MVOParam.P0_MARG = diag(ALGO_SET.P0_errorstate17);
