@@ -46,5 +46,8 @@ pause(2);
 rtwbuild(modelname)
 %% 保存系统信息
 save(infofilename,'SystemInfo')
+%% 跳转到生成代码的路径
+path_codegen = 
+cd()
 %% 跳转回原目录
 cd(temp_old_pathname)
