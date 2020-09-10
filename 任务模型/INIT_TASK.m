@@ -2,7 +2,7 @@
 load('IOBusInfo_V1000')
 %% º½ÏßËã·¨²ÎÊı
 Ts_Task.Ts_base = 0.036;
-
+%% V1000²ÎÊı
 TASK_SET.PathPlanner.reachFlag_point_dist = 30; % µ½´ïµãµÄ¾àÀëÅĞ¶¨ [m]
 TASK_SET.PathPlanner.reachFlag_line_dist = 0.5;
 TASK_SET.PathPlanner.reachDetermineMode = 2; % 0:ÅĞ¶Ïµã¾à  1£ºÅĞ¶Ï¹ıÏß   2£ºÅĞ¶Ïµã¾àºÍ¹ıÏß
@@ -61,4 +61,24 @@ TASK_SET.PathPlanner.runSingleTaskMode = ENUM_FlightTaskMode(0); % ÔËĞĞµ¥ÈÎÎñÄ£Ê
 TASK_SET.PathPlanner.maxAirspeed_fixAllowed = 35; % ×î¸ß¹Ì¶¨ÒíÈİĞí¿ÕËÙ£¬[m/s]
 TASK_SET.PathPlanner.loopPathPoints = 0; % Ñ­»·Ö´ĞĞº½µã´ÎÊı: 0,1,²»ÖØ¸´Ö´ĞĞ£»nÖØ¸´Ö´ĞĞn´Î£»
 TASK_SET.PathPlanner.runout_battery_alarm_set = 7; % µç³ØºÄ¾¡±¨¾¯,´¥·¢ÎŞÌõ¼ş½µÂäÂß¼­
+TASK_SET.PathPlanner.enableDynamicBatteryGoHome = true; % ¶¯Ì¬µçÁ¿·µº½Ê¹ÄÜ
 TaskParam = TASK_SET.PathPlanner;
+TaskParam_V1000 = TaskParam;
+%% V10²ÎÊı
+% ¸ù¾İËùÑ¡»úĞÍ½øĞĞ²ÎÊı³õÊ¼»¯
+mode_task = questdlg('Task¡ª¡ªÑ¡Ôñ»úĞÍ', ...
+    'Ñ¡Ôñ»úĞÍ', ...
+    'V1000','V10','V10s','V1000');
+if strcmp(mode_task,'È¡Ïû')
+    error('Î´Ñ¡Ôñ»úĞÍ.')
+end
+switch mode_task
+    case {'V1000','V10s'}
+    case 'V10'
+        % V10 ĞèĞŞ¸ÄµÄ²ÎÊı
+        TaskParam.heightThreshold_LandSuccess = 0.38; % 
+        TaskParam.enableDynamicBatteryGoHome = false; %
+    otherwise
+        error('×éºÏµ¼º½Ä£¿é»úĞÍÑ¡Ôñ´íÎó.')
+end
+TaskParam_V10 = TaskParam;

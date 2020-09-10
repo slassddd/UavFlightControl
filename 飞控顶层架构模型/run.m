@@ -24,7 +24,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200731\仿真数据_2020-07-31 18-37-01 风速跳变得比较频繁']};
     dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
     dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
-    
+    dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_1 2020年9月10日 宝坻 V1000-55# V31196固件 飞行']};
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
         [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},~,SL(i),SL_LOAD(i)] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
@@ -141,7 +141,9 @@ switch GLOBAL_PARAM.ModeSel.simMode
                 INIT_Mavlink_FlightData
                 Battery_mavlink_msg_mission_current.time = SL.PowerConsume.time_cal;
                 Battery_mavlink_msg_mission_current.signals.values = SL.PowerConsume.AllTheTimePowerConsume;
-                tic,ArchiRes_replay = sim(modelname);toc
+                tic
+                ArchiRes_replay = sim(modelname);
+                toc
                 %% 仿真绘图
                 AchiPlot_replay
         end

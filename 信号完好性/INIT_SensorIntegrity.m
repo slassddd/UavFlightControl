@@ -40,5 +40,6 @@ SENSOR_INTEGRITY_PARAM.um482.threshold_pDop = 5;
 SENSOR_INTEGRITY_PARAM.um482.degrade_numSv = 16;
 SENSOR_INTEGRITY_PARAM.um482.degrade_pDop = 5;
 SENSOR_INTEGRITY_PARAM.Radar.faultThreshold = 400; % 近距离时radar可能测量到负值，此时radar固件直接输出一个固定的大值，faultThreshold应小于上述值
+SENSOR_INTEGRITY_PARAM.FilterParam_kSmoothMean = 0.8; % 对IMU零偏修正值的平滑滤波系数,[0,1)
 %%
 SENSOR_CALIB_PARAM.mag.magitude0 = 54; % 磁力计矫正参考模值[uT]

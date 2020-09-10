@@ -331,6 +331,7 @@ MARGParam.P0_MARG = diag(ALGO_SET.P0_marg22);
 MARGParam.fuse_enable = ALGO_SET.fuse_enable;
 MARGParam.enableZeroVelCorrect = true;
 MARGParam.enableVdFuser = true;
+MARGParam_V1000 = MARGParam;
 %
 MVOParam = MARGParam;
 MVOParam.P0_MARG = diag(ALGO_SET.P0_errorstate17);
@@ -339,3 +340,4 @@ MVOParam.std_gyro_bias = ALGO_SET.ErrorState.noise_std.std_gyro_bias;
 MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc_bias = ALGO_SET.ErrorState.noise_std.std_acc_bias;
+MVOParam_V1000 = MVOParam;

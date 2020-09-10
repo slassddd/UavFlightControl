@@ -12,5 +12,5 @@ switch mode_navi
     case 'V10'
         INIT_Navi_V10
     otherwise
-        errordlg('组合导航模块机型选择错误.')
+        error('组合导航模块机型选择错误.')
 end

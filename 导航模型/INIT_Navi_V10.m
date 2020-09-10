@@ -26,9 +26,9 @@ example = 17;
 switch example    
     case 17 % test
         ALGO_SET.noise_std.std_gyro = 1e-2*pi/180*[1,1,1]; % rad/s
-        ALGO_SET.noise_std.std_gyro_bias = 6e-7*pi/180*[1,1,1]; % rad/s
+        ALGO_SET.noise_std.std_gyro_bias = 6e-6*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_acc = 1e-1*[1,1,1];  % m/s^2
-        ALGO_SET.noise_std.std_acc_bias = 5e-7*[1,1,3]; % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 5e-6*[1,1,2]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
         ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];
@@ -94,6 +94,7 @@ MARGParam.P0_MARG = diag(ALGO_SET.P0_marg22);
 MARGParam.fuse_enable = ALGO_SET.fuse_enable;
 MARGParam.enableZeroVelCorrect = true;
 MARGParam.enableVdFuser = false;
+MARGParam_V10 = MARGParam;
 %
 MVOParam = MARGParam;
 MVOParam.P0_MARG = diag(ALGO_SET.P0_errorstate17);
@@ -102,3 +103,4 @@ MVOParam.std_gyro_bias = ALGO_SET.ErrorState.noise_std.std_gyro_bias;
 MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc_bias = ALGO_SET.ErrorState.noise_std.std_acc_bias;
+MVOParam_V10 = MVOParam;
