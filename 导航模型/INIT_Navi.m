@@ -5,12 +5,14 @@ mode_navi = questdlg('Navi——选择机型', ...
 if strcmp(mode_navi,'取消')
     return;
 end
-%%
 switch mode_navi
     case {'V1000','V10s'}
-        INIT_Navi_V1000
+        PlaneMode.navi = ENUM_plane_mode.V1000;
     case 'V10'
-        INIT_Navi_V10
+        PlaneMode.navi = ENUM_plane_mode.V10;
     otherwise
         error('组合导航模块机型选择错误.')
 end
+%%
+INIT_Navi_V1000
+INIT_Navi_V10

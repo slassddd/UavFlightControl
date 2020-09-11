@@ -7,4 +7,4 @@ if ~iscell(FileNames) % 当没有选择文件时，推出
     end
 end
 % 进行组合导航验算
-run_navi     
+run_navi
