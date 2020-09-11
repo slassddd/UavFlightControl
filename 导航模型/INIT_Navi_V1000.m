@@ -28,7 +28,7 @@ switch example
         ALGO_SET.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
         ALGO_SET.noise_std.std_acc = 3e-2*[1,1,1];  % m/s^2
-        ALGO_SET.noise_std.std_acc_bias = 5e-4*[1,1,3]; % m/s^2
+        ALGO_SET.noise_std.std_acc_bias = 5e-4*[1,1,1]; % m/s^2
         ALGO_SET.noise_std.std_magNED = 1e-8*[1,1,1];  %
         ALGO_SET.noise_std.std_mag = 2.5*[1,1,1]; %
         ALGO_SET.noise_std.std_mag_bias = 1e-3*[1,1,1];

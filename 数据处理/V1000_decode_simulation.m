@@ -36,15 +36,15 @@ IN_SENSOR.um482.time = save_time(1:4:end);
 temp = reshape([data(1:1:end,27:28)'],1,[]);
 IN_SENSOR.IMU1.accel_x=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,29:30)'],1,[]);
-IN_SENSOR.IMU1.accel_y=-double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1.accel_y=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,31:32)'],1,[]);
-IN_SENSOR.IMU1.accel_z=-double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1.accel_z=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,33:34)'],1,[]);
 IN_SENSOR.IMU1.gyro_x=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(1:1:end,35:36)'],1,[]);
-IN_SENSOR.IMU1.gyro_y=-double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(1:1:end,37:38)'],1,[]);
-IN_SENSOR.IMU1.gyro_z=-double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
 temp = reshape([data(find(mod(Count,4)==1),277:278)'],1,[]);

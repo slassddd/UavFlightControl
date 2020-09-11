@@ -46,7 +46,7 @@ for i = 1:nFlightDataFile
             plot(IN_SENSOR_SET(jj).IMU1.time+t_cor(jj),IN_SENSOR_SET(jj).IMU1.gyro_z);hold on;
         end
     end
-    if 1
+    if 0
         IN_SENSOR = IN_SENSOR_SET(i);
         SinglePlot_Sensor
         fig = figure(103);

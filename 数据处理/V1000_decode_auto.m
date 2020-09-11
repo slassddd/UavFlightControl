@@ -893,3 +893,23 @@ SL.Filter.algo_NAV_Ve = algo_NAV_Ve; % create struct
 temp = reshape([data(find(mod(Count,4)==2),213:214)'],1,[]);
 algo_NAV_Vd=double(typecast(uint8(temp),'int16')')/32768*100.0000000000;
 SL.Filter.algo_NAV_Vd = algo_NAV_Vd; % create struct
+% /* |@@BYC.Filter@@+-------------+-------------+------------+---------------| */
+% /* |-----------+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,2)==0),159:160)'],1,[]);
+rtY_filter_gx=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+BYC.Filter.rtY_filter_gx = rtY_filter_gx; % create struct
+temp = reshape([data(find(mod(Count,2)==0),161:162)'],1,[]);
+rtY_filter_gy=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+BYC.Filter.rtY_filter_gy = rtY_filter_gy; % create struct
+temp = reshape([data(find(mod(Count,2)==0),163:164)'],1,[]);
+rtY_filter_gz=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+BYC.Filter.rtY_filter_gz = rtY_filter_gz; % create struct
+temp = reshape([data(find(mod(Count,2)==1),145:146)'],1,[]);
+rtY_filter_ax=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+BYC.Filter.rtY_filter_ax = rtY_filter_ax; % create struct
+temp = reshape([data(find(mod(Count,2)==1),147:148)'],1,[]);
+rtY_filter_ay=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+BYC.Filter.rtY_filter_ay = rtY_filter_ay; % create struct
+temp = reshape([data(find(mod(Count,2)==1),149:150)'],1,[]);
+rtY_filter_az=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+BYC.Filter.rtY_filter_az = rtY_filter_az; % create struct
