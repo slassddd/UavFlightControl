@@ -78,11 +78,11 @@ for i = 1:nFlightDataFile
         legend('ublox','um482')
     end
 end
-
+%% 设置机型变量
+PlaneMode.mode = selParamForPlaneMode();
 %% 开始仿真
 nStateMARG = 22; % 滤波器状态维数
 %% 设置滤波参数
-% [ALGO_SET,sensorFs] = step2_setALGOparam_flightData();
 INIT_Navi;
 %% 设置飞机参数
 % INIT_UAV

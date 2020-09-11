@@ -341,3 +341,5 @@ MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc = ALGO_SET.ErrorState.noise_std.std_acc;
 MVOParam.std_acc_bias = ALGO_SET.ErrorState.noise_std.std_acc_bias;
 MVOParam_V1000 = MVOParam;
+%
+NAVIParam_V1000.SensorSelect = ALGO_SET.SensorSelect;

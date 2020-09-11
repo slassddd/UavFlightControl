@@ -1,5 +1,7 @@
 clear,clc
 SetGlobalParam
+%% 设置机型变量
+PlaneMode.mode = selParamForPlaneMode();
 %% 初始化任务模型
 INIT_SIMPLEUAVMOTION
 INIT_TASK 

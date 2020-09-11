@@ -15,6 +15,8 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM.Airspeed.threshold_lostTime = 250;
     case 0.36
         % 0.4 base
+        
+        
         SENSOR_INTEGRITY_PARAM.IMU.threshold_lostTime = 3;
         SENSOR_INTEGRITY_PARAM.Mag.threshold_lostTime = 10;
         SENSOR_INTEGRITY_PARAM.GPS.threshold_lostTime = 15;

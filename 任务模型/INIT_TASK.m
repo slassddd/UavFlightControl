@@ -62,23 +62,17 @@ TASK_SET.PathPlanner.maxAirspeed_fixAllowed = 35; % 最高固定翼容许空速，[m/s]
 TASK_SET.PathPlanner.loopPathPoints = 0; % 循环执行航点次数: 0,1,不重复执行；n重复执行n次；
 TASK_SET.PathPlanner.runout_battery_alarm_set = 7; % 电池耗尽报警,触发无条件降落逻辑
 TASK_SET.PathPlanner.enableDynamicBatteryGoHome = true; % 动态电量返航使能
-TaskParam = TASK_SET.PathPlanner;
-TaskParam_V1000 = TaskParam;
+TaskParam_V1000 = TASK_SET.PathPlanner;
+% TaskParam_V1000 = TaskParam;
 %% V10参数
-% 根据所选机型进行参数初始化
-mode_task = questdlg('Task——选择机型', ...
-    '选择机型', ...
-    'V1000','V10','V10s','V1000');
-if strcmp(mode_task,'取消')
-    error('未选择机型.')
-end
-switch mode_task
-    case {'V1000','V10s'}
-    case 'V10'
+TaskParam_V10 = TaskParam_V1000;
+switch PlaneMode.mode
+    case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
+    case ENUM_plane_mode.V10
         % V10 需修改的参数
-        TaskParam.heightThreshold_LandSuccess = 0.38; % 
-        TaskParam.enableDynamicBatteryGoHome = false; %
+        TaskParam_V10.heightThreshold_LandSuccess = 0.38; % 
+        TaskParam_V10.enableDynamicBatteryGoHome = false; %
     otherwise
         error('组合导航模块机型选择错误.')
 end
-TaskParam_V10 = TaskParam;
+% TaskParam_V10 = TaskParam;

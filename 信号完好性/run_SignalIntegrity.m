@@ -16,15 +16,16 @@ nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},validflag,SL,SL_LOAD] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
 end
+figure;
+plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
+plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
 tspan = tspan_set{1};
+%% 设置机型变量
+PlaneMode.mode = selParamForPlaneMode();
+%% 初始化相关模块
 INIT_Navi
 INIT_SensorIntegrity
 INIT_SensorAlignment
 INIT_SensorFault
-
-figure;
-plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
-plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
-
 %% 运行模型
 sim('TESTENV_SignalIntegrity')
