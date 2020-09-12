@@ -1,3 +1,4 @@
+%%
 clear,clc
 clear global
 %% 选择仿真模式
@@ -25,6 +26,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
     dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
     dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_1 2020年9月10日 宝坻 V1000-55# V31196固件 飞行']};
+    dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
         [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},~,SL(i),SL_LOAD(i)] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
@@ -59,29 +61,9 @@ end
 PlaneMode.mode = selParamForPlaneMode();
 %% 开始仿真
 nSim = 1;
-PARALLEL_PARAM_SET(1).std_gyro = pi/180*0.1*[1,1,1];  % rad/s 标准差（非平方）
-PARALLEL_PARAM_SET(2).std_gyro = pi/180*0.05*[1,1,1];
-PARALLEL_PARAM_SET(3).std_gyro = pi/180*0.01*[1,1,1];
-PARALLEL_PARAM_SET(1).ALGO_SET.SensorSelect.Mag = 2;
-PARALLEL_PARAM_SET(2).ALGO_SET.SensorSelect.Mag = 2;
 nStateMARG = 22; % 滤波器状态维数
 %% 执行仿真
 switch GLOBAL_PARAM.ModeSel.simMode
-    case 'matlab_flightdata'
-        for i_mat = 1:nFlightDataFile
-            for i_sim = 1:nSim
-                tic
-                % 滤波参数设置
-                N = size(IN_SENSOR.IMU1.time,1);
-                %% 组合导航初始化
-                INIT_Navi
-                % 运行滤波实例
-                idx = (i_mat-1)*nFlightDataFile + i_sim;
-                runFilter_Matlab
-                timeSpend = toc;
-                fprintf('模型<%d>仿真完成, 耗时 %.2f [s]\n',idx,timeSpend);
-            end
-        end
     case 'simulink_flightdata'
         tic
         %%
@@ -119,17 +101,7 @@ switch GLOBAL_PARAM.ModeSel.simMode
         INIT_SensorIntegrity
         %% 飞行性能
         INIT_FlightPerformance
-        %% 运行仿真
-        
-        % nSim = 1;
-        % SIM_FLIGHTDATA_IN(nSim) = Simulink.SimulationInput(modelname);
-        % for i = 1:nSim
-        %     SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-        % %     SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('ALGO_SET.noise_std.std_mag',i*ALGO_SET.noise_std.std_mag);
-        % end
-        % out = parsim(SIM_FLIGHTDATA_IN,'RunInBackground','on',...
-        %                                'TransferBaseWorkspaceVariables','on');
-        %%
+        %% 运行仿真      
         switch mode_architechure
             case '仿真' % 仿真
                 modelname = 'firmwareV1000_sim';
@@ -143,6 +115,7 @@ switch GLOBAL_PARAM.ModeSel.simMode
                 INIT_Mavlink_FlightData
                 Battery_mavlink_msg_mission_current.time = SL.PowerConsume.time_cal;
                 Battery_mavlink_msg_mission_current.signals.values = SL.PowerConsume.AllTheTimePowerConsume;
+                %% 执行仿真
                 tic
                 ArchiRes_replay = sim(modelname);
                 toc
@@ -154,11 +127,9 @@ switch GLOBAL_PARAM.ModeSel.simMode
         timeSpend = toc;
         fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
     case 'simulink_simdata'
-        tic
-        runFilter_Simulink_SimData
-        timeSpend = toc;
-        fprintf('模型<%d>仿真完成, 耗时 %.2f [s]\n',i_sim,timeSpend);
-        return
+        % 不用了
+    case 'matlab_flightdata'
+        % 不用了        
     otherwise
         error('错误的仿真模式')
 end

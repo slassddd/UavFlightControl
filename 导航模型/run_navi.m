@@ -1,9 +1,10 @@
-if 0
+if 1
     clear,clc
     clear global
     dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200601\仿真数据_2020-06-01 16-47-50 航向异常']};    
+    dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
     %% AUTOCODE %%
 else
     dataFileNames = saveFileName;
@@ -14,7 +15,7 @@ SetGlobalParam();
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,inf]; % sec   [0,inf]
+tspan0 = [0,100]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i},timeSpanValidflag] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
@@ -106,7 +107,6 @@ switch simMode
         SIM_FLIGHTDATA_IN(nFlightDataFile) = Simulink.SimulationInput(modelname);
         for i = 1:nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-            %     SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('ALGO_SET.noise_std.std_mag',i*ALGO_SET.noise_std.std_mag);
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',IN_SENSOR_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR_SIM',IN_SENSOR_SIM_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',tspan_SET(i));

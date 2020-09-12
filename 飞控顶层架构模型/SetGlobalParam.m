@@ -8,9 +8,3 @@ SIMULINK_FLIGHTDATA = Simulink.Variant('SimulinkRunMode==1');
 SIMULINK_SIMDATA = Simulink.Variant('SimulinkRunMode==2'); 
 %% 创建作图对象
 GLOBAL_PARAM.hPlot = UAVPlotLib;
-%% 构架模块调用周期
-basePeriod = 0.004;
-ArchitectureManage.Period.SignalIntegrity = basePeriod;
-ArchitectureManage.Period.NaviFilter = basePeriod;
-ArchitectureManage.Period.TaskPlanner = 10*basePeriod;
-ArchitectureManage.Period.Controller = 10*basePeriod;

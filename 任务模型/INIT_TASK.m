@@ -63,16 +63,15 @@ TASK_SET.PathPlanner.loopPathPoints = 0; % 循环执行航点次数: 0,1,不重复执行；n重
 TASK_SET.PathPlanner.runout_battery_alarm_set = 7; % 电池耗尽报警,触发无条件降落逻辑
 TASK_SET.PathPlanner.enableDynamicBatteryGoHome = true; % 动态电量返航使能
 TaskParam_V1000 = TASK_SET.PathPlanner;
-% TaskParam_V1000 = TaskParam;
 %% V10参数
 TaskParam_V10 = TaskParam_V1000;
 switch PlaneMode.mode
     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
     case ENUM_plane_mode.V10
         % V10 需修改的参数
+        TaskParam_V10.low_battery_alarm_set = 30; %
         TaskParam_V10.heightThreshold_LandSuccess = 0.38; % 
         TaskParam_V10.enableDynamicBatteryGoHome = false; %
     otherwise
         error('组合导航模块机型选择错误.')
 end
-% TaskParam_V10 = TaskParam;

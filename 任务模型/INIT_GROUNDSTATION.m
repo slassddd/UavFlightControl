@@ -37,7 +37,7 @@ switch pathExmpale
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 21;
+        nPoints = 121;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
@@ -100,9 +100,9 @@ switch pathSimMode
             STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % ∫Ωµ„–Ú¡–∫≈£®0£∫Homeµ„£©
             STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % –¸Õ£π’Õ‰:0, –≠µ˜π’Õ‰:1
             STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
-            STRUCT_mavlink_mission_item_def_ARRAY(i).x = TASK_SET.PATH.paths_ddm(i,1);  % lattitude
-            STRUCT_mavlink_mission_item_def_ARRAY(i).y = TASK_SET.PATH.paths_ddm(i,2);  % longitude
-            STRUCT_mavlink_mission_item_def_ARRAY(i).z = TASK_SET.PATH.paths_ddm(i,3);  % altitude
+            STRUCT_mavlink_mission_item_def_ARRAY(i).x = single(TASK_SET.PATH.paths_ddm(i,1));  % lattitude
+            STRUCT_mavlink_mission_item_def_ARRAY(i).y = single(TASK_SET.PATH.paths_ddm(i,2));  % longitude
+            STRUCT_mavlink_mission_item_def_ARRAY(i).z = single(TASK_SET.PATH.paths_ddm(i,3));  % altitude
         end
     case 'flight'
         filename = 'bb3a77e6787849198733a699b82b4be3(7).log';
@@ -114,9 +114,9 @@ switch pathSimMode
                 STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % ∫Ωµ„–Ú¡–∫≈£®0£∫Homeµ„£©
                 STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % –¸Õ£π’Õ‰:0, –≠µ˜π’Õ‰:1
                 STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = TASK_SET.PATH.speed;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).x = LogWPdata(i).lat;  % lattitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).y = LogWPdata(i).lon;  % longitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).z = LogWPdata(i).height;  % altitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).x = single(LogWPdata(i).lat);  % lattitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).y = single(LogWPdata(i).lon);  % longitude
+                STRUCT_mavlink_mission_item_def_ARRAY(i).z = single(LogWPdata(i).height);  % altitude
             else
                 STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
                 STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);

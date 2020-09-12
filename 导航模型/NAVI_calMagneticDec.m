@@ -22,6 +22,7 @@ magMagnitude_wrldmagm = zeros(length(geod_lat),length(geod_lon));
 magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
 switch model_sel
     case 'igrfmagm'
+        fprintf('地磁模型使用:%s ( %d )\n',model_sel,model_epoch_igrfmagm);
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% igrfmagm
@@ -30,6 +31,7 @@ switch model_sel
             end
         end
     case 'wrldmagm'
+        fprintf('地磁模型使用:%s ( %s )\n',model_sel,model_epoch_wrldmagm);
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% wrldmagm
@@ -49,7 +51,10 @@ switch model_sel
         out.magDec = magDec_wrldmagm;
         out.magMagnitude = magMagnitude_wrldmagm;        
 end
-sl = 1; % abs(magDec_igrfmagm - magDec_wrldmagm)./magDec_wrldmagm  ,  abs(magMagnitude_igrfmagm - magMagnitude_wrldmagm)./magMagnitude_wrldmagm
+if false
+    abs(magDec_igrfmagm - magDec_wrldmagm)./magDec_wrldmagm
+    abs(magMagnitude_igrfmagm - magMagnitude_wrldmagm)./magMagnitude_wrldmagm
+end
 % TEST
 if 0
     decimal_year = 2020;
