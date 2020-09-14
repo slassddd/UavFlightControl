@@ -39,7 +39,7 @@ TASK_PARAM_V1000.maxClimbSpeed_nearGround_TakeOffandLand= 1; % Æğ·É×ÅÂ½½üµØ½×¶Î×
 TASK_PARAM_V1000.maxClimbSpeed_normal_TakeOffandLand= 2.5; % Æğ·É×ÅÂ½Ô¶µØ½×¶Î×î´ó´¹ËÙ
 TASK_PARAM_V1000.maxClimbSpeed_fixMode = 3; % ¹Ì¶¨ÒíÅÌĞıÉÏÉıÏÂ½µ¹ı³ÌÖĞµÄ×î´óÅÀÉıÂÊ
 TASK_PARAM_V1000.heightCmd_FinalLand = -100; % ×ÅÂ½Ä£Ê½Ê±µÄÄ¿±ê¸ß¶È£¨Ã»´í£¬¸øÁË¸ö´óµÄ¸ºÖµ£¡£©
-TASK_PARAM_V1000.heightThreshold_LandSuccess = 0.2; % 
+TASK_PARAM_V1000.heightThreshold_LandSuccess = 0.2; %
 TASK_PARAM_V1000.VdCmdSwitchHeight_NearGroundWhenLand = 6; % ×ÅÂ½ËÙ¶ÈË¥¼õµÄ¸ß¶È
 TASK_PARAM_V1000.windSpeed_sailAgainstWindWhenBeyone = 0.15; % Ê¹ÄÜÕÒ·ç³öº½µÄ·çËÙãĞÖµ
 TASK_PARAM_V1000.SailModeByWind = ENUM_SailMode.AgainstWind; % ³öº½·½Ê½
@@ -64,13 +64,14 @@ TASK_PARAM_V1000.runout_battery_alarm_set = 7; % µç³ØºÄ¾¡±¨¾¯,´¥·¢ÎŞÌõ¼ş½µÂäÂß¼­
 TASK_PARAM_V1000.enableDynamicBatteryGoHome = true; % ¶¯Ì¬µçÁ¿·µº½Ê¹ÄÜ
 %% V10²ÎÊı
 TASK_PARAM_V10 = TASK_PARAM_V1000;
-switch PlaneMode.mode
-    case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
-    case ENUM_plane_mode.V10
-        % V10 ĞèĞŞ¸ÄµÄ²ÎÊı
-        TASK_PARAM_V10.low_battery_alarm_set = 30; %
-        TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; % 
-        TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
-    otherwise
-        error('×éºÏµ¼º½Ä£¿é»úĞÍÑ¡Ôñ´íÎó.')
-end
+TASK_PARAM_V10.low_battery_alarm_set = 30; %
+TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
+TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
+% switch PlaneMode.mode
+%     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
+%     case ENUM_plane_mode.V10
+%         % V10 ĞèĞŞ¸ÄµÄ²ÎÊı
+%         
+%     otherwise
+%         error('×éºÏµ¼º½Ä£¿é»úĞÍÑ¡Ôñ´íÎó.')
+% end

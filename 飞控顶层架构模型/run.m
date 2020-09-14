@@ -19,10 +19,6 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     %% 载入飞行数据并生成仿真格式数据
     tspan = [0,100]; % sec
     dataFileNames = {['20200418\仿真数据_log_1_V1000-24#V31132固件管家点击起飞后飞机快速向右后方移动']};
-    dataFileNames = {['SubFolder_飞行数据\20200506\仿真数据_90dae1f08ccd46efba27d5c1121debf6']};
-    dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};
-    dataFileNames = {['SubFolder_飞行数据\20200720\仿真数据_5bd11c4543e747c29c5f9fe535b14e98']};
-    dataFileNames = {['SubFolder_飞行数据\20200731\仿真数据_2020-07-31 18-37-01 风速跳变得比较频繁']};
     dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
     dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
     dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_1 2020年9月10日 宝坻 V1000-55# V31196固件 飞行']};
