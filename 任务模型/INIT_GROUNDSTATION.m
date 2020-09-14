@@ -10,10 +10,10 @@ deg2m = 1/111e3;
 pathHeight = 209;
 homeHeight = pathHeight + 0*200;
 TASK_SET.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
-TASK_SET.PATH.nanFlag = TASK_SET.PathPlanner.nanFlag;
-TASK_SET.PATH.maxNum = TASK_SET.PathPlanner.maxPathPointNum;
+TASK_SET.PATH.nanFlag = TASK_PARAM_V1000.nanFlag;
+TASK_SET.PATH.maxNum = TASK_PARAM_V1000.maxPathPointNum;
 TASK_SET.PATH.speed = 18;
-TASK_SET.PATH.paths_m = TASK_SET.PATH.nanFlag*ones(TASK_SET.PATH.maxNum,3);
+TASK_SET.PATH.paths_m = TASK_PARAM_V1000.nanFlag*ones(TASK_SET.PATH.maxNum,3);
 
 pathExmpale = 2;
 switch pathExmpale

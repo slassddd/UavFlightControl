@@ -4,12 +4,13 @@ IMU1_idxsel = 1:4:length(IN_SENSOR.IMU1.time)-1;
 data1 = IN_SENSOR.IMU1;
 data2 = IN_SENSOR.IMU2;
 data3 = IN_SENSOR.IMU3;
+data4 = IN_SENSOR.IMU1_Control;
 % ax
 subplot(321)
 plot(data1.time(IMU1_idxsel),data1.accel_x(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.accel_x,'k');hold on;
 plot(data3.time,data3.accel_x,'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_ax,'g');hold on;
+plot(data4.time,data4.accel_x,'g');hold on;
 xlabel('time(sec)')
 ylabel('ax(m/s^2)')
 grid on;
@@ -19,7 +20,7 @@ subplot(323)
 plot(data1.time(IMU1_idxsel),data1.accel_y(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.accel_y,'k');hold on;
 plot(data3.time,data3.accel_y,'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_ay,'g');hold on;
+plot(data4.time,data4.accel_y,'g');hold on;
 xlabel('time(sec)')
 ylabel('ay(m/s^2)')
 grid on;
@@ -28,7 +29,7 @@ subplot(325)
 plot(data1.time(IMU1_idxsel),data1.accel_z(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.accel_z,'k');hold on;
 plot(data3.time,data3.accel_z,'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_az,'g');hold on;
+plot(data4.time,data4.accel_z,'g');hold on;
 xlabel('time(sec)')
 ylabel('az(m/s^2)')
 grid on;
@@ -38,7 +39,7 @@ dataName = 'gyro_x';
 plot(data1.time(IMU1_idxsel),data1.(dataName)(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.(dataName),'k');hold on;
 plot(data3.time,data3.(dataName),'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_gx,'g');hold on;
+plot(data4.time,data4.(dataName),'g');hold on;
 xlabel('time(sec)')
 ylabel('gx(rad/sec)')
 grid on;
@@ -48,7 +49,7 @@ dataName = 'gyro_y';
 plot(data1.time(IMU1_idxsel),data1.(dataName)(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.(dataName),'k');hold on;
 plot(data3.time,data3.(dataName),'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_gy,'g');hold on;
+plot(data4.time,data4.(dataName),'g');hold on;
 xlabel('time(sec)')
 ylabel('gy(rad/sec)')
 grid on;
@@ -58,7 +59,7 @@ dataName = 'gyro_z';
 plot(data1.time(IMU1_idxsel),data1.(dataName)(IMU1_idxsel),'r');hold on;
 plot(data2.time,data2.(dataName),'k');hold on;
 plot(data3.time,data3.(dataName),'b');hold on;
-plot(data1.time(1:2:end),BYC.Filter.rtY_filter_gz,'g');hold on;
+plot(data4.time,data4.(dataName),'g');hold on;
 xlabel('time(sec)')
 ylabel('gz(rad/sec)')
 grid on;

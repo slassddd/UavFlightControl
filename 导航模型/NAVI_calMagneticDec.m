@@ -22,7 +22,14 @@ magMagnitude_wrldmagm = zeros(length(geod_lat),length(geod_lon));
 magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
 switch model_sel
     case 'igrfmagm'
-        fprintf('地磁模型使用:%s ( %d )\n',model_sel,model_epoch_igrfmagm);
+        if model_epoch_igrfmagm == 11
+            msgStr = '数据时间范围1900-2015';
+        elseif model_epoch_igrfmagm == 12
+            msgStr = '数据时间范围1900-2020';
+        else
+            error('参数错误或未及时更新该参数')
+        end        
+        fprintf('地磁模型使用:%s ( version %d, %s )\n',model_sel,model_epoch_igrfmagm,msgStr);
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% igrfmagm
@@ -49,7 +56,7 @@ switch model_sel
         out.magMagnitude = magMagnitude_igrfmagm;
     otherwise
         out.magDec = magDec_wrldmagm;
-        out.magMagnitude = magMagnitude_wrldmagm;        
+        out.magMagnitude = magMagnitude_wrldmagm;
 end
 if false
     abs(magDec_igrfmagm - magDec_wrldmagm)./magDec_wrldmagm

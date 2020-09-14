@@ -28,4 +28,5 @@ INIT_SensorIntegrity
 INIT_SensorAlignment
 INIT_SensorFault
 %% 运行模型
+fprintf('/n--------调试信息--------/n')
 sim('TESTENV_SignalIntegrity')

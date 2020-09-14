@@ -11,8 +11,9 @@ IN_SENSOR.time=save_time;
 IN_SENSOR.IMU1.time=save_time;
 IN_SENSOR.IMU2.time=save_time(1:4:end);
 IN_SENSOR.IMU3.time=save_time(1:4:end);
+IN_SENSOR.IMU1_Control.time=save_time(1:2:end);
 IN_SENSOR.baro1.time=save_time(1:2:end);
-IN_SENSOR.mag1.time=save_time(1:4:end);   
+IN_SENSOR.mag1.time=save_time(1:4:end);
 IN_SENSOR.mag2.time = IN_SENSOR.mag1.time;
 IN_SENSOR.radar1.time = save_time(1:4:end);
 IN_SENSOR.ublox1.time = save_time(1:4:end);
@@ -34,17 +35,27 @@ IN_SENSOR.um482.time = save_time(1:4:end);
 % IN_SENSOR.IMU1.gyro_z=typecast(uint8(temp),'single')';
 % 1ms滤波
 temp = reshape([data(1:1:end,27:28)'],1,[]);
-IN_SENSOR.IMU1.accel_x=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1.accel_x = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,29:30)'],1,[]);
-IN_SENSOR.IMU1.accel_y=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1.accel_y = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,31:32)'],1,[]);
-IN_SENSOR.IMU1.accel_z=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1.accel_z = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,33:34)'],1,[]);
-IN_SENSOR.IMU1.gyro_x=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1.gyro_x = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(1:1:end,35:36)'],1,[]);
-IN_SENSOR.IMU1.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1.gyro_y = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(1:1:end,37:38)'],1,[]);
-IN_SENSOR.IMU1.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1.gyro_z = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
+disp('特别注意这里对IMU1正负号的特别处理')
+if mean(IN_SENSOR.IMU1.accel_z) > 0
+    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    keyboard
+    IN_SENSOR.IMU1.accel_y = - IN_SENSOR.IMU1.accel_y;
+    IN_SENSOR.IMU1.accel_z = - IN_SENSOR.IMU1.accel_z;
+    IN_SENSOR.IMU1.gyro_y = -IN_SENSOR.IMU1.gyro_y;
+    IN_SENSOR.IMU1.gyro_z = -IN_SENSOR.IMU1.gyro_z;
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
 temp = reshape([data(find(mod(Count,4)==1),277:278)'],1,[]);
@@ -59,6 +70,16 @@ temp = reshape([data(find(mod(Count,4)==1),285:286)'],1,[]);
 IN_SENSOR.IMU2.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(find(mod(Count,4)==1),287:288)'],1,[]);
 IN_SENSOR.IMU2.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
+disp('特别注意这里对IMU2正负号的特别处理')
+if mean(IN_SENSOR.IMU2.accel_z) > 0
+    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    keyboard
+    IN_SENSOR.IMU2.accel_y = - IN_SENSOR.IMU2.accel_y;
+    IN_SENSOR.IMU2.accel_z = - IN_SENSOR.IMU2.accel_z;
+    IN_SENSOR.IMU2.gyro_y = -IN_SENSOR.IMU2.gyro_y;
+    IN_SENSOR.IMU2.gyro_z = -IN_SENSOR.IMU2.gyro_z;
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU3
 temp = reshape([data(find(mod(Count,4)==2),277:278)'],1,[]);
@@ -73,6 +94,16 @@ temp = reshape([data(find(mod(Count,4)==2),285:286)'],1,[]);
 IN_SENSOR.IMU3.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(find(mod(Count,4)==2),287:288)'],1,[]);
 IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
+disp('特别注意这里对IMU3正负号的特别处理')
+if mean(IN_SENSOR.IMU3.accel_z) > 0
+    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    keyboard    
+    IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
+    IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
+    IN_SENSOR.IMU3.gyro_y = -IN_SENSOR.IMU3.gyro_y;
+    IN_SENSOR.IMU3.gyro_z = -IN_SENSOR.IMU3.gyro_z;
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %baro1
 temp=reshape([data(index_21,41:42)'],1,[]);
@@ -358,5 +389,33 @@ IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
-disp('IMU1_Control未赋值')
-IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;
+% disp('IMU1_Control未赋值')
+% IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;
+temp = reshape([data(find(mod(Count,2)==0),159:160)'],1,[]);
+rtY_filter_gx=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1_Control.gyro_x = rtY_filter_gx; % create struct
+temp = reshape([data(find(mod(Count,2)==0),161:162)'],1,[]);
+rtY_filter_gy=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1_Control.gyro_y = rtY_filter_gy; % create struct
+temp = reshape([data(find(mod(Count,2)==0),163:164)'],1,[]);
+rtY_filter_gz=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+IN_SENSOR.IMU1_Control.gyro_z = rtY_filter_gz; % create struct
+temp = reshape([data(find(mod(Count,2)==1),145:146)'],1,[]);
+rtY_filter_ax=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1_Control.accel_x = rtY_filter_ax; % create struct
+temp = reshape([data(find(mod(Count,2)==1),147:148)'],1,[]);
+rtY_filter_ay=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1_Control.accel_y = rtY_filter_ay; % create struct
+temp = reshape([data(find(mod(Count,2)==1),149:150)'],1,[]);
+rtY_filter_az=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
+IN_SENSOR.IMU1_Control.accel_z = rtY_filter_az; % create struct
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
+disp('特别注意这里对IMU1_Control正负号的特别处理')
+if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
+    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    keyboard    
+    IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
+    IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
+    IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
+    IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
+end

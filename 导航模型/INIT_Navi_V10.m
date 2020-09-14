@@ -86,21 +86,20 @@ NAVITEMP.P0_errorstate17 = diag([1e-1*ones(3,1);... % quat
     ]);
 %%
 % MARG参数
-MARGParam_V10 = NAVITEMP.noise_std; % 将用在stateflow或matlab function中的参数
-MARGParam_V10.P0_MARG = diag(NAVITEMP.P0_marg22);
-MARGParam_V10.fuse_enable = NAVITEMP.fuse_enable;
-MARGParam_V10.enableZeroVelCorrect = true;
-MARGParam_V10.enableVdFuser = false;
+TEMP_MARGParam = NAVITEMP.noise_std; % 将用在stateflow或matlab function中的参数
+TEMP_MARGParam.P0_MARG = diag(NAVITEMP.P0_marg22);
+TEMP_MARGParam.fuse_enable = NAVITEMP.fuse_enable;
+TEMP_MARGParam.enableZeroVelCorrect = true;
+TEMP_MARGParam.enableVdFuser = false;
 % MVO参数
-MVOParam = MARGParam_V10;
-MVOParam.P0_MARG = diag(NAVITEMP.P0_errorstate17);
-MVOParam.std_gyro = NAVITEMP.ErrorState.noise_std.std_gyro;
-MVOParam.std_gyro_bias = NAVITEMP.ErrorState.noise_std.std_gyro_bias;
-MVOParam.std_acc = NAVITEMP.ErrorState.noise_std.std_acc;
-MVOParam.std_acc = NAVITEMP.ErrorState.noise_std.std_acc;
-MVOParam.std_acc_bias = NAVITEMP.ErrorState.noise_std.std_acc_bias;
-MVOParam_V10 = MVOParam;
+TEMP_MVOParam = TEMP_MARGParam;
+TEMP_MVOParam.P0_MARG = diag(NAVITEMP.P0_errorstate17);
+TEMP_MVOParam.std_gyro = NAVITEMP.ErrorState.noise_std.std_gyro;
+TEMP_MVOParam.std_gyro_bias = NAVITEMP.ErrorState.noise_std.std_gyro_bias;
+TEMP_MVOParam.std_acc = NAVITEMP.ErrorState.noise_std.std_acc;
+TEMP_MVOParam.std_acc = NAVITEMP.ErrorState.noise_std.std_acc;
+TEMP_MVOParam.std_acc_bias = NAVITEMP.ErrorState.noise_std.std_acc_bias;
 %% 构建NAVI参数结构体
-NAVIParam_V10.SensorSelect = NAVITEMP.SensorSelect;
-NAVIParam_V10.MARGParam_V10 = MARGParam_V10;
-NAVIParam_V10.MVOParam_V10 = MVOParam_V10;
+NAVI_PARAM_V10.SensorSelect = NAVITEMP.SensorSelect;
+NAVI_PARAM_V10.MARGParam = TEMP_MARGParam;
+NAVI_PARAM_V10.MVOParam = TEMP_MVOParam;
