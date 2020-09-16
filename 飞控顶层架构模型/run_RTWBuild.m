@@ -1,3 +1,6 @@
+%% 模型参数初始化
+INIT_SystemArchitecture
+%%
 temp_old_pathname = cd;
 temp_pathname = mfilename('fullpath');
 temp = strfind(temp_pathname,'\');
@@ -31,6 +34,9 @@ dims = [1 55];
 
 definput = {SystemInfo.version,SystemInfo.date,SystemInfo.task_version,SystemInfo.control_version};
 answer = inputdlg(prompt,dlgtitle,dims,definput);
+if isempty(answer)
+    return;
+end
 %%
 SystemInfo.version = answer{1};
 SystemInfo.date = answer{2};

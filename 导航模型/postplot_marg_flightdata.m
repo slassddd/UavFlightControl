@@ -71,7 +71,7 @@ try
         xlim(plotOpt.xlim_time);          % xlim
     end
 catch ME
-    fprintf('XYZ位置绘图出错，跳过')
+    fprintf('XYZ位置绘图出错，跳过\n')
 end
 % 速度
 try
