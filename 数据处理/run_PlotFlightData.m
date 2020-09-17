@@ -10,10 +10,24 @@ plotenable.TaskLogData = true;
 plotenable.FlightPerf = true;
 plotenable.IMU = true;
 %%
+varTaskMode = SL.OUT_TASKMODE.flightTaskMode;
+timeTaskMode = SL.OUT_TASKMODE.time_cal;
+timeTaskChange = [];
+idxTaskChange = [];
+figure;
+plotEnum(timeTaskMode,ENUM_FlightTaskMode(varTaskMode))
+for i = 1:length(varTaskMode)
+    if i <= length(varTaskMode) - 1
+        if varTaskMode(i) ~= varTaskMode(i+1)
+            timeTaskChange = [timeTaskChange timeTaskMode(i+1)];
+            idxTaskChange = [idxTaskChange i+1];
+        end         
+    end
+end
+%%
 tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
 tempAlt.value = tempAlg.algo_NAV_alt;
 tempAlt.time = tempAlg.time_cal;
-% fullNameOfLog = [PathName,FileNames];
 if true % 航点
     try
         formatMavlinkFromFlightData
@@ -66,7 +80,7 @@ if plotenable.um482
 end
 if plotenable.WindParam
     SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.TASK_WindParam)
-%     SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.GlobalWindEst)
+    SinglePlot_GlobalWindEst(SL.GlobalWindEst)
 end
 if plotenable.ublox1
     SingPlot_ublox1(IN_SENSOR.ublox1)
@@ -82,7 +96,7 @@ if plotenable.gpsCompare
 end
 if plotenable.PowerConsumer
     try
-        T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt);
+        T = SingPlot_PowerConsumer(IN_SENSOR.IMU1.time,SL.PowerConsume,tempAlt,SL.OUT_TASKMODE.uavMode);
         SL_LOAD.PowerConsumer = T;
     catch ME
         disp('PowerConsumer 绘制失败')
@@ -98,15 +112,12 @@ if plotenable.FlightPerf
         disp('FlightPerf 绘制失败')
     end
 end
+%%
 tempFileNames = FileName;
-
 tmpIdx = strfind(tempFileNames,'.');
 tempFileNames(tmpIdx:end) = [];
 proj = currentProject;
 perfSavePath = [char(proj.RootFolder),'\SubFolder_飞行数据\飞行性能数据',];
 perfMatFileName = [perfSavePath,'\perfDataMat_',tempFileNames,'.mat'];
 save(perfMatFileName,'T')
-% figure;
-% plotEnum(SL.Debug_Task_RTInfo.time_cal,SL.Debug_Task_RTInfo.Task)
-figure;
-plotEnum(SL.OUT_TASKMODE.time_cal,ENUM_FlightTaskMode(SL.OUT_TASKMODE.flightTaskMode))
+

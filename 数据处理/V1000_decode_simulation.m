@@ -47,9 +47,9 @@ IN_SENSOR.IMU1.gyro_y = double(typecast(uint8(temp),'int16')')/32768*17.50000000
 temp = reshape([data(1:1:end,37:38)'],1,[]);
 IN_SENSOR.IMU1.gyro_z = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-disp('特别注意这里对IMU1正负号的特别处理')
 if mean(IN_SENSOR.IMU1.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    disp('特别注意这里对IMU1正负号的特别处理')
     keyboard
     IN_SENSOR.IMU1.accel_y = - IN_SENSOR.IMU1.accel_y;
     IN_SENSOR.IMU1.accel_z = - IN_SENSOR.IMU1.accel_z;
@@ -71,9 +71,9 @@ IN_SENSOR.IMU2.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000
 temp = reshape([data(find(mod(Count,4)==1),287:288)'],1,[]);
 IN_SENSOR.IMU2.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-disp('特别注意这里对IMU2正负号的特别处理')
 if mean(IN_SENSOR.IMU2.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    disp('特别注意这里对IMU2正负号的特别处理')
     keyboard
     IN_SENSOR.IMU2.accel_y = - IN_SENSOR.IMU2.accel_y;
     IN_SENSOR.IMU2.accel_z = - IN_SENSOR.IMU2.accel_z;
@@ -95,9 +95,10 @@ IN_SENSOR.IMU3.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000
 temp = reshape([data(find(mod(Count,4)==2),287:288)'],1,[]);
 IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-disp('特别注意这里对IMU3正负号的特别处理')
+
 if mean(IN_SENSOR.IMU3.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    disp('特别注意这里对IMU3正负号的特别处理')
     keyboard    
     IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
     IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
@@ -410,9 +411,9 @@ temp = reshape([data(find(mod(Count,2)==1),149:150)'],1,[]);
 rtY_filter_az=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 IN_SENSOR.IMU1_Control.accel_z = rtY_filter_az; % create struct
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-disp('特别注意这里对IMU1_Control正负号的特别处理')
 if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    disp('特别注意这里对IMU1_Control正负号的特别处理')
     keyboard    
     IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
     IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;

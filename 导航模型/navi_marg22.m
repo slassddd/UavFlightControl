@@ -340,10 +340,11 @@ if false && radarUpdateFlag && measureReject.range_notJump  %
     end
 end
 % 气压高融合
-if baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
+isFuseBaroAlt = baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
         MARGParam.fuse_enable.gps && ...
         ~ublox1_is_available && ...
-        ~um482_is_available
+        ~um482_is_available;
+if isFuseBaroAlt
     step_baro = step_baro + 1;
     step_alt = step_alt + 1;
     if rem(step_baro,kScale_baro) == 0
@@ -373,6 +374,14 @@ if true && airspeedUpdateFlag && ...
 end
 %%
 stateEst = filter_marg.State;
+if ~isFuseBaroAlt 
+    % 补偿平面坐标系造成的高度偏差
+    distFromOri = norm(stateEst(5:6));
+    R0 = 6378e3;
+    H0 = norm([R0,distFromOri]);
+    dH = H0 - R0;
+    stateEst(7) = stateEst(7) - dH; % 高度处理
+end
 stateCovarianceDiagEst = abs(diag(filter_marg.StateCovariance)).^0.5;
 eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
@@ -380,6 +389,9 @@ posNED = stateEst(5:7)';
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 dTime = 0;
+% if clock_sec > 1500
+%     sl = 1;
+% end
 if fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));

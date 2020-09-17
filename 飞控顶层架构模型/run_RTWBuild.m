@@ -1,3 +1,4 @@
+clear,clc
 %% 模型参数初始化
 INIT_SystemArchitecture
 %%
@@ -12,7 +13,7 @@ infofilename = 'SystemInfo.mat';
 %% 载入模型
 load_system(modelname);
 open_system([modelname,'/SystemInfo/']);
-%%
+%% 更新版本参数
 try
     load(infofilename);
     SystemInfo.version = num2str(str2num(SystemInfo.version) + 0.001);
