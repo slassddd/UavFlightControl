@@ -1,4 +1,4 @@
-function InfoTable = SingPlot_PowerConsumer(baseTime,structData,altStruct,uavMode)
+function InfoTable = SingPlot_PowerConsumer(structData,uavMode)
 fprintf('----------------------------------------------\n')
 % time = baseTime;
 time = structData.time_cal;
@@ -20,17 +20,14 @@ for i = 1:nChildren
     ylabel(ylabelstr{i})
 end
 %%
-unit_current = 'A';
-unit_voltage = 'V';
-unit_power = 'W';
 %% 显示信息
-alt = altStruct.value;
-time_alt = altStruct.time;
-temp = max(alt);
-maxAlt = temp(1);
-temp = min(alt);
-minAlt = temp(1);
-maxFlightHeight = maxAlt - minAlt;
+% alt = altStruct.value;
+% time_alt = altStruct.time;
+% temp = max(alt);
+% maxAlt = temp(1);
+% temp = min(alt);
+% minAlt = temp(1);
+% maxFlightHeight = maxAlt - minAlt;
 val_TakeOff = structData.TakeOff;
 val_HoverAdjust = structData.HoverAdjust;
 val_Rotor2fix = structData.Rotor2fix;

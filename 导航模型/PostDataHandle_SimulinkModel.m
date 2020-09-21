@@ -10,6 +10,9 @@ if length(out.tout) == size(stateEst,1)
 else
     filterRes(idx).MARG.time = out.tout(1:3:end);
 end
+if length(filterRes(idx).MARG.time) > size(stateEst,1)
+    filterRes(idx).MARG.time(end) = [];
+end
 filterRes(idx).MARG.q = quaternion(stateEst(1:end-idx_sub,1:4));
 filterRes(idx).MARG.pos = stateEst(1:end-idx_sub,5:7);
 filterRes(idx).MARG.vel = stateEst(1:end-idx_sub,8:10);

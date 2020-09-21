@@ -5,6 +5,9 @@ ncol = 3;
 iplot = 0;
 %
 time = sensors.Algo.time_algo;
+if length(time) > length(sensors.Algo.algo_curr_pos_0)
+    time(end) = []; 
+end
 stepNum = size(time,1);
 idxspan = [1:stepSpace:stepNum];
 % Å·À­½Ç

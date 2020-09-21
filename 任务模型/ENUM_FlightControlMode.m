@@ -18,6 +18,7 @@ classdef ENUM_FlightControlMode < Simulink.IntEnumType
         RotorShutDown (13), % 地面关车
         RotorStable_RollPitchHeight (14),
         RotorGoUpDownWithHorizonPosFree (15),
+        SliderMode (16), % 低动力降高
 %         FixWingLevel (14), % 固定翼姿态改平
     end
 end

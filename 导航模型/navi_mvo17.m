@@ -191,8 +191,8 @@ ZVCenable = false; %%
 % SensorUpdateFlag
 % if imuUpdateFlag
 step_imu = step_imu + 1;
-temp_gyro = 5;
-temp_acc = 10;
+temp_gyro = 3;
+temp_acc = 3;
 meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
@@ -200,12 +200,6 @@ if rem(step_imu,kScale_imu) == 0
     filter_errorstate.AccelerometerNoise = double(MVOParam.std_acc.^2);
     filter_errorstate.GyroscopeBiasNoise = double(MVOParam.std_gyro_bias.^2);
     filter_errorstate.GyroscopeNoise = double(MVOParam.std_gyro.^2);
-%     if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
-%         tmpK_residual = abs(normalizedRes_ublox1(4:6)).^1.5;
-%         tmpK_residual(tmpK_residual<1) = 1;
-%     else
-%         tmpK_residual = [1,1,1];
-%     end
     tmpK_residual = [1,1,1];
     for ii = 3
         tmpK_bias = max(1,(abs(abs(meanAcc(ii))-9.8)/1)^1.5);
@@ -241,7 +235,7 @@ if residual_ublox1 && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHe
 end
 % um482融合
 %  && residual_um482
-if MVOParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
+if false && MVOParam.fuse_enable.um482 && SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE % 无解
     switch um482_BESTPOS
@@ -265,7 +259,7 @@ end
 % 姿态融合——磁力计和加计ecompass
 if ~magRejectForEver && magUpdateFlag
     %% 利用磁力计/加计计算粗姿态辅助更新姿态四元数，防止初始化过程造成的一些问题
-    enableMagQuatFuse = true; 
+    enableMagQuatFuse = true && clock_sec < 300; 
     if enableMagQuatFuse && ... % 使能
             stayStillCondition.isStatic && ... % 静态
             SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health % 磁力计健康
@@ -273,10 +267,6 @@ if ~magRejectForEver && magUpdateFlag
         quat = compact(ecompass(double(tempMeanAcc),double(mag)));
         dcm = quat2dcm_e(quat);
         filter_errorstate.fusemvo([0,0,0],1e10*[1 1 1],dcm,0.01*eye(3));
-        %         for i_q = 1:4
-        %             Rq = 0.05^2;
-%         	filter_errorstate.correct(i_q,quat(i_q),Rq);
-%         end
     end
 end
 % 雷达高融合
@@ -303,7 +293,7 @@ eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
-fuseVdWithEKFandGPS = true;
+fuseVdWithEKFandGPS = false;
 if fuseVdWithEKFandGPS && SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
     k = max(1,abs(accel(3)-9.8));
     temp = min(0.6,1/k^0.8);
