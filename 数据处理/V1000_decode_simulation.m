@@ -335,7 +335,6 @@ IN_SENSOR.airspeed1.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.status = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.EAS2TAS_Algo = EAS2TAS_Algo;
-disp('airspeed1.EAS2TAS_Algo未赋值')
 % airspeed2
 disp('airspeed2未赋值')
 IN_SENSOR.airspeed2.time = IN_SENSOR.ublox1.time;
@@ -414,7 +413,7 @@ IN_SENSOR.IMU1_Control.accel_z = rtY_filter_az; % create struct
 if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
     disp('特别注意这里对IMU1_Control正负号的特别处理')
-    keyboard    
+    keyboard
     IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
     IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
     IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
