@@ -89,7 +89,7 @@ NAVITEMP.P0_errorstate17 = diag([1e-1*ones(3,1);... % quat
 TEMP_MARGParam = NAVITEMP.noise_std; % 将用在stateflow或matlab function中的参数
 TEMP_MARGParam.P0_MARG = diag(NAVITEMP.P0_marg22);
 TEMP_MARGParam.fuse_enable = NAVITEMP.fuse_enable;
-TEMP_MARGParam.enableZeroVelCorrect = true;
+TEMP_MARGParam.enableZeroVelCorrect = false;
 TEMP_MARGParam.enableVdFuser = false;
 % MVO参数
 TEMP_MVOParam = TEMP_MARGParam;

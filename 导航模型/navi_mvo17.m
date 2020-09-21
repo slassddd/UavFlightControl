@@ -186,7 +186,6 @@ if stayStillCondition.isStatic && MVOParam.enableZeroVelCorrect
 else
     staticTime = 0;
 end
-ZVCenable = false; %%
 %% 滤波
 % SensorUpdateFlag
 % if imuUpdateFlag

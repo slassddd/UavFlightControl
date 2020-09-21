@@ -237,7 +237,6 @@ if stayStillCondition.isStatic && MARGParam.enableZeroVelCorrect
 else
     staticTime = 0;
 end
-ZVCenable = false;
 %% 滤波
 ublox1_is_available = ...
     SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health || ...
