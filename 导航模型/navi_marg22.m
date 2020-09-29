@@ -6,6 +6,7 @@ persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
+persistent pDTime
 %%
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
@@ -123,6 +124,8 @@ if isempty(filter_marg)
     magRejectForEver = false;
     timeUpdate_ublox = clock_sec;
     timeUpdate_um482 = clock_sec;
+    
+    pDTime = 0;
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -387,7 +390,7 @@ posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
-dTime = 0;
+
 % if clock_sec > 1500
 %     sl = 1;
 % end
@@ -400,8 +403,12 @@ if fuseVdWithEKFandGPS && ...
             thisTime = clock_sec;
             dTime = thisTime - timeUpdate_ublox;
             timeUpdate_ublox = thisTime;
+            kDTime = 0.9;
+            pDTime = kDTime*pDTime + (1-kDTime)*dTime;
+%             [pDTime,dTime]
         end
-        if dTime < 0.25 % 更新率低时不进行平滑
+        
+        if pDTime < 0.25 % 更新率低时不进行平滑
             fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
             stateEst(10) = fuseVd;
         end
