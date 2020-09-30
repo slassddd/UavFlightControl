@@ -112,7 +112,7 @@ if isempty(filter_marg)
     range_pre = range;
     meanAcc = single([0,0,0]);
     meanGyro = single([0,0,0]);
-    meanMag = single([0,0,0]);
+    meanMag = single([0,0,0]); 
     
     dHeight_GPS_sub_Baro = ublox1_lla(3) - baro1_alt;
     

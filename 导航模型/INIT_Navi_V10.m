@@ -36,7 +36,7 @@ switch example
         NAVITEMP.noise_std.std_alt = 1;
         NAVITEMP.noise_std.std_range = 0.3;
         NAVITEMP.noise_std.std_lla_um482 = [0.2,0.2,0.3];
-        NAVITEMP.noise_std.std_gpsvel_um482 = [0.05,0.05,0.08];
+        NAVITEMP.noise_std.std_gpsvel_um482 = 1*[0.1,0.1,0.16];
     case 16 % 10014
         NAVITEMP.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
