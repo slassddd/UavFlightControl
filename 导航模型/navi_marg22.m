@@ -188,7 +188,7 @@ switch um482_BESTPOS
         sigmaAlt = max(0.6,Sensors.um482.delta_height);
 end
 Rpos_um482 = double(diag([sigmaLat,sigmaLon,sigmaAlt]).^2);
-if Sensors.um482.pDop > 3
+if Sensors.um482.pDop > 1.4
     Rvel_um482 = double(Sensors.um482.pDop^1.5*Rvel_um482);
 end
 [res_um482, resCov_um482] = residualgps(filter_marg, double(um482_lla), ...
