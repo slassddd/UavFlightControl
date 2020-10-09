@@ -6,17 +6,19 @@ mode_architechure = questdlg('选择仿真模式', ...
     '选择仿真模式', ...
     '飞行数据回放','仿真','取消','飞行数据回放');
 if strcmp(mode_architechure,'取消')
+    disp('退出仿真');
     return;
 end
 %% 通用参数设置
 GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'matlab_flightdata'  'simulink_flightdata'  'simulink_simdata'
 SetGlobalParam();
 %% 载入飞行数据
-tspan = [0,10]; % sec
+tspan = [0,inf]; % sec
 dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
 dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
 dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_1 2020年9月10日 宝坻 V1000-55# V31196固件 飞行']};
 dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
+dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20200917 西藏 空速堵 坠机\仿真数据_6ae4184b5a6144fabdf85c4c568c1e50']};
 LoadFlightData();
 %% 固件测试环境参数
 PlaneMode.mode = selParamForPlaneMode(); % 设置机型变量
