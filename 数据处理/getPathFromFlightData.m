@@ -8,6 +8,7 @@ height_pathpoint = data.z;
 num_pathpoint = data.seq;
 
 idx_home = 0;
+home = [];
 for i = 1:nData
     thisSeq = num_pathpoint(i);
     thisLLH = [lat_pathpoint(i),lon_pathpoint(i),height_pathpoint(i)];
@@ -19,5 +20,8 @@ for i = 1:nData
         idx_home = idx_home + 1;
         home(idx_home,:) = thisLLH;
     end
+end
+if isempty(home)
+    disp('航点数据无效，全零');    
 end
 home = unique(home,'rows');
