@@ -114,7 +114,7 @@ if plotenable.TaskLogData
 end
 if plotenable.FlightPerf
     try
-        SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF) 
+        SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF)
     catch ME
         disp('FlightPerf 绘制失败')
     end

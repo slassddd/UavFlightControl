@@ -394,7 +394,7 @@ fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 % if clock_sec > 1500
 %     sl = 1;
 % end
-if fuseVdWithEKFandGPS && ...
+if false && fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));
     temp = min(0.5,1/k^0.8);

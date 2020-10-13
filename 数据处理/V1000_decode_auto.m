@@ -913,3 +913,7 @@ BYC.Filter.rtY_filter_ay = rtY_filter_ay; % create struct
 temp = reshape([data(find(mod(Count,2)==1),149:150)'],1,[]);
 rtY_filter_az=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 BYC.Filter.rtY_filter_az = rtY_filter_az; % create struct
+% /* |@@BYC@@+-------------+-------------+------------+---------------| */
+temp = reshape([data(find(mod(Count,2)==1),183:184)'],1,[]);
+arspeed=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
+BYC.arspeed = arspeed; % create struct
