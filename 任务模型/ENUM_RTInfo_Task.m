@@ -232,7 +232,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Protect_SensorSystem_Fault (2213),   
         TaskLog_Protect_Fense_In (2214),   
         TaskLog_Protect_Fense_Out (2215),   
-        TaskLog_Protect_Airspeed_Fault (2216),   
+        TaskLog_Protect_Airspeed_Fault_1 (2216),   
         TaskLog_Protect_Airspeed_Normal (2217),  
         TaskLog_Protect_Airspeed_LargePitch (2218),   
         TaskLog_Protect_Airspeed_LargeAngularVelOrAccz (2219),   
@@ -242,6 +242,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Input_HomeChange_Path (2217),
         TaskLog_Input_HomeChange_TakeOff (2218),
         TaskLog_Input_HomeChange_KeyBoard (2219),
+        TaskLog_Protect_Airspeed_Fault_2 (2220),   
         
         % ÑÏÖØ¾¯¸æ
         NotDefined_Fcn_isAllowedToEnterThisMode (5001),
