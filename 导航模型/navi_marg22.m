@@ -394,10 +394,10 @@ fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 % if clock_sec > 1500
 %     sl = 1;
 % end
-if false && fuseVdWithEKFandGPS && ...
+if true && fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));
-    temp = min(0.5,1/k^0.8);
+    temp = min(0.2,1/k^0.8);
     if SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health
         if ublox1UpdateFlag
             thisTime = clock_sec;
@@ -407,7 +407,6 @@ if false && fuseVdWithEKFandGPS && ...
             pDTime = kDTime*pDTime + (1-kDTime)*dTime;
 %             [pDTime,dTime]
         end
-        
         if pDTime < 0.25 % 更新率低时不进行平滑
             fuseVd = temp*stateEst(10) + (1-temp)*ublox1_gpsvel(3);
             stateEst(10) = fuseVd;
