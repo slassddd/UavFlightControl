@@ -117,6 +117,20 @@ for i_file = 1:nFile
     IN_SENSOR.airspeed1 = alignDimension(IN_SENSOR.airspeed1);
     %%
     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
+    velvector = [IN_SENSOR.ublox1.velN,IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velD];
+    speedvector = vecnorm(velvector,2,2);
+    velElv = -asin(IN_SENSOR.ublox1.velD./speedvector)*180/pi;
+    figure;
+    subplot(211)
+    plot(IN_SENSOR.ublox1.time,velElv);hold on;
+    plot(SL.Filter.time_cal,SL.Filter.algo_NAV_pitchd);hold on;
+    grid on;
+    try
+        subplot(212)
+        alphavector = SL.Filter.algo_NAV_pitchd - velElv;
+        plot(IN_SENSOR.ublox1.time,alphavector);hold on;grid on;    
+    end
+
     figure;
     plot(IN_SENSOR.ublox1.time, velHeading,'r');hold on;
     plot(IN_SENSOR.ublox1.time, algo_NAV_yaw,'b');hold on;
