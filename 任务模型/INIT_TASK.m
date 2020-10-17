@@ -63,11 +63,13 @@ TASK_PARAM_V1000.loopPathPoints = 0; % 循环执行航点次数: 0,1,不重复执行；n重复执
 TASK_PARAM_V1000.runout_battery_alarm_set = 7; % 电池耗尽报警,触发无条件降落逻辑
 TASK_PARAM_V1000.enableDynamicBatteryGoHome = true; % 动态电量返航使能
 TASK_PARAM_V1000.airspeedOffset = 7; % 空速管堵的情况下对空速测量进行偏置;
+TASK_PARAM_V1000.levelFixcurrentThreshold = 40e3; % 固定翼模式下电流异常阈值 [mA]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
 TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
+TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
