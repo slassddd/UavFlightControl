@@ -21,9 +21,26 @@ NAVITEMP.SensorSelect.Radar = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Camera = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 % 滤波器参数
-example = 17;
+NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MARG');
+example = 18;
 switch example    
-    case 17 % test
+    case 18 % test
+        NAVITEMP.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
+        NAVITEMP.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
+        NAVITEMP.noise_std.std_acc = 5e-2*[1,1,1];  % m/s^2
+        NAVITEMP.noise_std.std_acc_bias = 5e-4*[1,1,1]; % m/s^2
+        NAVITEMP.noise_std.std_magNED = 1e-8*[1,1,1];  %
+        NAVITEMP.noise_std.std_mag = 2.5*[1,1,1]; %
+        NAVITEMP.noise_std.std_mag_bias = 1e-3*[1,1,1];
+        NAVITEMP.noise_std.std_lla = [0.6,0.6,0.8]; % 最小值限制
+        NAVITEMP.noise_std.std_gpsvel = 1e-1*[0.1,0.1,0.16]; % 最小值限制
+        NAVITEMP.noise_std.std_alt = 1;
+        NAVITEMP.noise_std.std_range = 0.3;
+        NAVITEMP.noise_std.std_lla_um482 = [0.2,0.2,0.3]; % 最小值限制
+        NAVITEMP.noise_std.std_gpsvel_um482 = 1*[0.1,0.1,0.16];  %  [0.05,0.05,0.08];
+        NAVITEMP.noise_std.std_windspeed = 5e-2*[1,1]; % 风速NE过程噪声标准差 m/s 
+        NAVITEMP.noise_std.std_TAS = 2; % 真空速测量噪声标准差 m/s    
+    case 17 % 31219
         NAVITEMP.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_acc = 3e-2*[1,1,1];  % m/s^2
@@ -37,6 +54,8 @@ switch example
         NAVITEMP.noise_std.std_range = 0.3;
         NAVITEMP.noise_std.std_lla_um482 = [0.2,0.2,0.3]; % 最小值限制
         NAVITEMP.noise_std.std_gpsvel_um482 = 1*[0.1,0.1,0.16];  %  [0.05,0.05,0.08];
+        NAVITEMP.noise_std.std_windspeed = 5e-2*[1,1]; % 风速NE过程噪声标准差 m/s 
+        NAVITEMP.noise_std.std_TAS = 2; % 真空速测量噪声标准差 m/s
     case 16 % 10014
         NAVITEMP.noise_std.std_gyro = 0.9e-1*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 6e-5*pi/180*[1,1,1]; % rad/s
@@ -342,7 +361,26 @@ TEMP_MARGParam.fuse_enable = NAVITEMP.fuse_enable;
 TEMP_MARGParam.enableZeroVelCorrect = false;
 TEMP_MARGParam.enableVdFuser = true;
 % MVO参数
-TEMP_MVOParam = TEMP_MARGParam;
+% TEMP_MVOParam = TEMP_MARGParam;
+TEMP_MVOParam = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MVO');
+TEMP_MVOParam.std_gyro = TEMP_MARGParam.std_gyro;
+TEMP_MVOParam.std_gyro_bias = TEMP_MARGParam.std_gyro_bias;
+TEMP_MVOParam.std_acc = TEMP_MARGParam.std_acc;
+TEMP_MVOParam.std_acc_bias = TEMP_MARGParam.std_acc_bias;
+TEMP_MVOParam.std_magNED = TEMP_MARGParam.std_magNED;
+TEMP_MVOParam.std_mag = TEMP_MARGParam.std_mag;
+TEMP_MVOParam.std_mag_bias = TEMP_MARGParam.std_mag_bias;
+TEMP_MVOParam.std_lla = TEMP_MARGParam.std_lla;
+TEMP_MVOParam.std_gpsvel = TEMP_MARGParam.std_gpsvel;
+TEMP_MVOParam.std_alt = TEMP_MARGParam.std_alt;
+TEMP_MVOParam.std_range = TEMP_MARGParam.std_range;
+TEMP_MVOParam.std_lla_um482 = TEMP_MARGParam.std_lla_um482;
+TEMP_MVOParam.std_gpsvel_um482 = TEMP_MARGParam.std_gpsvel_um482;
+TEMP_MVOParam.P0_MARG = TEMP_MARGParam.P0_MARG;
+TEMP_MVOParam.fuse_enable = TEMP_MARGParam.fuse_enable;
+TEMP_MVOParam.enableZeroVelCorrect = TEMP_MARGParam.enableZeroVelCorrect;
+TEMP_MVOParam.enableVdFuser = TEMP_MARGParam.enableVdFuser;
+
 TEMP_MVOParam.P0_MARG = diag(NAVITEMP.P0_errorstate17);
 TEMP_MVOParam.std_gyro = NAVITEMP.ErrorState.noise_std.std_gyro;
 TEMP_MVOParam.std_gyro_bias = NAVITEMP.ErrorState.noise_std.std_gyro_bias;

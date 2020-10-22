@@ -1,7 +1,7 @@
 function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
     Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude)
 persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag timeUpdate_ublox timeUpdate_um482
-persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
+persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board step_tas
 persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
@@ -24,6 +24,7 @@ um482_lla = double([Sensors.um482.Lat, Sensors.um482.Lon, Sensors.um482.height])
 um482_gpsvel = double([Sensors.um482.velN, Sensors.um482.velE, Sensors.um482.velD]);
 baro1_alt = double(Sensors.baro1.alt_baro);
 radar1_range = double(Sensors.radar1.Range);
+TAS = double(Sensors.airspeed1.airspeed_true);
 % IMU更新
 if SensorSignalIntegrity.SensorSelect.IMU == 1
     imuUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.IMU1;
@@ -77,7 +78,7 @@ kScale_mag = 3;
 kScale_baro = 3;
 kScale_radar = 1;
 kScale_ublox = 1;
-
+kScale_tas = 1;
 baseFs = 1/Ts/kScale_imu;
 %
 if isempty(filter_marg)
@@ -89,20 +90,24 @@ if isempty(filter_marg)
     step_radar = 1;
     step_baro = 1;
     step_board = 1;
-    filter_marg = insfilterMARG; %slMARG; %
+    step_tas = 1;
+    filter_marg = NAV_MARG24; %insfilterMARG; %
     filter_marg.IMUSampleRate = double(baseFs);
     filter_marg.ReferenceLocation = refloc;filter_marg.ReferenceLocation(3) = 0;
-    filter_marg.State = double(X0_marg22);
+    filter_marg.State = double([X0_marg22,0,0]);
     filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
     filter_marg.MagnetometerBiasNoise = double(MARGParam.std_mag_bias.^2);
     filter_marg.GeomagneticVectorNoise = double(MARGParam.std_magNED.^2);
+    filter_marg.WindspeedNoise = double(MARGParam.std_windspeed.^2);
     %     if isBadAttitude
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
+    MARGParam.P0_MARG(1:4) = [1,1,1,1];
     %     end
-    filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
+    P0_windspeed = [2;2].^2;
+    filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
     accel_pre = accel;
     gyro_pre = gyro;
     mag_pre = mag;
@@ -135,6 +140,7 @@ Rpos_um482 = double(diag(MARGParam.std_lla_um482.^2));
 Rvel_um482 = double(diag(MARGParam.std_gpsvel_um482.^2));
 Ralt = double(MARGParam.std_alt^2);
 Rrange = double(MARGParam.std_range^2);
+Rtas = double(MARGParam.std_TAS.^2);
 %% ublox测量精度
 posVec = [Sensors.ublox1.hAcc,Sensors.ublox1.hAcc,Sensors.ublox1.vAcc];
 velVec = Sensors.ublox1.sAcc*ones(1,3);
@@ -356,7 +362,17 @@ if isFuseBaroAlt
         filter_marg.correct(idx_alt,double(posd),double(Rposd));
     end
 end
-% 空速融合
+% 真空速融合
+if true && airspeedUpdateFlag && ...
+        airspeed1_is_available
+    step_tas = step_tas + 1;
+%     Rtas = 2^2;
+    if rem(step_tas,kScale_tas) == 0
+        filter_marg.fuseTAS(double(TAS),double(Rtas));
+%         fprintf('TAS: %.2f\n',TAS);
+    end
+end
+% 空速融合（gps失效后）
 if true && airspeedUpdateFlag && ...
         airspeed1_is_available && ...
         ~ublox1_is_available && ...
