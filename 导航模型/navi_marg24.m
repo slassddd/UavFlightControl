@@ -132,6 +132,9 @@ if isempty(filter_marg)
     
     pDTime = 0;
 end
+% if rem(step_imu,1000) == 0
+%     filter_marg.StateCovariance = 2*filter_marg.StateCovariance;
+% end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
 Rpos = double(diag(MARGParam.std_lla.^2));
