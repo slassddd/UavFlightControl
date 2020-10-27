@@ -173,6 +173,12 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         LoopPath_Complete_Num (268),
         TaskLog_Protect_Battery_RunOut (269),
         Rotor2Fix_FailToGo (270),
+        HoverUp_Expand_R_90 (271),
+        HoverUp_Expand_R_120 (272),
+        HoverUp_Expand_R_150 (273),
+        HoverUp_Expand_R_200 (274),
+        HoverUp_Expand_R_250 (275),
+        HoverUp_Expand_R (276),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

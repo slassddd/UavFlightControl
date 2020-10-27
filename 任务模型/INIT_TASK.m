@@ -64,6 +64,9 @@ TASK_PARAM_V1000.runout_battery_alarm_set = 7; % 电池耗尽报警,触发无条件降落逻辑
 TASK_PARAM_V1000.enableDynamicBatteryGoHome = true; % 动态电量返航使能
 TASK_PARAM_V1000.airspeedOffset = 7; % 空速管堵的情况下对空速测量进行偏置;
 TASK_PARAM_V1000.levelFixcurrentThreshold = 40e3; % 固定翼模式下电流异常阈值 [mA]
+TASK_PARAM_V1000.beginHeight_expandRadiusInHoverUp = 500; % 盘旋上升模式中，盘旋半径外扩高度起始值 [m]
+TASK_PARAM_V1000.k_expandRadiusInHoverUp = 2; % 盘旋上升模式中，盘旋半径外扩比例系数（1height to 2radius） [m]
+TASK_PARAM_V1000.maxRadiusInHoverUp = 150; % 盘旋上升模式中，半径外扩作用下的最大转弯半径 [m]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
