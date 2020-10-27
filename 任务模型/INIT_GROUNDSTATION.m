@@ -132,7 +132,7 @@ end
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
 %% home点额外高度
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 1*600;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 0*600;
                 
                 STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
                 STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;
