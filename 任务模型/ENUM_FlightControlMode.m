@@ -19,6 +19,7 @@ classdef ENUM_FlightControlMode < Simulink.IntEnumType
         RotorStable_RollPitchHeight (14),
         RotorGoUpDownWithHorizonPosFree (15),
         SliderMode (16), % µÍ¶¯Á¦½µ¸ß
+        HoverSliderMode (17), % ÅÌÐý»¬Ïè½µ¸ß
 %         FixWingLevel (14), % ¹Ì¶¨Òí×ËÌ¬¸ÄÆ½
     end
 end

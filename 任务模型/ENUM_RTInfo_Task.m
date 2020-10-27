@@ -179,6 +179,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         HoverUp_Expand_R_200 (274),
         HoverUp_Expand_R_250 (275),
         HoverUp_Expand_R (276),
+        FlightControlMode_Changde (277),
+        
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
