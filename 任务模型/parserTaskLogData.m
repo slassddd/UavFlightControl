@@ -8,6 +8,7 @@ end
 nLogData = length(logData);
 for i = 1:nLogData
     % 剔除空值
+    idxExclude = find(logData(i).idx==0 | logData(i).time_sec==0 );
     idxExclude = find(logData(i).idx==0);
     logData(i).time_sec(idxExclude) = [];
     logData(i).idx(idxExclude) = [];
@@ -15,6 +16,7 @@ for i = 1:nLogData
     logData(i).message(idxExclude) = [];
     logData(i).var1(idxExclude,:) = [];
 end
+
 logDataAll = logData(1);
 for i = 2:nLogData
     logDataAll.time_sec = [logDataAll.time_sec;logData(i).time_sec];
