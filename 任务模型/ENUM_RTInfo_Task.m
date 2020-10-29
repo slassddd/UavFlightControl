@@ -246,11 +246,11 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Protect_Airspeed_LargeAngularVelOrAccz (2219),   
         TaskLog_Protect_Airspeed_LargeVd (2220),   
         % Input
-        TaskLog_Input_HomeChange_GS (2216),
-        TaskLog_Input_HomeChange_Path (2217),
-        TaskLog_Input_HomeChange_TakeOff (2218),
-        TaskLog_Input_HomeChange_KeyBoard (2219),
-        TaskLog_Protect_Airspeed_Fault_2 (2220),   
+        TaskLog_Input_HomeChange_GS (2416),
+        TaskLog_Input_HomeChange_Path (2417),
+        TaskLog_Input_HomeChange_TakeOff (2418),
+        TaskLog_Input_HomeChange_KeyBoard (2419),
+        TaskLog_Protect_Airspeed_Fault_2 (2420),   
         
         % ÑÏÖØ¾¯¸æ
         NotDefined_Fcn_isAllowedToEnterThisMode (5001),
