@@ -13,11 +13,11 @@ end
 GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'matlab_flightdata'  'simulink_flightdata'  'simulink_simdata'
 SetGlobalParam();
 %% 载入飞行数据
-tspan = [0,inf]; % sec
+tspan = [0,100]; % sec
 dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
 dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
 dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_1 2020年9月10日 宝坻 V1000-55# V31196固件 飞行']};
-dataFileNames = {['SubFolder_飞行数据\20201009\仿真数据_第19架次 点击起飞后 左前电机不转 自动加锁 2020-10-09 16-41-46']};
+% dataFileNames = {['SubFolder_飞行数据\20201009\仿真数据_第19架次 点击起飞后 左前电机不转 自动加锁 2020-10-09 16-41-46']};
 % dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20200917 西藏 空速堵 坠机\仿真数据_6ae4184b5a6144fabdf85c4c568c1e50']};
 LoadFlightData();
 %% 固件测试环境参数
