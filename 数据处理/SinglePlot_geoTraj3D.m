@@ -14,8 +14,6 @@ geoplot3(g,lat_geo,lon_geo,alt_geo,'y','HeightReference','geoid', ...
 
 uif.WindowButtonDownFcn = @callback_WindowButtonDownFcn;
 
-
-
 function callback_WindowButtonDownFcn(~,~)
     disp('1')
 end
