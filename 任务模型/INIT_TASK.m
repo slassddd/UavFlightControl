@@ -66,7 +66,7 @@ TASK_PARAM_V1000.airspeedOffset = 7; % 空速管堵的情况下对空速测量进行偏置;
 TASK_PARAM_V1000.levelFixcurrentThreshold = 40e3; % 固定翼模式下电流异常阈值 [mA]
 TASK_PARAM_V1000.beginHeight_expandRadiusInHoverUp = 400; % 盘旋上升模式中，盘旋半径外扩高度起始值 [m]
 TASK_PARAM_V1000.k_expandRadiusInHoverUp = 2; % 盘旋上升模式中，盘旋半径外扩比例系数（1height to 2radius） [m]
-TASK_PARAM_V1000.maxRadiusInHoverUp = 150; % 盘旋上升模式中，半径外扩作用下的最大转弯半径 [m]
+TASK_PARAM_V1000.maxRadiusInHoverUp = 60 ; % 150 盘旋上升模式中，半径外扩作用下的最大转弯半径 [m]
 TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARAM_V1000.nanFlag)  激活着陆点移动，数值表示移动方向[deg]   3230表示移动速度3m/s,移动方向230. 当等于nanFlag表示未激活
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
