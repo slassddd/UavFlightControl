@@ -20,3 +20,5 @@ INIT_SensorAlignment
 INIT_SensorIntegrity
 %% 飞行性能
 INIT_FlightPerformance
+%% 设置模块优先级
+INIT_Priority
