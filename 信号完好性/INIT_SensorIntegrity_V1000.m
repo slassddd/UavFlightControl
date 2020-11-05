@@ -12,7 +12,7 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM_V1000.Radar.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V1000.Remote.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V1000.GroundStation.threshold_lostTime = 5;
-        SENSOR_INTEGRITY_PARAM_V1000.Airspeed.threshold_lostTime = 10;
+        SENSOR_INTEGRITY_PARAM_V1000.Airspeed.threshold_lostTime = 3;
         SENSOR_INTEGRITY_PARAM_V1000.um482.threshold_lostTime = 15;
         SENSOR_INTEGRITY_PARAM_V1000.laserDown.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V1000.radarLong.threshold_lostTime = 5;
