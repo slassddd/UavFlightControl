@@ -94,6 +94,7 @@ TEMP_MARGParam.P0_MARG = diag(NAVITEMP.P0_marg22);
 TEMP_MARGParam.fuse_enable = NAVITEMP.fuse_enable;
 TEMP_MARGParam.enableZeroVelCorrect = false;
 TEMP_MARGParam.enableVdFuser = false;
+TEMP_MARGParam.enableAccDegrade_Rotor2Fix = false;
 % MVO参数
 TEMP_MVOParam = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MVO');
 TEMP_MVOParam.std_gyro = TEMP_MARGParam.std_gyro;

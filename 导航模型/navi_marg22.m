@@ -1,5 +1,5 @@
 function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
-    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude)
+    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude,TaskMode)
 persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag timeUpdate_ublox timeUpdate_um482
 persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
 persistent dHeight_GPS_sub_Baro
@@ -7,6 +7,7 @@ persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
 persistent pDTime
+persistent preTaskMode
 %%
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
@@ -126,6 +127,8 @@ if isempty(filter_marg)
     timeUpdate_um482 = clock_sec;
     
     pDTime = 0;
+    
+    preTaskMode = TaskMode;
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -256,6 +259,9 @@ end
 %     end
 % end
 %% 滤波
+disenable_time = clock_sec < 270 || clock_sec > inf;
+disenable_time = true;
+
 ublox1_is_available = ...
     SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health || ...
     SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Degrade;
@@ -271,8 +277,18 @@ temp_acc = 3;
 meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
-    filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
-    filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
+    if MARGParam.enableAccDegrade_Rotor2Fix && ...
+            TaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode
+        filter_marg.AccelerometerBiasNoise = 2e2*double(MARGParam.std_acc_bias.^2);
+        filter_marg.AccelerometerNoise = 5*double(MARGParam.std_acc.^2);
+    else
+        filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
+        filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
+        if preTaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode && TaskMode ~= ENUM_FlightTaskMode.Rotor2Fix_Mode 
+            fprintf('Rotor2Fix Complete!\n');
+            filter_marg.State(14:16) = 0.1*filter_marg.State(14:16); % 加计零偏重置
+        end
+    end
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
     %     if ublox1_is_available
@@ -290,11 +306,12 @@ if rem(step_imu,kScale_imu) == 0
             tmpK_bias = max(1,abs(meanAcc(ii))^1.5);
             tmpK = max(1,abs(meanAcc(ii))^3);
         end
+%         fprintf('tmpK_bias: %f\ttmpK: %f\n',tmpK_bias,tmpK);
         filter_marg.AccelerometerBiasNoise(ii) = tmpK_residual(ii)*tmpK_bias*filter_marg.AccelerometerBiasNoise(ii);
         filter_marg.AccelerometerNoise(ii) = tmpK_residual(ii)*tmpK*filter_marg.AccelerometerNoise(ii);
     end
     for ii = 1:3
-        tmpK = (1+2*abs(meanGyro(ii)))^2;
+        tmpK = (1+abs(meanGyro(ii)))^2;
         filter_marg.GyroscopeBiasNoise = tmpK*double(MARGParam.std_gyro_bias.^2);
         filter_marg.GyroscopeNoise = tmpK*double(MARGParam.std_gyro.^2);
     end
@@ -303,7 +320,7 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.predict(double(fuseAcc),double(fuseGyro));  %
 end
 % 磁力计融合
-if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+if disenable_time && residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     % if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
@@ -323,7 +340,7 @@ if residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.m
     end
 end
 % ublox1融合
-if ublox1_is_available && measureReject.lla_notJump && ...
+if disenable_time && ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
     if ~ZVCenable
@@ -340,7 +357,7 @@ if ublox1_is_available && measureReject.lla_notJump && ...
 end
 % um482融合
 %  && residual_um482
-if MARGParam.fuse_enable.um482 && um482_is_available && ...
+if disenable_time && MARGParam.fuse_enable.um482 && um482_is_available && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE && ...% 无解
         Sensors.um482.pDop ~= 0 % um482在受强干扰时pDop会置0
@@ -454,6 +471,8 @@ stepInfo.step_alt = step_alt;
 stepInfo.step_radar = step_radar;
 stepInfo.step_baro = step_baro;
 stepInfo.step_board = step_board;
+
+preTaskMode = TaskMode;
 end
 %% 子函数
 function eout = euler(quat)
