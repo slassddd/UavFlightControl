@@ -327,7 +327,7 @@ if rem(step_imu,kScale_imu) == 0
     %% test
     tempAz = IMU1_accel(3);
     [~,kAz] = smoothstd(tempAz);
-    kAz = kAz^1.3;
+    kAz = kAz^2;
     if kAz < 1
         kAz = 1;
     end
