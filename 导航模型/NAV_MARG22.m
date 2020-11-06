@@ -595,7 +595,10 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
             [xest, P, innov, iCov] = correctEqn(obj, xk, P, h, dhdx, z, measNoise);
             % SLASSDDD
             for i = [14,15,16]
-                maxdV = 5; % m/s
+                maxdV = 4; % m/s
+                if i == 14
+                    maxdV = 2;
+                end
                 limits = maxdV/obj.IMUSampleRate;
                 xest(i) = min(limits,xest(i)); % 设定上限
                 xest(i) = max(-limits,xest(i)); % 设定下限

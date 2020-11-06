@@ -131,6 +131,21 @@ if isempty(filter_marg)
     preTaskMode = TaskMode;
     isRotor2FixComplete = false;
 end
+%% 若在地面模式下，发生磁力计切换，则重置电磁相关状态
+thisMagNum = SensorSignalIntegrity.SensorSelect.Mag;
+if isReInitMagState(thisMagNum,TaskMode,clock_sec)
+%     quat0 = filter_marg.State(1:4)';
+    quat0 = compact(ecompass(accel,mag));
+    magNED0 = rotateframe(conj(quaternion(quat0)),mag);
+    idx_gyroBias = 11:13;
+    idx_magNED = 17:19;
+    idx_magBias = 20:22;
+    filter_marg.State(idx_gyroBias) = double(X0_marg22(idx_gyroBias));
+    filter_marg.State(idx_magNED) = magNED0;
+    filter_marg.State(idx_magBias) = 0*filter_marg.State(idx_magBias);
+    MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
+    filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
+end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
 Rpos = double(diag(MARGParam.std_lla.^2));
@@ -570,4 +585,27 @@ lla(:,2) = dLon*180/pi + ll0(2);
 %
 %     % check and fix angle wrapping in longitude
 %     [~, lla(:,2)] = wraplongitude( lla(:,2), 'deg', '180' );
+end
+
+function flag = isReInitMagState(thisMagNum,TaskMode,clock_sec)
+persistent preMagNum
+if isempty(preMagNum)
+    preMagNum = thisMagNum;
+end
+flag = false;
+if isempty(preMagNum)
+    preMagNum = thisMagNum;
+end
+if thisMagNum == preMagNum
+    isTheSameMag = true;
+else
+    isTheSameMag = false;
+end
+if TaskMode == ENUM_FlightTaskMode.GroundStandByMode && ...
+        clock_sec < 50 && ~isTheSameMag
+    flag = true; 
+    fprintf('time %.3f [sec]: Navigation Filter ReInit\n',clock_sec);
+end
+
+preMagNum = thisMagNum;
 end
