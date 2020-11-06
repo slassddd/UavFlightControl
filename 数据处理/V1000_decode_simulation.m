@@ -18,21 +18,33 @@ IN_SENSOR.mag2.time = IN_SENSOR.mag1.time;
 IN_SENSOR.radar1.time = save_time(1:4:end);
 IN_SENSOR.ublox1.time = save_time(1:4:end);
 IN_SENSOR.um482.time = save_time(1:4:end);
+IN_SENSOR.IMU1_0.time = IN_SENSOR.IMU1.time;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU1
 % 原始数据
-% temp=reshape([data(:,3:6)'],1,[]);
-% IN_SENSOR.IMU1.accel_x=typecast(uint8(temp),'single')';
-% temp=reshape([data(:,7:10)'],1,[]);
-% IN_SENSOR.IMU1.accel_y=typecast(uint8(temp),'single')';
-% temp=reshape([data(:,11:14)'],1,[]);
-% IN_SENSOR.IMU1.accel_z=typecast(uint8(temp),'single')';
-% temp=reshape([data(:,15:18)'],1,[]);
-% IN_SENSOR.IMU1.gyro_x=typecast(uint8(temp),'single')';
-% temp=reshape([data(:,19:22)'],1,[]);
-% IN_SENSOR.IMU1.gyro_y=typecast(uint8(temp),'single')';
-% temp=reshape([data(:,23:26)'],1,[]);
-% IN_SENSOR.IMU1.gyro_z=typecast(uint8(temp),'single')';
+% /* |@@IMUData@@-----------+--------------------------------+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,1)==0),3:6)'],1,[]);
+IN_SENSOR.IMU1_0.accel_x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+temp = reshape([data(find(mod(Count,1)==0),7:10)'],1,[]);
+IN_SENSOR.IMU1_0.accel_y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+temp = reshape([data(find(mod(Count,1)==0),11:14)'],1,[]);
+IN_SENSOR.IMU1_0.accel_z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+temp = reshape([data(find(mod(Count,1)==0),15:18)'],1,[]);
+IN_SENSOR.IMU1_0.gyro_x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+temp = reshape([data(find(mod(Count,1)==0),19:22)'],1,[]);
+IN_SENSOR.IMU1_0.gyro_y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+temp = reshape([data(find(mod(Count,1)==0),23:26)'],1,[]);
+IN_SENSOR.IMU1_0.gyro_z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
+if mean(IN_SENSOR.IMU1_0.accel_z) > 0
+    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+    disp('特别注意这里对IMU1_Control正负号的特别处理')
+    keyboard
+    IN_SENSOR.IMU1_0.accel_y = - IN_SENSOR.IMU1_0.accel_y;
+    IN_SENSOR.IMU1_0.accel_z = - IN_SENSOR.IMU1_0.accel_z;
+    IN_SENSOR.IMU1_0.gyro_y = -IN_SENSOR.IMU1_0.gyro_y;
+    IN_SENSOR.IMU1_0.gyro_z = -IN_SENSOR.IMU1_0.gyro_z;
+end
 % 1ms滤波
 temp = reshape([data(1:1:end,27:28)'],1,[]);
 IN_SENSOR.IMU1.accel_x = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
@@ -99,7 +111,7 @@ IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000
 if mean(IN_SENSOR.IMU3.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
     disp('特别注意这里对IMU3正负号的特别处理')
-    keyboard    
+    keyboard
     IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
     IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
     IN_SENSOR.IMU3.gyro_y = -IN_SENSOR.IMU3.gyro_y;
@@ -418,4 +430,12 @@ if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
     IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
     IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
     IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
+end
+if 1
+    fprintf('使用IMU_Control数据滤波\n');
+    IN_SENSOR.IMU1 = IN_SENSOR.IMU1_Control;
+end
+if 0
+    fprintf('使用IMU原始数据滤波\n');
+    IN_SENSOR.IMU1 = IN_SENSOR.IMU1_0;
 end

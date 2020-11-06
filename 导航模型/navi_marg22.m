@@ -7,7 +7,7 @@ persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
 persistent pDTime
-persistent preTaskMode
+persistent preTaskMode isRotor2FixComplete
 %%
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
@@ -129,6 +129,7 @@ if isempty(filter_marg)
     pDTime = 0;
     
     preTaskMode = TaskMode;
+    isRotor2FixComplete = false;
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -259,7 +260,7 @@ end
 %     end
 % end
 %% 滤波
-disenable_time = clock_sec < 270 || clock_sec > inf;
+disenable_time = clock_sec < 1550 || clock_sec > inf;
 disenable_time = true;
 
 ublox1_is_available = ...
@@ -277,16 +278,24 @@ temp_acc = 3;
 meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
-    if MARGParam.enableAccDegrade_Rotor2Fix && ...
-            TaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode 
-        filter_marg.AccelerometerBiasNoise = 2e2*double(MARGParam.std_acc_bias.^2);
-        filter_marg.AccelerometerNoise = 5*double(MARGParam.std_acc.^2);
-    else
-        filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
-        filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
-        if preTaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode && TaskMode ~= ENUM_FlightTaskMode.Rotor2Fix_Mode 
-            fprintf('Rotor2Fix Complete!\n');
-            filter_marg.State(14:16) = 0.1*filter_marg.State(14:16); % 加计零偏重置
+    filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
+    filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
+    if MARGParam.enableAccDegrade_Rotor2Fix
+        if TaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode
+            filter_marg.AccelerometerBiasNoise = 2e2*double(MARGParam.std_acc_bias.^2);
+            filter_marg.AccelerometerNoise = 5*double(MARGParam.std_acc.^2);
+        else
+            filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
+            filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
+            if preTaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode && TaskMode ~= ENUM_FlightTaskMode.Rotor2Fix_Mode
+                fprintf('Rotor2Fix Complete!\n');
+                isRotor2FixComplete = true;
+                filter_marg.State(14:16) = 0.1*filter_marg.State(14:16); % 加计零偏重置
+            end
+        end
+        if isRotor2FixComplete
+%             filter_marg.AccelerometerBiasNoise = 1e1*double(MARGParam.std_acc_bias.^2);
+%             filter_marg.AccelerometerNoise = 5*double(MARGParam.std_acc.^2);           
         end
     end
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
@@ -311,10 +320,22 @@ if rem(step_imu,kScale_imu) == 0
         filter_marg.AccelerometerNoise(ii) = tmpK_residual(ii)*tmpK*filter_marg.AccelerometerNoise(ii);
     end
     for ii = 1:3
-        tmpK = (1+abs(meanGyro(ii)))^2;
+        tmpK = (1+1*abs(meanGyro(ii)))^2;
         filter_marg.GyroscopeBiasNoise = tmpK*double(MARGParam.std_gyro_bias.^2);
         filter_marg.GyroscopeNoise = tmpK*double(MARGParam.std_gyro.^2);
     end
+    %% test
+    tempAz = IMU1_accel(3);
+    [~,kAz] = smoothstd(tempAz);
+    kAz = kAz^1.3;
+    if kAz < 1
+        kAz = 1;
+    end
+    for ii = 1:3
+        filter_marg.AccelerometerBiasNoise(ii) = kAz*filter_marg.AccelerometerBiasNoise(ii);
+        filter_marg.AccelerometerNoise(ii) = kAz/2*filter_marg.AccelerometerNoise(ii);
+    end
+    %%
     fuseAcc = meanAcc;
     fuseGyro = meanGyro;
     filter_marg.predict(double(fuseAcc),double(fuseGyro));  %
@@ -343,9 +364,20 @@ end
 if disenable_time && ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
+    k = 3;
+    speed_um482 = norm(double(um482_gpsvel));
+    if speed_um482 < 1
+        speed_um482 = 1;
+    end
+    um482VelScale = 1/(1/k*speed_um482);
+    if um482VelScale > k
+        um482VelScale = k;
+    elseif um482VelScale < 1
+        um482VelScale = 1;
+    end    
     if ~ZVCenable
         if rem(step_ublox,kScale_ublox) == 0
-            filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
+            filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),um482VelScale^2*double(Rvel));
         end
     else
         %         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
@@ -361,7 +393,18 @@ if disenable_time && MARGParam.fuse_enable.um482 && um482_is_available && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE && ...% 无解
         Sensors.um482.pDop ~= 0 % um482在受强干扰时pDop会置0
-    filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
+    k = 3;
+    speed_um482 = norm(double(um482_gpsvel));
+    if speed_um482 < 1
+        speed_um482 = 1;
+    end
+    um482VelScale = 1/(1/k*speed_um482);
+    if um482VelScale > k
+        um482VelScale = k;
+    elseif um482VelScale < 1
+        um482VelScale = 1;
+    end
+    filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),um482VelScale^2*double(Rvel_um482));
 end
 % 雷达高融合
 if false && radarUpdateFlag && measureReject.range_notJump  %
