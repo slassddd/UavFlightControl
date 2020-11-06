@@ -278,7 +278,7 @@ meanAcc = (temp_acc-1)/temp_acc*meanAcc+1/temp_acc*accel;
 meanGyro = (temp_gyro-1)/temp_gyro*meanGyro+1/temp_gyro*gyro;
 if rem(step_imu,kScale_imu) == 0
     if MARGParam.enableAccDegrade_Rotor2Fix && ...
-            TaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode
+            TaskMode == ENUM_FlightTaskMode.Rotor2Fix_Mode 
         filter_marg.AccelerometerBiasNoise = 2e2*double(MARGParam.std_acc_bias.^2);
         filter_marg.AccelerometerNoise = 5*double(MARGParam.std_acc.^2);
     else

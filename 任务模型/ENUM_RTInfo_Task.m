@@ -182,6 +182,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         FlightControlMode_Changed (277),        
         SystemTimeUpdate (278),
         SystemInfoUpdate (279),
+        Airspeed_AddExtraSpeed (280),
         
         
         

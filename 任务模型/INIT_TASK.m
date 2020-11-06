@@ -68,7 +68,7 @@ TASK_PARAM_V1000.beginHeight_expandRadiusInHoverUp = 400; % 盘旋上升模式中，盘旋
 TASK_PARAM_V1000.k_expandRadiusInHoverUp = 2; % 盘旋上升模式中，盘旋半径外扩比例系数（1height to 2radius） [m]
 TASK_PARAM_V1000.maxRadiusInHoverUp = 60 ; % 150 盘旋上升模式中，半径外扩作用下的最大转弯半径 [m]
 TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARAM_V1000.nanFlag)  激活着陆点移动，数值表示移动方向[deg]   3230表示移动速度3m/s,移动方向230. 当等于nanFlag(-99999)表示未激活
-TASK_PARAM_V1000.enableSpeedAdd = false ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
+TASK_PARAM_V1000.enableSpeedAdd = true ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

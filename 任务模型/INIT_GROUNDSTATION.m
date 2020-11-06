@@ -7,7 +7,7 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% º½Ïß
 deg2m = 1/111e3;
-pathHeight = 1209;
+pathHeight = 209;
 homeHeight = pathHeight + 0*200;
 TASK_SET.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
 TASK_SET.PATH.nanFlag = TASK_PARAM_V1000.nanFlag;
