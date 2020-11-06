@@ -364,24 +364,22 @@ end
 if disenable_time && ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
-    k = 3;
-    speed_um482 = norm(double(um482_gpsvel));
-    if speed_um482 < 1
-        speed_um482 = 1;
-    end
-    um482VelScale = 1/(1/k*speed_um482);
-    if um482VelScale > k
-        um482VelScale = k;
-    elseif um482VelScale < 1
-        um482VelScale = 1;
-    end    
+%     k = 3;
+%     speed_um482 = norm(double(um482_gpsvel));
+%     if speed_um482 < 1
+%         speed_um482 = 1;
+%     end
+%     um482VelScale = 1/(1/k*speed_um482);
+%     if um482VelScale > k
+%         um482VelScale = k;
+%     elseif um482VelScale < 1
+%         um482VelScale = 1;
+%     end    
     if ~ZVCenable
         if rem(step_ublox,kScale_ublox) == 0
-            filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),um482VelScale^2*double(Rvel));
+            filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
         end
     else
-        %         Rvel = 1e-1*double(Sensors.ublox1.pDop*Rvel);
-        %         Rpos = 1e0*double(Sensors.ublox1.pDop*Rpos);
         if rem(step_ublox,kScale_ublox) == 0
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),[0,0,0],double(Rvel));
         end
@@ -393,18 +391,18 @@ if disenable_time && MARGParam.fuse_enable.um482 && um482_is_available && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE && ...% 无解
         Sensors.um482.pDop ~= 0 % um482在受强干扰时pDop会置0
-    k = 3;
-    speed_um482 = norm(double(um482_gpsvel));
-    if speed_um482 < 1
-        speed_um482 = 1;
-    end
-    um482VelScale = 1/(1/k*speed_um482);
-    if um482VelScale > k
-        um482VelScale = k;
-    elseif um482VelScale < 1
-        um482VelScale = 1;
-    end
-    filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),um482VelScale^2*double(Rvel_um482));
+%     k = 3;
+%     speed_um482 = norm(double(um482_gpsvel));
+%     if speed_um482 < 1
+%         speed_um482 = 1;
+%     end
+%     um482VelScale = 1/(1/k*speed_um482);
+%     if um482VelScale > k
+%         um482VelScale = k;
+%     elseif um482VelScale < 1
+%         um482VelScale = 1;
+%     end
+    filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
 if false && radarUpdateFlag && measureReject.range_notJump  %
