@@ -9,6 +9,7 @@ persistent magRejectForEver
 persistent pDTime
 persistent preTaskMode isRotor2FixComplete preTAS
 %%
+nState = 24; % 
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
 IMU1_accel = double([Sensors.IMU1.accel_x, Sensors.IMU1.accel_y, Sensors.IMU1.accel_z]);
@@ -97,7 +98,11 @@ if isempty(filter_marg)
     filter_marg = NAV_MARG24;%insfilterMARG
     filter_marg.IMUSampleRate = double(baseFs);
     filter_marg.ReferenceLocation = refloc;filter_marg.ReferenceLocation(3) = 0;
-    filter_marg.State = double([X0_marg22,0,0]);
+    if nState == 24
+        filter_marg.State = double([X0_marg22,0,0]);
+    else
+        filter_marg.State = double([X0_marg22]);
+    end
     filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
@@ -107,7 +112,11 @@ if isempty(filter_marg)
     %     if isBadAttitude
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
     %     end    
-    filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    if nState == 24
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    else
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG]));
+    end        
     accel_pre = accel;
     gyro_pre = gyro;
     mag_pre = mag;
@@ -150,7 +159,11 @@ if isReInitMagState(thisMagNum,TaskMode,clock_sec)
     filter_marg.State(idx_magNED) = magNED0;
     filter_marg.State(idx_magBias) = 0*filter_marg.State(idx_magBias);
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
-    filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    if nState == 24
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    else
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG]));
+    end        
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -282,7 +295,7 @@ end
 %     end
 % end
 %% 滤波
-disenable_time = clock_sec < 1550 || clock_sec > inf;
+disenable_time = clock_sec < 190 || clock_sec > inf;
 disenable_time = true;
 
 ublox1_is_available = ...
@@ -459,7 +472,12 @@ if true && airspeedUpdateFlag && ...
     kTAS = 0.9;
     preTAS = kTAS*preTAS + (1-kTAS)*TAS;
     if rem(step_tas,kScale_tas) == 0
-        filter_marg.fuseTAS(double(preTAS),double(Rtas));
+        if nState == 24
+            filter_marg.fuseTAS(double(preTAS),double(Rtas));
+        else
+            
+        end                
+        
 %         fprintf('TAS: %.2f\n',TAS);
     end
 end
@@ -482,7 +500,12 @@ if true && airspeedUpdateFlag && ...
     filter_marg.fusegps(double(tempLLA),double(1e10),double(vel_airspeed),double(Rvel_airspeed));
 end
 %%
-stateEst = [filter_marg.State];
+if nState == 24
+    stateEst = [filter_marg.State];
+else
+    stateEst = [filter_marg.State;0;0];
+end
+
 if ~isFuseBaroAlt
     % 补偿平面坐标系造成的高度偏差
     distFromOri = norm(stateEst(5:6));
@@ -491,16 +514,17 @@ if ~isFuseBaroAlt
     dH = H0 - R0;
     stateEst(7) = stateEst(7) - dH; % 高度处理
 end
-stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5];
+if nState == 24
+    stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5];
+else
+    stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5;0;0];
+end
 eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 
-% if clock_sec > 1500
-%     sl = 1;
-% end
 if true && fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));

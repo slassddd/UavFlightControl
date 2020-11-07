@@ -979,22 +979,26 @@ classdef NAV_MARG24 < fusion.internal.INSFilterEKF
             vwn = x(23);
             vwe = x(24);
 %             z = ((ve - vwe)^2 + (vn - vwn)^2 + vd^2)^(1/2);
-%             
             % 将地速和风速投影到体系，取x轴的差
             Tbn = [[ q0^2 + q1^2 - q2^2 - q3^2,         2*q1*q2 - 2*q0*q3,         2*q0*q2 + 2*q1*q3]
                 [         2*q0*q3 + 2*q1*q2, q0^2 - q1^2 + q2^2 - q3^2,         2*q2*q3 - 2*q0*q1]
                 [         2*q1*q3 - 2*q0*q2,         2*q0*q1 + 2*q2*q3, q0^2 - q1^2 - q2^2 + q3^2]];
-            vNav_b = Tbn'*[vn;ve;vd];
-            vNav_b_x = vNav_b(1);
-            vw_b = Tbn'*[vwn;vwe;0];
-            vw_b_x = vw_b(1);
-            sel = 'nonabs'; % 'nonabs'
+
+            sel = '2d'; % 'nonabs'
             switch sel
-                case 'abs'
-                    % 将地速和风速投影到体系，取x轴的差的绝对值
-                    z = abs(vNav_b_x - vw_b_x);
+                case '2d'
+                    % 将地速和风速投影到体系，取x轴的差
+                    vNav_b = Tbn'*[vn;ve;0];
+                    vNav_b_x = vNav_b(1);
+                    vw_b = Tbn'*[vwn;vwe;0];
+                    vw_b_x = vw_b(1);
+                    z = vNav_b_x - vw_b_x;
                 otherwise
                     % 将地速和风速投影到体系，取x轴的差
+                    vNav_b = Tbn'*[vn;ve;vd];
+                    vNav_b_x = vNav_b(1);
+                    vw_b = Tbn'*[vwn;vwe;0];
+                    vw_b_x = vw_b(1);
                     z = vNav_b_x - vw_b_x;
             end
 %             z = sqrt((vNav_b(1)-vwn)^2 + (vNav_b(2)-vwe)^2 + vNav_b(3)^2); % predicted measurement
@@ -1010,11 +1014,10 @@ classdef NAV_MARG24 < fusion.internal.INSFilterEKF
             vd = x(10);
             vwn = x(23);
             vwe = x(24);   
-            sel = 'nonabs'; % 'nonabs'
+            sel = '2d'; % 'nonabs'
             switch sel
-                case 'abs'
-                    % 将地速和风速投影到体系，取x轴的差的绝对值
-                    dhdx = [ sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q2*vd - 2*q3*ve - 2*q0*vn + 2*q3*vwe + 2*q0*vwn), -sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q3*vd + 2*q2*ve + 2*q1*vn - 2*q2*vwe - 2*q1*vwn), sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q0*vd - 2*q1*ve + 2*q2*vn + 2*q1*vwe - 2*q2*vwn), -sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q1*vd + 2*q0*ve - 2*q3*vn - 2*q0*vwe + 2*q3*vwn), 0, 0, 0, -sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(q0^2 + q1^2 - q2^2 - q3^2), -sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q0*q3 + 2*q1*q2), sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q0*q2 - 2*q1*q3), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(q0^2 + q1^2 - q2^2 - q3^2), sign(vwn*(q0^2 + q1^2 - q2^2 - q3^2) - vn*(q0^2 + q1^2 - q2^2 - q3^2) + vd*(2*q0*q2 - 2*q1*q3) - ve*(2*q0*q3 + 2*q1*q2) + vwe*(2*q0*q3 + 2*q1*q2))*(2*q0*q3 + 2*q1*q2)];
+                case '2d'
+                    dhdx = [ 2*q3*ve + 2*q0*vn - 2*q3*vwe - 2*q0*vwn, 2*q2*ve + 2*q1*vn - 2*q2*vwe - 2*q1*vwn, 2*q1*ve - 2*q2*vn - 2*q1*vwe + 2*q2*vwn, 2*q0*ve - 2*q3*vn - 2*q0*vwe + 2*q3*vwn, 0, 0, 0, q0^2 + q1^2 - q2^2 - q3^2, 2*q0*q3 + 2*q1*q2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, - q0^2 - q1^2 + q2^2 + q3^2, - 2*q0*q3 - 2*q1*q2];
                 otherwise
                     % 将地速和风速投影到体系，取x轴的差
                     dhdx = [ 2*q3*ve - 2*q2*vd + 2*q0*vn - 2*q3*vwe - 2*q0*vwn, 2*q3*vd + 2*q2*ve + 2*q1*vn - 2*q2*vwe - 2*q1*vwn, 2*q1*ve - 2*q0*vd - 2*q2*vn - 2*q1*vwe + 2*q2*vwn, 2*q1*vd + 2*q0*ve - 2*q3*vn - 2*q0*vwe + 2*q3*vwn, 0, 0, 0, q0^2 + q1^2 - q2^2 - q3^2, 2*q0*q3 + 2*q1*q2, 2*q1*q3 - 2*q0*q2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, - q0^2 - q1^2 + q2^2 + q3^2, - 2*q0*q3 - 2*q1*q2];

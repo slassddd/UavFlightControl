@@ -26,7 +26,7 @@ for i = 1:nFlightDataFile
     else
         fprintf('仿真数据的IMU时间范围 [%.2f, %.2f]\n',tspan_SET{i}(1),tspan_SET{i}(2))
     end
-    % 传感器曲线
+    % 传感器 曲线
     if 0 % IMU
         figure;
         t_cor = zeros(length(IN_SENSOR_SET),1);

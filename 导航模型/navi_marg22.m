@@ -1,14 +1,15 @@
 function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
     Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude,TaskMode)
 persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag timeUpdate_ublox timeUpdate_um482
-persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board
+persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board step_tas
 persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
 persistent pDTime
-persistent preTaskMode isRotor2FixComplete
+persistent preTaskMode isRotor2FixComplete preTAS
 %%
+nState = 22; % 
 OUT_ECAS = IN_ECAS;
 %% 传感器数据构造
 IMU1_accel = double([Sensors.IMU1.accel_x, Sensors.IMU1.accel_y, Sensors.IMU1.accel_z]);
@@ -25,6 +26,7 @@ um482_lla = double([Sensors.um482.Lat, Sensors.um482.Lon, Sensors.um482.height])
 um482_gpsvel = double([Sensors.um482.velN, Sensors.um482.velE, Sensors.um482.velD]);
 baro1_alt = double(Sensors.baro1.alt_baro);
 radar1_range = double(Sensors.radar1.Range);
+TAS = double(Sensors.airspeed1.airspeed_true);
 % IMU更新
 if SensorSignalIntegrity.SensorSelect.IMU == 1
     imuUpdateFlag = SensorSignalIntegrity.SensorUpdateFlag.IMU1;
@@ -78,8 +80,10 @@ kScale_mag = 3;
 kScale_baro = 3;
 kScale_radar = 1;
 kScale_ublox = 1;
-
+kScale_tas = 1;
 baseFs = 1/Ts/kScale_imu;
+
+P0_windspeed = [3;3].^2;
 %
 if isempty(filter_marg)
     step = 1;
@@ -90,10 +94,15 @@ if isempty(filter_marg)
     step_radar = 1;
     step_baro = 1;
     step_board = 1;
+    step_tas = 1;
     filter_marg = NAV_MARG22;%insfilterMARG
     filter_marg.IMUSampleRate = double(baseFs);
     filter_marg.ReferenceLocation = refloc;filter_marg.ReferenceLocation(3) = 0;
-    filter_marg.State = double(X0_marg22);
+    if nState == 24
+        filter_marg.State = double([X0_marg22,0,0]);
+    else
+        filter_marg.State = double([X0_marg22]);
+    end
     filter_marg.AccelerometerBiasNoise = double(MARGParam.std_acc_bias.^2);
     filter_marg.AccelerometerNoise = double(MARGParam.std_acc.^2);
     filter_marg.GyroscopeBiasNoise = double(MARGParam.std_gyro_bias.^2);
@@ -102,8 +111,12 @@ if isempty(filter_marg)
     filter_marg.GeomagneticVectorNoise = double(MARGParam.std_magNED.^2);
     %     if isBadAttitude
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
-    %     end
-    filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
+    %     end    
+    if nState == 24
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    else
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG]));
+    end        
     accel_pre = accel;
     gyro_pre = gyro;
     mag_pre = mag;
@@ -130,6 +143,8 @@ if isempty(filter_marg)
     
     preTaskMode = TaskMode;
     isRotor2FixComplete = false;
+    
+    preTAS = TAS;
 end
 %% 若在地面模式下，发生磁力计切换，则重置电磁相关状态
 thisMagNum = SensorSignalIntegrity.SensorSelect.Mag;
@@ -144,7 +159,11 @@ if isReInitMagState(thisMagNum,TaskMode,clock_sec)
     filter_marg.State(idx_magNED) = magNED0;
     filter_marg.State(idx_magBias) = 0*filter_marg.State(idx_magBias);
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
-    filter_marg.StateCovariance = double(diag(MARGParam.P0_MARG));
+    if nState == 24
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG;P0_windspeed]));
+    else
+        filter_marg.StateCovariance = double(diag([MARGParam.P0_MARG]));
+    end        
 end
 %% 测量协方差
 Rmag = double(diag(MARGParam.std_mag.^2));
@@ -154,6 +173,7 @@ Rpos_um482 = double(diag(MARGParam.std_lla_um482.^2));
 Rvel_um482 = double(diag(MARGParam.std_gpsvel_um482.^2));
 Ralt = double(MARGParam.std_alt^2);
 Rrange = double(MARGParam.std_range^2);
+Rtas = double(MARGParam.std_TAS.^2);
 %% ublox测量精度
 posVec = [Sensors.ublox1.hAcc,Sensors.ublox1.hAcc,Sensors.ublox1.vAcc];
 velVec = Sensors.ublox1.sAcc*ones(1,3);
@@ -275,7 +295,7 @@ end
 %     end
 % end
 %% 滤波
-disenable_time = clock_sec < 1550 || clock_sec > inf;
+disenable_time = clock_sec < 150 || clock_sec > inf;
 disenable_time = true;
 
 ublox1_is_available = ...
@@ -444,6 +464,23 @@ if isFuseBaroAlt
         filter_marg.correct(idx_alt,double(posd),double(Rposd));
     end
 end
+% 真空速融合
+if true && airspeedUpdateFlag && ...
+        airspeed1_is_available
+    step_tas = step_tas + 1;
+%     Rtas = 2^2;
+    kTAS = 0.9;
+    preTAS = kTAS*preTAS + (1-kTAS)*TAS;
+    if rem(step_tas,kScale_tas) == 0
+        if nState == 24
+            filter_marg.fuseTAS(double(preTAS),double(Rtas));
+        else
+            
+        end                
+        
+%         fprintf('TAS: %.2f\n',TAS);
+    end
+end
 % 空速融合
 if true && airspeedUpdateFlag && ...
         airspeed1_is_available && ...
@@ -463,7 +500,12 @@ if true && airspeedUpdateFlag && ...
     filter_marg.fusegps(double(tempLLA),double(1e10),double(vel_airspeed),double(Rvel_airspeed));
 end
 %%
-stateEst = [filter_marg.State;0;0];
+if nState == 24
+    stateEst = [filter_marg.State];
+else
+    stateEst = [filter_marg.State;0;0];
+end
+
 if ~isFuseBaroAlt
     % 补偿平面坐标系造成的高度偏差
     distFromOri = norm(stateEst(5:6));
@@ -472,16 +514,17 @@ if ~isFuseBaroAlt
     dH = H0 - R0;
     stateEst(7) = stateEst(7) - dH; % 高度处理
 end
-stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5;0;0];
+if nState == 24
+    stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5];
+else
+    stateCovarianceDiagEst = [abs(diag(filter_marg.StateCovariance)).^0.5;0;0];
+end
 eulerd = double(euler(stateEst(1:4))*180/pi);
 posNED = stateEst(5:7)';
 % lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, refloc(3));
 lla_out = flat2lla_codegen(posNED, refloc(1:2), 0, 0); % href: flat的高度基准，向下为正
 fuseVdWithEKFandGPS = MARGParam.enableVdFuser;
 
-% if clock_sec > 1500
-%     sl = 1;
-% end
 if true && fuseVdWithEKFandGPS && ...
         (SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health && range > 8)
     k = max(1,abs(accel(3)-9.8));

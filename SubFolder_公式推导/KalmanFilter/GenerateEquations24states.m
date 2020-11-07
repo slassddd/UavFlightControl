@@ -75,6 +75,7 @@ dv_b = [dvx_b; dvy_b; dvz_b];
 % derive the body to nav direction cosine matrix
 Tbn = Quat2Tbn([q0,q1,q2,q3]);
 
+
 % define the bias corrected delta angle
 % Ignore coning compensation and earths rotation as these effect are
 % negligible in terms of covariance growth compared to other efects for our
@@ -220,20 +221,30 @@ catch
     disp('SK_VP error')
 end
 %% derive equations for fusion of true airspeed measurements
-            Tbn = [[ q0^2 + q1^2 - q2^2 - q3^2,         2*q1*q2 - 2*q0*q3,         2*q0*q2 + 2*q1*q3]
-                [         2*q0*q3 + 2*q1*q2, q0^2 - q1^2 + q2^2 - q3^2,         2*q2*q3 - 2*q0*q1]
-                [         2*q1*q3 - 2*q0*q2,         2*q0*q1 + 2*q2*q3, q0^2 - q1^2 - q2^2 + q3^2]];
-            vNav_b = transpose(Tbn)*[vn;ve;vd];
-            vNav_b_x = vNav_b(1);
-            vw_b = Tbn'*[vwn;vwe;0];
-            vw_b_x = vw_b(1);
-            VtasPred = abs(vNav_b_x - vw_b_x);
-            VtasPred1 = (vNav_b_x - vw_b_x);
+Tbn = [[ q0^2 + q1^2 - q2^2 - q3^2,         2*q1*q2 - 2*q0*q3,         2*q0*q2 + 2*q1*q3]
+    [         2*q0*q3 + 2*q1*q2, q0^2 - q1^2 + q2^2 - q3^2,         2*q2*q3 - 2*q0*q1]
+    [         2*q1*q3 - 2*q0*q2,         2*q0*q1 + 2*q2*q3, q0^2 - q1^2 - q2^2 + q3^2]];
+% 三轴速度
+vned = [vn;ve;vd];
+vNav_b = transpose(Tbn)*vned;
+vNav_b_x = vNav_b(1);
+vw_b = Tbn'*[vwn;vwe;0];
+vw_b_x = vw_b(1);
+VtasPred = abs(vNav_b_x - vw_b_x);
+VtasPred1 = (vNav_b_x - vw_b_x);
+% 水平速度
+vned_horizon = [vn;ve;0];
+vNav_b = transpose(Tbn)*vned_horizon;
+vNav_b_x = vNav_b(1);
+vw_b = Tbn'*[vwn;vwe;0];
+vw_b_x = vw_b(1);
+VtasPred_horizon = (vNav_b_x - vw_b_x);
 % vNav_b = transpose(Tbn)*[vn;ve;vd];
 % VtasPred = sqrt((vNav_b(1)-vwn)^2 + (vNav_b(2)-vwe)^2 + vNav_b(3)^2); % predicted measurement
 % VtasPred = sqrt((vn-vwn)^2 + (ve-vwe)^2 + vd^2); % predicted measurement
 H_TAS = jacobian(VtasPred,stateVector); % measurement Jacobian
 H_TAS1 = jacobian(VtasPred1,stateVector); % measurement Jacobian
+H_TAS_horizon = jacobian(VtasPred_horizon,stateVector); % measurement Jacobian
 try
     [H_TAS,SH_TAS]=OptimiseAlgebra(H_TAS,'SH_TAS'); % optimise processing
 catch
