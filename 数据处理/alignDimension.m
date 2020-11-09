@@ -2,7 +2,7 @@ function out = alignDimension(in)
 % 将结构体in中的成员维数对齐
 children = fieldnames(in);
 nChild = length(children);
-for i = 1:nChild
+for i = 1:nChild 
     thisChild = in.(children{i});
     len(i) = length(thisChild);
 end
