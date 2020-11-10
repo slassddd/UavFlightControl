@@ -187,6 +187,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Task_Calib_Circle1 (282),
         Task_Calib_Circle2 (283),
         Airspeed_Stuck (284),
+        Task_Calib_ToGo_AutoProfile (285),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
