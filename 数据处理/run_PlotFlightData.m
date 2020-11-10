@@ -42,7 +42,10 @@ if true % 空速
     plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed);hold on;
     plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_indicate);hold on;
     plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_true,'--');hold on; 
-    legend('airspeed','airspeed_indicate','airspeed_true');
+    try
+        plot(IN_SENSOR.airspeed1.time,arspeed(1:2:end));hold on; 
+    end
+    legend('airspeed','airspeed_indicate','airspeed_true','airspeed_indicate_task');
     xlabel('time(s)')
     ylabel('vel(m/s)')
     grid on;

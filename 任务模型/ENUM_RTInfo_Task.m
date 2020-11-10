@@ -183,8 +183,9 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         SystemTimeUpdate (278),
         SystemInfoUpdate (279),
         Airspeed_AddExtraSpeed (280),
-        
-        
+        Task_Calib_Enter (281),
+        Task_Calib_Circle1 (282),
+        Task_Calib_Circle2 (283),
         
         
         ReciveCmd_GoHome (1201),

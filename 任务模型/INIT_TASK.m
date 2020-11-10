@@ -3,6 +3,7 @@ load('IOBusInfo_V1000')
 %% 航线算法参数
 Ts_Task.Ts_base = 0.036;
 %% V1000参数
+TASK_PARAM_V1000 = Simulink.Bus.createMATLABStruct('BUS_TASK_PATH_AlgoParam');
 TASK_PARAM_V1000.reachFlag_point_dist = 30; % 到达点的距离判定 [m]
 TASK_PARAM_V1000.reachFlag_line_dist = 0.5;
 TASK_PARAM_V1000.reachDetermineMode = 2; % 0:判断点距  1：判断过线   2：判断点距和过线
@@ -69,12 +70,15 @@ TASK_PARAM_V1000.k_expandRadiusInHoverUp = 2; % 盘旋上升模式中，盘旋半径外扩比例
 TASK_PARAM_V1000.maxRadiusInHoverUp = 60 ; % 150 盘旋上升模式中，半径外扩作用下的最大转弯半径 [m]
 TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARAM_V1000.nanFlag)  激活着陆点移动，数值表示移动方向[deg]   3230表示移动速度3m/s,移动方向230. 当等于nanFlag(-99999)表示未激活
 TASK_PARAM_V1000.enableSpeedAdd = true ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
+TASK_PARAM_V1000.enable8calib = false; % 使能8字校准
+TASK_PARAM_V1000.turnR_8calib = 70; % 8字校准的盘旋半径[m]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
 TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
+TASK_PARAM_V10.enable8calib = true;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
