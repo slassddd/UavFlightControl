@@ -22,7 +22,7 @@ dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20201104 盘旋上升开始后
 LoadFlightData();
 %% 固件测试环境参数
 PlaneMode.mode = selParamForPlaneMode(); % 设置机型变量
-SimulinkRunMode = 1; % 飞行参数源选择；仿真or飞行数据
+SimulinkRunMode = 1; % 飞行参数源选择；1 飞行数据  2 仿真(已经很久没有维护，肯定不好用了)
 Ts_Compass.Ts_base = 0.012;
 %% 固件参数初始化
 INIT_SystemArchitecture

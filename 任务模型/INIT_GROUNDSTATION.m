@@ -31,7 +31,7 @@ switch pathExmpale
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
-        lon_right = 5e3;
+        lon_right = 2e3;
         lat_space = 200;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
