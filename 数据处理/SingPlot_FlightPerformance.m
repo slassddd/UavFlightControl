@@ -13,11 +13,19 @@ ylabelstr = {'isAbleToCompleteTask','flagGoHomeNow','remainDistToGo_m [m]','rema
 idx_nz = find(~isnan(time));
 for i = 1:nChildren
     subplot(nrow,ncol,i)
-    try
-        plot(time(idx_nz),structData.(children{i})(idx_nz));
-    catch
-        plot(structData.(children{i}));
+    nData = length(structData.(children{i}));
+    if nData < 2/3*length(idx_nz)
+        try
+            plot(time(idx_nz(1:2:end)),structData.(children{i}));
+        end
+    else
+        try
+            plot(time(idx_nz),structData.(children{i})(idx_nz));
+        catch
+            plot(structData.(children{i}));d
+        end        
     end
+
     grid on;
     xlabel('time (sec)');
     ylabel(ylabelstr{i})

@@ -32,7 +32,7 @@ plot(data4.time,data4.accel_x,'g');hold on;
 xlabel('time(sec)')
 ylabel('ax(m/s^2)')
 grid on;
-legend('IMU1','IMU2','IMU3','IMU_control')
+legend('IM1未滤波','IMU1','IMU2','IMU3','IMU_control')
 % ay
 subplot(323)
 if enable_IMU0

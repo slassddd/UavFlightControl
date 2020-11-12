@@ -109,6 +109,7 @@ if isempty(filter_marg)
     filter_marg.GyroscopeNoise = double(MARGParam.std_gyro.^2);
     filter_marg.MagnetometerBiasNoise = double(MARGParam.std_mag_bias.^2);
     filter_marg.GeomagneticVectorNoise = double(MARGParam.std_magNED.^2);
+    filter_marg.WindspeedNoise = [0.05].^2;
     %     if isBadAttitude
     MARGParam.P0_MARG(1:4) = [1,0.2,0.2,1];
     %     end    

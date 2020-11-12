@@ -48,7 +48,7 @@ TASK_PARAM_V1000.isInterpPathPoints = true; % 是否启用航线平滑过渡
 TASK_PARAM_V1000.getOutOfRemote = true; % 是否摆脱遥控器，用于程序中自动手动切换
 TASK_PARAM_V1000.isHoverUpDownWithHome = true; % 是否以home点作为盘旋上升下降的中心
 TASK_PARAM_V1000.enableFenseDistUpdate = false; % 使能电子围栏有效距离随航点自适应改变
-TASK_PARAM_V1000.timeThreshold_Fix2Rotor = 4; % 固定翼转旋翼阈值,[sec]
+TASK_PARAM_V1000.timeThreshold_Fix2Rotor = 3; % 固定翼转旋翼阈值,[sec]
 TASK_PARAM_V1000.cruiseSpeed_rotorMode = 3; % 旋翼模式平飞速度，[m/s]
 TASK_PARAM_V1000.minAirspeed_fixAllowed = 19; % 最低固定翼容许空速，[m/s]
 TASK_PARAM_V1000.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
@@ -78,7 +78,7 @@ TASK_PARAM_V10.low_battery_alarm_set = 30; %
 TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
-TASK_PARAM_V10.enable8calib = true;
+TASK_PARAM_V10.enable8calib = false;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10

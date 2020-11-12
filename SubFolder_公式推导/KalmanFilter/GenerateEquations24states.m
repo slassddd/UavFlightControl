@@ -239,12 +239,32 @@ vNav_b_x = vNav_b(1);
 vw_b = Tbn'*[vwn;vwe;0];
 vw_b_x = vw_b(1);
 VtasPred_horizon = (vNav_b_x - vw_b_x);
+% 完全水平
+TAS_NED = Tbn*[R_TAS;0;0];
+TAS_horizon = norm(TAS_NED(1:2));
+
+BodyX_NED = Tbn*[1;0;0];
+
+vned = [vn;ve;0];
+vw = [vwn;vwe;0];
+
+vned_along_bodyXned = BodyX_NED.*vned;
+vw_along_bodyXned = BodyX_NED.*vw;
+% VtasPred_ture_horizon = 1/(abs((2*q0*q3 + 2*q1*q2))^2 + abs((q0^2 + q1^2 - q2^2 - q3^2))^2)^(1/2)*norm(vned-vw);
+VtasPred_ture_horizon = 1/(abs((2*q0*q3 + 2*q1*q2))^2 + abs((q0^2 + q1^2 - q2^2 - q3^2))^2)^(1/2)*norm(vned_along_bodyXned-vw_along_bodyXned);
+
+vw_along_vned = 1/norm(vned)*vned.*vw;
+VtasPred_ture_horizon = 1/(abs((2*q0*q3 + 2*q1*q2))^2 + abs((q0^2 + q1^2 - q2^2 - q3^2))^2)^(1/2)*norm(vned-vw_along_vned);
+
+
 % vNav_b = transpose(Tbn)*[vn;ve;vd];
 % VtasPred = sqrt((vNav_b(1)-vwn)^2 + (vNav_b(2)-vwe)^2 + vNav_b(3)^2); % predicted measurement
 % VtasPred = sqrt((vn-vwn)^2 + (ve-vwe)^2 + vd^2); % predicted measurement
 H_TAS = jacobian(VtasPred,stateVector); % measurement Jacobian
 H_TAS1 = jacobian(VtasPred1,stateVector); % measurement Jacobian
 H_TAS_horizon = jacobian(VtasPred_horizon,stateVector); % measurement Jacobian
+% H_TAS_ture_horizon = jacobian(VtasPred_ture_horizon,stateVector); % measurement Jacobian
+H_TAS_ture_horizon = jacobian(VtasPred_ture_horizon,stateVector); % measurement Jacobian
 try
     [H_TAS,SH_TAS]=OptimiseAlgebra(H_TAS,'SH_TAS'); % optimise processing
 catch
