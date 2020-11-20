@@ -72,6 +72,8 @@ TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARA
 TASK_PARAM_V1000.enableSpeedAdd = true ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
 TASK_PARAM_V1000.enable8calib = false; % 使能8字校准
 TASK_PARAM_V1000.turnR_8calib = 70; % 8字校准的盘旋半径[m]
+TASK_PARAM_V1000.addedAirspeed_stuck = 9; % 空速管卡滞时，空速测量减去的基准值
+TASK_PARAM_V1000.maxAddedSpeed_wind = 3; % 空速卡滞或失效后，根据风参数的叠加的修正量
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
