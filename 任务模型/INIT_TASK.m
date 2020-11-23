@@ -80,7 +80,7 @@ TASK_PARAM_V10.low_battery_alarm_set = 30; %
 TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
-TASK_PARAM_V10.enable8calib = true;
+TASK_PARAM_V10.enable8calib = false;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
