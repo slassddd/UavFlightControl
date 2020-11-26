@@ -1,8 +1,9 @@
-classdef NAV_MARG22 < fusion.internal.INSFilterEKF
+classdef (Hidden) NAV_MARG22 < fusion.internal.INSFilterEKF & ...
+    fusion.internal.IMUSynchronousMixin
 %   This class is for internal use only. It may be removed in the future. 
 %
 
-%   Copyright 2018-2019 The MathWorks, Inc.
+%   Copyright 2018-2020 The MathWorks, Inc.
 
 
 %#codegen
@@ -382,33 +383,6 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
             obj.privReset;
         end
         
-        function stateinfo(obj) %#ok<MANU>
-        %STATEINFO Display state vector information
-        %   STATEINFO(FUSE) displays the meaning of each index of the State 
-        %   property and the associated units. 
-
-            stateCellArr = {'States', 'Orientation (quaternion parts)', ...
-                'Position (NAV)', 'Velocity (NAV)', ...
-                'Delta Angle Bias (XYZ)' 'Delta Velocity Bias (XYZ)', ...
-                'Geomagnetic Field Vector (NAV)', 'Magnetometer Bias (XYZ)'};
-            uT = [char(181) 'T'];
-            unitCellArr = {'Units', '', 'm', 'm/s', 'rad', 'm/s', uT, uT};
-            indexCellArr = {'Index', '1:4', '5:7', '8:10', '11:13', ...
-                '14:16', '17:19', '20:22'};
-            
-            states = char(stateCellArr(:));
-            units = char(unitCellArr(:));
-            indices = char(indexCellArr(:));
-            spaces = repmat('    ',size(states, 1), 1);
-            infoStr = [states, spaces, units, spaces, indices];
-            
-            fprintf('\n');
-            for i = 1:size(infoStr, 1)
-                fprintf(infoStr(i,:));
-                fprintf('\n');
-            end
-            fprintf('\n');
-        end
     end
 
     methods % Public API - sets and gets
@@ -535,6 +509,42 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
     end
     
     methods (Access = protected)
+        function s = saveObject(obj)
+            % Call each base class's saveObject 
+            s = saveObject@fusion.internal.INSFilterEKF(obj);
+            s = saveObject@fusion.internal.IMUSynchronousMixin(obj,s);
+
+            s.GyroscopeNoise = obj.GyroscopeNoise;
+            s.AccelerometerNoise = obj.AccelerometerNoise;
+            s.GyroscopeBiasNoise = obj.GyroscopeBiasNoise;
+            s.AccelerometerBiasNoise = obj.AccelerometerBiasNoise;
+            s.GeomagneticVectorNoise = obj.GeomagneticVectorNoise;
+            s.MagnetometerBiasNoise = obj.MagnetometerBiasNoise;
+            s.StateCovariance = obj.StateCovariance;
+            s.OtherAdditiveNoise = obj.OtherAdditiveNoise;
+            s.pGyroInteg = clone(obj.pGyroInteg);
+            s.pAccelInteg = clone(obj.pAccelInteg);
+            s.pState = obj.pState;
+        end
+        
+        function loadObject(obj, s)
+            % Call both base class's loadObject methods
+            loadObject@fusion.internal.INSFilterEKF(obj, s);
+            loadObject@fusion.internal.IMUSynchronousMixin(obj, s);
+            
+            obj.GyroscopeNoise = s.GyroscopeNoise;
+            obj.AccelerometerNoise = s.AccelerometerNoise;
+            obj.GyroscopeBiasNoise = s.GyroscopeBiasNoise;
+            obj.AccelerometerBiasNoise = s.AccelerometerBiasNoise;
+            obj.GeomagneticVectorNoise = s.GeomagneticVectorNoise;
+            obj.MagnetometerBiasNoise = s.MagnetometerBiasNoise;
+            obj.StateCovariance = s.StateCovariance;
+            obj.OtherAdditiveNoise = s.OtherAdditiveNoise;
+            obj.pGyroInteg = s.pGyroInteg;
+            obj.pAccelInteg = s.pAccelInteg;
+            obj.pState = s.pState;
+        end
+        
         function orient = getOrientation(obj)
             orient = quaternion(obj.State(1:4).');
         end
@@ -593,7 +603,7 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
             dhdx = measJacobianFcn(obj, xk);
             P = obj.StateCovariance;
             [xest, P, innov, iCov] = correctEqn(obj, xk, P, h, dhdx, z, measNoise);
-            % SLASSDDD
+            % BEGIN SLASSDDD
             for i = [14,15,16]
                 maxdV = 4; % m/s
                 if i == 14
@@ -603,7 +613,7 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
                 xest(i) = min(limits,xest(i)); % 设定上限
                 xest(i) = max(-limits,xest(i)); % 设定下限
             end
-            % 
+            % END SLASSDDD
             obj.StateCovariance = P;
             obj.State = xest;
         end
@@ -924,6 +934,53 @@ classdef NAV_MARG22 < fusion.internal.INSFilterEKF
                 ];
         end
     end
+
+    methods 
+        function s = stateinfo(obj) %#ok<MANU>
+        %STATEINFO Display state vector information
+        %   STATEINFO(FUSE) displays the meaning of each index of the State 
+        %   property and the associated units. 
+        %   
+        %   S = STATEINFO(FUSE) returns a struct with fields describing the
+        %   elements of the state vector of FUSE. The values of each field 
+        %   are the corresponding indices of the state vector.
+            if (nargout == 1)
+                s = struct(...
+                    'Orientation', 1:4, ...
+                    'Position', 5:7, ...
+                    'Velocity', 8:10, ...
+                    'DeltaAngleBias', 11:13, ...
+                    'DeltaVelocityBias', 14:16, ...
+                    'GeomagneticFieldVector', 17:19, ...
+                    'MagnetometerBias', 20:22);
+
+            else
+                % Purely display.
+
+                stateCellArr = {'States', 'Orientation (quaternion parts)', ...
+                    'Position (NAV)', 'Velocity (NAV)', ...
+                    'Delta Angle Bias (XYZ)' 'Delta Velocity Bias (XYZ)', ...
+                    'Geomagnetic Field Vector (NAV)', 'Magnetometer Bias (XYZ)'};
+                uT = [char(181) 'T'];
+                unitCellArr = {'Units', '', 'm', 'm/s', 'rad', 'm/s', uT, uT};
+                indexCellArr = {'Index', '1:4', '5:7', '8:10', '11:13', ...
+                    '14:16', '17:19', '20:22'};
+                
+                states = char(stateCellArr(:));
+                units = char(unitCellArr(:));
+                indices = char(indexCellArr(:));
+                spaces = repmat('    ',size(states, 1), 1);
+                infoStr = [states, spaces, units, spaces, indices];
+                
+                fprintf('\n');
+                for i = 1:size(infoStr, 1)
+                    fprintf(infoStr(i,:));
+                    fprintf('\n');
+                end
+                fprintf('\n');
+            end
+        end
+    end
 end
 
 %% Other Helper Functions
@@ -971,5 +1028,5 @@ rf = fusion.internal.frames.ReferenceFrame.getMathObject( ...
 end
 
 function mfNED = defaultMagFieldNED
-mfNED = fusion.internal.UnitConversions.MagneticFieldNED;
+mfNED = fusion.internal.ConstantValue.MagneticFieldNED;
 end

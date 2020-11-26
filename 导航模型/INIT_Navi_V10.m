@@ -26,10 +26,10 @@ NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MARG');
 example = 17;
 switch example    
     case 17 % test
-        NAVITEMP.noise_std.std_gyro = 2e-2*pi/180*[1,1,1]; % rad/s
+        NAVITEMP.noise_std.std_gyro = 3e-2*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 2e-5*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_acc = 2e-2*[1,1,1];  % m/s^2
-        NAVITEMP.noise_std.std_acc_bias = 5e-5*[1,1,2]; % m/s^2
+        NAVITEMP.noise_std.std_acc_bias = 2e-4*[1,1,2]; % m/s^2
         NAVITEMP.noise_std.std_magNED = 1e-8*[1,1,1];  %
         NAVITEMP.noise_std.std_mag = 2.5*[1,1,1]; %
         NAVITEMP.noise_std.std_mag_bias = 1e-3*[1,1,1];
