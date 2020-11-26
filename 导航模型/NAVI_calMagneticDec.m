@@ -10,7 +10,7 @@ elseif nargin == 2
     model_sel = varargin{2};
 end
 model_epoch_wrldmagm = '2015v2';
-model_epoch_igrfmagm = 12;
+model_epoch_igrfmagm = 13;
 
 step = 10;
 geod_lat = linspace(-89,89,round(180/step));
@@ -26,6 +26,8 @@ switch model_sel
             msgStr = '数据时间范围1900-2015';
         elseif model_epoch_igrfmagm == 12
             msgStr = '数据时间范围1900-2020';
+        elseif model_epoch_igrfmagm == 13
+            msgStr = '数据时间范围1900-2025';
         else
             error('参数错误或未及时更新该参数')
         end        
