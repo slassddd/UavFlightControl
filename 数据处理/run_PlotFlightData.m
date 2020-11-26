@@ -69,6 +69,7 @@ if true
     grid on;
     legend('任务高度','雷达高','滤波高')
 end
+% 磁力计数据
 if true
     SinglePlot_mag
 end
@@ -81,6 +82,7 @@ end
 if plotenable.um482
     SingPlot_um482(IN_SENSOR.um482)
 end
+% 风
 if plotenable.WindParam
     SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.TASK_WindParam)
     SinglePlot_GlobalWindEst(SL.GlobalWindEst)
@@ -91,12 +93,15 @@ end
 if plotenable.SensorStatus
     SinglePlot_SensorStatus(IN_SENSOR.IMU1.time,SL.SensorStatus)
 end
+% 任务log
 if plotenable.RTInfo_Task
     SinglePlot_RTInfo_Task(IN_SENSOR.IMU1.time,SL.Debug_Task_RTInfo)
 end
+% um482 ublox 数据对比
 if plotenable.gpsCompare
     SingPlot_gpsCompare(IN_SENSOR.um482,IN_SENSOR.ublox1)
 end
+% 功耗
 if plotenable.PowerConsumer
     try
         T = SingPlot_PowerConsumer(SL.PowerConsume,SL.OUT_TASKMODE.uavMode);
@@ -112,9 +117,11 @@ if plotenable.PowerConsumer
         disp('PowerConsumer 绘制失败')
     end
 end
+% 任务log
 if plotenable.TaskLogData
     SingPlot_TaskLogData;
 end
+% 飞行性能
 if plotenable.FlightPerf
     try
         SingPlot_FlightPerformance(SL.OUT_FLIGHTPERF)
