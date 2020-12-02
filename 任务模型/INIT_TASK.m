@@ -49,7 +49,7 @@ TASK_PARAM_V1000.getOutOfRemote = true; % 是否摆脱遥控器，用于程序中自动手动切换
 TASK_PARAM_V1000.isHoverUpDownWithHome = true; % 是否以home点作为盘旋上升下降的中心
 TASK_PARAM_V1000.enableFenseDistUpdate = false; % 使能电子围栏有效距离随航点自适应改变
 TASK_PARAM_V1000.timeThreshold_Fix2Rotor = 3; % 固定翼转旋翼阈值,[sec]
-TASK_PARAM_V1000.cruiseSpeed_rotorMode = 3; % 旋翼模式平飞速度，[m/s]
+TASK_PARAM_V1000.cruiseSpeed_rotorMode = 5; % 旋翼模式平飞速度，[m/s]
 TASK_PARAM_V1000.minAirspeed_fixAllowed = 19; % 最低固定翼容许空速，[m/s]
 TASK_PARAM_V1000.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
 TASK_PARAM_V1000.logDataBufferSize = 32; % 数据记录buffer size
@@ -74,6 +74,8 @@ TASK_PARAM_V1000.enable8calib = false; % 使能8字校准
 TASK_PARAM_V1000.turnR_8calib = 70; % 8字校准的盘旋半径[m]
 TASK_PARAM_V1000.addedAirspeed_stuck = 9; % 空速管卡滞时，空速测量减去的基准值
 TASK_PARAM_V1000.maxAddedSpeed_wind = 3; % 空速卡滞或失效后，根据风参数的叠加的修正量
+TASK_PARAM_V1000.enableHExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
+TASK_PARAM_V1000.enableVExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -81,6 +83,7 @@ TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
 TASK_PARAM_V10.enable8calib = true;
+TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
