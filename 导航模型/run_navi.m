@@ -97,6 +97,8 @@ INIT_SensorFault
 INIT_SensorAlignment
 %% 信号检测
 INIT_SensorIntegrity
+%% 视觉着陆
+INIT_VisualLanding
 %% 运行仿真
 modelname = 'TESTENV_NAVI';
 % modelname = 'TESTENV_NAVI_12ms';
