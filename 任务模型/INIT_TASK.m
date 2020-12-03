@@ -76,6 +76,7 @@ TASK_PARAM_V1000.addedAirspeed_stuck = 9; % 空速管卡滞时，空速测量减去的基准值
 TASK_PARAM_V1000.maxAddedSpeed_wind = 3; % 空速卡滞或失效后，根据风参数的叠加的修正量
 TASK_PARAM_V1000.enableHExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
 TASK_PARAM_V1000.enableVExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
+TASK_PARAM_V1000.enableVisualLandTag = true; % 激活视觉Tag着陆
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

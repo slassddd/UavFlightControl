@@ -8,5 +8,7 @@ VISLANDING_PARAM_V1000 = Simulink.Bus.createMATLABStruct('BUS_VISUALLANDING_PARA
 % 相机坐标系: 右-后-下
 VISLANDING_PARAM_V1000.Rcb = Rz(pi/2); % Vc = Rcb*Vb;
 VISLANDING_PARAM_V1000.enableStateEstimate = true; % 使能着陆标志状态估计
+VISLANDING_PARAM_V1000.enableCompileInSystem = false; % 使能大模型中对该模块的编译
 %% V10参数
 VISLANDING_PARAM_V10 = VISLANDING_PARAM_V1000;
+VISLANDING_PARAM_V1000.enableCompileInSystem = true; % 使能大模型中对该模块的编译
