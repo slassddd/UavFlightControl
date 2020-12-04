@@ -45,7 +45,11 @@ if true % 空速
     try
         plot(IN_SENSOR.airspeed1.time,arspeed(1:2:end));hold on; 
     end
-    legend('airspeed','airspeed_indicate','airspeed_true','airspeed_indicate_task');
+    if 1
+        groundspeed = vecnorm([IN_SENSOR.ublox1.velN,IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velD],2,2);
+        plot(IN_SENSOR.ublox1.time,groundspeed);hold on;
+    end
+    legend('airspeed','airspeed_indicate','airspeed_true','airspeed_indicate_task','groundspeed');
     xlabel('time(s)')
     ylabel('vel(m/s)')
     grid on;
@@ -58,6 +62,7 @@ if true % 高度
     grid on;
     legend('task综合高','高度指令','雷达高')
 end
+% 高度
 if true
     figure;
     idx0_curLLA = round(0.5*length(SL.OUT_TASKFLIGHTPARAM.curLLA2));
