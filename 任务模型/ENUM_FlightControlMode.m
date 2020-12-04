@@ -20,7 +20,7 @@ classdef ENUM_FlightControlMode < Simulink.IntEnumType
         RotorGoUpDownWithHorizonPosFree (15),
         SliderMode (16), % 低动力降高
         HoverSliderMode (17), % 盘旋滑翔降高
+        HeadingTrackMode (18), % 追航向并保持高度
 %         FixWingLevel (14), % 固定翼姿态改平
     end
 end
-

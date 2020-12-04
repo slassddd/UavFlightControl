@@ -77,6 +77,7 @@ TASK_PARAM_V1000.maxAddedSpeed_wind = 3; % ¿ÕËÙ¿¨ÖÍ»òÊ§Ğ§ºó£¬¸ù¾İ·ç²ÎÊıµÄµş¼ÓµÄĞ
 TASK_PARAM_V1000.enableHExtra_Rotor = true; % Ê¹ÄÜĞıÒíÔİÍ£ºó¸ù¾İËÙ¶È½øĞĞĞüÍ£µãÍâÍÆ£¬ÈôÎªfalse£¬Ôò½øÈëÔİÍ£Ê±µÄÎ»ÖÃÎªĞüÍ£µã
 TASK_PARAM_V1000.enableVExtra_Rotor = true; % Ê¹ÄÜĞıÒíÔİÍ£ºó¸ù¾İËÙ¶È½øĞĞĞüÍ£µãÍâÍÆ£¬ÈôÎªfalse£¬Ôò½øÈëÔİÍ£Ê±µÄÎ»ÖÃÎªĞüÍ£µã
 TASK_PARAM_V1000.enableVisualLandTag = true; % ¼¤»îÊÓ¾õTag×ÅÂ½
+TASK_PARAM_V1000.enableLandWhileGPSFaulat = false; % Ê¹ÄÜ gps¾ù¹ÊÕÏÊ±Ö´ĞĞÁ¢¼´½µÂä µÄ¹¦ÄÜ
 %% V10²ÎÊı
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

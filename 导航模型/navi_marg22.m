@@ -297,6 +297,8 @@ end
 %% 滤波
 disenable_time = clock_sec < 150 || clock_sec > inf;
 disenable_time = true;
+enable_gps_time = clock_sec < 3049;
+enable_gps_time = true;
 
 ublox1_is_available = ...
     SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health || ...
@@ -396,7 +398,7 @@ if disenable_time && residual_mag && ~magRejectForEver && magUpdateFlag && MARGP
     end
 end
 % ublox1融合
-if disenable_time && ublox1_is_available && measureReject.lla_notJump && ...
+if enable_gps_time && ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
 %     k = 3;
@@ -421,22 +423,16 @@ if disenable_time && ublox1_is_available && measureReject.lla_notJump && ...
     end
 end
 % um482融合
-%  && residual_um482
-if disenable_time && MARGParam.fuse_enable.um482 && um482_is_available && ...
+hasBigError = isRtkHasBigErrorWithUblox([Sensors.ublox1.Lat,Sensors.ublox1.Lon],...
+                          [Sensors.um482.Lat,Sensors.um482.Lon],...
+                          SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health);
+if enable_gps_time && ... % 调试
+        ~hasBigError && ... % ublox与rtk定位差异过大，可能由于rtk错误造成
+        MARGParam.fuse_enable.um482 && ...
+        um482_is_available && ...
         um482UpdateFlag && ...% gps 更新
         um482_BESTPOS ~= ENUM_BESTPOS.POS_SOLUTION_NONE && ...% 无解
         Sensors.um482.pDop ~= 0 % um482在受强干扰时pDop会置0
-%     k = 3;
-%     speed_um482 = norm(double(um482_gpsvel));
-%     if speed_um482 < 1
-%         speed_um482 = 1;
-%     end
-%     um482VelScale = 1/(1/k*speed_um482);
-%     if um482VelScale > k
-%         um482VelScale = k;
-%     elseif um482VelScale < 1
-%         um482VelScale = 1;
-%     end
     filter_marg.fusegps(double(um482_lla),double(Rpos_um482),double(um482_gpsvel),double(Rvel_um482));
 end
 % 雷达高融合
