@@ -84,6 +84,7 @@ end
 if plotenable.IMU
     SinglePlot_IMU
 end
+% um482
 if plotenable.um482
     SingPlot_um482(IN_SENSOR.um482)
 end
@@ -92,6 +93,7 @@ if plotenable.WindParam
     SingPlot_WindParam(IN_SENSOR.IMU1.time,SL.TASK_WindParam)
     SinglePlot_GlobalWindEst(SL.GlobalWindEst)
 end
+% ublox
 if plotenable.ublox1
     SingPlot_ublox1(IN_SENSOR.ublox1)
 end
