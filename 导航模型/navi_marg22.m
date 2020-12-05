@@ -1,13 +1,15 @@
-function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS] = navi_marg22(...
-    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude,TaskMode)
+function [stateEst,stateCovarianceDiagEst,eulerd,lla_out,innov,stepInfo,OUT_ECAS,eulerd_ecompass,isLatLonEstGood] = navi_marg22(...
+    Ts,X0_marg22,refloc,clock_sec,Sensors, SensorSignalIntegrity,IN_ECAS, MARGParam, um482_BESTPOS,isBadAttitude,TaskMode,magDec_deg)
 persistent filter_marg accel_pre gyro_pre mag_pre lla_pre gpsvel_pre alt_pre range_pre meanAcc meanGyro meanMag timeUpdate_ublox timeUpdate_um482
 persistent step step_imu step_mag step_ublox step_alt step_radar step_baro step_board step_tas
+persistent idxAll
 persistent dHeight_GPS_sub_Baro
 persistent ublox1_resReject_num um482_resReject_num mag_resReject_num
 persistent staticTime
 persistent magRejectForEver
 persistent pDTime
 persistent preTaskMode isRotor2FixComplete preTAS
+persistent pEulerd_ecompass
 %%
 nState = 22; % 
 OUT_ECAS = IN_ECAS;
@@ -145,7 +147,10 @@ if isempty(filter_marg)
     isRotor2FixComplete = false;
     
     preTAS = TAS;
+    idxAll = 0;
+    pEulerd_ecompass = [0 0 0];
 end
+idxAll = idxAll + 1;
 %% 若在地面模式下，发生磁力计切换，则重置电磁相关状态
 thisMagNum = SensorSignalIntegrity.SensorSelect.Mag;
 if isReInitMagState(thisMagNum,TaskMode,clock_sec)
@@ -265,7 +270,10 @@ OUT_ECAS.nMagRejectByResidual = mag_resReject_num;
 %% 瞬时静止判定
 stayStillCondition.acc = 1; % max(abs(accel(1:2)))<0.15; % m/s^2
 stayStillCondition.gyro = max(gyro)<0.05; % rad
-stayStillCondition.gpsvel = max(abs(ublox1_gpsvel))<0.2; % m/s
+stayStillCondition.gpsvel = (max(abs(ublox1_gpsvel))<0.2 && ...
+    SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health) || ...
+    (max(abs(um482_gpsvel))<0.2 && ...
+    SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health); % m/s
 stayStillCondition.isStatic = false;
 stayStillCondition.isStatic = stayStillCondition.acc && ...
     stayStillCondition.gyro && ...
@@ -279,21 +287,6 @@ if stayStillCondition.isStatic && MARGParam.enableZeroVelCorrect
 else
     staticTime = 0;
 end
-%%
-% persistent du_test
-% if isempty(du_test)
-%     du_test = 0;
-% end
-% if clock_sec > 1126
-%     du_test = du_test + Ts;
-%     MARGParam.fuse_enable.mag = 1;
-%     MARGParam.fuse_enable.gps = 1;
-%     MARGParam.fuse_enable.um482 = 1;
-%     if du_test > 1
-%         fprintf("disable mag/gps/um482 fusion\n");
-%         du_test = 0;
-%     end
-% end
 %% 滤波
 disenable_time = clock_sec < 150 || clock_sec > inf;
 disenable_time = true;
@@ -307,6 +300,11 @@ um482_is_available = ...
     SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Health || ...
     SensorSignalIntegrity.SensorStatus.um482 == ENUM_SensorHealthStatus.Degrade;
 airspeed1_is_available = SensorSignalIntegrity.SensorStatus.airspeed1 == ENUM_SensorHealthStatus.Health;
+mag_is_available = SensorSignalIntegrity.SensorStatus.mag1 == ENUM_SensorHealthStatus.Health || ...
+    SensorSignalIntegrity.SensorStatus.mag2 == ENUM_SensorHealthStatus.Health;
+isLatLonEstGood = ~(~ublox1_is_available && ...
+    ~um482_is_available);
+% isHeightEstGood = 
 % SensorUpdateFlag
 % if imuUpdateFlag
 step_imu = step_imu + 1;
@@ -378,7 +376,18 @@ if rem(step_imu,kScale_imu) == 0
     filter_marg.predict(double(fuseAcc),double(fuseGyro));  %
 end
 % 磁力计融合
-if disenable_time && residual_mag && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
+% if TaskMode == ENUM_FlightTaskMode.GroundStandByMode && rem(idxAll,30) == 0
+%     temp = filter_marg.StateCovariance(1:4,1:4);
+%     filter_marg.StateCovariance(1:4,1:4) = eye(4);
+%     for i = 1:4
+%         if i == 4
+%             filter_marg.StateCovariance(i,i) = max(0.1^2,temp(i,i));
+%         else
+%             filter_marg.StateCovariance(i,i) = temp(i,i);
+%         end
+%     end
+% end
+if disenable_time && mag_is_available && ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     % if ~magRejectForEver && magUpdateFlag && MARGParam.fuse_enable.mag % mag 更新
     step_mag = step_mag + 1;
     if rem(step_mag,kScale_mag) == 0 % && alt < 5
@@ -386,32 +395,28 @@ if disenable_time && residual_mag && ~magRejectForEver && magUpdateFlag && MARGP
     end
     %% 利用磁力计/加计计算粗姿态辅助更新姿态四元数，防止初始化过程造成的一些问题
     enableMagQuatFuse = false;
+%     if enableMagQuatFuse && ... % 使能
+%             stayStillCondition.isStatic % 静态
     if enableMagQuatFuse && ... % 使能
             stayStillCondition.isStatic && ... % 静态
-            SensorSignalIntegrity.SensorStatus.ublox1 == ENUM_SensorHealthStatus.Health % && ...% 磁力计健康
-        %             (~ublox1_is_available && ~um482_is_available) % gps都是小
-        quat = compact(ecompass(double(meanAcc),double(mag)));
+            TaskMode == ENUM_FlightTaskMode.GroundStandByMode && ...
+            rem(step_mag,10) == 0
+        quat_ecompass = compact(ecompass(double(meanAcc),double(mag)));
+        eulerd_ecompass = double(euler(quat_ecompass)*180/pi) + magDec_deg;
         for i_q = 1:4
             Rq = 0.05^2;
-            filter_marg.correct(i_q,quat(i_q),Rq);
+            filter_marg.correct(i_q,quat_ecompass(i_q),Rq);
         end
     end
+end
+if rem(idxAll,10) == 0 && mag_is_available
+    quat_ecompass = compact(ecompass(double(meanAcc),double(mag)));
+    pEulerd_ecompass = double(euler(quat_ecompass)*180/pi) + magDec_deg;
 end
 % ublox1融合
 if enable_gps_time && ublox1_is_available && measureReject.lla_notJump && ...
         ublox1UpdateFlag && MARGParam.fuse_enable.gps
     step_ublox = step_ublox + 1;
-%     k = 3;
-%     speed_um482 = norm(double(um482_gpsvel));
-%     if speed_um482 < 1
-%         speed_um482 = 1;
-%     end
-%     um482VelScale = 1/(1/k*speed_um482);
-%     if um482VelScale > k
-%         um482VelScale = k;
-%     elseif um482VelScale < 1
-%         um482VelScale = 1;
-%     end    
     if ~ZVCenable
         if rem(step_ublox,kScale_ublox) == 0
             filter_marg.fusegps(double(ublox1_lla),double(Rpos),double(ublox1_gpsvel),double(Rvel));
@@ -448,8 +453,7 @@ end
 % 气压高融合
 isFuseBaroAlt = baroUpdateFlag && measureReject.baroAlt_notJump && MARGParam.fuse_enable.alt && ...% 当ublox失效且baro正常时执行
     MARGParam.fuse_enable.gps && ...
-    ~ublox1_is_available && ...
-    ~um482_is_available;
+    ~isLatLonEstGood;
 if isFuseBaroAlt
     step_baro = step_baro + 1;
     step_alt = step_alt + 1;
@@ -473,20 +477,17 @@ if true && airspeedUpdateFlag && ...
         else
             
         end                
-        
-%         fprintf('TAS: %.2f\n',TAS);
     end
 end
 % 空速融合
 if true && airspeedUpdateFlag && ...
         airspeed1_is_available && ...
-        ~ublox1_is_available && ...
-        ~um482_is_available % || clock_sec >= 700% || clock_sec >= 700
+        ~isLatLonEstGood % || clock_sec >= 700% || clock_sec >= 700
     % 当GPS失效时，引入空速，抑制融合速度的漂移
     tempLLA = filter_marg.ReferenceLocation;
     Rvel_airspeed = diag([7,7,25]).^2;
     stateEst = filter_marg.State;
-    euler_rad = double (euler(stateEst(1:4)));
+    euler_rad = double(euler(stateEst(1:4)));
     yaw = euler_rad(1) + 5*randn/3/57.3;
     pitch = euler_rad(2);
     DCMbe = [cos(pitch) 0 -sin(pitch);0 1 0;sin(pitch) 0 cos(pitch)]*[cos(yaw) sin(yaw) 0;-sin(yaw) cos(yaw) 0;0 0 1]; % NED到Body的坐标转换矩阵
@@ -566,6 +567,8 @@ stepInfo.step_alt = step_alt;
 stepInfo.step_radar = step_radar;
 stepInfo.step_baro = step_baro;
 stepInfo.step_board = step_board;
+
+eulerd_ecompass = pEulerd_ecompass;
 
 preTaskMode = TaskMode;
 end
