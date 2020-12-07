@@ -1,7 +1,7 @@
 nStateMARG = 22;
 Ts_Navi.Ts_Base = 0.012;
 TEMP_PlaneModel = 'V1000';
-% 传感器频率
+% 传感器频率(废弃)
 sensorFs.imuUpdateFs = 250;
 sensorFs.magUpdateFs = 62.5;
 sensorFs.gpsUpdateFs = 62.5;
@@ -13,14 +13,25 @@ NAVITEMP.fuse_enable.mag = 3;
 NAVITEMP.fuse_enable.gps = 1;
 NAVITEMP.fuse_enable.alt = 1;
 NAVITEMP.fuse_enable.um482 = 1;
+% 传感器数据抽取
+NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVI_SensorDecimation');
+NAVITEMP.Decimation.imu = 1;
+NAVITEMP.Decimation.mag = 3;
+NAVITEMP.Decimation.baro = 3;
+NAVITEMP.Decimation.radar = 1;
+NAVITEMP.Decimation.ublox = 1;
+NAVITEMP.Decimation.um482 = 1;
+NAVITEMP.Decimation.airspeed = 1;
+NAVITEMP.Decimation.tag = 1;
 % 传感器选择
 NAVITEMP.SensorSelect.IMU = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Mag = 1;  % -1:不使用  0:融合  N:使用第N个
-NAVITEMP.SensorSelect.GPS = 1;  % -1:不使用  0:融合  1:ublox1 100:高精度gps（um482）
+NAVITEMP.SensorSelect.GPS = 1;  % -1:不使用  0:融合  1:ublox1 100:高精度gps（um482）  % 没用
 NAVITEMP.SensorSelect.Baro = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Radar = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Camera = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
+NAVITEMP.SensorSelect.Airspeed = 1;  % -1:不使用  0:融合  N:使用第N个
 % 滤波器参数
 NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MARG');
 example = 19;
@@ -415,5 +426,6 @@ fprintf('%s滤波器 modeKF1 = %0.f\n', TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1)
 %% 构建NAVI参数结构体
 NAVI_PARAM_V1000.SensorSelect = NAVITEMP.SensorSelect;
 NAVI_PARAM_V1000.MARGParam = TEMP_MARGParam;
+NAVI_PARAM_V1000.MARGParam.Decimation = NAVITEMP.Decimation;
 NAVI_PARAM_V1000.MVOParam = TEMP_MVOParam;
 NAVI_PARAM_V1000.NAVIParam = TEMP_NAVIPARAM;

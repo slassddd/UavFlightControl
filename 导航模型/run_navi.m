@@ -5,7 +5,6 @@ if 0
     dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
     dataFileNames = {['SubFolder_飞行数据\20200601\仿真数据_2020-06-01 16-47-50 航向异常']};    
     dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
-    %% AUTOCODE %%
 else
     try
         dataFileNames = saveFileName;
