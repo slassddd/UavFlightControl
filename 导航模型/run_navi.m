@@ -7,7 +7,13 @@ if 0
     dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
     %% AUTOCODE %%
 else
-    dataFileNames = saveFileName;
+    try
+        dataFileNames = saveFileName;
+        save lastFlightDataFileLoadedForNavi.mat dataFileNames
+    catch
+        load('lastFlightDataFileLoadedForNavi');
+        fprintf('当前工作空间没有 dataFileNames, 读取最后一次载入的数据文件: %s\n',dataFileNames{1});
+    end
 end
 %% 通用参数设置
 SetGlobalParam();
