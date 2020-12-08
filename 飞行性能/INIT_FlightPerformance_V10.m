@@ -11,6 +11,6 @@ FLIGHT_PERF_PARAM_V10.powerRate_RotorUpNoWind = 1/10; % 旋翼耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.powerRate_RotorDownNoWind = 1/15; % 旋翼耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.reservedPowerRate = 15; % 预留电量百分比,[%]
 FLIGHT_PERF_PARAM_V10.addedDistByEachTurnCorrect = 20; % 每个航点转换的额外里程,[m]
-FLIGHT_PERF_PARAM_V10.maxFixWingRange = 18*3600*2; % 最大航程,[m]
+FLIGHT_PERF_PARAM_V10.maxFixWingRange = 18*3600*1.5; % 最大航程,[m]
 FLIGHT_PERF_PARAM_V10.powerRatio_Altitude = 0.5; % 6000m海拔相对0m海拔的额外耗系数
 % FlightPerfParam_V10 = FlightPerfParam_V10;
