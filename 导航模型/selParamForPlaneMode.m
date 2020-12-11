@@ -14,6 +14,6 @@ switch planeMode_sel
         PlaneMode.mode = ENUM_plane_mode.V10;
         disp('机型选择为 V10')
     otherwise
-        error('组合导航模块机型选择错误.')
+        error('机型选择错误.')
 end
 out = PlaneMode.mode;

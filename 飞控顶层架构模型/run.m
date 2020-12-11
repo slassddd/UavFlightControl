@@ -14,8 +14,6 @@ GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'matlab_flightdata'  'si
 SetGlobalParam();
 %% 载入飞行数据
 tspan = [0,300]; % sec
-dataFileNames = {['SubFolder_飞行数据\20200820\仿真数据_长航时 2 2020-08-20 12-32-56']};
-dataFileNames = {['SubFolder_飞行数据\20200827\仿真数据_1 第2架次 长航时 2020-08-27 13-28-41']};
 dataFileNames = {['SubFolder_飞行数据\20201201\仿真数据_空中修改参数失速测试 2020-12-01 11-34-17']};
 dataFileNames = {['SubFolder_飞行数据\V1000 客户飞行数据\20201104 盘旋上升开始后异常掉高 切换旋翼自救跑偏\仿真数据_盘旋上升开始后异常掉高 切换旋翼自救跑偏2020-11-04 15-17-52']};
 LoadFlightData();
