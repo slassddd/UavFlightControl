@@ -119,4 +119,5 @@ switch simMode
         end
 end
 %% ·ÂÕæ»æÍ¼
-plot_naviSimData();
+Plot_NaviSimData();
+Plot_NaviLogTable();
