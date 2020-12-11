@@ -72,12 +72,13 @@ TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARA
 TASK_PARAM_V1000.enableSpeedAdd = true ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
 TASK_PARAM_V1000.enable8calib = false; % 使能8字校准
 TASK_PARAM_V1000.turnR_8calib = 70; % 8字校准的盘旋半径[m]
-TASK_PARAM_V1000.addedAirspeed_stuck = 6; % 空速管卡滞时，空速测量减去的基准值
+TASK_PARAM_V1000.addedAirspeed_stuck = 7; % 空速管卡滞时，空速测量减去的基准值
 TASK_PARAM_V1000.maxAddedSpeed_wind = 3; % 空速卡滞或失效后，根据风参数的叠加的修正量
 TASK_PARAM_V1000.enableHExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
 TASK_PARAM_V1000.enableVExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外推，若为false，则进入暂停时的位置为悬停点
 TASK_PARAM_V1000.enableVisualLandTag = true; % 激活视觉Tag着陆
-TASK_PARAM_V1000.enableLandWhileGPSFaulat = false; % 使能 gps均故障时执行立即降落 的功能
+TASK_PARAM_V1000.enableLandWhileGPSFault = false; % 使能gps均故障时执行立即降落的功能
+TASK_PARAM_V1000.durationToLand_noGPS = 150; % 激活立即降落，当GPS完全失效的时间大于该参数 [s]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -86,6 +87,7 @@ TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
 TASK_PARAM_V10.enable8calib = false;
 TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
+TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10

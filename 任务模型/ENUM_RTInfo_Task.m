@@ -189,6 +189,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Airspeed_Stuck (284),
         Task_Calib_ToGo_AutoProfile (285),
         Landmark_Detected (286),
+        Land_Height_step (287),
         
         
         
