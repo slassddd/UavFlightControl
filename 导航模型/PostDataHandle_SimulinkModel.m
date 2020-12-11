@@ -2,7 +2,7 @@ function [navFilterMARGRes,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_im
 idx = 1;
 
 stateEst = out.NavFilterRes.state.Data;
-stateCovarianceDiag = out.NavFilterRes.Pdiag.Data;
+stateCovarianceDiag = out.NavFilterRes.stateCovariance.Data;
 
 idx_sub = 0;
 if length(out.tout) == size(stateEst,1)
@@ -21,14 +21,14 @@ filterRes(idx).MARG.dvel = stateEst(1:end-idx_sub,14:16);
 filterRes(idx).MARG.mag = stateEst(1:end-idx_sub,17:19);
 filterRes(idx).MARG.dmag = stateEst(1:end-idx_sub,20:22);
 filterRes(idx).MARG.P = stateCovarianceDiag(1:end-idx_sub,:);
-refloc = out.NavFilterRes.refloc.Data(end,:);
+refloc = out.NavFilterRes.InitValue.refloc.Data(end,:);
 % ◊˜Õº
 plotOpt = setPlotOpt; % …Ë÷√plot Ù–‘
 stepSpace = 1;
 filterRes(idx).MARG.euler = eulerd(filterRes(idx).MARG.q,'ZYX','frame');
 filterTemp = filterRes(idx).MARG;
 filterTemp.eulerd = eulerd(filterTemp.q,'ZYX','frame');
-filterTemp.lla = out.lla.Data;
+filterTemp.lla = out.NavFilterRes.lla.Data; %out.lla.Data;
 navFilterMARGRes(idx).Algo.time_algo = filterTemp.time;
 navFilterMARGRes(idx).Algo.algo_yaw = filterTemp.eulerd(:,1);
 navFilterMARGRes(idx).Algo.algo_pitch = filterTemp.eulerd(:,2);
@@ -54,7 +54,7 @@ navFilterMARGRes(idx).Algo.dmagB_z = filterTemp.dmag(:,3);
 
 navFilterMARGRes(idx).Algo.posmNED = filterRes(idx).MARG.pos;
 
-temp = navFilterMARGRes(idx).Algo.time_algo(out.NavFilterRes.initialAlignmentCompleteFlag.Data(1:end-1)==1);
+temp = navFilterMARGRes(idx).Algo.time_algo(out.NavFilterRes.Status.initialAlignmentComplete.Data(1:end-1)==1);
 if ~isempty(temp)
     t_alignment(idx) = temp(1);
 else

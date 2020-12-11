@@ -1,3 +1,5 @@
+nStateMARG = 22;
+nStateMARG24 = 24;
 %% V1000参数
 INIT_Navi_V1000
 %% V10参数

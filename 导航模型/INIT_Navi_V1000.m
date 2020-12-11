@@ -1,4 +1,3 @@
-nStateMARG = 22;
 Ts_Navi.Ts_Base = 0.012;
 TEMP_PlaneModel = 'V1000';
 % 传感器频率(废弃)
