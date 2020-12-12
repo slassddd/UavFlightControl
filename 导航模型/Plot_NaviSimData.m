@@ -1,3 +1,4 @@
+% 仿真数据绘制
 nSim = nFlightDataFile;
 plotOpt = setPlotOpt;
 stepSpace = 1;

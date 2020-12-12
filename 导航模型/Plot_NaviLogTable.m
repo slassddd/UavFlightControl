@@ -1,4 +1,4 @@
-
+% 解析Log事件数据
 naviLogDataRes(1).time_sec = out.naviLogData1.time_sec.Data;
 naviLogDataRes(1).idx = out.naviLogData1.idx.Data;
 naviLogDataRes(1).blockName = out.naviLogData1.blockName.Data;
