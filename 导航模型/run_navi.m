@@ -9,7 +9,13 @@ if 0
 else
     try
         dataFileNames = saveFileName;
+        % 在文件所在目录保存.mat文件
+        [naviPath,name] = fileparts(which(mfilename));
+        curPath = cd;   
+        cd(naviPath);
         save lastFlightDataFileLoadedForNavi.mat dataFileNames
+        cd(curPath);
+        clear curPath naviPath name
     catch
         load('lastFlightDataFileLoadedForNavi');
         fprintf('\n当前工作空间没有 dataFileNames, 读取最后一次载入的数据文件: %s\n\n',dataFileNames{1});
