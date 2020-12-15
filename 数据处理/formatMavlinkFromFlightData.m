@@ -15,8 +15,8 @@ taskLogDataRes(1).blockName = ENUM_TaskLogBlockName(taskLogData1.blockName);
 taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message);
 taskLogDataRes(1).var1 = [taskLogData1.var10,taskLogData1.var11,...
     taskLogData1.var12,taskLogData1.var13,taskLogData1.var14];
-matchMessages = [ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-T_taskLog_MavCmd = parserTaskLogData(taskLogDataRes,matchMessages);
+matchBlock = [ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
+T_taskLog_MavCmd = parserLogData(taskLogDataRes,'BlockName',matchBlock);
 idxMavCmd = find(T_taskLog_MavCmd.message ==  ENUM_RTInfo_Task.TaskLog_Mav_CmdChange);
 
 tempTime = T_taskLog_MavCmd.("记录时间");

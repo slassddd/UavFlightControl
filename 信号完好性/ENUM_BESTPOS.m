@@ -12,4 +12,3 @@ classdef ENUM_BESTPOS < Simulink.IntEnumType
         POS_SOLUTION_NARROW_FLOATE  (34),
     end
 end
-

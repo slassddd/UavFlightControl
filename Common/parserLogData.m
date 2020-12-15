@@ -1,7 +1,23 @@
-function T = parserNaviLogData(logData,matchMessages)
+function T = parserLogData(logData,varargin)
+enableBlockSel = false;
+enableMessageSel = false;
+decimation = 1;
+for i = 1:length(varargin)/2
+    switch lower(varargin{2*i-1})
+        case 'blockname'
+            matchBlock = varargin{2*i};
+            enableBlockSel = true;
+        case 'messagename'
+            matchMessage = varargin{2*i};
+            enableMessageSel = true;
+        case 'decimation'
+            decimation = varargin{2*i};
+    end
+end
+
 enableSetName = true;
 blockNames = enumeration('ENUM_NaviLogBlockName');
-if nargin == 1    
+if nargin == 1
     allBlockName = true;
 else
     allBlockName = false;
@@ -27,10 +43,10 @@ for i = 2:nLogData
     logDataAll.var1 = [logDataAll.var1;logData(i).var1];
 end
 % 筛选blockName
-if ~allBlockName
+if enableBlockSel
     idxMatch = [];
-    for i = 1:length(matchMessages)
-        idxMatch = [idxMatch;find(logDataAll.blockName == matchMessages(i))];
+    for i = 1:length(matchBlock)
+        idxMatch = [idxMatch;find(logDataAll.blockName == matchBlock(i))];
     end
     logDataAll.time_sec = logDataAll.time_sec(idxMatch);
     logDataAll.idx = logDataAll.idx(idxMatch);
@@ -38,6 +54,24 @@ if ~allBlockName
     logDataAll.message = logDataAll.message(idxMatch);
     logDataAll.var1 = logDataAll.var1(idxMatch,:);
 end
+% 筛选messageName
+if enableMessageSel
+    idxMatch = [];
+    for i = 1:length(matchMessage)
+        idxMatch = [idxMatch;find(logDataAll.message == matchMessage(i))];
+    end
+    logDataAll.time_sec = logDataAll.time_sec(idxMatch);
+    logDataAll.idx = logDataAll.idx(idxMatch);
+    logDataAll.blockName = logDataAll.blockName(idxMatch);
+    logDataAll.message = logDataAll.message(idxMatch);
+    logDataAll.var1 = logDataAll.var1(idxMatch,:);
+end
+% 抽样
+logDataAll.time_sec = logDataAll.time_sec(1:decimation:end);
+logDataAll.idx = logDataAll.idx(1:decimation:end);
+logDataAll.blockName = logDataAll.blockName(1:decimation:end);
+logDataAll.message = logDataAll.message(1:decimation:end);
+logDataAll.var1 = logDataAll.var1(1:decimation:end,:);
 % 按时间升序
 [~,idxSort] = sort(logDataAll.time_sec);
 logDataAll.time_sec = logDataAll.time_sec(idxSort);
@@ -63,13 +97,13 @@ for i = 1:length(timeUnique)
         logDataAll.var1(idxSameTime,:) = logDataAll.var1(idxSameTimeNew,:);
         if enableSetName
             message = logDataAll.message(idxSameTime);
-            varname(idxSameTime,:) = setVarName(message);
+            varname(idxSameTime,:) = decodeLog(message,logDataAll.var1(idxSameTime,:));
         end
     else
         if enableSetName
             message = logDataAll.message(idxSameTime);
-            varname(idxSameTime,:) = setVarName(message);
-        end        
+            varname(idxSameTime,:) = decodeLog(message,logDataAll.var1(idxSameTime,:));
+        end
     end
 end
 % 建立Table
@@ -78,35 +112,14 @@ if ~enableSetName
     T.Properties.VariableNames = {'记录时间','同时刻序号','模块位置','message','var1'};
 else
     T = table(logDataAll.time_sec, logDataAll.idx, logDataAll.blockName, logDataAll.message, ...
-        varname(:,1),logDataAll.var1(:,1),...
-        varname(:,2),logDataAll.var1(:,2),...
-        varname(:,3),logDataAll.var1(:,3),...
-        varname(:,4),logDataAll.var1(:,4),...
-        varname(:,5),logDataAll.var1(:,5));
+        varname(:,1),varname(:,2),varname(:,3),varname(:,4),varname(:,5),logDataAll.var1);
     T.Properties.VariableNames = {'记录时间','同时刻序号','模块位置','message',...
-        'name1','var1',...
-        'name2','var2',...
-        'name3','var3',...
-        'name4','var4',...
-        'name5','var5'};    
+        'name1','name2','name3','name4','name5','var1'};
 end
 
 %% 子函数
-function varname = setVarName(message)
-nMessage = length(message);
-varname = cell(nMessage,5);
-for i = 1:nMessage
-    thisMessage = message(i);
-    switch thisMessage
-        case ENUM_RTInfo_Navi.RTIN_Filter_Fuse_Ublox
-            varname(i,:) = {'更新周期','健康状态','pdop','星数','速度标准差'};
-        case ENUM_RTInfo_Navi.RTIN_Filter_Fuse_Um482
-            varname(i,:) = {'更新周期','健康状态','pdop','星数','BESTPOS'};
-        case ENUM_RTInfo_Navi.RTIN_Filter_Fuse_Mag
-            varname(i,:) = {'更新周期','设备号','健康1','健康2','地磁模值'};           
-        case ENUM_RTInfo_Navi.RTIN_Filter_Fuse_Baro
-            varname(i,:) = {'更新周期','健康状态','气压高','ublox高','um482高'};                
-        otherwise
-            varname(i,:) = {' ',' ',' ',' ',' '};
-    end
+function varname = decodeLog(message,vars)
+[varname,isFind] = decodeLog_Navi(message,vars);
+if ~isFind
+    varname = decodeLog_Task(message,vars);
 end

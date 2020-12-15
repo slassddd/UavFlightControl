@@ -15,17 +15,17 @@ taskLogDataRes(1).var1 = out.taskLogData1.var1.Data;
 % taskLogDataRes(3).message = out.taskLogData3.message.Data;
 % taskLogDataRes(3).var1 = out.taskLogData3.var1.Data;
 %%
-T_taskLog_All = parserTaskLogData(taskLogDataRes)
+T_taskLog_All = parserLogData(taskLogDataRes)
 matchMessages = ENUM_TaskLogBlockName.TASKLOG_Protect;
-T_taskLog_Protect = parserTaskLogData(taskLogDataRes,matchMessages);
+T_taskLog_Protect = parserLogData(taskLogDataRes,matchMessages);
 matchMessages = ENUM_TaskLogBlockName.TASKLOG_Payload;
-T_taskLog_Payload = parserTaskLogData(taskLogDataRes,matchMessages);
+T_taskLog_Payload = parserLogData(taskLogDataRes,matchMessages);
 matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput];
-T_taskLog_ParserInput = parserTaskLogData(taskLogDataRes,matchMessages);
+T_taskLog_ParserInput = parserLogData(taskLogDataRes,matchMessages);
 matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-T_taskLog_MavCmd = parserTaskLogData(taskLogDataRes,matchMessages);
+T_taskLog_MavCmd = parserLogData(taskLogDataRes,matchMessages);
 matchMessages = [...
     ENUM_TaskLogBlockName.TASKLOG_FlightMode];
-T_taskLog_FlightMode = parserTaskLogData(taskLogDataRes,matchMessages);
+T_taskLog_FlightMode = parserLogData(taskLogDataRes,matchMessages);

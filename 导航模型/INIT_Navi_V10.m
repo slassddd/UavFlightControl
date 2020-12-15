@@ -12,6 +12,16 @@ NAVITEMP.fuse_enable.mag = 3;
 NAVITEMP.fuse_enable.gps = 1;
 NAVITEMP.fuse_enable.alt = 1;
 NAVITEMP.fuse_enable.um482 = 1;
+% 传感器数据抽取
+NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVI_SensorDecimation');
+NAVITEMP.Decimation.imu = 1;
+NAVITEMP.Decimation.mag = 3;
+NAVITEMP.Decimation.baro = 3;
+NAVITEMP.Decimation.radar = 1;
+NAVITEMP.Decimation.ublox = 1;
+NAVITEMP.Decimation.um482 = 1;
+NAVITEMP.Decimation.airspeed = 1;
+NAVITEMP.Decimation.tag = 1;
 % 传感器选择
 NAVITEMP.SensorSelect.IMU = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Mag = 1;  % -1:不使用  0:融合  N:使用第N个
@@ -27,8 +37,8 @@ switch example
     case 17 % test
         NAVITEMP.noise_std.std_gyro = 3e-2*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 2e-5*pi/180*[1,1,1]; % rad/s
-        NAVITEMP.noise_std.std_acc = 2e-2*[1,1,1];  % m/s^2
-        NAVITEMP.noise_std.std_acc_bias = 2e-4*[1,1,2]; % m/s^2
+        NAVITEMP.noise_std.std_acc = 5e-2*[1,1,1];  % m/s^2
+        NAVITEMP.noise_std.std_acc_bias = 1e-3*[1,1,1]; % m/s^2
         NAVITEMP.noise_std.std_magNED = 1e-8*[1,1,1];  %
         NAVITEMP.noise_std.std_mag = 2.5*[1,1,1]; %
         NAVITEMP.noise_std.std_mag_bias = 1e-3*[1,1,1];
@@ -92,11 +102,6 @@ NAVITEMP.P0_errorstate17 = diag([1e-1*ones(3,1);... % quat
 TEMP_MARGParam = NAVITEMP.noise_std; % 将用在stateflow或matlab function中的参数
 TEMP_MARGParam.P0_MARG = diag(NAVITEMP.P0_marg22);
 TEMP_MARGParam.fuse_enable = NAVITEMP.fuse_enable;
-TEMP_MARGParam.enableZeroVelCorrect = false;
-TEMP_MARGParam.enableVdFuser = true;
-TEMP_MARGParam.enableAccDegrade_Rotor2Fix = false;
-fprintf('%s滤波器 是否使能垂速再融合 %d\n', TEMP_PlaneModel, TEMP_MARGParam.enableVdFuser);
-fprintf('%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n', TEMP_PlaneModel, TEMP_MARGParam.enableAccDegrade_Rotor2Fix);
 % MVO参数
 TEMP_MVOParam = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MVO');
 TEMP_MVOParam.std_gyro = TEMP_MARGParam.std_gyro;
@@ -114,8 +119,6 @@ TEMP_MVOParam.std_lla_um482 = TEMP_MARGParam.std_lla_um482;
 TEMP_MVOParam.std_gpsvel_um482 = TEMP_MARGParam.std_gpsvel_um482;
 TEMP_MVOParam.P0_MARG = TEMP_MARGParam.P0_MARG;
 TEMP_MVOParam.fuse_enable = TEMP_MARGParam.fuse_enable;
-TEMP_MVOParam.enableZeroVelCorrect = TEMP_MARGParam.enableZeroVelCorrect;
-TEMP_MVOParam.enableVdFuser = TEMP_MARGParam.enableVdFuser;
 
 TEMP_MVOParam.P0_MARG = diag(NAVITEMP.P0_errorstate17);
 TEMP_MVOParam.std_gyro = NAVITEMP.ErrorState.noise_std.std_gyro;
@@ -127,9 +130,17 @@ TEMP_MVOParam.std_gpsvel = NAVITEMP.ErrorState.noise_std.std_gpsvel;
 % KF选择
 TEMP_NAVIPARAM = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM');
 TEMP_NAVIPARAM.modeKF1 = 22; % 22 state;  24 state;
+TEMP_NAVIPARAM.enableAccDegrade_Amp = false;
+TEMP_NAVIPARAM.enableZeroVelCorrect = false;
+TEMP_NAVIPARAM.enableVdFuser = true;
+TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix = false;
 fprintf('%s滤波器 modeKF1 = %0.f\n', TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
+fprintf('%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
+fprintf('%s滤波器 是否使能垂速再融合 %d\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableVdFuser);
+fprintf('%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);
 %% 构建NAVI参数结构体
 NAVI_PARAM_V10.SensorSelect = NAVITEMP.SensorSelect;
 NAVI_PARAM_V10.MARGParam = TEMP_MARGParam;
+NAVI_PARAM_V10.MARGParam.Decimation = NAVITEMP.Decimation;
 NAVI_PARAM_V10.MVOParam = TEMP_MVOParam;
 NAVI_PARAM_V10.NAVIParam = TEMP_NAVIPARAM;

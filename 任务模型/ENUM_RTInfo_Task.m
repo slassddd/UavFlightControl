@@ -190,8 +190,10 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Task_Calib_ToGo_AutoProfile (285),
         Landmark_Detected (286),
         Land_Height_step (287),
-        
-        
+        TaskLog_Protect_GoHome_ActiveBatteryEst (288),
+        TaskLog_Protect_GoHome_BatteryLife (289),
+        TaskLog_Protect_Land_ActiveBatteryEst (290),
+        TaskLog_Protect_GoHome_EnforceFromPause (291),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

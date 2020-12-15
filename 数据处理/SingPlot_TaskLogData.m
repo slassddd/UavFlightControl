@@ -7,24 +7,24 @@ taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message);
 taskLogDataRes(1).var1 = [taskLogData1.var10,taskLogData1.var11,...
     taskLogData1.var12,taskLogData1.var13,taskLogData1.var14];
 %%
-T_taskLog_All = parserTaskLogData(taskLogDataRes);
-matchMessages = ENUM_TaskLogBlockName.TASKLOG_Protect;
-T_taskLog_Protect = parserTaskLogData(taskLogDataRes,matchMessages);
-matchMessages = ENUM_TaskLogBlockName.TASKLOG_Payload;
-T_taskLog_Payload = parserTaskLogData(taskLogDataRes,matchMessages);
-matchMessages = [...
+T_taskLog_All = parserLogData(taskLogDataRes);
+matchBlock = ENUM_TaskLogBlockName.TASKLOG_Protect;
+T_taskLog_Protect = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchBlock = ENUM_TaskLogBlockName.TASKLOG_Payload;
+T_taskLog_Payload = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput];
-T_taskLog_ParserInput = parserTaskLogData(taskLogDataRes,matchMessages);
-matchMessages = [...
+T_taskLog_ParserInput = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-T_taskLog_MavCmd = parserTaskLogData(taskLogDataRes,matchMessages);
-matchMessages = [...
+T_taskLog_MavCmd = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_FlightMode];
-T_taskLog_FlightMode = parserTaskLogData(taskLogDataRes,matchMessages);
-matchMessages = [...
+T_taskLog_FlightMode = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput;
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-TT = parserTaskLogData(taskLogDataRes,matchMessages);
+TT = parserLogData(taskLogDataRes,'BlockName',matchBlock);
 %
 SL_LOAD.TaskLog.T_taskLog_All = T_taskLog_All;
 SL_LOAD.TaskLog.T_taskLog_Protect = T_taskLog_Protect;

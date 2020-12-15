@@ -7,7 +7,7 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线
 deg2m = 1/111e3;
-pathHeight = 209;
+pathHeight = 1209;
 homeHeight = pathHeight + 0*200;
 % TASK_SET.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
 TASK_SET.PATH.home = [40.04 180 homeHeight]; %  lat lon alt
@@ -33,12 +33,12 @@ switch pathExmpale
         numLine = 0;
         lon_left = 1e3;
         lon_right = 2e3;
-        lat_space = 200;
+        lat_space = 50;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 5;
+        nPoints = 155;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;
@@ -133,7 +133,7 @@ end
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
 %                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
 %% home点额外高度
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 1*200;
+                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 0*200;
                 
                 STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
                 STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;
