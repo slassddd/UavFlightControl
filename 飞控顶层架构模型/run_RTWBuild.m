@@ -47,6 +47,7 @@ set_param([modelname,'/SystemInfo/version'],'value',SystemInfo.version)
 set_param([modelname,'/SystemInfo/date'],'value',SystemInfo.date)
 set_param([modelname,'/SystemInfo/task_version'],'value',SystemInfo.task_version)
 set_param([modelname,'/SystemInfo/control_version'],'value',SystemInfo.control_version)
+set_param(modelname,'CombineOutputUpdateFcns','on');
 save_system(modelname);
 pause(2);
 %% 编译
