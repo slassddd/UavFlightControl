@@ -49,14 +49,14 @@ for i = 1:nRefModel
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedInputMsg','None'); % Unconnected block input ports
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedOutputMsg','None'); % Unconnected block output ports
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedLineMsg','None'); % Unconnected line
-    set_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength','48'); % Maximum identifier length
+    set_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength','64'); % Maximum identifier length
     
     set_param(DependencySet.RefModeNamesNoType{i},'CombineOutputUpdateFcns','on'); % Maximum identifier length
     set_param(DependencySet.RefModeNamesNoType{i},'ModelReferenceNumInstancesAllowed','Single'); % ModelReference\Total number of instances allowed per top model
     set_param(DependencySet.RefModeNamesNoType{i},'LogVarNameModifier','none'); % Code Generation\Interface\MAT-file variable name modifer
     set_param(DependencySet.RefModeNamesNoType{i},'MatFileLogging','off'); % Code Generation\Interface\MAT-file logging
     
-    set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','on'); % Treat each discrete rate as a separate task
+    set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
     set_param(DependencySet.RefModeNamesNoType{i},'MultiTaskDSMMsg','warning'); % Detect data stores being read from and written to in multiple tasks
 end
 disp('模型新属性');
