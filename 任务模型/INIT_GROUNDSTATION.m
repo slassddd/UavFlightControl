@@ -38,7 +38,7 @@ switch pathExmpale
         %         lat_space = 50;
         TASK_SET.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
         TASK_SET.PATH.paths_m(1,3) = pathHeight;
-        nPoints = 15;
+        nPoints = 5;
         for i = 2:nPoints
             if rem(i,4) == 2
                 lon_pos = lon_left;

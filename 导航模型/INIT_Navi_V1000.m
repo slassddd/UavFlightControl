@@ -38,8 +38,8 @@ switch example
     case 19 % test
         NAVITEMP.noise_std.std_gyro = 7e-2*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 1e-4*pi/180*[1,1,1]; % rad/s
-        NAVITEMP.noise_std.std_acc = 4e-2*[1,1,2];% 4e-2*[1,1,1];  % m/s^2
-        NAVITEMP.noise_std.std_acc_bias = 6e-4*[1,1,1]; % m/s^2
+        NAVITEMP.noise_std.std_acc = 1e-1*[1,1,2];% 4e-2*[1,1,1];  % m/s^2
+        NAVITEMP.noise_std.std_acc_bias = 1e-3*[1,1,1]; % m/s^2
         NAVITEMP.noise_std.std_magNED = 1e-8*[1,1,1];  %
         NAVITEMP.noise_std.std_mag = 2.5*[1,1,1]; %
         NAVITEMP.noise_std.std_mag_bias = 1e-3*[1,1,1];

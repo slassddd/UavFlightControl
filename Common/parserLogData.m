@@ -106,6 +106,21 @@ for i = 1:length(timeUnique)
         end
     end
 end
+% 去掉重复项
+for i = length(logDataAll.time_sec):-1:2
+     if logDataAll.time_sec(i-1) == logDataAll.time_sec(i) && ...
+             logDataAll.idx(i-1) == logDataAll.idx(i) && ...
+             logDataAll.blockName(i-1) == logDataAll.blockName(i) && ...
+             logDataAll.message(i-1) == logDataAll.message(i) && ...
+             sum(logDataAll.var1(i-1,:)) == sum(logDataAll.var1(i,:))
+         logDataAll.time_sec(i) = [];
+         logDataAll.idx(i) = [];
+         logDataAll.blockName(i) = [];
+         logDataAll.message(i) = [];
+         logDataAll.var1(i,:) = [];
+         varname(i,:) = [];
+     end
+end
 % 建立Table
 if ~enableSetName
     T = table(logDataAll.time_sec, logDataAll.idx, logDataAll.blockName, logDataAll.message, logDataAll.var1);

@@ -1,11 +1,19 @@
 % 解析taskLogData
 taskLogData1 = SL.Debug_TaskLogData;
-taskLogDataRes(1).time_sec = taskLogData1.time_sec;
-taskLogDataRes(1).idx = taskLogData1.idx;
-taskLogDataRes(1).blockName = ENUM_TaskLogBlockName(taskLogData1.blockName);
-taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message);
-taskLogDataRes(1).var1 = [taskLogData1.var10,taskLogData1.var11,...
-    taskLogData1.var12,taskLogData1.var13,taskLogData1.var14];
+idxValid = [];
+for i = 1:length(taskLogData1.message)
+    try % 防止ENUM_RTInfo_Task中成员改名造成的错误
+        ENUM_RTInfo_Task(taskLogData1.message(i));
+        idxValid = [idxValid i];
+    end
+end
+clear taskLogDataRes;
+taskLogDataRes(1).time_sec = taskLogData1.time_sec(idxValid);
+taskLogDataRes(1).idx = taskLogData1.idx(idxValid);
+taskLogDataRes(1).blockName = ENUM_TaskLogBlockName(taskLogData1.blockName(idxValid));
+taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message(idxValid));
+taskLogDataRes(1).var1 = [taskLogData1.var10(idxValid),taskLogData1.var11(idxValid),...
+    taskLogData1.var12(idxValid),taskLogData1.var13(idxValid),taskLogData1.var14(idxValid)];
 %%
 T_taskLog_All = parserLogData(taskLogDataRes);
 matchBlock = ENUM_TaskLogBlockName.TASKLOG_Protect;
