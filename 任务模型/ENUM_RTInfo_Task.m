@@ -268,6 +268,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Protect_Airspeed_isNeedToRotor_Flag (2223),
         TaskLog_Protect_Airspeed_isNeedToHome_Flag (2224),
         TaskLog_Protect_BatteryLife_GoHome_Static (2225),
+        TaskLog_Protect_Airspeed_HighCurrent (2226),
+        TaskLog_Protect_Airspeed_HighCurrent_Level (2227),
         % Input
         TaskLog_Input_HomeChange_GS (2416),
         TaskLog_Input_HomeChange_Path (2417),
