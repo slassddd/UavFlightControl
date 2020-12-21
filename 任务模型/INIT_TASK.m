@@ -79,6 +79,7 @@ TASK_PARAM_V1000.enableVExtra_Rotor = true; % 使能旋翼暂停后根据速度进行悬停点外
 TASK_PARAM_V1000.enableVisualLandTag = true; % 激活视觉Tag着陆
 TASK_PARAM_V1000.enableLandWhileGPSFault = false; % 使能gps均故障时执行立即降落的功能
 TASK_PARAM_V1000.durationToLand_noGPS = 150; % 激活立即降落，当GPS完全失效的时间大于该参数 [s]
+TASK_PARAM_V1000.remainingLife_LosePowerIn60sec = 10; % 电量阈值[%]，达到该值后飞机将在60sec后失去动力
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -88,6 +89,7 @@ TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
 TASK_PARAM_V10.enable8calib = false;
 TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
+TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 % switch PlaneMode.mode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10

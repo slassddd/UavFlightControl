@@ -196,7 +196,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         HoverDown_Init_AutoProfile (296),
         PathFollow_ToGo (297),
         Land_ToGo_Other (298),
-        
+        Battery_Info (299),
         
         
         ReciveCmd_GoHome (1201),
