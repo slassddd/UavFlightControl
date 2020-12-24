@@ -6,6 +6,20 @@ for i = 1:nMessage
     thisMessage = message(i);
     var = vars(i,:);
     switch thisMessage
+        case ENUM_RTInfo_Navi.RTIN_Filter_GPSVelErrorLarge
+            varname(i,:) = {'周期','速度差','ublox速度','星数','BESTPOS'};
+            % 数值规范化
+            var(2) = round(var(2),2);
+            var(3) = round(var(3),2);
+            var(5) = round(var(5),2);
+            % 生成显示内容
+            str1_Ts = sprintf('%.3f[s]',var(1));
+            str1_bestpos = sprintf('%s',ENUM_BESTPOS(var(5)));
+            varname{i,1} = [varname{i,1},': ', str1_Ts];
+            varname{i,2} = [varname{i,2},': ', num2str(var(2)),'[m/s]'];
+            varname{i,3} = [varname{i,3},': ', num2str(var(3)),'[m/s]'];
+            varname{i,4} = [varname{i,4},': ', num2str(var(4))];
+            varname{i,5} = [varname{i,5},': ', str1_bestpos];        
         case ENUM_RTInfo_Navi.RTIN_Filter_Fuse_Ublox
             varname(i,:) = {'周期','状态','pdop','星数','速度标准差'};
             % 数值规范化

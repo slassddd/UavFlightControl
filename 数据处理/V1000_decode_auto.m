@@ -917,3 +917,16 @@ BYC.Filter.rtY_filter_az = rtY_filter_az; % create struct
 temp = reshape([data(find(mod(Count,2)==1),183:184)'],1,[]);
 arspeed=double(typecast(uint8(temp),'int16')')/32768*50.0000000000;
 BYC.arspeed = arspeed; % create struct
+% /* |@@SL.mavlink_msg_command_battery_data@@+----+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,8)==4),293:294)'],1,[]);
+fullCapacity=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.mavlink_msg_command_battery_data.fullCapacity = fullCapacity; % create struct
+temp = reshape([data(find(mod(Count,8)==5),293:293)'],1,[]);
+lifePercent=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
+SL.mavlink_msg_command_battery_data.lifePercent = lifePercent; % create struct
+temp = reshape([data(find(mod(Count,8)==6),293:294)'],1,[]);
+cycleTime=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.mavlink_msg_command_battery_data.cycleTime = cycleTime; % create struct
+temp = reshape([data(find(mod(Count,8)==7),293:294)'],1,[]);
+batteryId=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.mavlink_msg_command_battery_data.batteryId = batteryId; % create struct

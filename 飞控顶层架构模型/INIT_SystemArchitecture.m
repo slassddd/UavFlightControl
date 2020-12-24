@@ -22,6 +22,5 @@ INIT_SensorIntegrity
 INIT_FlightPerformance
 %% 视觉着陆
 INIT_VisualLanding
-
 %% 设置模块优先级
 INIT_Priority

@@ -16,4 +16,3 @@ IN_SENSOR_SIM = temp.IN_SENSOR_SIM;
 sensors = truncateSensorTimeRange(temp.sensors,tspan);
 SL = temp.SL;
 SL_LOAD = temp.SL_LOAD;
-

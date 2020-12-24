@@ -39,7 +39,9 @@ switch GLOBAL_PARAM.ModeSel.simMode
                 AchiPlot_sim
             case '飞行数据回放' % 飞行数据
                 modelname = 'firmwareV1000_flight_replay';
-                INIT_Mavlink_FlightData
+                INIT_Mavlink_FlightData();
+                GSParam.PATH.home(1) = STRUCT_mavlink_mission_item_def_ARRAY(1).x;
+                GSParam.PATH.home(2) = STRUCT_mavlink_mission_item_def_ARRAY(2).y;
                 Battery_mavlink_msg_mission_current.time = SL.PowerConsume.time_cal;
                 Battery_mavlink_msg_mission_current.signals.values = SL.PowerConsume.AllTheTimePowerConsume;
                 %% 执行仿真

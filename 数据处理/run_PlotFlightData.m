@@ -136,6 +136,13 @@ if plotenable.FlightPerf
         disp('FlightPerf 绘制失败')
     end
 end
+% 电池data
+if true
+    fprintf('电池信息：\n');
+    fprintf('\t循环次数 (%d)\n',SL.mavlink_msg_command_battery_data.cycleTime(1));
+    fprintf('\t完全容量 (%.0f)\n',SL.mavlink_msg_command_battery_data.fullCapacity(1));
+    fprintf('\tlifePercent (%d%%)\n',SL.mavlink_msg_command_battery_data.lifePercent(1));
+end
 %%
 tempFileNames = FileName;
 tmpIdx = strfind(tempFileNames,'.');
