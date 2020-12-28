@@ -33,8 +33,24 @@ NAVITEMP.SensorSelect.Lidar = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Airspeed = 1;  % -1:不使用  0:融合  N:使用第N个
 % 滤波器参数
 NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM_MARG');
-example = 19;
+example = 20;
 switch example    
+    case 20 % test
+        NAVITEMP.noise_std.std_gyro = 8e-2*pi/180*[1,1,1]; % rad/s
+        NAVITEMP.noise_std.std_gyro_bias = 7e-5*pi/180*[1,1,1]; % rad/s
+        NAVITEMP.noise_std.std_acc = 6e-2*[1,1,1];% 4e-2*[1,1,1];  % m/s^2
+        NAVITEMP.noise_std.std_acc_bias = 5e-4*[1,1,1]; % m/s^2
+        NAVITEMP.noise_std.std_magNED = 1e-8*[1,1,1];  %
+        NAVITEMP.noise_std.std_mag = 2.5*[1,1,1]; %
+        NAVITEMP.noise_std.std_mag_bias = 1e-3*[1,1,1];
+        NAVITEMP.noise_std.std_lla = [0.6,0.6,0.8]; % 最小值限制
+        NAVITEMP.noise_std.std_gpsvel = 1e-1*[0.1,0.1,0.16]; % 最小值限制
+        NAVITEMP.noise_std.std_alt = 1;
+        NAVITEMP.noise_std.std_range = 0.3;
+        NAVITEMP.noise_std.std_lla_um482 = [0.2,0.2,0.3]; % 最小值限制
+        NAVITEMP.noise_std.std_gpsvel_um482 = 1*[0.1,0.1,0.16];  %  [0.05,0.05,0.08];
+        NAVITEMP.noise_std.std_windspeed = 5e-2*[1,1]; % 风速NE过程噪声标准差 m/s 
+        NAVITEMP.noise_std.std_TAS = 2; % 真空速测量噪声标准差 m/s    ,1,1  
     case 19 % test
         NAVITEMP.noise_std.std_gyro = 7e-2*pi/180*[1,1,1]; % rad/s
         NAVITEMP.noise_std.std_gyro_bias = 1e-4*pi/180*[1,1,1]; % rad/s

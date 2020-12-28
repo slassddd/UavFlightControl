@@ -16,6 +16,7 @@ SetGlobalParam();
 tspan = [0,inf]; % sec
 dataFileNames = {['SubFolder_飞行数据\20201201\仿真数据_空中修改参数失速测试 2020-12-01 11-34-17']};
 dataFileNames = {['SubFolder_飞行数据\20201204\仿真数据_2 全流程 2020-12-04 16-36-39']};
+dataFileNames = {['SubFolder_飞行数据\20201226\仿真数据_104 28 2020-12-26 16-03-45']};
 LoadFlightData();
 %% 固件测试环境参数
 PlaneMode.mode = selParamForPlaneMode(); % 设置机型变量

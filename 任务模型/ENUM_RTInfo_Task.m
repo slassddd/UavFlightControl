@@ -197,6 +197,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         PathFollow_ToGo (297),
         Land_ToGo_Other (298),
         Battery_Info (299),
+        Rotor2Fix_TooLow (300),
         
         
         ReciveCmd_GoHome (1201),
