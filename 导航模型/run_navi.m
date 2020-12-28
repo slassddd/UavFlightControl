@@ -71,48 +71,15 @@ switch simMode
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR_SIM',IN_SENSOR_SIM_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',tspan_SET(i));
         end
-        out = parsim(SIM_FLIGHTDATA_IN,'RunInBackground','on',...
-            'TransferBaseWorkspaceVariables','on');
-        toc
+        out = parsim(SIM_FLIGHTDATA_IN,'RunInBackground','on','TransferBaseWorkspaceVariables','on');
         timeSpend = toc;
         fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
     case 'serial'
         for i = 1:nFlightDataFile
             tic
+            IN_Task = SL.OUT_TASKMODE;
             IN_SENSOR = IN_SENSOR_SET(i);
             IN_SENSOR_SIM = IN_SENSOR_SIM_SET(i);
-            if 0 %
-                lowpassFreq = 5;
-                figure;lowpass(IN_SENSOR_SIM.IMU1.gyro_x.signals.values,lowpassFreq,250)
-                figure;lowpass(IN_SENSOR_SIM.IMU1.gyro_y.signals.values,lowpassFreq,250)
-                figure;lowpass(IN_SENSOR_SIM.IMU1.gyro_z.signals.values,lowpassFreq,250)
-                figure;lowpass(IN_SENSOR_SIM.IMU1.accel_x.signals.values,lowpassFreq,250)
-                figure;lowpass(IN_SENSOR_SIM.IMU1.accel_y.signals.values,lowpassFreq,250)
-                figure;lowpass(IN_SENSOR_SIM.IMU1.accel_z.signals.values,lowpassFreq,250,'Steepness',0.95);
-                figure;
-                plot(IN_SENSOR_SIM.IMU1.time.signals.values,IN_SENSOR_SIM.IMU1.accel_z.signals.values,'r');hold on;
-                plot(IN_SENSOR_SIM.IMU1.time.signals.values,movavg(IN_SENSOR_SIM.IMU1.accel_z.signals.values,'linear',12),'b');hold on;
-                grid on;
-                %
-                temp = zeros(size(IN_SENSOR_SIM.IMU1.time.signals.values));
-                tempvalue = IN_SENSOR_SIM.IMU1.accel_y.signals.values;
-                for i = 1:length(IN_SENSOR_SIM.IMU1.time.signals.values)
-                    idx = max(1,i-1);
-                    temp(i) = 2/3*temp(idx) + 1/3*tempvalue(i);
-                end
-                figure;
-                plot(IN_SENSOR_SIM.IMU1.time.signals.values,tempvalue,'r');hold on;
-                plot(IN_SENSOR_SIM.IMU1.time.signals.values,temp,'b');hold on;
-                %                 plot(IN_SENSOR_SIM.IMU1.time.signals.values,movavg(IN_SENSOR_SIM.IMU1.accel_z.signals.values,'linear',12),'r-');hold on;
-                %                 plot(IN_SENSOR_SIM.IMU1.time.signals.values,lowpass(IN_SENSOR_SIM.IMU1.accel_z.signals.values,lowpassFreq,250),'k-');hold on;
-                %                 IN_SENSOR_SIM.IMU1.accel_x.signals.values = lowpass(IN_SENSOR_SIM.IMU1.accel_x.signals.values,lowpassFreq,250);
-                %                 IN_SENSOR_SIM.IMU1.accel_y.signals.values = lowpass(IN_SENSOR_SIM.IMU1.accel_y.signals.values,lowpassFreq,250);
-                %                 IN_SENSOR_SIM.IMU1.accel_z.signals.values = lowpass(IN_SENSOR_SIM.IMU1.accel_z.signals.values,lowpassFreq,250);
-                %
-                %                 IN_SENSOR_SIM.IMU1.gyro_x.signals.values = lowpass(IN_SENSOR_SIM.IMU1.gyro_x.signals.values,lowpassFreq,250);
-                %                 IN_SENSOR_SIM.IMU1.gyro_y.signals.values = lowpass(IN_SENSOR_SIM.IMU1.gyro_y.signals.values,lowpassFreq,250);
-                %                 IN_SENSOR_SIM.IMU1.gyro_z.signals.values = lowpass(IN_SENSOR_SIM.IMU1.gyro_z.signals.values,lowpassFreq,250);
-            end
             sensors = sensors_SET(i);
             tspan = tspan_SET{i};
             % 仿真
@@ -125,4 +92,4 @@ switch simMode
 end
 %% 仿真绘图
 Plot_NaviSimData();
-Plot_NaviLogTable();
+% Plot_NaviLogTable();
