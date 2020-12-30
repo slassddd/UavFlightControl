@@ -8,7 +8,7 @@ sensorFs.baroUpdateFs = 125;
 sensorFs.radarUpdateFs = 62.5;
 sensorFs.airspeedUpdateFs = 62.5;
 % 测量选择
-NAVITEMP.fuse_enable.mag = 3;
+NAVITEMP.fuse_enable.mag = 1;
 NAVITEMP.fuse_enable.gps = 1;
 NAVITEMP.fuse_enable.alt = 1;
 NAVITEMP.fuse_enable.um482 = 1;

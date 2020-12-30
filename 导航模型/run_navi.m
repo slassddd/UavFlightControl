@@ -30,7 +30,7 @@ Ts_Compass.Ts_base = 0.012;
 tspan0 = [0,inf]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
-    [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i},timeSpanValidflag] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
+    [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),sensors_SET(i),tspan_SET{i},timeSpanValidflag,SL] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
     if ~timeSpanValidflag
         str = sprintf('时间设置错误: 中止时间(%d) < 起始时间(%d)',int64(tspan_SET{i}(2)),int64(tspan_SET{i}(1)));
         warndlg(str)

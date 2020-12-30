@@ -35,6 +35,11 @@ temp = reshape([data(find(mod(Count,1)==0),19:22)'],1,[]);
 IN_SENSOR.IMU1_0.gyro_y=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 temp = reshape([data(find(mod(Count,1)==0),23:26)'],1,[]);
 IN_SENSOR.IMU1_0.gyro_z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
+
+IN_SENSOR.IMU1_0.nChange = zeros(size(IN_SENSOR.IMU1_0.accel_x));
+if sum(IN_SENSOR.IMU1_0.nChange) == 0
+    disp('IMU1_0 的 nChange 没有正常赋值');
+end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 if mean(IN_SENSOR.IMU1_0.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
@@ -58,6 +63,11 @@ temp = reshape([data(1:1:end,35:36)'],1,[]);
 IN_SENSOR.IMU1.gyro_y = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(1:1:end,37:38)'],1,[]);
 IN_SENSOR.IMU1.gyro_z = double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+
+IN_SENSOR.IMU1.nChange = zeros(size(IN_SENSOR.IMU1.accel_x));
+if sum(IN_SENSOR.IMU1.nChange) == 0
+    disp('IMU1 的 nChange 没有正常赋值');
+end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 if mean(IN_SENSOR.IMU1.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
@@ -82,6 +92,11 @@ temp = reshape([data(find(mod(Count,4)==1),285:286)'],1,[]);
 IN_SENSOR.IMU2.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(find(mod(Count,4)==1),287:288)'],1,[]);
 IN_SENSOR.IMU2.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
+
+IN_SENSOR.IMU2.nChange = zeros(size(IN_SENSOR.IMU2.accel_x));
+if sum(IN_SENSOR.IMU2.nChange) == 0
+    disp('IMU2 的 nChange 没有正常赋值');
+end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 if mean(IN_SENSOR.IMU2.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
@@ -106,8 +121,12 @@ temp = reshape([data(find(mod(Count,4)==2),285:286)'],1,[]);
 IN_SENSOR.IMU3.gyro_y=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 temp = reshape([data(find(mod(Count,4)==2),287:288)'],1,[]);
 IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
-% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 
+IN_SENSOR.IMU3.nChange = zeros(size(IN_SENSOR.IMU3.accel_x));
+if sum(IN_SENSOR.IMU3.nChange) == 0
+    disp('IMU3 的 nChange 没有正常赋值');
+end
+% 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 if mean(IN_SENSOR.IMU3.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
     disp('特别注意这里对IMU3正负号的特别处理')
@@ -129,6 +148,11 @@ temp=reshape([data(index_21,47:48)'],1,[]);
 temperature_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
 temp=reshape([data(index_21,49:50)'],1,[]);
 pressure_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
+
+IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
+if sum(IN_SENSOR.baro1.nChange) == 0
+    disp('baro1 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Mag
 % mag1
@@ -202,10 +226,18 @@ mag1calib_z = -mag1calib_z_magFrame;
 IN_SENSOR.mag1.mag_x = mag1calib_x_magFrame;
 IN_SENSOR.mag1.mag_y = mag1calib_y_magFrame;
 IN_SENSOR.mag1.mag_z = mag1calib_z_magFrame;
+IN_SENSOR.mag1.nChange = zeros(size(IN_SENSOR.mag1.mag_x));
+if sum(IN_SENSOR.mag1.nChange) == 0
+    disp('mag1 的 nChange 没有正常赋值');
+end
 
 IN_SENSOR.mag2.mag_x = mag2calib_x_magFrame;
 IN_SENSOR.mag2.mag_y = mag2calib_y_magFrame;
 IN_SENSOR.mag2.mag_z = mag2calib_z_magFrame;
+IN_SENSOR.mag2.nChange = zeros(size(IN_SENSOR.mag2.mag_x));
+if sum(IN_SENSOR.mag2.nChange) == 0
+    disp('mag2 的 nChange 没有正常赋值');
+end
 % IN_SENSOR.mag2.mag_x = mag2_x_forCalib;
 % IN_SENSOR.mag2.mag_y = mag2_y_forCalib;
 % IN_SENSOR.mag2.mag_z = mag2_z_forCalib;
@@ -219,6 +251,10 @@ temp=reshape([data(index_43,118)'],1,[]);
 IN_SENSOR.radar1.Flag = uint8(temp');
 temp = reshape([data(find(mod(Count,4)==3),119:120)'],1,[]);
 IN_SENSOR.radar1.Range = double(typecast(uint8(temp),'int16')')/1*0.0100000000;
+IN_SENSOR.radar1.nChange = zeros(size(IN_SENSOR.radar1.SNR));
+if sum(IN_SENSOR.radar1.nChange) == 0
+    disp('radar1 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ublox
 temp=reshape([data(index_41,109:112)'],1,[]);
@@ -239,10 +275,6 @@ temp=reshape([data(index_40,127:128)'],1,[]);
 IN_SENSOR.ublox1.pDop=double(typecast(uint8(temp),'uint16')')*1e-2;
 temp=reshape([data(index_40,129)'],1,[]);
 IN_SENSOR.ublox1.numSv=typecast(uint8(temp),'uint8')';
-% IN_SENSOR.ublox1.hAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
-% IN_SENSOR.ublox1.vAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
-% IN_SENSOR.ublox1.sAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
-% IN_SENSOR.ublox1.headAcc = single(zeros(size(IN_SENSOR.ublox1.time)));
 temp = reshape([data(find(mod(Count,4)==0),131:134)'],1,[]);
 hAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.hAcc = hAcc; % create struct
@@ -255,6 +287,10 @@ IN_SENSOR.ublox1.headAcc = headAcc; % create struct
 temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
 sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.sAcc = sAcc; % create struct
+IN_SENSOR.ublox1.nChange = zeros(size(IN_SENSOR.ublox1.velE));
+if sum(IN_SENSOR.ublox1.nChange) == 0
+    disp('ublox1 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % um482
 % temp = reshape([data(1:1:end,239:242)'],1,[]);
@@ -329,6 +365,11 @@ IN_SENSOR.um482.BESTPOS = BESTPOS; % create struct
 temp = reshape([data(find(mod(Count,4)==0),40:40)'],1,[]);
 numSv=double(typecast(uint8(temp),'uint8')')/1*1.0000000000;
 IN_SENSOR.um482.numSv = numSv; % create struct
+
+IN_SENSOR.um482.nChange = zeros(size(IN_SENSOR.um482.velE));
+if sum(IN_SENSOR.um482.nChange) == 0
+    disp('um482 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % airspeed1
 IN_SENSOR.airspeed1.time = IN_SENSOR.ublox1.time;
@@ -347,6 +388,11 @@ IN_SENSOR.airspeed1.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.status = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed1.EAS2TAS_Algo = EAS2TAS_Algo;
+
+IN_SENSOR.airspeed1.nChange = zeros(size(IN_SENSOR.airspeed1.time));
+if sum(IN_SENSOR.airspeed1.nChange) == 0
+    disp('airspeed1 的 nChange 没有正常赋值');
+end
 % airspeed2
 disp('airspeed2未赋值')
 IN_SENSOR.airspeed2.time = IN_SENSOR.ublox1.time;
@@ -360,6 +406,11 @@ IN_SENSOR.airspeed2.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.status = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed2.EAS2TAS_Algo = 0*EAS2TAS_Algo;
+
+IN_SENSOR.airspeed2.nChange = zeros(size(IN_SENSOR.airspeed2.time));
+if sum(IN_SENSOR.airspeed2.nChange) == 0
+    disp('airspeed2 的 nChange 没有正常赋值');
+end
 % airspeed3
 disp('airspeed3未赋值')
 IN_SENSOR.airspeed3.time = IN_SENSOR.ublox1.time;
@@ -373,6 +424,11 @@ IN_SENSOR.airspeed3.static_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.dynamic_pressure = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.status = 0*IN_SENSOR.airspeed1.airspeed;
 IN_SENSOR.airspeed3.EAS2TAS_Algo = 0*EAS2TAS_Algo;
+
+IN_SENSOR.airspeed3.nChange = zeros(size(IN_SENSOR.airspeed3.time));
+if sum(IN_SENSOR.airspeed3.nChange) == 0
+    disp('airspeed3 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % laserDown1
 disp('laserDown1未赋值')
@@ -380,12 +436,22 @@ IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+
+IN_SENSOR.laserDown1.nChange = zeros(size(IN_SENSOR.laserDown1.time));
+if sum(IN_SENSOR.laserDown1.nChange) == 0
+    disp('laserDown1 的 nChange 没有正常赋值');
+end
 % laserDown2
 disp('laserDown2未赋值')
 IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+
+IN_SENSOR.laserDown2.nChange = zeros(size(IN_SENSOR.laserDown2.time));
+if sum(IN_SENSOR.laserDown2.nChange) == 0
+    disp('laserDown2 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % radarLongForward1
 disp('radarLongForward1未赋值')
@@ -393,12 +459,22 @@ IN_SENSOR.radarLongForward1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongForward1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongForward1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongForward1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+
+IN_SENSOR.radarLongForward1.nChange = zeros(size(IN_SENSOR.radarLongForward1.time));
+if sum(IN_SENSOR.radarLongForward1.nChange) == 0
+    disp('radarLongForward1 的 nChange 没有正常赋值');
+end
 % radarLongDown1
 disp('radarLongDown1未赋值')
 IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
+
+IN_SENSOR.radarLongDown1.nChange = zeros(size(IN_SENSOR.radarLongDown1.time));
+if sum(IN_SENSOR.radarLongDown1.nChange) == 0
+    disp('radarLongDown1 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
 % disp('IMU1_Control未赋值')
@@ -421,6 +497,11 @@ IN_SENSOR.IMU1_Control.accel_y = rtY_filter_ay; % create struct
 temp = reshape([data(find(mod(Count,2)==1),149:150)'],1,[]);
 rtY_filter_az=double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 IN_SENSOR.IMU1_Control.accel_z = rtY_filter_az; % create struct
+
+IN_SENSOR.IMU1_Control.nChange = zeros(size(IN_SENSOR.IMU1_Control.time));
+if sum(IN_SENSOR.IMU1_Control.nChange) == 0
+    disp('IMU1_Control 的 nChange 没有正常赋值');
+end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
 if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
@@ -435,6 +516,12 @@ if 1
     fprintf('使用IMU_Control数据滤波\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_Control;
 end
+% figure(220)
+% subplot(311);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_z);hold on;grid on;
+% figure(222)
+% subplot(311);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_z);hold on;grid on;
+% figure(223)
+% subplot(311);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_z);hold on;grid on;
 if 0
     fprintf('使用IMU原始数据滤波\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_0;
