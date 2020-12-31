@@ -13,6 +13,5 @@ end
 [loadData.IN_SENSOR,loadData.IN_SENSOR_SIM] = truncateSensorTimeRange(loadData.IN_SENSOR,tspan,BUS_SENSOR);
 IN_SENSOR = loadData.IN_SENSOR;
 IN_SENSOR_SIM = loadData.IN_SENSOR_SIM;
-% sensors = truncateSensorTimeRange(temp.sensors,tspan);
 SL = loadData.SL;
 SL_LOAD = loadData.SL_LOAD;

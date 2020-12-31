@@ -25,9 +25,6 @@ for i = 1:length(varTaskMode)
     end
 end
 %%
-tempAlg = addStructDataTime(sensors.Algo_sl,IN_SENSOR.IMU1.time);
-tempAlt.value = tempAlg.algo_NAV_alt;
-tempAlt.time = tempAlg.time_cal;
 if true % 航点
     try
         formatMavlinkFromFlightData
@@ -66,11 +63,11 @@ end
 if true
     figure;
     idx0_curLLA = round(0.5*length(SL.OUT_TASKFLIGHTPARAM.curLLA2));
-    idx0_NAV_alt = round(0.5*length(sensors.Algo_sl.algo_NAV_alt));
-    err = mean(SL.OUT_TASKFLIGHTPARAM.curLLA2(idx0_curLLA:end)) - mean(sensors.Algo_sl.algo_NAV_alt(idx0_NAV_alt:end));
+    idx0_NAV_alt = round(0.5*length(SL.Filter.algo_NAV_alt));
+    err = mean(SL.OUT_TASKFLIGHTPARAM.curLLA2(idx0_curLLA:end)) - mean(SL.Filter.algo_NAV_alt(idx0_NAV_alt:end));
     plot(SL.OUT_TASKFLIGHTPARAM.time_cal,SL.OUT_TASKFLIGHTPARAM.curLLA2);hold on;
     plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
-    plot(IN_SENSOR.radar1.time,sensors.Algo_sl.algo_NAV_alt+err);hold on;
+    plot(IN_SENSOR.radar1.time,SL.Filter.algo_NAV_alt+err);hold on;
     grid on;
     legend('任务高度','雷达高','滤波高')
 end
@@ -135,6 +132,10 @@ if plotenable.FlightPerf
     catch ME
         disp('FlightPerf 绘制失败')
     end
+end
+% 速度角
+if true
+    SinglePlot_SpeedAngle();
 end
 % 电池data
 if true

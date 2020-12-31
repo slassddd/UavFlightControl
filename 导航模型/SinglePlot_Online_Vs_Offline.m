@@ -30,7 +30,6 @@ end
 if offlineFlag
     plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_pitch(tmpStartIdx1:end));hold on;
 end
-% plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.algo_curr_vel_2,'k--');hold on;
 xlabel('time (s)')
 ylabel('pitch [deg]')
 grid on;
@@ -129,7 +128,7 @@ legend('在线','离线','ublox','um482')
 %% 速度
 subplot(333)
 if onlineFlag
-    plot(dataOnLine.time_cal,algo_NAV_Vn);hold on;
+    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vn);hold on;
 end
 if offlineFlag
     plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_curr_vel_0(tmpStartIdx1:end));hold on;

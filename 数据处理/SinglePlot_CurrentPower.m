@@ -77,7 +77,11 @@ if sum(taskMode == thisMode) > 0
     dTime = diff(timeDataTemp);
     idxTime = find(dTime > 10);
     if isempty(idxTime)
-        sumTime = timeDataTemp(end) - timeDataTemp(1);
+        try
+            sumTime = timeDataTemp(end) - timeDataTemp(1);
+        catch
+            sumTime = 0;
+        end
     else
         sumTime = timeDataTemp(idxTime(1)) - timeDataTemp(1);
         for i = 1:length(idxTime)
@@ -92,12 +96,21 @@ if sum(taskMode == thisMode) > 0
     idxDataTemp = find(taskMode == thisMode & uavMode == thisUav);
     currentDataTemp = current;
     voltageDataTemp = voltage;
-    meanCurrentDataTemp = mean(currentDataTemp(idxDataTemp)); % A
-    maxCurrentDataTemp = max(currentDataTemp(idxDataTemp)); % A
-    meanmax1_CurrentDataTemp = getMaxPer(currentDataTemp(idxDataTemp),0.01); % A 最大1%
-    meanmax5_CurrentDataTemp = getMaxPer(currentDataTemp(idxDataTemp),0.05); % A 最大5%    
-    meanVoltageDataTemp = mean(voltageDataTemp(idxDataTemp)); % V
-    meanPowerDataTemp = mean(currentDataTemp(idxDataTemp).*voltageDataTemp(idxDataTemp)); % W
+    if ~isempty(idxDataTemp)        
+        meanCurrentDataTemp = mean(currentDataTemp(idxDataTemp)); % A
+        maxCurrentDataTemp = max(currentDataTemp(idxDataTemp)); % A
+        meanmax1_CurrentDataTemp = getMaxPer(currentDataTemp(idxDataTemp),0.01); % A 最大1%
+        meanmax5_CurrentDataTemp = getMaxPer(currentDataTemp(idxDataTemp),0.05); % A 最大5%
+        meanVoltageDataTemp = mean(voltageDataTemp(idxDataTemp)); % V
+        meanPowerDataTemp = mean(currentDataTemp(idxDataTemp).*voltageDataTemp(idxDataTemp)); % W
+    else
+        meanCurrentDataTemp = nan; % A
+        maxCurrentDataTemp = nan; % A
+        meanmax1_CurrentDataTemp = nan; % A 最大1%
+        meanmax5_CurrentDataTemp = nan; % A 最大5%
+        meanVoltageDataTemp = nan; % V
+        meanPowerDataTemp = nan; % W        
+    end
     fprintf('%s-%s:\t 平均功耗 %.2f [W], 平均电流 %.2f [A], 平均电压 %.2f [V]\n',thisMode,thisUav,meanPowerDataTemp,meanCurrentDataTemp,meanVoltageDataTemp)
 else
     k = nan;
