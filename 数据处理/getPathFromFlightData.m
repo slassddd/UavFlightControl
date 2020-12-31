@@ -9,6 +9,7 @@ num_pathpoint = data.seq;
 
 idx_home = 0;
 home = [];
+path = [];
 for i = 1:nData
     thisSeq = num_pathpoint(i);
     thisLLH = [lat_pathpoint(i),lon_pathpoint(i),height_pathpoint(i)];

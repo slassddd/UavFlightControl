@@ -2,7 +2,7 @@ if strcmp( GLOBAL_PARAM.ModeSel.simMode,'matlab_flightdata') || strcmp( GLOBAL_P
     %% 载入飞行数据并生成仿真格式数据
     nFlightDataFile = length(dataFileNames);
     for i = 1:nFlightDataFile
-        [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},~,SL(i),SL_LOAD(i)] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
+        [IN_SENSOR(i),IN_SENSOR_SIM(i),tspan_set{i},~,SL(i),SL_LOAD(i)] = step1_loadFlightData(tspan,dataFileNames{i},BUS_SENSOR);
     end
     tspan = tspan_set{1};
     % 传感器曲线

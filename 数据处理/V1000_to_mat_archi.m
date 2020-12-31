@@ -38,7 +38,7 @@ else
      subFoldName = PathName;
 end
 for i_file = 1:nFile
-    clear IN_SENSOR SL sensors % 清理数据，防止不同文件间数据赋值错误
+    clear IN_SENSOR SL  % 清理数据，防止不同文件间数据赋值错误
     if ~iscell(FileNames)
         FileName = FileNames;
     else
@@ -82,7 +82,6 @@ for i_file = 1:nFile
     %% 解码
     V1000_decode_common
     V1000_decode_simulation
-    V1000_decode_fusionDebug
     V1000_decode_auto
     SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
     %% 对齐数据
@@ -328,20 +327,17 @@ for i_file = 1:nFile
     save(saveFileName{i_file})
     fprintf('保存飞行数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
     saveFileName{i_file} = [subFoldName,'仿真数据_',temp,'.mat'];
-    tempSensor = sensors(i_file);
-    clear sensors
-    sensors = tempSensor;
     try
         run_PlotFlightData
     end
-    save(saveFileName{i_file},'IN_SENSOR','sensors','','Out_initValue','stepInfo','SL','SL_LOAD')
+    save(saveFileName{i_file},'IN_SENSOR','SL','SL_LOAD')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系
     mag2B = [mag2_x_forCalib, mag2_y_forCalib, mag2_z_forCalib];
     mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % mag自身坐标系
     mag2B_correct = [mag2calib_x_magFrame,mag2calib_y_magFrame,mag2calib_z_magFrame];
-    lla = [sensors.GPS.ublox_lat,sensors.GPS.ublox_lon,sensors.GPS.ublox_height];
+    lla = [IN_SENSOR.ublox1.Lat,IN_SENSOR.ublox1.Lon,IN_SENSOR.ublox1.height];
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(dataDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)

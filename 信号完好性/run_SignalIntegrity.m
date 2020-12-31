@@ -7,7 +7,7 @@ dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20201230\仿真数据_1003
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20201228\仿真数据_104号摔机']};
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
-    [IN_SENSOR(i),IN_SENSOR_SIM(i),sensors(i),tspan_set{i},validflag,SL,SL_LOAD] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
+    [IN_SENSOR(i),IN_SENSOR_SIM(i),tspan_set{i},validflag,SL,SL_LOAD] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
 end
 figure;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;

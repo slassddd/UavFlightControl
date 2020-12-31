@@ -1,18 +1,18 @@
-function [IN_SENSOR,IN_SENSOR_SIM,sensors,tspan,validflag,SL,SL_LOAD] = step1_loadFlightData(tspan,dataFileName,BUS_SENSOR)
-fprintf('载入飞行数据:%s\n',dataFileName)
-temp = load(dataFileName,'IN_SENSOR','sensors','SL','SL_LOAD');
-fprintf('完整数据的IMU时间范围 [%.2f, %.2f]\n',temp.sensors.IMU.time_imu(1),temp.sensors.IMU.time_imu(end))
-if tspan(2) > temp.sensors.IMU.time_imu(end)
-    tspan(2) = temp.sensors.IMU.time_imu(end);
+function [IN_SENSOR,IN_SENSOR_SIM,tspan,validflag,SL,SL_LOAD] = step1_loadFlightData(tspan,dataFileName,BUS_SENSOR)
+fprintf('飞行数据文件:%s\n',dataFileName)
+loadData = load(dataFileName,'IN_SENSOR','SL','SL_LOAD');
+fprintf('IMU时间范围 [%.2f, %.2f]\n',loadData.IN_SENSOR.IMU1.time(1),loadData.IN_SENSOR.IMU1.time(end))
+if tspan(2) > loadData.IN_SENSOR.IMU1.time(end)
+    tspan(2) = loadData.IN_SENSOR.IMU1.time(end);
 end
-if tspan(2) < tspan(1) % 时间范围无效
+if tspan(2) < tspan(1) % 鏃堕棿鑼冨洿鏃犳晥
     validflag = false;
 else
     validflag = true;
 end
-[temp.IN_SENSOR,temp.IN_SENSOR_SIM] = truncateSensorTimeRange1(temp.IN_SENSOR,tspan,BUS_SENSOR);
-IN_SENSOR = temp.IN_SENSOR;
-IN_SENSOR_SIM = temp.IN_SENSOR_SIM;
-sensors = truncateSensorTimeRange(temp.sensors,tspan);
-SL = temp.SL;
-SL_LOAD = temp.SL_LOAD;
+[loadData.IN_SENSOR,loadData.IN_SENSOR_SIM] = truncateSensorTimeRange(loadData.IN_SENSOR,tspan,BUS_SENSOR);
+IN_SENSOR = loadData.IN_SENSOR;
+IN_SENSOR_SIM = loadData.IN_SENSOR_SIM;
+% sensors = truncateSensorTimeRange(temp.sensors,tspan);
+SL = loadData.SL;
+SL_LOAD = loadData.SL_LOAD;

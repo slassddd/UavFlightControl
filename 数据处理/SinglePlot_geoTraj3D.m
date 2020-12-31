@@ -2,9 +2,9 @@
 
 uif = uifigure;
 g = geoglobe(uif);
-lat_geo = sensors.Algo_sl.algo_NAV_lat;
-lon_geo = sensors.Algo_sl.algo_NAV_lon;
-alt_geo = sensors.Algo_sl.algo_NAV_alt;
+lat_geo = SL.Filter.algo_NAV_latd;
+lon_geo = SL.Filter.algo_NAV_lond;
+alt_geo = SL.Filter.algo_NAV_alt;
 idxNoZero = lat_geo==0;
 lat_geo(idxNoZero) = [];
 lon_geo(idxNoZero) = [];

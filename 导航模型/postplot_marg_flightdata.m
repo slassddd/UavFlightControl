@@ -1,17 +1,17 @@
-function postplot_marg_flightdata(sensors,plotOpt,idx_color,idx_style,stepSpace)
+function postplot_marg_flightdata(naviRes,plotOpt,idx_color,idx_style,stepSpace)
 %% ----------  组合导航输出  ----------
 nrow = 8;
 ncol = 3;
 iplot = 0;
 %
-time = sensors.Algo.time_algo;
-if length(time) > length(sensors.Algo.algo_curr_pos_0)
+time = naviRes.Algo.time_algo;
+if length(time) > length(naviRes.Algo.algo_curr_pos_0)
     time(end) = []; 
 end
 stepNum = size(time,1);
 idxspan = [1:stepSpace:stepNum];
 % 欧拉角
-data = [sensors.Algo.algo_yaw,sensors.Algo.algo_pitch,sensors.Algo.algo_roll];
+data = [naviRes.Algo.algo_yaw,naviRes.Algo.algo_pitch,naviRes.Algo.algo_roll];
 for i = 1:3
     iplot = iplot + 1;
     subplot(nrow,ncol,iplot)
@@ -25,7 +25,7 @@ for i = 1:3
 end
 % 角速度
 try
-    data = [sensors.IMU.gx,sensors.IMU.gy,sensors.IMU.gz];
+    data = [naviRes.IMU.gx,naviRes.IMU.gy,naviRes.IMU.gz];
     for i = 1:3
         iplot = iplot + 1;
         subplot(nrow,ncol,iplot)
@@ -40,7 +40,7 @@ try
 end
 % 位置 LLA
 try
-    data = [sensors.Algo.algo_curr_pos_0,sensors.Algo.algo_curr_pos_1,sensors.Algo.algo_curr_pos_2];
+    data = [naviRes.Algo.algo_curr_pos_0,naviRes.Algo.algo_curr_pos_1,naviRes.Algo.algo_curr_pos_2];
     tempZeroData = data(data(:,1)==0,:);
     data(data(:,1)==0,:) = nan*tempZeroData;    
     for i = 1:3
@@ -57,7 +57,7 @@ try
 end
 % 位置 XYZ
 try
-    data = [sensors.Algo.algo_curr_pos_0,sensors.Algo.algo_curr_pos_1,sensors.Algo.algo_curr_pos_2];
+    data = [naviRes.Algo.algo_curr_pos_0,naviRes.Algo.algo_curr_pos_1,naviRes.Algo.algo_curr_pos_2];
     tempZeroData = data(data(:,1)==0,:);
     data(data(:,1)==0,:) = nan*tempZeroData;
     tempZeroNum = size(tempZeroData,1);
@@ -78,7 +78,7 @@ catch ME
 end
 % 速度
 try
-    data = [sensors.Algo.algo_curr_vel_0,sensors.Algo.algo_curr_vel_1,sensors.Algo.algo_curr_vel_2];
+    data = [naviRes.Algo.algo_curr_vel_0,naviRes.Algo.algo_curr_vel_1,naviRes.Algo.algo_curr_vel_2];
     for i = 1:3
         iplot = iplot + 1;
         subplot(nrow,ncol,iplot)
@@ -92,7 +92,7 @@ try
     end
 end
 % 加速度偏差
-data = [sensors.Algo.dAB_00,sensors.Algo.dAB_11,sensors.Algo.dAB_22];  % 理解可能有问题
+data = [naviRes.Algo.dAB_00,naviRes.Algo.dAB_11,naviRes.Algo.dAB_22];  % 理解可能有问题
 for i = 1:3
     iplot = iplot + 1;
     subplot(nrow,ncol,iplot)
@@ -105,7 +105,7 @@ for i = 1:3
     xlim(plotOpt.xlim_time);          % xlim
 end
 % 角速度偏差
-data = [sensors.Algo.dWB_00,sensors.Algo.dWB_11,sensors.Algo.dWB_22];  % 理解可能有问题
+data = [naviRes.Algo.dWB_00,naviRes.Algo.dWB_11,naviRes.Algo.dWB_22];  % 理解可能有问题
 for i = 1:3
     iplot = iplot + 1;
     subplot(nrow,ncol,iplot)
@@ -119,7 +119,7 @@ for i = 1:3
 end
 % 磁矢量
 try
-    data = [sensors.Algo.magB_x,sensors.Algo.magB_y,sensors.Algo.magB_z];
+    data = [naviRes.Algo.magB_x,naviRes.Algo.magB_y,naviRes.Algo.magB_z];
     stepNum = size(data,1);
     idxspan = [1:stepSpace:stepNum];
     for i = 1:3
@@ -136,7 +136,7 @@ try
 end
 % 磁矢量偏差
 try
-    data = [sensors.Algo.dmagB_x,sensors.Algo.dmagB_y,sensors.Algo.dmagB_z];
+    data = [naviRes.Algo.dmagB_x,naviRes.Algo.dmagB_y,naviRes.Algo.dmagB_z];
     for i = 1:3
         iplot = iplot + 1;
         subplot(nrow,ncol,iplot)

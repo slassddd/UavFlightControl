@@ -82,7 +82,6 @@ for i_file = 1:nFile
     %% 解码
     V1000_decode_common
 %     V1000_decode_simulation
-    V1000_decode_fusionDebug
 %     V1000_decode_auto
 %     velHeading = atan2(IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velN)*180/pi;
 %     figure;
@@ -285,7 +284,6 @@ for i_file = 1:nFile
     tempSensor = sensors(i_file);
     clear sensors
     sensors = tempSensor;
-%     save(saveFileName{i_file},'IN_SENSOR','sensors','Out_initValue','stepInfo','Out_Sensors')
 %     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系

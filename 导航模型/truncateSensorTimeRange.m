@@ -1,170 +1,71 @@
-function out = truncateSensorTimeRange(sensors,tspan)
-sensors.Algo_sl.time = sensors.Algo.time_algo(1:2:end);
-%
-sensors.IMU.ax(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.IMU.ay(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.IMU.az(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.IMU.gx(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.IMU.gy(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.IMU.gz(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.Mag.mag1_x(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag1_y(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag1_z(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2_x(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2_y(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2_z(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag3_x(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag3_y(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag3_z(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag1calib_x_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag1calib_y_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag1calib_z_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2calib_x_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2calib_y_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.Mag.mag2calib_z_magFrame(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.GPS.ublox_lat(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_lon(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_height(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_velN(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_velE(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_velD(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.posmNED(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_pDOP(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_iTOW(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.GPS.ublox_numSV(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.Baro.altitue(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Baro.pressure(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Baro.pressure_gs(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Baro.temperature(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Baro.temperature_gs(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Radar.radar_Range(sensors.Radar.time_radar<tspan(1),:) = [];
-sensors.Radar.radar_Flag(sensors.Radar.time_radar<tspan(1),:) = [];
-sensors.Radar.radar_SNR(sensors.Radar.time_radar<tspan(1),:) = [];
-sensors.Algo.algo_roll(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_pitch(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_yaw(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_vel_0(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_vel_1(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_vel_2(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_pos_0(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_pos_1(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_pos_2(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.algo_curr_alt(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dAB_00(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dAB_11(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dAB_22(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dWB_00(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dWB_11(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo.dWB_22(sensors.Algo.time_algo<tspan(1),:) = [];
-
-
-sensors.Algo_sl.algo_NAV_alt(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_lat(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_lon(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_pitch(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_roll(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_Vd(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_Ve(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_Vn(sensors.Algo_sl.time<tspan(1),:) = [];
-sensors.Algo_sl.algo_NAV_yaw(sensors.Algo_sl.time<tspan(1),:) = [];
-
-sensors.IMU.time_imu(sensors.IMU.time_imu<tspan(1),:) = [];
-sensors.Mag.time_mag(sensors.Mag.time_mag<tspan(1),:) = [];
-sensors.GPS.time_ublox(sensors.GPS.time_ublox<tspan(1),:) = [];
-sensors.Baro.time_baro(sensors.Baro.time_baro<tspan(1),:) = [];
-sensors.Radar.time_radar(sensors.Radar.time_radar<tspan(1),:) = [];
-sensors.Algo.time_algo(sensors.Algo.time_algo<tspan(1),:) = [];
-sensors.Algo_sl.time(sensors.Algo_sl.time<tspan(1),:) = [];
-
-sensors.IMU.ax(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.IMU.ay(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.IMU.az(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.IMU.gx(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.IMU.gy(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.IMU.gz(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.Mag.mag1_x(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag1_y(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag1_z(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2_x(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2_y(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2_z(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag3_x(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag3_y(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag3_z(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag1calib_x_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag1calib_y_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag1calib_z_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2calib_x_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2calib_y_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.Mag.mag2calib_z_magFrame(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.GPS.ublox_lat(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_lon(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_height(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_velN(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_velE(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_velD(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.posmNED(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_pDOP(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_iTOW(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.GPS.ublox_numSV(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.Baro.altitue(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Baro.pressure(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Baro.pressure_gs(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Baro.temperature(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Baro.temperature_gs(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Radar.radar_Range(sensors.Radar.time_radar>tspan(2),:) = [];
-sensors.Radar.radar_Flag(sensors.Radar.time_radar>tspan(2),:) = [];
-sensors.Radar.radar_SNR(sensors.Radar.time_radar>tspan(2),:) = [];
-sensors.Algo.algo_roll(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_pitch(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_yaw(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_vel_0(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_vel_1(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_vel_2(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_pos_0(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_pos_1(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_pos_2(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.algo_curr_alt(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dAB_00(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dAB_11(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dAB_22(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dWB_00(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dWB_11(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo.dWB_22(sensors.Algo.time_algo>tspan(2),:) = [];
-
-sensors.Algo_sl.algo_NAV_alt(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_lat(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_lon(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_pitch(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_roll(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_Vd(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_Ve(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_Vn(sensors.Algo_sl.time>tspan(2),:) = [];
-sensors.Algo_sl.algo_NAV_yaw(sensors.Algo_sl.time>tspan(2),:) = [];
-
-sensors.IMU.time_imu(sensors.IMU.time_imu>tspan(2),:) = [];
-sensors.Mag.time_mag(sensors.Mag.time_mag>tspan(2),:) = [];
-sensors.GPS.time_ublox(sensors.GPS.time_ublox>tspan(2),:) = [];
-sensors.Baro.time_baro(sensors.Baro.time_baro>tspan(2),:) = [];
-sensors.Radar.time_radar(sensors.Radar.time_radar>tspan(2),:) = [];
-sensors.Algo.time_algo(sensors.Algo.time_algo>tspan(2),:) = [];
-sensors.Algo_sl.time(sensors.Algo_sl.time>tspan(2),:) = [];
-
-out = sensors;
-
-% mag_time = sensors.Mag.time_mag;
-% imu_time = sensors.IMU.time_imu;
-% gps_time = sensors.GPS.time_ublox;
-% baro_time = sensors.Baro.time_baro;
-% radar_time = sensors.Radar.time_radar;
-% 
-% subFieldNames1 = fieldnames(sensors);
-% for i_sub1 = 1:length(subFieldNames1)
-%     thisSubFiledNames1 = subFieldNames1{i_sub1};
-%     subFieldNames2 = fieldnames(sensors.(thisSubFiledNames1)); 
-%     for i_sub2 = 1:length(subFieldNames2)
-%         thisSubFiledNames2 = subFieldNames2{i_sub2};
-%         temp = sensors.(thisSubFiledNames1).(thisSubFiledNames2);
-%     end
-% end
+function [in_sensors,sensorsForSim] = truncateSensorTimeRange(in_sensors,tspan,busData)
+sensorNames = fieldnames(in_sensors);
+nSensor = length(sensorNames);
+% 进行数据区间截取 ----------------------------------------------------
+for i_sensor = 1:nSensor
+    sensorName = sensorNames{i_sensor};
+    sensorFullName = in_sensors.(sensorName);
+    if isstruct(sensorFullName)
+        childNames = fieldnames(in_sensors.(sensorName));
+        nChild = length(childNames);
+        for i_child = 1:nChild % 先行专门处理时间，防止time成员不在第一个位置的情况
+            child = childNames{i_child};
+            childFullName = in_sensors.(sensorName).(child);
+            if strcmp(child,'time')
+                eval(['idx1_',sensorName,' = childFullName<tspan(1) | childFullName>tspan(2);']);
+            end
+        end
+        for i_child = 1:nChild
+            child = childNames{i_child};
+            if ~strcmp(child,'time')
+                eval(['in_sensors.(sensorName).(child)(idx1_',sensorName,') = [];']);
+            end
+        end
+        eval(['in_sensors.(sensorName).time(idx1_',sensorName,') = [];']);
+    else
+        idx_time = in_sensors.time<tspan(1) | in_sensors.time>tspan(2);
+        in_sensors.time(idx_time) = [];
+    end
+end
+if 0 % TEST
+    figure;
+    plot(temp.IN_SENSOR.IMU1.time,temp.IN_SENSOR.IMU1.gyro_x,'r');hold on;
+    plot(in_sensors.IMU1.time,in_sensors.IMU1.gyro_x,'b--');hold on;
+end
+% 生成Simulink仿真数据 ----------------------------------------------------
+AllSensorProp = busData.Elements;
+for i_sensor = 1:nSensor % 遍历传感器
+    sensorName = sensorNames{i_sensor};
+    sensorFullName = in_sensors.(sensorName);
+    for i_sensorProp = 1:length(AllSensorProp)
+        if strcmp(AllSensorProp(i_sensorProp).Name,sensorName)
+            sensorDataType = AllSensorProp(i_sensorProp).DataType;
+        end
+    end
+    if isstruct(sensorFullName)
+        childNames = fieldnames(in_sensors.(sensorName));
+        
+        tempIdx = strfind(sensorDataType,':');
+        busName = strrep(sensorDataType(tempIdx+1:end),' ','');
+        sensorBusData = evalin('base',busName);
+        AllChildProp = sensorBusData.Elements;
+        nChild = length(childNames);
+        for i_child = 1:nChild
+            child = childNames{i_child};
+            for i_prop = 1:length(AllChildProp)
+                if strcmp(AllChildProp(i_prop).Name,child) % 找到对应名称的成员属性
+                    dataType = AllChildProp(i_prop).DataType;
+                    eval(['sensorsForSim.(sensorName).(child).time = in_sensors.(sensorName).time;']);
+                    eval(['sensorsForSim.(sensorName).(child).signals.values = ',dataType,'(in_sensors.(sensorName).(child));']);
+                    break
+                end
+            end
+        end
+        
+    else % 只有time是非结构体
+        dataType = sensorDataType;
+        eval(['sensorsForSim.(sensorName).time = in_sensors.time;']);
+        eval(['sensorsForSim.(sensorName).signals.values = ',dataType,'(in_sensors.time);']);
+    end
+end
 
