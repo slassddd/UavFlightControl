@@ -12,7 +12,13 @@ taskLogData1 = SL.Debug_TaskLogData;
 taskLogDataRes(1).time_sec = taskLogData1.time_sec;
 taskLogDataRes(1).idx = taskLogData1.idx;
 taskLogDataRes(1).blockName = ENUM_TaskLogBlockName(taskLogData1.blockName);
-taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message);
+for i = 1:length(taskLogData1.message)
+    try
+        taskLogDataRes(1).message(i,1) = ENUM_RTInfo_Task(taskLogData1.message(i));
+    catch
+        taskLogDataRes(1).message(i,1) = ENUM_RTInfo_Task(0);
+    end
+end
 taskLogDataRes(1).var1 = [taskLogData1.var10,taskLogData1.var11,...
     taskLogData1.var12,taskLogData1.var13,taskLogData1.var14];
 matchBlock = [ENUM_TaskLogBlockName.TASKLOG_ParserCmd];

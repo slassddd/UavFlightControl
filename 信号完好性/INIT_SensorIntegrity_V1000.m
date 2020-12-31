@@ -5,7 +5,7 @@ baseMode = 0.36;
 switch baseMode
     case 0.36
         % 0.4 base
-        SENSOR_INTEGRITY_PARAM_V1000.IMU.threshold_lostTime = 3; % tick
+        SENSOR_INTEGRITY_PARAM_V1000.IMU.threshold_lostTime = 1; % tick
         SENSOR_INTEGRITY_PARAM_V1000.Mag.threshold_lostTime = 10;
         SENSOR_INTEGRITY_PARAM_V1000.GPS.threshold_lostTime = 15;
         SENSOR_INTEGRITY_PARAM_V1000.Baro.threshold_lostTime = 5;
