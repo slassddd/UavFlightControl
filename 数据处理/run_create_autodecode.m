@@ -12,7 +12,6 @@ template2 = '%s=double(typecast(uint8(temp),''%s'')'')/%d*%.10f;\n';
 template3 = 'temp = reshape([data(%s,%d:%d)''],1,[]);\n';
 structName = 'TempName';
 for i = 1:size(decodeString)
-    %     fprintf('%s\n',decodeString{i});
     thisLine = decodeString{i};
     sepPlace = strfind(thisLine,sepflag);
     if ~contains(thisLine,'/*')
