@@ -136,6 +136,10 @@ if mean(IN_SENSOR.IMU3.accel_z) > 0
     IN_SENSOR.IMU3.gyro_y = -IN_SENSOR.IMU3.gyro_y;
     IN_SENSOR.IMU3.gyro_z = -IN_SENSOR.IMU3.gyro_z;
 end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%IMU4
+IN_SENSOR.IMU4 = IN_SENSOR.IMU3;
+disp('IMU4 为正常赋值，暂用IMU3作为数据源');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %baro1
 temp=reshape([data(index_21,41:42)'],1,[]);

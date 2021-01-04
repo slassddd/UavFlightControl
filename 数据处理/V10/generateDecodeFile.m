@@ -1,18 +1,27 @@
 function generateDecodeFile(varargin)
-% example: generateDecodeFile('filename','V10_decode_auto','comment','on');
-% 参数
-Param.outputName = 'V10Log';
-Param.autoDecodeFileName = 'V10_decode_auto';
-Param.autoDecodeFileType = 'function';
-Param.comment = true;
+% example1: 指定参数
+% generateDecodeFile('filename','V10_decode_auto','comment','on','commentstartplace',50);
+% example2: 默认参数 
+% generateDecodeFile;
+%% 默认参数
+Param.outputName = 'V10Log'; % 输出结构体名称
+Param.autoDecodeFileName = 'V10_decode_auto'; % 生成的decode文件名称
+Param.autoDecodeFileType = 'function'; % script-脚本 function-函数
+Param.comment = true; % 是否将协议内容作为注释加入decode函数
+Param.commentStartPlace = 55; % 注释起始列
 for i = 1:length(varargin)/2
-    switch varargin{2*i-1}
+    switch lower(varargin{2*i-1})
+        case 'commentstartplace'
+            if ischar(varargin{2*i})
+                varargin{2*i} = str2double(varargin{2*i});
+            end
+            Param.commentStartPlace = varargin{2*i};
         case 'comment' % 是否附加协议中的内容作为注释
             if strcmp(varargin{2*i},'on')
                 Param.comment = true;
             else
                 Param.comment = false;
-            end        
+            end
         case 'filename' % 指定解码函数名
             Param.autoDecodeFileName = varargin{2*i};
         case 'filetype' % 指定解码文件类型，函数or脚本
@@ -85,6 +94,10 @@ end
 validVarNum = 0;
 idxStruct = 1;
 idxStructFull = 1;
+lenFullName = 0;
+lenShortName = 0;
+lenDataType = 0;
+lenDataFrequency = 0;
 for i = 1:size(decodeString)
     %     fprintf('%s\n',decodeString{i});
     thisLine = decodeString{i};
@@ -131,6 +144,20 @@ for i = 1:size(decodeString)
         % 变量名解析
         simpleName = getSimpleName(thisLine,sepPlace);
         fullName = getFullName(thisLine,sepPlace);
+        dataType = getDataType(thisLine,sepPlace);
+        dataFrequency = getDataFrequency(thisLine,sepPlace);
+        if lenShortName < length(simpleName)
+            lenShortName = length(simpleName);
+        end        
+        if lenFullName < length(fullName)
+            lenFullName = length(fullName);
+        end
+        if lenDataType < length(dataType)
+            lenDataType = length(dataType);
+        end  
+        if lenDataFrequency < length(dataFrequency)
+            lenDataFrequency = length(dataFrequency);
+        end          
         % 全称
         template = '%s_fullname{%d} = ''%s'';';
         str_full = sprintf(template,structName,validVarNum,fullName);
@@ -202,22 +229,68 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
         comment_FromComment = strrep(comment_FromComment,' ','');
         comment_FromComment = strrep(comment_FromComment,'/*','');
         comment_FromComment = strrep(comment_FromComment,'*/','');
-        if Param.comment
-            strToWrite{idxToWrite} = sprintf('%s.%s.%s = %s(:,%d); %%%s\n',...
-                Param.outputName,structNameToWrite,subName_FromFull,thisStructShortName,eval([thisStructShortName,'_idx(',num2str(k),')']),comment_FromComment);            
-        else
-            strToWrite{idxToWrite} = sprintf('%s.%s.%s = %s(:,%d);\n',...
-                Param.outputName,structNameToWrite,subName_FromFull,thisStructShortName,eval([thisStructShortName,'_idx(',num2str(k),')']));
+        comment_FromComment = strrep(comment_FromComment,'||','|');
+        comment_FromComment = strrep(comment_FromComment,'|',' | ');
+        commentNumber = sprintf('%3d',k);
+        comment_FromComment = [' ',commentNumber,'.',comment_FromComment];
+        flagPlace = strfind(comment_FromComment,'|');
+        while 1 % 数据频率
+            idx1 = 4;
+            idx2 = 5;
+            if flagPlace(idx2)-flagPlace(idx1)<lenDataFrequency+3
+                comment_FromComment = [comment_FromComment(1:flagPlace(idx2)-1),' ',comment_FromComment(flagPlace(idx2):end)];
+                flagPlace = strfind(comment_FromComment,'|');
+            else
+                break
+            end
         end
+        while 1 % 数据类型
+            %
+            idx1 = 3;
+            idx2 = 4;
+            if flagPlace(idx2)-flagPlace(idx1)<lenDataType+3
+                comment_FromComment = [comment_FromComment(1:flagPlace(idx2)-1),' ',comment_FromComment(flagPlace(idx2):end)];
+                flagPlace = strfind(comment_FromComment,'|');
+            else
+                break
+            end 
+        end
+        while 1 % 全称
+            %
+            idx1 = 2;
+            idx2 = 3;
+            if flagPlace(idx2)-flagPlace(idx1)<lenFullName+3
+                comment_FromComment = [comment_FromComment(1:flagPlace(idx2)-1),' ',comment_FromComment(flagPlace(idx2):end)];
+                flagPlace = strfind(comment_FromComment,'|');
+            else
+                break
+            end
+        end
+        while 1 % 简称
+            %
+            idx1 = 1;
+            idx2 = 2;
+            if flagPlace(idx2)-flagPlace(idx1)<lenShortName+3
+                comment_FromComment = [comment_FromComment(1:flagPlace(idx2)-1),' ',comment_FromComment(flagPlace(idx2):end)];
+                flagPlace = strfind(comment_FromComment,'|');
+            else
+                break
+            end                
+        end
+        strToWrite{idxToWrite} = sprintf('%s.%s.%s = %s(:,%d); ',...
+            Param.outputName,structNameToWrite,subName_FromFull,thisStructShortName,eval([thisStructShortName,'_idx(',num2str(k),')']));
+        if Param.comment
+            while 1
+                if length(strToWrite{idxToWrite}) < Param.commentStartPlace
+                    strToWrite{idxToWrite} = [strToWrite{idxToWrite},' '];
+                else
+                    break;
+                end
+            end
+            strToWrite{idxToWrite} = [strToWrite{idxToWrite},sprintf('%%%s',comment_FromComment)];            
+        end
+        strToWrite{idxToWrite} = [strToWrite{idxToWrite},sprintf('\n',comment_FromComment)];     
         idxToWrite = idxToWrite + 1;     
-%         if Param.comment
-%             strToWrite{idxToWrite} = sprintf('%%%s\n',comment_FromComment);
-%             idxToWrite = idxToWrite + 1;
-%         end
-%         strToWrite{idxToWrite} = sprintf('%s.%s.%s = %s(:,%d);\n',...
-%             Param.outputName,structNameToWrite,subName_FromFull,thisStructShortName,eval([thisStructShortName,'_idx(',num2str(k),')']));
-        %         eval(strToWrite{idxToWrite})
-%         idxToWrite = idxToWrite + 1;
     end
 end
 %% 生成解析函数
@@ -251,7 +324,7 @@ for i = 1:length(strToWrite)
 end
 fclose(fileID);
 edit(Param.autoDecodeFileName)
-fprintf('生成decode文件,%s\n',Param.autoDecodeFileName)
+fprintf('生成decode文件\t\t%s\n',Param.autoDecodeFileName)
 %% 子函数
 function [flag,dataStruct] = genStructFromLabel(data,label)
 flag = true;
@@ -291,3 +364,18 @@ startNum = sepPlace(idxStart);
 endNum = sepPlace(idxEnd);
 varname = strtrim(content(startNum+1:endNum-1));
 
+% 获取数据类型
+function varname = getDataType(content,sepPlace)
+idxStart = 4;
+idxEnd = idxStart+1;
+startNum = sepPlace(idxStart);
+endNum = sepPlace(idxEnd);
+varname = strtrim(content(startNum+1:endNum-1));
+
+% 获取数据频率
+function varname = getDataFrequency(content,sepPlace)
+idxStart = 5;
+idxEnd = idxStart+1;
+startNum = sepPlace(idxStart);
+endNum = sepPlace(idxEnd);
+varname = strtrim(content(startNum+1:endNum-1));
