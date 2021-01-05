@@ -1,5 +1,8 @@
 % 对框架模型中所有引用模型的Configuration进行统一设置
 clear DependencySet
+%% 固件参数初始化
+INIT_SystemArchitecture
+%
 DependencySet.enableMultiTask = questdlg('选择代码生成的任务模式','模式','单step','多step','取消','单step');
 DependencySet.MainModelNameNoType = 'RefModel_SystemArchitecture';
 DependencySet.MainModelName = [DependencySet.MainModelNameNoType,'.slx'];
