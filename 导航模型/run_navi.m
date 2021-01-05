@@ -1,16 +1,13 @@
-if 0
+if 1
     % 执行指定数据文件
     clear,clc
-    clear global
-    dataFileNames = {['20200417\仿真数据_log_4_V1000-24# V31131固件 全流程航线飞行调参']}; 
-    dataFileNames = {['SubFolder_飞行数据\20200522\仿真数据_log_2_宝坻第2架次V1000-27# V31145固件 全流程飞行']};    
-    dataFileNames = {['SubFolder_飞行数据\20200601\仿真数据_2020-06-01 16-47-50 航向异常']};    
-    dataFileNames = {['SubFolder_飞行数据\20200910\仿真数据_2020年9月11日 宝坻 V1000-55# V31199固件 旋翼增稳低高度悬停  保持参数短时全流程 2020-09-11 18-04-08']};
+    proj = currentProject;
+    dataFileNames{1} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];    
+    dataFileNames{2} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
 else
     try
-        dataFileNames = saveFileName;
-        % 在文件所在目录保存.mat文件
-        [naviPath,name] = fileparts(which(mfilename));
+        dataFileNames = saveFileName;        
+        [naviPath,name] = fileparts(which(mfilename));% 在文件所在目录保存.mat文件
         curPath = cd;   
         cd(naviPath);
         save lastFlightDataFileLoadedForNavi.mat dataFileNames
@@ -27,7 +24,7 @@ SetGlobalParam();
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,inf]; % sec   [0,inf]
+tspan0 = [0,55]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
@@ -68,7 +65,6 @@ switch simMode
         for i = 1:nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',IN_SENSOR_SET(i));
-            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR_SIM',IN_SENSOR_SIM_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',tspan_SET(i));
         end
         out = parsim(SIM_FLIGHTDATA_IN,'RunInBackground','on','TransferBaseWorkspaceVariables','on');
@@ -76,16 +72,13 @@ switch simMode
         fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
     case 'serial'
         for i = 1:nFlightDataFile
-            tic
-            IN_Task = SL.OUT_TASKMODE;
+            IN_TASK = SL.OUT_TASKMODE;
             IN_SENSOR = IN_SENSOR_SET(i);
-            IN_SENSOR_SIM = IN_SENSOR_SIM_SET(i);
             tspan = tspan_SET{i};
             % 仿真
-            out(i) = sim(modelname);
+            tic,out(i) = sim(modelname);timeSpend = toc;
             % 数据后处理
             [navFilterMARGRes_SET(i),t_alignment(i)] = PostDataHandle_SimulinkModel(out(i),Ts_Compass.Ts_base);
-            timeSpend = toc;
             fprintf('第%d组数据的仿真完成, 耗时 %.2f [s]\n',i,timeSpend);
         end
 end
