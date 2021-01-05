@@ -1,5 +1,6 @@
 % 对框架模型中所有引用模型的Configuration进行统一设置
 clear DependencySet
+DependencySet.enableMultiTask = questdlg('选择代码生成的任务模式','模式','单step','多step','取消','单step');
 DependencySet.MainModelNameNoType = 'RefModel_SystemArchitecture';
 DependencySet.MainModelName = [DependencySet.MainModelNameNoType,'.slx'];
 DependencySet.FilePathNames = dependencies.fileDependencyAnalysis(DependencySet.MainModelNameNoType);
@@ -45,19 +46,30 @@ showModelProp(DependencySet);
 for i = 1:nRefModel
     set_param(DependencySet.RefModeNamesNoType{i},'InheritedTsInSrcMsg','None'); % Source block specifies -1 sample time
     set_param(DependencySet.RefModeNamesNoType{i},'ParameterPrecisionLossMsg','None'); % Detect precision loss
-    
+
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedInputMsg','None'); % Unconnected block input ports
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedOutputMsg','None'); % Unconnected block output ports
     set_param(DependencySet.RefModeNamesNoType{i},'UnconnectedLineMsg','None'); % Unconnected line
     set_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength','64'); % Maximum identifier length
-    
+
     set_param(DependencySet.RefModeNamesNoType{i},'CombineOutputUpdateFcns','on'); % Maximum identifier length
     set_param(DependencySet.RefModeNamesNoType{i},'ModelReferenceNumInstancesAllowed','Single'); % ModelReference\Total number of instances allowed per top model
     set_param(DependencySet.RefModeNamesNoType{i},'LogVarNameModifier','none'); % Code Generation\Interface\MAT-file variable name modifer
     set_param(DependencySet.RefModeNamesNoType{i},'MatFileLogging','off'); % Code Generation\Interface\MAT-file logging
-    
-    set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
+
     set_param(DependencySet.RefModeNamesNoType{i},'MultiTaskDSMMsg','warning'); % Detect data stores being read from and written to in multiple tasks
+    if ~isempty(DependencySet.enableMultiTask)
+        switch DependencySet.enableMultiTask
+            case '单step'
+                disp('生成代码的step模式: 单step');
+                set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
+            case '多step'
+                disp('生成代码的step模式: 多step');
+                set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','on'); % Treat each discrete rate as a separate task
+        end
+    else
+        set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
+    end
 end
 disp('模型新属性');
 DependencySet = getModelProp(DependencySet,nRefModel);

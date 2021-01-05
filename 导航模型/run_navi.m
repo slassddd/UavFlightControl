@@ -2,13 +2,13 @@ if 0
     % 执行指定数据文件
     clear,clc
     proj = currentProject;
-    dataFileNames{1} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];    
+    dataFileNames{1} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
     dataFileNames{2} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
 else
     try
-        dataFileNames = saveFileName;        
+        dataFileNames = saveFileName;
         [naviPath,name] = fileparts(which(mfilename));% 在文件所在目录保存.mat文件
-        curPath = cd;   
+        curPath = cd;
         cd(naviPath);
         save lastFlightDataFileLoadedForNavi.mat dataFileNames
         cd(curPath);
@@ -61,7 +61,7 @@ simMode = 'serial';  % parallel serial
 switch simMode
     case 'parallel'
         tic
-%         SIM_FLIGHTDATA_IN(nFlightDataFile) = Simulink.SimulationInput(modelname);
+        %         SIM_FLIGHTDATA_IN(nFlightDataFile) = Simulink.SimulationInput(modelname);
         for i = 1:nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
             IN_TASK = SL(i).OUT_TASKMODE;
