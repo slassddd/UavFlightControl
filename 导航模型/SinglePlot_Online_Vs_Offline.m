@@ -2,7 +2,7 @@
 if ~exist('i_sim')
     i_sim = 1;
 end
-dataOnLine = SL.Filter;
+dataOnLine = navFilterMARGRes_OnLine;
 onlineFlag = 1;
 offlineFlag = 1;
 ubloxFlag = 1;

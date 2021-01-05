@@ -4,7 +4,7 @@ plotOpt = setPlotOpt;
 stepSpace = 1;
 plotEnable = 1;
 if plotEnable
-    navFilterMARGRes = navFilterMARGRes_SET(1);
+    navFilterMARGRes = navFilterMARGRes_SET(1);    
     % ------------  传感器数据 ---------------
     fig = figure(102);
     GLOBAL_PARAM.hPlot.PlotSensor({'IMU1;IMU2;IMU3','mag1;mag2','ublox1','baro1','radar1','airspeed1'},IN_SENSOR(1),2,2,fig)
@@ -18,6 +18,8 @@ if plotEnable
     nStyle = length(plotOpt.linestyle);
     for i_sim = 1:nSim
         navFilterMARGRes = navFilterMARGRes_SET(i_sim);
+        navFilterMARGRes_OnLine = SL(i_sim).Filter;
+        IN_SENSOR = IN_SENSOR_SET(i_sim);
         idx_color = rem(i_sim,nColor)+1;
         idx_style = ceil(i_sim/nColor);
         idx_color = rem(idx_color,nColor) + 1;

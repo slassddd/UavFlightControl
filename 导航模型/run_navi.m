@@ -1,4 +1,4 @@
-if 1
+if 0
     % 执行指定数据文件
     clear,clc
     proj = currentProject;
@@ -27,7 +27,7 @@ Ts_Compass.Ts_base = 0.012;
 tspan0 = [0,inf]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
-    [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
+    [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL(i)] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
     if ~timeSpanValidflag
         str = sprintf('时间设置错误: 中止时间(%d) < 起始时间(%d)',int64(tspan_SET{i}(2)),int64(tspan_SET{i}(1)));
         warndlg(str)
@@ -57,20 +57,20 @@ INIT_VisualLanding
 %% 运行仿真
 modelname = 'TESTENV_NAVI';
 % modelname = 'TESTENV_NAVI_12ms';
-simMode = 'parallel';  % parallel serial
+simMode = 'serial';  % parallel serial
 switch simMode
     case 'parallel'
         tic
 %         SIM_FLIGHTDATA_IN(nFlightDataFile) = Simulink.SimulationInput(modelname);
         for i = 1:nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-            IN_TASK = SL.OUT_TASKMODE;
+            IN_TASK = SL(i).OUT_TASKMODE;
             IN_SENSOR = IN_SENSOR_SET(i);
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',IN_SENSOR_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',tspan_SET{i});
         end
         out = parsim(SIM_FLIGHTDATA_IN,...
-            'UseFastRestart','on',...
+            'UseFastRestart','off',...
             'TransferBaseWorkspaceVariables','on');
         %             'RunInBackground','on',...
         for i = 1:nFlightDataFile
@@ -80,7 +80,7 @@ switch simMode
         fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
     case 'serial'
         for i = 1:nFlightDataFile
-            IN_TASK = SL.OUT_TASKMODE;
+            IN_TASK = SL(i).OUT_TASKMODE;
             IN_SENSOR = IN_SENSOR_SET(i);
             tspan = tspan_SET{i};
             % 仿真
