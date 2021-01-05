@@ -1,7 +1,7 @@
 clear,clc
 proj = currentProject;
 SetGlobalParam();
-tspan0 = [0,inf]; % sec
+tspan0 = [0,200]; % sec
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\V1000 客户飞行数据\20201205 起飞异常\仿真数据_起飞异常 2020-12-05 09-34-02']};
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20201230\仿真数据_10031异常爬升 2020-12-30 14-11-15']};
 dataFileNames = {[proj.RootFolder{1},'\SubFolder_飞行数据\20201228\仿真数据_104号摔机']};

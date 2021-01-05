@@ -1,9 +1,9 @@
-if 1
+if 0
     % 执行指定数据文件
     clear,clc
     proj = currentProject;
     dataFileNames{1} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];    
-    dataFileNames{2} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
+%     dataFileNames{2} = [proj.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
 else
     try
         dataFileNames = saveFileName;        
@@ -24,7 +24,7 @@ SetGlobalParam();
 Ts_Compass.Ts_base = 0.012;
 %%
 %% 载入飞行数据并生成仿真格式数据
-tspan0 = [0,55]; % sec   [0,inf]
+tspan0 = [0,inf]; % sec   [0,inf]
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
