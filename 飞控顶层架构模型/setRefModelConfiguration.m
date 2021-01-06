@@ -1,10 +1,12 @@
 % 对框架模型中所有引用模型的Configuration进行统一设置
+function setRefModelConfiguration(modelname,stepMode)
+% usage: setRefModelConfiguration('RefModel_SystemArchitecture','单step');
 clear DependencySet
 %% 固件参数初始化
 INIT_SystemArchitecture
 %
-DependencySet.enableMultiTask = questdlg('选择代码生成的任务模式','模式','单step','多step','取消','单step');
-DependencySet.MainModelNameNoType = 'RefModel_SystemArchitecture';
+DependencySet.enableMultiTask = stepMode;
+DependencySet.MainModelNameNoType = modelname;
 DependencySet.MainModelName = [DependencySet.MainModelNameNoType,'.slx'];
 DependencySet.FilePathNames = dependencies.fileDependencyAnalysis(DependencySet.MainModelNameNoType);
 DependencySet.FilePathNames{end} = which(DependencySet.MainModelName);
@@ -69,6 +71,8 @@ for i = 1:nRefModel
             case '多step'
                 disp('生成代码的step模式: 多step');
                 set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','on'); % Treat each discrete rate as a separate task
+            otherwise
+                error('step mode 设置错误');
         end
     else
         set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
@@ -95,7 +99,7 @@ for i = 1:nRefModel
     DependencySet.MaxIdLength(i) = get_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength');
     DependencySet.MultiTaskDSMMsg{i} = get_param(DependencySet.RefModeNamesNoType{i},'MultiTaskDSMMsg');
 end
-end
+% end
 %
 function showModelProp(DependencySet)
 SolverType = DependencySet.SolverType';
@@ -111,4 +115,5 @@ MaxIdLength = DependencySet.MaxIdLength';
 T = table(SolverType,Solver,SampleTime,EnableMultiTasking,DeviceVendor,SystemTargetFile,...
     TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength,EnableMultiTasking);
 T.Properties.RowNames = DependencySet.RefModeNamesNoType'
-end
+% end
+% end

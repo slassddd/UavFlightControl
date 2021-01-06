@@ -2,14 +2,21 @@ clear,clc
 %% 模型参数初始化
 INIT_SystemArchitecture
 %%
+modelname = 'RefModel_SystemArchitecture';
+infofilename = 'SystemInfo.mat';
+%% 模型参数配置
+stepMode = questdlg('选择代码生成的任务模式(V10新固件选择''多step'')','模式','单step','多step','取消','单step');
+if isempty(stepMode) || strcmp(stepMode,'取消')
+    disp('未选择stepmode');
+    return;
+end
+setRefModelConfiguration(modelname,stepMode);
+%%
 temp_old_pathname = cd;
 temp_pathname = mfilename('fullpath');
 temp = strfind(temp_pathname,'\');
 temp_pathname = temp_pathname(1:temp(end));
 cd(temp_pathname)
-%%
-modelname = 'RefModel_SystemArchitecture';
-infofilename = 'SystemInfo.mat';
 %% 载入模型
 load_system(modelname);
 open_system([modelname,'/SystemInfo/']);
