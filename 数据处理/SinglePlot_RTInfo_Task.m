@@ -25,6 +25,9 @@ for i = 1:nChildren
         data = structData.(children{i});
     end
     str = sprintf('%s(data)',typeCells{i});    
+    if strcmp(typeCells{i},'ENUM_RTInfo_Task')
+        continue;
+    end
     try
         data = eval(str);
         plotEnum(time,data)

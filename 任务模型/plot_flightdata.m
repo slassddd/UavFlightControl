@@ -14,8 +14,3 @@ subplot(223)
 data = ENUM_UAVMode(SL.OUT_TASKMODE.uavMode);
 plotEnum(data);
 legend('uavMode')
-% RT information Task
-subplot(224)
-data = ENUM_RTInfo_Task(SL.Debug_Task_RTInfo.Task);
-plotEnum(data);
-legend('RTinfo')

@@ -132,7 +132,7 @@ TEMP_NAVIPARAM = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM');
 TEMP_NAVIPARAM.modeKF1 = 22; % 22 state;  24 state;
 TEMP_NAVIPARAM.enableAccDegrade_Amp = false;
 TEMP_NAVIPARAM.enableZeroVelCorrect = false;
-TEMP_NAVIPARAM.enableVdFuser = true;
+TEMP_NAVIPARAM.enableVdFuser = false;
 TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix = false;
 fprintf('%s滤波器 modeKF1 = %0.f\n', TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
 fprintf('%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
