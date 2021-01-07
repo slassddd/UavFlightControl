@@ -1,25 +1,24 @@
 clear,clc
-proj = currentProject;
-SetGlobalParam();
+%% å‚æ•°è®¾ç½®
+setGlobalParam();
 tspan0 = [0,200]; % sec
-dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\V1000 ¿Í»§·ÉĞĞÊı¾İ\20201205 Æğ·ÉÒì³£\·ÂÕæÊı¾İ_Æğ·ÉÒì³£ 2020-12-05 09-34-02']};
-dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20201230\·ÂÕæÊı¾İ_10031Òì³£ÅÀÉı 2020-12-30 14-11-15']};
-dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20201228\·ÂÕæÊı¾İ_104ºÅË¤»ú']};
-nFlightDataFile = length(dataFileNames);
-for i = 1:nFlightDataFile
-    [IN_SENSOR(i),IN_SENSOR_SIM(i),tspan_set{i},validflag,SL,SL_LOAD] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
-end
+%% è½½å…¥æ•°æ®
+dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_é£è¡Œæ•°æ®\V1000 å®¢æˆ·é£è¡Œæ•°æ®\20201205 èµ·é£å¼‚å¸¸\ä»¿çœŸæ•°æ®_èµ·é£å¼‚å¸¸ 2020-12-05 09-34-02']};
+dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_é£è¡Œæ•°æ®\20201230\ä»¿çœŸæ•°æ®_10031å¼‚å¸¸çˆ¬å‡ 2020-12-30 14-11-15']};
+dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_é£è¡Œæ•°æ®\20201228\ä»¿çœŸæ•°æ®_104å·æ‘”æœº']};
+loadFlightData();
+IN_SENSOR = IN_SENSOR_SET(1);
+tspan = tspan_SET{1};
 figure;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
-tspan = tspan_set{1};
-%% ÉèÖÃ»úĞÍ±äÁ¿
-PlaneMode.mode = selParamForPlaneMode();
-%% ³õÊ¼»¯Ïà¹ØÄ£¿é
+%% è®¾ç½®æœºå‹å˜é‡
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % é€‰æ‹©æœºå‹ 
+%% åˆå§‹åŒ–ç›¸å…³æ¨¡å—
 INIT_Navi
 INIT_SensorIntegrity
 INIT_SensorAlignment
 INIT_SensorFault
-%% ÔËĞĞÄ£ĞÍ
-fprintf('/n--------µ÷ÊÔĞÅÏ¢--------/n')
+%% è¿è¡Œæ¨¡å‹
+fprintf('/n--------è°ƒè¯•ä¿¡æ¯--------/n')
 sim('TESTENV_SignalIntegrity')

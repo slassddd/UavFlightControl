@@ -1,65 +1,53 @@
-%%
-clear,clc
-clear global
-%% Ñ¡Ôñ·ÂÕæÄ£Ê½
-mode_architechure = questdlg('Ñ¡Ôñ·ÂÕæÄ£Ê½', ...
-    'Ñ¡Ôñ·ÂÕæÄ£Ê½', ...
-    '·ÉĞĞÊı¾İ»Ø·Å','·ÂÕæ','È¡Ïû','·ÉĞĞÊı¾İ»Ø·Å');
-if strcmp(mode_architechure,'È¡Ïû')
-    disp('ÍË³ö·ÂÕæ');
-    return;
+%% å®Œæ•´é£æ§å›ºä»¶ä»¿çœŸ
+clear,clc,clear global
+%% é€‰æ‹© ã€ä»¿çœŸæ¨¡å¼ã€‘ ã€æœºå‹ã€‘
+[mode_architechure,             isCancel] = selectArchiSimMode();if isCancel,return;end    % é€‰æ‹©ä»¿çœŸæ¨¡å¼ ã€å¹¶è¡Œã€‘orã€ä¸²è¡Œã€‘
+[SimParam.SystemInfo.planeMode, isCancel] = selPlaneMode();      if isCancel,return;end    % é€‰æ‹©æœºå‹ 
+%% è®¾ç½®å‚æ•°
+SimulinkRunMode = 1; % é£è¡Œå‚æ•°æºé€‰æ‹©ï¼›1 é£è¡Œæ•°æ®  2 ä»¿çœŸ(å·²ç»å¾ˆä¹…æ²¡æœ‰ç»´æŠ¤ï¼Œè‚¯å®šä¸å¥½ç”¨äº†)
+GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simulink_simdata'
+setGlobalParam();
+%% è½½å…¥é£è¡Œæ•°æ®
+tspan0 = [0,10]; % sec
+dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_é£è¡Œæ•°æ®\20201223\ä»¿çœŸæ•°æ®_3 å…¨æµç¨‹ 2020-12-23 12-53-11.mat'];
+% dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_é£è¡Œæ•°æ®\20201224\ä»¿çœŸæ•°æ®_9 å¤§é£ äººä¸ºè§‚å¯Ÿé£æœºå§¿æ€æ™ƒåŠ¨ä¸¥é‡ï¼Œäººä¸ºç‚¹å‡»è¿”èˆª 2020-12-24 12-39-34.mat'];
+if strcmp( GLOBAL_PARAM.ModeSel.simMode,'simulink_flightdata') % 
+    loadFlightData();
 end
-%% Í¨ÓÃ²ÎÊıÉèÖÃ
-GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'matlab_flightdata'  'simulink_flightdata'  'simulink_simdata'
-SetGlobalParam();
-%% ÔØÈë·ÉĞĞÊı¾İ
-tspan = [0,50]; % sec
-dataFileNames = {['SubFolder_·ÉĞĞÊı¾İ\20201226\·ÂÕæÊı¾İ_104 28 2020-12-26 16-03-45']};
-proj = currentProject;
-dataFileNames = {[proj.RootFolder{1},'\SubFolder_·ÉĞĞÊı¾İ\20201228\·ÂÕæÊı¾İ_104ºÅË¤»ú']};
-LoadFlightData();
-%% ¹Ì¼ş²âÊÔ»·¾³²ÎÊı
-PlaneMode.mode = selParamForPlaneMode(); % ÉèÖÃ»úĞÍ±äÁ¿
-SimulinkRunMode = 1; % ·ÉĞĞ²ÎÊıÔ´Ñ¡Ôñ£»1 ·ÉĞĞÊı¾İ  2 ·ÂÕæ(ÒÑ¾­ºÜ¾ÃÃ»ÓĞÎ¬»¤£¬¿Ï¶¨²»ºÃÓÃÁË)
-Ts_Compass.Ts_base = 0.012;
-%% ¹Ì¼ş²ÎÊı³õÊ¼»¯
-INIT_SystemArchitecture
-%% Ö´ĞĞ·ÂÕæ
-nSim = 1;
+tspan = tspan_SET{1};
+IN_SENSOR = IN_SENSOR_SET(1);
+%% åˆå§‹åŒ–å›ºä»¶å‚æ•°
+INIT_SystemArchitecture();
+%% æ‰§è¡Œä»¿çœŸ
 switch GLOBAL_PARAM.ModeSel.simMode
+    % é€‰æ‹©ä»¿çœŸæ¨¡å¼
     case 'simulink_flightdata'
-        tic
-        %% ÔËĞĞ·ÂÕæ
+        tic       
         switch mode_architechure
-            case '·ÂÕæ' % ·ÂÕæ
+            % é€‰æ‹©ä»¿çœŸæ¨¡å¼ ã€å¹¶è¡Œã€‘orã€ä¸²è¡Œã€‘
+            case 'ä»¿çœŸ'
                 modelname = 'firmwareV1000_sim';
                 tic,out = sim(modelname);toc
-                %% Êı¾İºó´¦Àí
-                [navFilterMARGRes,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_Navi.Ts_Base);
-                %% ·ÂÕæ»æÍ¼
-                AchiPlot_sim
-            case '·ÉĞĞÊı¾İ»Ø·Å' % ·ÉĞĞÊı¾İ
+            case 'é£è¡Œæ•°æ®å›æ”¾'
                 modelname = 'firmwareV1000_flight_replay';
                 INIT_Mavlink_FlightData();
+                GSParam.PATH.pathPoints = STRUCT_mavlink_mission_item_def_ARRAY;
                 GSParam.PATH.home(1) = STRUCT_mavlink_mission_item_def_ARRAY(1).x;
                 GSParam.PATH.home(2) = STRUCT_mavlink_mission_item_def_ARRAY(2).y;
                 Battery_mavlink_msg_mission_current.time = SL.PowerConsume.time_cal;
                 Battery_mavlink_msg_mission_current.signals.values = SL.PowerConsume.AllTheTimePowerConsume;
-                %% Ö´ĞĞ·ÂÕæ
-                tic
-                ArchiRes_replay = sim(modelname);
-                toc
-                %% Êı¾İºó´¦Àí
-                [navFilterMARGRes,t_alignment] = PostDataHandle_SimulinkModel(ArchiRes_replay,Ts_Navi.Ts_Base);
-                %% ·ÂÕæ»æÍ¼
-                AchiPlot_replay
+                tic,out = sim(modelname);toc
         end
         timeSpend = toc;
-        fprintf('·ÂÕæÍê³É, ºÄÊ± %.2f [s]\n',timeSpend);
-    case 'simulink_simdata'
-        % ²»ÓÃÁË
-    case 'matlab_flightdata'
-        % ²»ÓÃÁË
+        fprintf('ä»¿çœŸå®Œæˆ, è€—æ—¶ %.2f [s]\n',timeSpend);
     otherwise
-        error('´íÎóµÄ·ÂÕæÄ£Ê½')
+        error('ä»¿çœŸæ¨¡å¼é€‰æ‹©é”™è¯¯!');
 end
+%% æ•°æ®å¤„ç†
+[navFilterMARGRes_SET,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_Navi.Ts_Base);
+%% æ•°æ®ç»˜å›¾
+% å¯¼èˆªæ¨¡å—
+Plot_NaviSimData();
+% ä»»åŠ¡æ¨¡å—
+Plot_TaskSimData();
+Plot_TaskLog();

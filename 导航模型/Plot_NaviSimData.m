@@ -4,7 +4,8 @@ plotOpt = setPlotOpt;
 stepSpace = 1;
 plotEnable = 1;
 if plotEnable
-    navFilterMARGRes = navFilterMARGRes_SET(1);    
+    navFilterMARGRes = navFilterMARGRes_SET(1);   
+    IN_SENSOR = IN_SENSOR_SET(1);
     % ------------  传感器数据 ---------------
     fig = figure(102);
     GLOBAL_PARAM.hPlot.PlotSensor({'IMU1;IMU2;IMU3','mag1;mag2','ublox1','baro1','radar1','airspeed1'},IN_SENSOR(1),2,2,fig)

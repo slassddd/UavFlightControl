@@ -1,13 +1,14 @@
+%% é€šç”¨å‚æ•°è®¾ç½®
+setGlobalParam();
+%% è½½å…¥æ•°æ®
 if 0
-    % Ö´ĞĞÖ¸¶¨Êı¾İÎÄ¼ş
-    clear,clc
-    proj = currentProject;
-    dataFileNames{1} = [proj.RootFolder{1},'\','SubFolder_·ÉĞĞÊı¾İ\20201224\·ÂÕæÊı¾İ_9 ´ó·ç ÈËÎª¹Û²ì·É»ú×ËÌ¬»Î¶¯ÑÏÖØ£¬ÈËÎªµã»÷·µº½ 2020-12-24 12-39-34.mat'];
-    dataFileNames{2} = [proj.RootFolder{1},'\','SubFolder_·ÉĞĞÊı¾İ\20201224\·ÂÕæÊı¾İ_3 ×ÅÂ½²»¼ÓËø 2020-12-24 11-24-02.mat'];
+    % æ‰§è¡ŒæŒ‡å®šæ•°æ®æ–‡ä»¶
+    dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_é£è¡Œæ•°æ®\20201224\ä»¿çœŸæ•°æ®_9 å¤§é£ äººä¸ºè§‚å¯Ÿé£æœºå§¿æ€æ™ƒåŠ¨ä¸¥é‡ï¼Œäººä¸ºç‚¹å‡»è¿”èˆª 2020-12-24 12-39-34.mat'];
+    dataFileNames{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_é£è¡Œæ•°æ®\20201224\ä»¿çœŸæ•°æ®_3 ç€é™†ä¸åŠ é” 2020-12-24 11-24-02.mat'];
 else
     try
         dataFileNames = saveFileName;
-        [naviPath,name] = fileparts(which(mfilename));% ÔÚÎÄ¼şËùÔÚÄ¿Â¼±£´æ.matÎÄ¼ş
+        [naviPath,name] = fileparts(which(mfilename));% åœ¨æ–‡ä»¶æ‰€åœ¨ç›®å½•ä¿å­˜.matæ–‡ä»¶
         curPath = cd;
         cd(naviPath);
         save lastFlightDataFileLoadedForNavi.mat dataFileNames
@@ -15,81 +16,54 @@ else
         clear curPath naviPath name
     catch
         load('lastFlightDataFileLoadedForNavi');
-        fprintf('\nµ±Ç°¹¤×÷¿Õ¼äÃ»ÓĞ dataFileNames, ¶ÁÈ¡×îºóÒ»´ÎÔØÈëµÄÊı¾İÎÄ¼ş: %s\n\n',dataFileNames{1});
+        fprintf('\nå½“å‰å·¥ä½œç©ºé—´æ²¡æœ‰ dataFileNames, è¯»å–æœ€åä¸€æ¬¡è½½å…¥çš„æ•°æ®æ–‡ä»¶: %s\n\n',dataFileNames{1});
     end
 end
-%% Í¨ÓÃ²ÎÊıÉèÖÃ
-SetGlobalParam();
 %%
-Ts_Compass.Ts_base = 0.012;
-%%
-%% ÔØÈë·ÉĞĞÊı¾İ²¢Éú³É·ÂÕæ¸ñÊ½Êı¾İ
-tspan0 = [0,inf]; % sec   [0,inf]
-nFlightDataFile = length(dataFileNames);
-for i = 1:nFlightDataFile
-    [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL(i)] = step1_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
-    if ~timeSpanValidflag
-        str = sprintf('Ê±¼äÉèÖÃ´íÎó: ÖĞÖ¹Ê±¼ä(%d) < ÆğÊ¼Ê±¼ä(%d)',int64(tspan_SET{i}(2)),int64(tspan_SET{i}(1)));
-        warndlg(str)
-        return;
-    else
-        fprintf('·ÂÕæÊı¾İµÄIMUÊ±¼ä·¶Î§ [%.2f, %.2f]\n',tspan_SET{i}(1),tspan_SET{i}(2))
-    end
-end
-%% ÉèÖÃ»úĞÍ±äÁ¿
-PlaneMode.mode = selParamForPlaneMode();
-%% ÉèÖÃÂË²¨²ÎÊı
+tspan0 = [0,100]; % sec   [0,inf]
+%% è½½å…¥é£è¡Œæ•°æ®å¹¶ç”Ÿæˆä»¿çœŸæ ¼å¼æ•°æ®
+loadFlightData();
+%% è®¾ç½®æœºå‹å˜é‡
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % é€‰æ‹©æœºå‹ 
+%% è®¾ç½®æ»¤æ³¢å‚æ•°
 INIT_Navi;
-%% ÉèÖÃ·É»ú²ÎÊı
-% INIT_UAV
-%% ÈÎÎñ³õÊ¼»¯
-% INIT_TASK
-%% µØÃæÕ¾Ö¸Áî
-% INIT_GROUNDSTATION
-%% ´«¸ĞÆ÷¹ÊÕÏ²ÎÊı
+%% ä¼ æ„Ÿå™¨æ•…éšœå‚æ•°
 INIT_SensorFault
-%% ´«¸ĞÆ÷°²×°²ÎÊı
+%% ä¼ æ„Ÿå™¨å®‰è£…å‚æ•°
 INIT_SensorAlignment
-%% ĞÅºÅ¼ì²â
+%% ä¿¡å·æ£€æµ‹
 INIT_SensorIntegrity
-%% ÊÓ¾õ×ÅÂ½
+%% è§†è§‰ç€é™†
 INIT_VisualLanding
-%% ÔËĞĞ·ÂÕæ
+%% è¿è¡Œä»¿çœŸ
 modelname = 'TESTENV_NAVI';
-% modelname = 'TESTENV_NAVI_12ms';
 simMode = 'serial';  % parallel serial
+tic
 switch simMode
     case 'parallel'
-        tic
-        %         SIM_FLIGHTDATA_IN(nFlightDataFile) = Simulink.SimulationInput(modelname);
         for i = 1:nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-            IN_TASK = SL(i).OUT_TASKMODE;
-            IN_SENSOR = IN_SENSOR_SET(i);
+            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_TASK',SL(i).OUT_TASKMODE);
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',IN_SENSOR_SET(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',tspan_SET{i});
         end
-        out = parsim(SIM_FLIGHTDATA_IN,...
-            'UseFastRestart','off',...
-            'TransferBaseWorkspaceVariables','on');
+        out = parsim(SIM_FLIGHTDATA_IN,'UseFastRestart','off','TransferBaseWorkspaceVariables','off');
         %             'RunInBackground','on',...
-        for i = 1:nFlightDataFile
-            [navFilterMARGRes_SET(i),t_alignment(i)] = PostDataHandle_SimulinkModel(out(i),Ts_Compass.Ts_base);
-        end
-        timeSpend = toc;
-        fprintf('·ÂÕæÍê³É, ºÄÊ± %.2f [s]\n',timeSpend);
     case 'serial'
         for i = 1:nFlightDataFile
             IN_TASK = SL(i).OUT_TASKMODE;
             IN_SENSOR = IN_SENSOR_SET(i);
             tspan = tspan_SET{i};
-            % ·ÂÕæ
             tic,out(i) = sim(modelname);timeSpend = toc;
-            % Êı¾İºó´¦Àí
-            [navFilterMARGRes_SET(i),t_alignment(i)] = PostDataHandle_SimulinkModel(out(i),Ts_Compass.Ts_base);
-            fprintf('µÚ%d×éÊı¾İµÄ·ÂÕæÍê³É, ºÄÊ± %.2f [s]\n',i,timeSpend);
+            fprintf('ç¬¬%dç»„æ•°æ®çš„ä»¿çœŸå®Œæˆ, è€—æ—¶ %.2f [s]\n',i,timeSpend);
         end
 end
-%% ·ÂÕæ»æÍ¼
+timeSpend = toc;
+fprintf('ä»¿çœŸå®Œæˆ, è€—æ—¶ %.2f [s]\n',timeSpend);
+%% æ•°æ®åå¤„ç†
+for i = 1:nFlightDataFile
+    [navFilterMARGRes_SET(i),t_alignment(i)] = PostDataHandle_SimulinkModel(out(i),Ts_Navi.Ts_Base);
+end
+%% ä»¿çœŸç»˜å›¾
 Plot_NaviSimData();
 % Plot_NaviLogTable();

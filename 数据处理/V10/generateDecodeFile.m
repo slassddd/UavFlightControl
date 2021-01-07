@@ -230,7 +230,8 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
         end
     end
     if ~isLabelFind
-        fprintf('\t\t\t 对应的label不存在,将跳过对该变量的解析\n',thisStructShortName);
+        fprintf('\t\t\t 协议中包含 %s, 但数据中没有对应的 %s_label 或 %s\n',thisStructShortName,thisStructShortName,thisStructShortName);
+%         fprintf('\t\t\t 对应的label不存在,将跳过对该变量的解析\n',thisStructShortName);
         continue;
     end
     strToWrite{idxToWrite} = sprintf('%%%% %s\n',thisStructShortName);idxToWrite = idxToWrite + 1;

@@ -1,19 +1,19 @@
 clear,clc
-SetGlobalParam
-%% ÉèÖÃ»úĞÍ±äÁ¿
-PlaneMode.mode = selParamForPlaneMode();
-%% ³õÊ¼»¯ÈÎÎñÄ£ĞÍ
+setGlobalParam();
+%% è®¾ç½®æœºå‹å˜é‡
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % é€‰æ‹©æœºå‹
+%% åˆå§‹åŒ–ä»»åŠ¡æ¨¡å‹
 INIT_SIMPLEUAVMOTION
 INIT_TASK 
-%% µØÃæÕ¾Ö¸ÁîµÈ²ÎÊıµÄ³õÊ¼»¯
+%% åœ°é¢ç«™æŒ‡ä»¤ç­‰å‚æ•°çš„åˆå§‹åŒ–
 INIT_GROUNDSTATION
-%% ·ÉĞĞĞÔÄÜ²ÎÊı
+%% é£è¡Œæ€§èƒ½å‚æ•°
 INIT_FlightPerformance
 % INIT_MPCPath
-%% ÔËĞĞmodel
+%% è¿è¡Œmodel
 tic
 out = sim('TESTENV_Task');
 toc
-%% Êı¾İ»­Í¼
-plot_simdata
-plot_taskLogTable
+%% æ•°æ®ç”»å›¾
+Plot_TaskSimData();
+Plot_TaskLog();

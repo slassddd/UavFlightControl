@@ -7,9 +7,9 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线
 deg2m = 1/111e3;
-pathHeight = 1209;
-homeHeight = pathHeight + 0*200;
-% GSParam.PATH.home = [40.04 116.367 homeHeight]; %  lat lon alt
+GSParam.PATH.pathHeight = 500;
+homeHeight = GSParam.PATH.pathHeight + 0*200;
+GSParam.PATH.groundAltitude = 200;
 GSParam.PATH.home = [40.04 180 homeHeight]; %  lat lon alt
 GSParam.PATH.nanFlag = TASK_PARAM_V1000.nanFlag;
 GSParam.PATH.maxNum = TASK_PARAM_V1000.maxPathPointNum;
@@ -20,15 +20,15 @@ pathExmpale = 2;
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
-            1*1e3,0*1e3,pathHeight;
-            1*1e3,1*1e3,pathHeight;
-            0*1e3,1*1e3,pathHeight;
-            0*1e3,0*1e3,pathHeight;
-            -1*1e3,-1*1e3,pathHeight;
-            0*1e3,2*1e3,pathHeight;
-            2*1e3,3*1e3,pathHeight;
-            3*1e3,0*1e3,pathHeight;
-            5.1*1e3,5*1e3,pathHeight;];
+            1*1e3,0*1e3,GSParam.PATH.pathHeight;
+            1*1e3,1*1e3,GSParam.PATH.pathHeight;
+            0*1e3,1*1e3,GSParam.PATH.pathHeight;
+            0*1e3,0*1e3,GSParam.PATH.pathHeight;
+            -1*1e3,-1*1e3,GSParam.PATH.pathHeight;
+            0*1e3,2*1e3,GSParam.PATH.pathHeight;
+            2*1e3,3*1e3,GSParam.PATH.pathHeight;
+            3*1e3,0*1e3,GSParam.PATH.pathHeight;
+            5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 标准矩形测区
         numLine = 0;
         lon_left = 1e3;
@@ -36,8 +36,8 @@ switch pathExmpale
         lat_space = 150;
         %         lon_right = 1.5e3;
         %         lat_space = 50;
-        GSParam.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, pathHeight];
-        GSParam.PATH.paths_m(1,3) = pathHeight;
+        GSParam.PATH.paths_m(1,:) = 0*[0*lat_space, 0.5*lon_left, GSParam.PATH.pathHeight];
+        GSParam.PATH.paths_m(1,3) = GSParam.PATH.pathHeight;
         nPoints = 5;
         for i = 2:nPoints
             if rem(i,4) == 2
@@ -52,7 +52,7 @@ switch pathExmpale
             if rem(i-1,2) == 1
                 numLine = numLine + 1;
             end
-            GSParam.PATH.paths_m(i,:) = [numLine*lat_space, lon_pos, pathHeight];
+            GSParam.PATH.paths_m(i,:) = [numLine*lat_space, lon_pos, GSParam.PATH.pathHeight];
         end
 %         GSParam.PATH.paths_m(5,:) = GSParam.PATH.paths_m(4,:);
         angle = 0*pi;
@@ -61,26 +61,26 @@ switch pathExmpale
         GSParam.PATH.paths_m(1:nPoints,1:2) = GSParam.PATH.paths_m(1:nPoints,1:2)*DCM;
     case 3
         GSParam.PATH.paths_m(1:9,:) = [...
-            1*1e2,0*1e3,pathHeight;
-            1*1e2,1*1e3,pathHeight;
-            2*1e2,1*1e3,pathHeight;
-            2*1e2,2*1e3,pathHeight;
-            4*1e2,2*1e3,pathHeight;
-            4*1e2,3*1e3,pathHeight;
-            5*1e2,3*1e3,pathHeight;
-            10*1e2,2*1e3,pathHeight;
-            16*1e2,2*1e3,pathHeight;];
+            1*1e2,0*1e3,GSParam.PATH.pathHeight;
+            1*1e2,1*1e3,GSParam.PATH.pathHeight;
+            2*1e2,1*1e3,GSParam.PATH.pathHeight;
+            2*1e2,2*1e3,GSParam.PATH.pathHeight;
+            4*1e2,2*1e3,GSParam.PATH.pathHeight;
+            4*1e2,3*1e3,GSParam.PATH.pathHeight;
+            5*1e2,3*1e3,GSParam.PATH.pathHeight;
+            10*1e2,2*1e3,GSParam.PATH.pathHeight;
+            16*1e2,2*1e3,GSParam.PATH.pathHeight;];
     case 4
         GSParam.PATH.paths_m(1:9,:) = [...
-            0,0,pathHeight;
-            -1500,1500,pathHeight;
-            -1600,1600,pathHeight;
-            2*1e2,2*1e3,pathHeight;
-            4*1e2,2*1e3,pathHeight;
-            4*1e2,3*1e3,pathHeight;
-            5*1e2,3*1e3,pathHeight;
-            10*1e2,2*1e3,pathHeight;
-            16*1e2,2*1e3,pathHeight;];
+            0,0,GSParam.PATH.pathHeight;
+            -1500,1500,GSParam.PATH.pathHeight;
+            -1600,1600,GSParam.PATH.pathHeight;
+            2*1e2,2*1e3,GSParam.PATH.pathHeight;
+            4*1e2,2*1e3,GSParam.PATH.pathHeight;
+            4*1e2,3*1e3,GSParam.PATH.pathHeight;
+            5*1e2,3*1e3,GSParam.PATH.pathHeight;
+            10*1e2,2*1e3,GSParam.PATH.pathHeight;
+            16*1e2,2*1e3,GSParam.PATH.pathHeight;];
 end
 GSParam.PATH.paths_ddm = GSParam.PATH.paths_m;
 GSParam.PATH.paths_ddm(1,:) = GSParam.PATH.home;
@@ -192,3 +192,7 @@ CMD_CircleHover = STRUCT_mavlink_msg_id_command_long;
 CMD_CircleHover.command = GSParam.MavLinkInfo.CustomCmdInfo.num_CircleHover; % 定点悬停调整
 CMD_GroundStandBy = STRUCT_mavlink_msg_id_command_long;
 CMD_GroundStandBy.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GroundStandBy; % 定点悬停调整
+%%
+fprintf('航线参数设置(仅用于仿真):\n')
+fprintf('\t\t地面海拔高度: %d [m]\n',GSParam.PATH.groundAltitude);
+fprintf('\t\t航线离地高度: %d [m]\n',GSParam.PATH.pathHeight);

@@ -90,7 +90,7 @@ TASK_PARAM_V10.enable8calib = false;
 TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
-% switch PlaneMode.mode
+% switch SimParam.SystemInfo.planeMode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
 %         % V10 需修改的参数
