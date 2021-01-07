@@ -1,4 +1,4 @@
-Ts_FlightPerf.Ts_base = 0.036;
+function FLIGHT_PERF_PARAM_V10 = INIT_FlightPerformance_V10()
 FLIGHT_PERF_PARAM_V10 = Simulink.Bus.createMATLABStruct('BUS_FLIGHTPERF_PARAM');
 FLIGHT_PERF_PARAM_V10.powerRate_GroundStandBy = 1/450; % 地面待机耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.powerRate_FixCruise = 1/53; % 固定翼巡航耗电率,[%/sec]

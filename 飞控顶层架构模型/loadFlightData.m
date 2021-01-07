@@ -1,4 +1,6 @@
-% function [IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,timeSpanValidflag,SL,SL_LOAD] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR)
+function [IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,timeSpanValidflag,SL,SL_LOAD,nFlightDataFile] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR)
+%% output
+% IN_SENSOR_SIM_SET: 用于from workspace模块
 nFlightDataFile = length(dataFileNames);
 for i = 1:nFlightDataFile
     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL(i),SL_LOAD(i)] = sub_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);

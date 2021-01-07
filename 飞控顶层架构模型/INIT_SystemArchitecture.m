@@ -7,11 +7,11 @@ INIT_Navi
 %% 无人机动力学
 INIT_UAV
 %% 任务初始化
-INIT_TASK
+[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_Task();
 %% 简化的运动模型
-INIT_SIMPLEUAVMOTION
+SimParam.SimpleUavModel = INIT_UavModelForTaskSim();
 %% 地面站指令
-INIT_GROUNDSTATION
+SimParam.GroundStation = INIT_GroundStation(TASK_PARAM_V1000);
 %% 传感器故障参数
 INIT_SensorFault
 %% 传感器安装参数
@@ -19,7 +19,7 @@ INIT_SensorAlignment
 %% 信号检测
 INIT_SensorIntegrity
 %% 飞行性能
-INIT_FlightPerformance
+[SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = INIT_FlightPerformance();
 %% 视觉着陆
 INIT_VisualLanding
 %% 设置模块优先级

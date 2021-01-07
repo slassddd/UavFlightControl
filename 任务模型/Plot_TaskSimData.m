@@ -1,9 +1,9 @@
-% function Plot_TaskSimData(out)
-%% ÈÎÎñÄ£¿é·ÂÕæÊı¾İ»æÍ¼
+function Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam)
+%% ä»»åŠ¡æ¨¡å—ä»¿çœŸæ•°æ®ç»˜å›¾
 plotmode = '3d';
 maxPathNum = TASK_PARAM_V1000.maxPathPointNum;
 nanFlag = TASK_PARAM_V1000.nanFlag;
-% º½µãĞÅÏ¢
+% èˆªç‚¹ä¿¡æ¯
 mavlinkPathData = SimParam.GroundStation.mavlinkPathPoints;
 for i = 1:length(mavlinkPathData)
     if mavlinkPathData(i).x == 0 || mavlinkPathData(i).y == 0
@@ -16,11 +16,11 @@ homeLLh = [mavlinkPathData(1).x,...
     mavlinkPathData(1).z];
 breakLLh = unique( out.Task_TaskModeData.LLATaskInterrupt.Data, 'rows' );
 breakLLh(breakLLh(:,1)==0,:) = [];
-% ÅÄÕÕÎ»ÖÃ
+% æ‹ç…§ä½ç½®
 shot_lat = out.Task_payload.CAMERA.LLA.Data(:,1); shot_lat(shot_lat==0)=nan;
 shot_lon = out.Task_payload.CAMERA.LLA.Data(:,2); shot_lon(shot_lon==0)=nan;
 shot_height = out.Task_payload.CAMERA.LLA.Data(:,3);
-% ·ÉĞĞ×´Ì¬
+% é£è¡ŒçŠ¶æ€
 LLh = permute(out.Task_FlightData.curLLA.Data,[3,2,1]);
 zeroIdxLLh = find(LLh(:,1)==0);
 LLh(zeroIdxLLh,:) = nan*zeros(length(zeroIdxLLh),3);
@@ -81,28 +81,28 @@ switch plotmode
         end
         xlabel('lon')
         ylabel('lat')
-        zlabel('height(²»ÊÇº£°Î)')
+        zlabel('height(ä¸æ˜¯æµ·æ‹”)')
         grid on;
         set(gca,'DataAspectRatio' ,[1 1 1e4])
 end
-%% Ä£Ê½ÇúÏß
+%% æ¨¡å¼æ›²çº¿
 res_TaskMode = out.Task_TaskModeData.flightTaskMode.Data;
 res_RTInfo = out.Task_RTInfo.Task.Data;
 res_ControlMode = out.Task_TaskModeData.flightControlMode.Data;
 res_uavMode = out.Task_TaskModeData.uavMode.Data;
 if 0
     figure
-    % ÈÎÎñÄ£Ê½×÷Í¼
+    % ä»»åŠ¡æ¨¡å¼ä½œå›¾
     subplot(221)
     data = res_TaskMode;
     plotEnum(data);
     legend('flightTaskMode')
-    % ¿ØÖÆÄ£Ê½
+    % æ§åˆ¶æ¨¡å¼
     subplot(222)
     data = res_ControlMode;
     plotEnum(data);
     legend('flightControlMode')
-    % ·É»úÄ£Ê½
+    % é£æœºæ¨¡å¼
     subplot(223)
     data = res_uavMode;
     plotEnum(data);
@@ -113,7 +113,7 @@ if 0
     plotEnum(data);
     legend('RTinfo')
 end
-%% »æÖÆº½µã £¨°üÀ¨ÖĞ¼äº½µã£©
+%% ç»˜åˆ¶èˆªç‚¹ ï¼ˆåŒ…æ‹¬ä¸­é—´èˆªç‚¹ï¼‰
 prePathPoints = permute(out.Task_TaskModeData.prePathPoint_LLA.Data,[3,2,1]);
 prePathPoints(prePathPoints(:,1) == 0,:) = [];
 curPathPoints = permute(out.Task_TaskModeData.curPathPoint_LLA.Data,[3,2,1]);
@@ -126,5 +126,5 @@ switch plotmode
         plot3(prePathPoints(:,2),prePathPoints(:,1),mavlinkPathData(2).z*ones(size(prePathPoints(:,1))),'r*');hold on;
         plot3(curPathPoints(:,2),curPathPoints(:,1),mavlinkPathData(2).z*ones(size(curPathPoints(:,1))),'ko');hold on;
 end
-%% ÅÌĞıµã
+%% ç›˜æ—‹ç‚¹
 plot(out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,2),out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,1),'ko');

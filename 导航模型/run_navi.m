@@ -20,9 +20,9 @@ else
     end
 end
 %%
-tspan0 = [0,500]; % sec   [0,inf]
+tspan0 = [0,100]; % sec   [0,inf]
 %% 载入飞行数据并生成仿真格式数据
-loadFlightData();
+[IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,tempValid,SL,SL_LOAD,nFlightDataFile] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~tempValid,return;end
 %% 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
 %% 设置滤波参数

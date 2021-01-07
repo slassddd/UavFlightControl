@@ -8,11 +8,11 @@ SimulinkRunMode = 1; % 飞行参数源选择；1 飞行数据  2 仿真(已经�
 GLOBAL_PARAM.ModeSel.simMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simulink_simdata'
 setGlobalParam();
 %% 载入飞行数据
-tspan0 = [0,inf]; % sec
+tspan0 = [0,20]; % sec
 dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
 % dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
 if strcmp( GLOBAL_PARAM.ModeSel.simMode,'simulink_flightdata') % 
-    loadFlightData();
+     [IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,tempValid,SL,SL_LOAD,nFlightDataFile] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~tempValid,return;end
 end
 tspan = tspan_SET{1};
 IN_SENSOR = IN_SENSOR_SET(1);
@@ -50,5 +50,5 @@ end
 % 导航模块
 Plot_NaviSimData();
 % 任务模块
-Plot_TaskSimData();
+Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam);
 Plot_TaskLog();

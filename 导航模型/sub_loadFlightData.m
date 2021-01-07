@@ -1,4 +1,4 @@
-function [IN_SENSOR,IN_SENSOR_SIM,tspan,validflag,SL,SL_LOAD] = loadFlightData(tspan,dataFileName,BUS_SENSOR)
+function [IN_SENSOR,IN_SENSOR_SIM,tspan,validflag,SL,SL_LOAD] = sub_loadFlightData(tspan,dataFileName,BUS_SENSOR)
 fprintf('log file:\t%s\n',dataFileName)
 loadData = load(dataFileName,'IN_SENSOR','SL','SL_LOAD');
 fprintf('IMU time span: [%.2f, %.2f]\n',loadData.IN_SENSOR.IMU1.time(1),loadData.IN_SENSOR.IMU1.time(end))
