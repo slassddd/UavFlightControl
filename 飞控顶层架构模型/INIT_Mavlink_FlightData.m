@@ -1,3 +1,0 @@
-MavlinkSimData.IN_MAVLINK_mavlink_msg_id_command_long_time = SL_LOAD.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time;
-MavlinkSimData.mavlink_msg_id_command_long = SL_LOAD.IN_MAVLINK.mavlink_msg_id_command_long;
-STRUCT_mavlink_mission_item_def_ARRAY = SL_LOAD.IN_MAVLINK.mavlink_mission_item_def;

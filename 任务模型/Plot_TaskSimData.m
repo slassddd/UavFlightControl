@@ -1,8 +1,10 @@
 % function Plot_TaskSimData(out)
 %% 任务模块仿真数据绘图
 plotmode = '3d';
+maxPathNum = TASK_PARAM_V1000.maxPathPointNum;
+nanFlag = TASK_PARAM_V1000.nanFlag;
 % 航点信息
-mavlinkPathData = STRUCT_mavlink_mission_item_def_ARRAY;
+mavlinkPathData = SimParam.GroundStation.mavlinkPathPoints;
 for i = 1:length(mavlinkPathData)
     if mavlinkPathData(i).x == 0 || mavlinkPathData(i).y == 0
         mavlinkPathData(i).x = nan;
@@ -34,12 +36,12 @@ switch plotmode
         if ~isempty(breakLLh)
             plot(breakLLh(end,2),breakLLh(end,1),'Marker','diamond','color','g');hold on;
         end
-        for i = 1:GSParam.PATH.maxNum
+        for i = 1:maxPathNum
             curlat = mavlinkPathData(i).x;
             curlon = mavlinkPathData(i).y;
-            if curlat ~= GSParam.PATH.nanFlag
+            if curlat ~= nanFlag
                 plot(curlon,curlat,'ro');hold on;
-                if mavlinkPathData(i+1).x ~= GSParam.PATH.nanFlag && i > 1
+                if mavlinkPathData(i+1).x ~= nanFlag && i > 1
                     nextlat = mavlinkPathData(i+1).x;
                     nextlon = mavlinkPathData(i+1).y;
                     plot([curlon,nextlon],...
@@ -60,13 +62,13 @@ switch plotmode
             plot3(breakLLh(end,2),breakLLh(end,1),breakLLh(end,3),'Marker','diamond','color','g');hold on;
         end
         plot(homeLLh(2),homeLLh(1),'r+');hold on;
-        for i = 1:GSParam.PATH.maxNum-1
+        for i = 1:maxPathNum-1
             curlat = mavlinkPathData(i).x;
             curlon = mavlinkPathData(i).y;
             curheight = mavlinkPathData(i).z;
-            if curlat ~= GSParam.PATH.nanFlag
+            if curlat ~= nanFlag
                 plot3(curlon,curlat,curheight,'ro');hold on;
-                if mavlinkPathData(i+1).x ~= GSParam.PATH.nanFlag && i > 1
+                if mavlinkPathData(i+1).x ~= nanFlag && i > 1
                     nextlat = mavlinkPathData(i+1).x;
                     nextlon = mavlinkPathData(i+1).y;
                     nextheight = mavlinkPathData(i+1).z;

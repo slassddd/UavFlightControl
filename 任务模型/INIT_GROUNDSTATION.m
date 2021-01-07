@@ -1,3 +1,4 @@
+function [] = INIT_GROUNDSTATION();
 Ts_GroundStation.Ts_base = 0.036;
 %
 mission_item_def.DataScope = 'Auto';
@@ -9,8 +10,8 @@ STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMM
 deg2m = 1/111e3;
 GSParam.PATH.pathHeight = 500;
 homeHeight = GSParam.PATH.pathHeight + 0*200;
-GSParam.PATH.groundAltitude = 200;
-GSParam.PATH.home = [40.04 180 homeHeight]; %  lat lon alt
+SimParam.GroundStation.groundAltitude = 200;
+SimParam.GroundStation.mavlinkHome = [40.04 180 homeHeight]; %  lat lon alt
 GSParam.PATH.nanFlag = TASK_PARAM_V1000.nanFlag;
 GSParam.PATH.maxNum = TASK_PARAM_V1000.maxPathPointNum;
 GSParam.PATH.speed = 18;
@@ -83,11 +84,11 @@ switch pathExmpale
             16*1e2,2*1e3,GSParam.PATH.pathHeight;];
 end
 GSParam.PATH.paths_ddm = GSParam.PATH.paths_m;
-GSParam.PATH.paths_ddm(1,:) = GSParam.PATH.home;
+GSParam.PATH.paths_ddm(1,:) = SimParam.GroundStation.mavlinkHome;
 for i = 2:GSParam.PATH.maxNum
     if GSParam.PATH.paths_m(i,1) ~= GSParam.PATH.nanFlag
-        GSParam.PATH.paths_ddm(i,1) = GSParam.PATH.home(1) + GSParam.PATH.paths_m(i,1)*deg2m - 0.01;
-        GSParam.PATH.paths_ddm(i,2) = GSParam.PATH.home(2) + GSParam.PATH.paths_m(i,2)*deg2m/cos(GSParam.PATH.home(1)*pi/180) - 0.014;
+        GSParam.PATH.paths_ddm(i,1) = SimParam.GroundStation.mavlinkHome(1) + GSParam.PATH.paths_m(i,1)*deg2m - 0.01;
+        GSParam.PATH.paths_ddm(i,2) = SimParam.GroundStation.mavlinkHome(2) + GSParam.PATH.paths_m(i,2)*deg2m/cos(SimParam.GroundStation.mavlinkHome(1)*pi/180) - 0.014;
         GSParam.PATH.paths_ddm(i,3) = GSParam.PATH.paths_m(i,3);
     end
 end
@@ -96,49 +97,47 @@ pathSimMode = 'sim'; % 'sim' 'flight'
 switch pathSimMode
     case 'sim'
         for i = 1:GSParam.PATH.maxNum
-            STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
-            STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);
-            STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
-            STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
-            STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = GSParam.PATH.speed;
-            STRUCT_mavlink_mission_item_def_ARRAY(i).x = single(GSParam.PATH.paths_ddm(i,1));  % lattitude
-            STRUCT_mavlink_mission_item_def_ARRAY(i).y = single(GSParam.PATH.paths_ddm(i,2));  % longitude
-            STRUCT_mavlink_mission_item_def_ARRAY(i).z = single(GSParam.PATH.paths_ddm(i,3));  % altitude
+            SimParam.GroundStation.mavlinkPathPoints(i) = STRUCT_mavlink_mission_item_def;
+            SimParam.GroundStation.mavlinkPathPoints(i).param1 = rem(i,2);
+            SimParam.GroundStation.mavlinkPathPoints(i).seq = i; % 航点序列号（0：Home点）
+            SimParam.GroundStation.mavlinkPathPoints(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+            SimParam.GroundStation.mavlinkPathPoints(i).param4 = GSParam.PATH.speed;
+            SimParam.GroundStation.mavlinkPathPoints(i).x = single(GSParam.PATH.paths_ddm(i,1));  % lattitude
+            SimParam.GroundStation.mavlinkPathPoints(i).y = single(GSParam.PATH.paths_ddm(i,2));  % longitude
+            SimParam.GroundStation.mavlinkPathPoints(i).z = single(GSParam.PATH.paths_ddm(i,3));  % altitude
         end
     case 'flight'
         filename = 'bb3a77e6787849198733a699b82b4be3(7).log';
         LogWPdata = importGroundStationLog(filename);
         for i = 1:GSParam.PATH.maxNum
             if i <= length(LogWPdata)
-                STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = LogWPdata(i).param1;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
-                STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
-                STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = GSParam.PATH.speed;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).x = single(LogWPdata(i).lat);  % lattitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).y = single(LogWPdata(i).lon);  % longitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).z = single(LogWPdata(i).height);  % altitude
+                SimParam.GroundStation.mavlinkPathPoints(i) = STRUCT_mavlink_mission_item_def;
+                SimParam.GroundStation.mavlinkPathPoints(i).param1 = LogWPdata(i).param1;
+                SimParam.GroundStation.mavlinkPathPoints(i).seq = i; % 航点序列号（0：Home点）
+                SimParam.GroundStation.mavlinkPathPoints(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+                SimParam.GroundStation.mavlinkPathPoints(i).param4 = GSParam.PATH.speed;
+                SimParam.GroundStation.mavlinkPathPoints(i).x = single(LogWPdata(i).lat);  % lattitude
+                SimParam.GroundStation.mavlinkPathPoints(i).y = single(LogWPdata(i).lon);  % longitude
+                SimParam.GroundStation.mavlinkPathPoints(i).z = single(LogWPdata(i).height);  % altitude
             else
-                STRUCT_mavlink_mission_item_def_ARRAY(i) = STRUCT_mavlink_mission_item_def;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).param1 = rem(i,2);
-                STRUCT_mavlink_mission_item_def_ARRAY(i).seq = i; % 航点序列号（0：Home点）
-                STRUCT_mavlink_mission_item_def_ARRAY(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
-                STRUCT_mavlink_mission_item_def_ARRAY(i).param4 = GSParam.PATH.speed;
-                STRUCT_mavlink_mission_item_def_ARRAY(i).x = GSParam.PATH.paths_ddm(i,1);  % lattitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).y = GSParam.PATH.paths_ddm(i,2);  % longitude
-                STRUCT_mavlink_mission_item_def_ARRAY(i).z = GSParam.PATH.paths_ddm(i,3);  % altitude
+                SimParam.GroundStation.mavlinkPathPoints(i) = STRUCT_mavlink_mission_item_def;
+                SimParam.GroundStation.mavlinkPathPoints(i).param1 = rem(i,2);
+                SimParam.GroundStation.mavlinkPathPoints(i).seq = i; % 航点序列号（0：Home点）
+                SimParam.GroundStation.mavlinkPathPoints(i).autocontinue = 1; % 悬停拐弯:0, 协调拐弯:1
+                SimParam.GroundStation.mavlinkPathPoints(i).param4 = GSParam.PATH.speed;
+                SimParam.GroundStation.mavlinkPathPoints(i).x = GSParam.PATH.paths_ddm(i,1);  % lattitude
+                SimParam.GroundStation.mavlinkPathPoints(i).y = GSParam.PATH.paths_ddm(i,2);  % longitude
+                SimParam.GroundStation.mavlinkPathPoints(i).z = GSParam.PATH.paths_ddm(i,3);  % altitude
             end
         end
 end
-%                 STRUCT_mavlink_mission_item_def_ARRAY(1).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 600/111e3;
-%                 STRUCT_mavlink_mission_item_def_ARRAY(1).y = STRUCT_mavlink_mission_item_def_ARRAY(2).y + 300/111e3;
 %% home点额外高度
-                STRUCT_mavlink_mission_item_def_ARRAY(1).z = STRUCT_mavlink_mission_item_def_ARRAY(1).z + 0*200;
+                SimParam.GroundStation.mavlinkPathPoints(1).z = SimParam.GroundStation.mavlinkPathPoints(1).z + 0*200;
                 
-                STRUCT_mavlink_mission_item_def_ARRAY1 = STRUCT_mavlink_mission_item_def_ARRAY;
-                STRUCT_mavlink_mission_item_def_ARRAY1(2).x = STRUCT_mavlink_mission_item_def_ARRAY(2).x + 0.005;
+                SimParam.GroundStation.mavlinkPathPoints1 = SimParam.GroundStation.mavlinkPathPoints;
+                SimParam.GroundStation.mavlinkPathPoints1(2).x = SimParam.GroundStation.mavlinkPathPoints(2).x + 0.005;
 %%
-% STRUCT_mavlink_mission_item_def_ARRAY(4).param1 = 1;
+% SimParam.GroundStation.mavlinkPathPoints(4).param1 = 1;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch = 20;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_TakeOff = 23;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_AirStandBy = 28;
@@ -157,42 +156,42 @@ GSParam.MavLinkInfo.CustomCmdInfo.num_CircleHover = 1007; % 定点绕圈盘旋
 GSParam.MavLinkInfo.CustomCmdInfo.num_GroundStandBy = uint8(ENUM_MavlinkStandardCmd.MavCmd_EnterGroundStandby); % 进入地面模式
 % 控制指令 -------------------------------------------------------------
 % 内置指令
-CMD_GoHome = STRUCT_mavlink_msg_id_command_long;
-CMD_GoHome.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch;  % 返航
-CMD_AirStandBy = STRUCT_mavlink_msg_id_command_long;
-CMD_AirStandBy.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_AirStandBy;  % 暂停盘旋
-CMD_Continue = STRUCT_mavlink_msg_id_command_long;
-CMD_Continue.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_Continue; % 继续
-CMD_TakeOff = STRUCT_mavlink_msg_id_command_long;
-CMD_TakeOff.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_TakeOff; % 起飞
-CMD_SwitchAltitude = STRUCT_mavlink_msg_id_command_long;
-CMD_SwitchAltitude.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_SwitchAltitude; % 切换高度
-CMD_SwitchAltitude.param1 = 50;
-CMD_LandStart = STRUCT_mavlink_msg_id_command_long;
-CMD_LandStart.param1 = 1;
-CMD_LandStart.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_LandStart; % 着陆
-CMD_CamTriggDist = STRUCT_mavlink_msg_id_command_long;
-CMD_CamTriggDist.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_CamTriggDist; % 相机触发距离
-CMD_CamTriggDist.param1 = 30;
+SimParam.GroundStation.CMD_GoHome = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_GoHome.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_ReturnToLaunch;  % 返航
+SimParam.GroundStation.CMD_AirStandBy = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_AirStandBy.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_AirStandBy;  % 暂停盘旋
+SimParam.GroundStation.CMD_Continue = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_Continue.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_Continue; % 继续
+SimParam.GroundStation.CMD_TakeOff = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_TakeOff.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_TakeOff; % 起飞
+SimParam.GroundStation.CMD_SwitchAltitude = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_SwitchAltitude.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_SwitchAltitude; % 切换高度
+SimParam.GroundStation.CMD_SwitchAltitude.param1 = 50;
+SimParam.GroundStation.CMD_LandStart = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_LandStart.param1 = 1;
+SimParam.GroundStation.CMD_LandStart.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_LandStart; % 着陆
+SimParam.GroundStation.CMD_CamTriggDist = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_CamTriggDist.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_CamTriggDist; % 相机触发距离
+SimParam.GroundStation.CMD_CamTriggDist.param1 = 30;
 % 自定义指令
-CMD_GoIntoPath = STRUCT_mavlink_msg_id_command_long;
-CMD_GoIntoPath.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GoIntoPath; % 进入航线
-CMD_StartProfile = STRUCT_mavlink_msg_id_command_long;
-CMD_StartProfile.command = GSParam.MavLinkInfo.CustomCmdInfo.num_StartProfile; % 开始或继续之前中断的
-CMD_ReGoIntoPath = STRUCT_mavlink_msg_id_command_long;
-CMD_ReGoIntoPath.command = GSParam.MavLinkInfo.CustomCmdInfo.num_ReGoIntoPath; % 开始或重新开始
-CMD_HoverAdjust = STRUCT_mavlink_msg_id_command_long;
-CMD_HoverAdjust.command = GSParam.MavLinkInfo.CustomCmdInfo.num_HoverAdjust; % 定点悬停调整
-CMD_Fix2Rotor = STRUCT_mavlink_msg_id_command_long;
-CMD_Fix2Rotor.param1 = 1;
-CMD_Fix2Rotor.command = GSParam.MavLinkInfo.CustomCmdInfo.num_Fix2Rotor; % 定点悬停调整
-CMD_Rotor2Fix = STRUCT_mavlink_msg_id_command_long;
-CMD_Rotor2Fix.command = GSParam.MavLinkInfo.CustomCmdInfo.num_Rotor2Fix; % 定点悬停调整
-CMD_CircleHover = STRUCT_mavlink_msg_id_command_long;
-CMD_CircleHover.command = GSParam.MavLinkInfo.CustomCmdInfo.num_CircleHover; % 定点悬停调整
-CMD_GroundStandBy = STRUCT_mavlink_msg_id_command_long;
-CMD_GroundStandBy.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GroundStandBy; % 定点悬停调整
+SimParam.GroundStation.CMD_GoIntoPath = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_GoIntoPath.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GoIntoPath; % 进入航线
+SimParam.GroundStation.CMD_StartProfile = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_StartProfile.command = GSParam.MavLinkInfo.CustomCmdInfo.num_StartProfile; % 开始或继续之前中断的
+SimParam.GroundStation.CMD_ReGoIntoPath = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_ReGoIntoPath.command = GSParam.MavLinkInfo.CustomCmdInfo.num_ReGoIntoPath; % 开始或重新开始
+SimParam.GroundStation.CMD_HoverAdjust = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_HoverAdjust.command = GSParam.MavLinkInfo.CustomCmdInfo.num_HoverAdjust; % 定点悬停调整
+SimParam.GroundStation.CMD_Fix2Rotor = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_Fix2Rotor.param1 = 1;
+SimParam.GroundStation.CMD_Fix2Rotor.command = GSParam.MavLinkInfo.CustomCmdInfo.num_Fix2Rotor; % 定点悬停调整
+SimParam.GroundStation.CMD_Rotor2Fix = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_Rotor2Fix.command = GSParam.MavLinkInfo.CustomCmdInfo.num_Rotor2Fix; % 定点悬停调整
+SimParam.GroundStation.CMD_CircleHover = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_CircleHover.command = GSParam.MavLinkInfo.CustomCmdInfo.num_CircleHover; % 定点悬停调整
+SimParam.GroundStation.CMD_GroundStandBy = STRUCT_mavlink_msg_id_command_long;
+SimParam.GroundStation.CMD_GroundStandBy.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GroundStandBy; % 定点悬停调整
 %%
 fprintf('航线参数设置(仅用于仿真):\n')
-fprintf('\t\t地面海拔高度: %d [m]\n',GSParam.PATH.groundAltitude);
+fprintf('\t\t地面海拔高度: %d [m]\n',SimParam.GroundStation.groundAltitude);
 fprintf('\t\t航线离地高度: %d [m]\n',GSParam.PATH.pathHeight);

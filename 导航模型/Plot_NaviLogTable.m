@@ -1,5 +1,5 @@
 % 解析Log事件数据
-tempIdx = 1:length(out.naviLogData1.time_sec.Data);
+tempIdx = 1:length(out.naviLogData1.time_sec.Data)/10;
 % tempIdx = 1:10000;
 naviLogDataRes(1).time_sec = out.naviLogData1.time_sec.Data(tempIdx);
 naviLogDataRes(1).idx = out.naviLogData1.idx.Data(tempIdx);

@@ -20,7 +20,7 @@ else
     end
 end
 %%
-tspan0 = [0,100]; % sec   [0,inf]
+tspan0 = [0,500]; % sec   [0,inf]
 %% 载入飞行数据并生成仿真格式数据
 loadFlightData();
 %% 设置机型变量
