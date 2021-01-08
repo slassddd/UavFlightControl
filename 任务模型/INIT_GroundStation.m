@@ -1,4 +1,5 @@
 function GroundStationParam = INIT_GroundStation(TaskParam)
+global GLOBAL_PARAM
 %% 载入Bus
 load('IOBusInfo_V1000');
 %% 初始化地面站模块参数，包括仿真航线
@@ -193,6 +194,10 @@ GroundStationParam.CMD_CircleHover.command = GSParam.MavLinkInfo.CustomCmdInfo.n
 GroundStationParam.CMD_GroundStandBy = STRUCT_mavlink_msg_id_command_long;
 GroundStationParam.CMD_GroundStandBy.command = GSParam.MavLinkInfo.CustomCmdInfo.num_GroundStandBy; % 瀹氱偣鎮仠璋冩暣
 %%
-fprintf('地面站模块参数(仅用于仿真):\n')
-fprintf('\t\thome点海拔高度: %d [m]\n',GroundStationParam.groundAltitude);
-fprintf('\t\t航线离地高度: %d [m]\n',GSParam.PATH.pathHeight);
+fprintf('[%s]\n',mfilename);
+fprintf('%s周期: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,GroundStationParam.Ts_base);
+fprintf('%s地面站仿真参数(仅用于仿真):\n',GLOBAL_PARAM.Print.lineHead);
+fprintf('%s%shome点海拔高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GroundStationParam.groundAltitude);
+% fprintf('%s%s有效航点数: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,);
+fprintf('%s%s航线离地高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
+fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);

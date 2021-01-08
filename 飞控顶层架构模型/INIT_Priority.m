@@ -1,5 +1,7 @@
+function INIT_Priority(ArchiModelName)
+global GLOBAL_PARAM
 % 数值越低优先级越高，可为负值
-ArchiModelName = 'RefModel_SystemArchitecture';
+% ArchiModelName = 'RefModel_SystemArchitecture';
 load_system(ArchiModelName);
 FlightManagerName = 'FlightManager';
 ControllerName = 'Controller';
@@ -31,4 +33,10 @@ SystemPriority.FlightManager = 1;
 SystemPriority.Controller = 2;
 set_param(sub_ManagerModel,'priority',num2str(SystemPriority.FlightManager));
 set_param(sub_ControlModel,'priority',num2str(SystemPriority.Controller));
-fprintf('优先级设置 (数值越低优先级越高):\n\t任务相关模块 (%s)\t %2d\n\t控制模块 (%s)\t%2d\n',sub_ManagerModel,SystemPriority.FlightManager,sub_ControlModel,SystemPriority.Controller);
+%%
+fprintf('[%s]\n',mfilename);
+fprintf('%s优先级设置 (数值越低优先级越高):\n',GLOBAL_PARAM.Print.lineHead);
+fprintf('%s%s任务相关模块 (%s)\t %2d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,sub_ManagerModel,SystemPriority.FlightManager);
+fprintf('%s%s控制模块 (%s)\t %2d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,sub_ControlModel,SystemPriority.Controller);
+% fprintf('优先级设置 (数值越低优先级越高):\n\t任务相关模块 (%s)\t %2d\n\t控制模块 (%s)\t%2d\n',sub_ManagerModel,SystemPriority.FlightManager,sub_ControlModel,SystemPriority.Controller);
+fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);

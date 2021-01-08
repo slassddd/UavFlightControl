@@ -1,7 +1,8 @@
 function DataSet = sub_loadFlightData(tspan,dataFileName,BUS_SENSOR)
-fprintf('log file:\t%s\n',dataFileName)
+global GLOBAL_PARAM
 loadData = load(dataFileName,'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc');
-fprintf('IMU time span: [%.2f, %.2f]\n',loadData.IN_SENSOR.IMU1.time(1),loadData.IN_SENSOR.IMU1.time(end))
+fprintf('%sIMU time span: [%.2f, %.2f]\n',GLOBAL_PARAM.Print.lineHead,...
+    loadData.IN_SENSOR.IMU1.time(1),loadData.IN_SENSOR.IMU1.time(end));
 if tspan(2) > loadData.IN_SENSOR.IMU1.time(end)
     tspan(2) = loadData.IN_SENSOR.IMU1.time(end);
 end

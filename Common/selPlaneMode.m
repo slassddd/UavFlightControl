@@ -1,4 +1,5 @@
 function [out,isCancel] = selPlaneMode()
+global GLOBAL_PARAM
 %% 生成机型变量
 % planeMode_sel = questdlg('选择机型', ...
 %     '选择机型', ...
@@ -9,7 +10,8 @@ function [out,isCancel] = selPlaneMode()
 %% 获取机型变量并显示
 idxValid = 1;
 maxIdx = 1000;
-fprintf('警告: 若机型枚举变量(ENUM_plane_mode)的值大于 %d, 则列表中的机型显示将不完全\n',maxIdx);
+fprintf('%s[WARNING]: 若机型枚举变量(ENUM_plane_mode)的值大于 %d, 则列表中的机型显示将不完全\n',...
+    GLOBAL_PARAM.Print.lineHead,maxIdx);
 for i = 0:maxIdx
     try
         namePlaneMode{idxValid} = sprintf('%s',ENUM_plane_mode(i));
@@ -22,7 +24,7 @@ selNum = listdlg(...
     'SelectionMode','single',...
     'ListString',namePlaneMode);
 if isempty(selNum)
-    fprintf('\n[END] 未选择机型,退出仿真\n');
+    fprintf('\n%s[END] 未选择机型,退出仿真\n',GLOBAL_PARAM.Print.lineHead);
     isCancel = true;
     out = [];
 else
@@ -31,7 +33,7 @@ else
     planeMode_sel = namePlaneMode{selNum};
     uavMode = ENUM_plane_mode.(planeMode_sel);
     str = sprintf('uavMode = ENUM_plane_mode.%s',planeMode_sel);
-    fprintf('机型选择为  %s     （ %s ）\n',planeMode_sel,str);
+    fprintf('%s机型选择为  %s    （ %s ）\n',GLOBAL_PARAM.Print.lineHead,planeMode_sel,str);
     %% 输出
     out = uavMode;
 end

@@ -1,4 +1,5 @@
 function [TaskSimParam,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_Task()
+global GLOBAL_PARAM
 %% 载入Bus
 load('IOBusInfo_V1000');
 %% 航线算法参数
@@ -99,3 +100,7 @@ TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 %     otherwise
 %         error('组合导航模块机型选择错误.')
 % end
+%%
+fprintf('[%s]\n',mfilename);
+fprintf('%s周期: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,TaskSimParam.Ts_base);
+fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);

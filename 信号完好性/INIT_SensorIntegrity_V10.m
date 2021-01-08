@@ -1,5 +1,4 @@
-Ts_SignalIntegrity.Ts_base = 0.012;
-Ts_SignalIntegrity.Ts_integrityCheck = 30*Ts_SignalIntegrity.Ts_base;
+function SENSOR_INTEGRITY_PARAM_V10 = INIT_SensorIntegrity_V10() 
 % ÐÅºÅ¶ªÊ§±¨¾¯ãÐÖµ [sec]
 baseMode = 0.36;
 switch baseMode

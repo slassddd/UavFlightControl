@@ -1,4 +1,4 @@
-Ts_Navi.Ts_Base = 0.012;
+function NAVI_PARAM_V1000 = INIT_Navi_V1000(Ts)
 TEMP_PlaneModel = 'V1000';
 % 传感器频率(废弃)
 % sensorFs.imuUpdateFs = 250;
@@ -207,8 +207,8 @@ NAVITEMP.ErrorState.noise_std.std_gpsvel_um482 = NAVITEMP.noise_std.std_gpsvel_u
 NAVITEMP.P0_marg22 = diag([ 2e-4*[2;1;1;3];... % quat
     2e0*ones(3,1);... % pos
     1e-4*ones(3,1);... % vel
-    0.01*(pi/180)^2*[1;1;2]*Ts_Navi.Ts_Base^2;... % dangle  rad
-    1e-4*ones(3,1)*Ts_Navi.Ts_Base^2;... % dvel    m/s
+    0.01*(pi/180)^2*[1;1;2]*Ts^2;... % dangle  rad
+    1e-4*ones(3,1)*Ts^2;... % dvel    m/s
     1e-2*ones(3,1);... % mag
     1e-2*ones(3,1);... % dmag
     ]);
@@ -257,13 +257,20 @@ TEMP_NAVIPARAM.enableAccDegrade_Amp = true;
 TEMP_NAVIPARAM.enableZeroVelCorrect = false;
 TEMP_NAVIPARAM.enableVdFuser = true;
 TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix = true;
-fprintf('%s滤波器 modeKF1 = %0.f\n', TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
-fprintf('%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
-fprintf('%s滤波器 是否使能垂速再融合 %d\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableVdFuser);
-fprintf('%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n', TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);
 %% 构建NAVI参数结构体
 NAVI_PARAM_V1000.SensorSelect = NAVITEMP.SensorSelect;
 NAVI_PARAM_V1000.MARGParam = TEMP_MARGParam;
 NAVI_PARAM_V1000.MARGParam.Decimation = NAVITEMP.Decimation;
 NAVI_PARAM_V1000.MVOParam = TEMP_MVOParam;
 NAVI_PARAM_V1000.NAVIParam = TEMP_NAVIPARAM;
+%%
+global GLOBAL_PARAM
+fprintf('%s%s\n',GLOBAL_PARAM.Print.lineHead,TEMP_PlaneModel);
+fprintf('%s%s%s滤波器 modeKF1 = %0.f\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
+    TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
+fprintf('%s%s%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
+    TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
+fprintf('%s%s%s滤波器 是否使能垂速再融合 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
+    TEMP_PlaneModel, TEMP_NAVIPARAM.enableVdFuser);
+fprintf('%s%s%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
+    TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);

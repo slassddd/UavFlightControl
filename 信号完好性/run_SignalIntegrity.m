@@ -15,10 +15,16 @@ plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
 %% 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
 %% 初始化相关模块
-INIT_Navi
-INIT_SensorIntegrity
-INIT_SensorAlignment
-INIT_SensorFault
+SimParam.FlightDataSimParam = ...
+    INIT_FlightData();
+[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = ...
+    INIT_Navi( SimParam.SystemInfo.planeMode );
+[SimParam.SensorIntegrity,SENSOR_INTEGRITY_PARAM_V1000,SENSOR_INTEGRITY_PARAM_V10,SENSOR_INTEGRITY_PARAM_BASE] = ...
+    INIT_SensorIntegrity();
+[SENSOR_ALIGNMENT_PARAM_V1000,SENSOR_ALIGNMENT_PARAM_V10,SENSOR_ALIGNMENT_PARAM_V10_1] = ...
+    INIT_SensorAlignment();
+[SimParam.SensorFault,SENSOR_FAULT] = ...
+    INIT_SensorFault();
 %% 运行模型
 fprintf('/n--------调试信息--------/n')
 sim('TESTENV_SignalIntegrity')

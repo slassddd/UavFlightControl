@@ -1,6 +1,7 @@
 function out = NAVI_calMagneticDec(varargin)
+global GLOBAL_PARAM
 % NAVI_calMagneticDec(2020)
-% ¼ÆËã´ÅÆ«½Ç²åÖµÊı¾İ
+% è®¡ç®—ç£åè§’æ’å€¼æ•°æ®
 decimal_year = 2020;
 if nargin == 1
     decimal_year = varargin{1};
@@ -23,15 +24,15 @@ magMagnitude_igrfmagm = zeros(length(geod_lat),length(geod_lon));
 switch model_sel
     case 'igrfmagm'
         if model_epoch_igrfmagm == 11
-            msgStr = 'Êı¾İÊ±¼ä·¶Î§1900-2015';
+            msgStr = 'æ•°æ®æ—¶é—´èŒƒå›´1900-2015';
         elseif model_epoch_igrfmagm == 12
-            msgStr = 'Êı¾İÊ±¼ä·¶Î§1900-2020';
+            msgStr = 'æ•°æ®æ—¶é—´èŒƒå›´1900-2020';
         elseif model_epoch_igrfmagm == 13
-            msgStr = 'Êı¾İÊ±¼ä·¶Î§1900-2025';
+            msgStr = 'æ•°æ®æ—¶é—´èŒƒå›´1900-2025';
         else
-            error('²ÎÊı´íÎó»òÎ´¼°Ê±¸üĞÂ¸Ã²ÎÊı')
+            error('å‚æ•°é”™è¯¯æˆ–æœªåŠæ—¶æ›´æ–°è¯¥å‚æ•°')
         end        
-        fprintf('µØ´ÅÄ£ĞÍÊ¹ÓÃ:%s ( version %d, %s )\n',model_sel,model_epoch_igrfmagm,msgStr);
+        fprintf('%såœ°ç£æ¨¡å‹ä½¿ç”¨:%s ( version %d, %s )\n',GLOBAL_PARAM.Print.lineHead,model_sel,model_epoch_igrfmagm,msgStr);
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% igrfmagm
@@ -40,7 +41,7 @@ switch model_sel
             end
         end
     case 'wrldmagm'
-        fprintf('µØ´ÅÄ£ĞÍÊ¹ÓÃ:%s ( %s )\n',model_sel,model_epoch_wrldmagm);
+        fprintf('%såœ°ç£æ¨¡å‹ä½¿ç”¨:%s ( %s )\n',GLOBAL_PARAM.Print.lineHead,model_sel,model_epoch_wrldmagm);
         for latIdx = 1:length(geod_lat)
             for lonIdx = 1:length(geod_lon)
                 %% wrldmagm

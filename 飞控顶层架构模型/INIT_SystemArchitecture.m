@@ -4,8 +4,9 @@ Ts_BigModel.Ts_base = 0.012; % RefModel_SystemArchitecture的仿真步长
 SimParam.FlightDataSimParam = INIT_FlightData();
 %% 控制率初始化
 INIT_Control;
+load('IOBusInfo_V1000'); % Control模块的结构体可能存在不一致的情况,在此重新载入一次
 %% 组合导航初始化
-INIT_Navi
+[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi( SimParam.SystemInfo.planeMode );
 %% 无人机动力学
 INIT_UAV
 %% 任务初始化
@@ -25,14 +26,15 @@ switch SimParam.Architecture.runMode
         SimParam.GroundStation.current.signals.values = SimDataSet.FlightLog_Original.PowerConsume.AllTheTimePowerConsume;
 end
 %% 传感器故障参数
-INIT_SensorFault
+[SimParam.SensorFault,SENSOR_FAULT] = INIT_SensorFault();
 %% 传感器安装参数
-INIT_SensorAlignment
+[SENSOR_ALIGNMENT_PARAM_V1000,SENSOR_ALIGNMENT_PARAM_V10,SENSOR_ALIGNMENT_PARAM_V10_1] = INIT_SensorAlignment();
 %% 信号检测
-INIT_SensorIntegrity
+[SimParam.SensorIntegrity,SENSOR_INTEGRITY_PARAM_V1000,SENSOR_INTEGRITY_PARAM_V10,SENSOR_INTEGRITY_PARAM_BASE] = ...
+    INIT_SensorIntegrity();
 %% 飞行性能
 [SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = INIT_FlightPerformance();
 %% 视觉着陆
-INIT_VisualLanding
+[SimParam.VLand,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = INIT_VisualLanding();
 %% 设置模块优先级
-INIT_Priority
+INIT_Priority('RefModel_SystemArchitecture');

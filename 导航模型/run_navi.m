@@ -8,19 +8,14 @@ if 0
 else
     try
         dataFileNames = saveFileName;
-        [naviPath,name] = fileparts(which(mfilename));% 在文件所在目录保存.mat文件
-        curPath = cd;
-        cd(naviPath);
-        save lastFlightDataFileLoadedForNavi.mat dataFileNames
-        cd(curPath);
-        clear curPath naviPath name
+        saveMatFileName(dataFileNames);
     catch
         load('lastFlightDataFileLoadedForNavi');
         fprintf('\n当前工作空间没有 dataFileNames, 读取最后一次载入的数据文件: %s\n\n',dataFileNames{1});
     end
 end
 %%
-tspan0 = [0,300]; % sec   [0,inf]
+tspan0 = [0,100]; % sec   [0,inf]
 %% 载入飞行数据并生成仿真格式数据
 SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 %% 设置机型变量
@@ -28,15 +23,16 @@ SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.vali
 %% 设置flight data模型参数
 SimParam.FlightDataSimParam = INIT_FlightData();
 %% 设置滤波参数
-INIT_Navi;
+[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi( SimParam.SystemInfo.planeMode );
 %% 传感器故障参数
-INIT_SensorFault
+[SimParam.SensorFault,SENSOR_FAULT] = INIT_SensorFault();
 %% 传感器安装参数
-INIT_SensorAlignment
+[SENSOR_ALIGNMENT_PARAM_V1000,SENSOR_ALIGNMENT_PARAM_V10,SENSOR_ALIGNMENT_PARAM_V10_1] = INIT_SensorAlignment();
 %% 信号检测
-INIT_SensorIntegrity
+[SimParam.SensorIntegrity,SENSOR_INTEGRITY_PARAM_V1000,SENSOR_INTEGRITY_PARAM_V10,SENSOR_INTEGRITY_PARAM_BASE] = ...
+    INIT_SensorIntegrity();
 %% 视觉着陆
-INIT_VisualLanding
+[SimParam.VLand,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = INIT_VisualLanding();
 %% 运行仿真
 modelname = 'TESTENV_NAVI';
 simMode = 'serial';  % parallel serial
@@ -44,18 +40,21 @@ tic
 switch simMode
     case 'parallel'
         for i = 1:SimDataSet.nFlightDataFile
-            SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_TASK',SimDataSet.FlightLog_Original(i).OUT_TASKMODE);
-            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i));
-            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',SimDataSet.tspan{i});
+            SimInput(i) = Simulink.SimulationInput(modelname);
+            SimInput(i) = SimInput(i).setVariable('IN_TASK',SimDataSet.FlightLog_Original(i).OUT_TASKMODE);
+            SimInput(i) = SimInput(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i));
+            SimInput(i) = SimInput(i).setVariable('tspan',SimDataSet.tspan{i});
         end
-        out = parsim(SIM_FLIGHTDATA_IN,'UseFastRestart','off','TransferBaseWorkspaceVariables','off');
+        out = parsim(SimInput,'UseFastRestart','off','TransferBaseWorkspaceVariables','off');
         %             'RunInBackground','on',...
     case 'serial'
         for i = 1:SimDataSet.nFlightDataFile
+%             SimInput(i) = Simulink.SimulationInput(modelname); 
+%             SimInput(i) = SimInput(i).setVariable('tspan',[0,200]); % setVariable 优先级大于工作空间
+%             tic,out(i) = sim(SimInput(i));timeSpend = toc;
             IN_TASK = SimDataSet.FlightLog_Original(i).OUT_TASKMODE;
             IN_SENSOR = SimDataSet.IN_SENSOR(i);
-            tspan = SimDataSet.tspan{i};
+            tspan = SimDataSet.tspan{i};            
             tic,out(i) = sim(modelname);timeSpend = toc;
             fprintf('第%d组数据的仿真完成, 耗时 %.2f [s]\n',i,timeSpend);
         end
@@ -64,7 +63,7 @@ timeSpend = toc;
 fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
 %% 数据后处理
 for i = 1:SimDataSet.nFlightDataFile
-    [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),Ts_Navi.Ts_Base);
+    [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),SimParam.Navi.Ts_Base);
 end
 %% 仿真绘图
 Plot_NaviSimData(SimRes,SimDataSet,GLOBAL_PARAM,dataFileNames)

@@ -1,7 +1,16 @@
-%% V1000²ÎÊı
-INIT_SensorIntegrity_V1000
-%% V10²ÎÊı
-INIT_SensorIntegrity_V10
-%% »ù´¡²ÎÊı
-SENSOR_INTEGRITY_PARAM_BASE.magCalibMagitude0 = 54; % ´ÅÁ¦¼Æ½ÃÕı²Î¿¼Ä£Öµ[uT]¸ÃÖµÎª±¦ÛæµØ´ÅÊıÖµ
-SENSOR_INTEGRITY_PARAM_BASE.kSmoothMean_IMUAlign = 0.8; % ¶ÔIMUÁãÆ«ĞŞÕıÖµµÄÆ½»¬ÂË²¨ÏµÊı,[0,1)
+function [SISimParam,SENSOR_INTEGRITY_PARAM_V1000,SENSOR_INTEGRITY_PARAM_V10,SENSOR_INTEGRITY_PARAM_BASE] = INIT_SensorIntegrity()
+global GLOBAL_PARAM
+SISimParam.Ts_base = 0.012;
+SISimParam.Ts_integrityCheck = 30*SISimParam.Ts_base;
+%% V1000å‚æ•°
+[SENSOR_INTEGRITY_PARAM_V1000] = INIT_SensorIntegrity_V1000();
+%% V10å‚æ•°
+SENSOR_INTEGRITY_PARAM_V10 = INIT_SensorIntegrity_V10();
+%% åŸºç¡€å‚æ•°
+SENSOR_INTEGRITY_PARAM_BASE.magCalibMagitude0 = 54; % ç£åŠ›è®¡çŸ«æ­£å‚è€ƒæ¨¡å€¼[uT]è¯¥å€¼ä¸ºå®å»åœ°ç£æ•°å€¼
+SENSOR_INTEGRITY_PARAM_BASE.kSmoothMean_IMUAlign = 0.8; % å¯¹IMUé›¶åä¿®æ­£å€¼çš„å¹³æ»‘æ»¤æ³¢ç³»æ•°,[0,1)
+%%
+fprintf('[%s]\n',mfilename);
+fprintf('%så‘¨æœŸ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,SISimParam.Ts_base);
+fprintf('%sæ ¸å¿ƒåŠŸèƒ½å‘¨æœŸ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,SISimParam.Ts_integrityCheck);
+fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
