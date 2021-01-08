@@ -12,6 +12,16 @@ INIT_UAV
 SimParam.SimpleUavModel = INIT_UavModelForTaskSim();
 %% 地面站指令
 SimParam.GroundStation = INIT_GroundStation(TASK_PARAM_V1000);
+switch SimParam.Architecture.runMode
+    case '飞行数据回放'
+        SimParam.GroundStation.mavlinkCmd_time = SimDataSet.SL_LOAD.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time;
+        SimParam.GroundStation.mavlinkCmd = SimDataSet.SL_LOAD.IN_MAVLINK.mavlink_msg_id_command_long;
+        SimParam.GroundStation.mavlinkPathPoints = SimDataSet.SL_LOAD.IN_MAVLINK.mavlink_mission_item_def;
+        SimParam.GroundStation.mavlinkHome(1) = SimDataSet.SL_LOAD.IN_MAVLINK.mavlink_mission_item_def(1).x;
+        SimParam.GroundStation.mavlinkHome(2) = SimDataSet.SL_LOAD.IN_MAVLINK.mavlink_mission_item_def(2).y;
+        SimParam.GroundStation.current.time = SimDataSet.SL.PowerConsume.time_cal;
+        SimParam.GroundStation.current.signals.values = SimDataSet.SL.PowerConsume.AllTheTimePowerConsume;
+end
 %% 传感器故障参数
 INIT_SensorFault
 %% 传感器安装参数

@@ -1,10 +1,10 @@
-function Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam)
+function Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam_GroundStation)
 %% 任务模块仿真数据绘图
 plotmode = '3d';
 maxPathNum = TASK_PARAM_V1000.maxPathPointNum;
 nanFlag = TASK_PARAM_V1000.nanFlag;
 % 航点信息
-mavlinkPathData = SimParam.GroundStation.mavlinkPathPoints;
+mavlinkPathData = SimParam_GroundStation.mavlinkPathPoints;
 for i = 1:length(mavlinkPathData)
     if mavlinkPathData(i).x == 0 || mavlinkPathData(i).y == 0
         mavlinkPathData(i).x = nan;

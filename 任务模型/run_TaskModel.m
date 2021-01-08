@@ -15,5 +15,5 @@ tic
 out = sim('TESTENV_Task');
 toc
 %% 数据画图
-Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam);
+Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation);
 Plot_TaskLog();

@@ -1,14 +1,14 @@
 clear,clc
 %% 参数设置
 setGlobalParam();
-tspan0 = [220,200]; % sec
+tspan0 = [0,200]; % sec
 %% 载入数据
 dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\V1000 客户飞行数据\20201205 起飞异常\仿真数据_起飞异常 2020-12-05 09-34-02']};
 dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\20201230\仿真数据_10031异常爬升 2020-12-30 14-11-15']};
 dataFileNames = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\20201228\仿真数据_104号摔机']};
-[IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,tempValid,SL,SL_LOAD,nFlightDataFile] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~tempValid,return;end
-IN_SENSOR = IN_SENSOR_SET(1);
-tspan = tspan_SET{1};
+SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.validflag,return;end
+tspan = SimDataSet.tspan{1};
+IN_SENSOR = SimDataSet.IN_SENSOR(1);
 figure;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
