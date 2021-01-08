@@ -6,7 +6,7 @@ clear,clc,clear global
 %% 设置参数
 setGlobalParam();
 %% 载入飞行数据
-tspan0 = [0,20]; % sec
+tspan0 = [0,inf]; % sec
 dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
 % dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
 if strcmp( GLOBAL_PARAM.sourceMode,'simulink_flightdata') % 
@@ -32,10 +32,12 @@ switch GLOBAL_PARAM.sourceMode % 选择仿真模式
         error('仿真模式选择错误!');
 end
 %% 数据处理
-[navFilterMARGRes_SET,t_alignment] = PostDataHandle_SimulinkModel(out,Ts_Navi.Ts_Base);
+for i = 1:SimDataSet.nFlightDataFile
+    [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),Ts_Navi.Ts_Base);
+end
 %% 数据绘图
 % 导航模块
-Plot_NaviSimData();
+Plot_NaviSimData(SimRes,SimDataSet,GLOBAL_PARAM,dataFileNames);
 % 任务模块
 Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation);
 Plot_TaskLog();

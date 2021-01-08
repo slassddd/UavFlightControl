@@ -1,4 +1,4 @@
-% function Plot_NaviSimData(out,)
+function Plot_NaviSimData(SimRes,SimDataSet,GLOBAL_PARAM,dataFileNames)
 % 仿真数据绘制
 nSim = SimDataSet.nFlightDataFile;
 plotOpt = setPlotOpt;
@@ -9,18 +9,18 @@ if plotEnable
     nColor = length(plotOpt.color);
     nStyle = length(plotOpt.linestyle);
     for i_sim = 1:nSim
-        navFilterMARGRes = navFilterMARGRes_SET(i_sim);
-        navFilterMARGRes_OnLine = SimDataSet.SL(i_sim).Filter;
+        navFilterMARGRes = SimRes.Navi.MARG(i_sim);
+        navFilterMARGRes_OnLine = SimDataSet.FlightLog_Original(i_sim).Filter;
         IN_SENSOR = SimDataSet.IN_SENSOR(i_sim);
         idx_color = rem(i_sim,nColor)+1;
         idx_style = ceil(i_sim/nColor);
         idx_color = rem(idx_color,nColor) + 1;
         idx_style = rem(idx_style,nStyle) + 1;
         % 导航初始化完成时间
-        if isempty(t_alignment(i_sim))
+        if isempty(SimRes.Navi.timeInit(i_sim))
             fprintf('未能成功完成初对准\n')
         else
-            fprintf('初对准完成时间: %.2f \n',t_alignment(i_sim))
+            fprintf('初对准完成时间: %.2f \n',SimRes.Navi.timeInit(i_sim))
         end
         % 传感器数据 ---------------
         fig = figure(102);

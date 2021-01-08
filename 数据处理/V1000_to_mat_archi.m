@@ -101,7 +101,6 @@ for i_file = 1:nFile
     IN_SENSOR.ublox1.headAcc = temp1';    
     clear temp1
     %%
-%     IN_SENSOR.ublox1 = alignDimension(IN_SENSOR.ublox1);
     IN_SENSOR.airspeed1 = alignDimension(IN_SENSOR.airspeed1);
     %%
 %     V1000_decode_task
@@ -116,7 +115,8 @@ for i_file = 1:nFile
     try
         run_PlotFlightData
     end
-    save(saveFileName{i_file},'IN_SENSOR','SL','SL_LOAD')
+    FlightLog_Original = SL;
+    save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
     saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系

@@ -109,7 +109,7 @@ end
 if plotenable.PowerConsumer
     try
         T = SingPlot_PowerConsumer(SL.PowerConsume,SL.OUT_TASKMODE.uavMode);
-        SL_LOAD.PowerConsumer = T;
+        FlightLog_SecondProc.PowerConsumer = T;
         % 
         SinglePlot_CurrentPower(...
             1/1e3*SL.PowerConsume.AllTheTimeCurrent,...

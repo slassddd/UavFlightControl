@@ -154,30 +154,24 @@ SIM_SENSOR_SET.IMU1.gyro_bias = 0*0.001*pi/180*[1,1,1]; % rad/s
 SIM_SENSOR_SET.IMU1.std_acc = 0.1*[1,1,1];  % m/s^2
 SIM_SENSOR_SET.IMU1.acc_bias = 0*0.2*[1,1,1]; % m/s^2
 SIM_SENSOR_SET.IMU1.std_mag = 0.25*[1,1,1]*uT2Gs; % Gs  
-SIM_SENSOR_SET.IMU1.S_gyro = SIM_SENSOR_SET.IMU1.std_gyro.^2/sensorFs.imuUpdateFs;
-SIM_SENSOR_SET.IMU1.S_acc = SIM_SENSOR_SET.IMU1.std_acc.^2/sensorFs.imuUpdateFs;
-% SIM_SENSOR_SET.IMU1.Racc_fromSensorFrameToBodyFrame = diag([1,-1,-1]);
-% SIM_SENSOR_SET.IMU1.Racc_fromBodyFrameToSensorFrame = SIM_SENSOR_SET.IMU1.Racc_fromSensorFrameToBodyFrame';
+% SIM_SENSOR_SET.IMU1.S_gyro = SIM_SENSOR_SET.IMU1.std_gyro.^2/sensorFs.imuUpdateFs;
+% SIM_SENSOR_SET.IMU1.S_acc = SIM_SENSOR_SET.IMU1.std_acc.^2/sensorFs.imuUpdateFs;
 % IMU2
 SIM_SENSOR_SET.IMU2.std_gyro = SIM_SENSOR_SET.IMU1.std_gyro; % rad/s 标准差（非平方）
 SIM_SENSOR_SET.IMU2.gyro_bias = SIM_SENSOR_SET.IMU1.gyro_bias; % rad/s
 SIM_SENSOR_SET.IMU2.std_acc = SIM_SENSOR_SET.IMU1.std_acc;  % m/s^2
 SIM_SENSOR_SET.IMU2.acc_bias = SIM_SENSOR_SET.IMU1.acc_bias; % m/s^2
 SIM_SENSOR_SET.IMU2.std_mag = SIM_SENSOR_SET.IMU1.std_mag; % Gs  
-SIM_SENSOR_SET.IMU2.S_gyro = SIM_SENSOR_SET.IMU2.std_gyro.^2/sensorFs.imuUpdateFs;
-SIM_SENSOR_SET.IMU2.S_acc = SIM_SENSOR_SET.IMU2.std_acc.^2/sensorFs.imuUpdateFs;
-% SIM_SENSOR_SET.IMU2.Racc_fromSensorFrameToBodyFrame = diag([1,-1,-1]);
-% SIM_SENSOR_SET.IMU2.Racc_fromBodyFrameToSensorFrame = SIM_SENSOR_SET.IMU2.Racc_fromSensorFrameToBodyFrame';
+% SIM_SENSOR_SET.IMU2.S_gyro = SIM_SENSOR_SET.IMU2.std_gyro.^2/sensorFs.imuUpdateFs;
+% SIM_SENSOR_SET.IMU2.S_acc = SIM_SENSOR_SET.IMU2.std_acc.^2/sensorFs.imuUpdateFs;
 % IMU3 
 SIM_SENSOR_SET.IMU3.std_gyro = SIM_SENSOR_SET.IMU1.std_gyro; % rad/s 标准差（非平方）
 SIM_SENSOR_SET.IMU3.gyro_bias = SIM_SENSOR_SET.IMU1.gyro_bias; % rad/s
 SIM_SENSOR_SET.IMU3.std_acc = SIM_SENSOR_SET.IMU1.std_acc;  % m/s^2
 SIM_SENSOR_SET.IMU3.acc_bias = SIM_SENSOR_SET.IMU1.acc_bias; % m/s^2
 SIM_SENSOR_SET.IMU3.std_mag = SIM_SENSOR_SET.IMU1.std_mag; % Gs
-SIM_SENSOR_SET.IMU3.S_gyro = SIM_SENSOR_SET.IMU3.std_gyro.^2/sensorFs.imuUpdateFs;
-SIM_SENSOR_SET.IMU3.S_acc = SIM_SENSOR_SET.IMU3.std_acc.^2/sensorFs.imuUpdateFs;
-% SIM_SENSOR_SET.IMU3.Racc_fromSensorFrameToBodyFrame = diag([1,-1,-1]);
-% SIM_SENSOR_SET.IMU3.Racc_fromBodyFrameToSensorFrame = SIM_SENSOR_SET.IMU3.Racc_fromSensorFrameToBodyFrame';
+% SIM_SENSOR_SET.IMU3.S_gyro = SIM_SENSOR_SET.IMU3.std_gyro.^2/sensorFs.imuUpdateFs;
+% SIM_SENSOR_SET.IMU3.S_acc = SIM_SENSOR_SET.IMU3.std_acc.^2/sensorFs.imuUpdateFs;
 % Mag1
 SIM_SENSOR_SET.Mag1.std_mag = 0.25*[1,1,1]*uT2Gs; % Gs
 SIM_SENSOR_SET.Mag1.std_mag1_bias = 0.02*[1,1,1]*uT2Gs; % Gs

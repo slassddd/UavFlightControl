@@ -1,7 +1,7 @@
 %% 通用参数设置
 setGlobalParam();
 %% 载入数据
-if 1
+if 0
     % 执行指定数据文件
     dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
 %     dataFileNames{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
@@ -25,6 +25,8 @@ tspan0 = [0,300]; % sec   [0,inf]
 SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 %% 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
+%% 设置flight data模型参数
+SimParam.FlightDataSimParam = INIT_FlightData();
 %% 设置滤波参数
 INIT_Navi;
 %% 传感器故障参数
@@ -43,7 +45,7 @@ switch simMode
     case 'parallel'
         for i = 1:SimDataSet.nFlightDataFile
             SIM_FLIGHTDATA_IN(i) = Simulink.SimulationInput(modelname);
-            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_TASK',SimDataSet.SL(i).OUT_TASKMODE);
+            SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_TASK',SimDataSet.FlightLog_Original(i).OUT_TASKMODE);
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i));
             SIM_FLIGHTDATA_IN(i) = SIM_FLIGHTDATA_IN(i).setVariable('tspan',SimDataSet.tspan{i});
         end
@@ -51,7 +53,7 @@ switch simMode
         %             'RunInBackground','on',...
     case 'serial'
         for i = 1:SimDataSet.nFlightDataFile
-            IN_TASK = SimDataSet.SL(i).OUT_TASKMODE;
+            IN_TASK = SimDataSet.FlightLog_Original(i).OUT_TASKMODE;
             IN_SENSOR = SimDataSet.IN_SENSOR(i);
             tspan = SimDataSet.tspan{i};
             tic,out(i) = sim(modelname);timeSpend = toc;
@@ -62,8 +64,8 @@ timeSpend = toc;
 fprintf('仿真完成, 耗时 %.2f [s]\n',timeSpend);
 %% 数据后处理
 for i = 1:SimDataSet.nFlightDataFile
-    [navFilterMARGRes_SET(i),t_alignment(i)] = PostDataHandle_SimulinkModel(out(i),Ts_Navi.Ts_Base);
+    [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),Ts_Navi.Ts_Base);
 end
 %% 仿真绘图
-Plot_NaviSimData();
+Plot_NaviSimData(SimRes,SimDataSet,GLOBAL_PARAM,dataFileNames)
 % Plot_NaviLogTable();

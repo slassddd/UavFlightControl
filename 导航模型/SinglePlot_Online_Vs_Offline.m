@@ -2,7 +2,10 @@
 if ~exist('i_sim')
     i_sim = 1;
 end
-dataOnLine = navFilterMARGRes_OnLine;
+% 数据源：
+dataSim = SimRes.Navi.MARG;  % 离线仿真数据
+dataOnLine = navFilterMARGRes_OnLine; % 在线飞行数据
+%
 onlineFlag = 1;
 offlineFlag = 1;
 ubloxFlag = 1;
@@ -17,7 +20,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_yawd);hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_yaw(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.yawd(tmpStartIdx1:end));hold on;
 end
 xlabel('time (s)')
 ylabel('yaw [deg]')
@@ -28,7 +31,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_pitchd);hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_pitch(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.pitchd(tmpStartIdx1:end));hold on;
 end
 xlabel('time (s)')
 ylabel('pitch [deg]')
@@ -39,7 +42,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_rolld);hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_roll(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.rolld(tmpStartIdx1:end));hold on;
 end
 xlabel('time (s)')
 ylabel('roll [deg]')
@@ -56,7 +59,7 @@ tempLLA = [IN_SENSOR.um482.Lat,IN_SENSOR.um482.Lon,IN_SENSOR.um482.height];
 idxUm482 = find(tempLLA(:,1) ~= 0 & tempLLA(:,2) ~= 0);
 tempLLA = calValidLLA(tempLLA(idxUm482,:),LL0(1:2));
 tempUm482LLA = tempLLA;
-tempLLA = [navFilterMARGRes.Algo.algo_curr_pos_0,navFilterMARGRes.Algo.algo_curr_pos_1,navFilterMARGRes.Algo.algo_curr_pos_2];
+tempLLA = [dataSim.lat,dataSim.lon,dataSim.alt];
 tempLLA = calValidLLA(tempLLA,LL0(1:2));
 tempOfflineAlgoLLA = tempLLA;
 subplot(332)
@@ -68,7 +71,7 @@ if onlineFlag
     end
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo,tempOfflineAlgoLLA(:,1));hold on;
+    plot(dataSim.time,tempOfflineAlgoLLA(:,1));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,1));hold on;
@@ -89,8 +92,7 @@ if onlineFlag
     end
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo,tempOfflineAlgoLLA(:,2));hold on;
-    %     plot(navFilterMARGRes.Algo.time_algo,navFilterMARGRes.Algo.posmNED(:,2));hold on;
+    plot(dataSim.time,tempOfflineAlgoLLA(:,2));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,tempUbloxLLA(:,2));hold on;
@@ -110,10 +112,9 @@ if onlineFlag
     plot(dataOnLine.time_cal,data);hold on;
 end
 if offlineFlag
-    tempheight = -navFilterMARGRes.Algo.posmNED(:,3);
+    tempheight = -dataSim.posmNED(:,3);
     tempheight(tempheight == 0) = nan;
-    plot(navFilterMARGRes.Algo.time_algo,tempheight);hold on;
-    %     plot(navFilterMARGRes.Algo.time_algo,-out(i_sim).NavFilterRes.state.Data(:,7));hold on;
+    plot(dataSim.time,tempheight);hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.height);hold on;
@@ -131,7 +132,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vn);hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_curr_vel_0(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.velN(tmpStartIdx1:end));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.velN);hold on;
@@ -148,7 +149,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Ve);hold on;
 end
 if offlineFlag
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_curr_vel_1(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.velE(tmpStartIdx1:end));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.velE);hold on;
@@ -165,7 +166,7 @@ if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vd);hold on;
 end
 if offlineFlag % 离线
-    plot(navFilterMARGRes.Algo.time_algo(tmpStartIdx1:end),navFilterMARGRes.Algo.algo_curr_vel_2(tmpStartIdx1:end));hold on;
+    plot(dataSim.time(tmpStartIdx1:end),dataSim.velD(tmpStartIdx1:end));hold on;
 end
 if ubloxFlag % ublox
     plot(IN_SENSOR.ublox1.time,IN_SENSOR.ublox1.velD);hold on;

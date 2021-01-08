@@ -1,12 +1,12 @@
 Ts_Navi.Ts_Base = 0.012;
 TEMP_PlaneModel = 'V1000';
 % 传感器频率(废弃)
-sensorFs.imuUpdateFs = 250;
-sensorFs.magUpdateFs = 62.5;
-sensorFs.gpsUpdateFs = 62.5;
-sensorFs.baroUpdateFs = 125;
-sensorFs.radarUpdateFs = 62.5;
-sensorFs.airspeedUpdateFs = 62.5;
+% sensorFs.imuUpdateFs = 250;
+% sensorFs.magUpdateFs = 62.5;
+% sensorFs.gpsUpdateFs = 62.5;
+% sensorFs.baroUpdateFs = 125;
+% sensorFs.radarUpdateFs = 62.5;
+% sensorFs.airspeedUpdateFs = 62.5;
 % 测量选择
 NAVITEMP.fuse_enable.mag = 1;
 NAVITEMP.fuse_enable.gps = 1;
@@ -172,18 +172,6 @@ switch example
         NAVITEMP.noise_std.std_mag = 2*[1,1,1]; %
         NAVITEMP.noise_std.std_mag_bias = 1e-2*[1,1,1];
         NAVITEMP.noise_std.std_lla = [1.6,1.6,5];
-        NAVITEMP.noise_std.std_gpsvel = [0.3,0.3,0.6];
-        NAVITEMP.noise_std.std_alt = 1;
-        NAVITEMP.noise_std.std_range = 1;
-    case 20 % 静态航向漂移完美抑制
-        NAVITEMP.noise_std.std_gyro = 5e-4*pi/180*[1,1,1]; % rad/s
-        NAVITEMP.noise_std.std_gyro_bias = 1e-3*pi/180*[1,1,1]; % rad/s
-        NAVITEMP.noise_std.std_acc = 0.5e-3*[1,1,1];  % m/s^2
-        NAVITEMP.noise_std.std_acc_bias = 1e-3*0.01*[1,1,1]; % m/s^2
-        NAVITEMP.noise_std.std_magNED = 1e-6*[1,1,1];  %
-        NAVITEMP.noise_std.std_mag = 2*[1,1,1]; %
-        NAVITEMP.noise_std.std_mag_bias = 1e-2*[1,1,1];
-        NAVITEMP.noise_std.std_lla = [3,3,15];
         NAVITEMP.noise_std.std_gpsvel = [0.3,0.3,0.6];
         NAVITEMP.noise_std.std_alt = 1;
         NAVITEMP.noise_std.std_range = 1;

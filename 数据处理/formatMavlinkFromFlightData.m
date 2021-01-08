@@ -42,9 +42,9 @@ for i = 1:maxNum_cmd
         IN_MAVLINK.mavlink_msg_id_command_long(i) = STRUCT_mavlink_msg_id_command_long;
     end
 end
-SL_LOAD.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time = IN_MAVLINK_mavlink_msg_id_command_long_time;
-SL_LOAD.IN_MAVLINK.mavlink_msg_id_command_long = IN_MAVLINK.mavlink_msg_id_command_long;
-SL_LOAD.IN_MAVLINK.mavlink_mission_item_def = IN_MAVLINK.mavlink_mission_item_def;
+FlightLog_SecondProc.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time = IN_MAVLINK_mavlink_msg_id_command_long_time;
+FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long = IN_MAVLINK.mavlink_msg_id_command_long;
+FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def = IN_MAVLINK.mavlink_mission_item_def;
 %% 子函数
 function STRUCT_mavlink_mission_item_def_ARRAY = formatMavPath(namePathStruct,pathpoints,maxPathNum,flagPath)
 num_point = size(pathpoints,1);

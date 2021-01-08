@@ -1,12 +1,12 @@
 Ts_Navi.Ts_Base = 0.012;
 TEMP_PlaneModel = 'V10';
 % 传感器频率
-sensorFs.imuUpdateFs = 250;
-sensorFs.magUpdateFs = 62.5;
-sensorFs.gpsUpdateFs = 62.5;
-sensorFs.baroUpdateFs = 125;
-sensorFs.radarUpdateFs = 62.5;
-sensorFs.airspeedUpdateFs = 62.5;
+% sensorFs.imuUpdateFs = 250;
+% sensorFs.magUpdateFs = 62.5;
+% sensorFs.gpsUpdateFs = 62.5;
+% sensorFs.baroUpdateFs = 125;
+% sensorFs.radarUpdateFs = 62.5;
+% sensorFs.airspeedUpdateFs = 62.5;
 % 测量选择
 NAVITEMP.fuse_enable.mag = 1;
 NAVITEMP.fuse_enable.gps = 1;

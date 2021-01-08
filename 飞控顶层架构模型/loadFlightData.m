@@ -1,15 +1,13 @@
 function DataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR)
-% [IN_SENSOR_SET,IN_SENSOR_SIM_SET,tspan_SET,timeSpanValidflag,SL,SL_LOAD,nFlightDataFile] = loadFlightData(tspan0,dataFileNames,BUS_SENSOR)
 %% output
 % IN_SENSOR_SIM_SET: 用于from workspace模块
 DataSet.nFlightDataFile = length(dataFileNames);
 for i = 1:DataSet.nFlightDataFile
-%     [IN_SENSOR_SET(i),IN_SENSOR_SIM_SET(i),tspan_SET{i},timeSpanValidflag,SL(i),SL_LOAD(i)] = sub_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
     thisDataSet = sub_loadFlightData(tspan0,dataFileNames{i},BUS_SENSOR);
     DataSet.IN_SENSOR(i) = thisDataSet.IN_SENSOR;
     DataSet.IN_SENSOR_SIM(i) = thisDataSet.IN_SENSOR_SIM;
-    DataSet.SL(i) = thisDataSet.SL;
-    DataSet.SL_LOAD(i) = thisDataSet.SL_LOAD;
+    DataSet.FlightLog_Original(i) = thisDataSet.FlightLog_Original;
+    DataSet.FlightLog_SecondProc(i) = thisDataSet.FlightLog_SecondProc;
     DataSet.tspan{i} = thisDataSet.tspan;
     DataSet.validflag = thisDataSet.validflag;
     if ~DataSet.validflag
