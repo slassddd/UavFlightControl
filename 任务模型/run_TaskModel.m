@@ -1,4 +1,6 @@
 clear,clc
+%% 通用参数设置
+fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParam();
 %% 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型
@@ -13,7 +15,9 @@ SimParam.GroundStation = INIT_GroundStation(TASK_PARAM_V1000);
 %% 运行model
 tic
 out = sim('TESTENV_Task');
-toc
+SimParam.timeSpend = toc;
 %% 数据画图
 Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation);
 Plot_TaskLog();
+%% 结束
+printSimEnd(SimParam.timeSpend);

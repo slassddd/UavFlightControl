@@ -14,6 +14,6 @@ GLOBAL_PARAM.sourceMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simul
 %% 创建作图对象
 GLOBAL_PARAM.hPlot = UAVPlotLib;
 %%
-fprintf('%s 开始大模型仿真 %s\n',GLOBAL_PARAM.Print.flagHalfBegin,GLOBAL_PARAM.Print.flagHalfBegin);
+% fprintf('%s 开始大模型仿真 %s\n',GLOBAL_PARAM.Print.flagHalfBegin,GLOBAL_PARAM.Print.flagHalfBegin);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 fprintf('%sICD文件:%s\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.SubFolderName.ICD);
