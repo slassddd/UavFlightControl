@@ -1,6 +1,6 @@
 classdef UAVPlotLib
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓĞ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜
     
     properties
         plotOpt
@@ -8,15 +8,15 @@ classdef UAVPlotLib
     
     methods
         function obj = UAVPlotLib()
-            %UNTITLED ¹¹Ôì´ËÀàµÄÊµÀı
+            %UNTITLED æ„é€ æ­¤ç±»çš„å®ä¾‹
             obj.plotOpt = setPlotOpt;
         end
         function PlotPosition(obj,sensorNames,sensors,mode,idx_color,idx_style,varargin)
-            % ----------  ´«¸ĞÆ÷Êä³ö  ----------
+            % ----------  ä¼ æ„Ÿå™¨è¾“å‡º  ----------
             nNames = length(sensorNames);
             if ~isempty(varargin)
                 fig = varargin{1};
-                str = ['Æ½ÃæµØÍ¼'];
+                str = ['å¹³é¢åœ°å›¾'];
                 try
                     fig.Name = str;
                 catch
@@ -54,7 +54,7 @@ classdef UAVPlotLib
             end
         end
         function PlotSensor(obj,sensorNames,sensors,idx_color,idx_style,varargin)
-            % ----------  ´«¸ĞÆ÷Êä³ö  ----------
+            % ----------  ä¼ æ„Ÿå™¨è¾“å‡º  ----------
             nNames = length(sensorNames);
             if ~isempty(varargin)
                 
@@ -64,10 +64,10 @@ classdef UAVPlotLib
                     str = [str,'  ',sensorNames{i}];
                 end
                 try
-                    fig.Name = ['´«¸ĞÆ÷²âÁ¿Öµ:',str];
+                    fig.Name = ['ä¼ æ„Ÿå™¨æµ‹é‡å€¼:',str];
                 catch
                     fig = figure;
-                    fig.Name = ['´«¸ĞÆ÷²âÁ¿Öµ:',str];
+                    fig.Name = ['ä¼ æ„Ÿå™¨æµ‹é‡å€¼:',str];
                 end
             end
             nrow = 0;
@@ -146,7 +146,7 @@ classdef UAVPlotLib
     end
 end
 
-%% ×Óº¯Êı
+%% å­å‡½æ•°
 function plotOpt = setPlotOpt()
 plotOpt.stepSpace = 1;
 plotOpt.color = {'k','r','b','g','y','c',...
@@ -182,7 +182,7 @@ plotOpt.xlim_time = 'auto'; % or 'auto'
 end
 % IMU -------------------------------------------------------------------
 function iplot = plot_imu(iplot,sensorName,sensors,plotOpt,idx_color,idx_style,nrow)
-% ¼ÓËÙ¶È
+% åŠ é€Ÿåº¦
 data = [sensors.(sensorName).accel_x,sensors.(sensorName).accel_y,sensors.(sensorName).accel_z];
 time = sensors.(sensorName).time;
 stepNum = size(data,1);
@@ -199,7 +199,7 @@ for i = 1:size(data,2)
     ylim(plotOpt.ylim_AB_ms2);        % ylim
     xlim(plotOpt.xlim_time);          % xlim
 end
-% ½ÇËÙ¶È
+% è§’é€Ÿåº¦
 data = [sensors.(sensorName).gyro_x,sensors.(sensorName).gyro_y,sensors.(sensorName).gyro_z];
 time = sensors.(sensorName).time;
 stepNum = size(data,1);
@@ -219,7 +219,7 @@ end
 
 % Mag -------------------------------------------------------------------
 function iplot = plot_mag(iplot,sensorName,sensors,plotOpt,idx_color,idx_style,nrow)
-% ´ÅÁ¦¼Æ
+% ç£åŠ›è®¡
 data = [sensors.(sensorName).mag_x,sensors.(sensorName).mag_y,sensors.(sensorName).mag_z];
 time = sensors.(sensorName).time;
 stepNum = size(data,1);
@@ -301,7 +301,7 @@ end
 end
 % radar -------------------------------------------------------------------
 function iplot = plot_radar(iplot,sensorName,sensors,plotOpt,idx_color,idx_style,nrow)
-% À×´ï¸ß¶È
+% é›·è¾¾é«˜åº¦
 data = [sensors.(sensorName).Range];
 time = sensors.(sensorName).time;
 stepNum = size(data,1);
@@ -321,7 +321,7 @@ end
 end
 % airspeed -------------------------------------------------------------------
 function iplot = plot_airspeed(iplot,sensorName,sensors,plotOpt,idx_color,idx_style,nrow)
-% ¿ÕËÙ
+% ç©ºé€Ÿ
 data = [sensors.(sensorName).airspeed];
 time = sensors.(sensorName).time;
 stepNum = size(data,1);
@@ -342,7 +342,7 @@ for i = 1:size(data,2)
 end
 end
 
-% »æÖÆXY -------------------------------------------------------------------
+% ç»˜åˆ¶XY -------------------------------------------------------------------
 function plot_XYZ(sensorName,sensors,mode,plotOpt,idx_color,idx_style)
 % LLA
 data_LLA = [sensors.(sensorName).Lat,sensors.(sensorName).Lon,sensors.(sensorName).height];

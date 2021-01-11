@@ -1,12 +1,12 @@
 classdef ENUM_SensorHealthStatus < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         Health (0),  
-        Degrade (1), % ÐÔÄÜ½µµÍ
-        LostShort (2),    % ÐÅºÅ¶ªÊ§
-        LostLong (3),    % ÐÅºÅ¶ªÊ§
-        Fault (4),   % ´«¸ÐÆ÷¹ÊÕÏ
+        Degrade (1), % æ€§èƒ½é™ä½Ž
+        LostShort (2),    % ä¿¡å·ä¸¢å¤±
+        LostLong (3),    % ä¿¡å·ä¸¢å¤±
+        Fault (4),   % ä¼ æ„Ÿå™¨æ•…éšœ
     end
 end
 

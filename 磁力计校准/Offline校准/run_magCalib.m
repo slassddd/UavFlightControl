@@ -1,18 +1,18 @@
 % clear,clc
-%% ÔØÈëÊı¾İ
-% ¾¡Á¿¾ùÔÈ360¡ãĞı×ª£¬Éú³É1·ÖÖÓ×óÓÒµÄÊı¾İ
-% dataFileName = 'magcalib_log_V8_1219.mat'; % ´Å³¡µ¥Î»Gs
-% dataFileName = 'magcalib_log_DeadFat1219.mat'; % ´Å³¡µ¥Î»Gs
-% dataFileName = 'magcalib_log_DeadFat1219new.mat'; % ´Å³¡µ¥Î»Gs
-% dataFileName = 'magcalib_log_35.mat'; % ´Å³¡µ¥Î»Gs
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_magcalib_V8_1920.mat'; % ´Å³¡µ¥Î»Gs
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_Ì¼½á¹¹»ú_1223';
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_Ì¼½á¹¹ÑéÖ¤_56';
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_pangzi_1227';
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_pangzi_1230';
-% dataFileName = '´ÅÁ¦¼Æ±ê¶¨Êı¾İ_log_9';
+%% è½½å…¥æ•°æ®
+% å°½é‡å‡åŒ€360Â°æ—‹è½¬ï¼Œç”Ÿæˆ1åˆ†é’Ÿå·¦å³çš„æ•°æ®
+% dataFileName = 'magcalib_log_V8_1219.mat'; % ç£åœºå•ä½Gs
+% dataFileName = 'magcalib_log_DeadFat1219.mat'; % ç£åœºå•ä½Gs
+% dataFileName = 'magcalib_log_DeadFat1219new.mat'; % ç£åœºå•ä½Gs
+% dataFileName = 'magcalib_log_35.mat'; % ç£åœºå•ä½Gs
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_magcalib_V8_1920.mat'; % ç£åœºå•ä½Gs
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_ç¢³ç»“æ„æœº_1223';
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_ç¢³ç»“æ„éªŒè¯_56';
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_pangzi_1227';
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_pangzi_1230';
+% dataFileName = 'ç£åŠ›è®¡æ ‡å®šæ•°æ®_log_9';
 folderPaht = '20200317';
-dataFileName = ['´ÅÁ¦¼Æ±ê¶¨Êı¾İ_log_1_magcalib'];
+dataFileName = ['ç£åŠ›è®¡æ ‡å®šæ•°æ®_log_1_magcalib'];
 data = load([folderPaht,'\',dataFileName,'.mat']);
 N = size(data.mag1B,1);
 %
@@ -34,7 +34,7 @@ for i = 1:2
     x{i} = eval(['data.mag',num2str(i),'B;']);
     %     x{i} = eval(['data.mag',num2str(i),'B_correct;']);
     x{i} = x{i}(1:round(N),:); %
-    % ÏÔÊ¾Êı¾İÌØĞÔ
+    % æ˜¾ç¤ºæ•°æ®ç‰¹æ€§
     figure(1);
     subplot(1,2,i)
     scatter3(x{i}(:,1),x{i}(:,2),x{i}(:,3),'r');hold on;
@@ -42,17 +42,17 @@ for i = 1:2
     ylabel('y (Gs)')
     zlabel('z (Gs)')
     axis equal
-    %% »ñµÃµ±µØ±ê×¼µØ´ÅÏòÁ¿
+    %% è·å¾—å½“åœ°æ ‡å‡†åœ°ç£å‘é‡
     lla0 = mean(data.lla);
     [magXYZ, magHorizontalintensity, magDeclination, magInclination, totalIntensity] = ...
         wrldmagm(abs(lla0(3)), lla0(1), lla0(2), decyear(2015,7,4),'2015');
-%     magXYZ = magXYZ/1e3; % nT±ä»»ÎªuT
-    magXYZ = magXYZ/1e5; % nT±ä»»ÎªGs
-    %% ±ê¶¨
-    % Í¨¹ı±ê¶¨£¬µÃµ½±ê¶¨²ÎÊıA¡¢b¡¢magNorm
+%     magXYZ = magXYZ/1e3; % nTå˜æ¢ä¸ºuT
+    magXYZ = magXYZ/1e5; % nTå˜æ¢ä¸ºGs
+    %% æ ‡å®š
+    % é€šè¿‡æ ‡å®šï¼Œå¾—åˆ°æ ‡å®šå‚æ•°Aã€bã€magNorm
     [A{i},b{i},magNorm,x_correct0] = magCalib_offline(x{i});
     k{i} = norm(magXYZ)/magNorm;
-%     x_correct = k{i}*(x{i}-b{i})*A{i}; % ½ÃÕı¹«Ê½
+%     x_correct = k{i}*(x{i}-b{i})*A{i}; % çŸ«æ­£å…¬å¼
     x_correct{i} = zeros(size(x{i}));
     idxsel = 4145;
     xtest = round(x{i}(idxsel,:),4);
@@ -69,12 +69,12 @@ for i = 1:2
     subplot(1,2,i)
     scatter3(x_correct{i}(:,1),x_correct{i}(:,2),x_correct{i}(:,3),'k');hold on;
     axis equal
-%     legend('Ô­Ê¼Êır¾İ','µØÃæĞ£Õı')
-    legend('¹Ì¼ş½ÃÕı','Ô­Ê¼Êı¾İ','µØÃæĞ£Õı')
-    %% Éú³É½ÃÕıÎÄ¼ş
+%     legend('åŸå§‹æ•°ræ®','åœ°é¢æ ¡æ­£')
+    legend('å›ºä»¶çŸ«æ­£','åŸå§‹æ•°æ®','åœ°é¢æ ¡æ­£')
+    %% ç”ŸæˆçŸ«æ­£æ–‡ä»¶
     [~,tempName] = fileparts(dataFileName);
     fileID = fopen(['res_',tempName,'_mag',num2str(i),'.txt'],'w');
-    fprintf(fileID,'½ÃÕı¹«Ê½: x_correct = k*(x-b)*A\n');
+    fprintf(fileID,'çŸ«æ­£å…¬å¼: x_correct = k*(x-b)*A\n');
     fprintf(fileID,'a11: %.3f\n',A{i}(1,1));
     fprintf(fileID,'a12: %.3f\n',A{i}(1,2));
     fprintf(fileID,'a13: %.3f\n',A{i}(1,3));

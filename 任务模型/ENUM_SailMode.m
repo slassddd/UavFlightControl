@@ -1,10 +1,10 @@
 classdef ENUM_SailMode < Simulink.IntEnumType
-    % ³öº½·½Ê½
+    % å‡ºèˆªæ–¹å¼
     enumeration
-        AgainstWind (0), % ÕÒ·çºóÄæ·ç³öº½
-        FollowWind (1), % ÕÒ·çºóË³·ç³öº½
-        CrossWind (2), % ÕÒ·çºó²à·ç³öº½
-        AnyWind (3), % ÈÎÒâ·çÏò³öº½
+        AgainstWind (0), % æ‰¾é£ŽåŽé€†é£Žå‡ºèˆª
+        FollowWind (1), % æ‰¾é£ŽåŽé¡ºé£Žå‡ºèˆª
+        CrossWind (2), % æ‰¾é£ŽåŽä¾§é£Žå‡ºèˆª
+        AnyWind (3), % ä»»æ„é£Žå‘å‡ºèˆª
     end
 end
 

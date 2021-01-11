@@ -1,8 +1,8 @@
-% ¶Ô¿ò¼ÜÄ£ĞÍÖĞËùÓĞÒıÓÃÄ£ĞÍµÄConfiguration½øĞĞÍ³Ò»ÉèÖÃ
+% å¯¹æ¡†æ¶æ¨¡å‹ä¸­æ‰€æœ‰å¼•ç”¨æ¨¡å‹çš„Configurationè¿›è¡Œç»Ÿä¸€è®¾ç½®
 function setRefModelConfiguration(modelname,stepMode)
-% usage: setRefModelConfiguration('RefModel_SystemArchitecture','µ¥step');
+% usage: setRefModelConfiguration('RefModel_SystemArchitecture','å•step');
 clear DependencySet
-%% ¹Ì¼ş²ÎÊı³õÊ¼»¯
+%% å›ºä»¶å‚æ•°åˆå§‹åŒ–
 INIT_SystemArchitecture
 %
 DependencySet.enableMultiTask = stepMode;
@@ -14,7 +14,7 @@ clear DependencySet.RefModeFullNames DependencySet.RefModeNamesNoType
 DependencySet.RefModeFullNames{1} = cell(1);
 DependencySet.RefModeNamesNoType{1} = cell(1);
 nRefModel = 0;
-% ²éÕÒËùÓĞRefmodel
+% æŸ¥æ‰¾æ‰€æœ‰Refmodel
 for i = 2:length(DependencySet.FilePathNames)
     iFilePathNames = DependencySet.FilePathNames{i};
     idx_dot = strfind(iFilePathNames,'.');
@@ -43,11 +43,11 @@ end
 for i = 1:length(DependencySet.RefModeNamesNoType)
     load_system(DependencySet.RefModeNamesNoType{i})
 end
-%% Ä£ĞÍÔ­ÉèÖÃ
-disp('Ä£ĞÍÔ­ÊôĞÔ');
+%% æ¨¡å‹åŸè®¾ç½®
+disp('æ¨¡å‹åŸå±æ€§');
 DependencySet = getModelProp(DependencySet,nRefModel);
 showModelProp(DependencySet);
-%% ¸üĞÂÉèÖÃ
+%% æ›´æ–°è®¾ç½®
 for i = 1:nRefModel
     set_param(DependencySet.RefModeNamesNoType{i},'InheritedTsInSrcMsg','None'); % Source block specifies -1 sample time
     set_param(DependencySet.RefModeNamesNoType{i},'ParameterPrecisionLossMsg','None'); % Detect precision loss
@@ -65,23 +65,23 @@ for i = 1:nRefModel
     set_param(DependencySet.RefModeNamesNoType{i},'MultiTaskDSMMsg','warning'); % Detect data stores being read from and written to in multiple tasks
     if ~isempty(DependencySet.enableMultiTask)
         switch DependencySet.enableMultiTask
-            case 'µ¥step'
-                disp('Éú³É´úÂëµÄstepÄ£Ê½: µ¥step');
+            case 'å•step'
+                disp('ç”Ÿæˆä»£ç çš„stepæ¨¡å¼: å•step');
                 set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
-            case '¶àstep'
-                disp('Éú³É´úÂëµÄstepÄ£Ê½: ¶àstep');
+            case 'å¤šstep'
+                disp('ç”Ÿæˆä»£ç çš„stepæ¨¡å¼: å¤šstep');
                 set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','on'); % Treat each discrete rate as a separate task
             otherwise
-                error('step mode ÉèÖÃ´íÎó');
+                error('step mode è®¾ç½®é”™è¯¯');
         end
     else
         set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
     end
 end
-disp('Ä£ĞÍĞÂÊôĞÔ');
+disp('æ¨¡å‹æ–°å±æ€§');
 DependencySet = getModelProp(DependencySet,nRefModel);
 showModelProp(DependencySet);
-%% ±£´æÉèÖÃ
+%% ä¿å­˜è®¾ç½®
 save_system(DependencySet.MainModelNameNoType,[],'SaveDirtyReferencedModels','on');
 %% ------------------------------------------
 function DependencySet = getModelProp(DependencySet,nRefModel)

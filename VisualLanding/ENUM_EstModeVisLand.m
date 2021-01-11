@@ -1,6 +1,6 @@
 classdef ENUM_EstModeVisLand < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         Geometry (0),
         StateEstimate (1),

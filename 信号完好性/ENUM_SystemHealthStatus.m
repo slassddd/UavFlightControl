@@ -1,14 +1,14 @@
 classdef ENUM_SystemHealthStatus < Simulink.IntEnumType
     enumeration
         SystemHealth (0),  
-        NeedToMaintain (1), % ÔÝ²»ÓÃ
-        DegradeButAvailable (2), % ÔÝ²»ÓÃ
-        CanNotByRotor (3),    % ÔÝ²»ÓÃ
-        CanNotByFix (4),    % ÔÝ²»ÓÃ
-        CanNotFly (5),   % ²»ÄÜ·ÉÐÐ
-        LostControl (6),  % ÔÝ²»ÓÃ
-        DontTakeOff (7), % ÈôÎ´Æð·É£¬Ôò²»ÄÜÆð·É£»ÈôÒÑÔÚ¿ÕÖÐ£¬Ôò¼ÌÐøÖ´ÐÐÈÎÎñ
-        NeedToReturn (8), % ´¥·¢·µº½£¬µ«²»´¥·¢Á¢¼´½µÂä
+        NeedToMaintain (1), % æš‚ä¸ç”¨
+        DegradeButAvailable (2), % æš‚ä¸ç”¨
+        CanNotByRotor (3),    % æš‚ä¸ç”¨
+        CanNotByFix (4),    % æš‚ä¸ç”¨
+        CanNotFly (5),   % ä¸èƒ½é£žè¡Œ
+        LostControl (6),  % æš‚ä¸ç”¨
+        DontTakeOff (7), % è‹¥æœªèµ·é£žï¼Œåˆ™ä¸èƒ½èµ·é£žï¼›è‹¥å·²åœ¨ç©ºä¸­ï¼Œåˆ™ç»§ç»­æ‰§è¡Œä»»åŠ¡
+        NeedToReturn (8), % è§¦å‘è¿”èˆªï¼Œä½†ä¸è§¦å‘ç«‹å³é™è½
     end
 end
 

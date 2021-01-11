@@ -110,7 +110,7 @@ if(len~=0)
         FilePath = handles.originalFileInfo.Path{1,File_v(1)};
         ModeSelect_select =  handles.originalFileInfo.ModeSelect(1,File_v(1));
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %¶à¸öÎÄ¼ş£¬Í¬Ò»¸ñÊ½£¬Ò»¸ölist
+        %å¤šä¸ªæ–‡ä»¶ï¼ŒåŒä¸€æ ¼å¼ï¼Œä¸€ä¸ªlist
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(ModeSelect_select == 4)
             [FilePath name ext] = fileparts(char(handles.File_str(1,File_v(1))));
@@ -125,7 +125,7 @@ end
 PathName1 = path;
 
 if isnumeric(path)
-    errordlg('Ã»ÓĞÑ¡ÔñÊı¾İÎÄ¼ş');
+    errordlg('æ²¡æœ‰é€‰æ‹©æ•°æ®æ–‡ä»¶');
     return;
 end
 
@@ -137,28 +137,28 @@ else
     len = 1;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%¶à¸öÎÄ¼ş£¬Í¬Ò»¸ñÊ½£¬Ò»¸ölist
+%å¤šä¸ªæ–‡ä»¶ï¼ŒåŒä¸€æ ¼å¼ï¼Œä¸€ä¸ªlist
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(ModeSelect == 1)
-    [data textdisp File_str] = ImportDataFile1(name,path,len);%Ä£Ê½3
+    [data textdisp File_str] = ImportDataFile1(name,path,len);%æ¨¡å¼3
     formatlen = 1;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Ê¹ÓÃÅäÖÃÎÄ¼ş£¬Ò»¸öÅäÖÃÎÄ¼şÒ»¸ölist£¨µ±Ç°Ä¿Â¼¾ÍÒ»¸öÅäÖÃÎÄ¼ş£©
+%ä½¿ç”¨é…ç½®æ–‡ä»¶ï¼Œä¸€ä¸ªé…ç½®æ–‡ä»¶ä¸€ä¸ªlistï¼ˆå½“å‰ç›®å½•å°±ä¸€ä¸ªé…ç½®æ–‡ä»¶ï¼‰
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(ModeSelect == 2)
     [data textdisp File_str] = ImportDataFile2(path);
     formatlen = 1;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%µ¥Ñ¡»òÕß¶àÑ¡ÎÄ¼ş£¬²»Í¬¸ñÊ½£¬Ò»¸ölist
+%å•é€‰æˆ–è€…å¤šé€‰æ–‡ä»¶ï¼Œä¸åŒæ ¼å¼ï¼Œä¸€ä¸ªlist
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(ModeSelect == 3)
-    [data textdisp File_str] = ImportDataFile3(name,path,len);%Ä£Ê½3
+    [data textdisp File_str] = ImportDataFile3(name,path,len);%æ¨¡å¼3
     formatlen = 1;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%µ¥Ñ¡»òÕß¶àÑ¡ÎÄ¼ş£¬Ò»¸öÎÄ¼şÒ»¸ölist
+%å•é€‰æˆ–è€…å¤šé€‰æ–‡ä»¶ï¼Œä¸€ä¸ªæ–‡ä»¶ä¸€ä¸ªlist
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(ModeSelect == 4)
     [data textdisp File_str] = ImportDataFile4(name,path,len);
@@ -187,7 +187,7 @@ for kk=1:formatlen
     set(handles.(DataList_str),'visible','on');
     
     handles.(data_str)= data.(['data' num2str(kk)]);
-    handles.index_DataList(index_DataList) = 1;%³É¹¦Ìí¼ÓÒ»¸öĞÂÊı¾İ£¬ÔòÖÃ¸ÃË÷ÒıÎ»ÖÃÎª1
+    handles.index_DataList(index_DataList) = 1;%æˆåŠŸæ·»åŠ ä¸€ä¸ªæ–°æ•°æ®ï¼Œåˆ™ç½®è¯¥ç´¢å¼•ä½ç½®ä¸º1
     guidata(hObject, handles);
     if(ModeSelect == 4)
         set(handles.(['xlabel',num2str(index_DataList)]),'visible','on');
@@ -208,9 +208,9 @@ function DataPlotOne_Callback(hObject, eventdata, handles)
 
 % time_lingwei  = str2num(get(handles.Lingwei, 'string')); %
 time_lingwei=0;
-handles.axes1;       %½«Ô­À´µÄ¶à·ùÍ¼ÏÔÊ¾¸ÄÎªµ¥Í¼ÏÔÊ¾
+handles.axes1;       %å°†åŸæ¥çš„å¤šå¹…å›¾æ˜¾ç¤ºæ”¹ä¸ºå•å›¾æ˜¾ç¤º
 graph = subplot(1,1,1);
-cla reset;        %ÇåÍ¼²¢×ø±êÖØÖÃ
+cla reset;        %æ¸…å›¾å¹¶åæ ‡é‡ç½®
 k=1;
 lgd=[];
 listtext='';
@@ -223,18 +223,18 @@ for i=1:length(hasvalue_list)
     DataList_str_temp{i} = get(hasvalue_list(i),'tag');
 end
 if(length(hasvalue_list) >= 1)
-    [temp,Datashuxu] = sort(DataList_str_temp);%¸ù¾İlistÅÅĞò
+    [temp,Datashuxu] = sort(DataList_str_temp);%æ ¹æ®listæ’åº
 end
 
 for d=1:length(hasvalue_list);
-    i = Datashuxu(d);  %°´Ë³ĞòÕûÀí
+    i = Datashuxu(d);  %æŒ‰é¡ºåºæ•´ç†
     list_v = get(hasvalue_list(i),'value');
     DataList_str = get(hasvalue_list(i),'tag');
     for j=1:length(list_v)
         for p=1:handles.SelectFileCount(1,str2double(DataList_str(9)))
             y{k} = handles.(['data' DataList_str(9)]){p,list_v(j)};
             
-            listtexttemp1 = [y{k}.name '-list' num2str(DataList_str(9))];  %²éÕÒÏÂ»®ÏßÌæ»»
+            listtexttemp1 = [y{k}.name '-list' num2str(DataList_str(9))];  %æŸ¥æ‰¾ä¸‹åˆ’çº¿æ›¿æ¢
             listtexttemp2 = listtexttemp1(1);
             for kf = 2:length(listtexttemp1)
                 if(listtexttemp1(kf) == '_')
@@ -253,13 +253,13 @@ if (len~=0)
     for i=1:len
         
         
-        %¶şÎ¬»æÍ¼
-        %µ¥ÖÃxµÄ»æÍ¼
+        %äºŒç»´ç»˜å›¾
+        %å•ç½®xçš„ç»˜å›¾
         if(  isfield(y{i},'time2') && ~isempty(y{i}.time2) && (~isfield(y{i},'z2') || isempty(y{i}.z2)))
             line(y{i}.time2 + time_lingwei,y{i}.data,'color',linecolor(i-6*floor((i-1)/6)),'linestyle',line_style{ceil(i/6)},'linewidth',2);
             xlabel(y{i}.namex);
         end
-        %Ä¬ÈÏ»æÍ¼
+        %é»˜è®¤ç»˜å›¾
         if(  (~isfield(y{i},'time2') || isempty(y{i}.time2))  &&   (~isfield(y{i},'z2') || isempty(y{i}.z2))  )
             line(y{i}.time + time_lingwei,y{i}.data,'color',linecolor(i-6*floor((i-1)/6)),'linestyle',line_style{ceil(i/6)},'linewidth',2);
              xlabel('t(s)');
@@ -267,13 +267,13 @@ if (len~=0)
         
         
         
-         %ÖÃxµÄ»æÍ¼  ²¢ÇÒÖÃzµÄ»æÍ¼  ÈıÎ¬»æÍ¼
+         %ç½®xçš„ç»˜å›¾  å¹¶ä¸”ç½®zçš„ç»˜å›¾  ä¸‰ç»´ç»˜å›¾
         if(  (isfield(y{i},'time2') && ~isempty(y{i}.time2)) && (isfield(y{i},'z2') && ~isempty(y{i}.z2)) )
             plot3(y{i}.time2 + time_lingwei,y{i}.z2,y{i}.data,'color',linecolor(i-6*floor((i-1)/6)),'linestyle',line_style{ceil(i/6)},'linewidth',2);
             xlabel(y{i}.namex);
             ylabel(y{i}.namez);
         end
-        %µ¥ÖÃzµÄ»æÍ¼  ÈıÎ¬»æÍ¼
+        %å•ç½®zçš„ç»˜å›¾  ä¸‰ç»´ç»˜å›¾
         if(  (~isfield(y{i},'time2') || isempty(y{i}.time2)) && (isfield(y{i},'z2') && ~isempty(y{i}.z2)) )
             plot3(y{i}.time + time_lingwei,y{i}.z2,y{i}.data,'color',linecolor(i-6*floor((i-1)/6)),'linestyle',line_style{ceil(i/6)},'linewidth',2);
             xlabel('t(s)');
@@ -309,12 +309,12 @@ for i=1:length(hasvalue_list)
     DataList_str_temp{i} = get(hasvalue_list(i),'tag');
 end
 if(length(hasvalue_list) >= 1)
-    [temp,Datashuxu] = sort(DataList_str_temp);%¸ù¾İlistÅÅĞò
+    [temp,Datashuxu] = sort(DataList_str_temp);%æ ¹æ®listæ’åº
 end
 
 for d=1:length(hasvalue_list);
     
-    i = Datashuxu(d);  %°´Ë³ĞòÕûÀí
+    i = Datashuxu(d);  %æŒ‰é¡ºåºæ•´ç†
     
     list_v = get(hasvalue_list(i),'value');
     DataList_str = get(hasvalue_list(i),'tag');
@@ -322,7 +322,7 @@ for d=1:length(hasvalue_list);
         for p=1:handles.SelectFileCount(1,str2double(DataList_str(9)))
             y{k} = handles.(['data' DataList_str(9)]){p,list_v(j)};
             
-            listtexttemp1 = [y{k}.name '-list' num2str(DataList_str(9))];  %²éÕÒÏÂ»®ÏßÌæ»»
+            listtexttemp1 = [y{k}.name '-list' num2str(DataList_str(9))];  %æŸ¥æ‰¾ä¸‹åˆ’çº¿æ›¿æ¢
             listtexttemp2 = listtexttemp1(1);
             for kf = 2:length(listtexttemp1)
                 if(listtexttemp1(kf) == '_')
@@ -578,8 +578,8 @@ function CopyFigure_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 try
-    graph = handles.graph;   %µ÷Èë×ÓÍ¼µÄ¾ä±ú£¬Îª¸´ÖÆÍ¼ĞÎÊ¹ÓÃ
-    legendText=handles.legend;         %µ÷Èë×ÓÍ¼µÄlegend¾ä±ú£¬Îª¸´ÖÆÍ¼ĞÎÊ¹ÓÃ
+    graph = handles.graph;   %è°ƒå…¥å­å›¾çš„å¥æŸ„ï¼Œä¸ºå¤åˆ¶å›¾å½¢ä½¿ç”¨
+    legendText=handles.legend;         %è°ƒå…¥å­å›¾çš„legendå¥æŸ„ï¼Œä¸ºå¤åˆ¶å›¾å½¢ä½¿ç”¨
     fig = figure('visible','on');
     copy_figure=copyobj(graph,fig);
     
@@ -612,25 +612,25 @@ if(len~=0)
         ModeSelect=4;
 %         ModeSelect =  handles.originalFileInfo.ModeSelect(1,File_v(i));
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %¶à¸öÎÄ¼ş£¬Í¬Ò»¸ñÊ½£¬Ò»¸ölist
+        %å¤šä¸ªæ–‡ä»¶ï¼ŒåŒä¸€æ ¼å¼ï¼Œä¸€ä¸ªlist
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(ModeSelect == 1)
-            [data textdisp File_str] = ImportDataFile1(name,path,Filelen);%Ä£Ê½3
+            [data textdisp File_str] = ImportDataFile1(name,path,Filelen);%æ¨¡å¼3
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %Ê¹ÓÃÅäÖÃÎÄ¼ş£¬Ò»¸öÅäÖÃÎÄ¼şÒ»¸ölist£¨µ±Ç°Ä¿Â¼¾ÍÒ»¸öÅäÖÃÎÄ¼ş£©
+        %ä½¿ç”¨é…ç½®æ–‡ä»¶ï¼Œä¸€ä¸ªé…ç½®æ–‡ä»¶ä¸€ä¸ªlistï¼ˆå½“å‰ç›®å½•å°±ä¸€ä¸ªé…ç½®æ–‡ä»¶ï¼‰
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(ModeSelect == 2)
             [data textdisp File_str] = ImportDataFile2(path);
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %µ¥Ñ¡»òÕß¶àÑ¡ÎÄ¼ş£¬²»Í¬¸ñÊ½£¬Ò»¸ölist
+        %å•é€‰æˆ–è€…å¤šé€‰æ–‡ä»¶ï¼Œä¸åŒæ ¼å¼ï¼Œä¸€ä¸ªlist
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(ModeSelect == 3)
-            [data textdisp File_str] = ImportDataFile3(name,path,Filelen);%Ä£Ê½3
+            [data textdisp File_str] = ImportDataFile3(name,path,Filelen);%æ¨¡å¼3
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %µ¥Ñ¡»òÕß¶àÑ¡ÎÄ¼ş£¬Ò»¸öÎÄ¼şÒ»¸ölist
+        %å•é€‰æˆ–è€…å¤šé€‰æ–‡ä»¶ï¼Œä¸€ä¸ªæ–‡ä»¶ä¸€ä¸ªlist
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         if(ModeSelect == 4)
             [ppath name ext] = fileparts(handles.File_str{1,File_v(i)});
@@ -641,10 +641,10 @@ if(len~=0)
         set(handles.(DataList_str),'visible','on');
         set(handles.(DataList_str),'String',textdisp.('text1'));
         handles.(data_str)= data.('data1');
-        handles.index_DataList(index_DataList) = 1;%³É¹¦Ìí¼ÓÒ»¸öĞÂÊı¾İ£¬ÔòÖÃ¸ÃË÷ÒıÎ»ÖÃÎª1
+        handles.index_DataList(index_DataList) = 1;%æˆåŠŸæ·»åŠ ä¸€ä¸ªæ–°æ•°æ®ï¼Œåˆ™ç½®è¯¥ç´¢å¼•ä½ç½®ä¸º1
         guidata(hObject, handles);
     end
-    msgbox('Ë¢ĞÂÊı¾İÍê³É£¡');
+    msgbox('åˆ·æ–°æ•°æ®å®Œæˆï¼');
 end
 % --- Executes on button press in ClearFile.
 function ClearFile_Callback(hObject, eventdata, handles)
@@ -665,16 +665,16 @@ if(len~=0)
         set(handles.(DataList_str),'String',[]);
         handles.File_str{1,File_v(i)}='';
         handles = rmfield(handles,data_str);
-        handles.index_DataList(File_v(i)) = 0;%½«¸ÃÊı¾İË÷ÒıÖÃÎªÎŞĞ§
+        handles.index_DataList(File_v(i)) = 0;%å°†è¯¥æ•°æ®ç´¢å¼•ç½®ä¸ºæ— æ•ˆ
         set(handles.(DataList_str),'visible','off');
         set(handles.(['xlabel',num2str(File_v(i))]),'visible','off');
     end
     if isempty(handles.File_str)
-        handles.File_str='ÎÄ¼şÂ·¾¶';
+        handles.File_str='æ–‡ä»¶è·¯å¾„';
     end
     set(handles.FileList,'string', handles.File_str);
     guidata(hObject, handles);
-    msgbox('Çå³ıÊı¾İÍê³É£¡');
+    msgbox('æ¸…é™¤æ•°æ®å®Œæˆï¼');
 end
 
 % --- Executes on button press in SetX.
@@ -701,14 +701,14 @@ for i=1:length(list_v)
             DataList_str = get(hasvalue_list_n,'tag');
             NH =  length(handles.(['data' DataList_str(9)]));
             for k = 1:NH
-               if( length(handles.(['data' DataList_str(9)]){k}.name) == 5  && sum( handles.(['data' DataList_str(9)]){k}.name == '±ê×¼·Ö¸ô·û') == 5)
-                    msgbox('Í¬Ò»¸öListÄÚÊı¾İ¸ñÊ½ĞèÒ»ÖÂ£¡£¡£¡');
+               if( length(handles.(['data' DataList_str(9)]){k}.name) == 5  && sum( handles.(['data' DataList_str(9)]){k}.name == 'æ ‡å‡†åˆ†éš”ç¬¦') == 5)
+                    msgbox('åŒä¸€ä¸ªListå†…æ•°æ®æ ¼å¼éœ€ä¸€è‡´ï¼ï¼ï¼');
                    return;
                end
             end
             for k=1:NH
                 handles.(['data' DataList_str(9)]){k}.time2 = handles.(['data' DataList_str(9)]){list_n(1)}.data;   
-                handles.(['data' DataList_str(9)]){k}.namex = handles.(['data' DataList_str(9)]){list_n(1)}.name0;%xÖáÃû³Æ
+                handles.(['data' DataList_str(9)]){k}.namex = handles.(['data' DataList_str(9)]){list_n(1)}.name0;%xè½´åç§°
             end
             
             
@@ -718,7 +718,7 @@ for i=1:length(list_v)
     
 end
 if (list_n == 0)
-    msgbox('ÇëÖ¸¶¨XÊı¾İ£¡£¡£¡');
+    msgbox('è¯·æŒ‡å®šXæ•°æ®ï¼ï¼ï¼');
     return;
 end
 
@@ -745,10 +745,10 @@ function figureDIY_Callback(hObject, eventdata, handles)
 % hObject    handle to figureDIY (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-h = questdlg('ÇëÑ¡Ôñ¹¦ÄÜ','Í¼ÏñDIY¹¦ÄÜ','Í¼ÏñDIY','Í¬²½·Å´ó','Í¼ÏñDIY');
-if(strcmp(h,'Í¬²½·Å´ó'))
+h = questdlg('è¯·é€‰æ‹©åŠŸèƒ½','å›¾åƒDIYåŠŸèƒ½','å›¾åƒDIY','åŒæ­¥æ”¾å¤§','å›¾åƒDIY');
+if(strcmp(h,'åŒæ­¥æ”¾å¤§'))
     try
-        graph = handles.graph;   %µ÷Èë×ÓÍ¼µÄ¾ä±ú£¬Îª¸´ÖÆÍ¼ĞÎÊ¹ÓÃ
+        graph = handles.graph;   %è°ƒå…¥å­å›¾çš„å¥æŸ„ï¼Œä¸ºå¤åˆ¶å›¾å½¢ä½¿ç”¨
         linkaxes(graph,'x');
     catch ex
         errordlg(ex.message);
@@ -758,12 +758,12 @@ end
 lines = sort( get(gca,'children') );
 displaynames = get(lines,'displayname');
 if isempty(displaynames)
-    msgbox('Ã»ÓĞÑ¡¶¨DIYµÄ¶ÔÏó£¡');
+    msgbox('æ²¡æœ‰é€‰å®šDIYçš„å¯¹è±¡ï¼');
     return;
 end
-[ss,vs]=listdlg('PromptString','Ñ¡ÔñÊı¾İ','ListString',displaynames);
+[ss,vs]=listdlg('PromptString','é€‰æ‹©æ•°æ®','ListString',displaynames);
 if isempty(ss)
-    msgbox('Ã»ÓĞÑ¡¶¨DIYµÄ¶ÔÏó£¡');
+    msgbox('æ²¡æœ‰é€‰å®šDIYçš„å¯¹è±¡ï¼');
     return;
 end
 prompt = {'Enter x_fun:','Enter y_fun:'};
@@ -772,7 +772,7 @@ num_lines = 3;
 def = {'x=(x);','y=(y);'};
 answer = inputdlg(prompt,dlg_title,num_lines,def);
 if isempty(answer)
-    msgbox('Î´ÊäÈëÓĞĞ§µÄDIYº¯Êı£¡£¡');
+    msgbox('æœªè¾“å…¥æœ‰æ•ˆçš„DIYå‡½æ•°ï¼ï¼');
     return;
 end
 for i =1:length(ss)
@@ -817,7 +817,7 @@ function DataDIY_Callback(hObject, eventdata, handles)
 % hObject    handle to DataDIY (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-h = msgbox('Êı¾İĞŞÕıÖ®ºó£¬Ö»ÄÜÍ¨¹ıË¢ĞÂÊı¾İÖØĞÂ¶ÁÈ¡ÎÄ¼şÊı¾İ£¬ÇëÉ÷ÖØ£¡','×¢Òâ','warn');
+h = msgbox('æ•°æ®ä¿®æ­£ä¹‹åï¼Œåªèƒ½é€šè¿‡åˆ·æ–°æ•°æ®é‡æ–°è¯»å–æ–‡ä»¶æ•°æ®ï¼Œè¯·æ…é‡ï¼','æ³¨æ„','warn');
 uiwait(h);
 all_list = findobj('style','listbox','visible','on');
 blank_list = findobj('style','listbox','string',[],'visible','on');
@@ -839,25 +839,25 @@ for i=1:length(list_v)
     end
 end
 if (length(hasvalue_list) ~= 1 || length(list_v) ~= 1)
-    msgbox('Ò»´ÎÖ»ÄÜ¸ü¸ÄÒ»¸öÊı¾İ');
+    msgbox('ä¸€æ¬¡åªèƒ½æ›´æ”¹ä¸€ä¸ªæ•°æ®');
     return;
 end
 DataList_str = get(hasvalue_list,'tag');
 for p=1:handles.SelectFileCount(1,str2double(DataList_str(9)))
     valuename(1,p) = cellstr([char(handles.(['data' DataList_str(9)]){p,list_v}.name) '-list' DataList_str(9)]);
 end
-[ss,vs]=listdlg('PromptString','Ñ¡ÔñÊı¾İ','ListString',valuename);
+[ss,vs]=listdlg('PromptString','é€‰æ‹©æ•°æ®','ListString',valuename);
 if isempty(ss)
-    msgbox('Ã»ÓĞÑ¡¶¨DIYµÄ¶ÔÏó£¡');
+    msgbox('æ²¡æœ‰é€‰å®šDIYçš„å¯¹è±¡ï¼');
     return;
 end
-prompt = 'Êı¾İDIY';
+prompt = 'æ•°æ®DIY';
 dlg_title = 'Input for  function';
 num_lines = 3;
 def = {'val=(val);'};
 answer = inputdlg(prompt,dlg_title,num_lines,def);
 if isempty(answer)
-    msgbox('Î´ÊäÈëÓĞĞ§µÄDIYº¯Êı£¡£¡');
+    msgbox('æœªè¾“å…¥æœ‰æ•ˆçš„DIYå‡½æ•°ï¼ï¼');
     return;
 end
 for i =1:length(ss)
@@ -943,13 +943,13 @@ else
 end
 
 if(PathName_gx == 0)
-    msgbox('Î´Ñ¡ÔñÎÄ¼ş£¡£¡£¡');
+    msgbox('æœªé€‰æ‹©æ–‡ä»¶ï¼ï¼ï¼');
     return;    
 end
 
 save file_gx PathName_gx FileName_gx; 
 
-msgbox('×ª»¯¹ØÏµÒÑÑ¡¶¨!');
+msgbox('è½¬åŒ–å…³ç³»å·²é€‰å®š!');
 
 % --- Executes on button press in Spectrum.
 function Spectrum_Callback(hObject, eventdata, handles)
@@ -959,12 +959,12 @@ function Spectrum_Callback(hObject, eventdata, handles)
 lines =sort(  get(gca,'children'));
 displaynames = get(lines,'displayname');
 if isempty(displaynames)
-    msgbox('Ã»ÓĞÑ¡¶¨DIYµÄ¶ÔÏó£¡');
+    msgbox('æ²¡æœ‰é€‰å®šDIYçš„å¯¹è±¡ï¼');
     return;
 end
-[ss,vs]=listdlg('PromptString','Ñ¡ÔñÊı¾İ','ListString',displaynames);
+[ss,vs]=listdlg('PromptString','é€‰æ‹©æ•°æ®','ListString',displaynames);
 if isempty(ss)
-    msgbox('Ã»ÓĞÑ¡¶¨DIYµÄ¶ÔÏó£¡');
+    msgbox('æ²¡æœ‰é€‰å®šDIYçš„å¯¹è±¡ï¼');
     return;
 end
 
@@ -1030,33 +1030,33 @@ end
 function index = GetFirstNoBlank(handles)
 flag = find(handles.index_DataList == 0);
 if isempty(flag)
-    h = msgbox('ÁĞ±í¿òÒÑÂú£¬ÇëÉ¾³ıÒ»¸öÁĞ±íºóÖØĞÂÌí¼Ó£¡£¡');
+    h = msgbox('åˆ—è¡¨æ¡†å·²æ»¡ï¼Œè¯·åˆ é™¤ä¸€ä¸ªåˆ—è¡¨åé‡æ–°æ·»åŠ ï¼ï¼');
     uiwait(h);
     index = 1e10;
     return;
 else
-    index = flag(1);%·µ»ØµÚÒ»¸öÎªfalseµÄË÷Òı
+    index = flag(1);%è¿”å›ç¬¬ä¸€ä¸ªä¸ºfalseçš„ç´¢å¼•
 end
 function index = GetLastNoBlank(handles)
 flag = find(handles.index_DataList == 1);
 if isempty(flag)
-%     h = msgbox('ÁĞ±í¿òÒÑ¿Õ£¡£¡');
+%     h = msgbox('åˆ—è¡¨æ¡†å·²ç©ºï¼ï¼');
 %     uiwait(h);
     index = -1e10;
     return;
 else
-    index = max(flag);%·µ»ØµÚÒ»¸öÎªfalseµÄË÷Òı
+    index = max(flag);%è¿”å›ç¬¬ä¸€ä¸ªä¸ºfalseçš„ç´¢å¼•
 end
 
 function textdisp = TextDispProcess(a)
 global StrSplit
-%Êı¾İÍ·²¿ÎÄ×ÖĞĞÓëÊı¾İÁĞÊıµÄ¶ÔÆë²Ù×÷
+%æ•°æ®å¤´éƒ¨æ–‡å­—è¡Œä¸æ•°æ®åˆ—æ•°çš„å¯¹é½æ“ä½œ
 size_data = size(a.data);
 size_datacol = size_data(1,2);
 size_textdata = size(a.textdata);
 size_textrow = size_textdata(1,1);
 if(size_textrow >= 1)
-    %Èç¹ûÊı¾İÎÄ¼şÖĞµÄÎÄ×Ö±íÍ·¶àÓÚÁ½ĞĞ£¬ÄÇÃ´È¡µÚÒ»ĞĞ
+    %å¦‚æœæ•°æ®æ–‡ä»¶ä¸­çš„æ–‡å­—è¡¨å¤´å¤šäºä¸¤è¡Œï¼Œé‚£ä¹ˆå–ç¬¬ä¸€è¡Œ
     if(size_textrow ~= 1)
         a.textdata = a.textdata{1};
     end
@@ -1077,7 +1077,7 @@ else
 end
 StrSplit = cell(1,200);
 function [textdisp size_len] = StringParts(str,k)
-%·Ö¸îÊı¾İÎÄ¼şÍ·²¿µÄÎÄ×ÖĞĞ£¬·µ»Ø³ıÈ¥¿Õ¸ñµÄÎÄ×ÖĞĞ¡£
+%åˆ†å‰²æ•°æ®æ–‡ä»¶å¤´éƒ¨çš„æ–‡å­—è¡Œï¼Œè¿”å›é™¤å»ç©ºæ ¼çš„æ–‡å­—è¡Œã€‚
 global StrSplit
 try
     regresult = regexp(char(str),'\s+','split');
@@ -1123,7 +1123,7 @@ data_col = data_size(2);
 %     textdisp =['stdIndex' textdisp];
 % else
 %     %change point
-%     for i = 1:(data_col-1)%´Ó2¿ªÊ¼£¬²»ĞèÒªÊ±¼äÁĞ
+%     for i = 1:(data_col-1)%ä»2å¼€å§‹ï¼Œä¸éœ€è¦æ—¶é—´åˆ—
 %         ts{1,i} = timeseries(data(:,i+1),data(:,1),'Name',[char(textdisp(i+1)) '-' a.name]);
 %     end
 % end
@@ -1145,14 +1145,14 @@ end
 
 
 function [data textfh FileStr] = ImportDataFile2(FilePath) %#ok<DEFNU>
-%Èç¹ûModeSelectÎª2£¬µÚÒ»¸ö²ÎÊıÎªÎÄ¼ş¼ĞÂ·¾¶
+%å¦‚æœModeSelectä¸º2ï¼Œç¬¬ä¸€ä¸ªå‚æ•°ä¸ºæ–‡ä»¶å¤¹è·¯å¾„
 iniFileName = strcat(FilePath,'\IM.ini');
 fid = fopen(iniFileName);
 text= cell(1,500);
 tsc = cell(1,500);
 index = 1;
 if fid < 0
-    msgbox('Ã»ÓĞÅäÖÃÎÄ¼ş£¡');
+    msgbox('æ²¡æœ‰é…ç½®æ–‡ä»¶ï¼');
 end
 while 1
     tline = fgetl(fid);
@@ -1160,18 +1160,18 @@ while 1
         break;
     end
     [ts textdisp]= ImportSigleDataFile(strcat(FilePath,'\',tline));
-    text(index:index + length(textdisp)-1) = textdisp; %È¥µôÊ±¼äÁĞ
-    text(index + length(textdisp))='';%Á½¸öÎÄ¼şÖ®¼äÓÃÒ»¸ö¿Õ¸ñ¸ô¿ª
+    text(index:index + length(textdisp)-1) = textdisp; %å»æ‰æ—¶é—´åˆ—
+    text(index + length(textdisp))='';%ä¸¤ä¸ªæ–‡ä»¶ä¹‹é—´ç”¨ä¸€ä¸ªç©ºæ ¼éš”å¼€
     tsc(index:index + length(textdisp)-1) = ts;
-    tsc{1,index + length(textdisp)} = timeseries(0,0,'Name','±ê×¼·Ö¸ô·û');
+    tsc{1,index + length(textdisp)} = timeseries(0,0,'Name','æ ‡å‡†åˆ†éš”ç¬¦');
     index = index + length(textdisp) + 1;
 end
 fclose(fid);
-data.data1 = tsc(1:index-2);%È¥µôÁË×îºóÒ»ĞĞÌí¼ÓµÄ·Ö¸ô·û
+data.data1 = tsc(1:index-2);%å»æ‰äº†æœ€åä¸€è¡Œæ·»åŠ çš„åˆ†éš”ç¬¦
 textfh.text1 = text(1:index-2);
 FileStr.FileStr1 = FilePath;
 function [data textfh FileStr] = ImportDataFile3(name,path,len) %#ok<DEFNU>
-%Èç¹ûModeSelectÎª3
+%å¦‚æœModeSelectä¸º3
 text= cell(1,500);
 tsc = cell(1,500);
 index = 1;
@@ -1183,18 +1183,18 @@ for kk=1:len
     end
     tempfile = char(tempfile);
     [ts textdisp]= ImportSigleDataFile(tempfile);
-    text(index:index + length(textdisp)-1) = textdisp; %È¥µôÊ±¼äÁĞ
-    text(index + length(textdisp))='';%Á½¸öÎÄ¼şÖ®¼äÓÃÒ»¸ö¿Õ¸ñ¸ô¿ª
+    text(index:index + length(textdisp)-1) = textdisp; %å»æ‰æ—¶é—´åˆ—
+    text(index + length(textdisp))='';%ä¸¤ä¸ªæ–‡ä»¶ä¹‹é—´ç”¨ä¸€ä¸ªç©ºæ ¼éš”å¼€
     tsc(index:index + length(textdisp)-1) = ts;
-    tsc{1,index + length(textdisp)} = timeseries(0,0,'name','±ê×¼·Ö¸ô·û');
+    tsc{1,index + length(textdisp)} = timeseries(0,0,'name','æ ‡å‡†åˆ†éš”ç¬¦');
     index = index + length(textdisp) + 1;
 end
-data.data1 = tsc(1:index-2);%È¥µôÁË×îºóÒ»ĞĞÌí¼ÓµÄ·Ö¸ô·û
+data.data1 = tsc(1:index-2);%å»æ‰äº†æœ€åä¸€è¡Œæ·»åŠ çš„åˆ†éš”ç¬¦
 textfh.text1 = text(1:index-2);
 FileStr.FileStr1 = path;
 
 function [data textfh FileStr] = ImportDataFile1(name,path,len) %#ok<DEFNU>
-%Èç¹ûModeSelectÎª1
+%å¦‚æœModeSelectä¸º1
 text= cell(1,500);
 tsc = cell(len,500);
 for kk=1:len
@@ -1209,12 +1209,12 @@ for kk=1:len
     tsc(kk,1:length(textdisp)) = ts;
 end
 data.data1 = tsc(:,1:length(textdisp));%
-textfh.text1 = text(1:length(textdisp)); %È¥µôÊ±¼äÁĞ
+textfh.text1 = text(1:length(textdisp)); %å»æ‰æ—¶é—´åˆ—
 FileStr.FileStr1 = path;
 
 
 function [data text FileStr] = ImportDataFile4(name,path,len) %#ok<DEFNU>
-%Èç¹ûModeSelectÎª4
+%å¦‚æœModeSelectä¸º4
 for kk=1:len
     if(iscellstr(name))
         tempfile = strcat(path,name(kk));
@@ -1229,7 +1229,7 @@ for kk=1:len
 end
 
 function [ts textdisp] = ImportSigleDataFile(FilePath) %#ok<DEFNU>
-%·µ»ØÒ»¸ö½á¹¹Ìå£¬ÖÁÉÙ°üº¬Á½¸ö³ÉÔ±£¬Ò»¸öÊÇÊı¾İdata,Ò»¸öÊÇ×Ö·ûtextdata¡£
+%è¿”å›ä¸€ä¸ªç»“æ„ä½“ï¼Œè‡³å°‘åŒ…å«ä¸¤ä¸ªæˆå‘˜ï¼Œä¸€ä¸ªæ˜¯æ•°æ®data,ä¸€ä¸ªæ˜¯å­—ç¬¦textdataã€‚
 % data = importdata(FilePath,'\t',6);
 data = importdata(FilePath);
 % fid = fopen(FilePath);
@@ -1256,7 +1256,7 @@ else
     a.textdata = data.textdata;
 end
 [pathstr, name, ext] = fileparts(FilePath);
-a.name = name;%»ñÈ¡ÎÄ¼şÃû
+a.name = name;%è·å–æ–‡ä»¶å
 [ts textdisp]= GenerateTimeSeries(a);
 textdisp = textdisp(2:end);
 
@@ -1266,9 +1266,9 @@ function PlotRest_Callback(hObject, eventdata, handles)
 % hObject    handle to PlotRest (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-handles.axes1;       %½«Ô­À´µÄ¶à·ùÍ¼ÏÔÊ¾¸ÄÎªµ¥Í¼ÏÔÊ¾
+handles.axes1;       %å°†åŸæ¥çš„å¤šå¹…å›¾æ˜¾ç¤ºæ”¹ä¸ºå•å›¾æ˜¾ç¤º
 subplot(1,1,1);
-cla reset;        %ÇåÍ¼²¢×ø±êÖØÖÃ
+cla reset;        %æ¸…å›¾å¹¶åæ ‡é‡ç½®
 grid on;
 all_list = findobj('style','listbox','visible','on');
 blank_list = findobj('style','listbox','string',[],'visible','on');
@@ -1364,14 +1364,14 @@ for i=1:length(list_v)
             DataList_str = get(hasvalue_list_n,'tag');
             NH =  length(handles.(['data' DataList_str(9)]));
             for k = 1:NH
-               if( length(handles.(['data' DataList_str(9)]){k}.name) == 5  && sum( handles.(['data' DataList_str(9)]){k}.name == '±ê×¼·Ö¸ô·û') == 5)
-                    msgbox('Í¬Ò»¸öListÄÚÊı¾İ¸ñÊ½ĞèÒ»ÖÂ£¡£¡£¡');
+               if( length(handles.(['data' DataList_str(9)]){k}.name) == 5  && sum( handles.(['data' DataList_str(9)]){k}.name == 'æ ‡å‡†åˆ†éš”ç¬¦') == 5)
+                    msgbox('åŒä¸€ä¸ªListå†…æ•°æ®æ ¼å¼éœ€ä¸€è‡´ï¼ï¼ï¼');
                    return;
                end
             end
             for k=1:NH
                 handles.(['data' DataList_str(9)]){k}.z2 = handles.(['data' DataList_str(9)]){list_n(1)}.data;   
-                handles.(['data' DataList_str(9)]){k}.namez = handles.(['data' DataList_str(9)]){list_n(1)}.name0;%xÖáÃû³Æ
+                handles.(['data' DataList_str(9)]){k}.namez = handles.(['data' DataList_str(9)]){list_n(1)}.name0;%xè½´åç§°
             end
             
             
@@ -1381,7 +1381,7 @@ for i=1:length(list_v)
     
 end
 if (list_n == 0)
-    msgbox('ÇëÖ¸¶¨ZÊı¾İ£¡£¡£¡');
+    msgbox('è¯·æŒ‡å®šZæ•°æ®ï¼ï¼ï¼');
     return;
 end
 guidata(hObject,handles);
@@ -1392,7 +1392,7 @@ function pushbutton26_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton26 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% ÇúÏßÂË²¨
+% æ›²çº¿æ»¤æ³¢
 run LBQ_Butterworth;
 
 

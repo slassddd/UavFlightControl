@@ -1,4 +1,4 @@
-%% Êı¾İ½âÂë
+%% æ•°æ®è§£ç 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %SYSTEM
@@ -21,7 +21,7 @@ IN_SENSOR.um482.time = save_time(1:4:end);
 IN_SENSOR.IMU1_0.time = IN_SENSOR.IMU1.time;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU1
-% Ô­Ê¼Êı¾İ
+% åŸå§‹æ•°æ®
 % /* |@@IMUData@@-----------+--------------------------------+-------------+------------+--------------| */
 temp = reshape([data(find(mod(Count,1)==0),3:6)'],1,[]);
 IN_SENSOR.IMU1_0.accel_x=double(typecast(uint8(temp),'single')')/1*1.0000000000;
@@ -38,19 +38,19 @@ IN_SENSOR.IMU1_0.gyro_z=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 
 IN_SENSOR.IMU1_0.nChange = zeros(size(IN_SENSOR.IMU1_0.accel_x));
 if sum(IN_SENSOR.IMU1_0.nChange) == 0
-    disp('IMU1_0 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('IMU1_0 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
-% ÔçÆÚ°æ±¾log´æ´¢µÄIMUÊı¾İÎªIMU×ø±êÏµÏÂIMU²âÁ¿£¬ºóÆÚ½«log¸ÄÎªÌå×ø±êÏµÏÂµÄIMU²âÁ¿
+% æ—©æœŸç‰ˆæœ¬logå­˜å‚¨çš„IMUæ•°æ®ä¸ºIMUåæ ‡ç³»ä¸‹IMUæµ‹é‡ï¼ŒåæœŸå°†logæ”¹ä¸ºä½“åæ ‡ç³»ä¸‹çš„IMUæµ‹é‡
 if mean(IN_SENSOR.IMU1_0.accel_z) > 0
-    % ¶ÔÀÏ°æ±¾Êı¾İ½øĞĞ×ø±ê×ª»»£¬ÓÉIMU×ø±êÏµ×ª»»µ½Ìå×ø±êÏµ
-    disp('ÌØ±ğ×¢ÒâÕâÀï¶ÔIMU1_ControlÕı¸ººÅµÄÌØ±ğ´¦Àí')
+    % å¯¹è€ç‰ˆæœ¬æ•°æ®è¿›è¡Œåæ ‡è½¬æ¢ï¼Œç”±IMUåæ ‡ç³»è½¬æ¢åˆ°ä½“åæ ‡ç³»
+    disp('ç‰¹åˆ«æ³¨æ„è¿™é‡Œå¯¹IMU1_Controlæ­£è´Ÿå·çš„ç‰¹åˆ«å¤„ç†')
     keyboard
     IN_SENSOR.IMU1_0.accel_y = - IN_SENSOR.IMU1_0.accel_y;
     IN_SENSOR.IMU1_0.accel_z = - IN_SENSOR.IMU1_0.accel_z;
     IN_SENSOR.IMU1_0.gyro_y = -IN_SENSOR.IMU1_0.gyro_y;
     IN_SENSOR.IMU1_0.gyro_z = -IN_SENSOR.IMU1_0.gyro_z;
 end
-% 1msÂË²¨
+% 1msæ»¤æ³¢
 temp = reshape([data(1:1:end,27:28)'],1,[]);
 IN_SENSOR.IMU1.accel_x = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
 temp = reshape([data(1:1:end,29:30)'],1,[]);
@@ -66,12 +66,12 @@ IN_SENSOR.IMU1.gyro_z = double(typecast(uint8(temp),'int16')')/32768*17.50000000
 
 IN_SENSOR.IMU1.nChange = zeros(size(IN_SENSOR.IMU1.accel_x));
 if sum(IN_SENSOR.IMU1.nChange) == 0
-    disp('IMU1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('IMU1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
-% ÔçÆÚ°æ±¾log´æ´¢µÄIMUÊı¾İÎªIMU×ø±êÏµÏÂIMU²âÁ¿£¬ºóÆÚ½«log¸ÄÎªÌå×ø±êÏµÏÂµÄIMU²âÁ¿
+% æ—©æœŸç‰ˆæœ¬logå­˜å‚¨çš„IMUæ•°æ®ä¸ºIMUåæ ‡ç³»ä¸‹IMUæµ‹é‡ï¼ŒåæœŸå°†logæ”¹ä¸ºä½“åæ ‡ç³»ä¸‹çš„IMUæµ‹é‡
 if mean(IN_SENSOR.IMU1.accel_z) > 0
-    % ¶ÔÀÏ°æ±¾Êı¾İ½øĞĞ×ø±ê×ª»»£¬ÓÉIMU×ø±êÏµ×ª»»µ½Ìå×ø±êÏµ
-    disp('ÌØ±ğ×¢ÒâÕâÀï¶ÔIMU1Õı¸ººÅµÄÌØ±ğ´¦Àí')
+    % å¯¹è€ç‰ˆæœ¬æ•°æ®è¿›è¡Œåæ ‡è½¬æ¢ï¼Œç”±IMUåæ ‡ç³»è½¬æ¢åˆ°ä½“åæ ‡ç³»
+    disp('ç‰¹åˆ«æ³¨æ„è¿™é‡Œå¯¹IMU1æ­£è´Ÿå·çš„ç‰¹åˆ«å¤„ç†')
     keyboard
     IN_SENSOR.IMU1.accel_y = - IN_SENSOR.IMU1.accel_y;
     IN_SENSOR.IMU1.accel_z = - IN_SENSOR.IMU1.accel_z;
@@ -95,12 +95,12 @@ IN_SENSOR.IMU2.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000
 
 IN_SENSOR.IMU2.nChange = zeros(size(IN_SENSOR.IMU2.accel_x));
 if sum(IN_SENSOR.IMU2.nChange) == 0
-    disp('IMU2 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('IMU2 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
-% ÔçÆÚ°æ±¾log´æ´¢µÄIMUÊı¾İÎªIMU×ø±êÏµÏÂIMU²âÁ¿£¬ºóÆÚ½«log¸ÄÎªÌå×ø±êÏµÏÂµÄIMU²âÁ¿
+% æ—©æœŸç‰ˆæœ¬logå­˜å‚¨çš„IMUæ•°æ®ä¸ºIMUåæ ‡ç³»ä¸‹IMUæµ‹é‡ï¼ŒåæœŸå°†logæ”¹ä¸ºä½“åæ ‡ç³»ä¸‹çš„IMUæµ‹é‡
 if mean(IN_SENSOR.IMU2.accel_z) > 0
-    % ¶ÔÀÏ°æ±¾Êı¾İ½øĞĞ×ø±ê×ª»»£¬ÓÉIMU×ø±êÏµ×ª»»µ½Ìå×ø±êÏµ
-    disp('ÌØ±ğ×¢ÒâÕâÀï¶ÔIMU2Õı¸ººÅµÄÌØ±ğ´¦Àí')
+    % å¯¹è€ç‰ˆæœ¬æ•°æ®è¿›è¡Œåæ ‡è½¬æ¢ï¼Œç”±IMUåæ ‡ç³»è½¬æ¢åˆ°ä½“åæ ‡ç³»
+    disp('ç‰¹åˆ«æ³¨æ„è¿™é‡Œå¯¹IMU2æ­£è´Ÿå·çš„ç‰¹åˆ«å¤„ç†')
     keyboard
     IN_SENSOR.IMU2.accel_y = - IN_SENSOR.IMU2.accel_y;
     IN_SENSOR.IMU2.accel_z = - IN_SENSOR.IMU2.accel_z;
@@ -124,12 +124,12 @@ IN_SENSOR.IMU3.gyro_z=double(typecast(uint8(temp),'int16')')/32768*17.5000000000
 
 IN_SENSOR.IMU3.nChange = zeros(size(IN_SENSOR.IMU3.accel_x));
 if sum(IN_SENSOR.IMU3.nChange) == 0
-    disp('IMU3 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('IMU3 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
-% ÔçÆÚ°æ±¾log´æ´¢µÄIMUÊı¾İÎªIMU×ø±êÏµÏÂIMU²âÁ¿£¬ºóÆÚ½«log¸ÄÎªÌå×ø±êÏµÏÂµÄIMU²âÁ¿
+% æ—©æœŸç‰ˆæœ¬logå­˜å‚¨çš„IMUæ•°æ®ä¸ºIMUåæ ‡ç³»ä¸‹IMUæµ‹é‡ï¼ŒåæœŸå°†logæ”¹ä¸ºä½“åæ ‡ç³»ä¸‹çš„IMUæµ‹é‡
 if mean(IN_SENSOR.IMU3.accel_z) > 0
-    % ¶ÔÀÏ°æ±¾Êı¾İ½øĞĞ×ø±ê×ª»»£¬ÓÉIMU×ø±êÏµ×ª»»µ½Ìå×ø±êÏµ
-    disp('ÌØ±ğ×¢ÒâÕâÀï¶ÔIMU3Õı¸ººÅµÄÌØ±ğ´¦Àí')
+    % å¯¹è€ç‰ˆæœ¬æ•°æ®è¿›è¡Œåæ ‡è½¬æ¢ï¼Œç”±IMUåæ ‡ç³»è½¬æ¢åˆ°ä½“åæ ‡ç³»
+    disp('ç‰¹åˆ«æ³¨æ„è¿™é‡Œå¯¹IMU3æ­£è´Ÿå·çš„ç‰¹åˆ«å¤„ç†')
     keyboard
     IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
     IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
@@ -139,7 +139,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU4
 IN_SENSOR.IMU4 = IN_SENSOR.IMU3;
-disp('IMU4 ÎªÕı³£¸³Öµ£¬ÔİÓÃIMU3×÷ÎªÊı¾İÔ´');
+disp('IMU4 ä¸ºæ­£å¸¸èµ‹å€¼ï¼Œæš‚ç”¨IMU3ä½œä¸ºæ•°æ®æº');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %baro1
 temp=reshape([data(index_21,41:42)'],1,[]);
@@ -155,7 +155,7 @@ pressure_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
 
 IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
 if sum(IN_SENSOR.baro1.nChange) == 0
-    disp('baro1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('baro1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Mag
@@ -232,7 +232,7 @@ IN_SENSOR.mag1.mag_y = mag1calib_y_magFrame;
 IN_SENSOR.mag1.mag_z = mag1calib_z_magFrame;
 IN_SENSOR.mag1.nChange = zeros(size(IN_SENSOR.mag1.mag_x));
 if sum(IN_SENSOR.mag1.nChange) == 0
-    disp('mag1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('mag1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 
 IN_SENSOR.mag2.mag_x = mag2calib_x_magFrame;
@@ -240,7 +240,7 @@ IN_SENSOR.mag2.mag_y = mag2calib_y_magFrame;
 IN_SENSOR.mag2.mag_z = mag2calib_z_magFrame;
 IN_SENSOR.mag2.nChange = zeros(size(IN_SENSOR.mag2.mag_x));
 if sum(IN_SENSOR.mag2.nChange) == 0
-    disp('mag2 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('mag2 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 % IN_SENSOR.mag2.mag_x = mag2_x_forCalib;
 % IN_SENSOR.mag2.mag_y = mag2_y_forCalib;
@@ -257,7 +257,7 @@ temp = reshape([data(find(mod(Count,4)==3),119:120)'],1,[]);
 IN_SENSOR.radar1.Range = double(typecast(uint8(temp),'int16')')/1*0.0100000000;
 IN_SENSOR.radar1.nChange = zeros(size(IN_SENSOR.radar1.SNR));
 if sum(IN_SENSOR.radar1.nChange) == 0
-    disp('radar1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('radar1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %ublox
@@ -293,7 +293,7 @@ sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.sAcc = sAcc; % create struct
 IN_SENSOR.ublox1.nChange = zeros(size(IN_SENSOR.ublox1.velE));
 if sum(IN_SENSOR.ublox1.nChange) == 0
-    disp('ublox1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('ublox1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % um482
@@ -372,7 +372,7 @@ IN_SENSOR.um482.numSv = numSv; % create struct
 
 IN_SENSOR.um482.nChange = zeros(size(IN_SENSOR.um482.velE));
 if sum(IN_SENSOR.um482.nChange) == 0
-    disp('um482 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('um482 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % airspeed1
@@ -395,10 +395,10 @@ IN_SENSOR.airspeed1.EAS2TAS_Algo = EAS2TAS_Algo;
 
 IN_SENSOR.airspeed1.nChange = zeros(size(IN_SENSOR.airspeed1.time));
 if sum(IN_SENSOR.airspeed1.nChange) == 0
-    disp('airspeed1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('airspeed1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 % airspeed2
-disp('airspeed2Î´¸³Öµ')
+disp('airspeed2æœªèµ‹å€¼')
 IN_SENSOR.airspeed2.time = IN_SENSOR.ublox1.time;
 temp=reshape([data(index_42,181:182)'],1,[]);
 IN_SENSOR.airspeed2.airspeed=0*double(typecast(uint8(temp),'int16')')/32768*100;
@@ -413,10 +413,10 @@ IN_SENSOR.airspeed2.EAS2TAS_Algo = 0*EAS2TAS_Algo;
 
 IN_SENSOR.airspeed2.nChange = zeros(size(IN_SENSOR.airspeed2.time));
 if sum(IN_SENSOR.airspeed2.nChange) == 0
-    disp('airspeed2 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('airspeed2 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 % airspeed3
-disp('airspeed3Î´¸³Öµ')
+disp('airspeed3æœªèµ‹å€¼')
 IN_SENSOR.airspeed3.time = IN_SENSOR.ublox1.time;
 temp=reshape([data(index_42,181:182)'],1,[]);
 IN_SENSOR.airspeed3.airspeed=0*double(typecast(uint8(temp),'int16')')/32768*100;
@@ -431,11 +431,11 @@ IN_SENSOR.airspeed3.EAS2TAS_Algo = 0*EAS2TAS_Algo;
 
 IN_SENSOR.airspeed3.nChange = zeros(size(IN_SENSOR.airspeed3.time));
 if sum(IN_SENSOR.airspeed3.nChange) == 0
-    disp('airspeed3 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('airspeed3 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % laserDown1
-disp('laserDown1Î´¸³Öµ')
+disp('laserDown1æœªèµ‹å€¼')
 IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -443,10 +443,10 @@ IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.laserDown1.nChange = zeros(size(IN_SENSOR.laserDown1.time));
 if sum(IN_SENSOR.laserDown1.nChange) == 0
-    disp('laserDown1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('laserDown1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 % laserDown2
-disp('laserDown2Î´¸³Öµ')
+disp('laserDown2æœªèµ‹å€¼')
 IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -454,11 +454,11 @@ IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.laserDown2.nChange = zeros(size(IN_SENSOR.laserDown2.time));
 if sum(IN_SENSOR.laserDown2.nChange) == 0
-    disp('laserDown2 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('laserDown2 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % radarLongForward1
-disp('radarLongForward1Î´¸³Öµ')
+disp('radarLongForward1æœªèµ‹å€¼')
 IN_SENSOR.radarLongForward1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongForward1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongForward1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -466,10 +466,10 @@ IN_SENSOR.radarLongForward1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.radarLongForward1.nChange = zeros(size(IN_SENSOR.radarLongForward1.time));
 if sum(IN_SENSOR.radarLongForward1.nChange) == 0
-    disp('radarLongForward1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('radarLongForward1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 % radarLongDown1
-disp('radarLongDown1Î´¸³Öµ')
+disp('radarLongDown1æœªèµ‹å€¼')
 IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -477,11 +477,11 @@ IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.radarLongDown1.nChange = zeros(size(IN_SENSOR.radarLongDown1.time));
 if sum(IN_SENSOR.radarLongDown1.nChange) == 0
-    disp('radarLongDown1 µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('radarLongDown1 çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
-% disp('IMU1_ControlÎ´¸³Öµ')
+% disp('IMU1_Controlæœªèµ‹å€¼')
 % IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;
 temp = reshape([data(find(mod(Count,2)==0),159:160)'],1,[]);
 rtY_filter_gx=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
@@ -504,12 +504,12 @@ IN_SENSOR.IMU1_Control.accel_z = rtY_filter_az; % create struct
 
 IN_SENSOR.IMU1_Control.nChange = zeros(size(IN_SENSOR.IMU1_Control.time));
 if sum(IN_SENSOR.IMU1_Control.nChange) == 0
-    disp('IMU1_Control µÄ nChange Ã»ÓĞÕı³£¸³Öµ');
+    disp('IMU1_Control çš„ nChange æ²¡æœ‰æ­£å¸¸èµ‹å€¼');
 end
-% ÔçÆÚ°æ±¾log´æ´¢µÄIMUÊı¾İÎªIMU×ø±êÏµÏÂIMU²âÁ¿£¬ºóÆÚ½«log¸ÄÎªÌå×ø±êÏµÏÂµÄIMU²âÁ¿
+% æ—©æœŸç‰ˆæœ¬logå­˜å‚¨çš„IMUæ•°æ®ä¸ºIMUåæ ‡ç³»ä¸‹IMUæµ‹é‡ï¼ŒåæœŸå°†logæ”¹ä¸ºä½“åæ ‡ç³»ä¸‹çš„IMUæµ‹é‡
 if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
-    % ¶ÔÀÏ°æ±¾Êı¾İ½øĞĞ×ø±ê×ª»»£¬ÓÉIMU×ø±êÏµ×ª»»µ½Ìå×ø±êÏµ
-    disp('ÌØ±ğ×¢ÒâÕâÀï¶ÔIMU1_ControlÕı¸ººÅµÄÌØ±ğ´¦Àí')
+    % å¯¹è€ç‰ˆæœ¬æ•°æ®è¿›è¡Œåæ ‡è½¬æ¢ï¼Œç”±IMUåæ ‡ç³»è½¬æ¢åˆ°ä½“åæ ‡ç³»
+    disp('ç‰¹åˆ«æ³¨æ„è¿™é‡Œå¯¹IMU1_Controlæ­£è´Ÿå·çš„ç‰¹åˆ«å¤„ç†')
     keyboard
     IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
     IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
@@ -517,7 +517,7 @@ if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
     IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
 end
 if 1
-    fprintf('Ê¹ÓÃIMU_ControlÊı¾İÂË²¨\n');
+    fprintf('ä½¿ç”¨IMU_Controlæ•°æ®æ»¤æ³¢\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_Control;
 end
 % figure(220)
@@ -527,6 +527,6 @@ end
 % figure(223)
 % subplot(311);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_z);hold on;grid on;
 if 0
-    fprintf('Ê¹ÓÃIMUÔ­Ê¼Êı¾İÂË²¨\n');
+    fprintf('ä½¿ç”¨IMUåŸå§‹æ•°æ®æ»¤æ³¢\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_0;
 end

@@ -1,7 +1,7 @@
-% ½«Êı¾İÎÄ¼ş¼Ğ·ÅÔÚ³ÌĞòÄ¿Â¼ÖĞ£¬Êı¾İÎÄ¼ş¼ĞÓ¦ÄÜ¹»ÌåÏÖÊı¾İÌØÕ÷£¬ÈçĞÍºÅ¡¢ÈÕÆÚµÈ
+% å°†æ•°æ®æ–‡ä»¶å¤¹æ”¾åœ¨ç¨‹åºç›®å½•ä¸­ï¼Œæ•°æ®æ–‡ä»¶å¤¹åº”èƒ½å¤Ÿä½“ç°æ•°æ®ç‰¹å¾ï¼Œå¦‚å‹å·ã€æ—¥æœŸç­‰
 clear,clc
 tic
-evokeDir = cd; % µ÷ÓÃ¸Ãº¯ÊıÊ±matlabµÄµ±Ç°ÎÄ¼ş¼ĞÎ»ÖÃ
+evokeDir = cd; % è°ƒç”¨è¯¥å‡½æ•°æ—¶matlabçš„å½“å‰æ–‡ä»¶å¤¹ä½ç½®
 fullName = which(mfilename);
 rootDir = fileparts(fullName);
 global PathName
@@ -10,11 +10,11 @@ if PathName~=0
 else
     curProj = currentProject;
 %     cd(curProj.RootFolder)
-    try % Ö±½Ó½øÈë¿ÉÄÜµÄ¡¢´æ·ÅÊı¾İµÄ×ÓÎÄ¼ş¼Ğ
+    try % ç›´æ¥è¿›å…¥å¯èƒ½çš„ã€å­˜æ”¾æ•°æ®çš„å­æ–‡ä»¶å¤¹
         subfolders = dir(curProj.RootFolder);
         for i = 1:length(subfolders)
-            if contains(subfolders(i).name,'Êı¾İ') && ... 
-                    (contains(subfolders(i).name,'·ÉĞĞ')||contains(subfolders(i).name,'ÊÔÑé')||contains(subfolders(i).name,'ÊÔ·É'))
+            if contains(subfolders(i).name,'æ•°æ®') && ... 
+                    (contains(subfolders(i).name,'é£è¡Œ')||contains(subfolders(i).name,'è¯•éªŒ')||contains(subfolders(i).name,'è¯•é£'))
                 PathName = [curProj.RootFolder{1},'\',subfolders(i).name];
             end
         end
@@ -31,7 +31,7 @@ if ~iscell(FileNames)
 else
     nFile = length(FileNames);
 end
-if contains(PathName,rootDir) % Êı¾İÎÄ¼ş¼ĞÔÚ³ÌĞòÄ¿Â¼ÏÂ
+if contains(PathName,rootDir) % æ•°æ®æ–‡ä»¶å¤¹åœ¨ç¨‹åºç›®å½•ä¸‹
      subFoldName = strrep(PathName,rootDir,'');
      subFoldName = strrep(subFoldName,'\','');
      subFoldName = [subFoldName,'\'];
@@ -44,7 +44,7 @@ for i_file = 1:nFile
     else
         FileName = FileNames{i_file};
     end  
-    BLOCK_SIZE = 256; % 256£¬288
+    BLOCK_SIZE = 256; % 256ï¼Œ288
     fp = fopen([PathName,'\\',FileName],'r');
     datas{i_file} = fread(fp);
     fclose(fp);
@@ -68,29 +68,29 @@ for i_file = 1:nFile
     datacolumn=data;
     Count=binDecode(data,1,0,0);
     HD=180/pi;
-    %% ½âÂë
+    %% è§£ç 
     V1000_decode_common
     %%
     dataDir = cd;
     cd(rootDir)
     dotIdx = strfind(FileName,'.');
     temp = FileName(1:dotIdx-1);
-    saveFileName{i_file} = [subFoldName,'ÈÕÖ¾Êı¾İ_',temp,'.mat'];
+    saveFileName{i_file} = [subFoldName,'æ—¥å¿—æ•°æ®_',temp,'.mat'];
     save(saveFileName{i_file})
-    fprintf('±£´æ·ÉĞĞÊı¾İÎª£º %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
-    saveFileName{i_file} = [subFoldName,'·ÂÕæÊı¾İ_',temp,'.mat'];
+    fprintf('ä¿å­˜é£è¡Œæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
+    saveFileName{i_file} = [subFoldName,'ä»¿çœŸæ•°æ®_',temp,'.mat'];
 
-%     fprintf('±£´æ·ÂÕæÊı¾İÎª£º %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
-    saveFileName_magCalib{i_file} = [subFoldName,'´ÅÁ¦¼Æ±ê¶¨Êı¾İ_',temp,'.mat'];
-    mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag×ÔÉí×ø±êÏµ
+%     fprintf('ä¿å­˜ä»¿çœŸæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
+    saveFileName_magCalib{i_file} = [subFoldName,'ç£åŠ›è®¡æ ‡å®šæ•°æ®_',temp,'.mat'];
+    mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % magè‡ªèº«åæ ‡ç³»
     mag2B = [mag2_x_forCalib, mag2_y_forCalib, mag2_z_forCalib];
-    mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % mag×ÔÉí×ø±êÏµ
+    mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % magè‡ªèº«åæ ‡ç³»
     mag2B_correct = [mag2calib_x_magFrame,mag2calib_y_magFrame,mag2calib_z_magFrame];
     lla = [algo_NAV_lat(end) algo_NAV_lon(end) algo_NAV_alt(end)];
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(dataDir)
-    fprintf('±£´æ±ê¶¨Êı¾İÎª£º %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
+    fprintf('ä¿å­˜æ ‡å®šæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
 end
 cd(evokeDir)
 timeSpend = toc;
-fprintf('Êı¾İÔØÈëÍê³É£¬ºÄÊ± %.2f [s]\n',timeSpend);
+fprintf('æ•°æ®è½½å…¥å®Œæˆï¼Œè€—æ—¶ %.2f [s]\n',timeSpend);

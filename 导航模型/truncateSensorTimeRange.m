@@ -1,14 +1,14 @@
 function [in_sensors,sensorsForSim] = truncateSensorTimeRange(in_sensors,tspan,busData)
 sensorNames = fieldnames(in_sensors);
 nSensor = length(sensorNames);
-% ½øĞĞÊı¾İÇø¼ä½ØÈ¡ ----------------------------------------------------
+% è¿›è¡Œæ•°æ®åŒºé—´æˆªå– ----------------------------------------------------
 for i_sensor = 1:nSensor
     sensorName = sensorNames{i_sensor};
     sensorFullName = in_sensors.(sensorName);
     if isstruct(sensorFullName)
         childNames = fieldnames(in_sensors.(sensorName));
         nChild = length(childNames);
-        for i_child = 1:nChild % ÏÈĞĞ×¨ÃÅ´¦ÀíÊ±¼ä£¬·ÀÖ¹time³ÉÔ±²»ÔÚµÚÒ»¸öÎ»ÖÃµÄÇé¿ö
+        for i_child = 1:nChild % å…ˆè¡Œä¸“é—¨å¤„ç†æ—¶é—´ï¼Œé˜²æ­¢timeæˆå‘˜ä¸åœ¨ç¬¬ä¸€ä¸ªä½ç½®çš„æƒ…å†µ
             child = childNames{i_child};
             childFullName = in_sensors.(sensorName).(child);
             if strcmp(child,'time')
@@ -32,9 +32,9 @@ if 0 % TEST
     plot(temp.IN_SENSOR.IMU1.time,temp.IN_SENSOR.IMU1.gyro_x,'r');hold on;
     plot(in_sensors.IMU1.time,in_sensors.IMU1.gyro_x,'b--');hold on;
 end
-% Éú³ÉSimulink·ÂÕæÊı¾İ ----------------------------------------------------
+% ç”ŸæˆSimulinkä»¿çœŸæ•°æ® ----------------------------------------------------
 AllSensorProp = busData.Elements;
-for i_sensor = 1:nSensor % ±éÀú´«¸ĞÆ÷
+for i_sensor = 1:nSensor % éå†ä¼ æ„Ÿå™¨
     sensorName = sensorNames{i_sensor};
     sensorFullName = in_sensors.(sensorName);
     for i_sensorProp = 1:length(AllSensorProp)
@@ -53,7 +53,7 @@ for i_sensor = 1:nSensor % ±éÀú´«¸ĞÆ÷
         for i_child = 1:nChild
             child = childNames{i_child};
             for i_prop = 1:length(AllChildProp)
-                if strcmp(AllChildProp(i_prop).Name,child) % ÕÒµ½¶ÔÓ¦Ãû³ÆµÄ³ÉÔ±ÊôĞÔ
+                if strcmp(AllChildProp(i_prop).Name,child) % æ‰¾åˆ°å¯¹åº”åç§°çš„æˆå‘˜å±æ€§
                     dataType = AllChildProp(i_prop).DataType;
                     eval(['sensorsForSim.(sensorName).(child).time = in_sensors.(sensorName).time;']);
                     eval(['sensorsForSim.(sensorName).(child).signals.values = ',dataType,'(in_sensors.(sensorName).(child));']);
@@ -62,7 +62,7 @@ for i_sensor = 1:nSensor % ±éÀú´«¸ĞÆ÷
             end
         end
         
-    else % Ö»ÓĞtimeÊÇ·Ç½á¹¹Ìå
+    else % åªæœ‰timeæ˜¯éç»“æ„ä½“
         dataType = sensorDataType;
         eval(['sensorsForSim.(sensorName).time = in_sensors.time;']);
         eval(['sensorsForSim.(sensorName).signals.values = ',dataType,'(in_sensors.time);']);

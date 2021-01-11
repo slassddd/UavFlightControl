@@ -1,6 +1,6 @@
 function [SFSimParam,SENSOR_FAULT] = INIT_SensorFault()
 global GLOBAL_PARAM
-%% ´«¸ÐÆ÷¹ÊÕÏ
+%% ä¼ æ„Ÿå™¨æ•…éšœ
 % Ts_SensorFault.Ts_base = 0.012;
 SFSimParam.Ts_base = 0.012;
 SENSOR_FAULT.ublox1.zeroStartTime = [-1];
@@ -12,5 +12,5 @@ SENSOR_FAULT.ublox1.lostEndTime = [500];
 
 %%
 fprintf('[%s]\n',mfilename);
-fprintf('%sÖÜÆÚ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,SFSimParam.Ts_base);
+fprintf('%så‘¨æœŸ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,SFSimParam.Ts_base);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);

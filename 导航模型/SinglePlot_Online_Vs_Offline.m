@@ -1,10 +1,12 @@
-% Ëã·¨¶Ô±È£º ÀëÏß vs ÔÚÏß
-if ~exist('i_sim')
-    i_sim = 1;
+% ç®—æ³•å¯¹æ¯”ï¼š ç¦»çº¿ vs åœ¨çº¿
+% æ•°æ®æºï¼š
+try
+    dataSim = navFilterMARGRes;  % ç¦»çº¿ä»¿çœŸæ•°æ®
+    dataOnLine = navFilterMARGRes_OnLine; % åœ¨çº¿é£è¡Œæ•°æ®
+catch
+    dataSim = SimRes.Navi.MARG(1);  % ç¦»çº¿ä»¿çœŸæ•°æ®
+    dataOnLine = SimDataSet.FlightLog_Original(1).Filter; % åœ¨çº¿é£è¡Œæ•°æ®
 end
-% Êı¾İÔ´£º
-dataSim = SimRes.Navi.MARG;  % ÀëÏß·ÂÕæÊı¾İ
-dataOnLine = navFilterMARGRes_OnLine; % ÔÚÏß·ÉĞĞÊı¾İ
 %
 onlineFlag = 1;
 offlineFlag = 1;
@@ -25,7 +27,7 @@ end
 xlabel('time (s)')
 ylabel('yaw [deg]')
 grid on;
-legend('ÔÚÏß','ÀëÏß')
+legend('åœ¨çº¿','ç¦»çº¿')
 subplot(334)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_pitchd);hold on;
@@ -36,7 +38,7 @@ end
 xlabel('time (s)')
 ylabel('pitch [deg]')
 grid on;
-legend('ÔÚÏß','ÀëÏß')
+legend('åœ¨çº¿','ç¦»çº¿')
 subplot(337)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_rolld);hold on;
@@ -47,8 +49,8 @@ end
 xlabel('time (s)')
 ylabel('roll [deg]')
 grid on;
-legend('ÔÚÏß','ÀëÏß')
-%% Î»ÖÃ
+legend('åœ¨çº¿','ç¦»çº¿')
+%% ä½ç½®
 tempLLA = [dataOnLine.algo_NAV_latd,dataOnLine.algo_NAV_lond,dataOnLine.algo_NAV_alt];
 [tempLLA,LL0] = calValidLLA(tempLLA);
 posNED_Online = tempLLA;
@@ -67,7 +69,7 @@ if onlineFlag
     try
         plot(dataOnLine.time_cal,posNED_Online(:,1));hold on;
     catch
-        fprintf('%s.m :posmNEDÃ»ÓĞ»æÖÆ\n',mfilename);
+        fprintf('%s.m :posmNEDæ²¡æœ‰ç»˜åˆ¶\n',mfilename);
     end
 end
 if offlineFlag
@@ -82,13 +84,13 @@ end
 xlabel('time (s)')
 ylabel('Pn [m]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
 subplot(335)
 if onlineFlag
     try
         plot(dataOnLine.time_cal,posNED_Online(:,2));hold on;
     catch
-        fprintf('%s.m :posmNEDÃ»ÓĞ»æÖÆ\n',mfilename);
+        fprintf('%s.m :posmNEDæ²¡æœ‰ç»˜åˆ¶\n',mfilename);
     end
 end
 if offlineFlag
@@ -103,7 +105,7 @@ end
 xlabel('time (s)')
 ylabel('Pe [m]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
 subplot(338)
 data = dataOnLine.algo_NAV_alt;
 tempZeroData = data(data(:,1)==0,:);
@@ -123,10 +125,10 @@ if um482Flag % um482
     plot(IN_SENSOR.um482.time,IN_SENSOR.um482.height);hold on;
 end
 xlabel('time (s)')
-ylabel('º£°Î¸ß¶È [m]')
+ylabel('æµ·æ‹”é«˜åº¦ [m]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
-%% ËÙ¶È
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
+%% é€Ÿåº¦
 subplot(333)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vn);hold on;
@@ -143,7 +145,7 @@ end
 xlabel('time (s)')
 ylabel('Vn [m/s]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
 subplot(336)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Ve);hold on;
@@ -160,12 +162,12 @@ end
 xlabel('time (s)')
 ylabel('Ve [m/s]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
 subplot(339)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vd);hold on;
 end
-if offlineFlag % ÀëÏß
+if offlineFlag % ç¦»çº¿
     plot(dataSim.time(tmpStartIdx1:end),dataSim.velD(tmpStartIdx1:end));hold on;
 end
 if ubloxFlag % ublox
@@ -177,7 +179,7 @@ end
 xlabel('time (s)')
 ylabel('Vd [m/s]')
 grid on;
-legend('ÔÚÏß','ÀëÏß','ublox','um482')
+legend('åœ¨çº¿','ç¦»çº¿','ublox','um482')
 
 %%
 function [tempLLA,LL0] = calValidLLA(tempLLA,LL0)

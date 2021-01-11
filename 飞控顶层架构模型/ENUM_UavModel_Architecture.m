@@ -1,5 +1,5 @@
 classdef ENUM_UavModel_Architecture < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
     enumeration
         V1000_Architecture (0),
         V10_Architecture (1),

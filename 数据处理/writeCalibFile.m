@@ -1,20 +1,20 @@
 function writeCalibFile(id,calibParamUsingAllData,FileNames)
-fprintf(id,'±ê¶¨ÎÄ¼ş\n');
-fprintf(id,'Éú³ÉÊ±¼ä: %s\n',datetime);
+fprintf(id,'æ ‡å®šæ–‡ä»¶\n');
+fprintf(id,'ç”Ÿæˆæ—¶é—´: %s\n',datetime);
 if ~iscell(FileNames)
     nFile = 1;
 else
     nFile = length(FileNames);
 end
 if nFile ~= 1
-    fprintf(id,'Ê¹ÓÃµÄÊı¾İÎÄ¼ş: %s',FileNames{1});
+    fprintf(id,'ä½¿ç”¨çš„æ•°æ®æ–‡ä»¶: %s',FileNames{1});
 else
-    fprintf(id,'Ê¹ÓÃµÄÊı¾İÎÄ¼ş: %s',FileNames);
+    fprintf(id,'ä½¿ç”¨çš„æ•°æ®æ–‡ä»¶: %s',FileNames);
 end
 for i = 2:nFile
     fprintf(id,', %s',FileNames{i});
 end
-% fprintf(id,'% ÍÓÂİÆ«²î: %.3f %.3f %.3f deg/s\n',calibParamUsingAllData.IMU.g_bias);
+% fprintf(id,'% é™€èºåå·®: %.3f %.3f %.3f deg/s\n',calibParamUsingAllData.IMU.g_bias);
 fprintf(id,'\n');
 fprintf(id,'IMU_gyro_bias_x:  %.3f deg/s\n',calibParamUsingAllData.IMU.g_bias(1));
 fprintf(id,'IMU_gyro_bias_y:  %.3f deg/s\n',calibParamUsingAllData.IMU.g_bias(2));

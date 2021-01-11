@@ -1,10 +1,10 @@
-%% 注意，当前磁力计标定固件的数据解析需要用 V1000_to_mat_256
+%% 娉ㄦ剰锛屽綋鍓嶇鍔涜鏍囧畾鍥轰欢鐨勬暟鎹В鏋愰渶瑕佺敤 V1000_to_mat_256
 clear,clc
-%% 载入数据
+%% 杞藉叆鏁版嵁
 step1_loaddata
-%% 离线计算
+%% 绂荤嚎璁＄畻
 step2_sim
-%% 显示
+%% 鏄剧ず
 step3_savedata
-%% 绘图
+%% 缁樺浘
 step4_plot

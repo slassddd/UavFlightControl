@@ -1,6 +1,6 @@
-% ¶ÁÈ¡Ğ­ÒéÎÄ¼ş£¬×Ô¶¯Éú³É½âÎömº¯Êı
+% è¯»å–åè®®æ–‡ä»¶ï¼Œè‡ªåŠ¨ç”Ÿæˆè§£æmå‡½æ•°
 clear,clc
-filename = uigetfile('*.txt','Ñ¡ÔñĞ­ÒéÎÄ¼ş'); % 
+filename = uigetfile('*.txt','é€‰æ‹©åè®®æ–‡ä»¶'); % 
 decodeString = importdata(filename);
 sepflag = '|';
 flag_varname = {' ',sepflag,']','[','-','>','.'};
@@ -30,7 +30,7 @@ for i = 1:size(decodeString)
         tempstr = sprintf(['%% ',thisLine,'\n']);
         out_decodeString{3*validVarNum-2,1} = tempstr;
     else % valid line        
-        % ±äÁ¿Ãû½âÎö
+        % å˜é‡åè§£æ
         idxFlag = 2;
         startNum = sepPlace(idxFlag);
         endNum = sepPlace(idxFlag+1);
@@ -42,7 +42,7 @@ for i = 1:size(decodeString)
             continue 
         end
         fprintf('%dth var: %s\t',validVarNum,varname);
-        % ÀàĞÍ½âÎö
+        % ç±»å‹è§£æ
         idxFlag = idxFlag + 1;
         startNum = sepPlace(idxFlag);
         endNum = sepPlace(idxFlag+1);
@@ -88,12 +88,12 @@ for i = 1:size(decodeString)
                 typeSymble = 'single';
                 biasNum = 3;
             case 'D'
-                error('ÇëÊÖ¶¯½âÎöDÀàĞÍ')
+                error('è¯·æ‰‹åŠ¨è§£æDç±»å‹')
             case 'L'
-                error('ÇëÊÖ¶¯½âÎöLÀàĞÍ')
+                error('è¯·æ‰‹åŠ¨è§£æLç±»å‹')
             case 'B'
                 continue
-                warning('ÇëÊÖ¶¯½âÎöBÀàĞÍ')
+                warning('è¯·æ‰‹åŠ¨è§£æBç±»å‹')
             otherwise
         end
         number1 = 1;
@@ -107,7 +107,7 @@ for i = 1:size(decodeString)
                 end
             otherwise
         end
-        % ÆµÂÊ
+        % é¢‘ç‡
         idxFlag = idxFlag + 1;
         startNum = sepPlace(idxFlag);
         endNum = sepPlace(idxFlag+1);
@@ -119,7 +119,7 @@ for i = 1:size(decodeString)
         sample_freq = str2num(content(1:sep1Place(1)-1));
         log_freq = str2num(content(sep1Place(1)+1:end));
         fprintf('[%d:%d]\t',sample_freq,sample_freq);
-        % ´æ´¢Î»ÖÃ
+        % å­˜å‚¨ä½ç½®
         idxFlag = idxFlag + 1;
         startNum = sepPlace(idxFlag);
         endNum = sepPlace(idxFlag+1);
@@ -135,7 +135,7 @@ for i = 1:size(decodeString)
 %         end
         bloack_offset = str2num(content(sep1Place(2)+1:end));
         fprintf('[%d:%d:%d]\n',block_cnt,block_idx,bloack_offset);
-        %% Éú³Édecode´úÂë ------------------------
+        %% ç”Ÿæˆdecodeä»£ç  ------------------------
         indexStr = sprintf('find(mod(Count,%d)==%d)',block_cnt+1,block_idx);
         out_decodeString{3*validVarNum-2,1} = sprintf( template3,indexStr,bloack_offset+1,bloack_offset+1+biasNum);
 %         fprintf('%s\n',varname);
@@ -158,5 +158,5 @@ end
 fclose(fileID);
 edit(autoDecodeFileName)
 fprintf('-------------------\n')
-fprintf('Éú³ÉdecodeÎÄ¼ş,%s\n',autoDecodeFileName)
-fprintf('×¢Òâ£º±¾³ÌĞò²»½âÎöBÀàĞÍÊı¾İ£¬ÇÒtxtÎÄ¼şÖĞ²»Òª³öÏÖ'':''\n')
+fprintf('ç”Ÿæˆdecodeæ–‡ä»¶,%s\n',autoDecodeFileName)
+fprintf('æ³¨æ„ï¼šæœ¬ç¨‹åºä¸è§£æBç±»å‹æ•°æ®ï¼Œä¸”txtæ–‡ä»¶ä¸­ä¸è¦å‡ºç°'':''\n')

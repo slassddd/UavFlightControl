@@ -1,14 +1,14 @@
 classdef ENUM_RTInfo_PayLoad < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
-        % Âß¼­ÐÅÏ¢
+        % é€»è¾‘ä¿¡æ¯
         NonePayLoad (0),     
         Camera_Enter_StandBy (1), 
         Camera_Enter_Work (2), 
         Lidar_Enter_StandBy (11), 
         Lidar_Enter_Work (12),         
-        % ÑÏÖØ¾¯¸æ
+        % ä¸¥é‡è­¦å‘Š
     end
 end
 

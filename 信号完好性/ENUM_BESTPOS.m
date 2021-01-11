@@ -1,9 +1,9 @@
 classdef ENUM_BESTPOS < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         POS_SOLUTION_NONE        (0),
-        POS_SOLUTION_SINGLE      (16), % ×î²î
+        POS_SOLUTION_SINGLE      (16), % æœ€å·®
         POS_SOLUTION_PSRDIFF     (17), 
         POS_SOLUTION_L1_INT      (48),
         POS_SOLUTION_WIDE_INT     (49),

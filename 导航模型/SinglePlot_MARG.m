@@ -1,3 +1,10 @@
-fid = figure(300+i_sim);
-fid.Name = 'MARG';
-postplot_marg_flightdata(SimRes.Navi.MARG,plotOpt,3,idx_style,stepSpace) %显示组合导航数据
+try
+    fid = figure(300+i_sim);
+    fid.Name = 'MARG';    
+    Plot_NaviMARG(navFilterMARGRes,3,2,1) 
+catch
+    figure('name','MARG');
+    Plot_NaviMARG(SimRes.Navi.MARG(1),3,2,1) 
+    warning('%s 鎵ц鍗曟暟鎹粯鍥撅紝纭鏄惁绗﹀悎棰勬湡',mfilename)
+end
+

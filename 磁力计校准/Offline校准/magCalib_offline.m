@@ -1,5 +1,5 @@
 function [A_real,b,magB,x_correct] = magCalib(d)
-    % ½øĞĞÍÖÔ²½ÃÕı²ÎÊı¼ÆËã
+    % è¿›è¡Œæ¤­åœ†çŸ«æ­£å‚æ•°è®¡ç®—
     x = d(:,1);
     y = d(:,2);
     z = d(:,3);
@@ -8,7 +8,7 @@ function [A_real,b,magB,x_correct] = magCalib(d)
     A_real = real(A);
     magB = real(magB);
     b = bCol(:).'; % make a row vector 
-    % ½ÃÕı¹«Ê½£ºx_correct =£¨x-b£©*A;
+    % çŸ«æ­£å…¬å¼ï¼šx_correct =ï¼ˆx-bï¼‰*A;
     x_correct = bsxfun(@minus,d,b)*A_real;
 %     d(d==emptyVecFlag(1)) = 0;
 %     if numD > maxNum
@@ -19,8 +19,8 @@ function [A_real,b,magB,x_correct] = magCalib(d)
 end
 
 function [A,b,magB] = bestfit(x,y,z)
-% ÔÚÈıÖÖÄâºÏ½á¹ûÖĞÑ¡Ôñ×î¼ÑÖµ £¨4, 7 or 10 parameter£©£¬ÈôĞè½µµÍ¼ÆËãÁ¿£¬
-% ¿ÉÑ¡ÔñÆäÖĞÒ»ÖÖ¼ÆËã·½·¨
+% åœ¨ä¸‰ç§æ‹Ÿåˆç»“æœä¸­é€‰æ‹©æœ€ä½³å€¼ ï¼ˆ4, 7 or 10 parameterï¼‰ï¼Œè‹¥éœ€é™ä½è®¡ç®—é‡ï¼Œ
+% å¯é€‰æ‹©å…¶ä¸­ä¸€ç§è®¡ç®—æ–¹æ³•
 
     [A,b,magB, er] = correctEllipsoid4(x,y,z);
     

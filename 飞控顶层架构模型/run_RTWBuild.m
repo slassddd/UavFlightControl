@@ -5,7 +5,7 @@ INIT_SystemArchitecture
 modelname = 'RefModel_SystemArchitecture';
 infofilename = 'SystemInfo.mat';
 %% 模型参数配置
-stepMode = questdlg('选择代码生成的任务模式(V10新固件选择''多step'')','模式','单step','多step','取消','单step');
+stepMode = questdlg('选择代码生成的任务模式(V10新固件选择''多step'',其他机型固件选择''单step'')','模式','单step','多step','取消','单step');
 if isempty(stepMode) || strcmp(stepMode,'取消')
     disp('未选择stepmode');
     return;

@@ -43,7 +43,7 @@ for i = 1:SimDataSet.nFlightDataFile
 end
 %% 数据绘图
 % 导航模块
-Plot_NaviSimData(SimRes,SimDataSet,GLOBAL_PARAM,dataFileNames);
+Plot_NaviSimData(SimRes,SimDataSet,dataFileNames);
 % 任务模块
 Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation);
 Plot_TaskLog();

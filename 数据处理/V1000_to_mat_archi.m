@@ -1,7 +1,7 @@
-% ½«Êı¾İÎÄ¼ş¼Ğ·ÅÔÚ³ÌĞòÄ¿Â¼ÖĞ£¬Êı¾İÎÄ¼ş¼ĞÓ¦ÄÜ¹»ÌåÏÖÊı¾İÌØÕ÷£¬ÈçĞÍºÅ¡¢ÈÕÆÚµÈ
+% å°†æ•°æ®æ–‡ä»¶å¤¹æ”¾åœ¨ç¨‹åºç›®å½•ä¸­ï¼Œæ•°æ®æ–‡ä»¶å¤¹åº”èƒ½å¤Ÿä½“ç°æ•°æ®ç‰¹å¾ï¼Œå¦‚å‹å·ã€æ—¥æœŸç­‰
 clear,clc
 tic
-evokeDir = cd; % µ÷ÓÃ¸Ãº¯ÊıÊ±matlabµÄµ±Ç°ÎÄ¼ş¼ĞÎ»ÖÃ
+evokeDir = cd; % è°ƒç”¨è¯¥å‡½æ•°æ—¶matlabçš„å½“å‰æ–‡ä»¶å¤¹ä½ç½®
 fullName = which(mfilename);
 rootDir = fileparts(fullName);
 global PathName
@@ -9,11 +9,11 @@ if PathName~=0
     [FileNames,PathName,~] = uigetfile([PathName,'\\*.bin'],'MultiSelect','on'); % 
 else
     curProj = currentProject;
-    try % Ö±½Ó½øÈë¿ÉÄÜµÄ¡¢´æ·ÅÊı¾İµÄ×ÓÎÄ¼ş¼Ğ
+    try % ç›´æ¥è¿›å…¥å¯èƒ½çš„ã€å­˜æ”¾æ•°æ®çš„å­æ–‡ä»¶å¤¹
         subfolders = dir(curProj.RootFolder);
         for i = 1:length(subfolders)
-            if contains(subfolders(i).name,'Êı¾İ') && ... 
-                    (contains(subfolders(i).name,'·ÉĞĞ')||contains(subfolders(i).name,'ÊÔÑé')||contains(subfolders(i).name,'ÊÔ·É'))
+            if contains(subfolders(i).name,'æ•°æ®') && ... 
+                    (contains(subfolders(i).name,'é£è¡Œ')||contains(subfolders(i).name,'è¯•éªŒ')||contains(subfolders(i).name,'è¯•é£'))
                 PathName = [curProj.RootFolder{1},'\',subfolders(i).name];
             end
         end
@@ -30,7 +30,7 @@ if ~iscell(FileNames)
 else
     nFile = length(FileNames);
 end
-if contains(PathName,rootDir) % Êı¾İÎÄ¼ş¼ĞÔÚ³ÌĞòÄ¿Â¼ÏÂ
+if contains(PathName,rootDir) % æ•°æ®æ–‡ä»¶å¤¹åœ¨ç¨‹åºç›®å½•ä¸‹
      subFoldName = strrep(PathName,rootDir,'');
      subFoldName = strrep(subFoldName,'\','');
      subFoldName = [subFoldName,'\'];
@@ -38,13 +38,13 @@ else
      subFoldName = PathName;
 end
 for i_file = 1:nFile
-    clear IN_SENSOR SL  % ÇåÀíÊı¾İ£¬·ÀÖ¹²»Í¬ÎÄ¼ş¼äÊı¾İ¸³Öµ´íÎó
+    clear IN_SENSOR SL  % æ¸…ç†æ•°æ®ï¼Œé˜²æ­¢ä¸åŒæ–‡ä»¶é—´æ•°æ®èµ‹å€¼é”™è¯¯
     if ~iscell(FileNames)
         FileName = FileNames;
     else
         FileName = FileNames{i_file};
     end  
-    BLOCK_SIZE = 296; % 256£¬288, 296
+    BLOCK_SIZE = 296; % 256ï¼Œ288, 296
     fp = fopen([PathName,'\\',FileName],'r');
     datas{i_file} = fread(fp);
     fclose(fp);
@@ -68,12 +68,12 @@ for i_file = 1:nFile
     datacolumn=data;
     Count=binDecode(data,1,0,0);
     HD=180/pi;
-    %% ½âÂë
+    %% è§£ç 
     V1000_decode_common
     V1000_decode_simulation
     V1000_decode_auto
     SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
-    %% ¶ÔÆëÊı¾İ
+    %% å¯¹é½æ•°æ®
     SL.TASK_WindParam = alignDimension(SL.TASK_WindParam);
     IN_SENSOR.baro1 = alignDimension(IN_SENSOR.baro1);
     IN_SENSOR.mag1 = alignDimension(IN_SENSOR.mag1);
@@ -108,39 +108,39 @@ for i_file = 1:nFile
     cd(rootDir)
     dotIdx = strfind(FileName,'.');
     temp = FileName(1:dotIdx-1);
-    saveFileName{i_file} = [subFoldName,'ÈÕÖ¾Êı¾İ_',temp,'.mat'];
+    saveFileName{i_file} = [subFoldName,'æ—¥å¿—æ•°æ®_',temp,'.mat'];
     save(saveFileName{i_file})
-    fprintf('±£´æ·ÉĞĞÊı¾İÎª£º %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
-    saveFileName{i_file} = [subFoldName,'·ÂÕæÊı¾İ_',temp,'.mat'];
+    fprintf('ä¿å­˜é£è¡Œæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
+    saveFileName{i_file} = [subFoldName,'ä»¿çœŸæ•°æ®_',temp,'.mat'];
     try
         run_PlotFlightData
     end
     FlightLog_Original = SL;
     save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc')
-    fprintf('±£´æ·ÂÕæÊı¾İÎª£º %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
-    saveFileName_magCalib{i_file} = [subFoldName,'´ÅÁ¦¼Æ±ê¶¨Êı¾İ_',temp,'.mat'];
-    mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag×ÔÉí×ø±êÏµ
+    fprintf('ä¿å­˜ä»¿çœŸæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
+    saveFileName_magCalib{i_file} = [subFoldName,'ç£åŠ›è®¡æ ‡å®šæ•°æ®_',temp,'.mat'];
+    mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % magè‡ªèº«åæ ‡ç³»
     mag2B = [mag2_x_forCalib, mag2_y_forCalib, mag2_z_forCalib];
-    mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % mag×ÔÉí×ø±êÏµ
+    mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % magè‡ªèº«åæ ‡ç³»
     mag2B_correct = [mag2calib_x_magFrame,mag2calib_y_magFrame,mag2calib_z_magFrame];
     lla = [IN_SENSOR.ublox1.Lat,IN_SENSOR.ublox1.Lon,IN_SENSOR.ublox1.height];
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(dataDir)
-    fprintf('±£´æ±ê¶¨Êı¾İÎª£º %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
+    fprintf('ä¿å­˜æ ‡å®šæ•°æ®ä¸ºï¼š %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
 end
 cd(evokeDir)
 timeSpend = toc;
-fprintf('Êı¾İÔØÈëÍê³É£¬ºÄÊ± %.2f [s]\n',timeSpend);
-%% Ñ¡Ôñ¹ÒÔØ´ÅÁ¦¼ÆÎÄ¼ş
+fprintf('æ•°æ®è½½å…¥å®Œæˆï¼Œè€—æ—¶ %.2f [s]\n',timeSpend);
+%% é€‰æ‹©æŒ‚è½½ç£åŠ›è®¡æ–‡ä»¶
 try
     if false
         [magFileName,magFilePath,~] = uigetfile([PathName,'\\*.txt']); %
         magFullPath = strcat(magFilePath,magFileName);
         RM3100.k = 1/75;
-        RM3100.mag = RM3100.k*importdata(magFullPath); % ĞèÊÖ¶¯¶ÔTXTÊı¾İÎÄ¼ş½øĞĞĞŞ¸Ä£¬É¾³ıXYZºÍ£º
+        RM3100.mag = RM3100.k*importdata(magFullPath); % éœ€æ‰‹åŠ¨å¯¹TXTæ•°æ®æ–‡ä»¶è¿›è¡Œä¿®æ”¹ï¼Œåˆ é™¤XYZå’Œï¼š
         RM3100.mag(:,3) = - RM3100.mag(:,3);
         RM3100.norm = vecnorm(RM3100.mag,2,2);
         SinglePlot_mag_RM3100
     end
 end
-%% END Ñ¡Ôñ¹ÒÔØ´ÅÁ¦¼ÆÎÄ¼ş
+%% END é€‰æ‹©æŒ‚è½½ç£åŠ›è®¡æ–‡ä»¶

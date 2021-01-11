@@ -5,18 +5,18 @@ switch planeMode
     case  ENUM_plane_mode.V10_1
         NaviSimParam.Ts_Base = 0.012;
     otherwise
-        error('»úĞÍÑ¡Ôñ´íÎó£¡')
+        error('æœºå‹é€‰æ‹©é”™è¯¯ï¼')
 end
 global GLOBAL_PARAM
 fprintf('[%s]\n',mfilename);
-fprintf('%sÖÜÆÚ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,NaviSimParam.Ts_Base);
+fprintf('%så‘¨æœŸ: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,NaviSimParam.Ts_Base);
 
-%% V1000²ÎÊı
+%% V1000å‚æ•°
 NAVI_PARAM_V1000 = INIT_Navi_V1000(NaviSimParam.Ts_Base);
-%% V10²ÎÊı
+%% V10å‚æ•°
 NAVI_PARAM_V10 = INIT_Navi_V10(NaviSimParam.Ts_Base);
-%% ĞÍºÅÎŞ¹Ø²ÎÊı
-% ´Å³¡Ä£ĞÍ
+%% å‹å·æ— å…³å‚æ•°
+% ç£åœºæ¨¡å‹
 dateyear = 2020;
 NAVI_PARAM_BASE.magneticData_igrfmagm = NAVI_calMagneticDec(dateyear,'igrfmagm');
 NAVI_PARAM_BASE.nStateMARG = 22;

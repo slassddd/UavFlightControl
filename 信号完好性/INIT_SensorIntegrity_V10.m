@@ -1,5 +1,5 @@
 function SENSOR_INTEGRITY_PARAM_V10 = INIT_SensorIntegrity_V10() 
-% ĞÅºÅ¶ªÊ§±¨¾¯ãĞÖµ [sec]
+% ä¿¡å·ä¸¢å¤±æŠ¥è­¦é˜ˆå€¼ [sec]
 baseMode = 0.36;
 switch baseMode
     case 0.36
@@ -16,7 +16,7 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM_V10.laserDown.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V10.radarLong.threshold_lostTime = 5;
 end
-% ĞÅºÅÖÊÁ¿½µ¼¶±¨¾¯ãĞÖµ
+% ä¿¡å·è´¨é‡é™çº§æŠ¥è­¦é˜ˆå€¼
 SENSOR_INTEGRITY_PARAM_V10.Mag.threshold_maxNormMag_uT = 60;
 SENSOR_INTEGRITY_PARAM_V10.Mag.threshold_minNormMag_uT = 48;
 SENSOR_INTEGRITY_PARAM_V10.Mag.threshold_gapBetweenMaxMin_uT = 10;
@@ -28,4 +28,4 @@ SENSOR_INTEGRITY_PARAM_V10.um482.threshold_numSv = 10;
 SENSOR_INTEGRITY_PARAM_V10.um482.threshold_pDop = 4;
 SENSOR_INTEGRITY_PARAM_V10.um482.degrade_numSv = 16;
 SENSOR_INTEGRITY_PARAM_V10.um482.degrade_pDop = 6;
-SENSOR_INTEGRITY_PARAM_V10.Radar.faultThreshold = 400; % ½ü¾àÀëÊ±radar¿ÉÄÜ²âÁ¿µ½¸ºÖµ£¬´ËÊ±radar¹Ì¼şÖ±½ÓÊä³öÒ»¸ö¹Ì¶¨µÄ´óÖµ£¬faultThresholdÓ¦Ğ¡ÓÚÉÏÊöÖµ
+SENSOR_INTEGRITY_PARAM_V10.Radar.faultThreshold = 400; % è¿‘è·ç¦»æ—¶radarå¯èƒ½æµ‹é‡åˆ°è´Ÿå€¼ï¼Œæ­¤æ—¶radarå›ºä»¶ç›´æ¥è¾“å‡ºä¸€ä¸ªå›ºå®šçš„å¤§å€¼ï¼ŒfaultThresholdåº”å°äºä¸Šè¿°å€¼

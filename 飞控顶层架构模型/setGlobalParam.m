@@ -1,19 +1,21 @@
 %% 
 global GLOBAL_PARAM
 GLOBAL_PARAM.project = currentProject;
+GLOBAL_PARAM.plotOpt = setPlotOpt;
+GLOBAL_PARAM.plotOpt.hold = 'on';
 GLOBAL_PARAM.Print.lineHead = '|    ';
 GLOBAL_PARAM.Print.flagHalfBegin = '--------------------------';
 GLOBAL_PARAM.Print.flagBegin = '-------------------------------------------------------------------';
 GLOBAL_PARAM.SubFolderName.ICD = 'SubFolder_ICD';
-GLOBAL_PARAM.SubFolderName.FlightData = 'SubFolder_·ÉĞĞÊı¾İ';
-GLOBAL_PARAM.SubFolderName.SimRes = 'SubFolder_·ÂÕæ½á¹û';
+GLOBAL_PARAM.SubFolderName.FlightData = 'SubFolder_é£è¡Œæ•°æ®';
+GLOBAL_PARAM.SubFolderName.SimRes = 'SubFolder_ä»¿çœŸç»“æœ';
 load([GLOBAL_PARAM.SubFolderName.ICD,'\','IOBusInfo_V1000'])
-%% ·ÂÕæÄ£Ê½Ñ¡Ôñ ¡¾·ÂÕæ(ÒÑ³¤ÆÚ²»Î¬»¤)¡¿ or ¡¾Êı¾İ»Ø·Å¡¿
-GLOBAL_PARAM.SimulinkRunMode = 1; % ·ÉĞĞ²ÎÊıÔ´Ñ¡Ôñ£»1 ·ÉĞĞÊı¾İ  2 ·ÂÕæ(ÒÑ¾­ºÜ¾ÃÃ»ÓĞÎ¬»¤£¬¿Ï¶¨²»ºÃÓÃÁË)
+%% ä»¿çœŸæ¨¡å¼é€‰æ‹© ã€ä»¿çœŸ(å·²é•¿æœŸä¸ç»´æŠ¤)ã€‘ or ã€æ•°æ®å›æ”¾ã€‘
+GLOBAL_PARAM.SimulinkRunMode = 1; % é£è¡Œå‚æ•°æºé€‰æ‹©ï¼›1 é£è¡Œæ•°æ®  2 ä»¿çœŸ(å·²ç»å¾ˆä¹…æ²¡æœ‰ç»´æŠ¤ï¼Œè‚¯å®šä¸å¥½ç”¨äº†)
 GLOBAL_PARAM.sourceMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simulink_simdata'
-%% ´´½¨×÷Í¼¶ÔÏó
+%% åˆ›å»ºä½œå›¾å¯¹è±¡
 GLOBAL_PARAM.hPlot = UAVPlotLib;
 %%
-% fprintf('%s ¿ªÊ¼´óÄ£ĞÍ·ÂÕæ %s\n',GLOBAL_PARAM.Print.flagHalfBegin,GLOBAL_PARAM.Print.flagHalfBegin);
+% fprintf('%s å¼€å§‹å¤§æ¨¡å‹ä»¿çœŸ %s\n',GLOBAL_PARAM.Print.flagHalfBegin,GLOBAL_PARAM.Print.flagHalfBegin);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
-fprintf('%sICDÎÄ¼ş:%s\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.SubFolderName.ICD);
+fprintf('%sICDæ–‡ä»¶:%s\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.SubFolderName.ICD);

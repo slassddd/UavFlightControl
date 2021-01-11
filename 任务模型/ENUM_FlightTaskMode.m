@@ -1,9 +1,9 @@
 classdef ENUM_FlightTaskMode < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         NoneFlightTaskMode (0),
-        GroundStandByMode (1), % ½âËø×´Ì¬ÏÂµÄµØÃæÄ£Ê½
+        GroundStandByMode (1), % è§£é”çŠ¶æ€ä¸‹çš„åœ°é¢æ¨¡å¼
         TakeOffMode (2),
         Rotor2Fix_Mode (3),
         HoverAdjustMode (4),
@@ -19,7 +19,7 @@ classdef ENUM_FlightTaskMode < Simulink.IntEnumType
         StallRecovery (14),
         VerticalMove (15),
         CalibBeforePath (16),
-%         GroundLock (15), % Ëø¶¨×´Ì¬ÏÂµÄµØÃæÄ£Ê½
+%         GroundLock (15), % é”å®šçŠ¶æ€ä¸‹çš„åœ°é¢æ¨¡å¼
         
         Test_HeightKeep (101),
         Test_AttitudeKeep (102),

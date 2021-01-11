@@ -1,11 +1,11 @@
 classdef ENUM_FlightControlMode < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         NoneFlightControlMode (0),
-        SpotHoverMode (1), % ÐýÒíÔË¶¯Ä£Ê½£¬ÉÏÉý¡¢ÏÂ½µ¡¢Æ½ÒÆ¡¢¶¨µã¶¼ÊÇ¸ÃÄ£Ê½
-        HeightKeepMode (2), % ¸ß¶È±£³Ö
-        AttitudeKeepMode (3), % ×ËÌ¬±£³Ö,Ó¦¸ÃÓÃ²»µ½
+        SpotHoverMode (1), % æ—‹ç¿¼è¿åŠ¨æ¨¡å¼ï¼Œä¸Šå‡ã€ä¸‹é™ã€å¹³ç§»ã€å®šç‚¹éƒ½æ˜¯è¯¥æ¨¡å¼
+        HeightKeepMode (2), % é«˜åº¦ä¿æŒ
+        AttitudeKeepMode (3), % å§¿æ€ä¿æŒ,åº”è¯¥ç”¨ä¸åˆ°
         HeadingKeepMode (4), % 
         PathFollowControlMode (5),
         CircleHoverMode (6),
@@ -15,12 +15,12 @@ classdef ENUM_FlightControlMode < Simulink.IntEnumType
         OnlyStablizePitchAndRoll (10),
         RotorGoUpDownBySpeed (11),
         RotorUnloadToStandby (12),
-        RotorShutDown (13), % µØÃæ¹Ø³µ
+        RotorShutDown (13), % åœ°é¢å…³è½¦
         RotorStable_RollPitchHeight (14),
         RotorGoUpDownWithHorizonPosFree (15),
-        SliderMode (16), % µÍ¶¯Á¦½µ¸ß
-        HoverSliderMode (17), % ÅÌÐý»¬Ïè½µ¸ß
-        HeadingTrackMode (18), % ×·º½Ïò²¢±£³Ö¸ß¶È
-%         FixWingLevel (14), % ¹Ì¶¨Òí×ËÌ¬¸ÄÆ½
+        SliderMode (16), % ä½ŽåŠ¨åŠ›é™é«˜
+        HoverSliderMode (17), % ç›˜æ—‹æ»‘ç¿”é™é«˜
+        HeadingTrackMode (18), % è¿½èˆªå‘å¹¶ä¿æŒé«˜åº¦
+%         FixWingLevel (14), % å›ºå®šç¿¼å§¿æ€æ”¹å¹³
     end
 end

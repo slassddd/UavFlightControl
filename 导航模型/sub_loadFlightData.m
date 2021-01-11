@@ -6,7 +6,7 @@ fprintf('%sIMU time span: [%.2f, %.2f]\n',GLOBAL_PARAM.Print.lineHead,...
 if tspan(2) > loadData.IN_SENSOR.IMU1.time(end)
     tspan(2) = loadData.IN_SENSOR.IMU1.time(end);
 end
-if tspan(2) < tspan(1) % Ê±¼äÒì³£ÅÐ¶Ï
+if tspan(2) < tspan(1) % æ—¶é—´å¼‚å¸¸åˆ¤æ–­
     validflag = false;
 else
     validflag = true;

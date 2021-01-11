@@ -1,6 +1,6 @@
 classdef ENUM_RTInfo_Task < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
-    %   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
+    %   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     enumeration
         NothingHappened_task (0),     
         Enter_ManualMode (101),
@@ -216,7 +216,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         SendEvent_AirStandBy_ButNotAllowed (1214),
         SetValue_HeightCmd (1215),
         
-        % ÔØºÉ -----------------------------------------------------------------
+        % è½½è· -----------------------------------------------------------------
         TaskLog_Payload_Camera_Shot (2000),
         TaskLog_Payload_Camera_StandBy (2001),
         TaskLog_Payload_Camera_BeginWork (2002),
@@ -242,7 +242,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Mav_CamTrigDist_No (2118),
         TaskLog_Mav_GroundStandby_Yes (2119),
         TaskLog_Mav_GroundStandby_No (2120),
-        % ¸÷ÖÖProtect
+        % å„ç§Protect
         TaskLog_Protect_Height_Normal (2200),
         TaskLog_Protect_Height_TooLow (2201),
         TaskLog_Protect_Battery_Normal (2202),
@@ -278,7 +278,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Input_HomeChange_KeyBoard (2419),
         TaskLog_Protect_Airspeed_Fault_2 (2420),   
         
-        % ÑÏÖØ¾¯¸æ
+        % ä¸¥é‡è­¦å‘Š
         NotDefined_Fcn_isAllowedToEnterThisMode (5001),
         NotDefined_State_ValidPathNum (5002),
         NotDefined_Fcn_ContinueFromPause (5003),
@@ -301,7 +301,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Enter_SystemLockInTheAir_Protect_LockedInTheAir (5020),
         Enter_SystemLockInTheAir_Protect_UnLockedInTheAir (5021),
         Enter_HeightTooLowInFix_Protect_HasBeenTooLow (5022),
-%         RTInfo.Task = ENUM_RTInfo_Task.Enter_Communication_Lost; % ¸üÐÂRTÐÅÏ¢
+%         RTInfo.Task = ENUM_RTInfo_Task.Enter_Communication_Lost; % æ›´æ–°RTä¿¡æ¯
 
     end
 end

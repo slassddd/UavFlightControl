@@ -1,5 +1,5 @@
 classdef ENUM_ComStatus < Simulink.IntEnumType
-    %UNTITLED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´ËÀàµÄÕªÒª
+    %UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤ç±»çš„æ‘˜è¦
     %   ENUM_ComStatus.ComNormal
     enumeration
         ComNormal (0),

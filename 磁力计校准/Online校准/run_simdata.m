@@ -1,9 +1,9 @@
 clear,clc
 tf = 100;
-%% 生成测量数据
+%% 鐢熸垚娴嬮噺鏁版嵁
 hardIronEffectEnable = 1;
 softIronEffectEnable = 1;
-% 理想测量
+% 鐞嗘兂娴嬮噺
 N = 500;
 rng(1);
 acc = zeros(N,3);
@@ -38,7 +38,7 @@ xlabel('x')
 ylabel('y')
 zlabel('z')
 axis equal
-%% 进行标定
+%% 杩涜鏍囧畾
 Ts = 0.001;
 A0 = eye(3);
 b0 = zeros(1,3);
@@ -50,8 +50,8 @@ xSim2.time = [0:Ts:N*Ts-Ts];
 xSim2.signals.values = x;
 xSim2.signals.dimensions = 3;
 modeloutput =  sim('calibModel');
-% %% 显示
-%% 显示
+% %% 鏄剧ず
+%% 鏄剧ず
 A{1} = modeloutput.simout1_A.Data(:,:,end);
 b{1} = modeloutput.simout1_b.Data(:,:,end);
 k{1} = modeloutput.simout1_magB.Data(end);
@@ -60,12 +60,12 @@ A{2} = modeloutput.simout2_A.Data(:,:,end);
 b{2} = modeloutput.simout2_b.Data(:,:,end);
 k{2} = modeloutput.simout2_magB.Data(end);
 res2_xCorrect = k{2}*(x-b{2})*A{2};
-% 写txt
+% 鍐檛xt
 dataFileName = 'MagCalibSim';
 for i = 1:2
     [~,tempName] = fileparts(dataFileName);
     fileID = fopen(['res_',tempName,'_mag',num2str(i),'.txt'],'w');
-    fprintf(fileID,'矫正公式: x_correct = k*(x-b)*A\n');
+    fprintf(fileID,'鐭鍏紡: x_correct = k*(x-b)*A\n');
     fprintf(fileID,'a11: %.3f\n',A{i}(1,1));
     fprintf(fileID,'a12: %.3f\n',A{i}(1,2));
     fprintf(fileID,'a13: %.3f\n',A{i}(1,3));
@@ -79,7 +79,7 @@ for i = 1:2
     fclose(fileID);   
 end
 save(['CalibParam_',dataFileName],'A','b','k');
-% 绘图
+% 缁樺浘
 figure(12);
 subplot(121)
 scatter3(res1_xCorrect(:,1),res1_xCorrect(:,2),res1_xCorrect(:,3),'r*');

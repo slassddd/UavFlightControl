@@ -3,7 +3,7 @@ switch filterName
     case 'lowpass'
         nParam = 4;
         if nargin ~= nParam
-            error(['Ó¦ÓĞ',num2str(nParam),'¸ö²ÎÊı']);
+            error(['åº”æœ‰',num2str(nParam),'ä¸ªå‚æ•°']);
         end
         data = varargin{1};
         fpass = varargin{2};
@@ -12,17 +12,17 @@ switch filterName
     case 'median'
 %         nParam = 2;
 %         if nargin ~= nParam
-%             error(['Ó¦ÓĞ',num2str(nParam),'¸ö²ÎÊı']);
+%             error(['åº”æœ‰',num2str(nParam),'ä¸ªå‚æ•°']);
 %         end        
         data = varargin{1};
         dataFiltered = median(data);
     case 'mean'
 %         nParam = 2;
 %         if nargin ~= nParam
-%             error(['Ó¦ÓĞ',num2str(nParam),'¸ö²ÎÊı']);
+%             error(['åº”æœ‰',num2str(nParam),'ä¸ªå‚æ•°']);
 %         end        
         data = varargin{1};
         dataFiltered = median(data);
     otherwise
-        error('ÂË²¨Æ÷Ãû³Æ´íÎó!')
+        error('æ»¤æ³¢å™¨åç§°é”™è¯¯!')
 end
