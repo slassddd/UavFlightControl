@@ -23,7 +23,7 @@ SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.vali
 % 设置flight data模型参数
 SimParam.FlightDataSimParam = INIT_FlightData();
 % 设置滤波参数
-[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi( SimParam.SystemInfo.planeMode );
+[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi();
 % 传感器故障参数
 [SimParam.SensorFault,SENSOR_FAULT] = INIT_SensorFault();
 % 传感器安装参数

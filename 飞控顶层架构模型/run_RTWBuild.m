@@ -1,4 +1,5 @@
 clear,clc
+setGlobalParam;
 %% 模型参数初始化
 INIT_SystemArchitecture
 %%
