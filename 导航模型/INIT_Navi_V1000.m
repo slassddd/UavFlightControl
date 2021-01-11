@@ -255,7 +255,7 @@ TEMP_NAVIPARAM = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM');
 TEMP_NAVIPARAM.modeKF1 = 22; % 22 state;  24 state;
 TEMP_NAVIPARAM.enableAccDegrade_Amp = true;
 TEMP_NAVIPARAM.enableZeroVelCorrect = false;
-TEMP_NAVIPARAM.enableVdFuser = true;
+TEMP_NAVIPARAM.enableVdFuser = true; % 使能全称Vd再融合
 TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix = true;
 %% 构建NAVI参数结构体
 NAVI_PARAM_V1000.SensorSelect = NAVITEMP.SensorSelect;
