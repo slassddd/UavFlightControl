@@ -3,7 +3,7 @@ function setRefModelConfiguration(modelname,stepMode)
 % usage: setRefModelConfiguration('RefModel_SystemArchitecture','单step');
 clear DependencySet
 %% 固件参数初始化
-INIT_SystemArchitecture
+% INIT_SystemArchitecture
 %
 DependencySet.enableMultiTask = stepMode;
 DependencySet.MainModelNameNoType = modelname;
