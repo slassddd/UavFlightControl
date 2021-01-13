@@ -1,9 +1,10 @@
-function [out,select,isCancel] = selSimCaseSource(subSystem)
+function [nameTestCase,select,isCancel] = selSimCaseSource(subSystem)
 global GLOBAL_PARAM
 % 定义选择列表
+flagTestCase_Task = 'TaskTestCase';
 switch lower(subSystem)
     case 'task'
-        struct = dir([GLOBAL_PARAM.project.RootFolder{1},'\任务模型\TEST_CASE_TASK\*.m']);
+        struct = dir([GLOBAL_PARAM.project.RootFolder{1},'\任务模型\TEST_CASE_TASK\',flagTestCase_Task,'*.m']);
         for i = 1:length(struct)
             [~,namePlaneMode{i}] = fileparts(struct(i).name);
         end
@@ -15,12 +16,12 @@ end
 % 选择
 selNum = listdlg(...
     'PromptString',{'Select Plane Mode'},...
-    'SelectionMode','single',...
+    'SelectionMode','multiple',...
     'ListString',namePlaneMode);
 if isempty(selNum)
-    fprintf('\n%s[END] 未选择,退出仿真\n',GLOBAL_PARAM.Print.lineHead);
+    fprintf('\n%s[END] 未选择测试用例,退出仿真\n',GLOBAL_PARAM.Print.lineHead);
     isCancel = true;
-    out = [];
+    nameTestCase = [];
 else
     isCancel = false;
     %% 生成提示信息
@@ -28,14 +29,14 @@ else
         fprintf('%s不使用批量测试用例,手动进行仿真\n',GLOBAL_PARAM.Print.lineHead);
         nameTestCase = [];
     else
-        nameTestCase = namePlaneMode{selNum};
-        fprintf('%s选择测试用例 %s\n',GLOBAL_PARAM.Print.lineHead,nameTestCase);
+        for i = 1:length(selNum)
+            nameTestCase{i} = namePlaneMode{selNum(i)};
+            fprintf('%s选择测试用例 %s\n',GLOBAL_PARAM.Print.lineHead,nameTestCase{i});
+        end
     end
-    %% 输出
-    out = nameTestCase;
 end
 if isempty(nameTestCase)
-    out = defaultCase;
+    nameTestCase = defaultCase;
     select = 1;
 else
     select = 2;
