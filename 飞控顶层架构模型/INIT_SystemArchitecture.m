@@ -10,13 +10,13 @@ load('IOBusInfo_V1000'); % Control模块的结构体可能存在不一致的情�
 %% 无人机动力学
 INIT_UAV
 %% 任务初始化
-[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_Task();
+[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_TaskManage();
 %% 简化的运动模型
 SimParam.SimpleUavModel = INIT_UavModelForTaskSim();
 %% 地面站指令
-SimParam.GroundStation = INIT_GroundStation(TASK_PARAM_V1000);
+SimParam.GroundStation = INIT_GroundStationControl(TASK_PARAM_V1000);
 try
-    SimParam.Architecture.taskMode
+    SimParam.Architecture.taskMode; % 该值是否存在
     switch SimParam.Architecture.taskMode
         case '飞行数据回放'
             SimParam.GroundStation.mavlinkCmd_time = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long_time;

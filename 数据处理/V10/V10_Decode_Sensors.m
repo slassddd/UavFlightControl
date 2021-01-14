@@ -1,3 +1,4 @@
+function IN_SENSOR = V10_Decode_Sensors(V10Log)
 %% 传感器数据构造
 IN_SENSOR.time = V10Log.IMU1.TimeUS/1e6;
 %% IMU1

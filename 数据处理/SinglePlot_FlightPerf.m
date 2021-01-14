@@ -1,5 +1,5 @@
 % 飞行性能数据
-data = SL.OUT_FLIGHTPERF;
+data = FlightLog_Original.OUT_FLIGHTPERF;
 nrow = 3;
 ncol = 3;
 figure;

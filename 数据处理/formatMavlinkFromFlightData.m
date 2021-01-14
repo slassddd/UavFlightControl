@@ -5,10 +5,10 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 %% 航点 —— IN_MAVLINK.mavlink_mission_item_def
 % 从飞行log中解析航点
 maxPathNum = 500;
-[mavPathPoints,homeLLA] = getPathFromFlightData(SL.mavlink_mission_item_def);
+[mavPathPoints,homeLLA] = getPathFromFlightData(FlightLog_Original.mavlink_mission_item_def);
 IN_MAVLINK.mavlink_mission_item_def = formatMavPath(STRUCT_mavlink_mission_item_def,mavPathPoints,maxPathNum);
 %% 管家命令 —— IN_MAVLINK.mavlink_msg_id_command_long
-taskLogData1 = SL.Debug_TaskLogData;
+taskLogData1 = FlightLog_Original.Debug_TaskLogData;
 taskLogDataRes(1).time_sec = taskLogData1.time_sec;
 taskLogDataRes(1).idx = taskLogData1.idx;
 taskLogDataRes(1).blockName = ENUM_TaskLogBlockName(taskLogData1.blockName);

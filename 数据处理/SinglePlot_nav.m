@@ -1,4 +1,4 @@
-tempFilter = SL.Filter;
+tempFilter = FlightLog_Original.Filter;
 %
 figure;
 %% 姿态

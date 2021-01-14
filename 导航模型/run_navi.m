@@ -1,24 +1,18 @@
 %% 通用参数设置
 fprintf('-------------------------- 开始导航仿真 --------------------------\n');
-setGlobalParam
-tspan0 = [0,100]; % sec   [0,inf]
+setGlobalParams
+tspan0 = [0,inf]; % sec   [0,inf]
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
 %% 选择并载入数据文件
 if 0
     % 执行指定数据文件
-    dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
-    dataFileNames{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
+    SimParam.TestCase.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
+    SimParam.TestCase.filename{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_3 着陆不加锁 2020-12-24 11-24-02.mat'];
 else
-    try
-        dataFileNames = saveFileName;
-        saveMatFileName(dataFileNames);
-    catch
-        load('lastFlightDataFileLoadedForNavi');
-        fprintf('%s[WARNING] 当前工作空间没有 dataFileNames, 读取最后一次载入的数据文件: %s\n',GLOBAL_PARAM.Print.lineHead,dataFileNames{1});
-    end
+    selDataFile;
 end
 % 载入飞行数据
-SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.validflag,return;end
+SimDataSet = loadFlightDataFile(tspan0,SimParam.TestCase.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 %% 初始化模型参数
 % 设置flight data模型参数
 SimParam.FlightDataSimParam = INIT_FlightData();
@@ -40,7 +34,7 @@ for i = 1:SimDataSet.nFlightDataFile
     [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),SimParam.Navi.Ts_Base);
 end
 %% 仿真绘图
-Plot_NaviSimData(SimRes,SimDataSet,dataFileNames)
+Plot_NaviSimData(SimRes,SimDataSet,SimParam.TestCase.filename)
 % Plot_NaviLogTable();
 %% 结束
 printSimEnd(SimParam.Basic.timeSpend);

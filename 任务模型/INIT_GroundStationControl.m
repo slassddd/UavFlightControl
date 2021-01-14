@@ -1,4 +1,4 @@
-function GroundStationParam = INIT_GroundStation(TaskParam)
+function GroundStationParam = INIT_GroundStationControl(TaskParam)
 global GLOBAL_PARAM
 %% 载入Bus
 load('IOBusInfo_V1000');

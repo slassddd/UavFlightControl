@@ -5,12 +5,12 @@ velElv = -asin(IN_SENSOR.ublox1.velD./speedvector)*180/pi;
 figure('Name','速度角');
 subplot(221)
 plot(IN_SENSOR.ublox1.time,velElv);hold on;
-plot(SL.Filter.time_cal,SL.Filter.algo_NAV_pitchd);hold on;
+plot(FlightLog_Original.Filter.time_cal,FlightLog_Original.Filter.algo_NAV_pitchd);hold on;
 legend('速度倾角[deg]','俯仰角[deg]')
 grid on;
 try
     subplot(223)
-    alphavector = SL.Filter.algo_NAV_pitchd - velElv;
+    alphavector = FlightLog_Original.Filter.algo_NAV_pitchd - velElv;
     plot(IN_SENSOR.ublox1.time,alphavector);hold on;grid on;
     ylabel('攻角[deg]')
 end

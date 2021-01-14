@@ -1,5 +1,5 @@
 % 从飞行log中解析航点
-[mavPathPoints,homeLLA] = getPathFromFlightData(SL.mavlink_mission_item_def);
+[mavPathPoints,homeLLA] = getPathFromFlightData(FlightLog_Original.mavlink_mission_item_def);
 % 绘制航点
 figure;
 subplot(121)

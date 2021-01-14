@@ -1,4 +1,4 @@
-function DataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR)
+function DataSet = loadFlightDataFile(tspan0,dataFileNames,BUS_SENSOR)
 global GLOBAL_PARAM
 %% output
 % IN_SENSOR_SIM_SET: 用于from workspace模块

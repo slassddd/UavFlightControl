@@ -1,6 +1,5 @@
 function [path,home] = getPathFromFlightData(data)
 %% 从飞行log中解析航点
-% [path,home] = getPathFromFlightData(SL.mavlink_mission_item_def)
 nData = length(data.seq);
 lat_pathpoint = data.x;
 lon_pathpoint = data.y;

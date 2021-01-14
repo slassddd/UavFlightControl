@@ -1,5 +1,5 @@
 % 解析taskLogData
-taskLogData1 = SL.Debug_TaskLogData;
+taskLogData1 = FlightLog_Original.Debug_TaskLogData;
 idxValid = [];
 for i = 1:length(taskLogData1.message)
     try % 防止ENUM_RTInfo_Task中成员改名造成的错误

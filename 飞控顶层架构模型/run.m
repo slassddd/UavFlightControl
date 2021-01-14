@@ -2,15 +2,19 @@
 clear,clc,clear global
 %% 设置参数
 fprintf('-------------------------- 开始大模型仿真 --------------------------\n');
-setGlobalParam();
+setGlobalParams();
 [SimParam.Architecture.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式 【仿真】or【数据回放】
 [SimParam.SystemInfo.planeMode, isCancel] = selPlaneMode();      if isCancel,return;end    % 选择机型
+% 设置测试用例
+[SimParam.TestCase.filename,SimParam.TestCase.sel,isCancel] = selSimCaseSource('task');if isCancel,return;end % 选择机型
+for i = 1:length(SimParam.TestCase.filename)
+    TestCase.Task(i) = eval(SimParam.TestCase.filename{i});
+end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 载入飞行数据
 tspan0 = [0,50]; % 仿真时间区间 [sec]
-dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
-% dataFileNames{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201224\仿真数据_9 大风 人为观察飞机姿态晃动严重，人为点击返航 2020-12-24 12-39-34.mat'];
-SimDataSet = loadFlightData(tspan0,dataFileNames,BUS_SENSOR);if ~SimDataSet.validflag,return;end
+SimParam.TestCase.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
+SimDataSet = loadFlightDataFile(tspan0,SimParam.TestCase.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 初始化固件参数
 INIT_SystemArchitecture();
@@ -29,7 +33,7 @@ switch GLOBAL_PARAM.sourceMode % 选择仿真模式
 end
 tspan = SimDataSet.tspan{1};
 IN_SENSOR = SimDataSet.IN_SENSOR(1);
-for i = 1:length(dataFileNames)
+for i = 1:length(SimParam.TestCase.filename)
     SimInput(i) = Simulink.SimulationInput(SimParam.Architecture.modelname);
     SimInput(i) = SimInput(i).setVariable('tspan',SimDataSet.tspan{i}); % setVariable 优先级大于工作空间
     SimInput(i) = SimInput(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i)); % setVariable 优先级大于工作空间
@@ -43,9 +47,9 @@ for i = 1:SimDataSet.nFlightDataFile
 end
 %% 数据绘图
 % 导航模块
-Plot_NaviSimData(SimRes,SimDataSet,dataFileNames);
+Plot_NaviSimData(SimRes,SimDataSet,SimParam.TestCase.filename);
 % 任务模块
-Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation);
+Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation,SimParam.TestCase);
 Plot_TaskLog();
 %% 结束
 printSimEnd(SimParam.Basic.timeSpend);

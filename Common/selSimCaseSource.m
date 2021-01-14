@@ -9,7 +9,7 @@ switch lower(subSystem)
             [~,namePlaneMode{i}] = fileparts(struct(i).name);
         end
         namePlaneMode = [{'Manual'},namePlaneMode];
-        defaultCase = 'TaskTestCase_Default';
+        defaultCase = {'TaskTestCase_Default'};
     otherwise
         error('');
 end

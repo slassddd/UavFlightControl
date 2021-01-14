@@ -1,44 +1,15 @@
 % 将数据文件夹放在程序目录中，数据文件夹应能够体现数据特征，如型号、日期等
 clear,clc
 tic
+global PathName
+setGlobalParams();
 evokeDir = cd; % 调用该函数时matlab的当前文件夹位置
 fullName = which(mfilename);
 rootDir = fileparts(fullName);
-global PathName
-if PathName~=0
-    [FileNames,PathName,~] = uigetfile([PathName,'\\*.bin'],'MultiSelect','on'); % 
-else
-    curProj = currentProject;
-    try % 直接进入可能的、存放数据的子文件夹
-        subfolders = dir(curProj.RootFolder);
-        for i = 1:length(subfolders)
-            if contains(subfolders(i).name,'数据') && ... 
-                    (contains(subfolders(i).name,'飞行')||contains(subfolders(i).name,'试验')||contains(subfolders(i).name,'试飞'))
-                PathName = [curProj.RootFolder{1},'\',subfolders(i).name];
-            end
-        end
-    catch ME
-        slassddd = 1;
-    end
-    [FileNames,PathName,~] = uigetfile([PathName,'\\*.bin'],'MultiSelect','on'); % 
-end
-if ~iscell(FileNames)
-    nFile = 1;
-    if FileNames==0
-        return;
-    end
-else
-    nFile = length(FileNames);
-end
-if contains(PathName,rootDir) % 数据文件夹在程序目录下
-     subFoldName = strrep(PathName,rootDir,'');
-     subFoldName = strrep(subFoldName,'\','');
-     subFoldName = [subFoldName,'\'];
-else
-     subFoldName = PathName;
-end
+[FileNames,PathName,isSuccess] = selBinFileToDecode(PathName);if ~isSuccess,return;end
+nFile = length(FileNames);
 for i_file = 1:nFile
-    clear IN_SENSOR SL  % 清理数据，防止不同文件间数据赋值错误
+    clear IN_SENSOR FlightLog_Original  % 清理数据，防止不同文件间数据赋值错误
     if ~iscell(FileNames)
         FileName = FileNames;
     else
@@ -73,9 +44,9 @@ for i_file = 1:nFile
     V1000_decode_simulation
     V1000_decode_auto;
     FlightLog_Original = SL;clear SL
-    SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
+    FlightLog_Original = addStructDataTime(FlightLog_Original,IN_SENSOR.IMU1.time);   
     %% 对齐数据
-    SL.TASK_WindParam = alignDimension(SL.TASK_WindParam);
+    FlightLog_Original.TASK_WindParam = alignDimension(FlightLog_Original.TASK_WindParam);
     IN_SENSOR.baro1 = alignDimension(IN_SENSOR.baro1);
     IN_SENSOR.mag1 = alignDimension(IN_SENSOR.mag1);
     IN_SENSOR.mag2 = alignDimension(IN_SENSOR.mag2);
@@ -109,17 +80,16 @@ for i_file = 1:nFile
     cd(rootDir)
     dotIdx = strfind(FileName,'.');
     temp = FileName(1:dotIdx-1);
-    saveFileName{i_file} = [subFoldName,'日志数据_',temp,'.mat'];
+    saveFileName{i_file} = [PathName,'日志数据_',temp,'.mat'];
     save(saveFileName{i_file})
     fprintf('保存飞行数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
-    saveFileName{i_file} = [subFoldName,'仿真数据_',temp,'.mat'];
+    saveFileName{i_file} = [PathName,'仿真数据_',temp,'.mat'];
     try
         run_PlotFlightData
     end
-    FlightLog_Original = SL;
     save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc')
     fprintf('保存仿真数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)    
-    saveFileName_magCalib{i_file} = [subFoldName,'磁力计标定数据_',temp,'.mat'];
+    saveFileName_magCalib{i_file} = [PathName,'磁力计标定数据_',temp,'.mat'];
     mag1B = [mag1_x_forCalib, mag1_y_forCalib, mag1_z_forCalib]; % mag自身坐标系
     mag2B = [mag2_x_forCalib, mag2_y_forCalib, mag2_z_forCalib];
     mag1B_correct = [mag1calib_x_magFrame,mag1calib_y_magFrame,mag1calib_z_magFrame]; % mag自身坐标系

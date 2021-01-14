@@ -1,7 +1,7 @@
-function V10Log = V10_decode_auto(logFile)
+function V10Log = V10_DecodePX4Format(logFile)
 % example: V10Log = V10_decode_auto('log_31.bin-488896.mat')
 % computer name: DESKTOP-QLU0EFU
-% generate date: 13-Jan-2021
+% generate date: 14-Jan-2021
 % Matlab version: 9.9.0.1467703 (R2020b)
 % protocol file: V10_v20210113_1647.txt
 % data file: log_31.bin-488896.mat
