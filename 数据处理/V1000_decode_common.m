@@ -1,39 +1,40 @@
 %% 数据解码
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        index_20=find(mod(Count,2)==0);
-        index_21=find(mod(Count,2)==1);
-        
-        index_40=find(mod(Count,4)==0);
-        index_41=find(mod(Count,4)==1);
-        index_42=find(mod(Count,4)==2);
-        index_43=find(mod(Count,4)==3);
-        
-        index_80=find(mod(Count,8)==0);
-        index_81=find(mod(Count,8)==1);
-        index_82=find(mod(Count,8)==2);
-        index_83=find(mod(Count,8)==3);
-        index_84=find(mod(Count,8)==4);
-        index_85=find(mod(Count,8)==5);
-        index_86=find(mod(Count,8)==6);
-        index_87=find(mod(Count,8)==7);   
-        
-        index_160=find(mod(Count,16)==0);
-        index_161=find(mod(Count,16)==1);
-        index_162=find(mod(Count,16)==2);
-        index_163=find(mod(Count,16)==3);
-        index_164=find(mod(Count,16)==4);
-        index_165=find(mod(Count,16)==5);
-        index_166=find(mod(Count,16)==6);
-        index_167=find(mod(Count,16)==7);   
-        index_168=find(mod(Count,16)==8);
-        index_169=find(mod(Count,16)==9);
-        index_1610=find(mod(Count,16)==10);
-        index_1611=find(mod(Count,16)==11);
-        index_1612=find(mod(Count,16)==12);
-        index_1613=find(mod(Count,16)==13);
-        index_1614=find(mod(Count,16)==14);
-        index_1615=find(mod(Count,16)==15);   
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+HD=180/pi;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+index_20=find(mod(Count,2)==0);
+index_21=find(mod(Count,2)==1);
+
+index_40=find(mod(Count,4)==0);
+index_41=find(mod(Count,4)==1);
+index_42=find(mod(Count,4)==2);
+index_43=find(mod(Count,4)==3);
+
+index_80=find(mod(Count,8)==0);
+index_81=find(mod(Count,8)==1);
+index_82=find(mod(Count,8)==2);
+index_83=find(mod(Count,8)==3);
+index_84=find(mod(Count,8)==4);
+index_85=find(mod(Count,8)==5);
+index_86=find(mod(Count,8)==6);
+index_87=find(mod(Count,8)==7);
+
+index_160=find(mod(Count,16)==0);
+index_161=find(mod(Count,16)==1);
+index_162=find(mod(Count,16)==2);
+index_163=find(mod(Count,16)==3);
+index_164=find(mod(Count,16)==4);
+index_165=find(mod(Count,16)==5);
+index_166=find(mod(Count,16)==6);
+index_167=find(mod(Count,16)==7);
+index_168=find(mod(Count,16)==8);
+index_169=find(mod(Count,16)==9);
+index_1610=find(mod(Count,16)==10);
+index_1611=find(mod(Count,16)==11);
+index_1612=find(mod(Count,16)==12);
+index_1613=find(mod(Count,16)==13);
+index_1614=find(mod(Count,16)==14);
+index_1615=find(mod(Count,16)==15);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SYSTEM
 temp=reshape([data(:,251:254)'],1,[]);
@@ -85,16 +86,16 @@ gz=double(typecast(uint8(temp),'int16')')/32768*17.5000000000;
 % temperature_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
 % temp=reshape([data(1:2:end,49:50)'],1,[]);
 % pressure_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
-        temp=reshape([data(index_21,41:42)'],1,[]);
-        altitue=double(typecast(uint8(temp),'int16')')/32768*2000;        
-        temp=reshape([data(index_21,43:44)'],1,[]);
-        temperature=double(typecast(uint8(temp),'int16')')/32768*100;        
-        temp=reshape([data(index_21,45:46)'],1,[]);
-        pressure=double(typecast(uint8(temp),'int16')')/32768*1100;             
-        temp=reshape([data(index_21,47:48)'],1,[]);
-        temperature_gs=double(typecast(uint8(temp),'int16')')/32768*1100;           
-        temp=reshape([data(index_21,49:50)'],1,[]);
-        pressure_gs=double(typecast(uint8(temp),'int16')')/32768*1100;  
+temp=reshape([data(index_21,41:42)'],1,[]);
+altitue=double(typecast(uint8(temp),'int16')')/32768*2000;
+temp=reshape([data(index_21,43:44)'],1,[]);
+temperature=double(typecast(uint8(temp),'int16')')/32768*100;
+temp=reshape([data(index_21,45:46)'],1,[]);
+pressure=double(typecast(uint8(temp),'int16')')/32768*1100;
+temp=reshape([data(index_21,47:48)'],1,[]);
+temperature_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
+temp=reshape([data(index_21,49:50)'],1,[]);
+pressure_gs=double(typecast(uint8(temp),'int16')')/32768*1100;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Mag
 % mag1
@@ -225,20 +226,20 @@ temp=reshape([data(index_20,65:66)'],1,[]);
 algo_pitch=double(typecast(uint8(temp),'int16')')/32768*4*HD;
 temp=reshape([data(index_20,67:68)'],1,[]);
 algo_yaw=double(typecast(uint8(temp),'int16')')/32768*4*HD;
-        temp=reshape([data(index_20,69:70)'],1,[]);
-        algo_curr_vel_0=double(typecast(uint8(temp),'int16')')/32768*30;           
-        temp=reshape([data(index_20,71:72)'],1,[]);
-        algo_curr_vel_1=double(typecast(uint8(temp),'int16')')/32768*30;
-        temp=reshape([data(index_20,73:74)'],1,[]);
-        algo_curr_vel_2=double(typecast(uint8(temp),'int16')')/32768*30; 
-        temp=reshape([data(index_20,75:76)'],1,[]);
-        algo_curr_pos_0=double(typecast(uint8(temp),'int16')')/32768*10000;
-        temp=reshape([data(index_20,77:78)'],1,[]);
-        algo_curr_pos_1=double(typecast(uint8(temp),'int16')')/32768*10000;
-        temp=reshape([data(index_20,79:80)'],1,[]);
-        algo_curr_pos_2=double(typecast(uint8(temp),'int16')')/32768*10000;
-        temp=reshape([data(index_20,81:82)'],1,[]);
-        algo_curr_alt=double(typecast(uint8(temp),'int16')')/32768*10000;
+temp=reshape([data(index_20,69:70)'],1,[]);
+algo_curr_vel_0=double(typecast(uint8(temp),'int16')')/32768*30;
+temp=reshape([data(index_20,71:72)'],1,[]);
+algo_curr_vel_1=double(typecast(uint8(temp),'int16')')/32768*30;
+temp=reshape([data(index_20,73:74)'],1,[]);
+algo_curr_vel_2=double(typecast(uint8(temp),'int16')')/32768*30;
+temp=reshape([data(index_20,75:76)'],1,[]);
+algo_curr_pos_0=double(typecast(uint8(temp),'int16')')/32768*10000;
+temp=reshape([data(index_20,77:78)'],1,[]);
+algo_curr_pos_1=double(typecast(uint8(temp),'int16')')/32768*10000;
+temp=reshape([data(index_20,79:80)'],1,[]);
+algo_curr_pos_2=double(typecast(uint8(temp),'int16')')/32768*10000;
+temp=reshape([data(index_20,81:82)'],1,[]);
+algo_curr_alt=double(typecast(uint8(temp),'int16')')/32768*10000;
 temp=reshape([data(index_20,83:84)'],1,[]);
 algo_rate_target_ang_vel_0=double(typecast(uint8(temp),'int16')')/32768*500*HD;
 temp=reshape([data(index_20,85:86)'],1,[]);

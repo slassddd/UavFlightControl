@@ -1,5 +1,8 @@
 SimParam.ArchitectureEnv.Ts_base = 0.004; % firmwareV1000_flight_replay和firmwareV1000_sim的仿真步长
 SimParam.Architecture.Ts_base = 0.012; % RefModel_SystemArchitecture的仿真步长
+% 仿真模式选择 【仿真(已长期不维护)】 or 【数据回放】
+SimParam.ArchitectureEnv.SimulinkRunMode = 1; % 飞行参数源选择；1 飞行数据  2 仿真(已经很久没有维护，肯定不好用了)
+SimParam.ArchitectureEnv.sourceMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simulink_simdata'
 %% 设置flight data模型参数
 SimParam.FlightDataSimParam = INIT_FlightData();
 %% 控制率初始化

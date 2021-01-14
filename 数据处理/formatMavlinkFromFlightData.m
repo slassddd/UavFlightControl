@@ -1,4 +1,18 @@
 %% 保存Mavlink结构体数据
+% varTaskMode = FlightLog_Original.OUT_TASKMODE.flightTaskMode;
+% timeTaskMode = FlightLog_Original.OUT_TASKMODE.time_cal;
+% timeTaskChange = [];
+% idxTaskChange = [];
+% figure;
+% plotEnum(timeTaskMode,ENUM_FlightTaskMode(varTaskMode))
+% for i = 1:length(varTaskMode)
+%     if i <= length(varTaskMode) - 1
+%         if varTaskMode(i) ~= varTaskMode(i+1)
+%             timeTaskChange = [timeTaskChange timeTaskMode(i+1)];
+%             idxTaskChange = [idxTaskChange i+1];
+%         end         
+%     end
+% end
 load('SubFolder_ICD\IOBusInfo_V1000')
 STRUCT_mavlink_mission_item_def = Simulink.Bus.createMATLABStruct('mavlink_mission_item_def');
 STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_msg_id_command_long');

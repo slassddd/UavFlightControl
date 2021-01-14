@@ -1,4 +1,4 @@
-function InfoTable = SingPlot_PowerConsumer(structData,uavMode)
+function InfoTable = SinglePlot_PowerConsumer(structData,uavMode)
 fprintf('----------------------------------------------\n')
 % time = baseTime;
 time = structData.time_cal;

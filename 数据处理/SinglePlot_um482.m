@@ -1,4 +1,4 @@
-function SingPlot_um482(structData)
+function SinglePlot_um482(structData)
 fprintf('----------------------------------------------\n')
 time = structData.time;
 children = fieldnames(structData);

@@ -1,4 +1,4 @@
-function SingPlot_FlightPerformance(structData)
+function SinglePlot_FlightPerformance(structData)
 fprintf('----------------------------------------------\n')
 time = structData.time_cal;
 children = fieldnames(structData);

@@ -1,4 +1,4 @@
-function SingPlot_gpsCompare(um482_structData_IN,ublox_structData_IN)
+function SinglePlot_gpsCompare(um482_structData_IN,ublox_structData_IN)
 fprintf('----------------------------------------------\n')
 um482_structData.time = um482_structData_IN.time;
 um482_structData.Lat = um482_structData_IN.Lat;

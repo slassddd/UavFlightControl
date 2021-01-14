@@ -1,4 +1,4 @@
-figure;
+figure('Name','Home点位置');
 time = FlightLog_Original.OUT_TASKFLIGHTPARAM.time_cal;
 data = [FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA0,FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA1];
 time1 = FlightLog_Original.OUT_TASKMODE.time_cal;

@@ -5,7 +5,7 @@ fprintf('-------------------------- 开始大模型仿真 ----------------------
 setGlobalParams();
 [SimParam.Architecture.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式 【仿真】or【数据回放】
 [SimParam.SystemInfo.planeMode, isCancel] = selPlaneMode();      if isCancel,return;end    % 选择机型
-% 设置测试用例
+% 设置测试用例(若选择【数据回放】则测试用例设置无效)
 [SimParam.TestCase.filename,SimParam.TestCase.sel,isCancel] = selSimCaseSource('task');if isCancel,return;end % 选择机型
 for i = 1:length(SimParam.TestCase.filename)
     TestCase.Task(i) = eval(SimParam.TestCase.filename{i});
@@ -20,7 +20,7 @@ fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 INIT_SystemArchitecture();
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 执行仿真
-switch GLOBAL_PARAM.sourceMode % 选择仿真模式
+switch SimParam.ArchitectureEnv.sourceMode % 选择仿真模式
     case 'simulink_flightdata'
         switch SimParam.Architecture.taskMode
             case '仿真'

@@ -1,4 +1,4 @@
-function SingPlot_ublox1(structData)
+function SinglePlot_ublox1(structData)
 fprintf('----------------------------------------------\n')
 time = structData.time;
 children = fieldnames(structData);

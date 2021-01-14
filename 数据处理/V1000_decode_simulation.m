@@ -292,6 +292,27 @@ temp = reshape([data(find(mod(Count,8)==1),205:208)'],1,[]);
 sAcc=double(typecast(uint8(temp),'single')')/1*1.0000000000;
 IN_SENSOR.ublox1.sAcc = sAcc; % create struct
 IN_SENSOR.ublox1.nChange = zeros(size(IN_SENSOR.ublox1.velE));
+% vAcc sAcc headAcc 的存储周期慢一倍，对其做填充处理
+clear temp1
+temp = IN_SENSOR.ublox1.vAcc;
+templen = length(temp);
+temp1(1:2:2*templen-1) = temp;
+temp1(2:2:2*templen) = temp;
+IN_SENSOR.ublox1.vAcc = temp1';
+clear temp1
+temp = IN_SENSOR.ublox1.sAcc;
+templen = length(temp);
+temp1(1:2:2*templen-1) = temp;
+temp1(2:2:2*templen) = temp;
+IN_SENSOR.ublox1.sAcc = temp1';
+clear temp1
+temp = IN_SENSOR.ublox1.headAcc;
+templen = length(temp);
+temp1(1:2:2*templen-1) = temp;
+temp1(2:2:2*templen) = temp;
+IN_SENSOR.ublox1.headAcc = temp1';
+clear temp1
+%
 if sum(IN_SENSOR.ublox1.nChange) == 0
     disp('ublox1 的 nChange 没有正常赋值');
 end

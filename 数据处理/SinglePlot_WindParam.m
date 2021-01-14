@@ -1,4 +1,4 @@
-function SingPlot_WindParam(baseTime,structData)
+function SinglePlot_WindParam(baseTime,structData)
 fprintf('----------------------------------------------\n')
 time = calTimeSeries(baseTime,structData.maxWindHeading);
 fig = figure;
