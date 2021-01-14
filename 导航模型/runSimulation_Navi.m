@@ -1,6 +1,9 @@
 tic_all = tic;
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_NAVI';
+IN_TASK = SimDataSet.FlightLog_Original(1).OUT_TASKMODE;
+IN_SENSOR = SimDataSet.IN_SENSOR(1);
+tspan = SimDataSet.tspan{1};
 % 设置仿真数据
 for i = 1:SimDataSet.nFlightDataFile
     SimInput(i) = Simulink.SimulationInput(SimParam.Basic.modelname);

@@ -1,10 +1,10 @@
 function V10Log = V10_decode_auto(logFile)
-% example: V10Log = V10_decode_auto('log_19.bin-2719796.mat')
+% example: V10Log = V10_decode_auto('log_31.bin-488896.mat')
 % computer name: DESKTOP-QLU0EFU
 % generate date: 13-Jan-2021
 % Matlab version: 9.9.0.1467703 (R2020b)
-% protocol file: V10_v20210112.txt
-% data file: log_19.bin-2719796.mat
+% protocol file: V10_v20210113_1647.txt
+% data file: log_31.bin-488896.mat
 % logFile: .mat log file
 load(logFile);
 %% ARP1
@@ -160,16 +160,20 @@ V10Log.IMF7.Sum = IMF7(:,10);                          %   9. | Sum     | Sum   
 %% GPS
 V10Log.GPS.TimeUS = GPS(:,2);                          %   1. | TimeUS  | TimeUS                         | [U64] | [50:50]   | 
 V10Log.GPS.CNT = GPS(:,3);                             %   2. | CNT     | CNT                            | [U32] | [50:50]   | 
-V10Log.GPS.lat = GPS(:,4);                             %   3. | lat     | lat                            | [D]   | [50:50]   | 
-V10Log.GPS.lon = GPS(:,5);                             %   4. | lon     | lon                            | [D]   | [50:50]   | 
-V10Log.GPS.height = GPS(:,6);                          %   5. | hgt     | height                         | [D]   | [50:50]   | 
-V10Log.GPS.HDOP = GPS(:,7);                            %   6. | hdop    | HDOP                           | [F]   | [50:50]   | 
-V10Log.GPS.PDOP = GPS(:,8);                            %   7. | pdop    | PDOP                           | [F]   | [50:50]   | 
-V10Log.GPS.GPS_time_ms = GPS(:,9);                     %   8. | ms      | GPS_time_ms                    | [U32] | [50:50]   | 
-V10Log.GPS.GPS_week_num = GPS(:,10);                   %   9. | week    | GPS_week_num                   | [U16] | [50:50]   | 
-V10Log.GPS.solSVs = GPS(:,11);                         %  10. | solSVs  | solSVs                         | [U8]  | [50:50]   | 
-V10Log.GPS.svn = GPS(:,12);                            %  11. | svn     | svn                            | [U8]  | [50:50]   | 
-V10Log.GPS.Sum = GPS(:,13);                            %  12. | Sum     | Sum                            | [U8]  | [50:50]   | 
+V10Log.GPS.lat = GPS(:,4);                             %   3. | lat     | lat                            | [D]   | [50:50]   | 57.2957795f
+V10Log.GPS.lon = GPS(:,5);                             %   4. | lon     | lon                            | [D]   | [50:50]   | 57.2957795f
+V10Log.GPS.height = GPS(:,6);                          %   5. | hgt     | height                         | [F]   | [50:50]   | 
+V10Log.GPS.velN = GPS(:,7);                            %   6. | vN      | velN                           | [F]   | [50:50]   | 
+V10Log.GPS.velE = GPS(:,8);                            %   7. | vE      | velE                           | [F]   | [50:50]   | 
+V10Log.GPS.velD = GPS(:,9);                            %   8. | vD      | velD                           | [F]   | [50:50]   | 
+V10Log.GPS.pDOP = GPS(:,10);                           %   9. | pDp     | pDOP                           | [F]   | [50:50]   | 
+V10Log.GPS.hDOP = GPS(:,11);                           %  10. | hDp     | hDOP                           | [F]   | [50:50]   | 
+V10Log.GPS.lat_deviation = GPS(:,12);                  %  11. | lad     | lat_deviation                  | [F]   | [50:50]   | 
+V10Log.GPS.lon_deviation = GPS(:,13);                  %  12. | lod     | lon_deviation                  | [F]   | [50:50]   | 
+V10Log.GPS.height_deviation = GPS(:,14);               %  13. | hd      | height_deviation               | [F]   | [50:50]   | 
+V10Log.GPS.svn = GPS(:,15);                            %  14. | svn     | svn                            | [U8]  | [50:50]   | 
+V10Log.GPS.pos_type = GPS(:,16);                       %  15. | post    | pos_type                       | [U8]  | [50:50]   | BEST_POS
+V10Log.GPS.Sum = GPS(:,17);                            %  16. | Sum     | Sum                            | [U8]  | [50:50]   | 
 %% GPSE
 V10Log.GPSE.TimeUS = GPSE(:,2);                        %   1. | TimeUS  | TimeUS                         | [U64] | [50:50]   | 
 V10Log.GPSE.CNT = GPSE(:,3);                           %   2. | CNT     | CNT                            | [U32] | [50:50]   | 
@@ -185,17 +189,19 @@ V10Log.GPSE.Sum = GPSE(:,12);                          %  11. | Sum     | Sum   
 %% UBX
 V10Log.UBX.TimeUS = UBX(:,2);                          %   1. | TimeUS  | TimeUS                         | [U64] | [100:100] | 
 V10Log.UBX.CNT = UBX(:,3);                             %   2. | CNT     | CNT                            | [U32] | [100:100] | 
-V10Log.UBX.lat = UBX(:,4);                             %   3. | lat     | lat                            | [I32] | [100:100] | 
-V10Log.UBX.lon = UBX(:,5);                             %   4. | lon     | lon                            | [I32] | [100:100] | 
-V10Log.UBX.height = UBX(:,6);                          %   5. | hgt     | height                         | [I32] | [100:100] | 
-V10Log.UBX.velN = UBX(:,7);                            %   6. | velN    | velN                           | [I32] | [100:100] | 
-V10Log.UBX.velE = UBX(:,8);                            %   7. | velE    | velE                           | [I32] | [100:100] | 
-V10Log.UBX.velD = UBX(:,9);                            %   8. | velD    | velD                           | [I32] | [100:100] | 
-V10Log.UBX.hAcc = UBX(:,10);                           %   9. | hAcc    | hAcc                           | [U32] | [100:100] | 
-V10Log.UBX.vAcc = UBX(:,11);                           %  10. | vAcc    | vAcc                           | [U32] | [100:100] | 
-V10Log.UBX.pDOP = UBX(:,12);                           %  11. | pDOP    | pDOP                           | [U16] | [100:100] | 
-V10Log.UBX.numSV = UBX(:,13);                          %  12. | numSV   | numSV                          | [U16] | [100:100] | 
-V10Log.UBX.Sum = UBX(:,14);                            %  13. | Sum     | Sum                            | [U8]  | [100:100] | 
+V10Log.UBX.lat = UBX(:,4);                             %   3. | lat     | lat                            | [D]   | [100:100] | le-7
+V10Log.UBX.lon = UBX(:,5);                             %   4. | lon     | lon                            | [D]   | [100:100] | le-7
+V10Log.UBX.height = UBX(:,6);                          %   5. | hgt     | height                         | [F]   | [100:100] | le-3
+V10Log.UBX.velN = UBX(:,7);                            %   6. | vN      | velN                           | [F]   | [100:100] | le-3
+V10Log.UBX.velE = UBX(:,8);                            %   7. | vE      | velE                           | [F]   | [100:100] | le-3
+V10Log.UBX.velD = UBX(:,9);                            %   8. | vD      | velD                           | [F]   | [100:100] | le-3
+V10Log.UBX.hAcc = UBX(:,10);                           %   9. | hAc     | hAcc                           | [F]   | [100:100] | le-3
+V10Log.UBX.vAcc = UBX(:,11);                           %  10. | vAc     | vAcc                           | [F]   | [100:100] | le-3
+V10Log.UBX.sAcc = UBX(:,12);                           %  11. | sAc     | sAcc                           | [F]   | [100:100] | le-3
+V10Log.UBX.headAcc = UBX(:,13);                        %  12. | hdAc    | headAcc                        | [F]   | [100:100] | le-5
+V10Log.UBX.pDOP = UBX(:,14);                           %  13. | pDOP    | pDOP                           | [F]   | [100:100] | le-2
+V10Log.UBX.numSV = UBX(:,15);                          %  14. | nSV     | numSV                          | [U8]  | [100:100] | 
+V10Log.UBX.Sum = UBX(:,16);                            %  15. | Sum     | Sum                            | [U8]  | [100:100] | 
 %% UBXE
 V10Log.UBXE.TimeUS = UBXE(:,2);                        %   1. | TimeUS  | TimeUS                         | [U64] | [100:100] | 
 V10Log.UBXE.CNT = UBXE(:,3);                           %   2. | CNT     | CNT                            | [U32] | [100:100] | 
@@ -464,11 +470,12 @@ V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,3) = AL14(:,6); %   5. | LL2     | curHo
 V10Log.OUT_TASKFLIGHTPARAM.curVelNED(:,1) = AL14(:,7); %   6. | ND0     | curVelNED[0]                   | [F]   | [12:12]   | 
 V10Log.OUT_TASKFLIGHTPARAM.curVelNED(:,2) = AL14(:,8); %   7. | ND1     | curVelNED[1]                   | [F]   | [12:12]   | 
 V10Log.OUT_TASKFLIGHTPARAM.curVelNED(:,3) = AL14(:,9); %   8. | ND2     | curVelNED[2]                   | [F]   | [12:12]   | 
-V10Log.OUT_TASKFLIGHTPARAM.curSpeed = AL14(:,11);      %   9. | aspd    | curSpeed                       | [F]   | [12:12]   | 
-V10Log.OUT_TASKFLIGHTPARAM.curAirSpeed = AL14(:,12);   %  10. | caspd   | curAirSpeed                    | [F]   | [12:12]   | 
-V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,1) = AL14(:,13); %  11. | Eul0    | curEuler[0]                    | [F]   | [12:12]   | 
-V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,2) = AL14(:,14); %  12. | Eul1    | curEuler[1]                    | [F]   | [12:12]   | 
-V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,3) = AL14(:,15); %  13. | Eul2    | curEuler[2]                    | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.curSpeed = AL14(:,10);      %   9. | aspd    | curSpeed                       | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.curAirSpeed = AL14(:,11);   %  10. | caspd   | curAirSpeed                    | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,1) = AL14(:,12); %  11. | Eul0    | curEuler[0]                    | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,2) = AL14(:,13); %  12. | Eul1    | curEuler[1]                    | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.curEuler(:,3) = AL14(:,14); %  13. | Eul2    | curEuler[2]                    | [F]   | [12:12]   | 
+V10Log.OUT_TASKFLIGHTPARAM.Sum = AL14(:,15);           %  14. | Sm      | Sum                            | [U8]  | [12:12]   | 
 %% AL15
 V10Log.OUT_TASKFLIGHTPARAM.TimeUS = AL15(:,2);         %   1. | Tim     | TimeUS                         | [U64] | [12:12]   | 
 V10Log.OUT_TASKFLIGHTPARAM.CNT = AL15(:,3);            %   2. | CNT     | CNT                            | [U32] | [12:12]   | 

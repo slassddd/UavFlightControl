@@ -4,8 +4,9 @@ try
     dataSim = navFilterMARGRes;  % 离线仿真数据
     dataOnLine = navFilterMARGRes_OnLine; % 在线飞行数据
 catch
-    dataSim = SimRes.Navi.MARG(1);  % 离线仿真数据
-    dataOnLine = SimDataSet.FlightLog_Original(1).Filter; % 在线飞行数据
+    i_sim = 1;
+    dataSim = SimRes.Navi.MARG(i_sim);  % 离线仿真数据
+    dataOnLine = SimDataSet.FlightLog_Original(i_sim).Filter; % 在线飞行数据
 end
 %
 onlineFlag = 1;

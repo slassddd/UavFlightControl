@@ -16,7 +16,7 @@ data = [naviRes.yawd,naviRes.pitchd,naviRes.rolld];
 for i = 1:3
     iplot = iplot + 1;
     subplot(nrow,ncol,iplot)
-    plot(time(idxspan),data(idxspan,i),'color',GLOBAL_PARAM.GLOBAL_PARAM.plotOpt.color{idx_color},'linewidth',GLOBAL_PARAM.plotOpt.linewidth(1),'linestyle',GLOBAL_PARAM.plotOpt.linestyle{idx_style});
+    plot(time(idxspan),data(idxspan,i),'color',GLOBAL_PARAM.plotOpt.color{idx_color},'linewidth',GLOBAL_PARAM.plotOpt.linewidth(1),'linestyle',GLOBAL_PARAM.plotOpt.linestyle{idx_style});
     hold(GLOBAL_PARAM.plotOpt.hold);
     grid(GLOBAL_PARAM.plotOpt.grid);
     xlabel(GLOBAL_PARAM.plotOpt.xlabel)

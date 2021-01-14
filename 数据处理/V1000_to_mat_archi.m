@@ -71,7 +71,8 @@ for i_file = 1:nFile
     %% 解码
     V1000_decode_common
     V1000_decode_simulation
-    V1000_decode_auto
+    V1000_decode_auto;
+    FlightLog_Original = SL;clear SL
     SL = addStructDataTime(SL,IN_SENSOR.IMU1.time);   
     %% 对齐数据
     SL.TASK_WindParam = alignDimension(SL.TASK_WindParam);

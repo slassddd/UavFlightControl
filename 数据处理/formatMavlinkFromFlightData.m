@@ -33,16 +33,16 @@ param1 = T_taskLog_MavCmd.var1(idxSel,2);
 maxNum_cmd = 200;
 for i = 1:maxNum_cmd
     if i <= length(idxSel)
-        IN_MAVLINK_mavlink_msg_id_command_long_time(i) = tempTime(i);
+        mavlink_msg_id_command_long_time(i) = tempTime(i);
         IN_MAVLINK.mavlink_msg_id_command_long(i) = STRUCT_mavlink_msg_id_command_long;
         IN_MAVLINK.mavlink_msg_id_command_long(i).param1 = single(param1(i));
         IN_MAVLINK.mavlink_msg_id_command_long(i).command = uint16(command(i));
     else
-        IN_MAVLINK_mavlink_msg_id_command_long_time(i) = 0;
+        mavlink_msg_id_command_long_time(i) = 0;
         IN_MAVLINK.mavlink_msg_id_command_long(i) = STRUCT_mavlink_msg_id_command_long;
     end
 end
-FlightLog_SecondProc.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time = IN_MAVLINK_mavlink_msg_id_command_long_time;
+FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long_time = mavlink_msg_id_command_long_time;
 FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long = IN_MAVLINK.mavlink_msg_id_command_long;
 FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def = IN_MAVLINK.mavlink_mission_item_def;
 %% 子函数

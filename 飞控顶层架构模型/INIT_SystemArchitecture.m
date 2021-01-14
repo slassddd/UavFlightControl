@@ -19,7 +19,7 @@ try
     SimParam.Architecture.taskMode
     switch SimParam.Architecture.taskMode
         case '飞行数据回放'
-            SimParam.GroundStation.mavlinkCmd_time = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.IN_MAVLINK_mavlink_msg_id_command_long_time;
+            SimParam.GroundStation.mavlinkCmd_time = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long_time;
             SimParam.GroundStation.mavlinkCmd = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_msg_id_command_long;
             SimParam.GroundStation.mavlinkPathPoints = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def;
             SimParam.GroundStation.mavlinkHome(1) = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def(1).x;

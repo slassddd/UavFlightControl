@@ -2,12 +2,15 @@ function generateDecodeFile(varargin)
 % example1: 指定参数
 % generateDecodeFile('filename','V10_decode_auto','comment','on','commentstartplace',50);
 % example2: 默认参数 generateDecodeFile;
+filePath = fileparts(which(mfilename));
+cd(filePath)
 %% 默认参数
 Param.outputName = 'V10Log'; % 输出结构体名称
 Param.autoDecodeFileName = 'V10_decode_auto'; % 生成的decode文件名称
 Param.autoDecodeFileType = 'function'; % script-脚本 function-函数
 Param.comment = true; % 是否将协议内容作为注释加入decode函数
 Param.commentStartPlace = 55; % 注释起始列
+Param.autoFill = true; % 自动填充漏存的同名结构体成员变量
 for i = 1:length(varargin)/2
     switch lower(varargin{2*i-1})
         case 'commentstartplace'
@@ -25,6 +28,8 @@ for i = 1:length(varargin)/2
             Param.autoDecodeFileName = varargin{2*i};
         case 'filetype' % 指定解码文件类型，函数or脚本
             Param.autoDecodeFileType = varargin{2*i};
+%         case 'autofill'
+%             Param.autoFill =varargin{2*i}; 
     end
 end
 % 转到该m函数所在路径
@@ -120,6 +125,7 @@ for i = 1:size(decodeString)
         newAllFullName{idxStruct} = [structName,'_fullname'];
         newAllShortName{idxStruct} = [structName,'_shortname'];
         newComment{idxStruct} = [structName,'_comment'];
+        newAllStructShortName{idxStruct} = structName;
         % 结构体全称
         if length(strFlagStruct) == 3
             startNum = strFlagStruct(2);
@@ -131,7 +137,7 @@ for i = 1:size(decodeString)
         else
             newAllStructFullName{idxStructFull} = structName;
         end
-        % 结构体简称计数
+        % 结构体简称计数        
         idxStruct = idxStruct + 1;
         % 结构体全称计数
         idxStructFull = idxStructFull + 1;
@@ -191,6 +197,29 @@ for i = 1:size(decodeString)
         eval(str_comment);
     end
 end
+% tmpUniqueStructFullName = unique(newAllStructFullName);
+for i_full = 1:length(newAllStructFullName) % 遍历协议中的结构体全称,全称允许重名
+    thisFull = newAllStructFullName{i_full};
+    tempIdx = contains(newAllStructFullName,thisFull);
+    if sum(tempIdx) > 1 % 该全称出现不只一次
+        relateShorts = newAllStructShortName(tempIdx);
+        %% 检查同名全称下不同简称对应数据的长度是否一致（不一致说明有漏存发生）
+        nRelateShorts = length(relateShorts);
+        tempStr = [];
+        for i_relate = 1:nRelateShorts
+            if exist(relateShorts{i_relate})
+                tempLen(i_relate) =  length(eval(relateShorts{i_relate}));
+                tempStr = [tempStr,'  ',relateShorts{i_relate}];
+            end
+        end
+        if length(unique(tempLen)) == 1 % 长度一致
+        else
+            warning('同名结构体 %s,对应的不同简称（%s）数据长度不一致，存在漏存现象\n',thisFull,tempStr);
+        end
+        %%
+    end
+end
+%
 fprintf('\t2.label标签名与协议变量简化名匹配性检测\n');
 idxToWrite = 1;
 nStructInProtocol = length(newAllFullName);

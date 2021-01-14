@@ -640,11 +640,3 @@ char Float2Char( float a, float b)
 //毕博这是卫星信噪比偏移
 SaveData[123]=gps_signal_quality.sv_info.snr[CNSaveIndex];
 SaveData[124]=gps_signal_quality.sv_info.svid[CNSaveIndex];
-
-
-
-
-	
-											
-											
- 
