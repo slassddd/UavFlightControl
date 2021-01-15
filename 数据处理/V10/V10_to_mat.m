@@ -3,7 +3,7 @@ setGlobalParams();
 if 1
     GLOBAL_PARAM.dirDataFileForDecode = 'D:\work\V1000_firmware\数据处理\V10\';
     DecodeParam.nameDataFile{1} = 'D:\work\V1000_firmware\数据处理\V10\log_31.bin-488896.mat';
-else    
+else
     DecodeParam.evokeDir = cd; % 调用该函数时matlab的当前文件夹位置
     DecodeParam.nameDecodeFile = which(mfilename);
     DecodeParam.dirDecodeFile = fileparts(DecodeParam.nameDecodeFile);
@@ -16,7 +16,6 @@ for i_file = 1:nFile
     V10Log = V10_DecodePX4Format([DecodeParam.nameDataFile{i_file}]);
     IN_SENSOR = V10_Decode_Sensors(V10Log);
     FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log);
-%     load('SubFolder_ICD\IOBusInfo_V1000')
     FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);
     %%
     saveFileName{i_file} = ['D:\work\V1000_firmware\数据处理\V10\仿真日志.mat'];
