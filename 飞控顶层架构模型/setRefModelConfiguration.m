@@ -75,6 +75,12 @@ for i = 1:nRefModel
     else
         set_param(DependencySet.RefModeNamesNoType{i},'EnableMultiTasking','off'); % Treat each discrete rate as a separate task
     end
+    % Specify naming rule for model header files. Rule may contain valid C-identifier characters and these macros:
+    % $R - Root model name
+    % $U - User token text. Rule must contain this macro:
+    % $E - File Type.
+    set_param(DependencySet.RefModeNamesNoType{i},'ERTHeaderFileRootName','$R$E_FeimaUAV'); % Default value: $R$E
+    set_param(DependencySet.RefModeNamesNoType{i},'ERTSourceFileRootName','$R$E_FeimaUAV'); % Default value: $R$E
 end
 disp('模型新属性');
 DependencySet = getModelProp(DependencySet,nRefModel);
@@ -96,6 +102,8 @@ for i = 1:nRefModel
     DependencySet.CombineOutputUpdateFcns{i} = get_param(DependencySet.RefModeNamesNoType{i},'CombineOutputUpdateFcns');
     DependencySet.MaxIdLength(i) = get_param(DependencySet.RefModeNamesNoType{i},'MaxIdLength');
     DependencySet.MultiTaskDSMMsg{i} = get_param(DependencySet.RefModeNamesNoType{i},'MultiTaskDSMMsg');
+    DependencySet.ERTHeaderFileRootName{i} = get_param(DependencySet.RefModeNamesNoType{i},'ERTHeaderFileRootName'); % Default value: $R$E
+    DependencySet.ERTSourceFileRootName{i} = get_param(DependencySet.RefModeNamesNoType{i},'ERTSourceFileRootName'); % Default value: $R$E
 end
 % end
 %
