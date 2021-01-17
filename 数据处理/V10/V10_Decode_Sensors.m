@@ -56,6 +56,14 @@ IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
 if sum(IN_SENSOR.baro1.nChange) == 0
     disp('baro1 的 nChange 没有正常赋值');
 end
+%% Baro2
+IN_SENSOR.baro2.time = V10Log.BAR1.TimeUS/1e6;
+IN_SENSOR.baro2.alt_baro = 0*V10Log.BAR1.altitude;
+IN_SENSOR.baro2.nChange = zeros(size(IN_SENSOR.baro2.alt_baro));
+disp('baro2 没有正常赋值');
+if sum(IN_SENSOR.baro2.nChange) == 0
+    disp('baro2 的 nChange 没有正常赋值');
+end
 %% Mag1
 IN_SENSOR.mag1.time = V10Log.MAG1.TimeUS/1e6;
 IN_SENSOR.mag1.mag_x = V10Log.MAG1.cali_data_x;

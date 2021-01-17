@@ -119,7 +119,7 @@ ERTFilePackagingFormat = DependencySet.ERTFilePackagingFormat';
 CombineOutputUpdateFcns = DependencySet.CombineOutputUpdateFcns';
 MaxIdLength = DependencySet.MaxIdLength';
 T = table(SolverType,Solver,SampleTime,EnableMultiTasking,DeviceVendor,SystemTargetFile,...
-    TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength);
+    TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength,ERTSourceFileRootName);
 T.Properties.RowNames = DependencySet.RefModeNamesNoType'
 % end
 % end

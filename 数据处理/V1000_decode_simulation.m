@@ -157,6 +157,12 @@ IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
 if sum(IN_SENSOR.baro1.nChange) == 0
     disp('baro1 的 nChange 没有正常赋值');
 end
+% baro2
+IN_SENSOR.baro2 = IN_SENSOR.baro1;
+IN_SENSOR.baro2.alt_baro = 0*IN_SENSOR.baro2.alt_baro;
+if sum(IN_SENSOR.baro2.nChange) == 0
+    disp('baro2 的 nChange 没有正常赋值');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Mag
 % mag1
