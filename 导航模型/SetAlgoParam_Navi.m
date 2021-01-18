@@ -1,4 +1,4 @@
-function [NaviSimParam,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi(planeMode)
+function [NaviSimParam,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = SetAlgoParam_Navi(planeMode)
 global GLOBAL_PARAM
 
 % switch planeMode

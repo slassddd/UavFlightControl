@@ -4,20 +4,20 @@ SimParam.Architecture.Ts_base = 0.012; % RefModel_SystemArchitecture的仿真步
 SimParam.ArchitectureEnv.SimulinkRunMode = 1; % 飞行参数源选择；1 飞行数据  2 仿真(已经很久没有维护，肯定不好用了)
 SimParam.ArchitectureEnv.sourceMode = 'simulink_flightdata'; % 'simulink_flightdata'  'simulink_simdata'
 %% 设置flight data模型参数
-SimParam.FlightDataSimParam = INIT_FlightData();
+SimParam.FlightDataSimParam = SetSimParam_FlightData();
 %% 控制率初始化
 INIT_Control;
 load('IOBusInfo_V1000'); % Control模块的结构体可能存在不一致的情况,在此重新载入一次
 %% 组合导航初始化
-[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = INIT_Navi();
+[SimParam.Navi,NAVI_PARAM_V10,NAVI_PARAM_V1000,NAVI_PARAM_BASE] = SetAlgoParam_Navi();
 %% 无人机动力学
 INIT_UAV
 %% 任务初始化
-[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_TaskManage();
+[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_TaskManage();
 %% 简化的运动模型
-SimParam.SimpleUavModel = INIT_UavModelForTaskSim();
+SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
 %% 地面站指令
-SimParam.GroundStation = INIT_GroundStationControl(TASK_PARAM_V1000);
+SimParam.GroundStation = SetSimParam_GroundStationControl(TASK_PARAM_V1000);
 try
     SimParam.Architecture.taskMode; % 该值是否存在
     switch SimParam.Architecture.taskMode
@@ -34,15 +34,15 @@ catch
     fprintf('%s[WARNING] 跳过Groundstation仿真数据赋值,仅应在运行 run_RTWBuild 进行代码生成时报该警告\n',GLOBAL_PARAM.Print.lineHead);
 end
 %% 传感器故障参数
-[SimParam.SensorFault,SENSOR_FAULT] = INIT_SensorFault();
+[SimParam.SensorFault] = SetAlgoParam_SensorFault();
 %% 传感器安装参数
-[SENSOR_ALIGNMENT_PARAM_V1000,SENSOR_ALIGNMENT_PARAM_V10,SENSOR_ALIGNMENT_PARAM_V10_1] = INIT_SensorAlignment();
+[SENSOR_ALIGNMENT_PARAM_V1000,SENSOR_ALIGNMENT_PARAM_V10,SENSOR_ALIGNMENT_PARAM_V10_1] = SetAlgoParam_SensorAlignment();
 %% 信号检测
 [SimParam.SensorIntegrity,SENSOR_INTEGRITY_PARAM_V1000,SENSOR_INTEGRITY_PARAM_V10,SENSOR_INTEGRITY_PARAM_BASE] = ...
-    INIT_SensorIntegrity();
+    SetAlgoParam_SensorIntegrity();
 %% 飞行性能
-[SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = INIT_FlightPerformance();
+[SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance();
 %% 视觉着陆
-[SimParam.VLand,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = INIT_VisualLanding();
+[SimParam.VLand,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = SetAlgoParam_VisualLanding();
 %% 设置模块优先级
 INIT_Priority('RefModel_SystemArchitecture');

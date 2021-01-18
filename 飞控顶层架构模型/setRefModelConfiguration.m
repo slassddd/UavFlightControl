@@ -79,8 +79,8 @@ for i = 1:nRefModel
     % $R - Root model name
     % $U - User token text. Rule must contain this macro:
     % $E - File Type.
-    set_param(DependencySet.RefModeNamesNoType{i},'ERTHeaderFileRootName','$R$E_FeimaUAV'); % Default value: $R$E
-    set_param(DependencySet.RefModeNamesNoType{i},'ERTSourceFileRootName','$R$E_FeimaUAV'); % Default value: $R$E
+    set_param(DependencySet.RefModeNamesNoType{i},'ERTHeaderFileRootName','$R$E'); % Default value: $R$E
+    set_param(DependencySet.RefModeNamesNoType{i},'ERTSourceFileRootName','$R$E'); % Default value: $R$E
 end
 disp('模型新属性');
 DependencySet = getModelProp(DependencySet,nRefModel);
@@ -118,6 +118,7 @@ TargetLang = DependencySet.TargetLang';
 ERTFilePackagingFormat = DependencySet.ERTFilePackagingFormat';
 CombineOutputUpdateFcns = DependencySet.CombineOutputUpdateFcns';
 MaxIdLength = DependencySet.MaxIdLength';
+ERTSourceFileRootName = DependencySet.ERTSourceFileRootName';
 T = table(SolverType,Solver,SampleTime,EnableMultiTasking,DeviceVendor,SystemTargetFile,...
     TargetLang,ERTFilePackagingFormat,CombineOutputUpdateFcns,MaxIdLength,ERTSourceFileRootName);
 T.Properties.RowNames = DependencySet.RefModeNamesNoType'

@@ -1,4 +1,4 @@
-function [VLSimParam,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = INIT_VisualLanding()
+function [VLSimParam,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = SetAlgoParam_VisualLanding()
 global GLOBAL_PARAM
 %% 载入Bus
 evalin('base','load(''IOBusInfo_V1000'')');

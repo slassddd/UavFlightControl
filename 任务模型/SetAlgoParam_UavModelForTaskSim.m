@@ -1,4 +1,4 @@
-function SUavSimParam = INIT_UavModelForTaskSim()
+function SUavSimParam = SetAlgoParam_UavModelForTaskSim()
 global GLOBAL_PARAM
 SUavSimParam.Ts_base = 0.036;
 

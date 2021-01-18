@@ -1,8 +1,8 @@
-function Plot_TaskSimData(out_set,TASK_PARAM_V1000,SimParam_GroundStation,SimParam_TestCase)
+function Plot_TaskSimData(out_set,TASK_PARAM_V1000,SimParam_GroundStation,TestCase)
 %% 任务模块仿真数据绘图
 for i = 1:length(out_set)
     out = out_set(i);
-    nameTestCase = SimParam_TestCase.filename(i);
+    nameTestCase = TestCase.filename(i);
     %% 任务模式绘图
     SinglePlot_TaskMode(out,nameTestCase);
     %% 绘制飞行轨迹地图

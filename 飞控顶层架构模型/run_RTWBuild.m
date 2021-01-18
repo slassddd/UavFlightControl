@@ -1,7 +1,7 @@
 clear,clc
 setGlobalParams;
 %% 模型参数初始化
-INIT_SystemArchitecture
+SetAlgoParam_SystemArchitecture
 %%
 modelname = 'RefModel_SystemArchitecture';
 infofilename = 'SystemInfo.mat';

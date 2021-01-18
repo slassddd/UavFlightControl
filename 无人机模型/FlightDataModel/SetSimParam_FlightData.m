@@ -1,4 +1,4 @@
-function FlightDataSimParam = INIT_FlightData()
+function FlightDataSimParam = SetSimParam_FlightData()
 global GLOBAL_PARAM
 FlightDataSimParam.Ts_base = 0.004; % 该值为log中记录的IMU数据频率 [sec]
 

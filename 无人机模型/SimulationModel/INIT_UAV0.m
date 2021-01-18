@@ -1,14 +1,14 @@
 % clear,clc
 
 [ALGO_SET,sensorFs] = step2_setALGOparam_simData();
-%% ÎŞÈË»úÏà¹Ø²ÎÊı³õÊ¼»¯
+%% æ— äººæœºç›¸å…³å‚æ•°åˆå§‹åŒ–
 INIT_UAV
-%% ´«¸ĞÆ÷¹ÊÕÏ²ÎÊı
-INIT_SensorFault
-%% ´«¸ĞÆ÷°²×°²ÎÊı
-INIT_SensorAlignment
+%% ä¼ æ„Ÿå™¨æ•…éšœå‚æ•°
+SetAlgoParam_SensorFault
+%% ä¼ æ„Ÿå™¨å®‰è£…å‚æ•°
+SetAlgoParam_SensorAlignment
 sensorFs.imuUpdateFs = 250;
-%% ÎŞÈË»ú²ÎÊı
+%% æ— äººæœºå‚æ•°
 UAVPARAM_SET.euler0_roll_pitch_yaw = [0,0,45]*pi/180;
 UAVPARAM_SET.gpsvel0 = [0,0,0]; % m/s
 UAVPARAM_SET.mag_NED = [0.2838,-0.03464,0.4595]; %[0.22, 0, 0.42];%
@@ -18,33 +18,33 @@ UAVPARAM_SET.inertia = 1e-6*[...
     186222     564     8670;
     564  164400      -31;
     8670     -31   336920;]; % kgm^2
-UAVPARAM_SET.designCenter = [-0.3,0,0]; % Éè¼ÆÖĞĞÄÎ»ÖÃ  »úÌå×ø±êÏµ(Ô­µãÔÚ»úÍ·)
-UAVPARAM_SET.pressureCenter = [-0.32,0,0]; % È«»úÑ¹Á¦ÖĞĞÄ  »úÌå×ø±êÏµ(Ô­µãÔÚ»úÍ·)
-UAVPARAM_SET.gravityCenter = UAVPARAM_SET.designCenter + 1e-3*[0*0.395,0*0.664,19.338]; % È«»úÖØĞÄ  »úÌå×ø±êÏµ(Ô­µãÔÚ»úÍ·)
-UAVPARAM_SET.S = 0.316; % ÓĞĞ§Ãæ»ı  1787727e-6 ?
-UAVPARAM_SET.meanAerodynamicChord = 0.5; % Æ½¾ùÆø¶¯ÏÒ³¤
-UAVPARAM_SET.wingspan = 1.86; % ÒíÕ¹
-% Æø¶¯²ÎÊı
-UAVPARAM_SET.AeroParam.CY_beta = -1; % ²àÏòÁ¦/beta    1/rad
-UAVPARAM_SET.AeroParam.CY_rudder = 1; % ²àÏòÁ¦/rudder   1/rad
-UAVPARAM_SET.AeroParam.Cl_beta = 0; % ¹ö×ªÁ¦¾Ø/beta    1/rad
-UAVPARAM_SET.AeroParam.Cl_aileron = -1; % ¹ö×ªÁ¦¾Ø/aileron    1/rad
-UAVPARAM_SET.AeroParam.Cl_rudder = 1; % ¹ö×ªÁ¦¾Ø/rudder    1/rad
-UAVPARAM_SET.AeroParam.Cl_p = -1; % ¹ö×ªÁ¦¾Ø/p    1/(rad/s)
-UAVPARAM_SET.AeroParam.Cl_r = 0; % ¹ö×ªÁ¦¾Ø/p    1/(rad/s)
-UAVPARAM_SET.AeroParam.Cn_beta = 0; % Æ«º½Á¦¾Ø/beta    1/rad
-UAVPARAM_SET.AeroParam.Cn_rudder = -1; % Æ«º½Á¦¾Ø/rudder    1/rad
-UAVPARAM_SET.AeroParam.Cn_aileron = 0; % Æ«º½Á¦¾Ø/aileron    1/rad
-UAVPARAM_SET.AeroParam.Cn_p = 0; % Æ«º½Á¦¾Ø/p    1/(rad/s)
-UAVPARAM_SET.AeroParam.Cn_r = -1; % Æ«º½Á¦¾Ø/r    1/(rad/s)
+UAVPARAM_SET.designCenter = [-0.3,0,0]; % è®¾è®¡ä¸­å¿ƒä½ç½®  æœºä½“åæ ‡ç³»(åŸç‚¹åœ¨æœºå¤´)
+UAVPARAM_SET.pressureCenter = [-0.32,0,0]; % å…¨æœºå‹åŠ›ä¸­å¿ƒ  æœºä½“åæ ‡ç³»(åŸç‚¹åœ¨æœºå¤´)
+UAVPARAM_SET.gravityCenter = UAVPARAM_SET.designCenter + 1e-3*[0*0.395,0*0.664,19.338]; % å…¨æœºé‡å¿ƒ  æœºä½“åæ ‡ç³»(åŸç‚¹åœ¨æœºå¤´)
+UAVPARAM_SET.S = 0.316; % æœ‰æ•ˆé¢ç§¯  1787727e-6 ?
+UAVPARAM_SET.meanAerodynamicChord = 0.5; % å¹³å‡æ°”åŠ¨å¼¦é•¿
+UAVPARAM_SET.wingspan = 1.86; % ç¿¼å±•
+% æ°”åŠ¨å‚æ•°
+UAVPARAM_SET.AeroParam.CY_beta = -1; % ä¾§å‘åŠ›/beta    1/rad
+UAVPARAM_SET.AeroParam.CY_rudder = 1; % ä¾§å‘åŠ›/rudder   1/rad
+UAVPARAM_SET.AeroParam.Cl_beta = 0; % æ»šè½¬åŠ›çŸ©/beta    1/rad
+UAVPARAM_SET.AeroParam.Cl_aileron = -1; % æ»šè½¬åŠ›çŸ©/aileron    1/rad
+UAVPARAM_SET.AeroParam.Cl_rudder = 1; % æ»šè½¬åŠ›çŸ©/rudder    1/rad
+UAVPARAM_SET.AeroParam.Cl_p = -1; % æ»šè½¬åŠ›çŸ©/p    1/(rad/s)
+UAVPARAM_SET.AeroParam.Cl_r = 0; % æ»šè½¬åŠ›çŸ©/p    1/(rad/s)
+UAVPARAM_SET.AeroParam.Cn_beta = 0; % åèˆªåŠ›çŸ©/beta    1/rad
+UAVPARAM_SET.AeroParam.Cn_rudder = -1; % åèˆªåŠ›çŸ©/rudder    1/rad
+UAVPARAM_SET.AeroParam.Cn_aileron = 0; % åèˆªåŠ›çŸ©/aileron    1/rad
+UAVPARAM_SET.AeroParam.Cn_p = 0; % åèˆªåŠ›çŸ©/p    1/(rad/s)
+UAVPARAM_SET.AeroParam.Cn_r = -1; % åèˆªåŠ›çŸ©/r    1/(rad/s)
 
-UAVPARAM_SET.AeroParam.CD0 = 2; % Áã¹¥½Ç×èÁ¦
-UAVPARAM_SET.AeroParam.CD_alpha = 1; % ×èÁ¦/alpha 1/rad
-UAVPARAM_SET.AeroParam.CL0 = 2; % Áã¹¥½ÇÉıÁ¦
-UAVPARAM_SET.AeroParam.CL_alpha = 1; % ÉıÁ¦/alpha 1/rad
-UAVPARAM_SET.AeroParam.CL_elevator = 1; % ÉıÁ¦/elevator 1/rad
+UAVPARAM_SET.AeroParam.CD0 = 2; % é›¶æ”»è§’é˜»åŠ›
+UAVPARAM_SET.AeroParam.CD_alpha = 1; % é˜»åŠ›/alpha 1/rad
+UAVPARAM_SET.AeroParam.CL0 = 2; % é›¶æ”»è§’å‡åŠ›
+UAVPARAM_SET.AeroParam.CL_alpha = 1; % å‡åŠ›/alpha 1/rad
+UAVPARAM_SET.AeroParam.CL_elevator = 1; % å‡åŠ›/elevator 1/rad
 
-UAVPARAM_SET.AeroParam.Cm0 = 0; % Áã¹¥½Ç¸©ÑöÁ¦¾Ø
+UAVPARAM_SET.AeroParam.Cm0 = 0; % é›¶æ”»è§’ä¿¯ä»°åŠ›çŸ©
 UAVPARAM_SET.AeroParam.Cm_alpha = -1; %
 UAVPARAM_SET.AeroParam.Cm_elevator = -1; %
 UAVPARAM_SET.AeroParam.Cm_q = -1;
@@ -53,21 +53,21 @@ ENVIRONMENT_SET.windVel = 3; % m/s
 ENVIRONMENT_SET.windAngle = 0; % deg
 ENVIRONMENT_SET.gravity = [0;0;9.81]; % m/s^2
 %%
-% Éı½µ¶æ
+% å‡é™èˆµ
 ACTUATOR_SET.elevator.naturalFreq = 35*180/pi; % rad/s
 ACTUATOR_SET.elevator.dampingRatio = 0.7;
 ACTUATOR_SET.elevator.def_max = 40*pi/180;
 ACTUATOR_SET.elevator.def_min = -40*pi/180;
 ACTUATOR_SET.elevator.rateLimit = 500*pi/180;
 ACTUATOR_SET.elevator.initialPos = 0;
-% ·½Ïò¶æ
+% æ–¹å‘èˆµ
 ACTUATOR_SET.rudder.naturalFreq = 35*180/pi; % rad/s
 ACTUATOR_SET.rudder.dampingRatio = 0.7;
 ACTUATOR_SET.rudder.def_max = 40*pi/180;
 ACTUATOR_SET.rudder.def_min = -40*pi/180;
 ACTUATOR_SET.rudder.rateLimit = 500*pi/180;
 ACTUATOR_SET.rudder.initialPos = 0;
-% ¸±Òí
+% å‰¯ç¿¼
 ACTUATOR_SET.aileronLeft.naturalFreq = 35*180/pi;
 ACTUATOR_SET.aileronLeft.dampingRatio = 0.7;
 ACTUATOR_SET.aileronLeft.def_max = 40*pi/180;
@@ -80,21 +80,21 @@ ACTUATOR_SET.aileronRight.def_max = ACTUATOR_SET.aileronLeft.def_max;
 ACTUATOR_SET.aileronRight.def_min = ACTUATOR_SET.aileronLeft.def_min;
 ACTUATOR_SET.aileronRight.rateLimit = ACTUATOR_SET.aileronLeft.rateLimit;
 ACTUATOR_SET.aileronRight.initialPos = ACTUATOR_SET.aileronLeft.initialPos;
-% ´¹Ö±ĞıÒí
-ACTUATOR_SET.verticalRotor.poly_fromPwmTopull = [0.000002653238421  -0.004671672727205   1.949680110267343];% À­Á¦µ¥Î»kg 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.verticalRotor.poly_fromPwmToTorque = [0.000000480815687  -0.000825034108762   0.325799794087305];% 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.verticalRotor.poly_fromRevTopull = [0.000089653392065  -0.038444335075773   8.912308573707881];% 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.verticalRotor.poly_fromRevToTorque = [0.000000016510254  -0.000005249084870  -0.002882983525620];% 2½× 1½× 0½× ÏµÊı
+% å‚ç›´æ—‹ç¿¼
+ACTUATOR_SET.verticalRotor.poly_fromPwmTopull = [0.000002653238421  -0.004671672727205   1.949680110267343];% æ‹‰åŠ›å•ä½kg 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.verticalRotor.poly_fromPwmToTorque = [0.000000480815687  -0.000825034108762   0.325799794087305];% 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.verticalRotor.poly_fromRevTopull = [0.000089653392065  -0.038444335075773   8.912308573707881];% 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.verticalRotor.poly_fromRevToTorque = [0.000000016510254  -0.000005249084870  -0.002882983525620];% 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
 ACTUATOR_SET.verticalRotor.naturalFreq_pwm = 5*180/pi;
 ACTUATOR_SET.verticalRotor.dampingRatio_pwm = 0.7;
-ACTUATOR_SET.verticalRotor.def_max_pwm = 2000;  % pwm ÉÏÏŞ
-ACTUATOR_SET.verticalRotor.def_min_pwm = 1100;  % pwm ÏÂÏŞ
-ACTUATOR_SET.verticalRotor.def0_pwm = 1682;     % ¶ÔÓ¦À­Á¦Îª16NµÄĞüÍ£Æ½ºâÊä³ö 
+ACTUATOR_SET.verticalRotor.def_max_pwm = 2000;  % pwm ä¸Šé™
+ACTUATOR_SET.verticalRotor.def_min_pwm = 1100;  % pwm ä¸‹é™
+ACTUATOR_SET.verticalRotor.def0_pwm = 1682;     % å¯¹åº”æ‹‰åŠ›ä¸º16Nçš„æ‚¬åœå¹³è¡¡è¾“å‡º 
 ACTUATOR_SET.verticalRotor.rateLimit_pwm = 200;  % 
 
 ACTUATOR_SET.verticalRotorLeft.naturalFreq = 5*180/pi;
 ACTUATOR_SET.verticalRotorLeft.dampingRatio = 0.7;
-ACTUATOR_SET.verticalRotorLeft.def_max = 35.55;  % ÍÆÁ¦  N
+ACTUATOR_SET.verticalRotorLeft.def_max = 35.55;  % æ¨åŠ›  N
 ACTUATOR_SET.verticalRotorLeft.def_min = 0;
 ACTUATOR_SET.verticalRotorLeft.def0 = 16; 
 ACTUATOR_SET.verticalRotorLeft.rateLimit = 5;  % 
@@ -102,7 +102,7 @@ ACTUATOR_SET.verticalRotorLeft.torqueSign = 1;
 % ACTUATOR_SET.verticalRotorLeft.initialPos = 0;
 ACTUATOR_SET.verticalRotorRight.naturalFreq = ACTUATOR_SET.verticalRotorLeft.naturalFreq;
 ACTUATOR_SET.verticalRotorRight.dampingRatio = ACTUATOR_SET.verticalRotorLeft.dampingRatio;
-ACTUATOR_SET.verticalRotorRight.def_max = ACTUATOR_SET.verticalRotorLeft.def_max;  % ÍÆÁ¦  N
+ACTUATOR_SET.verticalRotorRight.def_max = ACTUATOR_SET.verticalRotorLeft.def_max;  % æ¨åŠ›  N
 ACTUATOR_SET.verticalRotorRight.def_min = ACTUATOR_SET.verticalRotorLeft.def_min;
 ACTUATOR_SET.verticalRotorRight.rateLimit = ACTUATOR_SET.verticalRotorLeft.rateLimit;
 ACTUATOR_SET.verticalRotorRight.initialPos = ACTUATOR_SET.verticalRotorLeft.initialPos;
@@ -114,21 +114,21 @@ ACTUATOR_SET.verticalRotorRight.sideAngle = -tempAngle*pi/180;
 ACTUATOR_SET.verticalRotorRight.longitudeAngle = (90-2.8)*pi/180;
 ACTUATOR_SET.verticalRotorLeft.installPosition = [-0.1,-0.31,0];
 ACTUATOR_SET.verticalRotorRight.installPosition = [-0.1,0.31,0];
-% Çã×ªĞıÒí
-ACTUATOR_SET.tiltRotor.poly_fromPwmTopull = 1e-1*[0.000013321070912  -0.021982423284400   8.162539610672427]; % kg 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.tiltRotor.poly_fromPwmToTorque = [0.000000237856274  -0.000419244116766   0.175602368472363]; % 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.tiltRotor.poly_fromRevTopull = [0.000016765832408  -0.013765071496690   9.292566698057708]; % 2½× 1½× 0½× ÏµÊı
-ACTUATOR_SET.tiltRotor.poly_fromRevToTorque = [0.000000002890331  -0.000003814984123   0.003392761783344]; % 2½× 1½× 0½× ÏµÊı
+% å€¾è½¬æ—‹ç¿¼
+ACTUATOR_SET.tiltRotor.poly_fromPwmTopull = 1e-1*[0.000013321070912  -0.021982423284400   8.162539610672427]; % kg 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.tiltRotor.poly_fromPwmToTorque = [0.000000237856274  -0.000419244116766   0.175602368472363]; % 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.tiltRotor.poly_fromRevTopull = [0.000016765832408  -0.013765071496690   9.292566698057708]; % 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
+ACTUATOR_SET.tiltRotor.poly_fromRevToTorque = [0.000000002890331  -0.000003814984123   0.003392761783344]; % 2é˜¶ 1é˜¶ 0é˜¶ ç³»æ•°
 ACTUATOR_SET.tiltRotor.naturalFreq_pwm = 5*180/pi;
 ACTUATOR_SET.tiltRotor.dampingRatio_pwm = 0.7;
 ACTUATOR_SET.tiltRotor.def_max_pwm = 2000; 
 ACTUATOR_SET.tiltRotor.def_min_pwm = 1100;
-ACTUATOR_SET.tiltRotor.def0_pwm = 1687; % ¶ÔÓ¦À­Á¦Îª9NµÄĞüÍ£Æ½ºâÊä³ö 
+ACTUATOR_SET.tiltRotor.def0_pwm = 1687; % å¯¹åº”æ‹‰åŠ›ä¸º9Nçš„æ‚¬åœå¹³è¡¡è¾“å‡º 
 ACTUATOR_SET.tiltRotor.rateLimit_pwm = 200;
 
 ACTUATOR_SET.tiltRotor.naturalFreq = 5*180/pi;
 ACTUATOR_SET.tiltRotor.dampingRatio = 0.7;
-ACTUATOR_SET.tiltRotor.def_max = 23.2;  % ÍÆÁ¦  N
+ACTUATOR_SET.tiltRotor.def_max = 23.2;  % æ¨åŠ›  N
 ACTUATOR_SET.tiltRotor.def_min = 0;
 ACTUATOR_SET.tiltRotor.def0 = 9;
 ACTUATOR_SET.tiltRotor.rateLimit = 5;
@@ -136,7 +136,7 @@ ACTUATOR_SET.tiltRotor.initialPos = 0;
 
 ACTUATOR_SET.tiltRotorLeft.torqueSign = -1;
 ACTUATOR_SET.tiltRotorRight.torqueSign = 1;
-% Çã×ª»ú¹¹
+% å€¾è½¬æœºæ„
 ACTUATOR_SET.tiltGear.naturalFreq = 5*180/pi;
 ACTUATOR_SET.tiltGear.dampingRatio = 0.7;
 ACTUATOR_SET.tiltGear.def_max = 90*pi/180;  % deg
@@ -145,7 +145,7 @@ ACTUATOR_SET.tiltGear.rateLimit = 50*pi/180;
 ACTUATOR_SET.tiltGear.initialPos = 0;
 ACTUATOR_SET.tiltGearLeft.installPosition = [-0.6555,-0.2,0.02];
 ACTUATOR_SET.tiltGearRight.installPosition = [-0.6555,0.2,0.02];
-ACTUATOR_SET.tiltGear.length = 0.4; % ×ªÖáµ½ĞıÒíÖĞĞÄµÄ³¤¶È
+ACTUATOR_SET.tiltGear.length = 0.4; % è½¬è½´åˆ°æ—‹ç¿¼ä¸­å¿ƒçš„é•¿åº¦
 tempAngle = 9.8;
 ACTUATOR_SET.tiltGearLeft.sideAngle = tempAngle*pi/180;
 ACTUATOR_SET.tiltGearLeft.longitudeAngle = 90*pi/180;

@@ -1,15 +1,17 @@
 tic_all = tic;
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_NAVI';
+tspan = SimDataSet.tspan{1};
 IN_TASK = SimDataSet.FlightLog_Original(1).OUT_TASKMODE;
 IN_SENSOR = SimDataSet.IN_SENSOR(1);
-tspan = SimDataSet.tspan{1};
+IN_TestCase_SensorFault = TestCase.SensorFaultPanel.data(1);
 % 设置仿真数据
 for i = 1:SimDataSet.nFlightDataFile
     SimInput(i) = Simulink.SimulationInput(SimParam.Basic.modelname);
+    SimInput(i) = SimInput(i).setVariable('tspan',SimDataSet.tspan{i});
     SimInput(i) = SimInput(i).setVariable('IN_TASK',SimDataSet.FlightLog_Original(i).OUT_TASKMODE);
     SimInput(i) = SimInput(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i));
-    SimInput(i) = SimInput(i).setVariable('tspan',SimDataSet.tspan{i});
+%     SimInput(i) = SimInput(i).setVariable('IN_TestCase_SensorFault',TestCase.SensorFaultPanel.data(i));
 end
 % 进行仿真
 switch SimParam.Basic.parallelMode

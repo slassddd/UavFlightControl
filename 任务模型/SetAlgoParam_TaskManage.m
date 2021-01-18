@@ -1,4 +1,4 @@
-function [TaskSimParam,TASK_PARAM_V1000,TASK_PARAM_V10] = INIT_TaskManage()
+function [TaskSimParam,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_TaskManage()
 global GLOBAL_PARAM
 %% 载入Bus
 load('IOBusInfo_V1000');

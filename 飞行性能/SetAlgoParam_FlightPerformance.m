@@ -1,4 +1,4 @@
-function [FlightPerfSimParam,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = INIT_FlightPerformance()
+function [FlightPerfSimParam,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance()
 global GLOBAL_PARAM
 FlightPerfSimParam.Ts_base = 0.036;
 %% V1000参数
