@@ -24,7 +24,8 @@ TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFol
 SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 初始化固件参数
-SetAlgoParam_SystemArchitecture();
+SetAlgoParam_SystemArchitecture
+SetSimParam_SystemArchitecture
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 执行仿真
 switch SimParam.ArchitectureEnv.sourceMode % 选择仿真模式

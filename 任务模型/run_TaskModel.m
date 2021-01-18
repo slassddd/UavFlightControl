@@ -1,5 +1,5 @@
 clear,clc
-%% 参数设置
+%% 仿真参数
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
 % 设置机型变量
@@ -9,12 +9,13 @@ setGlobalParams();
 for i = 1:length(TestCase.GroundStation.filename)
     TestCase.GroundStation.data(i) = eval(TestCase.GroundStation.filename{i});
 end
-% 初始化任务模型
+% 地面站指令
+SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
+%% Algorithm 算法参数
+% 任务
 SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
-[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_TaskManage();
-% 地面站指令等参数的初始化
-SimParam.GroundStation = SetSimParam_GroundStationControl(TASK_PARAM_V1000);
-% 飞行性能参数
+[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_Task();
+% 飞行性能
 [SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance();
 % INIT_MPCPath
 %% 运行model
@@ -25,9 +26,9 @@ for i = 1:length(TestCase.GroundStation.data)
     SimInput(i) = Simulink.SimulationInput(SimParam.Basic.modelname);
     SimInput(i) = SimInput(i).setVariable('IN_TestCase_GS',TestCase.GroundStation.data(i));
 end
-tic,  out = sim(SimInput);  SimParam.timeSpend = toc;
+tic,  out = sim(SimInput);  SimParam.Basic.timeSpend = toc;
 %% 数据画图
 Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation,TestCase.GroundStation);
 Plot_TaskLog();
 %% 结束
-printSimEnd(SimParam.timeSpend);
+printSimEnd(SimParam.Basic.timeSpend);

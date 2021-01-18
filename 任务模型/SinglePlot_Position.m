@@ -21,7 +21,7 @@ shot_lon = out.Task_payload.CAMERA.LLA.Data(:,2); shot_lon(shot_lon==0)=nan;
 shot_height = out.Task_payload.CAMERA.LLA.Data(:,3);
 % 飞行状态
 LLh = permute(out.Task_FlightData.curLLA.Data,[3,2,1]);
-zeroIdxLLh = find(LLh(:,1)==0);
+zeroIdxLLh = find(LLh(:,1)<1e-5);
 LLh(zeroIdxLLh,:) = nan*zeros(length(zeroIdxLLh),3);
 lat = LLh(:,1);
 lon = LLh(:,2);
