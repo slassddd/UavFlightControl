@@ -5,7 +5,7 @@ load('IOBusInfo_V1000');
 %% 航线算法参数
 TaskSimParam.Ts_base = 0.036;
 %% V1000参数
-TASK_PARAM_V1000 = Simulink.Bus.createMATLABStruct('BUS_TASK_PATH_AlgoParam');
+TASK_PARAM_V1000 = Simulink.Bus.createMATLABStruct('BUS_TASK_PARAM');
 TASK_PARAM_V1000.reachFlag_point_dist = 30; % 到达点的距离判定 [m]
 TASK_PARAM_V1000.reachFlag_line_dist = 0.5;
 TASK_PARAM_V1000.reachDetermineMode = 2; % 0:判断点距  1：判断过线   2：判断点距和过线
