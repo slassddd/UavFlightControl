@@ -82,6 +82,8 @@ TASK_PARAM_V1000.enableVisualLandTag = true; % 激活视觉Tag着陆
 TASK_PARAM_V1000.enableLandWhileGPSFault = false; % 使能gps均故障时执行立即降落的功能
 TASK_PARAM_V1000.durationToLand_noGPS = 150; % 激活立即降落，当GPS完全失效的时间大于该参数 [s]
 TASK_PARAM_V1000.remainingLife_LosePowerIn60sec = 10; % 电量阈值[%]，达到该值后飞机将在60sec后失去动力
+TASK_PARAM_V1000.addH_SwitchHoverDownMode = 80; % 盘旋下降模式切换高度(无动力下滑切换有动力下滑)：该高度+旋翼切换高度=实际HoverDown模式切换高度
+TASK_PARAM_V1000.heightThr_CanAutoToRotor = 300; % 允许程序自动判定转旋翼的最大离地高度阈值[m]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

@@ -3,6 +3,7 @@ global GLOBAL_PARAM
 % 定义选择列表
 flagTestCase_Task = 'GSTestCase';
 flagTestCase_SensorFault = 'SensorFaultTestCase';
+manualString = 'Manual';
 switch lower(subSystem)
     case 'task'
         tempName = flagTestCase_Task;
@@ -10,7 +11,7 @@ switch lower(subSystem)
         for i = 1:length(struct)
             [~,namePlaneMode{i}] = fileparts(struct(i).name);
         end
-        namePlaneMode = [{'Manual'},namePlaneMode];
+        namePlaneMode = [{manualString},namePlaneMode];
         defaultCase = {[tempName,'_Default']};
     case 'sensorfaultpanel'
         tempName = flagTestCase_SensorFault;
@@ -18,27 +19,30 @@ switch lower(subSystem)
         for i = 1:length(struct)
             [~,namePlaneMode{i}] = fileparts(struct(i).name);
         end
-        namePlaneMode = [{'Manual'},namePlaneMode];
+        namePlaneMode = [{manualString},namePlaneMode];
         defaultCase = {[tempName,'_Default']};
     otherwise
         error('');
 end
 % 选择
+showname = sprintf('[%s] 测试用例选择',subSystem);
 selNum = listdlg(...
-    'PromptString',{'Select Plane Mode'},...
+    'PromptString',{showname},...
     'SelectionMode','multiple',...
     'ListString',namePlaneMode);
-if isempty(selNum)
+
+if isempty(selNum) % 未选择测试用例，结束仿真
     fprintf('\n%s%s[END] 未选择测试用例,退出仿真\n',GLOBAL_PARAM.Print.lineHead,subSystem);
     isCancel = true;
     nameTestCase = [];
-else
+else %     
     isCancel = false;
     %% 生成提示信息
     if selNum == 1
         fprintf('%s%s不使用批量测试用例,手动进行仿真\n',GLOBAL_PARAM.Print.lineHead,subSystem);
         nameTestCase = [];
     else
+        selNum(selNum==1) = []; % 当选择多个测试用例时，若包含1号（manual）,则删除manual项
         for i = 1:length(selNum)
             nameTestCase{i} = namePlaneMode{selNum(i)};
             fprintf('%s%s选择测试用例 %s\n',GLOBAL_PARAM.Print.lineHead,subSystem,nameTestCase{i});

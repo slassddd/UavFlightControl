@@ -15,10 +15,11 @@ end
 SimDataSet = loadFlightDataFile(tspan0,SimParam.TestCase.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 %% 设置测试用例
 % SensorFault
-[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('sensorfaultpanel');if isCancel,return;end
+[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel');if isCancel,return;end
 for i = 1:length(TestCase.SensorFaultPanel.filename)
     TestCase.SensorFaultPanel.data(i) = eval(TestCase.SensorFaultPanel.filename{i});
 end
+checkTestCase_SensorFault(TestCase.SensorFaultPanel.data);
 %% 初始化模型参数
 % 设置flight data模型参数
 SimParam.FlightDataSimParam = SetSimParam_FlightData();
@@ -34,7 +35,7 @@ SimParam.FlightDataSimParam = SetSimParam_FlightData();
 % 视觉着陆
 [SimParam.VLand,VISLANDING_PARAM_V1000,VISLANDING_PARAM_V10] = SetAlgoParam_VisualLanding();
 %% 运行仿真
-runSimulation_Navi
+doSimulation_Navi
 %% 数据后处理
 for i = 1:SimDataSet.nFlightDataFile
     [SimRes.Navi.MARG(i),SimRes.Navi.timeInit(i)] = getSimRes_Navi(out(i),SimParam.Navi.Ts_Base);

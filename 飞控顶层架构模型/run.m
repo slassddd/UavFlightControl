@@ -16,6 +16,7 @@ end
 for i = 1:length(TestCase.SensorFaultPanel.filename)
     TestCase.SensorFaultPanel.data(i) = eval(TestCase.SensorFaultPanel.filename{i});
 end
+checkTestCase_SensorFault(TestCase.SensorFaultPanel.data);
 %
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 载入飞行数据

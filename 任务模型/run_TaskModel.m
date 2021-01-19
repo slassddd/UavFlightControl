@@ -1,7 +1,14 @@
 clear,clc
-%% 仿真参数
+%% 通用参数
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
+%% Algorithm 算法参数
+% 任务
+SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
+[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_Task();
+% 飞行性能
+[SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance();
+%% Simulation 仿真参数
 % 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型
 % 设置测试用例
@@ -11,13 +18,6 @@ for i = 1:length(TestCase.GroundStation.filename)
 end
 % 地面站指令
 SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
-%% Algorithm 算法参数
-% 任务
-SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
-[SimParam.Task,TASK_PARAM_V1000,TASK_PARAM_V10] = SetAlgoParam_Task();
-% 飞行性能
-[SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance();
-% INIT_MPCPath
 %% 运行model
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_Task';
