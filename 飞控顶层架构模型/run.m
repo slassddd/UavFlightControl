@@ -3,26 +3,30 @@ clear,clc,clear global
 %% 设置参数
 fprintf('-------------------------- 开始大模型仿真 --------------------------\n');
 setGlobalParams();
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selTestCase_Task_Manual = true; % 默认选择Task测试用例为Manual: true false
+SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择SensorFault测试用例为Manual: true false
+%% 载入飞行数据
+tspan0 = [0,inf]; % 仿真时间区间 [sec]
+TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
+SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
+fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
+%% 【机型】【测试用例】选择
 [SimParam.Architecture.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式 【仿真】or【数据回放】
-[SimParam.SystemInfo.planeMode, isCancel] = selPlaneMode();      if isCancel,return;end    % 选择机型
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 %% 设置测试用例(若选择【数据回放】则测试用例设置无效)
 % GroundStation
-[TestCase.GroundStation,isCancel] = selSimCaseSource('Task');if isCancel,return;end % 
+[TestCase.GroundStation,isCancel] = selSimCaseSource('Task',SimParam.Basic.selTestCase_Task_Manual);if isCancel,return;end % 
 for i = 1:length(TestCase.GroundStation.filename)
     TestCase.GroundStation.data(i) = eval(TestCase.GroundStation.filename{i});
 end
 % SensorFault
-[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel');if isCancel,return;end
+[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel',SimParam.Basic.selTestCase_SensorFault_Manual);if isCancel,return;end
 for i = 1:length(TestCase.SensorFaultPanel.filename)
     TestCase.SensorFaultPanel.data(i) = eval(TestCase.SensorFaultPanel.filename{i});
 end
 checkTestCase_SensorFault(TestCase.SensorFaultPanel.data);
 %
-fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
-%% 载入飞行数据
-tspan0 = [0,50]; % 仿真时间区间 [sec]
-TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
-SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 初始化固件参数
 SetAlgoParam_SystemArchitecture

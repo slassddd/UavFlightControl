@@ -1,8 +1,11 @@
 %% 通用参数设置
 fprintf('-------------------------- 开始导航仿真 --------------------------\n');
 setGlobalParams
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择 SensorFault 测试用例为Manual: true false
 tspan0 = [0,100]; % sec   [0,inf]
-[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
+%% 选择机型
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 %% 选择并载入数据文件
 if 0
     % 执行指定数据文件
@@ -15,7 +18,7 @@ end
 SimDataSet = loadFlightDataFile(tspan0,SimParam.TestCase.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 %% 设置测试用例
 % SensorFault
-[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel');if isCancel,return;end
+[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel',SimParam.Basic.selTestCase_SensorFault_Manual);if isCancel,return;end
 for i = 1:length(TestCase.SensorFaultPanel.filename)
     TestCase.SensorFaultPanel.data(i) = eval(TestCase.SensorFaultPanel.filename{i});
 end

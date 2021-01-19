@@ -1,5 +1,15 @@
-function [out,isCancel] = selSimCaseSource(subSystem)
+function [out,isCancel] = selSimCaseSource(subSystem,varargin)
 global GLOBAL_PARAM
+skipSelect = false; % 跳过选择
+if length(varargin) == 1
+    thisVar = varargin{1};
+    if thisVar
+        skipSelect = true;
+        selNum = 1;
+    else
+        % 执行正常的选择
+    end
+end
 % 定义选择列表
 flagTestCase_Task = 'GSTestCase';
 flagTestCase_SensorFault = 'SensorFaultTestCase';
@@ -24,18 +34,19 @@ switch lower(subSystem)
     otherwise
         error('');
 end
-% 选择
-showname = sprintf('[%s] 测试用例选择',subSystem);
-selNum = listdlg(...
-    'PromptString',{showname},...
-    'SelectionMode','multiple',...
-    'ListString',namePlaneMode);
-
+if ~skipSelect
+    % 选择
+    showname = sprintf('[%s] 测试用例选择',subSystem);
+    selNum = listdlg(...
+        'PromptString',{showname},...
+        'SelectionMode','multiple',...
+        'ListString',namePlaneMode);
+end
 if isempty(selNum) % 未选择测试用例，结束仿真
     fprintf('\n%s%s[END] 未选择测试用例,退出仿真\n',GLOBAL_PARAM.Print.lineHead,subSystem);
     isCancel = true;
     nameTestCase = [];
-else %     
+else %
     isCancel = false;
     %% 生成提示信息
     if selNum == 1

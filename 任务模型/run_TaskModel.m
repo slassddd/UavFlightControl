@@ -2,6 +2,8 @@ clear,clc
 %% 通用参数
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selTestCase_Task_Manual = true; % 默认选择Task测试用例为Manual: true false
 %% Algorithm 算法参数
 % 任务
 SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
@@ -10,9 +12,9 @@ SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
 [SimParam.FightPerf,FLIGHT_PERF_PARAM_V1000,FLIGHT_PERF_PARAM_V10] = SetAlgoParam_FlightPerformance();
 %% Simulation 仿真参数
 % 设置机型变量
-[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 % 设置测试用例
-[TestCase.GroundStation,isCancel] = selSimCaseSource('task');if isCancel,return;end
+[TestCase.GroundStation,isCancel] = selSimCaseSource('task',SimParam.Basic.selTestCase_Task_Manual);if isCancel,return;end
 for i = 1:length(TestCase.GroundStation.filename)
     TestCase.GroundStation.data(i) = eval(TestCase.GroundStation.filename{i});
 end

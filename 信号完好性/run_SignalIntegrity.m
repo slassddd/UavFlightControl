@@ -1,6 +1,8 @@
 clear,clc
 %% 参数设置
 setGlobalParams();
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择 SensorFault 测试用例为Manual: true false
 tspan0 = [0,200]; % sec
 %% 载入数据
 TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\V1000 客户飞行数据\20201205 起飞异常\仿真数据_起飞异常 2020-12-05 09-34-02']};
@@ -13,13 +15,13 @@ figure;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Flag);hold on;
 %% 设置测试用例
-[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel');if isCancel,return;end
+[TestCase.SensorFaultPanel,isCancel] = selSimCaseSource('SensorFaultPanel',SimParam.Basic.selTestCase_SensorFault_Manual);if isCancel,return;end
 for i = 1:length(TestCase.SensorFaultPanel.filename)
     TestCase.SensorFaultPanel.data(i) = eval(TestCase.SensorFaultPanel.filename{i});
 end
 checkTestCase_SensorFault(TestCase.SensorFaultPanel.data);
 %% 设置机型变量
-[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode();if isCancel,return;end % 选择机型 
+[SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 %% 初始化相关模块
 SimParam.FlightDataSimParam = ...
     SetSimParam_FlightData();
