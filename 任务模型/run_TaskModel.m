@@ -1,5 +1,5 @@
 clear,clc
-%% 通用参数
+%% 通用参数 
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
 SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
