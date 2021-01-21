@@ -133,7 +133,7 @@ TEMP_NAVIPARAM = Simulink.Bus.createMATLABStruct('BUS_NAVIPARAM');
 TEMP_NAVIPARAM.modeKF1 = 22; % 22 state;  24 state;
 TEMP_NAVIPARAM.enableAccDegrade_Amp = false;
 TEMP_NAVIPARAM.enableZeroVelCorrect = false;
-TEMP_NAVIPARAM.enableVdFuser = false;
+TEMP_NAVIPARAM.enableVdFuser = false; % 使能全程Vd再融合
 TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix = false;
 %% 构建NAVI参数结构体
 NAVI_PARAM_V10.SensorSelect = NAVITEMP.SensorSelect;
@@ -148,7 +148,7 @@ fprintf('%s%s%s滤波器 modeKF1 = %0.f\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PA
     TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
 fprintf('%s%s%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
     TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
-fprintf('%s%s%s滤波器 是否使能垂速再融合 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
+fprintf('%s%s%s滤波器 是否使能全程垂速再融合 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
     TEMP_PlaneModel, TEMP_NAVIPARAM.enableVdFuser);
 fprintf('%s%s%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
     TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);

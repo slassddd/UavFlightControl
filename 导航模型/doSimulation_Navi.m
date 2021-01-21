@@ -14,11 +14,11 @@ for i = 1:SimDataSet.nFlightDataFile
 %     SimInput(i) = SimInput(i).setVariable('IN_TestCase_SensorFault',TestCase.SensorFaultPanel.data(i));
 end
 % 进行仿真
-load_system(SimParam.Basic.modelname);
-set_param(SimParam.Basic.modelname,...
-    'SaveFinalState','on',...
-    'FinalStateName',['FinalState_',SimParam.Basic.modelname],...
-    'SaveOperatingPoint','on'); % 设置保存final state，方便对interested时间段进行仿真
+% load_system(SimParam.Basic.modelname);
+% set_param(SimParam.Basic.modelname,...
+%     'SaveFinalState','on',...
+%     'FinalStateName',['FinalState_',SimParam.Basic.modelname],...
+%     'SaveOperatingPoint','on'); % 设置保存final state，方便对interested时间段进行仿真
 switch SimParam.Basic.parallelMode
     case 'parallel'
         fprintf('%s开始并行仿真\n',GLOBAL_PARAM.Print.lineHead);
@@ -50,7 +50,7 @@ fprintf('%s仿真完成, 耗时 %.2f [s]\n',GLOBAL_PARAM.Print.lineHead,SimParam
 %% 子函数
 % 并行仿真
 function out = doParSim(in)
-out = parsim(in,'UseFastRestart','off','TransferBaseWorkspaceVariables','off');
+out = parsim(in,'UseFastRestart','off','TransferBaseWorkspaceVariables','on');
 %             'RunInBackground','on',...
 end
 % 串行仿真
