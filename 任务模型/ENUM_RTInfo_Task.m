@@ -198,6 +198,11 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Land_ToGo_Other (298),
         Battery_Info (299),
         Rotor2Fix_TooLow (300),
+        SensorSelect_Change_IMU (301),
+        SensorSelect_Change_Mag (302),
+        SensorSelect_Change_Baro (303),
+        SensorSelect_Change_Radar (304),
+        SensorSelect_Change_Airspeed (305),
         
         
         ReciveCmd_GoHome (1201),

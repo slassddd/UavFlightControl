@@ -38,7 +38,7 @@ TASK_PARAM_V1000.enterStallGroundSpeed = 2; % 判断进入失速的地速阈值
 TASK_PARAM_V1000.enterStallTimeSec = 1; % 确认进入失速状态所需的持续失速时间sec
 TASK_PARAM_V1000.midHeight_TakeOffandLand = 10; % 起飞着陆中间暂留点
 TASK_PARAM_V1000.finalHeight_TakeOff = 50;
-TASK_PARAM_V1000.maxClimbSpeed_nearGround_TakeOffandLand= 1; % 起飞着陆近地阶段最大垂速
+TASK_PARAM_V1000.maxClimbSpeed_nearGround_TakeOffandLand = 1; % 起飞着陆近地阶段最大垂速
 TASK_PARAM_V1000.maxClimbSpeed_normal_TakeOffandLand= 2.5; % 起飞着陆远地阶段最大垂速
 TASK_PARAM_V1000.maxClimbSpeed_fixMode = 2.5; % 固定翼盘旋上升下降过程中的最大爬升率
 TASK_PARAM_V1000.heightCmd_FinalLand = -100; % 着陆模式时的目标高度（没错，给了个大的负值！）
@@ -84,6 +84,7 @@ TASK_PARAM_V1000.durationToLand_noGPS = 150; % 激活立即降落，当GPS完全
 TASK_PARAM_V1000.remainingLife_LosePowerIn60sec = 10; % 电量阈值[%]，达到该值后飞机将在60sec后失去动力
 TASK_PARAM_V1000.addH_SwitchHoverDownMode = 80; % 盘旋下降模式切换高度(无动力下滑切换有动力下滑)：该高度+旋翼切换高度=实际HoverDown模式切换高度
 TASK_PARAM_V1000.heightThr_CanAutoToRotor = 300; % 允许程序自动判定转旋翼的最大离地高度阈值[m]
+TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.01; % 接地时关闭动力延迟时间[sec]
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -94,6 +95,8 @@ TASK_PARAM_V10.enable8calib = false;
 TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
+TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.3;
+TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.2;
 % switch SimParam.SystemInfo.planeMode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10
