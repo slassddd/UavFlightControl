@@ -203,7 +203,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         SensorSelect_Change_Baro (303),
         SensorSelect_Change_Radar (304),
         SensorSelect_Change_Airspeed (305),
-        
+        BatteryInfo_AllZero (306),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

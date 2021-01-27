@@ -51,7 +51,6 @@ end
 % 执行选择
 switch mode
     case 'list'
-        select = 2;
         % 选择
         showname = sprintf('[%s] 测试用例选择',subSystem);
         selNum = listdlg(...
@@ -68,8 +67,10 @@ switch mode
             %% 生成提示信息
             if selNum == 1
                 fprintf('%s%s不使用批量测试用例,手动进行仿真\n',GLOBAL_PARAM.Print.lineHead,subSystem);
-                nameTestCase = [];
+                nameTestCase = defaultCase;
+                select = 1;
             else
+                select = 2;
                 selNum(selNum==1) = []; % 当选择多个测试用例时，若包含1号（manual）,则删除manual项
                 for i = 1:length(selNum)
                     nameTestCase{i} = namePlaneMode{selNum(i)};

@@ -7,8 +7,9 @@ SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000
 SimParam.Basic.selTestCase_Task_Manual = true; % 默认选择Task测试用例为Manual: true false
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择SensorFault测试用例为Manual: true false
 %% 载入飞行数据
-tspan0 = [0,inf]; % 仿真时间区间 [sec]
+tspan0 = [0,50]; % 仿真时间区间 [sec]
 TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11.mat'];
+% TestCase.FlightLog.filename{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20210123\仿真数据_3 2021年1月23日 香河 V31253固件 全流程测试 2021-01-23 17-37-43.mat'];
 SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 【机型】【测试用例】选择

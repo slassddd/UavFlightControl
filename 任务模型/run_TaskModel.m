@@ -3,7 +3,7 @@ clear,clc
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
 SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
-SimParam.Basic.nameTestCase = 'GSTestCase_TakeOff_Land'; % 指定测试用例名称,[]表示不指定
+SimParam.Basic.nameTestCase = [] ;%'GSTestCase_TakeOff_Land'; % 指定测试用例名称,[]表示不指定
 %% Algorithm 算法参数
 % 任务
 SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
