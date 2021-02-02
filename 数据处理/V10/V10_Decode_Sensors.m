@@ -74,11 +74,15 @@ if sum(IN_SENSOR.mag1.nChange) == 0
     disp('mag1 的 nChange 没有正常赋值');
 end
 %% Mag2
-IN_SENSOR.mag2.time = V10Log.MAG2.TimeUS/1e6;
-IN_SENSOR.mag2.mag_x = V10Log.MAG2.cali_data_x;
-IN_SENSOR.mag2.mag_y = V10Log.MAG2.cali_data_y;
-IN_SENSOR.mag2.mag_z = V10Log.MAG2.cali_data_z;
-IN_SENSOR.mag2.nChange = zeros(size(IN_SENSOR.mag2.mag_x));
+if hasThisChild(V10Log,'MAG2')
+    IN_SENSOR.mag2.time = V10Log.MAG2.TimeUS/1e6;
+    IN_SENSOR.mag2.mag_x = V10Log.MAG2.cali_data_x;
+    IN_SENSOR.mag2.mag_y = V10Log.MAG2.cali_data_y;
+    IN_SENSOR.mag2.mag_z = V10Log.MAG2.cali_data_z;
+    IN_SENSOR.mag2.nChange = zeros(size(IN_SENSOR.mag2.mag_x));
+else
+    IN_SENSOR.mag2 = IN_SENSOR.mag1;
+end
 if sum(IN_SENSOR.mag2.nChange) == 0
     disp('mag2 的 nChange 没有正常赋值');
 end
@@ -148,17 +152,22 @@ if sum(IN_SENSOR.airspeed1.nChange) == 0
     disp('airspeed1 的 nChange 没有正常赋值');
 end
 %% airspeed2
-IN_SENSOR.airspeed2.time = V10Log.ARP2.TimeUS/1e6;
-IN_SENSOR.airspeed2.airspeed = V10Log.ARP2.indicated_airspeed;
-IN_SENSOR.airspeed2.airspeed_indicate = V10Log.ARP2.indicated_airspeed;
-IN_SENSOR.airspeed2.airspeed_true = V10Log.ARP2.true_airspeed;
-IN_SENSOR.airspeed2.airspeed_calibrate = 0*IN_SENSOR.airspeed2.airspeed;
-IN_SENSOR.airspeed2.temperature = 0*IN_SENSOR.airspeed2.airspeed;
-IN_SENSOR.airspeed2.static_pressure = 0*IN_SENSOR.airspeed2.airspeed;
-IN_SENSOR.airspeed2.dynamic_pressure = 0*IN_SENSOR.airspeed2.airspeed;
-IN_SENSOR.airspeed2.status = 0*IN_SENSOR.airspeed2.airspeed;
-IN_SENSOR.airspeed2.EAS2TAS_Algo = zeros(size(IN_SENSOR.airspeed2.time));
-IN_SENSOR.airspeed2.nChange = zeros(size(IN_SENSOR.airspeed2.time));
+if hasThisChild(V10Log,'ARP2')
+    IN_SENSOR.airspeed2.time = V10Log.ARP2.TimeUS/1e6;
+    IN_SENSOR.airspeed2.airspeed = V10Log.ARP2.indicated_airspeed;
+    IN_SENSOR.airspeed2.airspeed_indicate = V10Log.ARP2.indicated_airspeed;
+    IN_SENSOR.airspeed2.airspeed_true = V10Log.ARP2.true_airspeed;
+    IN_SENSOR.airspeed2.airspeed_calibrate = 0*IN_SENSOR.airspeed2.airspeed;
+    IN_SENSOR.airspeed2.temperature = 0*IN_SENSOR.airspeed2.airspeed;
+    IN_SENSOR.airspeed2.static_pressure = 0*IN_SENSOR.airspeed2.airspeed;
+    IN_SENSOR.airspeed2.dynamic_pressure = 0*IN_SENSOR.airspeed2.airspeed;
+    IN_SENSOR.airspeed2.status = 0*IN_SENSOR.airspeed2.airspeed;
+    IN_SENSOR.airspeed2.EAS2TAS_Algo = zeros(size(IN_SENSOR.airspeed2.time));
+    IN_SENSOR.airspeed2.nChange = zeros(size(IN_SENSOR.airspeed2.time));
+else
+    IN_SENSOR.airspeed2 = IN_SENSOR.airspeed1;
+end
+
 disp('airspeed2 没有解析：EAS2TAS_Algo')
 if sum(IN_SENSOR.airspeed2.nChange) == 0
     disp('airspeed2 的 nChange 没有正常赋值');
@@ -226,3 +235,13 @@ if sum(IN_SENSOR.radarLongDown1.nChange) == 0
 end
 %% IMU1_Control
 IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;
+
+%% 子函数 ---------------------------------------------------------------------
+function flag = hasThisChild(structdata,childname)
+children = fieldnames(structdata);
+temp = contains(children,childname);
+if any(temp)
+    flag = true;
+else
+    flag = false;
+end

@@ -9,8 +9,10 @@ Param.outputName = 'V10Log'; % 输出结构体名称
 Param.autoDecodeFileName = 'V10_decode_auto'; % 生成的decode文件名称
 Param.autoDecodeFileType = 'function'; % script-脚本 function-函数
 Param.comment = true; % 是否将协议内容作为注释加入decode函数
-Param.commentStartPlace = 55; % 注释起始列
-Param.autoFill = true; % 自动填充漏存的同名结构体成员变量
+Param.commentStartPlace = 65; % 注释起始列
+% Param.autoFill = true; % 自动填充漏存的同名结构体成员变量
+Param.enableTryCatch = true; % 为每个结构体赋值前后增加try-catch
+Param.outputAllStruct = false; % 输出所有数据结构体
 for i = 1:length(varargin)/2
     switch lower(varargin{2*i-1})
         case 'commentstartplace'
@@ -37,6 +39,12 @@ end
 cd(filepath)
 % 选择解析文件
 DataParser.fileName = uigetfile('*.txt','选择协议文件'); %
+if isa(DataParser.fileName,'double')
+    if DataParser.fileName == 0
+        fprintf('没有选择协议文件，退出.\n');
+        return;
+    end
+end
 % DataParser.fileName = 'V10日志存储参数说明书_v20201231.txt';
 fprintf('协议文件: %s\n',DataParser.fileName);
 decodeString = importdata(DataParser.fileName);
@@ -264,6 +272,9 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
         continue;
     end
     strToWrite{idxToWrite} = sprintf('%%%% %s\n',thisStructShortName);idxToWrite = idxToWrite + 1;
+    if Param.enableTryCatch
+        strToWrite{idxToWrite} = sprintf('try\n');idxToWrite = idxToWrite + 1;
+    end
     try
         for k = 1:length(eval([thisStructShortName,'_idx']))
             mode = '结构体全称'; % 结构体简称 结构体全称
@@ -346,6 +357,9 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
         disp(ME.message)
 %         fprintf('',eval([thisStructShortName,'_idx']));
     end
+    if Param.enableTryCatch
+        strToWrite{idxToWrite} = sprintf('catch ME\n\tdisp(ME.message);\nend\n');idxToWrite = idxToWrite + 1;
+    end
 end
 %% 生成解析函数
 fileID = fopen([Param.autoDecodeFileName,'.m'],'w');
@@ -379,17 +393,18 @@ for i = 1:length(strToWrite)
     fwrite(fileID,strToWrite{i});
 end
 % 函数尾
-str = sprintf('%%%% \nparserData = fieldnames(%s);\n',Param.outputName);
-fwrite(fileID,str);
-str = sprintf('for i = 1:length(parserData)\n');
-fwrite(fileID,str);
-str = sprintf('	fprintf(''output:\t\t%%s\\n'',parserData{i});\n');
-fwrite(fileID,str);
-str = sprintf('	assignin(''base'',parserData{i},%s.(parserData{i}));\n',Param.outputName);
-fwrite(fileID,str);
-str = sprintf('end\n',Param.outputName);
-fwrite(fileID,str);
-
+if Param.outputAllStruct
+    str = sprintf('%%%% \nparserData = fieldnames(%s);\n',Param.outputName);
+    fwrite(fileID,str);
+    str = sprintf('for i = 1:length(parserData)\n');
+    fwrite(fileID,str);
+    str = sprintf('	fprintf(''output:\t\t%%s\\n'',parserData{i});\n');
+    fwrite(fileID,str);
+    str = sprintf('	assignin(''base'',parserData{i},%s.(parserData{i}));\n',Param.outputName);
+    fwrite(fileID,str);
+    str = sprintf('end\n',Param.outputName);
+    fwrite(fileID,str);
+end
 %
 fclose(fileID);
 edit(Param.autoDecodeFileName)

@@ -1,6 +1,6 @@
-clear,clc
+% clear,clc
 setGlobalParams();
-if 1
+if 0
     GLOBAL_PARAM.dirDataFileForDecode = 'D:\work\V1000_firmware\数据处理\V10\';
     DecodeParam.nameDataFile{1} = 'D:\work\V1000_firmware\数据处理\V10\log_31.bin-488896.mat';
 else
@@ -11,14 +11,15 @@ else
     cd(GLOBAL_PARAM.dirDataFileForDecode)
 end
 %
-nFile = length(DecodeParam.nameDataFile);%
+DecodeParam.nFile = length(DecodeParam.nameDataFile);%
 for i_file = 1:nFile
-    V10Log = V10_DecodePX4Format([DecodeParam.nameDataFile{i_file}]);
+%     V10Log = V10_DecodePX4Format([DecodeParam.nameDataFile{i_file}]);
+    V10Log = V10_decode_auto([DecodeParam.nameDataFile{i_file}]);
     IN_SENSOR = V10_Decode_Sensors(V10Log);
     FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log);
     FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);
     %%
-    saveFileName{i_file} = ['D:\work\V1000_firmware\数据处理\V10\仿真日志.mat'];
+    saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'仿真数据_',DecodeParam.nameDataFile{i_file}];%['D:\work\V1000_firmware\数据处理\V10\仿真日志.mat'];
     save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc');
 end
-fprintf('[END] 载入数据完成\n')
+fprintf('[END] 载入数据完成\n');
