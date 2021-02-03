@@ -225,6 +225,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Payload_Camera_Shot (2000),
         TaskLog_Payload_Camera_StandBy (2001),
         TaskLog_Payload_Camera_BeginWork (2002),
+        TaskLog_Payload_Lidar_StandBy (2003),
+        TaskLog_Payload_Lidar_BeginWork (2004),        
         % mavlink
         TaskLog_Mav_CmdChange (2100),
         TaskLog_Mav_GoHome_Yes (2101),
