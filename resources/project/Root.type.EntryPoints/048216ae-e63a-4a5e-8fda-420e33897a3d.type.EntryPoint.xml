@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="Basic" GroupUUID="" Visible="1" Icon="" File="导航模型/SinglePlot_Online_Vs_Offline.m" Name="SinglePlot_Online_Vs_Offline" />
+<Info Type="Basic" Visible="1" Icon="" File="导航模型/SinglePlot_Online_Vs_Offline.m" Name="SinglePlot_Online_Vs_Offline()" />

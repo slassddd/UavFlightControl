@@ -17,7 +17,9 @@ tmpStartIdx = 1;
 tmpStartIdx1 = 	1;
 t0_cor = 0.4;%1*-9.62;
 fig = figure(200+i_sim);
+try
 fig.Name = dataFileNames{1};
+end
 subplot(331)
 if onlineFlag
     plot(dataOnLine.time_cal,dataOnLine.algo_NAV_yawd);hold on;

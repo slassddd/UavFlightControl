@@ -3,7 +3,7 @@ clear,clc
 setGlobalParams();
 SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择 SensorFault 测试用例为Manual: true false
-tspan0 = [0,200]; % sec
+tspan0 = [0,inf]; % sec
 %% 载入数据
 TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\V1000 客户飞行数据\20201205 起飞异常\仿真数据_起飞异常 2020-12-05 09-34-02']};
 TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11']};
@@ -43,4 +43,4 @@ end
 fprintf('/n--------调试信息--------/n')
 out = sim(SimInput);
 %% 
-Plot_IntegritySimData(out,SimDataSet,TestCase.SensorFaultPanel.data)
+Plot_IntegritySimData(out,SimDataSet,TestCase.SensorFaultPanel.data);

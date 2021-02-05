@@ -1,6 +1,7 @@
 function [SENSOR_INTEGRITY_PARAM_V1000] = INIT_SensorIntegrity_V1000() 
 % 信号丢失报警阈值 [sec]
 baseMode = 0.36;
+SENSOR_INTEGRITY_PARAM_V1000 = Simulink.Bus.createMATLABStruct('BUS_SENSOR_INTEGRITY_PARAM');
 switch baseMode
     case 0.36
         % 0.4 base
@@ -15,6 +16,7 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM_V1000.um482.threshold_lostTime = 15;
         SENSOR_INTEGRITY_PARAM_V1000.laserDown.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V1000.radarLong.threshold_lostTime = 5;
+        SENSOR_INTEGRITY_PARAM_V1000.VIO.threshold_lostTime = 5;
 end
 % 信号质量降级报警阈值
 SENSOR_INTEGRITY_PARAM_V1000.Mag.threshold_maxNormMag_uT = 60;

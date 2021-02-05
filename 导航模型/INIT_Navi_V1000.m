@@ -8,10 +8,12 @@ TEMP_PlaneModel = 'V1000';
 % sensorFs.radarUpdateFs = 62.5;
 % sensorFs.airspeedUpdateFs = 62.5;
 % 测量选择
+NAVITEMP.fuse_enable = Simulink.Bus.createMATLABStruct('BUS_NAVI_FuseEnable');
 NAVITEMP.fuse_enable.mag = 1;
 NAVITEMP.fuse_enable.gps = 1;
 NAVITEMP.fuse_enable.alt = 1;
 NAVITEMP.fuse_enable.um482 = 1;
+NAVITEMP.fuse_enable.VIO = 0;
 % 传感器数据抽取
 NAVITEMP.noise_std = Simulink.Bus.createMATLABStruct('BUS_NAVI_SensorDecimation');
 NAVITEMP.Decimation.imu = 1;
@@ -23,6 +25,7 @@ NAVITEMP.Decimation.um482 = 1;
 NAVITEMP.Decimation.airspeed = 1;
 NAVITEMP.Decimation.tag = 1;
 % 传感器选择
+NAVITEMP.SensorSelect = Simulink.Bus.createMATLABStruct('BUS_NAVI_SensorSignalIntegrity_SensorSelect');
 NAVITEMP.SensorSelect.IMU = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.Mag = 1;  % -1:不使用  0:融合  N:使用第N个
 NAVITEMP.SensorSelect.GPS = 1;  % -1:不使用  0:融合  1:ublox1 100:高精度gps（um482）  % 没用
@@ -266,11 +269,13 @@ NAVI_PARAM_V1000.NAVIParam = TEMP_NAVIPARAM;
 %%
 global GLOBAL_PARAM
 fprintf('%s%s\n',GLOBAL_PARAM.Print.lineHead,TEMP_PlaneModel);
-fprintf('%s%s%s滤波器 modeKF1 = %0.f\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
-    TEMP_PlaneModel, TEMP_NAVIPARAM.modeKF1);
-fprintf('%s%s%s滤波器 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
-    TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
-fprintf('%s%s%s滤波器 是否使能全程垂速再融合 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
-    TEMP_PlaneModel, TEMP_NAVIPARAM.enableVdFuser);
-fprintf('%s%s%s滤波器 是否使能根据振动估计的加计噪声动态调整 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,...
-    TEMP_PlaneModel, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);
+if TEMP_MARGParam.fuse_enable.gps == 0
+    fprintf('%s%s [WARNING] 未使用ublox\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
+end
+if TEMP_MARGParam.fuse_enable.um482 == 0
+    fprintf('%s%s [WARNING] 未使用um482\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
+end
+fprintf('%s%s modeKF1 = %0.f\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead, TEMP_NAVIPARAM.modeKF1);
+fprintf('%s%s 使能加计性能衰减  幅值（%.0f） 模式（%.0f）\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead, TEMP_NAVIPARAM.enableAccDegrade_Amp ,TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix );
+fprintf('%s%s 是否使能全程垂速再融合 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead, TEMP_NAVIPARAM.enableVdFuser);
+fprintf('%s%s 是否使能根据振动估计的加计噪声动态调整 %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead, TEMP_NAVIPARAM.enableAccDegrade_Rotor2Fix);

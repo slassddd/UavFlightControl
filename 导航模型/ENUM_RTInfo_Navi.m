@@ -18,6 +18,7 @@ classdef ENUM_RTInfo_Navi < Simulink.IntEnumType
         RTIN_Filter_Param3 (207),
         RTIN_Filter_GPSVelErrorLarge (208),
         RTIN_Filter_Fuse_Airspeed (209),
+        RTIN_Filter_Fuse_VIO (210),
     end
 end
 
