@@ -1,6 +1,10 @@
 function SinglePlot_FlightPerformance(structData)
 fprintf('----------------------------------------------\n')
-time = structData.time_cal;
+try
+    time = structData.time_cal;
+catch
+    time = structData.time; 
+end
 children = fieldnames(structData);
 nChildren = length(children);
 nrow = ceil(sqrt(nChildren+2));

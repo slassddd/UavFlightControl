@@ -11,7 +11,7 @@ Param.autoDecodeFileType = 'function'; % script-脚本 function-函数
 Param.comment = true; % 是否将协议内容作为注释加入decode函数
 Param.commentStartPlace = 65; % 注释起始列
 % Param.autoFill = true; % 自动填充漏存的同名结构体成员变量
-Param.enableTryCatch = true; % 为每个结构体赋值前后增加try-catch
+Param.enableTryCatch = false; % 为每个结构体赋值前后增加try-catch
 Param.outputAllStruct = false; % 输出所有数据结构体
 for i = 1:length(varargin)/2
     switch lower(varargin{2*i-1})
@@ -64,6 +64,7 @@ nVar = length(allVarLabel);
 idxVar = 1;
 idxNotExist = 1;
 idxToWrite = 1;
+varNotExist = [];
 for i = 1:nVar
     thisVar = allVarLabel(i);
     if strcmp(thisVar.class,'cell') && ...
@@ -261,7 +262,9 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
                     end
                 end
                 if ~isFind
-                    fprintf('\t\t\t%s 没有匹配\n',subName_FromShort);
+%                     fprintf('\t\t\t%s 没有匹配\n',subName_FromShort);
+                    fprintf('\t\t\t解析协议中 %s 的第 %d 个变量为 %s, 数据文件中 %s 不包含该变量名称\n',...
+                        tokenLabel,i_subvar,subName_FromShort,thisVarLabel);
                 end
             end
         end

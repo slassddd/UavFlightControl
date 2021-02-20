@@ -2,19 +2,23 @@ function [FileNames,isSuccess] = selFileToDecode(type)
 global GLOBAL_PARAM
 isSuccess = true;
 if GLOBAL_PARAM.dirDataFileForDecode~=0
-    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\\*.',type],'MultiSelect','on'); % 
+    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\\*.',type],'MultiSelect','on'); %
 else
-    curProj = currentProject;
+    try
+        curProj = currentProject;
+    catch
+        curProj.RootFolder = cd;
+    end
     try % 直接进入可能的、存放数据的子文件夹
         subfolders = dir(curProj.RootFolder);
         for i = 1:length(subfolders)
-            if contains(subfolders(i).name,'数据') && ... 
+            if contains(subfolders(i).name,'数据') && ...
                     (contains(subfolders(i).name,'飞行')||contains(subfolders(i).name,'试验')||contains(subfolders(i).name,'试飞'))
                 GLOBAL_PARAM.dirDataFileForDecode = [curProj.RootFolder{1},'\',subfolders(i).name];
             end
         end
     end
-    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\\*.',type],'MultiSelect','on'); % 
+    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\*.',type],'MultiSelect','on'); %    
 end
 if ischar(tempFileNames)
     % 选择单一文件时

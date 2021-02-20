@@ -11,6 +11,11 @@ xSim1.signals.dimensions = 3;
 xSim2.time = [0:Ts:N*Ts-Ts];
 xSim2.signals.values = x2;
 xSim2.signals.dimensions = 3;
+if length(xSim2.time) < length(xSim2.signals.values) 
+    xSim2.signals.values(end) = [];
+elseif length(xSim2.time) > length(xSim2.signals.values) 
+    xSim2.time(end) = [];
+end
 Tf = xSim1.time(end);
 %%
 mdlname = {'calibModel','RefModel_magCalib_memoryGood'}; % Top模型在第一位

@@ -57,10 +57,9 @@ if sum(IN_SENSOR.baro1.nChange) == 0
     disp('baro1 的 nChange 没有正常赋值');
 end
 %% Baro2
-IN_SENSOR.baro2.time = V10Log.BAR1.TimeUS/1e6;
-IN_SENSOR.baro2.alt_baro = 0*V10Log.BAR1.altitude;
+IN_SENSOR.baro2.time = V10Log.BAR2.TimeUS/1e6;
+IN_SENSOR.baro2.alt_baro = 0*V10Log.BAR2.altitude;
 IN_SENSOR.baro2.nChange = zeros(size(IN_SENSOR.baro2.alt_baro));
-disp('baro2 没有正常赋值');
 if sum(IN_SENSOR.baro2.nChange) == 0
     disp('baro2 的 nChange 没有正常赋值');
 end
@@ -131,7 +130,6 @@ IN_SENSOR.um482.pDop = V10Log.GPS.pDOP;
 IN_SENSOR.um482.BESTPOS = V10Log.GPS.pos_type;
 IN_SENSOR.um482.numSv = V10Log.GPS.svn;
 IN_SENSOR.um482.nChange = zeros(size(IN_SENSOR.um482.time));
-disp('um482没有解析：BESTPOS')
 if sum(IN_SENSOR.um482.nChange) == 0
     disp('um482 的 nChange 没有正常赋值');
 end
@@ -219,9 +217,6 @@ IN_SENSOR.radarLongForward1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongForward1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.radarLongForward1.nChange = zeros(size(IN_SENSOR.radarLongForward1.time));
-if sum(IN_SENSOR.radarLongForward1.nChange) == 0
-    disp('radarLongForward1 的 nChange 没有正常赋值');
-end
 %% radarLongDown1
 disp('radarLongDown1未赋值')
 IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
@@ -230,12 +225,9 @@ IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.radarLongDown1.nChange = zeros(size(IN_SENSOR.radarLongDown1.time));
-if sum(IN_SENSOR.radarLongDown1.nChange) == 0
-    disp('radarLongDown1 的 nChange 没有正常赋值');
-end
 %% IMU1_Control
 IN_SENSOR.IMU1_Control = IN_SENSOR.IMU1;
-
+IN_SENSOR.IMU1_0 = IN_SENSOR.IMU1;
 %% 子函数 ---------------------------------------------------------------------
 function flag = hasThisChild(structdata,childname)
 children = fieldnames(structdata);

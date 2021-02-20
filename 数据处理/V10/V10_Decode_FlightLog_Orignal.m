@@ -1,21 +1,22 @@
 function FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log)
 %% SystemInfo
-try
-SL.EmbedInfo.save_count = save_count; % create struct
-SL.EmbedInfo.save_time = save_time; % create struct
-SL.EmbedInfo.FCVERSION = FCVERSION; % create struct
-SL.EmbedInfo.GPSVERSION = GPSVERSION; % create struct
-SL.EmbedInfo.LOADERVERSION = LOADERVERSION; % create struct
-SL.EmbedInfo.MCU2VERSION = MCU2VERSION; % create struct
-SL.EmbedInfo.ALGO_LOGICVERSION = ALGO_LOGICVERSION; % create struct
-SL.EmbedInfo.ALGO_DRIVERVERSION = ALGO_DRIVERVERSION; % create struct
-SL.EmbedInfo.task_1ms_total_cnt = task_1ms_total_cnt; % create struct
-SL.EmbedInfo.task_4ms_total_cnt = task_4ms_total_cnt; % create struct
-SL.EmbedInfo.task_12ms_total_cnt = task_12ms_total_cnt; % create struct
-SL.EmbedInfo.task_100ms_total_cnt = task_100ms_total_cnt; % create struct
-catch
-    disp('[EmbedInfo] 没有解析')
-end
+% try
+%     FlightLog_Original.EmbedInfo.save_count = save_count; % create struct
+%     FlightLog_Original.EmbedInfo.save_time = save_time; % create struct
+%     FlightLog_Original.EmbedInfo.FCVERSION = FCVERSION; % create struct
+%     FlightLog_Original.EmbedInfo.GPSVERSION = GPSVERSION; % create struct
+%     FlightLog_Original.EmbedInfo.LOADERVERSION = LOADERVERSION; % create struct
+%     FlightLog_Original.EmbedInfo.MCU2VERSION = MCU2VERSION; % create struct
+%     FlightLog_Original.EmbedInfo.ALGO_LOGICVERSION = ALGO_LOGICVERSION; % create struct
+%     FlightLog_Original.EmbedInfo.ALGO_DRIVERVERSION = ALGO_DRIVERVERSION; % create struct
+%     FlightLog_Original.EmbedInfo.task_1ms_total_cnt = task_1ms_total_cnt; % create struct
+%     FlightLog_Original.EmbedInfo.task_4ms_total_cnt = task_4ms_total_cnt; % create struct
+%     FlightLog_Original.EmbedInfo.task_12ms_total_cnt = task_12ms_total_cnt; % create struct
+%     FlightLog_Original.EmbedInfo.task_100ms_total_cnt = task_100ms_total_cnt; % create struct
+% catch ME
+%     disp(ME.message);
+%     disp('[EmbedInfo] 没有解析')
+% end
 %% SensorSelect
 FlightLog_Original.SensorSelect.time = V10Log.SensorSelect.TimeUS/1e6;
 FlightLog_Original.SensorSelect.IMU = V10Log.SensorSelect.IMU; % create struct
@@ -57,70 +58,88 @@ FlightLog_Original.SensorLosttime.baro1 = V10Log.SensorLosttime.baro1; % create 
 FlightLog_Original.SensorLosttime.baro2 = V10Log.SensorLosttime.baro2; % create struct
 %% SensorStatus
 try
-SL.SensorStatus.mag1 = mag1; % create struct
-SL.SensorStatus.mag2 = mag2; % create struct
-SL.SensorStatus.um482 = um482; % create struct
-SL.SensorStatus.airspeed1 = airspeed1; % create struct
-SL.SensorStatus.radar1 = radar1; % create struct
-SL.SensorStatus.ublox1 = ublox1; % create struct
-SL.SensorStatus.IMU1 = IMU1; % create struct
-SL.SensorStatus.IMU2 = IMU2; % create struct
-SL.SensorStatus.IMU3 = IMU3; % create struct
-SL.SensorStatus.baro1 = baro1; % create struct
-SL.SensorStatus.SystemHealthStatus = SystemHealthStatus; % create struct
-catch
-    disp('[SensorStatus] 没有解析')
+    FlightLog_Original.SensorStatus.mag1 = V10Log.SensorStatus.mag1; % create struct
+    FlightLog_Original.SensorStatus.mag2 = V10Log.SensorStatus.mag2; % create struct
+    FlightLog_Original.SensorStatus.um482 = V10Log.SensorStatus.um482; % create struct
+    FlightLog_Original.SensorStatus.airspeed1 = V10Log.SensorStatus.airspeed1; % create struct
+    FlightLog_Original.SensorStatus.radar1 = V10Log.SensorStatus.radar1; % create struct
+    FlightLog_Original.SensorStatus.ublox1 = V10Log.SensorStatus.ublox1; % create struct
+    FlightLog_Original.SensorStatus.IMU1 = V10Log.SensorStatus.IMU1; % create struct
+    FlightLog_Original.SensorStatus.IMU2 = V10Log.SensorStatus.IMU2; % create struct
+    FlightLog_Original.SensorStatus.IMU3 = V10Log.SensorStatus.IMU3; % create struct
+    FlightLog_Original.SensorStatus.baro1 = V10Log.SensorStatus.baro1; % create struct
+    try
+        FlightLog_Original.SensorStatus.SystemHealthStatus = V10Log.SensorStatus.SystemHealthStatus; % create struct
+    catch
+        FlightLog_Original.SensorStatus.SystemHealthStatus = zeros(size(FlightLog_Original.SensorStatus.baro1));
+        fprintf('[SensorStatus] SystemHealthStatus 赋值错误\n')
+    end
+    FlightLog_Original.SensorStatus.time = V10Log.SensorStatus.TimeUS/1e6;
+catch ME
+    fprintf('[SensorStatus] ')
+    disp(ME.message);
 end
 %% CAMERA
 try
-SL.CAMERA.time = time; % create struct
-SL.CAMERA.trigger = trigger; % create struct
-SL.CAMERA.LLA0 = LLA0; % create struct
-SL.CAMERA.LLA1 = LLA1; % create struct
-SL.CAMERA.LLA2 = LLA2; % create struct
-SL.CAMERA.groundspeed = groundspeed; % create struct
-catch
-    disp('[CAMERA] 没有解析')
+    FlightLog_Original.CAMERA.time = V10Log.CAMERA.time; % create struct
+    FlightLog_Original.CAMERA.trigger = V10Log.CAMERA.trigger; % create struct
+    FlightLog_Original.CAMERA.LLA0 = V10Log.CAMERA.LLA(:,1); % create struct
+    FlightLog_Original.CAMERA.LLA1 = V10Log.CAMERA.LLA(:,2); % create struct
+    FlightLog_Original.CAMERA.LLA2 = V10Log.CAMERA.LLA(:,3); % create struct
+    FlightLog_Original.CAMERA.groundspeed = V10Log.CAMERA.groundspeed; % create struct
+catch ME
+    fprintf('[CAMERA] ')
+    disp(ME.message);
 end
 %% LIDAR
 try
-SL.LIDAR.time = time; % create struct
-SL.LIDAR.trigger = trigger; % create struct
-SL.LIDAR.LLA0 = LLA0; % create struct
-SL.LIDAR.LLA1 = LLA1; % create struct
-SL.LIDAR.LLA2 = LLA2; % create struct
-SL.LIDAR.groundspeed = groundspeed; % create struct
-catch
-    disp('[LIDAR] 没有解析')
+    FlightLog_Original.LIDAR.time = V10Log.LIDAR.time; % create struct
+    FlightLog_Original.LIDAR.trigger = V10Log.LIDAR.trigger; % create struct
+    FlightLog_Original.LIDAR.isOn = V10Log.LIDAR.isOn; % create struct
+    FlightLog_Original.LIDAR.LLA0 = V10Log.LIDAR.LLA(:,1); % create struct
+    FlightLog_Original.LIDAR.LLA1 = V10Log.LIDAR.LLA(:,2); % create struct
+    FlightLog_Original.LIDAR.LLA2 = V10Log.LIDAR.LLA(:,3); % create struct
+    FlightLog_Original.LIDAR.groundspeed = V10Log.LIDAR.groundspeed; % create struct
+catch ME
+    fprintf('[LIDAR] ')
+    disp(ME.message);
 end
 %% SimParam_LLA
 try
-SL.SimParam_LLA.SimParam_LLA0 = SimParam_LLA0; % create struct
-SL.SimParam_LLA.SimParam_LLA1 = SimParam_LLA1; % create struct
-SL.SimParam_LLA.SimParam_LLA2 = SimParam_LLA2; % create struct
-catch
-    disp('[SimParam_LLA] 没有解析')
+    FlightLog_Original.SimParam_LLA.SimParam_LLA0 = V10Log.SimParam_LLA0.SimParam_LLA0(:,1); % create struct
+    FlightLog_Original.SimParam_LLA.SimParam_LLA1 = V10Log.SimParam_LLA0.SimParam_LLA0(:,2); % create struct
+    FlightLog_Original.SimParam_LLA.SimParam_LLA2 = V10Log.SimParam_LLA0.SimParam_LLA0(:,3); % create struct
+catch ME
+    fprintf('[SimParam_LLA] ')
+    disp(ME.message);
 end
 %% Debug_Task_RTInfo
 try
-SL.Debug_Task_RTInfo.Task = Task; % create struct
-SL.Debug_Task_RTInfo.Payload = Payload; % create struct
-SL.Debug_Task_RTInfo.GSCmd = GSCmd; % create struct
-SL.Debug_Task_RTInfo.Warning = Warning; % create struct
-SL.Debug_Task_RTInfo.ComStatus = ComStatus; % create struct
-SL.Debug_Task_RTInfo.FenseStatus = FenseStatus; % create struct
-SL.Debug_Task_RTInfo.StallStatus = StallStatus; % create struct
-SL.Debug_Task_RTInfo.SensorStatus = SensorStatus; % create struct
-SL.Debug_Task_RTInfo.BatteryStatus = BatteryStatus; % create struct
-SL.Debug_Task_RTInfo.FixWingHeightStatus = FixWingHeightStatus; % create struct
-SL.Debug_Task_RTInfo.FindWind = FindWind; % create struct
-SL.Debug_Task_RTInfo.LandCond1_Acc_H = LandCond1_Acc_H; % create struct
-SL.Debug_Task_RTInfo.LandCond1_Vd_H = LandCond1_Vd_H; % create struct
-SL.Debug_Task_RTInfo.LandCond3_near = LandCond3_near; % create struct
-SL.Debug_Task_RTInfo.maxDist_Path2Home = maxDist_Path2Home; % create struct
-SL.Debug_Task_RTInfo.realtimeFenseDist = realtimeFenseDist; % create struct
-catch
-    disp('[Debug_Task_RTInfo] 没有解析')
+    FlightLog_Original.Debug_Task_RTInfo.time = V10Log.Debug_Task_RTInfo.TimeUS/1e6;
+    FlightLog_Original.Debug_Task_RTInfo.Task = V10Log.Debug_Task_RTInfo.Task; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.Payload = V10Log.Debug_Task_RTInfo.Payload; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.GSCmd = V10Log.Debug_Task_RTInfo.GSCmd; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.Warning = V10Log.Debug_Task_RTInfo.Warning; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.ComStatus = V10Log.Debug_Task_RTInfo.ComStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.FenseStatus = V10Log.Debug_Task_RTInfo.FenseStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.StallStatus = V10Log.Debug_Task_RTInfo.StallStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.SensorStatus = V10Log.Debug_Task_RTInfo.SensorStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.BatteryStatus = V10Log.Debug_Task_RTInfo.BatteryStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.FixWingHeightStatus = V10Log.Debug_Task_RTInfo.FixWingHeightStatus; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.FindWind = V10Log.Debug_Task_RTInfo.FindWind; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.LandCond1_Acc_H = V10Log.Debug_Task_RTInfo.LandCond1_Acc_H; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.LandCond1_Vd_H = V10Log.Debug_Task_RTInfo.LandCond1_Vd_H; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.LandCond3_near = V10Log.Debug_Task_RTInfo.LandCond3_near; % create struct
+    FlightLog_Original.Debug_Task_RTInfo.maxDist_Path2Home = V10Log.Debug_Task_RTInfo.maxDist_Path2Home; % create struct
+    try
+        FlightLog_Original.Debug_Task_RTInfo.realtimeFenseDist = V10Log.Debug_Task_RTInfo.realtimeFenseDist; % create struct
+    catch
+        fprintf('[Debug_Task_RTInfo] realtimeFenseDist 赋值错误\n')
+        FlightLog_Original.Debug_Task_RTInfo.realtimeFenseDist = zeros(size(FlightLog_Original.Debug_Task_RTInfo.maxDist_Path2Home));
+    end
+catch ME
+    fprintf('[Debug_Task_RTInfo] ')
+    disp(ME.message);
 end
 %% OUT_TASKMODE
 FlightLog_Original.OUT_TASKMODE.time_cal = V10Log.OUT_TASKMODE.TimeUS/1e6;
@@ -184,10 +203,11 @@ FlightLog_Original.OUT_TASKFLIGHTPARAM.curPosNED1 = V10Log.OUT_TASKFLIGHTPARAM.c
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curPosNED2 = V10Log.OUT_TASKFLIGHTPARAM.curPosNED(:,3); % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA0 = V10Log.OUT_TASKFLIGHTPARAM.curLLA(:,1); % create struct
 try
-FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA1 = V10Log.OUT_TASKFLIGHTPARAM.curLLA(:,2); % create struct
-FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2 = V10Log.OUT_TASKFLIGHTPARAM.curLLA(:,3); % create struct
-catch
-    disp('[OUT_TASKFLIGHTPARAM] 没有解析 curLLA(:,2) curLLA(:,3)');
+    FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA1 = V10Log.OUT_TASKFLIGHTPARAM.curLLA(:,2); % create struct
+    FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2 = V10Log.OUT_TASKFLIGHTPARAM.curLLA(:,3); % create struct
+catch ME
+    fprintf('[OUT_TASKFLIGHTPARAM] ')
+    disp(ME.message);
 end
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curGroundSpeed = V10Log.OUT_TASKFLIGHTPARAM.curGroundSpeed; % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curAccZ = V10Log.OUT_TASKFLIGHTPARAM.curAccZ; % create struct
@@ -199,30 +219,36 @@ FlightLog_Original.OUT_TASKFLIGHTPARAM.curHeightForControl = V10Log.OUT_TASKFLIG
 % FlightLog_Original.OUT_TASKFLIGHTPARAM.uavModel = V10Log.OUT_TASKFLIGHTPARAM.uavModel;
 %% TASK_WindParam
 try
-SL.TASK_WindParam.sailWindSpeed = sailWindSpeed; % create struct
-SL.TASK_WindParam.sailWindHeading = sailWindHeading; % create struct
-SL.TASK_WindParam.windSpeedMax = windSpeedMax; % create struct
-SL.TASK_WindParam.windSpeedMin = windSpeedMin; % create struct
-SL.TASK_WindParam.maxWindHeading = maxWindHeading; % create struct
-catch
-    disp('[TASK_WindParam] 没有解析');
+    FlightLog_Original.TASK_WindParam.time = V10Log.Debug_WindParam.TimeUS/1e6;
+    FlightLog_Original.TASK_WindParam.sailWindSpeed = V10Log.Debug_WindParam.sailWindSpeed; % create struct
+    FlightLog_Original.TASK_WindParam.sailWindHeading = V10Log.Debug_WindParam.sailWindHeading; % create struct
+    FlightLog_Original.TASK_WindParam.windSpeedMax = V10Log.Debug_WindParam.windSpeedMax; % create struct
+    FlightLog_Original.TASK_WindParam.windSpeedMin = V10Log.Debug_WindParam.windSpeedMin; % create struct
+    FlightLog_Original.TASK_WindParam.maxWindHeading = V10Log.Debug_WindParam.maxWindHeading; % create struct
+catch ME
+    fprintf('[TASK_WindParam] ')
+    disp(ME.message);
 end
 %% HomePointFromGS
 try
-SL.HomePointFromGS.mavlink_msg_groundHomeLLA0 = mavlink_msg_groundHomeLLA0; % create struct
-SL.HomePointFromGS.mavlink_msg_groundHomeLLA1 = mavlink_msg_groundHomeLLA1; % create struct
-SL.HomePointFromGS.mavlink_msg_groundHomeLLA2 = mavlink_msg_groundHomeLLA2; % create struct
-catch
-    disp('[HomePointFromGS] 没有解析');
+    FlightLog_Original.HomePointFromGS.mavlink_msg_groundHomeLLA0 = V10Log.IN_MAVLINK.mavlink_msg_groundHomeLLA(:,1); % create struct
+    FlightLog_Original.HomePointFromGS.mavlink_msg_groundHomeLLA1 = V10Log.IN_MAVLINK.mavlink_msg_groundHomeLLA(:,2); % create struct
+    FlightLog_Original.HomePointFromGS.mavlink_msg_groundHomeLLA2 = V10Log.IN_MAVLINK.mavlink_msg_groundHomeLLA(:,3); % create struct
+catch ME
+    fprintf('[HomePointFromGS] ')
+    disp(ME.message);
 end
 %% Engine
 try
-SL.Engine.servo_out0 = servo_out0; % create struct
-SL.Engine.servo_out1 = servo_out1; % create struct
-SL.Engine.servo_out2 = servo_out2; % create struct
-SL.Engine.servo_out3 = servo_out3; % create struct
-catch
-    disp('[Engine] 没有解析');
+    FlightLog_Original.Engine.time = V10Log.PWMO.TimeUS/1e6;
+    FlightLog_Original.Engine.servo_out0 = V10Log.PWMO.pwm_servo(:,1); % create struct
+    FlightLog_Original.Engine.servo_out1 = V10Log.PWMO.pwm_servo(:,2); % create struct
+    FlightLog_Original.Engine.servo_out2 = V10Log.PWMO.pwm_servo(:,3); % create struct
+    FlightLog_Original.Engine.servo_out3 = V10Log.PWMO.pwm_servo(:,4); % create struct
+    FlightLog_Original.Engine.servo_out4 = V10Log.PWMO.pwm_servo(:,5); % create struct
+catch ME
+    fprintf('[Engine] ')
+    disp(ME.message);
 end
 %%
 %% PowerConsume
@@ -242,55 +268,62 @@ FlightLog_Original.PowerConsume.Fix2Rotor = V10Log.PowerConsume.Fix2Rotor; % cre
 FlightLog_Original.PowerConsume.Land = V10Log.PowerConsume.Land; % create struct
 %% OUT_NAVI2FIRM
 try
-    SL.OUT_NAVI2FIRM.isNavFilterGood = isNavFilterGood; % create struct
-catch
-    disp('[OUT_NAVI2FIRM] 没有解析');
+    FlightLog_Original.OUT_NAVI2FIRM.isNavFilterGood = V10Log.OUT_TASKFLIGHTPARAM.isNavFilterGood; % create struct
+catch ME
+    fprintf('[OUT_NAVI2FIRM] ')
+    disp(ME.message);
 end
 %% GlobalWindEst
 try
-SL.GlobalWindEst.oneCircleComplete = oneCircleComplete; % create struct
-SL.GlobalWindEst.windSpeed_ms = windSpeed_ms; % create struct
-SL.GlobalWindEst.windHeading_rad = windHeading_rad; % create struct
-catch
-    disp('[GlobalWindEst] 没有解析');
+    FlightLog_Original.GlobalWindEst.time = V10Log.GlobalWindEst.TimeUS/1e6;
+    FlightLog_Original.GlobalWindEst.oneCircleComplete = V10Log.GlobalWindEst.oneCircleComplete; % create struct
+    FlightLog_Original.GlobalWindEst.windSpeed_ms = V10Log.GlobalWindEst.windSpeed_ms; % create struct
+    FlightLog_Original.GlobalWindEst.windHeading_rad = V10Log.GlobalWindEst.windHeading_rad; % create struct
+catch ME
+    fprintf('[GlobalWindEst] ')
+    disp(ME.message);
 end
 %% Debug_TaskLogData
 try
-SL.Debug_TaskLogData.time_sec = time_sec; % create struct
-SL.Debug_TaskLogData.blockName = blockName; % create struct
-SL.Debug_TaskLogData.idx = idx; % create struct
-SL.Debug_TaskLogData.message = message; % create struct
-SL.Debug_TaskLogData.var10 = var10; % create struct
-SL.Debug_TaskLogData.var11 = var11; % create struct
-SL.Debug_TaskLogData.var12 = var12; % create struct
-SL.Debug_TaskLogData.var13 = var13; % create struct
-SL.Debug_TaskLogData.var14 = var14; % create struct
-catch
-    disp('[Debug_TaskLogData] 没有解析');
+    FlightLog_Original.Debug_TaskLogData.time_sec = V10Log.Debug_TaskLogData.TimeUS/1e6; % create struct
+    FlightLog_Original.Debug_TaskLogData.blockName = V10Log.Debug_TaskLogData.blockName; % create struct
+    FlightLog_Original.Debug_TaskLogData.idx = V10Log.Debug_TaskLogData.idx; % create struct
+    FlightLog_Original.Debug_TaskLogData.message = V10Log.Debug_TaskLogData.message; % create struct
+    FlightLog_Original.Debug_TaskLogData.var10 = V10Log.Debug_TaskLogData.var1(:,1); % create struct
+    FlightLog_Original.Debug_TaskLogData.var11 = V10Log.Debug_TaskLogData.var1(:,2); % create struct
+    FlightLog_Original.Debug_TaskLogData.var12 = V10Log.Debug_TaskLogData.var1(:,3); % create struct
+    FlightLog_Original.Debug_TaskLogData.var13 = V10Log.Debug_TaskLogData.var1(:,4); % create struct
+    FlightLog_Original.Debug_TaskLogData.var14 = V10Log.Debug_TaskLogData.var1(:,5); % create struct
+catch ME
+    fprintf('[Debug_TaskLogData] ')
+    disp(ME.message);
 end
 %% OUT_FLIGHTPERF
 try
-SL.OUT_FLIGHTPERF.isAbleToCompleteTask = isAbleToCompleteTask; % create struct
-SL.OUT_FLIGHTPERF.flagGoHomeNow = flagGoHomeNow; % create struct
-SL.OUT_FLIGHTPERF.remainDistToGo_m = remainDistToGo_m; % create struct
-SL.OUT_FLIGHTPERF.remainTimeToSpend_sec = remainTimeToSpend_sec; % create struct
-SL.OUT_FLIGHTPERF.remainPowerWhenFinish_per = remainPowerWhenFinish_per; % create struct
-SL.OUT_FLIGHTPERF.economicAirspeed = economicAirspeed; % create struct
-SL.OUT_FLIGHTPERF.remainPathPoint = remainPathPoint; % create struct
-SL.OUT_FLIGHTPERF.batteryLifeToCompleteTask = batteryLifeToCompleteTask; % create struct
-SL.OUT_FLIGHTPERF.batterylifeNeededToHome = batterylifeNeededToHome; % create struct
-SL.OUT_FLIGHTPERF.batterylifeNeededToLand = batterylifeNeededToLand; % create struct
-catch
-    disp('[OUT_FLIGHTPERF] 没有解析');
+    FlightLog_Original.OUT_FLIGHTPERF.time = V10Log.OUT_FLIGHTPERF.TimeUS/1e6; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.isAbleToCompleteTask = V10Log.OUT_FLIGHTPERF.isAbleToCompleteTask; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.flagGoHomeNow = V10Log.OUT_FLIGHTPERF.flagGoHomeNow; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.remainDistToGo_m = V10Log.OUT_FLIGHTPERF.remainDistToGo_m; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.remainTimeToSpend_sec = V10Log.OUT_FLIGHTPERF.remainTimeToSpend_sec; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.remainPowerWhenFinish_per = V10Log.OUT_FLIGHTPERF.remainPowerWhenFinish_per; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.economicAirspeed = V10Log.OUT_FLIGHTPERF.economicAirspeed; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.remainPathPoint = V10Log.OUT_FLIGHTPERF.remainPathPoint; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.batteryLifeToCompleteTask = V10Log.OUT_FLIGHTPERF.batteryLifeToCompleteTask; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.batterylifeNeededToHome = V10Log.OUT_FLIGHTPERF.batterylifeNeededToHome; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.batterylifeNeededToLand = V10Log.OUT_FLIGHTPERF.batterylifeNeededToLand; % create struct
+catch ME
+    fprintf('[OUT_FLIGHTPERF] ')
+    disp(ME.message);
 end
 %% mavlink_mission_item_def
 try
-SL.mavlink_mission_item_def.seq = seq; % create struct
-SL.mavlink_mission_item_def.x = x; % create struct
-SL.mavlink_mission_item_def.y = y; % create struct
-SL.mavlink_mission_item_def.z = z; % create struct
-catch
-    disp('[mavlink_mission_item_def] 没有解析');
+    FlightLog_Original.mavlink_mission_item_def.seq = V10Log.IN_MAVLINK.mavlink_mission_item_def.seq; % create struct
+    FlightLog_Original.mavlink_mission_item_def.x = V10Log.IN_MAVLINK.mavlink_mission_item_def.x; % create struct
+    FlightLog_Original.mavlink_mission_item_def.y = V10Log.IN_MAVLINK.mavlink_mission_item_def.y; % create struct
+    FlightLog_Original.mavlink_mission_item_def.z = V10Log.IN_MAVLINK.mavlink_mission_item_def.z; % create struct
+catch ME
+    fprintf('[mavlink_mission_item_def] ')
+    disp(ME.message);
 end
 %% Filter
 FlightLog_Original.Filter.time_cal = V10Log.OUT_NAVI2CONTROL.TimeUS/1e6;
@@ -305,10 +338,11 @@ FlightLog_Original.Filter.algo_NAV_Ve = V10Log.OUT_NAVI2CONTROL.Ve;
 FlightLog_Original.Filter.algo_NAV_Vd = V10Log.OUT_NAVI2CONTROL.Vd;
 %% mavlink_msg_command_battery_data
 try
-SL.mavlink_msg_command_battery_data.fullCapacity = fullCapacity; % create struct
-SL.mavlink_msg_command_battery_data.lifePercent = lifePercent; % create struct
-SL.mavlink_msg_command_battery_data.cycleTime = cycleTime; % create struct
-SL.mavlink_msg_command_battery_data.batteryId = batteryId; % create struct
-catch
-    disp('[mavlink_msg_command_battery_data] 没有解析');
+    FlightLog_Original.mavlink_msg_command_battery_data.fullCapacity = V10Log.IN_MAVLINK.mavlink_msg_command_battery_data.fullCapacity; % create struct
+    FlightLog_Original.mavlink_msg_command_battery_data.lifePercent = V10Log.IN_MAVLINK.mavlink_msg_command_battery_data.lifePercent; % create struct
+    FlightLog_Original.mavlink_msg_command_battery_data.cycleTime = V10Log.IN_MAVLINK.mavlink_msg_command_battery_data.cycleTime; % create struct
+    FlightLog_Original.mavlink_msg_command_battery_data.batteryId = V10Log.IN_MAVLINK.mavlink_msg_command_battery_data.batteryId; % create struct
+catch ME
+    fprintf('[mavlink_msg_command_battery_data] ')
+    disp(ME.message);
 end

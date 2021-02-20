@@ -1,5 +1,9 @@
 function SinglePlot_GlobalWindEst(GlobalWindStruct)
-time = GlobalWindStruct.time_cal;
+try
+    time = GlobalWindStruct.time_cal;
+catch
+    time = GlobalWindStruct.time;
+end
 windHeading_deg = GlobalWindStruct.windHeading_rad*57.3;
 windSpeed_ms = GlobalWindStruct.windSpeed_ms;
 figure;

@@ -5,6 +5,9 @@ children = fieldnames(structData);
 nChildren = length(children);
 nrow = ceil(sqrt(nChildren));
 ncol = ceil(nChildren/nrow);
+if strcmp(children,'time')
+    
+end
 fig = figure;
 fig.Name = mfilename;
 ylabelstr = children;

@@ -11,6 +11,6 @@ idx0_NAV_alt = round(0.5*length(FlightLog_Original.Filter.algo_NAV_alt));
 err = mean(FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2(idx0_curLLA:end)) - mean(FlightLog_Original.Filter.algo_NAV_alt(idx0_NAV_alt:end));
 plot(FlightLog_Original.OUT_TASKFLIGHTPARAM.time_cal,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2);hold on;
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
-plot(IN_SENSOR.radar1.time,FlightLog_Original.Filter.algo_NAV_alt+err);hold on;
+plot(FlightLog_Original.Filter.time_cal,FlightLog_Original.Filter.algo_NAV_alt+err);hold on;
 grid on;
 legend('任务高度','雷达高','滤波高')
