@@ -142,7 +142,7 @@ catch ME
     disp(ME.message);
 end
 %% OUT_TASKMODE
-FlightLog_Original.OUT_TASKMODE.time_cal = V10Log.OUT_TASKMODE.TimeUS/1e6;
+FlightLog_Original.OUT_TASKMODE.time = V10Log.OUT_TASKMODE.TimeUS/1e6;
 FlightLog_Original.OUT_TASKMODE.currentPointNum = V10Log.OUT_TASKMODE.currentPointNum;
 FlightLog_Original.OUT_TASKMODE.prePointNum = V10Log.OUT_TASKMODE.prePointNum;
 FlightLog_Original.OUT_TASKMODE.validPathNum = V10Log.OUT_TASKMODE.validPathNum;
@@ -159,7 +159,7 @@ FlightLog_Original.OUT_TASKMODE.dR_turn = V10Log.OUT_TASKMODE.dR_turn;
 try
     FlightLog_Original.OUT_TASKMODE.uavMode = V10Log.OUT_TASKMODE.uavMode;
 catch
-    FlightLog_Original.OUT_TASKMODE.uavMode = zeros(size(FlightLog_Original.OUT_TASKMODE.time_cal));
+    FlightLog_Original.OUT_TASKMODE.uavMode = zeros(size(FlightLog_Original.OUT_TASKMODE.time));
     disp('[FlightLog_Original] 未解析 uavMode，用0值替代');
 end
 FlightLog_Original.OUT_TASKMODE.flightTaskMode = V10Log.OUT_TASKMODE.flightTaskMode;
@@ -183,7 +183,7 @@ FlightLog_Original.OUT_TASKMODE.curPathPoint_LLA2 = V10Log.OUT_TASKMODE.curPathP
 % FlightLog_Original.OUT_TASKMODE.LLATaskInterrupt2 = V10Log.OUT_TASKMODE.LLATaskInterrupt2;
 % FlightLog_Original.OUT_TASKMODE.airspeedCmd = V10Log.OUT_TASKMODE.airspeedCmd;
 %% OUT_TASKFLIGHTPARAM
-FlightLog_Original.OUT_TASKFLIGHTPARAM.time_cal = V10Log.OUT_TASKFLIGHTPARAM.TimeUS/1e6;
+FlightLog_Original.OUT_TASKFLIGHTPARAM.time = V10Log.OUT_TASKFLIGHTPARAM.TimeUS/1e6;
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA0 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,1); % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA1 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,2); % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA2 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,3); % create struct
@@ -326,7 +326,7 @@ catch ME
     disp(ME.message);
 end
 %% Filter
-FlightLog_Original.Filter.time_cal = V10Log.OUT_NAVI2CONTROL.TimeUS/1e6;
+FlightLog_Original.Filter.time = V10Log.OUT_NAVI2CONTROL.TimeUS/1e6;
 FlightLog_Original.Filter.algo_NAV_lond = V10Log.OUT_NAVI2CONTROL.lond;
 FlightLog_Original.Filter.algo_NAV_latd = V10Log.OUT_NAVI2CONTROL.latd;
 FlightLog_Original.Filter.algo_NAV_yawd = V10Log.OUT_NAVI2CONTROL.yawd;

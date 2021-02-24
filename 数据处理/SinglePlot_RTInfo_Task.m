@@ -2,21 +2,23 @@ function SinglePlot_RTInfo_Task(baseTime,structData)
 fprintf('----------------------------------------------\n')
 time = calTimeSeries(baseTime,structData.BatteryStatus);
 children = fieldnames(structData);
+% 去掉时间子项
+idx = strcmp(children,'time'); 
+children(idx) = [];
+%
 nChildren = length(children);
 nrow = ceil(sqrt(nChildren));
 ncol = ceil(nChildren/nrow);
-if strcmp(children,'time')
-    
-end
+
 fig = figure;
 fig.Name = mfilename;
 ylabelstr = children;
 typeCells = {
     'ENUM_RTInfo_Task','ENUM_RTInfo_PayLoad','ENUM_RTInfo_GSCmd','ENUM_RTInfo_Warn',...
     'ENUM_ComStatus','ENUM_RTInfo_Fense','ENUM_RTInfo_Stall','ENUM_RTInfo_SensorHealth',...
-    'ENUM_BatteryStatus','ENUM_RTInfo_FixHeight','ENUM_FindWind','boolean','boolean','boolean','double','double','double'};
+    'ENUM_BatteryStatus','ENUM_RTInfo_FixHeight','ENUM_FindWind','boolean','boolean','boolean','double','double'};
 if length(typeCells) ~= nChildren
-    warning('维数错误');
+    error('维数错误');
 end
 for i = 1:nChildren
     subplot(nrow,ncol,i)

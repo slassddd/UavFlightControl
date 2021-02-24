@@ -9,6 +9,15 @@ fig = figure;
 fig.Name = mfilename;
 ylabelstr = {'time','velE [m/s]','velN [m/s]','velD [m/s]','Lon [deg]','Lat [deg]','height [m]',...
     'pDop','numSv','hAcc','vAcc','headAcc','sAcc','nChange'};
+if nChildren ~= length(ylabelstr)
+    error('维数错误');
+else
+    for i = 1:nChildren
+        if ~contains(lower(ylabelstr{i}),lower(children{i}))
+            error('变量对应错误') 
+        end
+    end
+end
 idx_nz = (structData.Lon ~= 0);
 for i = 1:nChildren
     subplot(nrow,ncol,i)

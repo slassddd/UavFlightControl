@@ -13,7 +13,7 @@ typeCells = {'ENUM_SensorHealthStatus','ENUM_SensorHealthStatus','ENUM_SensorHea
     'ENUM_SensorHealthStatus','ENUM_SensorHealthStatus','ENUM_SensorHealthStatus',...
     'ENUM_SensorHealthStatus','ENUM_SystemHealthStatus','double'};
 if length(typeCells) ~= nChildren
-    warning('维数错误');
+    error('维数错误');
 end
 for i = 1:nChildren
     subplot(nrow,ncol,i)

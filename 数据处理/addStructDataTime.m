@@ -26,17 +26,17 @@ for i = 1:nChild
         childchild1st = thisVar.(childchild1st);
         nChildchild1st = length(childchild1st);
         ratio = round(nBaseTime/nChildchild1st);
-        thisVar.time_cal = baseTime(1:ratio:end);
-        if length(thisVar.time_cal) > length(childchild1st)
-            thisVar.time_cal(end) = [];
-        elseif length(thisVar.time_cal) < length(childchild1st)
-            thisVar.time_cal(end+1) = thisVar.time_cal(end) + thisVar.time_cal(end)-thisVar.time_cal(end-1);
+        thisVar.time = baseTime(1:ratio:end);
+        if length(thisVar.time) > length(childchild1st)
+            thisVar.time(end) = [];
+        elseif length(thisVar.time) < length(childchild1st)
+            thisVar.time(end+1) = thisVar.time(end) + thisVar.time(end)-thisVar.time(end-1);
         end
         in.(thisChildName) = thisVar;
     else
         nChild = length(thisVar);
         ratio = round(nBaseTime/nChild);
-        in.time_cal = baseTime(1:ratio:end);
+        in.time = baseTime(1:ratio:end);
     end
 end
 out = in;

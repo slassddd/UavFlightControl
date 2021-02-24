@@ -25,7 +25,7 @@ SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
 %             SimParam.GroundStation.mavlinkPathPoints = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def;
 %             SimParam.GroundStation.mavlinkHome(1) = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def(1).x;
 %             SimParam.GroundStation.mavlinkHome(2) = SimDataSet.FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def(2).y;
-%             SimParam.GroundStation.current.time = SimDataSet.FlightLog_Original.PowerConsume.time_cal;
+%             SimParam.GroundStation.current.time = SimDataSet.FlightLog_Original.PowerConsume.time;
 %             SimParam.GroundStation.current.signals.values = SimDataSet.FlightLog_Original.PowerConsume.AllTheTimePowerConsume;
 %     end
 % catch

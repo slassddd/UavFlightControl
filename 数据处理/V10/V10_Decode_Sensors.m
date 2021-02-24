@@ -11,7 +11,7 @@ IN_SENSOR.IMU1.gyro_y = V10Log.IMU1.gy;
 IN_SENSOR.IMU1.gyro_z = V10Log.IMU1.gz;
 IN_SENSOR.IMU1.nChange = zeros(size(IN_SENSOR.IMU1.accel_x));
 if sum(IN_SENSOR.IMU1.nChange) == 0
-    disp('IMU1 的 nChange 没有正常赋值');
+    disp('[IMU1] nChange 没有正常赋值');
 end
 %% IMU2
 IN_SENSOR.IMU2.time = V10Log.IMU2.TimeUS/1e6;
@@ -23,7 +23,7 @@ IN_SENSOR.IMU2.gyro_y = V10Log.IMU2.gy;
 IN_SENSOR.IMU2.gyro_z = V10Log.IMU2.gz;
 IN_SENSOR.IMU2.nChange = zeros(size(IN_SENSOR.IMU2.accel_x));
 if sum(IN_SENSOR.IMU2.nChange) == 0
-    disp('IMU2 的 nChange 没有正常赋值');
+    disp('[IMU2] nChange 没有正常赋值');
 end
 %% IMU3
 IN_SENSOR.IMU3.time = V10Log.IMU3.TimeUS/1e6;
@@ -35,7 +35,7 @@ IN_SENSOR.IMU3.gyro_y = V10Log.IMU3.gy;
 IN_SENSOR.IMU3.gyro_z = V10Log.IMU3.gz;
 IN_SENSOR.IMU3.nChange = zeros(size(IN_SENSOR.IMU3.accel_x));
 if sum(IN_SENSOR.IMU3.nChange) == 0
-    disp('IMU3 的 nChange 没有正常赋值');
+    disp('[IMU3] nChange 没有正常赋值');
 end
 %% IMU4
 IN_SENSOR.IMU4.time = V10Log.IMU4.TimeUS/1e6;
@@ -47,21 +47,21 @@ IN_SENSOR.IMU4.gyro_y = V10Log.IMU4.gy;
 IN_SENSOR.IMU4.gyro_z = V10Log.IMU4.gz;
 IN_SENSOR.IMU4.nChange = zeros(size(IN_SENSOR.IMU4.accel_x));
 if sum(IN_SENSOR.IMU4.nChange) == 0
-    disp('IMU4 的 nChange 没有正常赋值');
+    disp('[IMU4] nChange 没有正常赋值');
 end
 %% Baro1
 IN_SENSOR.baro1.time = V10Log.BAR1.TimeUS/1e6;
 IN_SENSOR.baro1.alt_baro = V10Log.BAR1.altitude;
 IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
 if sum(IN_SENSOR.baro1.nChange) == 0
-    disp('baro1 的 nChange 没有正常赋值');
+    disp('[baro1] nChange 没有正常赋值');
 end
 %% Baro2
 IN_SENSOR.baro2.time = V10Log.BAR2.TimeUS/1e6;
 IN_SENSOR.baro2.alt_baro = 0*V10Log.BAR2.altitude;
 IN_SENSOR.baro2.nChange = zeros(size(IN_SENSOR.baro2.alt_baro));
 if sum(IN_SENSOR.baro2.nChange) == 0
-    disp('baro2 的 nChange 没有正常赋值');
+    disp('[baro2] nChange 没有正常赋值');
 end
 %% Mag1
 IN_SENSOR.mag1.time = V10Log.MAG1.TimeUS/1e6;
@@ -70,7 +70,7 @@ IN_SENSOR.mag1.mag_y = V10Log.MAG1.cali_data_y;
 IN_SENSOR.mag1.mag_z = V10Log.MAG1.cali_data_z;
 IN_SENSOR.mag1.nChange = zeros(size(IN_SENSOR.mag1.mag_x));
 if sum(IN_SENSOR.mag1.nChange) == 0
-    disp('mag1 的 nChange 没有正常赋值');
+    disp('[mag1] nChange 没有正常赋值');
 end
 %% Mag2
 if hasThisChild(V10Log,'MAG2')
@@ -83,17 +83,16 @@ else
     IN_SENSOR.mag2 = IN_SENSOR.mag1;
 end
 if sum(IN_SENSOR.mag2.nChange) == 0
-    disp('mag2 的 nChange 没有正常赋值');
+    disp('[mag2] nChange 没有正常赋值');
 end
 %% Radar
-IN_SENSOR.radar1.time = IN_SENSOR.time;
-IN_SENSOR.radar1.SNR = zeros(size(IN_SENSOR.time));
-IN_SENSOR.radar1.Flag = zeros(size(IN_SENSOR.time));
-IN_SENSOR.radar1.Range = zeros(size(IN_SENSOR.time));
-IN_SENSOR.radar1.nChange = zeros(size(IN_SENSOR.radar1.SNR));
-disp('radar1 没有赋值');
+IN_SENSOR.radar1.time = V10Log.NRA.TimeUS/1e6;
+IN_SENSOR.radar1.SNR = V10Log.NRA.SNR;
+IN_SENSOR.radar1.Flag = V10Log.NRA.Flag;
+IN_SENSOR.radar1.Range = V10Log.NRA.Range;
+IN_SENSOR.radar1.nChange = zeros(size(V10Log.NRA.TimeUS));
 if sum(IN_SENSOR.radar1.nChange) == 0
-    disp('radar1 的 nChange 没有正常赋值');
+    disp('[radar1] nChange 没有正常赋值');
 end
 %% ublox1
 IN_SENSOR.ublox1.time = V10Log.UBX.TimeUS/1e6;
@@ -111,7 +110,7 @@ IN_SENSOR.ublox1.headAcc = V10Log.UBX.headAcc;
 IN_SENSOR.ublox1.sAcc = V10Log.UBX.sAcc;
 IN_SENSOR.ublox1.nChange = zeros(size(IN_SENSOR.ublox1.time));
 if sum(IN_SENSOR.ublox1.nChange) == 0
-    disp('ublox1 的 nChange 没有正常赋值');
+    disp('[ublox1] nChange 没有正常赋值');
 end
 % IN_SENSOR.ublox1.headAcc = V10Log.UBX.headAcc;
 % IN_SENSOR.ublox1.sAcc = V10Log.UBX.sAcc;
@@ -131,7 +130,7 @@ IN_SENSOR.um482.BESTPOS = V10Log.GPS.pos_type;
 IN_SENSOR.um482.numSv = V10Log.GPS.svn;
 IN_SENSOR.um482.nChange = zeros(size(IN_SENSOR.um482.time));
 if sum(IN_SENSOR.um482.nChange) == 0
-    disp('um482 的 nChange 没有正常赋值');
+    disp('[um482] nChange 没有正常赋值');
 end
 %% airspeed1
 IN_SENSOR.airspeed1.time = V10Log.ARP1.TimeUS/1e6;
@@ -147,7 +146,7 @@ IN_SENSOR.airspeed1.EAS2TAS_Algo = zeros(size(IN_SENSOR.airspeed1.time));
 IN_SENSOR.airspeed1.nChange = zeros(size(IN_SENSOR.airspeed1.time));
 disp('airspeed1没有解析：EAS2TAS_Algo')
 if sum(IN_SENSOR.airspeed1.nChange) == 0
-    disp('airspeed1 的 nChange 没有正常赋值');
+    disp('[airspeed1] nChange 没有正常赋值');
 end
 %% airspeed2
 if hasThisChild(V10Log,'ARP2')
@@ -168,11 +167,11 @@ end
 
 disp('airspeed2 没有解析：EAS2TAS_Algo')
 if sum(IN_SENSOR.airspeed2.nChange) == 0
-    disp('airspeed2 的 nChange 没有正常赋值');
+    disp('[airspeed2] nChange 没有正常赋值');
 end
 %% airspeed3
 IN_SENSOR.airspeed3 = IN_SENSOR.airspeed2;
-disp('空速计3 没有解析')
+disp('[airspeed3] 结构体没有解析')
 % IN_SENSOR.airspeed3.time = V10Log.ARP3.TimeUS;
 % IN_SENSOR.airspeed3.airspeed = V10Log.ARP3.indicated_airspeed;
 % IN_SENSOR.airspeed3.airspeed_indicate = V10Log.ARP3.indicated_airspeed;
@@ -189,7 +188,7 @@ disp('空速计3 没有解析')
 %     disp('airspeed3 的 nChange 没有正常赋值');
 % end
 %% laserDown1
-disp('laserDown1未赋值')
+disp('[laserDown1] 结构体未解析')
 IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -197,20 +196,20 @@ IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.laserDown1.nChange = zeros(size(IN_SENSOR.laserDown1.time));
 if sum(IN_SENSOR.laserDown1.nChange) == 0
-    disp('laserDown1 的 nChange 没有正常赋值');
+    disp('[laserDown1] nChange 没有正常赋值');
 end
 %% laserDown2
-disp('laserDown2未赋值')
+disp('[laserDown2] 结构体未解析')
 IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
 IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.nChange = zeros(size(IN_SENSOR.laserDown2.time));
 if sum(IN_SENSOR.laserDown2.nChange) == 0
-    disp('laserDown2 的 nChange 没有正常赋值');
+    disp('[laserDown2] nChange 没有正常赋值');
 end
 %% radarLongForward1
-disp('radarLongForward1未赋值')
+disp('[radarLongForward1] 结构体未解析')
 IN_SENSOR.radarLongForward1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongForward1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongForward1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
@@ -218,7 +217,7 @@ IN_SENSOR.radarLongForward1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
 IN_SENSOR.radarLongForward1.nChange = zeros(size(IN_SENSOR.radarLongForward1.time));
 %% radarLongDown1
-disp('radarLongDown1未赋值')
+disp('[radarLongForward2] 结构体未解析')
 IN_SENSOR.radarLongDown1.time = IN_SENSOR.radar1.time;
 IN_SENSOR.radarLongDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.radarLongDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));

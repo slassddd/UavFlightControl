@@ -14,7 +14,7 @@ try
                 SimParam.GroundStation(i).mavlinkPathPoints = SimDataSet.FlightLog_SecondProc(i).IN_MAVLINK.mavlink_mission_item_def;
                 SimParam.GroundStation(i).mavlinkHome(1) = SimDataSet.FlightLog_SecondProc(i).IN_MAVLINK.mavlink_mission_item_def(1).x;
                 SimParam.GroundStation(i).mavlinkHome(2) = SimDataSet.FlightLog_SecondProc(i).IN_MAVLINK.mavlink_mission_item_def(2).y;
-                SimParam.GroundStation(i).current.time = SimDataSet.FlightLog_Original(i).PowerConsume.time_cal;
+                SimParam.GroundStation(i).current.time = SimDataSet.FlightLog_Original(i).PowerConsume.time;
                 SimParam.GroundStation(i).current.signals.values = SimDataSet.FlightLog_Original(i).PowerConsume.AllTheTimePowerConsume;
             end
     end

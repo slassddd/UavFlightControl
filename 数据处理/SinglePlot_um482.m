@@ -9,9 +9,18 @@ fig = figure;
 fig.Name = mfilename;
 ylabelstr = {...
     'time','Lon [deg]','Lat [deg]','height [m]',...
-    'velN [m/s]','velE [m/s]','velD [m/s]','dLon [m]',...
-    'dLat [m]','dH [m]','pDop','bestpos',...
+    'velN [m/s]','velE [m/s]','velD [m/s]','delta_lon [m]',...
+    'delta_lat [m]','delta_height [m]','pDop','bestpos',...
     'numSv','nChange'};
+if nChildren ~= length(ylabelstr)
+    error('维数错误');
+else
+    for i = 1:nChildren
+        if ~contains(lower(ylabelstr{i}),lower(children{i}))
+            error('变量对应错误') 
+        end
+    end
+end
 % idx_nz = (structData.Lon ~= 0);
 idx_nz = [1:length(structData.Lon)];
 for i = 1:nChildren

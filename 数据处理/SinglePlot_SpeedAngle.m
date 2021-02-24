@@ -1,4 +1,4 @@
-time = FlightLog_Original.Filter.time_cal;
+time = FlightLog_Original.Filter.time;
 velHeading = atan2(FlightLog_Original.Filter.algo_NAV_Ve,FlightLog_Original.Filter.algo_NAV_Vn)*180/pi;
 % velvector = [IN_SENSOR.ublox1.velN,IN_SENSOR.ublox1.velE,IN_SENSOR.ublox1.velD];
 velvector = [FlightLog_Original.Filter.algo_NAV_Vn,FlightLog_Original.Filter.algo_NAV_Ve,FlightLog_Original.Filter.algo_NAV_Vd];

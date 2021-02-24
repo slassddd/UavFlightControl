@@ -22,7 +22,7 @@ fig.Name = dataFileNames{1};
 end
 subplot(331)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_yawd);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_yawd);hold on;
 end
 if offlineFlag
     plot(dataSim.time(tmpStartIdx1:end),dataSim.yawd(tmpStartIdx1:end));hold on;
@@ -33,7 +33,7 @@ grid on;
 legend('在线','离线')
 subplot(334)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_pitchd);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_pitchd);hold on;
 end
 if offlineFlag
     plot(dataSim.time(tmpStartIdx1:end),dataSim.pitchd(tmpStartIdx1:end));hold on;
@@ -44,7 +44,7 @@ grid on;
 legend('在线','离线')
 subplot(337)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_rolld);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_rolld);hold on;
 end
 if offlineFlag
     plot(dataSim.time(tmpStartIdx1:end),dataSim.rolld(tmpStartIdx1:end));hold on;
@@ -70,7 +70,7 @@ tempOfflineAlgoLLA = tempLLA;
 subplot(332)
 if onlineFlag
     try
-        plot(dataOnLine.time_cal,posNED_Online(:,1));hold on;
+        plot(dataOnLine.time,posNED_Online(:,1));hold on;
     catch
         fprintf('%s.m :posmNED没有绘制\n',mfilename);
     end
@@ -91,7 +91,7 @@ legend('在线','离线','ublox','um482')
 subplot(335)
 if onlineFlag
     try
-        plot(dataOnLine.time_cal,posNED_Online(:,2));hold on;
+        plot(dataOnLine.time,posNED_Online(:,2));hold on;
     catch
         fprintf('%s.m :posmNED没有绘制\n',mfilename);
     end
@@ -114,7 +114,7 @@ data = dataOnLine.algo_NAV_alt;
 tempZeroData = data(data(:,1)==0,:);
 data(data(:,1)==0,:) = nan*tempZeroData;
 if onlineFlag
-    plot(dataOnLine.time_cal,data);hold on;
+    plot(dataOnLine.time,data);hold on;
 end
 if offlineFlag
     tempheight = -dataSim.posmNED(:,3);
@@ -134,7 +134,7 @@ legend('在线','离线','ublox','um482')
 %% 速度
 subplot(333)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vn);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_Vn);hold on;
 end
 if offlineFlag
     plot(dataSim.time(tmpStartIdx1:end),dataSim.velN(tmpStartIdx1:end));hold on;
@@ -151,7 +151,7 @@ grid on;
 legend('在线','离线','ublox','um482')
 subplot(336)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Ve);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_Ve);hold on;
 end
 if offlineFlag
     plot(dataSim.time(tmpStartIdx1:end),dataSim.velE(tmpStartIdx1:end));hold on;
@@ -168,7 +168,7 @@ grid on;
 legend('在线','离线','ublox','um482')
 subplot(339)
 if onlineFlag
-    plot(dataOnLine.time_cal,dataOnLine.algo_NAV_Vd);hold on;
+    plot(dataOnLine.time,dataOnLine.algo_NAV_Vd);hold on;
 end
 if offlineFlag % 离线
     plot(dataSim.time(tmpStartIdx1:end),dataSim.velD(tmpStartIdx1:end));hold on;

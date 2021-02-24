@@ -1,8 +1,12 @@
 function InfoTable = SinglePlot_PowerConsumer(structData,uavMode)
 fprintf('----------------------------------------------\n')
 % time = baseTime;
-time = structData.time_cal;
+time = structData.time;
 children = fieldnames(structData);
+% 去掉时间子项
+idx = strcmp(children,'time'); 
+children(idx) = [];
+%
 nChildren = length(children);
 nrow = ceil(sqrt(nChildren));
 ncol = ceil(nChildren/nrow);

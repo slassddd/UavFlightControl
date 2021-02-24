@@ -1,7 +1,7 @@
 figure('Name','Home点位置');
-time = FlightLog_Original.OUT_TASKFLIGHTPARAM.time_cal;
+time = FlightLog_Original.OUT_TASKFLIGHTPARAM.time;
 data = [FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA0,FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA1];
-time1 = FlightLog_Original.OUT_TASKMODE.time_cal;
+time1 = FlightLog_Original.OUT_TASKMODE.time;
 data1 = [FlightLog_Original.OUT_TASKMODE.turnCenterLL0,FlightLog_Original.OUT_TASKMODE.turnCenterLL1];
 idxSel = find(data(:,1).*data(:,2) == 0);
 idxSel1 = find(data1(:,1).*data1(:,2) == 0);

@@ -1,11 +1,15 @@
 function SinglePlot_FlightPerformance(structData)
 fprintf('----------------------------------------------\n')
 try
-    time = structData.time_cal;
+    time = structData.time;
 catch
     time = structData.time; 
 end
 children = fieldnames(structData);
+% 去掉时间子项
+idx = strcmp(children,'time'); 
+children(idx) = [];
+%
 nChildren = length(children);
 nrow = ceil(sqrt(nChildren+2));
 ncol = ceil(nChildren/nrow);
@@ -13,7 +17,7 @@ fig = figure;
 fig.Name = mfilename;
 ylabelstr = {'isAbleToCompleteTask','flagGoHomeNow','remainDistToGo_m [m]','remainTimeToSpend_sec [sec]','remainPowerWhenFinish_per [%]'...
     ,'economicAirspeed [m/s]','remainPathPoint',...
-    'batteryLifeToCompleteTask [%]','batterylifeNeededToHome [%]','batterylifeNeededToLand [%]','time_cal [sec]'};
+    'batteryLifeToCompleteTask [%]','batterylifeNeededToHome [%]','batterylifeNeededToLand [%]','time [sec]'};
 idx_nz = find(~isnan(time));
 for i = 1:nChildren
     subplot(nrow,ncol,i)

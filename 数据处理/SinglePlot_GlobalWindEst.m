@@ -1,6 +1,6 @@
 function SinglePlot_GlobalWindEst(GlobalWindStruct)
 try
-    time = GlobalWindStruct.time_cal;
+    time = GlobalWindStruct.time;
 catch
     time = GlobalWindStruct.time;
 end

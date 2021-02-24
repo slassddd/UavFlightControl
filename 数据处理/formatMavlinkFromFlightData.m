@@ -1,6 +1,6 @@
 %% 保存Mavlink结构体数据
 % varTaskMode = FlightLog_Original.OUT_TASKMODE.flightTaskMode;
-% timeTaskMode = FlightLog_Original.OUT_TASKMODE.time_cal;
+% timeTaskMode = FlightLog_Original.OUT_TASKMODE.time;
 % timeTaskChange = [];
 % idxTaskChange = [];
 % figure;
