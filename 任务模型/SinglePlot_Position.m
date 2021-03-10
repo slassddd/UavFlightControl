@@ -122,8 +122,10 @@ switch plotmode
         plot(prePathPoints(:,2),prePathPoints(:,1),'r*');hold on;
         plot(curPathPoints(:,2),curPathPoints(:,1),'ko');hold on;
     case '3d'
-        plot3(prePathPoints(:,2),prePathPoints(:,1),mavlinkPathData(2).z*ones(size(prePathPoints(:,1))),'r*');hold on;
-        plot3(curPathPoints(:,2),curPathPoints(:,1),mavlinkPathData(2).z*ones(size(curPathPoints(:,1))),'ko');hold on;
+        plot3(prePathPoints(:,2),prePathPoints(:,1),prePathPoints(:,3),'r*');hold on;
+        plot3(curPathPoints(:,2),curPathPoints(:,1),curPathPoints(:,3),'ko');hold on;        
+%         plot3(prePathPoints(:,2),prePathPoints(:,1),mavlinkPathData(2).z*ones(size(prePathPoints(:,1))),'r*');hold on;
+%         plot3(curPathPoints(:,2),curPathPoints(:,1),mavlinkPathData(2).z*ones(size(curPathPoints(:,1))),'ko');hold on;
 end
 %% 盘旋点
 plot(out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,2),out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,1),'ko');
