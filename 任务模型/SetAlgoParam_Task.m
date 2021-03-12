@@ -85,7 +85,7 @@ TASK_PARAM_V1000.remainingLife_LosePowerIn60sec = 10; % 电量阈值[%]，达到
 TASK_PARAM_V1000.addH_SwitchHoverDownMode = 80; % 盘旋下降模式切换高度(无动力下滑切换有动力下滑)：该高度+旋翼切换高度=实际HoverDown模式切换高度
 TASK_PARAM_V1000.heightThr_CanAutoToRotor = 300; % 允许程序自动判定转旋翼的最大离地高度阈值[m]
 TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.01; % 接地时关闭动力延迟时间[sec]
-TASK_PARAM_V1000.maxNumBattery = 12; % 最大电池组数,所有机型保持一致
+TASK_PARAM_V1000.maxNumBattery = 16; % 最大电池组数,所有机型保持一致
 TASK_PARAM_V1000.nBattery = 3; % 实际使用电池组数，不同机型可不同
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
@@ -98,8 +98,9 @@ TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.3;
-TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.2;
+TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.4;
 TASK_PARAM_V10.nBattery = 10;
+TASK_PARAM_V10.fenseDist = 50e3;
 % switch SimParam.SystemInfo.planeMode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10

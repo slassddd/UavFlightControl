@@ -56,10 +56,10 @@ switch pathExmpale
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
-        Aera1 = genLocalPath(UnitedPath(idxUnitedPath));
+        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));
         % 航区2
         height = GSParam.PATH.pathHeight+200;
-        Aera1 = [Aera1;Aera1(end,1:2),height;Aera1(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
+        PathAeras{idxUnitedPath} = [PathAeras{idxUnitedPath};PathAeras{idxUnitedPath}(end,1:2),height;PathAeras{idxUnitedPath}(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
         
         idxUnitedPath = 2;
         UnitedPath(idxUnitedPath).nPoints = 4;
@@ -69,9 +69,23 @@ switch pathExmpale
         UnitedPath(idxUnitedPath).height = height;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [-1000,0];
-        Aera2 = genLocalPath(UnitedPath(idxUnitedPath));     
+        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));     
+        % 航区3
+        height = GSParam.PATH.pathHeight-50;
+        PathAeras{idxUnitedPath} = [PathAeras{idxUnitedPath};PathAeras{idxUnitedPath}(end,1:2),height;PathAeras{idxUnitedPath}(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
+        
+        idxUnitedPath = 3;
+        UnitedPath(idxUnitedPath).nPoints = 4;
+        UnitedPath(idxUnitedPath).lon_left = 1e3;
+        UnitedPath(idxUnitedPath).lon_right = 2e3;
+        UnitedPath(idxUnitedPath).lat_space = 150;
+        UnitedPath(idxUnitedPath).height = height;
+        UnitedPath(idxUnitedPath).angle = 0*pi;
+        UnitedPath(idxUnitedPath).offset = [500,1000];
+        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));            
         % 联合
-        AeraAll = [Aera1;Aera2];        
+        nPathAeras = length(PathAeras);
+        AeraAll = [PathAeras{1};PathAeras{2};PathAeras{3}];        
         Path0 = [0,0,GSParam.PATH.pathHeight];
         GSParam.PATH.paths_m(1,:) = Path0;
         
@@ -124,6 +138,7 @@ switch pathSimMode
             GroundStationParam.mavlinkPathPoints(i).y = single(GSParam.PATH.paths_ddm(i,2));  % longitude
             GroundStationParam.mavlinkPathPoints(i).z = single(GSParam.PATH.paths_ddm(i,3));  % altitude
         end
+        GroundStationParam.mavlinkPathPoints(1).z = max([GroundStationParam.mavlinkPathPoints.z]);
     case 'flight'
         filename = 'bb3a77e6787849198733a699b82b4be3(7).log';
         LogWPdata = importGroundStationLog(filename);
@@ -160,8 +175,22 @@ fprintf('[%s]\n',mfilename);
 fprintf('%s周期: %.3f [sec]\n',GLOBAL_PARAM.Print.lineHead,GroundStationParam.Ts_base);
 fprintf('%s地面站仿真参数(仅用于仿真):\n',GLOBAL_PARAM.Print.lineHead);
 fprintf('%s%shome点海拔高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GroundStationParam.groundAltitude);
+switch pathExmpale
+    case 2
+        fprintf('%s%s航线模式: 单区\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
+    case 3
+        fprintf('%s%s航线模式: %d区联合航线\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,nPathAeras);
+end
+pathHeights = [GroundStationParam.mavlinkPathPoints.z];
+pathHeights = pathHeights(pathHeights>0);
+nValidPath = length(pathHeights);
+fprintf('%s%s总航点数(包括home点): %d\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,nValidPath);
+fprintf('%s%s航点高度[m]: \t',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
+fprintf('%d\t',unique(pathHeights))
+fprintf('\n')
+fprintf('%s%s0（1）号航点高度等于最高航点高度 (仿真模式下)\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
 % fprintf('%s%s有效航点数: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,);
-fprintf('%s%s航线离地高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
+% fprintf('%s%s航线离地高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 
 %% 子函数

@@ -1,9 +1,9 @@
 function FLIGHT_PERF_PARAM_V10 = INIT_FlightPerformance_V10()
 FLIGHT_PERF_PARAM_V10 = Simulink.Bus.createMATLABStruct('BUS_FLIGHTPERF_PARAM');
 FLIGHT_PERF_PARAM_V10.powerRate_GroundStandBy = 1/450; % 地面待机耗电率,[%/sec]
-FLIGHT_PERF_PARAM_V10.powerRate_FixCruise = 1/53; % 固定翼巡航耗电率,[%/sec]
+FLIGHT_PERF_PARAM_V10.powerRate_FixCruise = 1/80; % 固定翼巡航耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.powerRate_FixHoverUp = 1/25; % 固定翼HoverUp耗电率,[%/sec]
-FLIGHT_PERF_PARAM_V10.powerRate_FixHoverDown = 1/70; % 固定翼HoverDown耗电率,[%/sec]
+FLIGHT_PERF_PARAM_V10.powerRate_FixHoverDown = 1/100; % 固定翼HoverDown耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.powerRate_FixHoverLevel = ...
     1/2*(FLIGHT_PERF_PARAM_V10.powerRate_FixHoverUp + FLIGHT_PERF_PARAM_V10.powerRate_FixCruise); % 固定翼HoverLevel耗电率,[%/sec]
 FLIGHT_PERF_PARAM_V10.powerRate_RotorHoverNoWind = 1/12; % 旋翼耗电率,[%/sec]
