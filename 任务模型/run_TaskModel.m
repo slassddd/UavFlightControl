@@ -23,6 +23,7 @@ SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
 %% 运行model
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_Task';
+
 IN_TestCase_GS = TestCase.GroundStation.data(1); % 在workspace中保留一份副本，保证可以直接通过点击模型Run进行仿真
 for i = 1:length(TestCase.GroundStation.data)
     SimInput(i) = Simulink.SimulationInput(SimParam.Basic.modelname);
