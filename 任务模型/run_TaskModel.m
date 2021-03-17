@@ -18,7 +18,7 @@ SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
 for i = 1:length(TestCase.GroundStation.filename)
     TestCase.GroundStation.data(i) = eval(TestCase.GroundStation.filename{i});
 end
-% 地面站指令
+% 地面站指令(包括航线设置)
 SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
 %% 运行model
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto

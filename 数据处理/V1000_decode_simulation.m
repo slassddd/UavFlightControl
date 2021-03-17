@@ -41,15 +41,15 @@ if sum(IN_SENSOR.IMU1_0.nChange) == 0
     disp('IMU1_0 的 nChange 没有正常赋值');
 end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-if mean(IN_SENSOR.IMU1_0.accel_z) > 0
-    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
-    disp('特别注意这里对IMU1_Control正负号的特别处理')
-    keyboard
-    IN_SENSOR.IMU1_0.accel_y = - IN_SENSOR.IMU1_0.accel_y;
-    IN_SENSOR.IMU1_0.accel_z = - IN_SENSOR.IMU1_0.accel_z;
-    IN_SENSOR.IMU1_0.gyro_y = -IN_SENSOR.IMU1_0.gyro_y;
-    IN_SENSOR.IMU1_0.gyro_z = -IN_SENSOR.IMU1_0.gyro_z;
-end
+% if mean(IN_SENSOR.IMU1_0.accel_z) > 0
+%     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+%     disp('特别注意这里对IMU1_Control正负号的特别处理')
+%     keyboard
+%     IN_SENSOR.IMU1_0.accel_y = - IN_SENSOR.IMU1_0.accel_y;
+%     IN_SENSOR.IMU1_0.accel_z = - IN_SENSOR.IMU1_0.accel_z;
+%     IN_SENSOR.IMU1_0.gyro_y = -IN_SENSOR.IMU1_0.gyro_y;
+%     IN_SENSOR.IMU1_0.gyro_z = -IN_SENSOR.IMU1_0.gyro_z;
+% end
 % 1ms滤波
 temp = reshape([data(1:1:end,27:28)'],1,[]);
 IN_SENSOR.IMU1.accel_x = double(typecast(uint8(temp),'int16')')/32768*80.0000000000;
@@ -69,15 +69,15 @@ if sum(IN_SENSOR.IMU1.nChange) == 0
     disp('IMU1 的 nChange 没有正常赋值');
 end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-if mean(IN_SENSOR.IMU1.accel_z) > 0
-    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
-    disp('特别注意这里对IMU1正负号的特别处理')
-    keyboard
-    IN_SENSOR.IMU1.accel_y = - IN_SENSOR.IMU1.accel_y;
-    IN_SENSOR.IMU1.accel_z = - IN_SENSOR.IMU1.accel_z;
-    IN_SENSOR.IMU1.gyro_y = -IN_SENSOR.IMU1.gyro_y;
-    IN_SENSOR.IMU1.gyro_z = -IN_SENSOR.IMU1.gyro_z;
-end
+% if mean(IN_SENSOR.IMU1.accel_z) > 0
+%     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+%     disp('特别注意这里对IMU1正负号的特别处理')
+%     keyboard
+%     IN_SENSOR.IMU1.accel_y = - IN_SENSOR.IMU1.accel_y;
+%     IN_SENSOR.IMU1.accel_z = - IN_SENSOR.IMU1.accel_z;
+%     IN_SENSOR.IMU1.gyro_y = -IN_SENSOR.IMU1.gyro_y;
+%     IN_SENSOR.IMU1.gyro_z = -IN_SENSOR.IMU1.gyro_z;
+% end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU2
 temp = reshape([data(find(mod(Count,4)==1),277:278)'],1,[]);
@@ -98,15 +98,15 @@ if sum(IN_SENSOR.IMU2.nChange) == 0
     disp('IMU2 的 nChange 没有正常赋值');
 end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-if mean(IN_SENSOR.IMU2.accel_z) > 0
-    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
-    disp('特别注意这里对IMU2正负号的特别处理')
-    keyboard
-    IN_SENSOR.IMU2.accel_y = - IN_SENSOR.IMU2.accel_y;
-    IN_SENSOR.IMU2.accel_z = - IN_SENSOR.IMU2.accel_z;
-    IN_SENSOR.IMU2.gyro_y = -IN_SENSOR.IMU2.gyro_y;
-    IN_SENSOR.IMU2.gyro_z = -IN_SENSOR.IMU2.gyro_z;
-end
+% if mean(IN_SENSOR.IMU2.accel_z) > 0
+%     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+%     disp('特别注意这里对IMU2正负号的特别处理')
+%     keyboard
+%     IN_SENSOR.IMU2.accel_y = - IN_SENSOR.IMU2.accel_y;
+%     IN_SENSOR.IMU2.accel_z = - IN_SENSOR.IMU2.accel_z;
+%     IN_SENSOR.IMU2.gyro_y = -IN_SENSOR.IMU2.gyro_y;
+%     IN_SENSOR.IMU2.gyro_z = -IN_SENSOR.IMU2.gyro_z;
+% end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU3
 temp = reshape([data(find(mod(Count,4)==2),277:278)'],1,[]);
@@ -127,15 +127,15 @@ if sum(IN_SENSOR.IMU3.nChange) == 0
     disp('IMU3 的 nChange 没有正常赋值');
 end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-if mean(IN_SENSOR.IMU3.accel_z) > 0
-    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
-    disp('特别注意这里对IMU3正负号的特别处理')
-    keyboard
-    IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
-    IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
-    IN_SENSOR.IMU3.gyro_y = -IN_SENSOR.IMU3.gyro_y;
-    IN_SENSOR.IMU3.gyro_z = -IN_SENSOR.IMU3.gyro_z;
-end
+% if mean(IN_SENSOR.IMU3.accel_z) > 0
+%     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+%     disp('特别注意这里对IMU3正负号的特别处理')
+%     keyboard
+%     IN_SENSOR.IMU3.accel_y = - IN_SENSOR.IMU3.accel_y;
+%     IN_SENSOR.IMU3.accel_z = - IN_SENSOR.IMU3.accel_z;
+%     IN_SENSOR.IMU3.gyro_y = -IN_SENSOR.IMU3.gyro_y;
+%     IN_SENSOR.IMU3.gyro_z = -IN_SENSOR.IMU3.gyro_z;
+% end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IMU4
 IN_SENSOR.IMU4 = IN_SENSOR.IMU3;
@@ -534,25 +534,19 @@ if sum(IN_SENSOR.IMU1_Control.nChange) == 0
     disp('IMU1_Control 的 nChange 没有正常赋值');
 end
 % 早期版本log存储的IMU数据为IMU坐标系下IMU测量，后期将log改为体坐标系下的IMU测量
-if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
-    % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
-    disp('特别注意这里对IMU1_Control正负号的特别处理')
-    keyboard
-    IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
-    IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
-    IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
-    IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
-end
+% if mean(IN_SENSOR.IMU1_Control.accel_z) > 0
+%     % 对老版本数据进行坐标转换，由IMU坐标系转换到体坐标系
+%     disp('特别注意这里对IMU1_Control正负号的特别处理')
+%     keyboard
+%     IN_SENSOR.IMU1_Control.accel_y = - IN_SENSOR.IMU1_Control.accel_y;
+%     IN_SENSOR.IMU1_Control.accel_z = - IN_SENSOR.IMU1_Control.accel_z;
+%     IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
+%     IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
+% end
 if 1
     fprintf('使用IMU_Control数据滤波\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_Control;
 end
-% figure(220)
-% subplot(311);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU1.time,IN_SENSOR.IMU1.accel_z);hold on;grid on;
-% figure(222)
-% subplot(311);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU2.time,IN_SENSOR.IMU2.accel_z);hold on;grid on;
-% figure(223)
-% subplot(311);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_x);hold on;grid on;subplot(312);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_y);hold on;grid on;subplot(313);plot(IN_SENSOR.IMU3.time,IN_SENSOR.IMU3.accel_z);hold on;grid on;
 if 0
     fprintf('使用IMU原始数据滤波\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_0;

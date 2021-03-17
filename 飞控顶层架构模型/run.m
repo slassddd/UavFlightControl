@@ -3,7 +3,7 @@ clear,clc,clear global
 %% 设置参数
 fprintf('-------------------------- 开始大模型仿真 --------------------------\n');
 setGlobalParams();
-SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000
 SimParam.Basic.selTestCase_Task_Manual = true; % 默认选择Task测试用例为Manual: true false
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择SensorFault测试用例为Manual: true false
 %% 载入飞行数据
@@ -17,7 +17,7 @@ fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 %% 设置测试用例(若选择【数据回放】则测试用例设置无效)
 % GroundStation
-[TestCase.GroundStation,isCancel] = selSimCaseSource('Task',SimParam.Basic.selTestCase_Task_Manual);if isCancel,return;end % 
+[TestCase.GroundStation,isCancel] = selSimCaseSource('Task',SimParam.Basic.selTestCase_Task_Manual);if isCancel,return;end %
 for i = 1:length(TestCase.GroundStation.filename)
     TestCase.GroundStation.data(i) = eval(TestCase.GroundStation.filename{i});
 end
@@ -53,10 +53,10 @@ for i = 1:length(TestCase.FlightLog.filename)
     SimInput(i) = Simulink.SimulationInput(SimParam.Architecture.modelname);
     SimInput(i) = SimInput(i).setVariable('tspan',SimDataSet.tspan{i}); % setVariable 优先级大于工作空间
     SimInput(i) = SimInput(i).setVariable('IN_SENSOR',SimDataSet.IN_SENSOR(i)); % setVariable 优先级大于工作空间
-%     SimInput(i) = SimInput(i).setVariable('IN_TestCase_GS',TestCase.GroundStation.data(i));
-%     SimInput(i) = SimInput(i).setVariable('IN_TestCase_SensorFault',TestCase.SensorFaultPanel.data(i));
+    %     SimInput(i) = SimInput(i).setVariable('IN_TestCase_GS',TestCase.GroundStation.data(i));
+    %     SimInput(i) = SimInput(i).setVariable('IN_TestCase_SensorFault',TestCase.SensorFaultPanel.data(i));
     tic,out(i) = sim(SimInput(i));SimParam.Basic.timeSpend = toc;
-%     tic,out = sim(SimParam.Architecture.modelname);SimParam.Basic.timeSpend = toc;
+    %     tic,out = sim(SimParam.Architecture.modelname);SimParam.Basic.timeSpend = toc;
 end
 fprintf('仿真完成, 耗时 %.2f [s]\n',SimParam.Basic.timeSpend);
 %% 数据处理
@@ -71,3 +71,13 @@ Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation,TestCase.GroundStat
 Plot_TaskLog();
 %% 结束
 printSimEnd(SimParam.Basic.timeSpend);
+
+if 0
+    for i = 1:10
+        tic,out(i) = sim(SimInput(1));tend(i) = toc;
+    end
+    fprintf('仿真完成, 耗时 %.0f [s]\n',tend);
+    fprintf('\t平均耗时 %.0f [s]\n',mean(tend));
+    fprintf('\t最大耗时 %.0f [s]\n',max(tend));
+    fprintf('\t最小耗时 %.0f [s]\n',min(tend));
+end
