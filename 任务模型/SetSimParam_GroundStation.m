@@ -9,7 +9,7 @@ STRUCT_mavlink_mission_item_def = Simulink.Bus.createMATLABStruct('mavlink_missi
 % STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线参数
 deg2m = 1/111e3;
-GSParam.PATH.pathHeight = 550;
+GSParam.PATH.pathHeight = 350;
 homeHeight = GSParam.PATH.pathHeight + 0*200;
 GroundStationParam.groundAltitude = 200;
 GroundStationParam.mavlinkHome = [40.04 180 homeHeight]; %  lat lon alt

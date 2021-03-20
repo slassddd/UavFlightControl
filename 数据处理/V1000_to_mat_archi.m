@@ -33,7 +33,7 @@ for i_file = 1:nFile
     dotIdx = strfind(FileName,'.');
     temp = FileName(1:dotIdx(end)-1);
     saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'日志数据_',temp,'.mat'];
-    save(saveFileName{i_file})    
+    save(saveFileName{i_file})
     fprintf('保存飞行数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
     % 保存仿真相关数据 -----------------------------------------------------
     saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'仿真数据_',temp,'.mat'];
@@ -66,6 +66,19 @@ try
         RM3100.mag(:,3) = - RM3100.mag(:,3);
         RM3100.norm = vecnorm(RM3100.mag,2,2);
         SinglePlot_mag_RM3100
+    end
+end
+%% V10机头空速计
+try
+    temp = strrep(DecodeParam.nameDataFile{1},'.bin','');
+    filenameArspeed = [temp,' LOG'];
+    data_V10_arspeed = byc_V10_arspeed(filenameArspeed);
+    figure;
+    t_offset = 16.65+16.36+1.5;
+    plot(data_V10_arspeed.time+t_offset,-data_V10_arspeed.arspeed);
+    hold on;grid on;
+    if exist('IN_SENSOR')
+        plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_indicate);hold on;
     end
 end
 %% END 选择挂载磁力计文件
