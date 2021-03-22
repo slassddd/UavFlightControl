@@ -6,7 +6,8 @@ load('IOBusInfo_V1000');
 GroundStationParam.Ts_base = 0.004; % 仿真步长 [sec]
 % 结构体定义
 STRUCT_mavlink_mission_item_def = Simulink.Bus.createMATLABStruct('mavlink_mission_item_def');
-% STRUCT_BUS_TASK_COMMON_OutParam = Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
+% STRUCT_BUS_TASK_COMMON_OutParam =
+% Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线参数
 deg2m = 1/111e3;
 GSParam.PATH.pathHeight = 350;
@@ -18,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 2;
+pathExmpale = 3;
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
@@ -31,7 +32,7 @@ switch pathExmpale
             2*1e3,3*1e3,GSParam.PATH.pathHeight;
             3*1e3,0*1e3,GSParam.PATH.pathHeight;
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
-    case 2 % 单区航线       
+    case 2 % 单区航线
         idxUnitedPath = 1;
         UnitedPath(idxUnitedPath).nPoints = 4;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
@@ -69,7 +70,7 @@ switch pathExmpale
         UnitedPath(idxUnitedPath).height = height;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [-1000,0];
-        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));     
+        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));
         % 航区3
         height = GSParam.PATH.pathHeight-50;
         PathAeras{idxUnitedPath} = [PathAeras{idxUnitedPath};PathAeras{idxUnitedPath}(end,1:2),height;PathAeras{idxUnitedPath}(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
@@ -82,16 +83,25 @@ switch pathExmpale
         UnitedPath(idxUnitedPath).height = height;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [500,1000];
-        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));            
+        PathAeras{idxUnitedPath} = genLocalPath(UnitedPath(idxUnitedPath));
         % 联合
         nPathAeras = length(PathAeras);
-        AeraAll = [PathAeras{1};PathAeras{2};PathAeras{3}];        
+        AeraAll = [PathAeras{1};PathAeras{2};PathAeras{3}];
         Path0 = [0,0,GSParam.PATH.pathHeight];
         GSParam.PATH.paths_m(1,:) = Path0;
         
         tempNum = size(AeraAll,1);
         GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;
-        
+    case 4
+        AeraAll = [
+            500     0   200;
+            500  1000   100;
+            -500  1000   300;
+            -500   0    100];
+        Path0 = [0,0,GSParam.PATH.pathHeight];
+        GSParam.PATH.paths_m(1,:) = Path0;
+        tempNum = size(AeraAll,1);
+        GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;
         %     case 3
         %         GSParam.PATH.paths_m(1:9,:) = [...
         %             1*1e2,0*1e3,GSParam.PATH.pathHeight;
@@ -180,6 +190,8 @@ switch pathExmpale
         fprintf('%s%s航线模式: 单区\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
     case 3
         fprintf('%s%s航线模式: %d区联合航线\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,nPathAeras);
+    case 4
+        fprintf('%s%s航线模式: 电力巡线\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
 end
 pathHeights = [GroundStationParam.mavlinkPathPoints.z];
 pathHeights = pathHeights(pathHeights>0);
@@ -189,8 +201,10 @@ fprintf('%s%s航点高度[m]: \t',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print
 fprintf('%d\t',unique(pathHeights))
 fprintf('\n')
 fprintf('%s%s0（1）号航点高度等于最高航点高度 (仿真模式下)\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead);
-% fprintf('%s%s有效航点数: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,);
-% fprintf('%s%s航线离地高度: %d [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
+% fprintf('%s%s有效航点数: %d
+% [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,);
+% fprintf('%s%s航线离地高度: %d
+% [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 
 %% 子函数
@@ -203,8 +217,8 @@ angle = UnitedPath.angle;
 offset = UnitedPath.offset;
 nPoints = UnitedPath.nPoints;
 
-% LocalPath(1,:) = 0*[0*lat_space, 0.5*lon_left, height];
-% LocalPath(1,3) = height;
+% LocalPath(1,:) = 0*[0*lat_space, 0.5*lon_left, height]; LocalPath(1,3) =
+% height;
 numLine = 0;
 for i = 1:nPoints
     if rem(i,4) == 1
