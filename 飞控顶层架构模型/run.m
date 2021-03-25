@@ -9,6 +9,7 @@ SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择SensorFault�
 %% 载入飞行数据
 tspan0 = [0,inf]; % 仿真时间区间 [sec]
 TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\V1000 客户飞行数据\20210312 狭窄场地降落提前关车\仿真数据_2021-03-12 10-33-45.mat'];
+TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20210323\仿真数据_风速异常 联合航线仿真.mat'];
 % TestCase.FlightLog.filename{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20210123\仿真数据_3 2021年1月23日 香河 V31253固件 全流程测试 2021-01-23 17-37-43.mat'];
 SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);

@@ -87,6 +87,7 @@ TASK_PARAM_V1000.heightThr_CanAutoToRotor = 160; % 允许程序自动判定转�
 TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.01; % 接地时关闭动力延迟时间[sec]
 TASK_PARAM_V1000.maxNumBattery = 16; % 最大电池组数,所有机型保持一致
 TASK_PARAM_V1000.nBattery = 3; % 实际使用电池组数，不同机型可不同
+TASK_PARAM_V1000.VdLimit_FixLevel = 5; % 固定翼平飞下Vd的限制
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

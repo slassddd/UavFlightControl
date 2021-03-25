@@ -19,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 3;
+pathExmpale = 4;
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
@@ -94,10 +94,10 @@ switch pathExmpale
         GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;
     case 4
         AeraAll = [
-            500     0   200;
-            500  1000   100;
-            -500  1000   300;
-            -500   0    100];
+            1000     0    200;
+            1000  1000    150;
+           -1000  1000    250;
+           -1000     0    200];
         Path0 = [0,0,GSParam.PATH.pathHeight];
         GSParam.PATH.paths_m(1,:) = Path0;
         tempNum = size(AeraAll,1);
