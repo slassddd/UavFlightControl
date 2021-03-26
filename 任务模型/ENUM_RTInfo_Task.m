@@ -206,6 +206,12 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         BatteryInfo_AllZero (306),
         PathFollow_ToMid_Vertical (307),
         PathFollow_ArriveMid_Vertical (308),
+        InterestPoint_Enter (309),
+        InterestPoint_Quit (310),
+        InterestPoint_Init (311),
+        InterestPoint_Arrive (312),
+        InterestPoint_FlightToPoint (313),
+        InterestPoint_ChangeHeight_Enter (314),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
