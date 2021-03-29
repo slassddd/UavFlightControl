@@ -116,6 +116,8 @@ end
 prePathPoints = permute(out.Task_TaskModeData.prePathPoint_LLA.Data,[3,2,1]);
 prePathPoints(prePathPoints(:,1) == 0,:) = [];
 curPathPoints = permute(out.Task_TaskModeData.curPathPoint_LLA.Data,[3,2,1]);
+pathtime = out.Task_TaskModeData.curPathPoint_LLA.Time;
+pathtime(curPathPoints(:,1) == 0,:) = [];
 curPathPoints(curPathPoints(:,1) == 0,:) = [];
 switch plotmode
     case '2d'
@@ -124,6 +126,11 @@ switch plotmode
     case '3d'
         plot3(prePathPoints(:,2),prePathPoints(:,1),prePathPoints(:,3),'r*');hold on;
         plot3(curPathPoints(:,2),curPathPoints(:,1),curPathPoints(:,3),'ko');hold on;        
+        if 0 
+            figure;
+            plot(pathtime,curPathPoints(:,3));
+            grid on;
+        end
 %         plot3(prePathPoints(:,2),prePathPoints(:,1),mavlinkPathData(2).z*ones(size(prePathPoints(:,1))),'r*');hold on;
 %         plot3(curPathPoints(:,2),curPathPoints(:,1),mavlinkPathData(2).z*ones(size(curPathPoints(:,1))),'ko');hold on;
 end
