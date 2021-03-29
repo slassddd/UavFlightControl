@@ -19,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 4;
+pathExmpale = 2;
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
