@@ -24,7 +24,8 @@ end
 SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
 if strcmp( SimParam.SystemInfo.taskMode, '飞行数据回放')
     proj = matlab.project.rootProject;
-    PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+%     PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+    PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\V1000 客户飞行数据\20210307 起飞80m悬停翻了\航线数据_2021-03-07 10-37-22']);
     SimParam.GroundStation(i).mavlinkPathPoints = PathData.PathData;
     SimParam.GroundStation(i).mavlinkHome(1) = PathData.PathData(1).x;
     SimParam.GroundStation(i).mavlinkHome(2) = PathData.PathData(2).y;
