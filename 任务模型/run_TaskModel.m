@@ -1,8 +1,8 @@
 clear,clc
-%% 通用参数 
+%% 通用参数
 fprintf('-------------------------- 开始 Task 仿真 --------------------------\n');
 setGlobalParams();
-SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
+SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000
 SimParam.Basic.nameTestCase = [] ;%'GSTestCase_TakeOff_Land'; % 指定测试用例名称,[]表示不指定
 %% Algorithm 算法参数
 % 任务
@@ -13,6 +13,8 @@ SimParam.SimpleUavModel = SetAlgoParam_UavModelForTaskSim();
 %% Simulation 仿真参数
 % 设置机型变量
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
+% 【仿真】or【数据回放】
+[SimParam.SystemInfo.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式
 % 设置测试用例
 [TestCase.GroundStation,isCancel] = selSimCaseSource('task','CaseFileName',SimParam.Basic.nameTestCase);if isCancel,return;end
 for i = 1:length(TestCase.GroundStation.filename)
@@ -20,6 +22,13 @@ for i = 1:length(TestCase.GroundStation.filename)
 end
 % 地面站指令(包括航线设置)
 SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
+if strcmp( SimParam.SystemInfo.taskMode, '飞行数据回放')
+    proj = matlab.project.rootProject;
+    PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+    SimParam.GroundStation(i).mavlinkPathPoints = PathData.PathData;
+    SimParam.GroundStation(i).mavlinkHome(1) = PathData.PathData(1).x;
+    SimParam.GroundStation(i).mavlinkHome(2) = PathData.PathData(2).y;
+end
 %% 运行model
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_Task';

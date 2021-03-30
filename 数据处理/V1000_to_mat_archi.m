@@ -52,6 +52,11 @@ for i_file = 1:nFile
     save(saveFileName_magCalib{i_file},'mag1B','mag2B','mag1B_correct','mag2B_correct','lla')
     cd(DecodeParam.evokeDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
+    % 保存航线数据
+    saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'航线数据_',temp,'.mat'];
+    PathData = FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def;
+    save(saveFileName{i_file},'PathData')
+    fprintf('保存航线数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
 end
 cd(DecodeParam.evokeDir)
 timeSpend = toc;
