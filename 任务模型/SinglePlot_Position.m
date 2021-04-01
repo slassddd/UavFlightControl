@@ -20,7 +20,10 @@ shot_lat = out.Task_payload.CAMERA.LLA.Data(:,1); shot_lat(shot_lat==0)=nan;
 shot_lon = out.Task_payload.CAMERA.LLA.Data(:,2); shot_lon(shot_lon==0)=nan;
 shot_height = out.Task_payload.CAMERA.LLA.Data(:,3);
 % 飞行状态
-LLh = permute(out.Task_FlightData.curLLA.Data,[3,2,1]);
+% LLh = permute(out.Task_FlightData.curLLA.Data,[3,2,1]);
+LLh = out.UavDyn_LLA.Data;
+LLh(:,3) = LLh(:,3) - SimParam_GroundStation.groundAltitude;
+% LLh(:,3) = out.Task_FlightData.curHeightForControl.Data;
 zeroIdxLLh = find(LLh(:,1)<1e-5);
 LLh(zeroIdxLLh,:) = nan*zeros(length(zeroIdxLLh),3);
 lat = LLh(:,1);
@@ -48,6 +51,9 @@ switch plotmode
                 else
                     
                 end
+            else
+                validPathNum = i - 1;
+                break;
             end
         end
         xlabel('lon')
@@ -55,7 +61,7 @@ switch plotmode
         grid on;
         axis equal;
     case '3d'
-        plot3(lon,lat,height,'b');hold on;
+        plot3(lon,lat,height,'bo');hold on;
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
         if ~isempty(breakLLh)
             plot3(breakLLh(end,2),breakLLh(end,1),breakLLh(end,3),'Marker','diamond','color','g');hold on;
@@ -76,6 +82,9 @@ switch plotmode
                 else
                     
                 end
+            else
+                validPathNum = i - 1;
+                break;
             end
         end
         xlabel('lon')
@@ -136,3 +145,25 @@ switch plotmode
 end
 %% 盘旋点
 plot(out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,2),out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.Data(:,2)~=0,1),'ko');
+%% 地面高程
+homeLLA = [mavlinkPathData(1).x, ...
+    mavlinkPathData(1).y,        ...
+    0 * SimParam_GroundStation.groundAltitude]; % home点高度为0
+tempLat = [mavlinkPathData(1:validPathNum).x];
+tempLon = [mavlinkPathData(1:validPathNum).y];
+spanLat = [min(tempLat),max(tempLat)];
+spanLon = [min(tempLon),max(tempLon)];
+dLat = spanLat(2)-spanLat(1);
+dLon = spanLon(2)-spanLon(1);
+spanLat = [min(tempLat)-0.5*dLat,max(tempLat)+0.5*dLat];
+spanLon = [min(tempLon)-0.5*dLon,max(tempLon)+0.5*dLon];
+
+[gridLon,gridLat] = meshgrid(spanLon(1):dLon/10:spanLon(2),spanLat(1):dLat/10:spanLat(2));
+for i = 1:size(gridLat,1)
+    for j = 1:size(gridLat,2)
+        altGround(i,j) = altMap(homeLLA,[gridLat(i,j),gridLon(i,j)]); 
+    end
+end
+mesh(gridLon,gridLat,altGround)
+colorbar
+% altMap(homeLLA,LatLon_deg)
