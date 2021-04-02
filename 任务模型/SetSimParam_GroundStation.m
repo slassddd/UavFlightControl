@@ -34,9 +34,9 @@ switch pathExmpale
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 单区航线
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 6;
+        UnitedPath(idxUnitedPath).nPoints = 4;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 3e3;
+        UnitedPath(idxUnitedPath).lon_right = 1.5e3;
         UnitedPath(idxUnitedPath).lat_space = 250;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
