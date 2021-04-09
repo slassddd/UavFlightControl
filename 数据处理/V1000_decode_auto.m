@@ -924,3 +924,124 @@ SL.mavlink_msg_command_battery_data.cycleTime = cycleTime; % create struct
 temp = reshape([data(find(mod(Count,8)==7),293:294)'],1,[]);
 batteryId=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
 SL.mavlink_msg_command_battery_data.batteryId = batteryId; % create struct
+% /* |@@SL.BMS@@+----+-------------+------------+--------------| */
+temp = reshape([data(find(mod(Count,16)==0),289:289)'],1,[]);
+voltage1=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage1 = voltage1; % create struct
+temp = reshape([data(find(mod(Count,16)==0),290:290)'],1,[]);
+temperature1=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature1 = temperature1; % create struct
+temp = reshape([data(find(mod(Count,16)==0),291:292)'],1,[]);
+current1=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current1 = current1; % create struct
+temp = reshape([data(find(mod(Count,16)==0),295:296)'],1,[]);
+capacity1=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity1 = capacity1; % create struct
+temp = reshape([data(find(mod(Count,16)==1),289:289)'],1,[]);
+voltage2=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage2 = voltage2; % create struct
+temp = reshape([data(find(mod(Count,16)==1),290:290)'],1,[]);
+temperature2=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature2 = temperature2; % create struct
+temp = reshape([data(find(mod(Count,16)==1),291:292)'],1,[]);
+current2=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current2 = current2; % create struct
+temp = reshape([data(find(mod(Count,16)==1),295:296)'],1,[]);
+capacity2=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity2 = capacity2; % create struct
+temp = reshape([data(find(mod(Count,16)==2),289:289)'],1,[]);
+voltage3=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage3 = voltage3; % create struct
+temp = reshape([data(find(mod(Count,16)==2),290:290)'],1,[]);
+temperature3=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature3 = temperature3; % create struct
+temp = reshape([data(find(mod(Count,16)==2),291:292)'],1,[]);
+current3=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current3 = current3; % create struct
+temp = reshape([data(find(mod(Count,16)==2),295:296)'],1,[]);
+capacity3=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity3 = capacity3; % create struct
+temp = reshape([data(find(mod(Count,16)==3),289:289)'],1,[]);
+voltage4=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage4 = voltage4; % create struct
+temp = reshape([data(find(mod(Count,16)==3),290:290)'],1,[]);
+temperature4=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature4 = temperature4; % create struct
+temp = reshape([data(find(mod(Count,16)==3),291:292)'],1,[]);
+current4=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current4 = current4; % create struct
+temp = reshape([data(find(mod(Count,16)==3),295:296)'],1,[]);
+capacity4=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity4 = capacity4; % create struct
+temp = reshape([data(find(mod(Count,16)==4),289:289)'],1,[]);
+voltage5=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage5 = voltage5; % create struct
+temp = reshape([data(find(mod(Count,16)==4),290:290)'],1,[]);
+temperature5=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature5 = temperature5; % create struct
+temp = reshape([data(find(mod(Count,16)==4),291:292)'],1,[]);
+current5=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current5 = current5; % create struct
+temp = reshape([data(find(mod(Count,16)==4),295:296)'],1,[]);
+capacity5=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity5 = capacity5; % create struct
+temp = reshape([data(find(mod(Count,16)==5),289:289)'],1,[]);
+voltage6=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage6 = voltage6; % create struct
+temp = reshape([data(find(mod(Count,16)==5),290:290)'],1,[]);
+temperature6=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature6 = temperature6; % create struct
+temp = reshape([data(find(mod(Count,16)==5),291:292)'],1,[]);
+current6=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current6 = current6; % create struct
+temp = reshape([data(find(mod(Count,16)==5),295:296)'],1,[]);
+capacity6=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity6 = capacity6; % create struct
+temp = reshape([data(find(mod(Count,16)==6),289:289)'],1,[]);
+voltage7=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage7 = voltage7; % create struct
+temp = reshape([data(find(mod(Count,16)==6),290:290)'],1,[]);
+temperature7=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature7 = temperature7; % create struct
+temp = reshape([data(find(mod(Count,16)==6),291:292)'],1,[]);
+current7=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current7 = current7; % create struct
+temp = reshape([data(find(mod(Count,16)==6),295:296)'],1,[]);
+capacity7=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity7 = capacity7; % create struct
+temp = reshape([data(find(mod(Count,16)==7),289:289)'],1,[]);
+voltage8=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage8 = voltage8; % create struct
+temp = reshape([data(find(mod(Count,16)==7),290:290)'],1,[]);
+temperature8=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature8 = temperature8; % create struct
+temp = reshape([data(find(mod(Count,16)==7),291:292)'],1,[]);
+current8=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current8 = current8; % create struct
+temp = reshape([data(find(mod(Count,16)==7),295:296)'],1,[]);
+capacity8=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity8 = capacity8; % create struct
+temp = reshape([data(find(mod(Count,16)==8),289:289)'],1,[]);
+voltage9=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage9 = voltage9; % create struct
+temp = reshape([data(find(mod(Count,16)==8),290:290)'],1,[]);
+temperature9=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature9 = temperature9; % create struct
+temp = reshape([data(find(mod(Count,16)==8),291:292)'],1,[]);
+current9=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current9 = current9; % create struct
+temp = reshape([data(find(mod(Count,16)==8),295:296)'],1,[]);
+capacity9=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity9 = capacity9; % create struct
+temp = reshape([data(find(mod(Count,16)==9),289:289)'],1,[]);
+voltage10=double(typecast(uint8(temp),'uint8')')/1*1000.0000000000;
+SL.BMS.voltage10 = voltage10; % create struct
+temp = reshape([data(find(mod(Count,16)==9),290:290)'],1,[]);
+temperature10=double(typecast(uint8(temp),'uint8')')/1*100.0000000000;
+SL.BMS.temperature10 = temperature10; % create struct
+temp = reshape([data(find(mod(Count,16)==9),291:292)'],1,[]);
+current10=double(typecast(uint8(temp),'int16')')/32768*150000.0000000000;
+SL.BMS.current10 = current10; % create struct
+temp = reshape([data(find(mod(Count,16)==9),295:296)'],1,[]);
+capacity10=double(typecast(uint8(temp),'uint16')')/1*1.0000000000;
+SL.BMS.capacity10 = capacity10; % create struct

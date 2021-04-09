@@ -21,6 +21,8 @@ classdef ENUM_RTInfo_GSCmd < Simulink.IntEnumType
         Recive_CameraDist_But_Not_Response (15),        
         Recive_GoHome (16),
         Recive_GoHome_But_Not_Response (17),        
+        Recive_Rotor2Fix2Home2Land (18),
+        Recive_Rotor2Fix2Home2Land_But_Not_Response (19),              
     end
 end
 

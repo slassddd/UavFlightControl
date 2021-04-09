@@ -3,7 +3,7 @@ fprintf('-------------------------- 开始导航仿真 -------------------------
 setGlobalParams
 SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000 
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择 SensorFault 测试用例为Manual: true false
-tspan0 = [400,500]; % sec   [0,inf]
+tspan0 = [0,1500]; % sec   [0,inf]
 %% 选择机型
 [SimParam.SystemInfo.planeMode,isCancel] = selPlaneMode(SimParam.Basic.selDefaultPlaneMode);if isCancel,return;end % 选择机型
 %% 选择并载入数据文件

@@ -53,10 +53,10 @@ for i_file = 1:nFile
     cd(DecodeParam.evokeDir)
     fprintf('保存标定数据为： %s [%d/%d]\n',saveFileName_magCalib{i_file},i_file,nFile)
     % 保存航线数据
-    saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'航线数据_',temp,'.mat'];
+    pathFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'航线数据_',temp,'.mat'];
     PathData = FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def;
-    save(saveFileName{i_file},'PathData')
-    fprintf('保存航线数据为： %s [%d/%d]\n',saveFileName{i_file},i_file,nFile)
+    save(pathFileName{i_file},'PathData')
+    fprintf('保存航线数据为： %s [%d/%d]\n',pathFileName{i_file},i_file,nFile)
 end
 cd(DecodeParam.evokeDir)
 timeSpend = toc;
@@ -78,12 +78,14 @@ try
     temp = strrep(DecodeParam.nameDataFile{1},'.bin','');
     filenameArspeed = [temp,' LOG'];
     data_V10_arspeed = byc_V10_arspeed(filenameArspeed);
+    % 画图
     figure;
-    t_offset = 16.65+16.36+1.5;
-    plot(data_V10_arspeed.time+t_offset,-data_V10_arspeed.arspeed);
+    t_offset = 16.65;
+    plot(data_V10_arspeed.time+t_offset,data_V10_arspeed.arspeed);
     hold on;grid on;
     if exist('IN_SENSOR')
         plot(IN_SENSOR.airspeed1.time,IN_SENSOR.airspeed1.airspeed_indicate);hold on;
-    end
+        legend('机头','机翼')
+    end    
 end
 %% END 选择挂载磁力计文件

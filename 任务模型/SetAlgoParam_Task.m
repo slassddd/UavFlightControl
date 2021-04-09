@@ -39,7 +39,7 @@ TASK_PARAM_V1000.enterStallTimeSec = 1; % 确认进入失速状态所需的持�
 TASK_PARAM_V1000.midHeight_TakeOffandLand = 10; % 起飞着陆中间暂留点
 TASK_PARAM_V1000.finalHeight_TakeOff = 50;
 TASK_PARAM_V1000.maxClimbSpeed_nearGround_TakeOffandLand = 1; % 起飞着陆近地阶段最大垂速
-TASK_PARAM_V1000.maxClimbSpeed_normal_TakeOffandLand= 2.5; % 起飞着陆远地阶段最大垂速
+TASK_PARAM_V1000.maxClimbSpeed_normal_TakeOffandLand= 3; % 起飞着陆远地阶段最大垂速
 TASK_PARAM_V1000.maxClimbSpeed_fixMode = 2.5; % 固定翼盘旋上升下降过程中的最大爬升率
 TASK_PARAM_V1000.heightCmd_FinalLand = -1000; % 着陆模式时的目标高度（没错，给了个大的负值！）
 TASK_PARAM_V1000.heightThreshold_LandSuccess = 0.2; %
@@ -88,6 +88,7 @@ TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.1; % 接地时关闭动力延�
 TASK_PARAM_V1000.maxNumBattery = 16; % 最大电池组数,所有机型保持一致
 TASK_PARAM_V1000.nBattery = 3; % 实际使用电池组数，不同机型可不同
 TASK_PARAM_V1000.VdLimit_FixLevel = 5; % 固定翼平飞下Vd的限制
+TASK_PARAM_V1000.enableSlideMode = true; % 使能盘旋下降模式中的滑行控制模式
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -95,13 +96,14 @@ TASK_PARAM_V10.heightThreshold_LandSuccess = 0.38; %
 TASK_PARAM_V10.enableDynamicBatteryGoHome = false; %
 TASK_PARAM_V10.levelFixcurrentThreshold = 150e3;
 TASK_PARAM_V10.enable8calib = false;
-TASK_PARAM_V10.cruiseSpeed_rotorMode = 3;
+TASK_PARAM_V10.cruiseSpeed_rotorMode = 5;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.2;
 TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.2;
 TASK_PARAM_V10.nBattery = 10;
-TASK_PARAM_V10.fenseDist = 50e3;
+TASK_PARAM_V10.fenseDist = 52e3;
+TASK_PARAM_V10.enableSlideMode = false;
 % switch SimParam.SystemInfo.planeMode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
 %     case ENUM_plane_mode.V10

@@ -212,6 +212,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         InterestPoint_Arrive (312),
         InterestPoint_FlightToPoint (313),
         InterestPoint_ChangeHeight_Enter (314),
+        Rotor2Fix_ToGo_Rotor2Fix2Home2Land (315),
+        
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
@@ -257,6 +259,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Mav_CamTrigDist_No (2118),
         TaskLog_Mav_GroundStandby_Yes (2119),
         TaskLog_Mav_GroundStandby_No (2120),
+        TaskLog_Mav_Rotor2Fix2Home2Land_Yes (2121),
+        TaskLog_Mav_Rotor2Fix2Home2Land_No (2122),        
         % 各种Protect
         TaskLog_Protect_Height_Normal (2200),
         TaskLog_Protect_Height_TooLow (2201),

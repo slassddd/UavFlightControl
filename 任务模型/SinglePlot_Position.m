@@ -61,7 +61,7 @@ switch plotmode
         grid on;
         axis equal;
     case '3d'
-        plot3(lon,lat,height,'bo');hold on;
+        plot3(lon,lat,height,'b');hold on;
         plot3(shot_lon,shot_lat,shot_height,'b*');hold on;
         if ~isempty(breakLLh)
             plot3(breakLLh(end,2),breakLLh(end,1),breakLLh(end,3),'Marker','diamond','color','g');hold on;
@@ -149,6 +149,7 @@ plot(out.Task_TaskModeData.turnCenterLL.Data(out.Task_TaskModeData.turnCenterLL.
 homeLLA = [mavlinkPathData(1).x, ...
     mavlinkPathData(1).y,        ...
     0 * SimParam_GroundStation.groundAltitude]; % home点高度为0
+% 全局稀疏点
 tempLat = [mavlinkPathData(1:validPathNum).x];
 tempLon = [mavlinkPathData(1:validPathNum).y];
 spanLat = [min(tempLat),max(tempLat)];
@@ -165,5 +166,23 @@ for i = 1:size(gridLat,1)
     end
 end
 mesh(gridLon,gridLat,altGround)
+% 近home处密集点
+tempLat = [mavlinkPathData(1:validPathNum).x];
+dx = 1/111e3*150; %
+spanLat = [homeLLA(1)-dx,homeLLA(1)+dx];
+spanLon = [homeLLA(2)-dx,homeLLA(2)+dx];
+dLat = spanLat(2)-spanLat(1);
+dLon = spanLon(2)-spanLon(1);
+% spanLat = [min(tempLat)-0.5*dLat,max(tempLat)+0.5*dLat];
+% spanLon = [min(tempLon)-0.5*dLon,max(tempLon)+0.5*dLon];
+
+[gridLon,gridLat] = meshgrid(spanLon(1):dLon/110:spanLon(2),spanLat(1):dLat/110:spanLat(2));
+for i = 1:size(gridLat,1)
+    for j = 1:size(gridLat,2)
+        altGround(i,j) = altMap(homeLLA,[gridLat(i,j),gridLon(i,j)]); 
+    end
+end
+mesh(gridLon,gridLat,altGround)
+%
 colorbar
 % altMap(homeLLA,LatLon_deg)

@@ -9,7 +9,7 @@ STRUCT_mavlink_mission_item_def = Simulink.Bus.createMATLABStruct('mavlink_missi
 % STRUCT_BUS_TASK_COMMON_OutParam =
 % Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线参数
-deg2m = 1/111e3;
+m2deg = 1/111e3;
 GSParam.PATH.pathHeight = 150;
 homeHeight = GSParam.PATH.pathHeight + 0*200;
 GroundStationParam.groundAltitude = 200;
@@ -20,6 +20,7 @@ GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
 pathExmpale = 2;
+pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
@@ -34,7 +35,7 @@ switch pathExmpale
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 单区航线
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 4;
+        UnitedPath(idxUnitedPath).nPoints = 6;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
         UnitedPath(idxUnitedPath).lon_right = 1.5e3;
         UnitedPath(idxUnitedPath).lat_space = 250;
@@ -50,9 +51,9 @@ switch pathExmpale
     case 3 % 联合航线
         % 航区1
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 8;
+        UnitedPath(idxUnitedPath).nPoints = 64;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 2e3;
+        UnitedPath(idxUnitedPath).lon_right = 3e3;
         UnitedPath(idxUnitedPath).lat_space = 250;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
@@ -92,6 +93,7 @@ switch pathExmpale
         
         tempNum = size(AeraAll,1);
         GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;
+%         pathoffset = [45e3,2000]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
     case 4
         AeraAll = [
             1000     0    200;
@@ -127,10 +129,11 @@ switch pathExmpale
 end
 GSParam.PATH.paths_ddm = GSParam.PATH.paths_m;
 GSParam.PATH.paths_ddm(1,:) = GroundStationParam.mavlinkHome;
+
 for i = 2:GSParam.PATH.maxNum
     if GSParam.PATH.paths_m(i,1) ~= GSParam.PATH.nanFlag
-        GSParam.PATH.paths_ddm(i,1) = GroundStationParam.mavlinkHome(1) + GSParam.PATH.paths_m(i,1)*deg2m - 0*deg2m;
-        GSParam.PATH.paths_ddm(i,2) = GroundStationParam.mavlinkHome(2) + GSParam.PATH.paths_m(i,2)*deg2m/cos(GroundStationParam.mavlinkHome(1)*pi/180) - 2000*deg2m/cos(GroundStationParam.mavlinkHome(1)*pi/180);
+        GSParam.PATH.paths_ddm(i,1) = GroundStationParam.mavlinkHome(1) + GSParam.PATH.paths_m(i,1)*m2deg + pathoffset(1);
+        GSParam.PATH.paths_ddm(i,2) = GroundStationParam.mavlinkHome(2) + GSParam.PATH.paths_m(i,2)*m2deg/cos(GroundStationParam.mavlinkHome(1)*pi/180) + pathoffset(2) ;
         GSParam.PATH.paths_ddm(i,3) = GSParam.PATH.paths_m(i,3);
     end
 end

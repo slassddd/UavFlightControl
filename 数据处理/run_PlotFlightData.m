@@ -158,6 +158,32 @@ if true
         disp('[电池] 失败')
     end
 end
+% V10 BMS
+try
+    BMS.data = FlightLog_Original.BMS;
+    for i = 1:10
+        BMS.current(:,i) = BMS.data.(['current',num2str(i)])/1e3;
+        BMS.voltage(:,i) = BMS.data.(['voltage',num2str(i)])/1e3;
+        BMS.temperature(:,i) = BMS.data.(['temperature',num2str(i)]);
+        if sum(BMS.current(:,i)) == 0
+            BMS.nBattery = i - 1;
+            break;
+        end
+    end
+    fig = figure('name','BMS');
+    subplot(221)
+    plot(BMS.data.time,BMS.current(:,1)*BMS.nBattery/2);grid on;
+    ylabel('总电流(A)');   
+    subplot(223)
+    plot(BMS.data.time,BMS.current(:,1:BMS.nBattery));grid on;
+    ylabel('分电流(A)');
+    subplot(224)
+    plot(BMS.data.time,BMS.voltage(:,1:BMS.nBattery));grid on;
+    ylabel('分电压(V)');    
+    fig.Name = ['BMS ',num2str(BMS.nBattery)];
+catch
+    disp('[BMS] 失败')
+end
 %%
 tempFileNames = DecodeParam.nameDataFile{1};
 tmpIdx = strfind(tempFileNames,'.');
