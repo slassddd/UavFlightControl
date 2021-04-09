@@ -181,7 +181,7 @@ end
 GroundStationParam.mavlinkPathPoints(1).z = GroundStationParam.mavlinkPathPoints(1).z + 0*200;
 GroundStationParam.mavlinkPathPoints1 = GroundStationParam.mavlinkPathPoints;
 GroundStationParam.mavlinkPathPoints1(2).x = GroundStationParam.mavlinkPathPoints(2).x + 0.005;
-GroundStationParam_Cmd76 = genMavCmd76Struct();
+GroundStationParam_Cmd76 = genMavCmd76Struct(); % 76# Mavlink 命令
 GroundStationParam = combineStruct(GroundStationParam,GroundStationParam_Cmd76);
 %%
 fprintf('[%s]\n',mfilename);

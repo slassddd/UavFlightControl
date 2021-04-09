@@ -9,6 +9,7 @@ GSParam.MavLinkInfo.DefaultCmdInfo.num_SwitchAltitude = 36;
 GSParam.MavLinkInfo.CustomCmdInfo.num_Fix2Rotor = 38; %
 GSParam.MavLinkInfo.DefaultCmdInfo.num_LandStart = 189;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_CamTriggDist = 206;
+GSParam.MavLinkInfo.DefaultCmdInfo.num_AdjustPauseHeight = 301;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_Rotor2Fix2Home2Land = 2000;
 
 GSParam.MavLinkInfo.CustomCmdInfo.num_StartProfile = 300;
@@ -38,6 +39,9 @@ GroundStationParam.CMD_LandStart.command = GSParam.MavLinkInfo.DefaultCmdInfo.nu
 GroundStationParam.CMD_CamTriggDist = STRUCT_mavlink_msg_id_command_long;
 GroundStationParam.CMD_CamTriggDist.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_CamTriggDist; %
 GroundStationParam.CMD_CamTriggDist.param1 = 30;
+GroundStationParam.CMD_AdjustPauseHeight = STRUCT_mavlink_msg_id_command_long;
+GroundStationParam.CMD_AdjustPauseHeight.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_AdjustPauseHeight; %
+GroundStationParam.CMD_AdjustPauseHeight.param1 = 350; % 相对高度 [m]
 GroundStationParam.CMD_Rotor2Fix2Home2Land = STRUCT_mavlink_msg_id_command_long;
 GroundStationParam.CMD_Rotor2Fix2Home2Land.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_Rotor2Fix2Home2Land; %
 GroundStationParam.CMD_Rotor2Fix2Home2Land.param1 = 0;
