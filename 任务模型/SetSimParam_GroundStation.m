@@ -51,9 +51,9 @@ switch pathExmpale
     case 3 % 联合航线
         % 航区1
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 64;
+        UnitedPath(idxUnitedPath).nPoints = 4;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 3e3;
+        UnitedPath(idxUnitedPath).lon_right = 1.5e3;
         UnitedPath(idxUnitedPath).lat_space = 250;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
@@ -64,9 +64,9 @@ switch pathExmpale
         PathAeras{idxUnitedPath} = [PathAeras{idxUnitedPath};PathAeras{idxUnitedPath}(end,1:2),height;PathAeras{idxUnitedPath}(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
         
         idxUnitedPath = 2;
-        UnitedPath(idxUnitedPath).nPoints = 6;
+        UnitedPath(idxUnitedPath).nPoints = 2;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 2e3;
+        UnitedPath(idxUnitedPath).lon_right = 1.3e3;
         UnitedPath(idxUnitedPath).lat_space = 150;
         UnitedPath(idxUnitedPath).height = height;
         UnitedPath(idxUnitedPath).angle = 0*pi;
@@ -79,7 +79,7 @@ switch pathExmpale
         idxUnitedPath = 3;
         UnitedPath(idxUnitedPath).nPoints = 4;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 2e3;
+        UnitedPath(idxUnitedPath).lon_right = 1.4e3;
         UnitedPath(idxUnitedPath).lat_space = 150;
         UnitedPath(idxUnitedPath).height = height;
         UnitedPath(idxUnitedPath).angle = 0*pi;

@@ -41,7 +41,7 @@ for i = 1:length(TestCase.GroundStation.data)
     SimInput(i) = Simulink.SimulationInput(SimParam.Basic.modelname);
     SimInput(i) = SimInput(i).setVariable('IN_TestCase_GS',TestCase.GroundStation.data(i));
 end
- tic,  out = sim(SimInput);  SimParam.Basic.timeSpend = toc;
+tic,  out = sim(SimInput);  SimParam.Basic.timeSpend = toc;
 %% 数据画图
 Plot_TaskSimData(out,TASK_PARAM_V1000,SimParam.GroundStation,TestCase.GroundStation);
 Plot_TaskLog();

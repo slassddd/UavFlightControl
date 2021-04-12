@@ -173,16 +173,56 @@ try
     fig = figure('name','BMS');
     subplot(221)
     plot(BMS.data.time,BMS.current(:,1)*BMS.nBattery/2);grid on;
-    ylabel('总电流(A)');   
+    ylabel('总电流(A)');
     subplot(223)
     plot(BMS.data.time,BMS.current(:,1:BMS.nBattery));grid on;
     ylabel('分电流(A)');
     subplot(224)
     plot(BMS.data.time,BMS.voltage(:,1:BMS.nBattery));grid on;
-    ylabel('分电压(V)');    
+    ylabel('分电压(V)');
     fig.Name = ['BMS ',num2str(BMS.nBattery)];
 catch
     disp('[BMS] 失败')
+end
+% 三维地图
+if 0
+    t = IN_SENSOR.ublox1.time;tmin = t(1);tmax = t(end); % ublox
+    timesel0 = 500;
+    timesel0 = max(50,timesel0);
+    timeself = 601;
+    timeself = min(timeself,tmax);
+    % 画图配置
+    lineType = 'o';
+    %
+    figure;
+    t = IN_SENSOR.ublox1.time;tmin = t(1);tmax = t(end); % ublox
+    fprintf('数据时间范围:ublox [%.0f,%.0f]\n',tmin,tmax)
+    idx0 = min(find(t > timesel0));
+    idxf = max(find(t <= timeself));
+    data = [IN_SENSOR.ublox1.Lat,IN_SENSOR.ublox1.Lon,IN_SENSOR.ublox1.height];data = data(idx0:idxf,:);
+    plot3(data(:,1),data(:,2),data(:,3),'marker',lineType);hold on;grid on;
+    t = IN_SENSOR.um482.time;tmin = t(1);tmax = t(end); % um482
+    fprintf('数据时间范围:um482 [%.0f,%.0f]\n',tmin,tmax)
+    idx0 = min(find(t > timesel0));
+    idxf = max(find(t <= timeself));
+    data = [IN_SENSOR.um482.Lat,IN_SENSOR.um482.Lon,IN_SENSOR.um482.height];
+    data = data(idx0:idxf,:);
+    plot3(data(:,1),data(:,2),data(:,3),'marker',lineType);hold on;grid on;
+    t = FlightLog_Original.Filter.time;tmin = t(1);tmax = t(end); % navi
+    fprintf('数据时间范围:nav [%.0f,%.0f]\n',tmin,tmax)
+    idx0 = min(find(t > timesel0));
+    idxf = max(find(t <= timeself));
+    data = [FlightLog_Original.Filter.algo_NAV_latd,FlightLog_Original.Filter.algo_NAV_lond,FlightLog_Original.Filter.algo_NAV_alt];
+    data = data(idx0:idxf,:);
+    plot3(data(:,1),data(:,2),data(:,3),'marker',lineType);hold on;grid on;    
+    t = FlightLog_Original.Filter.time;tmin = t(1);tmax = t(end); % 载荷数据
+    fprintf('数据时间范围:payload [%.0f,%.0f]\n',tmin,tmax)
+    idx0 = min(find(t > timesel0));
+    idxf = max(find(t <= timeself));
+    data = [FlightLog_Original.Filter.algo_NAV_latd,FlightLog_Original.Filter.algo_NAV_lond,FlightLog_Original.Filter.algo_NAV_alt];
+    data = data(idx0:idxf,:);
+    plot3(data(:,1),data(:,2),data(:,3),'marker',lineType);hold on;grid on;        
+    legend('ublox','um482','nav','载荷');
 end
 %%
 tempFileNames = DecodeParam.nameDataFile{1};

@@ -56,7 +56,7 @@ TASK_PARAM_V1000.minAirspeed_fixAllowed = 19; % 最低固定翼容许空速，[m
 TASK_PARAM_V1000.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
 TASK_PARAM_V1000.logDataBufferSize = 32; % 数据记录buffer size
 TASK_PARAM_V1000.logDataOutSize = 3; % 数据记录output size
-TASK_PARAM_V1000.horiDist_verticalMove = 150; % 垂直运动模式参数：水平距离阈值
+TASK_PARAM_V1000.horiDist_verticalMove = 250; % 垂直运动模式参数：水平距离阈值
 TASK_PARAM_V1000.vertDist_verticalMove = 5; % 垂直运动模式参数：高度阈值
 TASK_PARAM_V1000.test_homeHeightOffsetAbs = 0; % 测试参数（该参数作用在嵌入式中，所以仿真中不生效）：在0号航点的高度上增加该值，模拟特点航线
 TASK_PARAM_V1000.isHoverDownToCenter = false; % 激活头顶切换旋翼
@@ -100,9 +100,9 @@ TASK_PARAM_V10.cruiseSpeed_rotorMode = 5;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.2;
-TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.2;
+TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.5;
 TASK_PARAM_V10.nBattery = 10;
-TASK_PARAM_V10.fenseDist = 52e3;
+TASK_PARAM_V10.fenseDist = 53e3;
 TASK_PARAM_V10.enableSlideMode = false;
 % switch SimParam.SystemInfo.planeMode
 %     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}

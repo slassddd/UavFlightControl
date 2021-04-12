@@ -464,7 +464,7 @@ end
 % laserDown1
 disp('laserDown1未赋值')
 IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown1.range = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
@@ -475,7 +475,7 @@ end
 % laserDown2
 disp('laserDown2未赋值')
 IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown2.range = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
@@ -543,7 +543,7 @@ end
 %     IN_SENSOR.IMU1_Control.gyro_y = -IN_SENSOR.IMU1_Control.gyro_y;
 %     IN_SENSOR.IMU1_Control.gyro_z = -IN_SENSOR.IMU1_Control.gyro_z;
 % end
-if 1
+if 0
     fprintf('使用IMU_Control数据滤波\n');
     IN_SENSOR.IMU1 = IN_SENSOR.IMU1_Control;
 end
