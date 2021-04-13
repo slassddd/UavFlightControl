@@ -5,6 +5,9 @@ dirMat = '读取路径.mat';
 try 
     temp = load(dirMat);
     readdir = temp.readdir;
+    if ~exist(readdir,'dir')
+        readdir = [];
+    end
 catch
     readdir = [];
 end

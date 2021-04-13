@@ -40,5 +40,5 @@ for i = 1:length(TestCase.SensorFaultPanel.data)
 end
 fprintf('/n--------调试信息--------/n')
 out = sim(SimInput);
-%% 
+%%
 Plot_IntegritySimData(out,SimDataSet,TestCase.SensorFaultPanel.data);
