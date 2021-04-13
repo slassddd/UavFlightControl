@@ -5,9 +5,7 @@ SimParam.Basic.selDefaultPlaneMode = [] ; % [] ENUM_plane_mode.V1000
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择 SensorFault 测试用例为Manual: true false
 tspan0 = [0,inf]; % sec
 %% 载入数据
-TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\V1000 客户飞行数据\20201205 起飞异常\仿真数据_起飞异常 2020-12-05 09-34-02']};
-TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\20201223\仿真数据_3 全流程 2020-12-23 12-53-11']};
-TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\20201228\仿真数据_104号摔机']};
+TestCase.FlightLog.filename = {[GLOBAL_PARAM.project.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210411 航迹对比\仿真数据_航迹对比 2021-04-11 18-45-55']};
 SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 tspan = SimDataSet.tspan{1};
 IN_SENSOR = SimDataSet.IN_SENSOR(1);

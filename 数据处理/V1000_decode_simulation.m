@@ -464,7 +464,7 @@ end
 % laserDown1
 disp('laserDown1未赋值')
 IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown1.range = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown1.range = IN_SENSOR.radar1.Range;%0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 
@@ -475,7 +475,7 @@ end
 % laserDown2
 disp('laserDown2未赋值')
 IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown2.range = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown2.range = IN_SENSOR.radar1.Range;%0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 

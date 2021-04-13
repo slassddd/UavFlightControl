@@ -39,6 +39,13 @@ index_1615=find(mod(Count,16)==15);
 %SYSTEM
 temp=reshape([data(:,251:254)'],1,[]);
 save_time=double(typecast(uint8(temp),'uint32')')*1e-3;
+if find(diff(save_time)==0) % 检测是否出现连续两帧存储的时间相同
+    % 如果相同，则将后一时间加上一个很小的值保证时间严格单调，避免插值操作报错
+    idxsame = find(diff(save_time)==0);
+    for i = 1:numel(idxsame)
+        save_time(idxsame(i)+1) = save_time(idxsame(i)+1) + 1e-6;
+    end
+end
 temp=reshape([data(index_40,255:256)'],1,[]);
 FC_VERSION=typecast(uint8(temp),'uint16');
 

@@ -1,8 +1,15 @@
 function [FileNames,isSuccess] = selFileToDecode(type)
 global GLOBAL_PARAM
 isSuccess = true;
-if GLOBAL_PARAM.dirDataFileForDecode~=0
-    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\\*.',type],'MultiSelect','on'); %
+dirMat = '读取路径.mat';
+try 
+    temp = load(dirMat);
+    readdir = temp.readdir;
+catch
+    readdir = [];
+end
+if readdir~=0
+    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([readdir,'\\*.',type],'MultiSelect','on'); %
 else
     try
         curProj = currentProject;
@@ -33,6 +40,9 @@ if isfloat(FileNames) % strcmp(class(FileNames),'double')
         isSuccess = false;
         return;
     end
+else
+    readdir = GLOBAL_PARAM.dirDataFileForDecode;
+    save(dirMat,'readdir');
 end
 % if contains(GLOBAL_PARAM.dirDataFileForDecode,rootDir) % 数据文件夹在程序目录下
 %      subFoldName = strrep(GLOBAL_PARAM.dirDataFileForDecode,rootDir,'');
