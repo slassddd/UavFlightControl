@@ -14,8 +14,8 @@ switch baseMode
         SENSOR_INTEGRITY_PARAM_V1000.GroundStation.threshold_lostTime = 5;
         SENSOR_INTEGRITY_PARAM_V1000.Airspeed.threshold_lostTime = 3;
         SENSOR_INTEGRITY_PARAM_V1000.um482.threshold_lostTime = 15;
-        SENSOR_INTEGRITY_PARAM_V1000.laserDown.threshold_lostTime = 5;
-        SENSOR_INTEGRITY_PARAM_V1000.radarLong.threshold_lostTime = 5;
+        SENSOR_INTEGRITY_PARAM_V1000.laserDown.threshold_lostTime = 3;
+        SENSOR_INTEGRITY_PARAM_V1000.radarLong.threshold_lostTime = 3;
         SENSOR_INTEGRITY_PARAM_V1000.VIO.threshold_lostTime = 5;
 end
 % 信号质量降级报警阈值

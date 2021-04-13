@@ -161,13 +161,13 @@ end
 % V10 BMS
 try
     BMS.data = FlightLog_Original.BMS;
+    BMS.nBattery = 0;
     for i = 1:10
         BMS.current(:,i) = BMS.data.(['current',num2str(i)])/1e3;
         BMS.voltage(:,i) = BMS.data.(['voltage',num2str(i)])/1e3;
         BMS.temperature(:,i) = BMS.data.(['temperature',num2str(i)]);
-        if sum(BMS.current(:,i)) == 0
-            BMS.nBattery = i - 1;
-            break;
+        if sum(BMS.current(:,i)) ~= 0
+            BMS.nBattery = BMS.nBattery + 1;
         end
     end
     fig = figure('name','BMS');
