@@ -215,6 +215,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Rotor2Fix_ToGo_Rotor2Fix2Home2Land (315),
         Land_hasReachNearGround_Radar (316),
         Land_hasReachNearGround_GPS (317),
+        BatteryInfo_updateBatteryNum (318),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
