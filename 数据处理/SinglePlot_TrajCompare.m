@@ -27,73 +27,99 @@ fprintf('数据时间范围:nav [%.0f,%.0f]\n',tmin,tmax)
 idx0 = min(find(t_nav > timesel0));
 idxf = max(find(t_nav <= timeself));
 t_nav = t_nav(idx0:idxf);
-data_nav = [FlightLog_Original.Filter.algo_NAV_latd,FlightLog_Original.Filter.algo_NAV_lond,FlightLog_Original.Filter.algo_NAV_alt];
+data_nav = [FlightLog_Original.Filter.algo_NAV_latd,FlightLog_Original.Filter.algo_NAV_lond,FlightLog_Original.Filter.algo_NAV_alt,...
+    FlightLog_Original.Filter.algo_NAV_yawd,FlightLog_Original.Filter.algo_NAV_pitchd,FlightLog_Original.Filter.algo_NAV_rolld];
 data_nav = data_nav(idx0:idxf,:);
 plot3(data_nav(:,1),data_nav(:,2),data_nav(:,3),'marker',lineType);hold on;grid on;
 %
-if 1
-    % 手动载入后处理轨迹数据
-    poststep = 10;
-    postp.time = sbet(1:poststep:end,1) - sbet(1,1);
-    postp.lat = sbet(1:poststep:end,2);
-    postp.lon = sbet(1:poststep:end,3);
-    postp.alt = sbet(1:poststep:end,4);
-    postp.roll = sbet(1:poststep:end,5);
-    postp.pitch = sbet(1:poststep:end,6);
-    postp.heading = sbet(1:poststep:end,7);
-    postp.px = sbet(1:poststep:end,8);
-    postp.py = sbet(1:poststep:end,9);
-    postp.pz = sbet(1:poststep:end,10);
-    
-    postp.dtime = diff(postp.time);
-    % gps_time   latitude   longtitude    altitude    roll    pitch    heading    x velocity    y velocity    z velocity
-    % (seconds)  (degree)    (degree)       (m)     (degree) (degree)  (degree)     (m/s)         (m/s)          (m/s)
-    t_post = postp.time;tmin = t_post(1);tmax = t_post(end); % 载荷数据
-    fprintf('数据时间范围:payload [%.0f,%.0f]\n',tmin,tmax)
-    idx0 = min(find(t_post > timesel0));
-    idxf = max(find(t_post <= timeself));
-    t_post = t_post(idx0:idxf);
-    data_post = [postp.lat,postp.lon,postp.alt];
-    data_post = data_post(idx0:idxf,:);
-    % 时间对齐
-    [value_um482_max_lat,idx_um482_max_lat] = max(data_um482(:,1));
-    t_um482_max_lat = t_um482(idx_um482_max_lat);
-    [value_ublox_max_lat,idx_ublox_max_lat] = max(data_ublox(:,1));
-    t_ublox_max_lat = t_ublox(idx_ublox_max_lat);
-    [value_post_max_lat,idx_post_max_lat] = max(data_post(:,1));
-    t_post_max_lat = t_post(idx_post_max_lat);
-    fprintf('时间对齐: post时间应减 %.3f[sec]\n',t_post_max_lat-t_um482_max_lat);
-    t_post = t_post - (t_post_max_lat-t_um482_max_lat);
-    %
-    plot3(data_post(:,1),data_post(:,2),data_post(:,3),'marker',lineType);hold on;grid on;
-    legend('ublox','um482','nav','载荷');
-    %% 分项数据
-    % 时间间隔稳定性
-    figure;
-    dtime = diff(t_post);
-    plot(t_post(1:end-1),dtime,'.');
-    ylabel('dt(sec)')
-    % 位置对比
-    figure;
-    idx = 1;
-    subplot(3,1,idx)
-    plot(t_ublox,data_ublox(:,idx));hold on;grid on;
-    plot(t_um482,data_um482(:,idx));hold on;grid on;
-    plot(t_nav,data_nav(:,idx));hold on;grid on;
-    plot(t_post,data_post(:,idx));hold on;grid on;
-    legend('ublox','um482','nav','载荷');
-    idx = 2;
-    subplot(3,1,idx)
-    plot(t_ublox,data_ublox(:,idx));hold on;grid on;
-    plot(t_um482,data_um482(:,idx));hold on;grid on;
-    plot(t_nav,data_nav(:,idx));hold on;grid on;
-    plot(t_post,data_post(:,idx));hold on;grid on;
-    legend('ublox','um482','nav','载荷');
-    idx = 3;
-    subplot(3,1,idx)
-    plot(t_ublox,data_ublox(:,idx));hold on;grid on;
-    plot(t_um482,data_um482(:,idx));hold on;grid on;
-    plot(t_nav,data_nav(:,idx));hold on;grid on;
-    plot(t_post,data_post(:,idx));hold on;grid on;
-    legend('ublox','um482','nav','载荷');
+if 0
+    % 载入、处理sbet数据
+    sbet0 = importfile_sbet('D:\work\V1000_firmware\SubFolder_飞行数据\V10 数据\20210411 航迹对比\sbet0.txt');
+    rtkdata{1} = sbet0;
+    nRtkData = numel(rtkdata);
+end
+if exist('rtkdata')
+    for idx = 1:nRtkData
+        % 手动载入后处理轨迹数据
+        poststep = 10;
+        postp.time = rtkdata{idx}(1:poststep:end,1) - rtkdata{idx}(1,1);
+        postp.lat = rtkdata{idx}(1:poststep:end,2);
+        postp.lon = rtkdata{idx}(1:poststep:end,3);
+        postp.alt = rtkdata{idx}(1:poststep:end,4);
+        postp.roll = rtkdata{idx}(1:poststep:end,5);
+        postp.pitch = rtkdata{idx}(1:poststep:end,6);
+        postp.heading = rtkdata{idx}(1:poststep:end,7);
+        postp.px = rtkdata{idx}(1:poststep:end,8);
+        postp.py = rtkdata{idx}(1:poststep:end,9);
+        postp.pz = rtkdata{idx}(1:poststep:end,10);
+        
+        postp.dtime = diff(postp.time);
+        % gps_time   latitude   longtitude    altitude    roll    pitch    heading    x velocity    y velocity    z velocity
+        % (seconds)  (degree)    (degree)       (m)     (degree) (degree)  (degree)     (m/s)         (m/s)          (m/s)
+        t_post = postp.time;tmin = t_post(1);tmax = t_post(end); % 载荷数据
+        fprintf('数据时间范围:payload [%.0f,%.0f]\n',tmin,tmax)
+        idx0 = min(find(t_post > timesel0));
+        idxf = max(find(t_post <= timeself));
+        t_post = t_post(idx0:idxf);
+        data_post = [postp.lat,postp.lon,postp.alt,postp.heading,postp.pitch,postp.roll];
+        data_post = data_post(idx0:idxf,:);
+        % 时间对齐
+        [value_um482_max_lat,idx_um482_max_lat] = max(data_um482(:,1));
+        t_um482_max_lat = t_um482(idx_um482_max_lat);
+        [value_ublox_max_lat,idx_ublox_max_lat] = max(data_ublox(:,1));
+        t_ublox_max_lat = t_ublox(idx_ublox_max_lat);
+        [value_post_max_lat,idx_post_max_lat] = max(data_post(:,1));
+        t_post_max_lat = t_post(idx_post_max_lat);
+        fprintf('时间对齐: post时间应减 %.3f[sec]\n',t_post_max_lat-t_um482_max_lat);
+        t_post = t_post - (t_post_max_lat-t_um482_max_lat);
+        %
+        plot3(data_post(:,1),data_post(:,2),data_post(:,3),'marker',lineType);hold on;grid on;
+        legend('ublox','um482','nav','载荷');
+        %% 分项数据
+        % 时间间隔稳定性
+        figure;
+        dtime = diff(t_post);
+        plot(t_post(1:end-1),dtime,'.');
+        ylabel('dt(sec)')
+        % 位置对比
+        figure;
+        idx = 1;
+        subplot(3,1,idx)
+        plot(t_ublox,data_ublox(:,idx));hold on;grid on;
+        plot(t_um482,data_um482(:,idx));hold on;grid on;
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;
+        legend('ublox','um482','nav','载荷');
+        idx = 2;
+        subplot(3,1,idx)
+        plot(t_ublox,data_ublox(:,idx));hold on;grid on;
+        plot(t_um482,data_um482(:,idx));hold on;grid on;
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;
+        legend('ublox','um482','nav','载荷');
+        idx = 3;
+        subplot(3,1,idx)
+        plot(t_ublox,data_ublox(:,idx));hold on;grid on;
+        plot(t_um482,data_um482(:,idx));hold on;grid on;
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;
+        legend('ublox','um482','nav','载荷');
+        % 姿态对比
+        figure;
+        idx = 4;
+        subplot(3,1,idx-3)
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;
+        legend('nav','载荷');
+        idx = 5;
+        subplot(3,1,idx-3)
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;   
+        legend('nav','载荷');
+        idx = 6;
+        subplot(3,1,idx-3)
+        plot(t_nav,data_nav(:,idx));hold on;grid on;
+        plot(t_post,data_post(:,idx));hold on;grid on;
+        legend('nav','载荷');            
+    end
 end
