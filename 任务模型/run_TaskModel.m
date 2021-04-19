@@ -25,14 +25,30 @@ if 0
     [SimParam.SystemInfo.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式
     if strcmp( SimParam.SystemInfo.taskMode, '飞行数据回放')
         proj = matlab.project.rootProject;
-%         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+        %         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210419\航线数据_地面仿真 变高巡线 2021-04-19 14-38-16.mat']);
         PathData.PathData(1).x = PathData.PathData(2).x + 500/111e3; % 重置home点位置
         PathData.PathData(1).y = PathData.PathData(2).y + 500/111e3;
         %     PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\V1000 客户飞行数据\20210307 起飞80m悬停翻了\航线数据_2021-03-07 10-37-22']);
-        SimParam.GroundStation(i).mavlinkPathPoints = PathData.PathData;
-        SimParam.GroundStation(i).mavlinkHome(1) = PathData.PathData(1).x;
-        SimParam.GroundStation(i).mavlinkHome(2) = PathData.PathData(2).y;
+        SimParam.GroundStation(1).mavlinkPathPoints = PathData.PathData;
+        SimParam.GroundStation(1).mavlinkHome(1) = PathData.PathData(1).x;
+        SimParam.GroundStation(1).mavlinkHome(2) = PathData.PathData(2).y;
+        %         SimParam.GroundStation(1).XYGraph_lat_min =
+    end
+end
+%%
+SimParam.GroundStation(1).XYGraph_lat_min = inf;
+SimParam.GroundStation(1).XYGraph_lat_max = -inf;
+SimParam.GroundStation(1).XYGraph_lon_min = inf;
+SimParam.GroundStation(1).XYGraph_lon_max = -inf;
+for i = 1:length(SimParam.GroundStation(1).mavlinkPathPoints)
+    thisLat = SimParam.GroundStation(1).mavlinkPathPoints(i).x;
+    thisLon = SimParam.GroundStation(1).mavlinkPathPoints(i).y;
+    if thisLat ~= TASK_PARAM_V1000.nanFlag
+        SimParam.GroundStation(1).XYGraph_lat_min = min(thisLat,SimParam.GroundStation(1).XYGraph_lat_min) - 300/111e3;
+        SimParam.GroundStation(1).XYGraph_lat_max = max(thisLat,SimParam.GroundStation(1).XYGraph_lat_max) + 300/111e3;
+        SimParam.GroundStation(1).XYGraph_lon_min = min(thisLon,SimParam.GroundStation(1).XYGraph_lon_min) - 300/111e3;
+        SimParam.GroundStation(1).XYGraph_lon_max = max(thisLon,SimParam.GroundStation(1).XYGraph_lon_max) + 300/111e3;
     end
 end
 %% 运行model

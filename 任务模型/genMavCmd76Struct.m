@@ -7,6 +7,8 @@ GSParam.MavLinkInfo.DefaultCmdInfo.num_AirStandBy = 28;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_Continue = 29;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_SwitchAltitude = 36;
 GSParam.MavLinkInfo.CustomCmdInfo.num_Fix2Rotor = 38; %
+GSParam.MavLinkInfo.DefaultCmdInfo.num_EnterPoint = 51; %
+GSParam.MavLinkInfo.DefaultCmdInfo.num_ExitPoint = 52; %
 GSParam.MavLinkInfo.DefaultCmdInfo.num_LandStart = 189;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_CamTriggDist = 206;
 GSParam.MavLinkInfo.DefaultCmdInfo.num_AdjustPauseHeight = 301;
@@ -33,6 +35,12 @@ GroundStationParam.CMD_TakeOff.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_
 GroundStationParam.CMD_SwitchAltitude = STRUCT_mavlink_msg_id_command_long;
 GroundStationParam.CMD_SwitchAltitude.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_SwitchAltitude; %
 GroundStationParam.CMD_SwitchAltitude.param1 = 50;
+
+GroundStationParam.CMD_EnterPoint = STRUCT_mavlink_msg_id_command_long;
+GroundStationParam.CMD_EnterPoint.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_EnterPoint; % 
+GroundStationParam.CMD_ExitPoint = STRUCT_mavlink_msg_id_command_long;
+GroundStationParam.CMD_ExitPoint.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_ExitPoint; % 
+
 GroundStationParam.CMD_LandStart = STRUCT_mavlink_msg_id_command_long;
 GroundStationParam.CMD_LandStart.param1 = 1;
 GroundStationParam.CMD_LandStart.command = GSParam.MavLinkInfo.DefaultCmdInfo.num_LandStart; % 
