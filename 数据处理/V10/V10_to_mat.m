@@ -1,4 +1,4 @@
-% clear,clc
+clear,clc
 setGlobalParams();
 if 0
     GLOBAL_PARAM.dirDataFileForDecode = 'D:\work\V1000_firmware\数据处理\V10\';

@@ -41,7 +41,7 @@ switch plotmode
         for i = 1:maxPathNum
             curlat = mavlinkPathData(i).x;
             curlon = mavlinkPathData(i).y;
-            if curlat ~= nanFlag
+            if curlat ~= nanFlag && ~isnan(curlat)
                 plot(curlon,curlat,'ro');hold on;
                 if mavlinkPathData(i+1).x ~= nanFlag && i > 1
                     nextlat = mavlinkPathData(i+1).x;
@@ -71,7 +71,7 @@ switch plotmode
             curlat = mavlinkPathData(i).x;
             curlon = mavlinkPathData(i).y;
             curheight = mavlinkPathData(i).z;
-            if curlat ~= nanFlag
+            if curlat ~= nanFlag && ~isnan(curlat)
                 plot3(curlon,curlat,curheight,'ro');hold on;
                 if mavlinkPathData(i+1).x ~= nanFlag && i > 1
                     nextlat = mavlinkPathData(i+1).x;

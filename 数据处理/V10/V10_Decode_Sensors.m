@@ -1,70 +1,107 @@
 function IN_SENSOR = V10_Decode_Sensors(V10Log)
+timeScale = 1e4;
 %% 传感器数据构造
-IN_SENSOR.time = V10Log.IMU1.TimeUS/1e6;
+IN_SENSOR.time = V10Log.IMU1.TimeUS/timeScale;
 %% IMU1
-IN_SENSOR.IMU1.time = V10Log.IMU1.TimeUS/1e6;
-IN_SENSOR.IMU1.accel_x = V10Log.IMU1.ax;
-IN_SENSOR.IMU1.accel_y = V10Log.IMU1.ay;
-IN_SENSOR.IMU1.accel_z = V10Log.IMU1.az;
-IN_SENSOR.IMU1.gyro_x = V10Log.IMU1.gx;
-IN_SENSOR.IMU1.gyro_y = V10Log.IMU1.gy;
-IN_SENSOR.IMU1.gyro_z = V10Log.IMU1.gz;
-IN_SENSOR.IMU1.nChange = zeros(size(IN_SENSOR.IMU1.accel_x));
-if sum(IN_SENSOR.IMU1.nChange) == 0
-    disp('[IMU1] nChange 没有正常赋值');
+try
+    childName = 'IMU1';
+    IN_SENSOR.(childName).time = V10Log.(childName).TimeUS/timeScale;
+    IN_SENSOR.(childName).accel_x = V10Log.(childName).ax;
+    IN_SENSOR.(childName).accel_y = V10Log.(childName).ay;
+    IN_SENSOR.(childName).accel_z = V10Log.(childName).az;
+    IN_SENSOR.(childName).gyro_x = V10Log.(childName).gx;
+    IN_SENSOR.(childName).gyro_y = V10Log.(childName).gy;
+    IN_SENSOR.(childName).gyro_z = V10Log.(childName).gz;
+    IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));
+    if sum(IN_SENSOR.(childName).nChange) == 0
+        fprintf('[%s] nChange 没有正常赋值\n',childName);
+    end
+catch
+    try
+        V10Log.(childName)
+    catch
+        fprintf('当前协议中没有 %s 的解析信息\n',childName)
+    end
 end
 %% IMU2
-IN_SENSOR.IMU2.time = V10Log.IMU2.TimeUS/1e6;
-IN_SENSOR.IMU2.accel_x = V10Log.IMU2.ax;
-IN_SENSOR.IMU2.accel_y = V10Log.IMU2.ay;
-IN_SENSOR.IMU2.accel_z = V10Log.IMU2.az;
-IN_SENSOR.IMU2.gyro_x = V10Log.IMU2.gx;
-IN_SENSOR.IMU2.gyro_y = V10Log.IMU2.gy;
-IN_SENSOR.IMU2.gyro_z = V10Log.IMU2.gz;
-IN_SENSOR.IMU2.nChange = zeros(size(IN_SENSOR.IMU2.accel_x));
-if sum(IN_SENSOR.IMU2.nChange) == 0
-    disp('[IMU2] nChange 没有正常赋值');
+try
+    childName = 'IMU2';
+    IN_SENSOR.(childName).time = V10Log.(childName).TimeUS/timeScale;
+    IN_SENSOR.(childName).accel_x = V10Log.(childName).ax;
+    IN_SENSOR.(childName).accel_y = V10Log.(childName).ay;
+    IN_SENSOR.(childName).accel_z = V10Log.(childName).az;
+    IN_SENSOR.(childName).gyro_x = V10Log.(childName).gx;
+    IN_SENSOR.(childName).gyro_y = V10Log.(childName).gy;
+    IN_SENSOR.(childName).gyro_z = V10Log.(childName).gz;
+    IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));
+    if sum(IN_SENSOR.(childName).nChange) == 0
+        fprintf('[%s] nChange 没有正常赋值\n',childName);
+    end
+catch
+    try
+        V10Log.(childName)
+    catch
+        fprintf('当前协议中没有 %s 的解析信息\n',childName)
+    end
 end
 %% IMU3
-IN_SENSOR.IMU3.time = V10Log.IMU3.TimeUS/1e6;
-IN_SENSOR.IMU3.accel_x = V10Log.IMU3.ax;
-IN_SENSOR.IMU3.accel_y = V10Log.IMU3.ay;
-IN_SENSOR.IMU3.accel_z = V10Log.IMU3.az;
-IN_SENSOR.IMU3.gyro_x = V10Log.IMU3.gx;
-IN_SENSOR.IMU3.gyro_y = V10Log.IMU3.gy;
-IN_SENSOR.IMU3.gyro_z = V10Log.IMU3.gz;
-IN_SENSOR.IMU3.nChange = zeros(size(IN_SENSOR.IMU3.accel_x));
-if sum(IN_SENSOR.IMU3.nChange) == 0
-    disp('[IMU3] nChange 没有正常赋值');
+try
+    childName = 'IMU3';
+    IN_SENSOR.(childName).time = V10Log.(childName).TimeUS/timeScale;
+    IN_SENSOR.(childName).accel_x = V10Log.(childName).ax;
+    IN_SENSOR.(childName).accel_y = V10Log.(childName).ay;
+    IN_SENSOR.(childName).accel_z = V10Log.(childName).az;
+    IN_SENSOR.(childName).gyro_x = V10Log.(childName).gx;
+    IN_SENSOR.(childName).gyro_y = V10Log.(childName).gy;
+    IN_SENSOR.(childName).gyro_z = V10Log.(childName).gz;
+    IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));
+    if sum(IN_SENSOR.(childName).nChange) == 0
+        fprintf('[%s] nChange 没有正常赋值\n',childName);
+    end
+catch
+    try
+        V10Log.(childName)
+    catch
+        fprintf('当前协议中没有 %s 的解析信息\n',childName)
+    end
 end
 %% IMU4
-IN_SENSOR.IMU4.time = V10Log.IMU4.TimeUS/1e6;
-IN_SENSOR.IMU4.accel_x = V10Log.IMU4.ax;
-IN_SENSOR.IMU4.accel_y = V10Log.IMU4.ay;
-IN_SENSOR.IMU4.accel_z = V10Log.IMU4.az;
-IN_SENSOR.IMU4.gyro_x = V10Log.IMU4.gx;
-IN_SENSOR.IMU4.gyro_y = V10Log.IMU4.gy;
-IN_SENSOR.IMU4.gyro_z = V10Log.IMU4.gz;
-IN_SENSOR.IMU4.nChange = zeros(size(IN_SENSOR.IMU4.accel_x));
-if sum(IN_SENSOR.IMU4.nChange) == 0
-    disp('[IMU4] nChange 没有正常赋值');
+try
+    childName = 'IMU4';
+    IN_SENSOR.(childName).time = V10Log.(childName).TimeUS/timeScale;
+    IN_SENSOR.(childName).accel_x = V10Log.(childName).ax;
+    IN_SENSOR.(childName).accel_y = V10Log.(childName).ay;
+    IN_SENSOR.(childName).accel_z = V10Log.(childName).az;
+    IN_SENSOR.(childName).gyro_x = V10Log.(childName).gx;
+    IN_SENSOR.(childName).gyro_y = V10Log.(childName).gy;
+    IN_SENSOR.(childName).gyro_z = V10Log.(childName).gz;
+    IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));
+    if sum(IN_SENSOR.(childName).nChange) == 0
+        fprintf('[%s] nChange 没有正常赋值\n',childName);
+    end
+catch
+    try
+        V10Log.(childName)
+    catch
+        fprintf('当前协议中没有 %s 的解析信息\n',childName)
+    end
 end
 %% Baro1
-IN_SENSOR.baro1.time = V10Log.BAR1.TimeUS/1e6;
+IN_SENSOR.baro1.time = V10Log.BAR1.TimeUS/timeScale;
 IN_SENSOR.baro1.alt_baro = V10Log.BAR1.altitude;
 IN_SENSOR.baro1.nChange = zeros(size(IN_SENSOR.baro1.alt_baro));
 if sum(IN_SENSOR.baro1.nChange) == 0
     disp('[baro1] nChange 没有正常赋值');
 end
 %% Baro2
-IN_SENSOR.baro2.time = V10Log.BAR2.TimeUS/1e6;
+IN_SENSOR.baro2.time = V10Log.BAR2.TimeUS/timeScale;
 IN_SENSOR.baro2.alt_baro = 0*V10Log.BAR2.altitude;
 IN_SENSOR.baro2.nChange = zeros(size(IN_SENSOR.baro2.alt_baro));
 if sum(IN_SENSOR.baro2.nChange) == 0
     disp('[baro2] nChange 没有正常赋值');
 end
 %% Mag1
-IN_SENSOR.mag1.time = V10Log.MAG1.TimeUS/1e6;
+IN_SENSOR.mag1.time = V10Log.MAG1.TimeUS/timeScale;
 IN_SENSOR.mag1.mag_x = V10Log.MAG1.cali_data_x;
 IN_SENSOR.mag1.mag_y = V10Log.MAG1.cali_data_y;
 IN_SENSOR.mag1.mag_z = V10Log.MAG1.cali_data_z;
@@ -74,7 +111,7 @@ if sum(IN_SENSOR.mag1.nChange) == 0
 end
 %% Mag2
 if hasThisChild(V10Log,'MAG2')
-    IN_SENSOR.mag2.time = V10Log.MAG2.TimeUS/1e6;
+    IN_SENSOR.mag2.time = V10Log.MAG2.TimeUS/timeScale;
     IN_SENSOR.mag2.mag_x = V10Log.MAG2.cali_data_x;
     IN_SENSOR.mag2.mag_y = V10Log.MAG2.cali_data_y;
     IN_SENSOR.mag2.mag_z = V10Log.MAG2.cali_data_z;
@@ -86,7 +123,7 @@ if sum(IN_SENSOR.mag2.nChange) == 0
     disp('[mag2] nChange 没有正常赋值');
 end
 %% Radar
-IN_SENSOR.radar1.time = V10Log.NRA.TimeUS/1e6;
+IN_SENSOR.radar1.time = V10Log.NRA.TimeUS/timeScale;
 IN_SENSOR.radar1.SNR = V10Log.NRA.SNR;
 IN_SENSOR.radar1.Flag = V10Log.NRA.Flag;
 IN_SENSOR.radar1.Range = V10Log.NRA.Range;
@@ -95,7 +132,7 @@ if sum(IN_SENSOR.radar1.nChange) == 0
     disp('[radar1] nChange 没有正常赋值');
 end
 %% ublox1
-IN_SENSOR.ublox1.time = V10Log.UBX.TimeUS/1e6;
+IN_SENSOR.ublox1.time = V10Log.UBX.TimeUS/timeScale;
 IN_SENSOR.ublox1.velE = V10Log.UBX.velE;
 IN_SENSOR.ublox1.velN = V10Log.UBX.velN;
 IN_SENSOR.ublox1.velD = V10Log.UBX.velD;
@@ -115,7 +152,7 @@ end
 % IN_SENSOR.ublox1.headAcc = V10Log.UBX.headAcc;
 % IN_SENSOR.ublox1.sAcc = V10Log.UBX.sAcc;
 %% um482
-IN_SENSOR.um482.time = V10Log.GPS.TimeUS/1e6;
+IN_SENSOR.um482.time = V10Log.GPS.TimeUS/timeScale;
 IN_SENSOR.um482.Lon = V10Log.GPS.lon;
 IN_SENSOR.um482.Lat = V10Log.GPS.lat;
 IN_SENSOR.um482.height = V10Log.GPS.height;
@@ -133,7 +170,7 @@ if sum(IN_SENSOR.um482.nChange) == 0
     disp('[um482] nChange 没有正常赋值');
 end
 %% airspeed1
-IN_SENSOR.airspeed1.time = V10Log.ARP1.TimeUS/1e6;
+IN_SENSOR.airspeed1.time = V10Log.ARP1.TimeUS/timeScale;
 IN_SENSOR.airspeed1.airspeed = V10Log.ARP1.indicated_airspeed;
 IN_SENSOR.airspeed1.airspeed_indicate = V10Log.ARP1.indicated_airspeed;
 IN_SENSOR.airspeed1.airspeed_true = V10Log.ARP1.true_airspeed;
@@ -150,7 +187,7 @@ if sum(IN_SENSOR.airspeed1.nChange) == 0
 end
 %% airspeed2
 if hasThisChild(V10Log,'ARP2')
-    IN_SENSOR.airspeed2.time = V10Log.ARP2.TimeUS/1e6;
+    IN_SENSOR.airspeed2.time = V10Log.ARP2.TimeUS/timeScale;
     IN_SENSOR.airspeed2.airspeed = V10Log.ARP2.indicated_airspeed;
     IN_SENSOR.airspeed2.airspeed_indicate = V10Log.ARP2.indicated_airspeed;
     IN_SENSOR.airspeed2.airspeed_true = V10Log.ARP2.true_airspeed;

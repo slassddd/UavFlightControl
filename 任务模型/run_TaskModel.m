@@ -25,7 +25,10 @@ if 0
     [SimParam.SystemInfo.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式
     if strcmp( SimParam.SystemInfo.taskMode, '飞行数据回放')
         proj = matlab.project.rootProject;
-        PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+%         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\20210325\航线数据_1 全流程 2021-03-25 13-37-25.mat']);
+        PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210419\航线数据_地面仿真 变高巡线 2021-04-19 14-38-16.mat']);
+        PathData.PathData(1).x = PathData.PathData(2).x + 500/111e3; % 重置home点位置
+        PathData.PathData(1).y = PathData.PathData(2).y + 500/111e3;
         %     PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\V1000 客户飞行数据\20210307 起飞80m悬停翻了\航线数据_2021-03-07 10-37-22']);
         SimParam.GroundStation(i).mavlinkPathPoints = PathData.PathData;
         SimParam.GroundStation(i).mavlinkHome(1) = PathData.PathData(1).x;

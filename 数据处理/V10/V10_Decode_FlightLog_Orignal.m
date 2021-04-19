@@ -17,8 +17,9 @@ function FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log)
 %     disp(ME.message);
 %     disp('[EmbedInfo] 没有解析')
 % end
+timeScale = 1e4;
 %% SensorSelect
-FlightLog_Original.SensorSelect.time = V10Log.SensorSelect.TimeUS/1e6;
+FlightLog_Original.SensorSelect.time = V10Log.SensorSelect.TimeUS/timeScale;
 FlightLog_Original.SensorSelect.IMU = V10Log.SensorSelect.IMU; % create struct
 FlightLog_Original.SensorSelect.Mag = V10Log.SensorSelect.Mag; % create struct
 FlightLog_Original.SensorSelect.GPS = V10Log.SensorSelect.GPS; % create struct
@@ -27,7 +28,7 @@ FlightLog_Original.SensorSelect.Radar = V10Log.SensorSelect.Radar; % create stru
 FlightLog_Original.SensorSelect.Camera = V10Log.SensorSelect.Camera; % create struct
 FlightLog_Original.SensorSelect.Lidar = V10Log.SensorSelect.Lidar; % create struct
 %% SensorUpdateFlag
-FlightLog_Original.SensorUpdateFlag.time = V10Log.SensorUpdateFlag.TimeUS/1e6;
+FlightLog_Original.SensorUpdateFlag.time = V10Log.SensorUpdateFlag.TimeUS/timeScale;
 FlightLog_Original.SensorUpdateFlag.mag1 = V10Log.SensorUpdateFlag.mag1; % create struct
 FlightLog_Original.SensorUpdateFlag.mag2 = V10Log.SensorUpdateFlag.mag2; % create struct
 FlightLog_Original.SensorUpdateFlag.um482 = V10Log.SensorUpdateFlag.um482; % create struct
@@ -42,7 +43,7 @@ FlightLog_Original.SensorUpdateFlag.IMU4 = V10Log.SensorUpdateFlag.IMU4; % creat
 FlightLog_Original.SensorUpdateFlag.baro1 = V10Log.SensorUpdateFlag.baro1; % create struct
 FlightLog_Original.SensorUpdateFlag.baro2 = V10Log.SensorUpdateFlag.baro2; % create struct
 %% SensorLosttime
-FlightLog_Original.SensorLosttime.time = V10Log.SensorLosttime.TimeUS/1e6;
+FlightLog_Original.SensorLosttime.time = V10Log.SensorLosttime.TimeUS/timeScale;
 FlightLog_Original.SensorLosttime.mag1 = V10Log.SensorLosttime.mag1; % create struct
 FlightLog_Original.SensorLosttime.mag2 = V10Log.SensorLosttime.mag2; % create struct
 FlightLog_Original.SensorLosttime.um482 = V10Log.SensorLosttime.um482; % create struct
@@ -74,7 +75,7 @@ try
         FlightLog_Original.SensorStatus.SystemHealthStatus = zeros(size(FlightLog_Original.SensorStatus.baro1));
         fprintf('[SensorStatus] SystemHealthStatus 赋值错误\n')
     end
-    FlightLog_Original.SensorStatus.time = V10Log.SensorStatus.TimeUS/1e6;
+    FlightLog_Original.SensorStatus.time = V10Log.SensorStatus.TimeUS/timeScale;
 catch ME
     fprintf('[SensorStatus] ')
     disp(ME.message);
@@ -115,7 +116,7 @@ catch ME
 end
 %% Debug_Task_RTInfo
 try
-    FlightLog_Original.Debug_Task_RTInfo.time = V10Log.Debug_Task_RTInfo.TimeUS/1e6;
+    FlightLog_Original.Debug_Task_RTInfo.time = V10Log.Debug_Task_RTInfo.TimeUS/timeScale;
     FlightLog_Original.Debug_Task_RTInfo.Task = V10Log.Debug_Task_RTInfo.Task; % create struct
     FlightLog_Original.Debug_Task_RTInfo.Payload = V10Log.Debug_Task_RTInfo.Payload; % create struct
     FlightLog_Original.Debug_Task_RTInfo.GSCmd = V10Log.Debug_Task_RTInfo.GSCmd; % create struct
@@ -142,7 +143,7 @@ catch ME
     disp(ME.message);
 end
 %% OUT_TASKMODE
-FlightLog_Original.OUT_TASKMODE.time = V10Log.OUT_TASKMODE.TimeUS/1e6;
+FlightLog_Original.OUT_TASKMODE.time = V10Log.OUT_TASKMODE.TimeUS/timeScale;
 FlightLog_Original.OUT_TASKMODE.currentPointNum = V10Log.OUT_TASKMODE.currentPointNum;
 FlightLog_Original.OUT_TASKMODE.prePointNum = V10Log.OUT_TASKMODE.prePointNum;
 FlightLog_Original.OUT_TASKMODE.validPathNum = V10Log.OUT_TASKMODE.validPathNum;
@@ -183,7 +184,7 @@ FlightLog_Original.OUT_TASKMODE.curPathPoint_LLA2 = V10Log.OUT_TASKMODE.curPathP
 % FlightLog_Original.OUT_TASKMODE.LLATaskInterrupt2 = V10Log.OUT_TASKMODE.LLATaskInterrupt2;
 % FlightLog_Original.OUT_TASKMODE.airspeedCmd = V10Log.OUT_TASKMODE.airspeedCmd;
 %% OUT_TASKFLIGHTPARAM
-FlightLog_Original.OUT_TASKFLIGHTPARAM.time = V10Log.OUT_TASKFLIGHTPARAM.TimeUS/1e6;
+FlightLog_Original.OUT_TASKFLIGHTPARAM.time = V10Log.OUT_TASKFLIGHTPARAM.TimeUS/timeScale;
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA0 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,1); % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA1 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,2); % create struct
 FlightLog_Original.OUT_TASKFLIGHTPARAM.curHomeLLA2 = V10Log.OUT_TASKFLIGHTPARAM.curHomeLLA(:,3); % create struct
@@ -219,7 +220,7 @@ FlightLog_Original.OUT_TASKFLIGHTPARAM.curHeightForControl = V10Log.OUT_TASKFLIG
 % FlightLog_Original.OUT_TASKFLIGHTPARAM.uavModel = V10Log.OUT_TASKFLIGHTPARAM.uavModel;
 %% TASK_WindParam
 try
-    FlightLog_Original.TASK_WindParam.time = V10Log.Debug_WindParam.TimeUS/1e6;
+    FlightLog_Original.TASK_WindParam.time = V10Log.Debug_WindParam.TimeUS/timeScale;
     FlightLog_Original.TASK_WindParam.sailWindSpeed = V10Log.Debug_WindParam.sailWindSpeed; % create struct
     FlightLog_Original.TASK_WindParam.sailWindHeading = V10Log.Debug_WindParam.sailWindHeading; % create struct
     FlightLog_Original.TASK_WindParam.windSpeedMax = V10Log.Debug_WindParam.windSpeedMax; % create struct
@@ -240,7 +241,7 @@ catch ME
 end
 %% Engine
 try
-    FlightLog_Original.Engine.time = V10Log.PWMO.TimeUS/1e6;
+    FlightLog_Original.Engine.time = V10Log.PWMO.TimeUS/timeScale;
     FlightLog_Original.Engine.servo_out0 = V10Log.PWMO.pwm_servo(:,1); % create struct
     FlightLog_Original.Engine.servo_out1 = V10Log.PWMO.pwm_servo(:,2); % create struct
     FlightLog_Original.Engine.servo_out2 = V10Log.PWMO.pwm_servo(:,3); % create struct
@@ -252,7 +253,7 @@ catch ME
 end
 %%
 %% PowerConsume
-FlightLog_Original.PowerConsume.time = V10Log.PowerConsume.TimeUS/1e6;
+FlightLog_Original.PowerConsume.time = V10Log.PowerConsume.TimeUS/timeScale;
 FlightLog_Original.PowerConsume.AllTheTimeVoltage = V10Log.PowerConsume.AllTheTimeVoltage; % create struct
 FlightLog_Original.PowerConsume.AllTheTimeCurrent = V10Log.PowerConsume.AllTheTimeCurrent; % create struct
 FlightLog_Original.PowerConsume.AllTheTimePowerConsume = V10Log.PowerConsume.AllTheTimePowerConsume; % create struct
@@ -275,7 +276,7 @@ catch ME
 end
 %% GlobalWindEst
 try
-    FlightLog_Original.GlobalWindEst.time = V10Log.GlobalWindEst.TimeUS/1e6;
+    FlightLog_Original.GlobalWindEst.time = V10Log.GlobalWindEst.TimeUS/timeScale;
     FlightLog_Original.GlobalWindEst.oneCircleComplete = V10Log.GlobalWindEst.oneCircleComplete; % create struct
     FlightLog_Original.GlobalWindEst.windSpeed_ms = V10Log.GlobalWindEst.windSpeed_ms; % create struct
     FlightLog_Original.GlobalWindEst.windHeading_rad = V10Log.GlobalWindEst.windHeading_rad; % create struct
@@ -285,7 +286,7 @@ catch ME
 end
 %% Debug_TaskLogData
 try
-    FlightLog_Original.Debug_TaskLogData.time_sec = V10Log.Debug_TaskLogData.TimeUS/1e6; % create struct
+    FlightLog_Original.Debug_TaskLogData.time_sec = V10Log.Debug_TaskLogData.TimeUS/timeScale; % create struct
     FlightLog_Original.Debug_TaskLogData.blockName = V10Log.Debug_TaskLogData.blockName; % create struct
     FlightLog_Original.Debug_TaskLogData.idx = V10Log.Debug_TaskLogData.idx; % create struct
     FlightLog_Original.Debug_TaskLogData.message = V10Log.Debug_TaskLogData.message; % create struct
@@ -300,7 +301,7 @@ catch ME
 end
 %% OUT_FLIGHTPERF
 try
-    FlightLog_Original.OUT_FLIGHTPERF.time = V10Log.OUT_FLIGHTPERF.TimeUS/1e6; % create struct
+    FlightLog_Original.OUT_FLIGHTPERF.time = V10Log.OUT_FLIGHTPERF.TimeUS/timeScale; % create struct
     FlightLog_Original.OUT_FLIGHTPERF.isAbleToCompleteTask = V10Log.OUT_FLIGHTPERF.isAbleToCompleteTask; % create struct
     FlightLog_Original.OUT_FLIGHTPERF.flagGoHomeNow = V10Log.OUT_FLIGHTPERF.flagGoHomeNow; % create struct
     FlightLog_Original.OUT_FLIGHTPERF.remainDistToGo_m = V10Log.OUT_FLIGHTPERF.remainDistToGo_m; % create struct
@@ -326,7 +327,7 @@ catch ME
     disp(ME.message);
 end
 %% Filter
-FlightLog_Original.Filter.time = V10Log.OUT_NAVI2CONTROL.TimeUS/1e6;
+FlightLog_Original.Filter.time = V10Log.OUT_NAVI2CONTROL.TimeUS/timeScale;
 FlightLog_Original.Filter.algo_NAV_lond = V10Log.OUT_NAVI2CONTROL.lond;
 FlightLog_Original.Filter.algo_NAV_latd = V10Log.OUT_NAVI2CONTROL.latd;
 FlightLog_Original.Filter.algo_NAV_yawd = V10Log.OUT_NAVI2CONTROL.yawd;
