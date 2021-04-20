@@ -1,8 +1,13 @@
 function [FileNames,isSuccess] = selFileToDecode(type)
 global GLOBAL_PARAM
 isSuccess = true;
-dirMat = '读取路径.mat';
-try 
+switch type
+    case 'bin'
+        dirMat = [GLOBAL_PARAM.project.RootFolder{1},'\resources\savedata\','bin日志读取路径.mat'];
+    case 'mat'
+        dirMat = [GLOBAL_PARAM.project.RootFolder{1},'\resources\savedata\','mat日志读取路径.mat'];
+end
+try
     temp = load(dirMat);
     readdir = temp.readdir;
     if ~exist(readdir,'dir')
@@ -28,7 +33,7 @@ else
             end
         end
     end
-    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\*.',type],'MultiSelect','on'); %    
+    [tempFileNames,GLOBAL_PARAM.dirDataFileForDecode,~] = uigetfile([GLOBAL_PARAM.dirDataFileForDecode,'\*.',type],'MultiSelect','on'); %
 end
 if ischar(tempFileNames)
     % 选择单一文件时
