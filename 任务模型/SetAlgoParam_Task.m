@@ -106,7 +106,7 @@ TASK_PARAM_V10.cruiseSpeed_rotorMode = 5;
 TASK_PARAM_V10.cruiseSpeed_cruise = 20;
 TASK_PARAM_V10.remainingLife_LosePowerIn60sec = 10;
 TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.3;
-TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 0.5;
+TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 1;
 TASK_PARAM_V10.nBattery = 10;
 TASK_PARAM_V10.fenseDist = 53e3;
 TASK_PARAM_V10.enableSlideMode = false;
@@ -116,14 +116,6 @@ TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   -1 1;
                                   -1 1;
                                   -1 1;];
-% switch SimParam.SystemInfo.planeMode
-%     case {ENUM_plane_mode.V1000,ENUM_plane_mode.V10s}
-%     case ENUM_plane_mode.V10
-%         % V10 需修改的参数
-%         
-%     otherwise
-%         error('组合导航模块机型选择错误.')
-% end
 assert(TASK_PARAM_V10.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V10电池组数设置错误')
 assert(TASK_PARAM_V1000.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V1000电池组数设置错误')
 %%
