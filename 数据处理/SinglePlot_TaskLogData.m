@@ -33,6 +33,9 @@ matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput;
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
 TT = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+matchMessages = [...
+    ENUM_RTInfo_Task.PathFollow_PathPointInfo];
+T_taskLog_PathInfo = parserLogData(taskLogDataRes,'messagename',matchMessages);
 %
 FlightLog_SecondProc.TaskLog.T_taskLog_All = T_taskLog_All;
 FlightLog_SecondProc.TaskLog.T_taskLog_Protect = T_taskLog_Protect;

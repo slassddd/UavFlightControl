@@ -19,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 4;
+pathExmpale = 2;
 pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
 switch pathExmpale
     case 1
@@ -35,10 +35,10 @@ switch pathExmpale
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 单区航线
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 6;
+        UnitedPath(idxUnitedPath).nPoints = 16;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
         UnitedPath(idxUnitedPath).lon_right = 1.5e3;
-        UnitedPath(idxUnitedPath).lat_space = 250;
+        UnitedPath(idxUnitedPath).lat_space = 550;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
@@ -96,10 +96,10 @@ switch pathExmpale
 %         pathoffset = [45e3,2000]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
     case 4 % 电力巡线 —— 变高航线
         AeraAll = [
-            1000     0    200;
-            1000  1000    150;
-           -1000  1000    250;
-           -1000     0    230;
+            1000     0    250;
+            1000  1000    210;
+           -1000  1000    170;
+           -1000     0    130;
            -500      0    150];
         Path0 = [0,0,GSParam.PATH.pathHeight];
         GSParam.PATH.paths_m(1,:) = Path0;

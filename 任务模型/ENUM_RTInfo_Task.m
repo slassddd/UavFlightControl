@@ -217,6 +217,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Land_hasReachNearGround_GPS (317),
         BatteryInfo_updateBatteryNum (318),
         TaskLog_Mav_EnterPoint (319),
+        PathFollow_PathPointInfo (320),
+        Simulation_AddPathHeight (321),
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

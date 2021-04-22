@@ -6,17 +6,22 @@ for i_sim = 1:length(out)
     TaskLog_SimRes(1).var1 = out(i_sim).Task_logData1.var1.Data;
     %%
     TaskLog_All = parserLogData(TaskLog_SimRes)
-    matchMessages = ENUM_TaskLogBlockName.TASKLOG_Protect;
-    TaskLog_Protect = parserLogData(TaskLog_SimRes,matchMessages);
-    matchMessages = ENUM_TaskLogBlockName.TASKLOG_Payload;
-    TaskLog_Payload = parserLogData(TaskLog_SimRes,matchMessages);
-    matchMessages = [...
+    matchBlocks = ENUM_TaskLogBlockName.TASKLOG_Protect;
+    TaskLog_Protect = parserLogData(TaskLog_SimRes,matchBlocks);
+    matchBlocks = ENUM_TaskLogBlockName.TASKLOG_Payload;
+    TaskLog_Payload = parserLogData(TaskLog_SimRes,matchBlocks);
+    matchBlocks = [...
         ENUM_TaskLogBlockName.TASKLOG_ParserInput];
-    TaskLog_ParserInput = parserLogData(TaskLog_SimRes,matchMessages);
-    matchMessages = [...
+    TaskLog_ParserInput = parserLogData(TaskLog_SimRes,matchBlocks);
+    matchBlocks = [...
         ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-    TaskLog_MavCmd = parserLogData(TaskLog_SimRes,matchMessages);
-    matchMessages = [...
+    TaskLog_MavCmd = parserLogData(TaskLog_SimRes,matchBlocks);
+    matchBlocks = [...
         ENUM_TaskLogBlockName.TASKLOG_FlightMode];
-    TaskLog_FlightMode = parserLogData(TaskLog_SimRes,matchMessages);
+    TaskLog_FlightMode = parserLogData(TaskLog_SimRes,'BlockName',matchBlocks);
+    
+    matchMessages = [...
+        ENUM_RTInfo_Task.PathFollow_PathPointInfo];
+    T_taskLog_PathInfo = parserLogData(TaskLog_SimRes,'messagename',matchMessages);
+    [mavPathPoints,pathtype] = getPathInfo(T_taskLog_PathInfo);
 end

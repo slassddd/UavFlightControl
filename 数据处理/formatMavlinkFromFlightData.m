@@ -10,7 +10,7 @@
 %         if varTaskMode(i) ~= varTaskMode(i+1)
 %             timeTaskChange = [timeTaskChange timeTaskMode(i+1)];
 %             idxTaskChange = [idxTaskChange i+1];
-%         end         
+%         end
 %     end
 % end
 load('SubFolder_ICD\IOBusInfo_V1000')
@@ -19,8 +19,13 @@ STRUCT_mavlink_msg_id_command_long = Simulink.Bus.createMATLABStruct('mavlink_ms
 %% 航点 —— IN_MAVLINK.mavlink_mission_item_def
 % 从飞行log中解析航点
 maxPathNum = 500;
-[mavPathPoints,homeLLA] = getPathFromFlightData(FlightLog_Original.mavlink_mission_item_def);
-IN_MAVLINK.mavlink_mission_item_def = formatMavPath(STRUCT_mavlink_mission_item_def,mavPathPoints,maxPathNum);
+try
+    [mavPathPoints,pathtype] = getPathInfo(T_taskLog_PathInfo);
+    IN_MAVLINK.mavlink_mission_item_def = formatMavPath(STRUCT_mavlink_mission_item_def,mavPathPoints,maxPathNum,pathtype);
+catch
+    [mavPathPoints,homeLLA] = getPathFromFlightData(FlightLog_Original.mavlink_mission_item_def);
+    IN_MAVLINK.mavlink_mission_item_def = formatMavPath(STRUCT_mavlink_mission_item_def,mavPathPoints,maxPathNum);
+end
 %% 管家命令 —— IN_MAVLINK.mavlink_msg_id_command_long
 taskLogData1 = FlightLog_Original.Debug_TaskLogData;
 taskLogDataRes(1).time_sec = taskLogData1.time_sec;
@@ -69,7 +74,7 @@ if nargin == 3
     end
 end
 speed = 19;
- 
+
 for i = 1:maxPathNum
     STRUCT_mavlink_mission_item_def_ARRAY(i) = namePathStruct;
     if i <= num_point
