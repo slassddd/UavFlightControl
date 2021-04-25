@@ -19,8 +19,9 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 4;
+pathExmpale = 5;
 pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
+pathmode = '耕地';
 switch pathExmpale
     case 1
         GSParam.PATH.paths_m(1:9,:) = [...
@@ -96,7 +97,7 @@ switch pathExmpale
 %         pathoffset = [45e3,2000]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
     case 4 % 电力巡线 —— 变高航线
         AeraAll = [
-            1000     0    350;
+            1000     0    250;
             1000  1000    210;
            -1000  1000    270;
            -1000     0    130;
@@ -105,28 +106,36 @@ switch pathExmpale
         GSParam.PATH.paths_m(1,:) = Path0;
         tempNum = size(AeraAll,1);
         GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;
-        %     case 3
-        %         GSParam.PATH.paths_m(1:9,:) = [...
-        %             1*1e2,0*1e3,GSParam.PATH.pathHeight;
-        %             1*1e2,1*1e3,GSParam.PATH.pathHeight;
-        %             2*1e2,1*1e3,GSParam.PATH.pathHeight;
-        %             2*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             4*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             4*1e2,3*1e3,GSParam.PATH.pathHeight;
-        %             5*1e2,3*1e3,GSParam.PATH.pathHeight;
-        %             10*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             16*1e2,2*1e3,GSParam.PATH.pathHeight;];
-        %     case 4
-        %         GSParam.PATH.paths_m(1:9,:) = [...
-        %             0,0,GSParam.PATH.pathHeight;
-        %             -1500,1500,GSParam.PATH.pathHeight;
-        %             -1600,1600,GSParam.PATH.pathHeight;
-        %             2*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             4*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             4*1e2,3*1e3,GSParam.PATH.pathHeight;
-        %             5*1e2,3*1e3,GSParam.PATH.pathHeight;
-        %             10*1e2,2*1e3,GSParam.PATH.pathHeight;
-        %             16*1e2,2*1e3,GSParam.PATH.pathHeight;];
+    case 5 % 电力巡线 —— 变高航线
+        AeraAll = [
+            1000     0    200;
+            1000  1*300    200;
+            1000  2*300    200;
+            1000  3*300    200;
+            1000  4*300    200;
+            1000  5*300    200;
+            1000  6*300    200;
+            1000  7*300    200;
+            1000  8*300    200;
+            1000  9*300    200;
+            1000  10*300    200;
+            1000  11*300    200;
+            1000  12*300    200;
+            1000  13*300    200;
+            1000  14*300    200;
+            1000  15*300    200;
+            1000  16*300    200;
+            1000  17*300    200;
+            1000  18*300    200;
+            1000  19*300    200;
+            1000  20*300    200;
+            ];
+        AeraAll(:,3) = [0 0 30 60 90 120 90 60 30 0 50 100 150 150 100 50 0 50 100 50 100]';
+        Path0 = [0,0,GSParam.PATH.pathHeight];
+        GSParam.PATH.paths_m(1,:) = Path0;
+        tempNum = size(AeraAll,1);
+        GSParam.PATH.paths_m(2:tempNum+1,:) = AeraAll;        
+        pathmode = '条带';
 end
 GSParam.PATH.paths_ddm = GSParam.PATH.paths_m;
 GSParam.PATH.paths_ddm(1,:) = GroundStationParam.mavlinkHome;
@@ -144,7 +153,11 @@ switch pathSimMode
     case 'sim'
         for i = 1:GSParam.PATH.maxNum
             GroundStationParam.mavlinkPathPoints(i) = STRUCT_mavlink_mission_item_def;
-            GroundStationParam.mavlinkPathPoints(i).param1 = rem(i,2);
+            if strcmp(pathmode, '耕地')
+                GroundStationParam.mavlinkPathPoints(i).param1 = rem(i,2);
+            else
+                GroundStationParam.mavlinkPathPoints(i).param1 = 1;
+            end
             GroundStationParam.mavlinkPathPoints(i).seq = i; % 鑸偣搴忓垪鍙凤紙0锛欻ome鐐癸級
             GroundStationParam.mavlinkPathPoints(i).autocontinue = 1; % 鎮仠鎷愬集:0, 鍗忚皟鎷愬集:1
             GroundStationParam.mavlinkPathPoints(i).param4 = GSParam.PATH.speed;
