@@ -1,6 +1,7 @@
 function T = parserLogData(logData,varargin)
 enableBlockSel = false;
 enableMessageSel = false;
+enableExcludeMessage = false;
 decimation = 1;
 for i = 1:length(varargin)/2
     switch lower(varargin{2*i-1})
@@ -12,6 +13,9 @@ for i = 1:length(varargin)/2
             enableMessageSel = true;
         case 'decimation'
             decimation = varargin{2*i};
+        case 'exclude'
+            enableExcludeMessage = true;
+            excludeMessage = varargin{2*i};
     end
 end
 
@@ -54,12 +58,25 @@ if enableBlockSel
     logDataAll.message = logDataAll.message(idxMatch);
     logDataAll.var1 = logDataAll.var1(idxMatch,:);
 end
+% 排除messageName
+if enableExcludeMessage
+    idxExclude = [];
+    for i = 1:length(excludeMessage)
+        idxExclude = [idxExclude;find(logDataAll.message == excludeMessage(i))];
+    end
+    logDataAll.time_sec(idxExclude) = [];
+    logDataAll.idx(idxExclude) = [];
+    logDataAll.blockName(idxExclude) = [];
+    logDataAll.message(idxExclude) = [];
+    logDataAll.var1(idxExclude,:) = [];
+end
 % 筛选messageName
 if enableMessageSel
     idxMatch = [];
     for i = 1:length(matchMessage)
         idxMatch = [idxMatch;find(logDataAll.message == matchMessage(i))];
     end
+    
     logDataAll.time_sec = logDataAll.time_sec(idxMatch);
     logDataAll.idx = logDataAll.idx(idxMatch);
     logDataAll.blockName = logDataAll.blockName(idxMatch);
@@ -108,18 +125,18 @@ for i = 1:length(timeUnique)
 end
 % 去掉重复项
 for i = length(logDataAll.time_sec):-1:2
-     if logDataAll.time_sec(i-1) == logDataAll.time_sec(i) && ...
-             logDataAll.idx(i-1) == logDataAll.idx(i) && ...
-             logDataAll.blockName(i-1) == logDataAll.blockName(i) && ...
-             logDataAll.message(i-1) == logDataAll.message(i) && ...
-             sum(logDataAll.var1(i-1,:)) == sum(logDataAll.var1(i,:))
-         logDataAll.time_sec(i) = [];
-         logDataAll.idx(i) = [];
-         logDataAll.blockName(i) = [];
-         logDataAll.message(i) = [];
-         logDataAll.var1(i,:) = [];
-         varname(i,:) = [];
-     end
+    if logDataAll.time_sec(i-1) == logDataAll.time_sec(i) && ...
+            logDataAll.idx(i-1) == logDataAll.idx(i) && ...
+            logDataAll.blockName(i-1) == logDataAll.blockName(i) && ...
+            logDataAll.message(i-1) == logDataAll.message(i) && ...
+            sum(logDataAll.var1(i-1,:)) == sum(logDataAll.var1(i,:))
+        logDataAll.time_sec(i) = [];
+        logDataAll.idx(i) = [];
+        logDataAll.blockName(i) = [];
+        logDataAll.message(i) = [];
+        logDataAll.var1(i,:) = [];
+        varname(i,:) = [];
+    end
 end
 % 建立Table
 if ~enableSetName

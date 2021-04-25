@@ -219,6 +219,12 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         TaskLog_Mav_EnterPoint (319),
         PathFollow_PathPointInfo (320),
         Simulation_AddPathHeight (321),
+        Payload_Camera_Shot (322),
+        Recive_CameraShotDist (323),
+        WarningInfo_AirspeedFault (324),
+        WarningInfo_ShotTimeIntervalSmall (325),
+        Info_returnFromInterestPoint (326),
+        
         
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),

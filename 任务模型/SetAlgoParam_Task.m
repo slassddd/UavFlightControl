@@ -87,7 +87,7 @@ TASK_PARAM_V1000.heightThr_CanAutoToRotor = 160; % 允许程序自动判定转�
 TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.1; % 接地时关闭动力延迟时间[sec]
 TASK_PARAM_V1000.maxNumBattery = 16; % 最大电池组数,所有机型保持一致
 TASK_PARAM_V1000.nBattery = 3; % 实际使用电池组数，不同机型可不同
-TASK_PARAM_V1000.VdLimit_FixLevel = 5; % 固定翼平飞下Vd的限制
+TASK_PARAM_V1000.VdLimit_FixLevel = 4; % 固定翼平飞下Vd的限制
 TASK_PARAM_V1000.enableSlideMode = true; % 使能盘旋下降模式中的滑行控制模式
 TASK_PARAM_V1000.coefBatteryLife = [1 1;
                                     2 1;
@@ -109,7 +109,9 @@ TASK_PARAM_V10.maxClimbSpeed_nearGround_TakeOffandLand = 1.3;
 TASK_PARAM_V10.delaySecOfTurnOffPower_Land = 1.5;
 TASK_PARAM_V10.nBattery = 10;
 TASK_PARAM_V10.fenseDist = 53e3;
+TASK_PARAM_V10.turnR = 60;
 TASK_PARAM_V10.enableSlideMode = false;
+TASK_PARAM_V10.VdLimit_FixLevel = 4.5;
 TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   8 1.24;
                                   10 1.43;

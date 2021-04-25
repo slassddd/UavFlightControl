@@ -15,27 +15,27 @@ taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message(idxValid));
 taskLogDataRes(1).var1 = [taskLogData1.var10(idxValid),taskLogData1.var11(idxValid),...
     taskLogData1.var12(idxValid),taskLogData1.var13(idxValid),taskLogData1.var14(idxValid)];
 %%
-T_taskLog_All = parserLogData(taskLogDataRes);
+T_taskLog_All = parserLogData(taskLogDataRes,'exclude',excludeMessages);
 matchBlock = ENUM_TaskLogBlockName.TASKLOG_Protect;
-T_taskLog_Protect = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+T_taskLog_Protect = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);
 matchBlock = ENUM_TaskLogBlockName.TASKLOG_Payload;
-T_taskLog_Payload = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+T_taskLog_Payload = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);
 matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput];
-T_taskLog_ParserInput = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+T_taskLog_ParserInput = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);
 matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
-T_taskLog_MavCmd = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+T_taskLog_MavCmd = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);
 matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_FlightMode];
-T_taskLog_FlightMode = parserLogData(taskLogDataRes,'BlockName',matchBlock);
+T_taskLog_FlightMode = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);
 matchBlock = [...
     ENUM_TaskLogBlockName.TASKLOG_ParserInput;
     ENUM_TaskLogBlockName.TASKLOG_ParserCmd];
 TT = parserLogData(taskLogDataRes,'BlockName',matchBlock);
 matchMessages = [...
     ENUM_RTInfo_Task.PathFollow_PathPointInfo];
-T_taskLog_PathInfo = parserLogData(taskLogDataRes,'messagename',matchMessages);
+T_taskLog_PathInfo = parserLogData(taskLogDataRes,'messagename',matchMessages,'exclude',excludeMessages);
 %
 FlightLog_SecondProc.TaskLog.T_taskLog_All = T_taskLog_All;
 FlightLog_SecondProc.TaskLog.T_taskLog_Protect = T_taskLog_Protect;

@@ -17,6 +17,7 @@ classdef ENUM_TaskLogBlockName < Simulink.IntEnumType
         TASKLOG_Protect_Fense (12),        
         TASKLOG_Protect (13),
         TASKLOG_System (14),
+        TASKLOG_Warning (15),
     end
 end
 
