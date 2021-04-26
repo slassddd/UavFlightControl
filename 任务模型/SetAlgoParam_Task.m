@@ -57,7 +57,7 @@ TASK_PARAM_V1000.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
 TASK_PARAM_V1000.logDataBufferSize = 32; % 数据记录buffer size
 TASK_PARAM_V1000.logDataOutSize = 3; % 数据记录output size
 TASK_PARAM_V1000.horiDist_verticalMove = 100; % 垂直运动模式参数：水平距离阈值
-TASK_PARAM_V1000.vertDist_verticalMove = 5; % 垂直运动模式参数：高度阈值
+TASK_PARAM_V1000.vertDist_verticalMove = 8; % 垂直运动模式参数：高度阈值
 TASK_PARAM_V1000.test_homeHeightOffsetAbs = 0; % 测试参数（该参数作用在嵌入式中，所以仿真中不生效）：在0号航点的高度上增加该值，模拟特点航线
 TASK_PARAM_V1000.isHoverDownToCenter = false; % 激活头顶切换旋翼
 TASK_PARAM_V1000.runSingleTaskMode = ENUM_FlightTaskMode(0); % 运行单任务模式
@@ -111,7 +111,7 @@ TASK_PARAM_V10.nBattery = 10;
 TASK_PARAM_V10.fenseDist = 53e3;
 TASK_PARAM_V10.turnR = 60;
 TASK_PARAM_V10.enableSlideMode = false;
-TASK_PARAM_V10.VdLimit_FixLevel = 4.5;
+TASK_PARAM_V10.VdLimit_FixLevel = 4;
 TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   8 1.24;
                                   10 1.43;

@@ -226,20 +226,19 @@ disp('[airspeed3] 结构体没有解析')
 % end
 %% laserDown1
 disp('[laserDown1] 结构体未解析')
-IN_SENSOR.laserDown1.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown1.range = -1*ones(size(IN_SENSOR.radar1.Range));
-IN_SENSOR.laserDown1.flag = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown1.time = V10Log.LASE.TimeUS/timeScale;
+IN_SENSOR.laserDown1.range = V10Log.LASE.laser1_distance;
+IN_SENSOR.laserDown1.flag = V10Log.LASE.laser1_valid;
 IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
-
 IN_SENSOR.laserDown1.nChange = zeros(size(IN_SENSOR.laserDown1.time));
 if sum(IN_SENSOR.laserDown1.nChange) == 0
     disp('[laserDown1] nChange 没有正常赋值');
 end
 %% laserDown2
 disp('[laserDown2] 结构体未解析')
-IN_SENSOR.laserDown2.time = IN_SENSOR.radar1.time;
-IN_SENSOR.laserDown2.range = -1*ones(size(IN_SENSOR.radar1.Range));
-IN_SENSOR.laserDown2.flag = 0*ones(size(IN_SENSOR.radar1.Range));
+IN_SENSOR.laserDown2.time = V10Log.LASE.TimeUS/timeScale;
+IN_SENSOR.laserDown2.range = V10Log.LASE.laser2_distance;
+IN_SENSOR.laserDown2.flag = V10Log.LASE.laser2_valid;
 IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
 IN_SENSOR.laserDown2.nChange = zeros(size(IN_SENSOR.laserDown2.time));
 if sum(IN_SENSOR.laserDown2.nChange) == 0

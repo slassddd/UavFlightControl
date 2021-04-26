@@ -1,10 +1,10 @@
 function V10Log = V10_decode_auto(logFile)
-% example: V10Log = V10_decode_auto('2021-04-19 11-46-19.bin-5869976.mat')
+% example: V10Log = V10_decode_auto('ÿÿÿÿ.bin-5181860.mat')
 % computer name: DESKTOP-QLU0EFU
-% generate date: 19-Apr-2021
+% generate date: 25-Apr-2021
 % Matlab version: 9.9.0.1467703 (R2020b)
 % protocol file: V10_v20210416_11.txt
-% data file: 2021-04-19 11-46-19.bin-5869976.mat
+% data file: ÿÿÿÿ.bin-5181860.mat
 % logFile: .mat log file
 load(logFile);
 %% ARP1
@@ -51,6 +51,38 @@ V10Log.MAG2.cali_data_z = MAG2(:,8);                             %   7. | Rz_c  
 V10Log.MAG2.I2C_MagRetryCount_1(:,1) = MAG2(:,9);                %   8. | err1     | I2C_MagRetryCount[1][0]        | [U8]  | [10:10]    | 
 V10Log.MAG2.I2C_MagRetryCount_1(:,2) = MAG2(:,10);               %   9. | err2     | I2C_MagRetryCount[1][1]        | [U8]  | [10:10]    | 
 V10Log.MAG2.Sum = MAG2(:,11);                                    %  10. | Sum      | Sum                            | [U8]  | [10:10]    | 
+%% MGC1
+V10Log.MGC1.TimeUS = MGC1(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
+V10Log.MGC1.A(:,1) = MGC1(:,3);                                  %   2. | A0       | A[0]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,2) = MGC1(:,4);                                  %   3. | A1       | A[1]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,3) = MGC1(:,5);                                  %   4. | A2       | A[2]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,4) = MGC1(:,6);                                  %   5. | A3       | A[3]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,5) = MGC1(:,7);                                  %   6. | A4       | A[4]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,6) = MGC1(:,8);                                  %   7. | A5       | A[5]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,7) = MGC1(:,9);                                  %   8. | A6       | A[6]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,8) = MGC1(:,10);                                 %   9. | A7       | A[7]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,9) = MGC1(:,11);                                 %  10. | A8       | A[8]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,1) = MGC1(:,12);                                 %  11. | B0       | B[0]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,2) = MGC1(:,13);                                 %  12. | B1       | B[1]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,3) = MGC1(:,14);                                 %  13. | B2       | B[2]                           | [F]   | [10:10]    | 
+V10Log.MGC1.K = MGC1(:,15);                                      %  14. | K        | K                              | [F]   | [10:10]    | 
+V10Log.MGC1.Sum = MGC1(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [10:10]    | 
+%% MGC2
+V10Log.MGC2.TimeUS = MGC2(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
+V10Log.MGC2.A(:,1) = MGC2(:,3);                                  %   2. | A0       | A[0]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,2) = MGC2(:,4);                                  %   3. | A1       | A[1]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,3) = MGC2(:,5);                                  %   4. | A2       | A[2]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,4) = MGC2(:,6);                                  %   5. | A3       | A[3]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,5) = MGC2(:,7);                                  %   6. | A4       | A[4]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,6) = MGC2(:,8);                                  %   7. | A5       | A[5]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,7) = MGC2(:,9);                                  %   8. | A6       | A[6]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,8) = MGC2(:,10);                                 %   9. | A7       | A[7]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,9) = MGC2(:,11);                                 %  10. | A8       | A[8]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,1) = MGC2(:,12);                                 %  11. | B0       | B[0]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,2) = MGC2(:,13);                                 %  12. | B1       | B[1]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,3) = MGC2(:,14);                                 %  13. | B2       | B[2]                           | [F]   | [10:10]    | 
+V10Log.MGC2.K = MGC2(:,15);                                      %  14. | K        | K                              | [F]   | [10:10]    | 
+V10Log.MGC2.Sum = MGC2(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [10:10]    | 
 %% BAR1
 V10Log.BAR1.TimeUS = BAR1(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
 V10Log.BAR1.ground_pressure = BAR1(:,3);                         %   2. | gP       | ground_pressure                | [F]   | [10:10]    | 
@@ -175,6 +207,20 @@ V10Log.UBXE.decode_crc_error_cnt = UBXE(:,4);                    %   3. | err2  
 V10Log.UBXE.decode_psrdop_cnt = UBXE(:,5);                       %   4. | err3     | decode_psrdop_cnt              | [U8]  | [100:100]  | 
 V10Log.UBXE.nak_error = UBXE(:,6);                               %   5. | err4     | nak_error                      | [U8]  | [100:100]  | 
 V10Log.UBXE.Sum = UBXE(:,7);                                     %   6. | Sum      | Sum                            | [U8]  | [100:100]  | 
+%% RCIN
+V10Log.RCIN.TimeUS = RCIN(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [7:7]      | 
+V10Log.RCIN.frame_lost_cnt = RCIN(:,3);                          %   2. | LCNT     | frame_lost_cnt                 | [U32] | [7:7]      | 
+V10Log.RCIN.channel_1_roll = RCIN(:,4);                          %   3. | C1       | channel_1_roll                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_2_pitch = RCIN(:,5);                         %   4. | C2       | channel_2_pitch                | [U16] | [7:7]      | 
+V10Log.RCIN.channel_3_throttle = RCIN(:,6);                      %   5. | C3       | channel_3_throttle             | [U16] | [7:7]      | 
+V10Log.RCIN.channel_4_yaw = RCIN(:,7);                           %   6. | C4       | channel_4_yaw                  | [U16] | [7:7]      | 
+V10Log.RCIN.channel_5_Auto = RCIN(:,8);                          %   7. | C5       | channel_5_Auto                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_6_tilt = RCIN(:,9);                          %   8. | C6       | channel_6_tilt                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_7_D = RCIN(:,10);                            %   9. | C7       | channel_7_D                    | [U16] | [7:7]      | 
+V10Log.RCIN.channel_8_C = RCIN(:,11);                            %  10. | C8       | channel_8_C                    | [U16] | [7:7]      | 
+V10Log.RCIN.channel_9_Lock = RCIN(:,12);                         %  11. | C9       | channel_9_Lock                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_F = RCIN(:,13);                              %  12. | C10      | channel_F                      | [U16] | [7:7]      | 
+V10Log.RCIN.Sum = RCIN(:,14);                                    %  13. | Sum      | Sum                            | [U8]  | [7:7]      | 
 %% PWMO
 V10Log.PWMO.TimeUS = PWMO(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
 V10Log.PWMO.start_count = PWMO(:,3);                             %   2. | SCT      | start_count                    | [U16] | [12:12]    | 
@@ -228,6 +274,14 @@ V10Log.ECS2.flag(:,3) = ECS2(:,13);                              %  12. | f3    
 V10Log.ECS2.flag(:,4) = ECS2(:,14);                              %  13. | f4       | flag[3]                        | [U8]  | [100:100]  | 
 V10Log.ECS2.flag(:,5) = ECS2(:,15);                              %  14. | f5       | flag[4]                        | [U8]  | [100:100]  | 
 V10Log.ECS2.Sum = ECS2(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:100]  | 
+%% LASE
+V10Log.LASE.TimeUS = LASE(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:100]  | 
+V10Log.LASE.laser1_valid = LASE(:,3);                            %   2. | l1_valid | laser1_valid                   | [U8]  | [100:100]  | 
+V10Log.LASE.laser1_distance = LASE(:,4);                         %   3. | l1_data  | laser1_distance                | [U16] | [100:100]  | 
+V10Log.LASE.laser2_valid = LASE(:,5);                            %   4. | l2_valid | laser2_valid                   | [U8]  | [100:100]  | 
+V10Log.LASE.laser2_distance = LASE(:,6);                         %   5. | l2_data  | laser2_distance                | [U16] | [100:100]  | 
+V10Log.LASE.laser_flag = LASE(:,7);                              %   6. | flag     | laser_flag                     | [U8]  | [100:100]  | 
+V10Log.LASE.Sum = LASE(:,8);                                     %   7. | Sum      | Sum                            | [U8]  | [100:100]  | 
 %% ALG0
 V10Log.ALG0.TimeUS = ALG0(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:96]   | 
 V10Log.ALG0.FC_Version = ALG0(:,3);                              %   2. | FcV      | FC_Version                     | [U16] | [100:96]   | 
