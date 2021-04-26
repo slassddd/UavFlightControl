@@ -111,7 +111,7 @@ TASK_PARAM_V10.nBattery = 10;
 TASK_PARAM_V10.fenseDist = 53e3;
 TASK_PARAM_V10.turnR = 60;
 TASK_PARAM_V10.enableSlideMode = false;
-TASK_PARAM_V10.VdLimit_FixLevel = 4;
+TASK_PARAM_V10.VdLimit_FixLevel = 3.7;
 TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   8 1.24;
                                   10 1.43;
