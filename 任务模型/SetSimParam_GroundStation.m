@@ -19,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 3;
+pathExmpale = 2;
 pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
 pathmode = '耕地';
 switch pathExmpale
@@ -35,11 +35,12 @@ switch pathExmpale
             3*1e3,0*1e3,GSParam.PATH.pathHeight;
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 单区航线
+        pathoffset = [-200,-15000]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 8;
+        UnitedPath(idxUnitedPath).nPoints = 8*20;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 2e3;
-        UnitedPath(idxUnitedPath).lat_space = 350;
+        UnitedPath(idxUnitedPath).lon_right = 20e3;
+        UnitedPath(idxUnitedPath).lat_space = 5;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
@@ -223,7 +224,22 @@ fprintf('%s%s0（1）号航点高度等于最高航点高度 (仿真模式下)\n
 % fprintf('%s%s航线离地高度: %d
 % [m]\n',GLOBAL_PARAM.Print.lineHead,GLOBAL_PARAM.Print.lineHead,GSParam.PATH.pathHeight);
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
-
+if 1
+    pathPlot = [...
+        [GroundStationParam.mavlinkPathPoints(1:nValidPath).x]',...
+        [GroundStationParam.mavlinkPathPoints(1:nValidPath).y]',...
+        [GroundStationParam.mavlinkPathPoints(1:nValidPath).z]'
+        ];
+    figure;
+    plot(pathPlot(:,2),pathPlot(:,1));hold on;
+    plot(pathPlot(2:end,2),pathPlot(2:end,1),'bo');hold on;
+    plot(pathPlot(1,2),pathPlot(1,1),'ro');hold on;
+    grid on;
+    xlabel('lon(deg)')
+    ylabel('lat(deg)')
+    axis equal
+    test = 1;
+end
 %% 子函数
 %
 function LocalPath = genLocalPath(UnitedPath)

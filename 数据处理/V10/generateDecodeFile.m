@@ -11,7 +11,7 @@ Param.autoDecodeFileType = 'function'; % script-脚本 function-函数
 Param.comment = true; % 是否将协议内容作为注释加入decode函数
 Param.commentStartPlace = 65; % 注释起始列
 % Param.autoFill = true; % 自动填充漏存的同名结构体成员变量
-Param.enableTryCatch = false; % 为每个结构体赋值前后增加try-catch
+Param.enableTryCatch = true; % 为每个结构体赋值前后增加try-catch
 Param.outputAllStruct = false; % 输出所有数据结构体
 for i = 1:length(varargin)/2
     switch lower(varargin{2*i-1})
