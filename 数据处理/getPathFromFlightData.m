@@ -22,6 +22,6 @@ for i = 1:nData
     end
 end
 if isempty(home)
-    disp('航点数据无效，全零');    
+    disp('航点0（home点）数据无效，全零');    
 end
 home = unique(home,'rows');

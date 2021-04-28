@@ -24,7 +24,9 @@ for i_sim = 1:length(out)
     matchMessages = [...
         ENUM_RTInfo_Task.PathFollow_PathPointInfo];
     T_taskLog_PathInfo = parserLogData(TaskLog_SimRes,'messagename',matchMessages,'exclude',excludeMessages);
+    if ~isempty(T_taskLog_PathInfo)
     [mavPathPoints,pathtype] = getPathInfo(T_taskLog_PathInfo);
+    end
     
     matchBlocks = [...
         ENUM_TaskLogBlockName.TASKLOG_Warning];

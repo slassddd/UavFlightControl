@@ -19,7 +19,7 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 4;
+pathExmpale = 3;
 pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
 pathmode = '耕地';
 switch pathExmpale
@@ -36,10 +36,10 @@ switch pathExmpale
             5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
     case 2 % 单区航线
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 4;
+        UnitedPath(idxUnitedPath).nPoints = 8;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 1.5e3;
-        UnitedPath(idxUnitedPath).lat_space = 150;
+        UnitedPath(idxUnitedPath).lon_right = 2e3;
+        UnitedPath(idxUnitedPath).lat_space = 350;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
@@ -65,7 +65,7 @@ switch pathExmpale
         PathAeras{idxUnitedPath} = [PathAeras{idxUnitedPath};PathAeras{idxUnitedPath}(end,1:2),height;PathAeras{idxUnitedPath}(end,1:2),height]; % 垂直方向的过渡航点, 为了方便设置航点类型，添加两个相同点
         
         idxUnitedPath = 2;
-        UnitedPath(idxUnitedPath).nPoints = 2;
+        UnitedPath(idxUnitedPath).nPoints = 4;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
         UnitedPath(idxUnitedPath).lon_right = 1.3e3;
         UnitedPath(idxUnitedPath).lat_space = 150;

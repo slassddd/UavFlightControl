@@ -21,12 +21,12 @@ end
 % 地面站指令(包括航线设置)
 SimParam.GroundStation = SetSimParam_GroundStation(TASK_PARAM_V1000);
 % 【仿真】or【数据回放】
-if 1
+if 0
     [SimParam.SystemInfo.taskMode, isCancel] = selectArchiSimMode();if isCancel,return;end    % 选择仿真模式
     if strcmp( SimParam.SystemInfo.taskMode, '飞行数据回放')
         proj = matlab.project.rootProject;
-%         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210425\航线数据_变高航线 异常返航 2021-04-25 18-33-50.mat']);
-        PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210425\航线数据_仿真 高度不对 2021-04-25 17-34-04.mat']);
+        PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210425\航线数据_变高航线 异常返航 2021-04-25 18-33-50.mat']);
+%         PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V10 数据\20210425\航线数据_仿真 高度不对 2021-04-25 17-34-04.mat']);
         PathData.PathData(1).x = PathData.PathData(2).x + 500/111e3; % 重置home点位置
         PathData.PathData(1).y = PathData.PathData(2).y + 500/111e3;
         %     PathData = load([proj.RootFolder{1},'\SubFolder_飞行数据\V1000 数据\V1000 客户飞行数据\20210307 起飞80m悬停翻了\航线数据_2021-03-07 10-37-22']);
@@ -49,13 +49,19 @@ SimParam.GroundStation(1).XYGraph_lon_max = -inf;
 for i = 1:length(SimParam.GroundStation(1).mavlinkPathPoints)
     thisLat = SimParam.GroundStation(1).mavlinkPathPoints(i).x;
     thisLon = SimParam.GroundStation(1).mavlinkPathPoints(i).y;
-    if thisLat ~= TASK_PARAM_V1000.nanFlag
-        SimParam.GroundStation(1).XYGraph_lat_min = min(thisLat,SimParam.GroundStation(1).XYGraph_lat_min) - 300/111e3;
-        SimParam.GroundStation(1).XYGraph_lat_max = max(thisLat,SimParam.GroundStation(1).XYGraph_lat_max) + 300/111e3;
-        SimParam.GroundStation(1).XYGraph_lon_min = min(thisLon,SimParam.GroundStation(1).XYGraph_lon_min) - 300/111e3;
-        SimParam.GroundStation(1).XYGraph_lon_max = max(thisLon,SimParam.GroundStation(1).XYGraph_lon_max) + 300/111e3;
+    if thisLat ~= TASK_PARAM_V1000.nanFlag && thisLat ~= 0
+        SimParam.GroundStation(1).XYGraph_lat_min = min(thisLat,SimParam.GroundStation(1).XYGraph_lat_min);
+        SimParam.GroundStation(1).XYGraph_lat_max = max(thisLat,SimParam.GroundStation(1).XYGraph_lat_max);
+        SimParam.GroundStation(1).XYGraph_lon_min = min(thisLon,SimParam.GroundStation(1).XYGraph_lon_min);
+        SimParam.GroundStation(1).XYGraph_lon_max = max(thisLon,SimParam.GroundStation(1).XYGraph_lon_max);
+    else
+        break;
     end
 end
+SimParam.GroundStation(1).XYGraph_lat_min = SimParam.GroundStation(1).XYGraph_lat_min - 300/111e3;
+SimParam.GroundStation(1).XYGraph_lat_max = SimParam.GroundStation(1).XYGraph_lat_max + 300/111e3;
+SimParam.GroundStation(1).XYGraph_lon_min = SimParam.GroundStation(1).XYGraph_lon_min - 300/111e3;
+SimParam.GroundStation(1).XYGraph_lon_max = SimParam.GroundStation(1).XYGraph_lon_max + 300/111e3;
 %% 运行model
 SimParam.Basic.parallelMode = 'serial';  % parallel serial auto
 SimParam.Basic.modelname = 'TESTENV_Task';

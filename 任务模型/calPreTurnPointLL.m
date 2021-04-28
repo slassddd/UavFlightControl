@@ -10,7 +10,8 @@ pos0 = lla2ned(LL0,LL0(1:2));
 pos1 = lla2ned(LL1,LL0(1:2));
 curPos = lla2ned(curLL,LL0(1:2));
 %
-heading_tmp = atan2(pos0(2)-curLL(2),pos0(1)-curLL(1));
+% heading_tmp = atan2(pos0(2)-curLL(2),pos0(1)-curLL(1));
+heading_tmp = atan2(pos0(2)-curPos(2),pos0(1)-curPos(1));
 heading = atan2(pos1(2)-pos0(2),pos1(1)-pos0(1));
 if abs(angdiff(heading,heading_tmp))*180/pi < 30 % 进入角度平缓
     useTurnPoint = false;
