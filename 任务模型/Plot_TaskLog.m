@@ -5,7 +5,7 @@ for i_sim = 1:length(out)
     TaskLog_SimRes(1).message = out(i_sim).Task_logData1.message.Data;
     TaskLog_SimRes(1).var1 = out(i_sim).Task_logData1.var1.Data;
     %%
-    excludeMessages = [ENUM_RTInfo_Task.Payload_Camera_Shot]; % 排除的 messages
+    excludeMessages = [ENUM_RTInfo_Task.Payload_Camera_Shot,ENUM_RTInfo_Task.WarningInfo_ShotTimeIntervalSmall]; % 排除的 messages
     TaskLog_All = parserLogData(TaskLog_SimRes,'exclude',excludeMessages)
     matchBlocks = ENUM_TaskLogBlockName.TASKLOG_Protect;
     TaskLog_Protect = parserLogData(TaskLog_SimRes,'BlockName',matchBlocks,'exclude',excludeMessages);

@@ -224,6 +224,14 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         WarningInfo_AirspeedFault (324),
         WarningInfo_ShotTimeIntervalSmall (325),
         Info_returnFromInterestPoint (326),
+        GoHomeAlongPath_Exit_Num (327),
+        GoHomeAlongPath_Exit_Mode (328),
+        GoHomeAlongPath_HomeBetweenPath (329),
+        GoHomeAlongPath_HomeOutPath (330),
+        GoHomeAlongPath_SmallDistToLf (331),
+        GoHomeAlongPath_SmallVertexCur (332),
+        GoHomeAlongPath_Exit (333),
+        GoHomeAlongPath_Exit_HeightErrBig (334),
         
         
         ReciveCmd_GoHome (1201),

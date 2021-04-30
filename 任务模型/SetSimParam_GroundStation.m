@@ -19,27 +19,31 @@ GSParam.PATH.maxNum = TaskParam.maxPathPointNum;
 GSParam.PATH.speed = 18;
 GSParam.PATH.paths_m = TaskParam.nanFlag*ones(GSParam.PATH.maxNum,3);
 
-pathExmpale = 2;
+pathExmpale = 4;
 pathoffset = [-600,-600]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
 pathmode = '耕地';
 switch pathExmpale
-    case 1
-        GSParam.PATH.paths_m(1:9,:) = [...
-            1*1e3,0*1e3,GSParam.PATH.pathHeight;
-            1*1e3,1*1e3,GSParam.PATH.pathHeight;
-            0*1e3,1*1e3,GSParam.PATH.pathHeight;
-            0*1e3,0*1e3,GSParam.PATH.pathHeight;
-            -1*1e3,-1*1e3,GSParam.PATH.pathHeight;
-            0*1e3,2*1e3,GSParam.PATH.pathHeight;
-            2*1e3,3*1e3,GSParam.PATH.pathHeight;
-            3*1e3,0*1e3,GSParam.PATH.pathHeight;
-            5.1*1e3,5*1e3,GSParam.PATH.pathHeight;];
+    case 1 % 测试低电量沿航线返航逻辑
+        data = [
+            0        0   150;
+            5     10e3   150;
+            100    9e3   150;
+           -100    8e3   150;
+            150    6e3   150;
+            100    5e3   150;
+            200    4e3   150;
+              0    3e3   150;
+            200    2e3   150;
+            100    1e3   150;
+            300    0e3   150;];
+        ndata = size(data,1);
+        GSParam.PATH.paths_m(1:ndata,:) = data;
     case 2 % 单区航线
-        pathoffset = [-200,-15000]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
+        pathoffset = [-0.2e3,-1.5e3]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
         idxUnitedPath = 1;
         UnitedPath(idxUnitedPath).nPoints = 8*20;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 20e3;
+        UnitedPath(idxUnitedPath).lon_right = 2e3;
         UnitedPath(idxUnitedPath).lat_space = 5;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
