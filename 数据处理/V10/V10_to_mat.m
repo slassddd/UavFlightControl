@@ -15,14 +15,19 @@ DecodeParam.nFile = length(DecodeParam.nameDataFile);%
 for i_file = 1:DecodeParam.nFile
     %     V10Log = V10_DecodePX4Format([DecodeParam.nameDataFile{i_file}]);
     V10Log = V10_decode_auto([DecodeParam.nameDataFile{i_file}]);
+    %% 缺失数据对齐
+    structToAlign = {'V10Log.OUT_TASKFLIGHTPARAM','V10Log.OUT_TASKMODE'};
+    for i_align = 1:length(structToAlign)
+        str = sprintf('%s = alignDimension( %s );',structToAlign{i_align},structToAlign{i_align});
+        eval(str);
+    end
     %% 保存磁力计矫正相关数据
     V10_SaveMagCalibData
     %% 保存仿真数据
 %     try
         IN_SENSOR = V10_Decode_Sensors(V10Log);
         FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log);
-        FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);
-        
+        FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);        
         %
         saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'仿真数据_',DecodeParam.nameDataFile{i_file}];%['D:\work\V1000_firmware\数据处理\V10\仿真日志.mat'];
         save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc');
