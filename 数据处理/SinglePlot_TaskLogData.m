@@ -15,6 +15,7 @@ taskLogDataRes(1).message = ENUM_RTInfo_Task(taskLogData1.message(idxValid));
 taskLogDataRes(1).var1 = [taskLogData1.var10(idxValid),taskLogData1.var11(idxValid),...
     taskLogData1.var12(idxValid),taskLogData1.var13(idxValid),taskLogData1.var14(idxValid)];
 %%
+excludeMessages = [ENUM_RTInfo_Task.Payload_Camera_Shot,ENUM_RTInfo_Task.WarningInfo_ShotTimeIntervalSmall]; % 排除的 messages
 T_taskLog_All = parserLogData(taskLogDataRes,'exclude',excludeMessages);
 matchBlock = ENUM_TaskLogBlockName.TASKLOG_Protect;
 T_taskLog_Protect = parserLogData(taskLogDataRes,'BlockName',matchBlock,'exclude',excludeMessages);

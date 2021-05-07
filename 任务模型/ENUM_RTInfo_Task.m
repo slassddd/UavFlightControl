@@ -232,8 +232,10 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         GoHomeAlongPath_SmallVertexCur (332),
         GoHomeAlongPath_Exit (333),
         GoHomeAlongPath_Exit_HeightErrBig (334),
+        VerticalMove_Enter_FromPath (335), 
+        warnShotDistIntervalBig (336),
         
-        
+        % 
         ReciveCmd_GoHome (1201),
         ReciveCmd_GoHome_But_Not_Response (1202),
         ReciveCmd_TakeOff (1203),

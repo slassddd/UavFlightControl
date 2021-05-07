@@ -14,18 +14,6 @@ TASK_PARAM_V1000.nanFlag = -999999;
 TASK_PARAM_V1000.maxPathPointNum = 500; % 最大航路点数
 TASK_PARAM_V1000.turnR = 60; % 盘旋半径 [m]
 TASK_PARAM_V1000.maxRolld = 50; % 最大滚转 [deg]
-TASK_PARAM_V1000.uavMode_InPathFollowMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InTakeOffMode = ENUM_UAVMode.Rotor;
-TASK_PARAM_V1000.uavMode_InHoverAdjustMode = ENUM_UAVMode.Rotor;
-TASK_PARAM_V1000.uavMode_InHoverUpDownMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InAirStandByMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InPointFlyAroundMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InGoHomeMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InLandMode = ENUM_UAVMode.Rotor;
-TASK_PARAM_V1000.uavMode_InFenceRecoverMode = ENUM_UAVMode.Fix;
-TASK_PARAM_V1000.uavMode_InRotor2FixMode = ENUM_UAVMode.Rotor2Fix;
-TASK_PARAM_V1000.uavMode_InFix2RotorMode = ENUM_UAVMode.Fix2Rotor;
-TASK_PARAM_V1000.uavMode_InGroundStandByMode = ENUM_UAVMode.Rotor;
 TASK_PARAM_V1000.minGroundSpeedInFix = 15;  % 固定翼模式下最小地速
 TASK_PARAM_V1000.minHeightInFix = 30;   % 固定翼模式下最小高度,该值不应大于雷达高度最大测量范围，V1000雷达大概37m
 TASK_PARAM_V1000.threshold_deg_attiStable = 15;   % 俯仰滚转稳定判定阈值
@@ -57,7 +45,7 @@ TASK_PARAM_V1000.windSpeed_WindSafe = 13.8; % 大风返航风速阈值，[m/s]
 TASK_PARAM_V1000.logDataBufferSize = 32; % 数据记录buffer size
 TASK_PARAM_V1000.logDataOutSize = 3; % 数据记录output size
 TASK_PARAM_V1000.horiDist_verticalMove = 100; % 垂直运动模式参数：水平距离阈值
-TASK_PARAM_V1000.vertDist_verticalMove = 10; % 垂直运动模式参数：高度阈值
+TASK_PARAM_V1000.vertDist_verticalMove = 15; % 垂直运动模式参数：高度阈值
 TASK_PARAM_V1000.test_homeHeightOffsetAbs = 0; % 测试参数（该参数作用在嵌入式中，所以仿真中不生效）：在0号航点的高度上增加该值，模拟特点航线
 TASK_PARAM_V1000.isHoverDownToCenter = false; % 激活头顶切换旋翼
 TASK_PARAM_V1000.runSingleTaskMode = ENUM_FlightTaskMode(0); % 运行单任务模式
@@ -95,7 +83,8 @@ TASK_PARAM_V1000.coefBatteryLife = [1 1;
                                     -1 1;
                                     -1 1;
                                     -1 1;]; % 电池安装数对应的电量系数
-TASK_PARAM_V1000.enableFlap = false; % 使能襟翼增升/减升                           
+TASK_PARAM_V1000.enableFlap = false; % 使能襟翼增升/减升
+TASK_PARAM_V1000.addAirspeedWhenGoHome = 4; % 返航模式中的提速量
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %

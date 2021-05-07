@@ -1,7 +1,7 @@
 tempFilter = FlightLog_Original.Filter;
 %
 figure;
-%% 姿态
+% 姿态
 subplot(331);
 plot(tempFilter.time,tempFilter.algo_NAV_yawd);hold on;grid on;
 ylabel('yaw(deg)')
@@ -11,7 +11,7 @@ ylabel('pitch(deg)')
 subplot(337);
 plot(tempFilter.time,tempFilter.algo_NAV_rolld);hold on;grid on;
 ylabel('roll(deg)')
-%% 位置
+% 位置
 idx_nonzero = find(tempFilter.algo_NAV_lond~=0);
 subplot(332);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_lond(idx_nonzero));hold on;grid on;
@@ -22,7 +22,7 @@ ylabel('Lat(deg)')
 subplot(338);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_alt(idx_nonzero));hold on;grid on;
 ylabel('Alt(deg)')
-%% 速度
+% 速度
 idx_nonzero = find(~isnan(tempFilter.algo_NAV_lond));
 subplot(333);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_Vn(idx_nonzero));hold on;grid on;
@@ -45,7 +45,7 @@ tempFilter.algo_NAV_Vn = FlightLog_Original.OUT_TASKFLIGHTPARAM.curVelNED0;
 tempFilter.algo_NAV_Ve = FlightLog_Original.OUT_TASKFLIGHTPARAM.curVelNED1;
 tempFilter.algo_NAV_Vd = FlightLog_Original.OUT_TASKFLIGHTPARAM.curVelNED2;
 % figure;
-%% 姿态
+% 姿态
 subplot(331);
 plot(tempFilter.time,tempFilter.algo_NAV_yawd);hold on;grid on;
 ylabel('yaw(deg)')
@@ -55,7 +55,7 @@ ylabel('pitch(deg)')
 subplot(337);
 plot(tempFilter.time,tempFilter.algo_NAV_rolld);hold on;grid on;
 ylabel('roll(deg)')
-%% 位置
+% 位置
 idx_nonzero = find(tempFilter.algo_NAV_lond~=0);
 subplot(332);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_lond(idx_nonzero));hold on;grid on;
@@ -66,7 +66,7 @@ ylabel('Lat(deg)')
 subplot(338);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_alt(idx_nonzero));hold on;grid on;
 ylabel('Alt(deg)')
-%% 速度
+% 速度
 idx_nonzero = find(~isnan(tempFilter.algo_NAV_lond));
 subplot(333);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_Vn(idx_nonzero));hold on;grid on;
@@ -77,3 +77,28 @@ ylabel('Ve(m/s)')
 subplot(339);
 plot(tempFilter.time(idx_nonzero),tempFilter.algo_NAV_Vd(idx_nonzero));hold on;grid on;
 ylabel('Vd(m/s)')
+%% ublox
+tempData = IN_SENSOR.ublox1;
+idx_ublox_nonzero = find(tempData.Lon~=0);
+subplot(332);
+plot(tempData.time(idx_ublox_nonzero),tempData.Lon(idx_ublox_nonzero));hold on;grid on;
+ylabel('Lon(deg)')
+subplot(335);
+plot(tempData.time(idx_ublox_nonzero),tempData.Lat(idx_ublox_nonzero));hold on;grid on;
+ylabel('Lat(deg)')
+subplot(338);
+plot(tempData.time(idx_ublox_nonzero),tempData.height(idx_ublox_nonzero));hold on;grid on;
+ylabel('Alt(deg)')
+%% um482
+tempData = IN_SENSOR.um482;
+idx_ublox_nonzero = find(tempData.Lon~=0);
+subplot(332);
+plot(tempData.time(idx_ublox_nonzero),tempData.Lon(idx_ublox_nonzero));hold on;grid on;
+ylabel('Lon(deg)')
+legend('nav','task','ublox','um482')
+subplot(335);
+plot(tempData.time(idx_ublox_nonzero),tempData.Lat(idx_ublox_nonzero));hold on;grid on;
+ylabel('Lat(deg)')
+subplot(338);
+plot(tempData.time(idx_ublox_nonzero),tempData.height(idx_ublox_nonzero));hold on;grid on;
+ylabel('Alt(deg)')

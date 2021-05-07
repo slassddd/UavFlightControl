@@ -16,7 +16,7 @@ for i_file = 1:DecodeParam.nFile
     %     V10Log = V10_DecodePX4Format([DecodeParam.nameDataFile{i_file}]);
     V10Log = V10_decode_auto([DecodeParam.nameDataFile{i_file}]);
     %% 缺失数据对齐
-    structToAlign = {'V10Log.OUT_TASKFLIGHTPARAM','V10Log.OUT_TASKMODE'};
+    structToAlign = {'V10Log.OUT_TASKFLIGHTPARAM','V10Log.OUT_TASKMODE','V10Log.Debug_Task_RTInfo'}; % 待处理的结构体变量名
     for i_align = 1:length(structToAlign)
         str = sprintf('%s = alignDimension( %s );',structToAlign{i_align},structToAlign{i_align});
         eval(str);
