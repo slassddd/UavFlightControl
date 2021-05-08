@@ -85,6 +85,7 @@ TASK_PARAM_V1000.coefBatteryLife = [1 1;
                                     -1 1;]; % 电池安装数对应的电量系数
 TASK_PARAM_V1000.enableFlap = false; % 使能襟翼增升/减升
 TASK_PARAM_V1000.addAirspeedWhenGoHome = 4; % 返航模式中的提速量
+% TASK_PARAM_V1000.isLaserRangeDownUsed = [false false false]; % 下视激光测距是否接入: [true false false]表示1号接入，2、3号未接入
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -110,6 +111,7 @@ TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   -1 1;];
 TASK_PARAM_V10.enableFlap = true;            
 TASK_PARAM_V10.maxClimbSpeed_fixMode = 2.2;
+% TASK_PARAM_V10.isLaserRangeDownUsed = [true true false]; % 下视激光测距是否接入: [true false false]表示1号接入，2、3号未接入
 
 assert(TASK_PARAM_V10.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V10电池组数设置错误')
 assert(TASK_PARAM_V1000.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V1000电池组数设置错误')

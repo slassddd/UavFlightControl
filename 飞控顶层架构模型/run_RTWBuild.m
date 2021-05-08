@@ -35,8 +35,8 @@ catch
 end
 tempTime = clock;
 SystemInfo.date = [ num2str(tempTime(1)),...年
-                    num2str(tempTime(2)),...月
-                    num2str(tempTime(3));];%日
+                    sprintf('%02d',tempTime(2)),...月
+                    sprintf('%02d',tempTime(3));];%日
 prompt = {'飞控版本号','时间','任务等模型版本号','控制模型版本号'};
 dlgtitle = '系统信息';
 dims = [1 55];
