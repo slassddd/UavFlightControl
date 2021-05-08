@@ -44,7 +44,7 @@ switch pathExmpale
         UnitedPath(idxUnitedPath).nPoints = 8;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
         UnitedPath(idxUnitedPath).lon_right = 2e3;
-        UnitedPath(idxUnitedPath).lat_space = 150;
+        UnitedPath(idxUnitedPath).lat_space = 20;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
