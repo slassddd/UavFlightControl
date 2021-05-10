@@ -6,10 +6,14 @@ SetAlgoParam_SystemArchitecture
 modelname = 'RefModel_SystemArchitecture';
 infofilename = 'SystemInfo.mat';
 %% 模型参数配置
+if 0
 stepMode = questdlg('选择代码生成的任务模式(V10新固件选择''多step'',其他机型固件选择''单step'')','模式','单step','多step','取消','单step');
 if isempty(stepMode) || strcmp(stepMode,'取消')
     disp('未选择stepmode');
     return;
+end
+else
+    stepMode = '单step';
 end
 setRefModelConfiguration(modelname,stepMode);
 %%

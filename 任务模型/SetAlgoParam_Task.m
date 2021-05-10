@@ -85,6 +85,7 @@ TASK_PARAM_V1000.coefBatteryLife = [1 1;
                                     -1 1;]; % 电池安装数对应的电量系数
 TASK_PARAM_V1000.enableFlap = false; % 使能襟翼增升/减升
 TASK_PARAM_V1000.addAirspeedWhenGoHome = 4; % 返航模式中的提速量
+TASK_PARAM_V1000.radarOnOffDelay = 2.5; % 雷达开关机最小间隔时间
 % TASK_PARAM_V1000.isLaserRangeDownUsed = [false false false]; % 下视激光测距是否接入: [true false false]表示1号接入，2、3号未接入
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;

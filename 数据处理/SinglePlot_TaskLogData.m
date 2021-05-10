@@ -44,7 +44,63 @@ T_taskLog_PathInfo = parserLogData(taskLogDataRes,'messagename',matchMessages,'e
 
 matchMessages = [...
     ENUM_RTInfo_Task.TaskLog_Payload_Lidar_BeginWork];
-T_taskLog_PathInfo = parserLogData(taskLogDataRes,'messagename',matchMessages,'exclude',excludeMessages);
+T_taskLog_LidarBegin = parserLogData(taskLogDataRes,'messagename',matchMessages,'exclude',excludeMessages);
+matchMessages = [...
+    ENUM_RTInfo_Task.TaskLog_Payload_Lidar_StandBy];
+T_taskLog_LidarStop = parserLogData(taskLogDataRes,'messagename',matchMessages,'exclude',excludeMessages);
+
+
+timeLidarBegin = [];
+llaLidarBegin = [];
+llaLidarStop = [];
+nonzeroIdx = [];
+flightLLA = [FlightLog_Original.OUT_TASKFLIGHTPARAM.time,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA0,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA1,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2];
+nonzeroIdx = find(flightLLA(:,1)~=0 & flightLLA(:,2)~=0);
+nonzeroIdx(1:10) = [];
+flightLLA = flightLLA(nonzeroIdx,:);
+timeLLA = flightLLA(:,1);
+% flightLLA(:,1) = [];
+
+timeLidarBegin = T_taskLog_LidarBegin.("记录时间"); 
+for i = 1:length(timeLidarBegin)
+    thisTime = timeLidarBegin(i);
+    tempIdx = find(timeLLA>=thisTime);
+    tempIdx = tempIdx(1);
+    llaLidarBegin(i,:) = flightLLA(tempIdx,:); 
+end
+timeLidarStop = T_taskLog_LidarStop.("记录时间"); 
+for i = 1:length(timeLidarStop)
+    thisTime = timeLidarStop(i);
+    tempIdx = find(timeLLA>=thisTime);
+    tempIdx = tempIdx(1);
+    llaLidarStop(i,:) = flightLLA(tempIdx,:); 
+end
+if 1 % 绘制雷达开关机
+    figure('Name','雷达开关机点');
+    flightLLA = [FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA0,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA1,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2];
+    nonzeroIdx = find(flightLLA(:,1)~=0 & flightLLA(:,2)~=0);
+    nonzeroIdx(1:10) = [];
+    flightLLA = flightLLA(nonzeroIdx,:);
+    plot(flightLLA(:,2),flightLLA(:,1),'-');hold on;grid on;
+    plot(llaLidarBegin(:,3),llaLidarBegin(:,2),'go');hold on;grid on;
+    plot(llaLidarStop(:,3),llaLidarStop(:,2),'r+');hold on;grid on;
+    legend('航线','开机','关机')
+    xlabel('经度')
+    ylabel('纬度')
+    axis equal
+    for i = 1:length(timeLidarBegin)
+        thisOne = llaLidarBegin(i,:);
+        str = sprintf('[%.2f sec]: %.6f %.6f',thisOne(1),thisOne(3),thisOne(2));
+        tempT = text(thisOne(3)+5e-5,thisOne(2)+2e-5,str);
+        tempT.Color = 'g';
+    end
+    for i = 1:length(timeLidarStop)
+        thisOne = llaLidarStop(i,:);
+        str = sprintf('[%.2f sec]: %.6f %.6f',thisOne(1),thisOne(3),thisOne(2));
+        tempT = text(thisOne(3)+5e-5,thisOne(2)-2e-5,str);
+        tempT.Color = 'r';
+    end
+end
 %
 FlightLog_SecondProc.TaskLog.T_taskLog_All = T_taskLog_All;
 FlightLog_SecondProc.TaskLog.T_taskLog_Protect = T_taskLog_Protect;
