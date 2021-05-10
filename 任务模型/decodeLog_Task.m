@@ -6,6 +6,23 @@ for i = 1:nMessage
     thisMessage = message(i);
     var = vars(i,:);
     switch thisMessage
+        case ENUM_RTInfo_Task.HeightStatus
+            varname(i,:) = {'高度测量','雷达高','激光1','激光2','isHeightAvailable'};
+            % 数值规范化
+%             var(3) = round(var(3),2);
+%             var(5) = round(var(5),2);
+            % 生成显示内容
+            try
+                str1_Cmd = sprintf('%s',ENUM_HeightMeasStatus(var(1)));
+            catch
+                str1_Cmd = sprintf('%.2f',var(1));
+            end
+%             str2_health = sprintf('%s',ENUM_SensorHealthStatus(var(2)));
+            varname{i,1} = [varname{i,1},': ', str1_Cmd];
+            varname{i,2} = [varname{i,2},': ',num2str(var(2))];
+            varname{i,3} = [varname{i,3},': ',num2str(var(3))];
+            varname{i,4} = [varname{i,4},': ',num2str(var(4))];
+            varname{i,5} = [varname{i,5},': ',num2str(var(5))];            
         case ENUM_RTInfo_Task.TaskLog_Mav_CmdChange
             varname(i,:) = {'命令号','param1','','','电量'};
             % 数值规范化

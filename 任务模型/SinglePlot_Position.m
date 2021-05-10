@@ -21,7 +21,7 @@ shot_lon = out.Task_payload.CAMERA.LLA.Data(:,2); shot_lon(shot_lon==0)=nan;
 shot_height = out.Task_payload.CAMERA.LLA.Data(:,3);
 % 飞行状态
 % LLh = permute(out.Task_FlightData.curLLA.Data,[3,2,1]);
-LLh = out.UavDyn_LLA.Data;
+LLh = out.Navi_LLA.Data;
 LLh(:,3) = LLh(:,3) - SimParam_GroundStation.groundAltitude;
 % LLh(:,3) = out.Task_FlightData.curHeightForControl.Data;
 zeroIdxLLh = find(LLh(:,1)<1e-5);
