@@ -8,9 +8,10 @@ SimParam.Basic.selTestCase_Task_Manual = true; % 默认选择Task测试用例为
 SimParam.Basic.selTestCase_SensorFault_Manual = true; % 默认选择SensorFault测试用例为Manual: true false
 %% 载入飞行数据
 tspan0 = [0,inf]; % 仿真时间区间 [sec]
+
 TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\V10 数据\20210407\仿真数据_高空切旋翼降落 2021-04-07 12-12-55.mat'];
-TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\V10 数据\20210508\仿真数据_1 不加锁 2021-05-08 14-03-44.mat'];
-% TestCase.FlightLog.filename{2} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\20210123\仿真数据_3 2021年1月23日 香河 V31253固件 全流程测试 2021-01-23 17-37-43.mat'];
+TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\V10 新平台数据\20210508\仿真数据_1 自动起降 不加锁 2021-05-08 18-01-49.bin-2798334.mat'];
+TestCase.FlightLog.filename{1} = [GLOBAL_PARAM.project.RootFolder{1},'\','SubFolder_飞行数据\V10 数据\0客户数据\20210508 南通赛维\仿真数据_重着陆 2021-05-08 09-05-19.mat'];
 SimDataSet = loadFlightDataFile(tspan0,TestCase.FlightLog.filename,BUS_SENSOR);if ~SimDataSet.validflag,return;end
 fprintf('%s\n',GLOBAL_PARAM.Print.flagBegin);
 %% 【机型】【测试用例】选择

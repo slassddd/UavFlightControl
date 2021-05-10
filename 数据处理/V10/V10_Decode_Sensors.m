@@ -41,6 +41,14 @@ catch
     try
         V10Log.(childName)
     catch
+        IN_SENSOR.(childName).time = V10Log.IMU1.TimeUS/timeScale;
+        IN_SENSOR.(childName).accel_x = 0 * V10Log.IMU1.ax;
+        IN_SENSOR.(childName).accel_y = 0 * V10Log.IMU1.ay;
+        IN_SENSOR.(childName).accel_z = 0 * V10Log.IMU1.az;
+        IN_SENSOR.(childName).gyro_x = 0 * V10Log.IMU1.gx;
+        IN_SENSOR.(childName).gyro_y = 0 * V10Log.IMU1.gy;
+        IN_SENSOR.(childName).gyro_z = 0 * V10Log.IMU1.gz;
+        IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));        
         fprintf('当前协议中没有 %s 的解析信息\n',childName)
     end
 end
@@ -55,13 +63,21 @@ try
     IN_SENSOR.(childName).gyro_y = V10Log.(childName).gy;
     IN_SENSOR.(childName).gyro_z = V10Log.(childName).gz;
     IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));
-    if sum(IN_SENSOR.(childName).nChange) == 0
+    if sum(IN_SENSOR.(childName).nChange) == 0    
         fprintf('[%s] nChange 没有正常赋值\n',childName);
     end
 catch
     try
         V10Log.(childName)
     catch
+        IN_SENSOR.(childName).time = V10Log.IMU1.TimeUS/timeScale;
+        IN_SENSOR.(childName).accel_x = 0 * V10Log.IMU1.ax;
+        IN_SENSOR.(childName).accel_y = 0 * V10Log.IMU1.ay;
+        IN_SENSOR.(childName).accel_z = 0 * V10Log.IMU1.az;
+        IN_SENSOR.(childName).gyro_x = 0 * V10Log.IMU1.gx;
+        IN_SENSOR.(childName).gyro_y = 0 * V10Log.IMU1.gy;
+        IN_SENSOR.(childName).gyro_z = 0 * V10Log.IMU1.gz;
+        IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));          
         fprintf('当前协议中没有 %s 的解析信息\n',childName)
     end
 end
@@ -83,6 +99,14 @@ catch
     try
         V10Log.(childName)
     catch
+        IN_SENSOR.(childName).time = V10Log.IMU1.TimeUS/timeScale;
+        IN_SENSOR.(childName).accel_x = 0 * V10Log.IMU1.ax;
+        IN_SENSOR.(childName).accel_y = 0 * V10Log.IMU1.ay;
+        IN_SENSOR.(childName).accel_z = 0 * V10Log.IMU1.az;
+        IN_SENSOR.(childName).gyro_x = 0 * V10Log.IMU1.gx;
+        IN_SENSOR.(childName).gyro_y = 0 * V10Log.IMU1.gy;
+        IN_SENSOR.(childName).gyro_z = 0 * V10Log.IMU1.gz;
+        IN_SENSOR.(childName).nChange = zeros(size(IN_SENSOR.(childName).accel_x));          
         fprintf('当前协议中没有 %s 的解析信息\n',childName)
     end
 end
@@ -131,6 +155,7 @@ IN_SENSOR.radar1.nChange = zeros(size(V10Log.NRA.TimeUS));
 if sum(IN_SENSOR.radar1.nChange) == 0
     disp('[radar1] nChange 没有正常赋值');
 end
+IN_SENSOR.radar1 = removeSameTime(IN_SENSOR.radar1);
 %% ublox1
 IN_SENSOR.ublox1.time = V10Log.UBX.TimeUS/timeScale;
 IN_SENSOR.ublox1.velE = V10Log.UBX.velE;
@@ -149,6 +174,7 @@ IN_SENSOR.ublox1.nChange = zeros(size(IN_SENSOR.ublox1.time));
 if sum(IN_SENSOR.ublox1.nChange) == 0
     disp('[ublox1] nChange 没有正常赋值');
 end
+IN_SENSOR.ublox1 = removeSameTime(IN_SENSOR.ublox1);
 % IN_SENSOR.ublox1.headAcc = V10Log.UBX.headAcc;
 % IN_SENSOR.ublox1.sAcc = V10Log.UBX.sAcc;
 %% um482
@@ -169,6 +195,7 @@ IN_SENSOR.um482.nChange = zeros(size(IN_SENSOR.um482.time));
 if sum(IN_SENSOR.um482.nChange) == 0
     disp('[um482] nChange 没有正常赋值');
 end
+IN_SENSOR.um482 = removeSameTime(IN_SENSOR.um482);
 %% airspeed1
 IN_SENSOR.airspeed1.time = V10Log.ARP1.TimeUS/timeScale;
 IN_SENSOR.airspeed1.airspeed = V10Log.ARP1.indicated_airspeed;
@@ -185,6 +212,7 @@ disp('airspeed1没有解析：EAS2TAS_Algo')
 if sum(IN_SENSOR.airspeed1.nChange) == 0
     disp('[airspeed1] nChange 没有正常赋值');
 end
+IN_SENSOR.airspeed1 = removeSameTime(IN_SENSOR.airspeed1);
 %% airspeed2
 if hasThisChild(V10Log,'ARP2')
     IN_SENSOR.airspeed2.time = V10Log.ARP2.TimeUS/timeScale;
@@ -201,7 +229,7 @@ if hasThisChild(V10Log,'ARP2')
 else
     IN_SENSOR.airspeed2 = IN_SENSOR.airspeed1;
 end
-
+IN_SENSOR.airspeed2 = removeSameTime(IN_SENSOR.airspeed2);
 disp('airspeed2 没有解析：EAS2TAS_Algo')
 if sum(IN_SENSOR.airspeed2.nChange) == 0
     disp('[airspeed2] nChange 没有正常赋值');
@@ -229,21 +257,23 @@ disp('[laserDown1] 结构体未解析')
 IN_SENSOR.laserDown1.time = V10Log.LASE.TimeUS/timeScale;
 IN_SENSOR.laserDown1.range = V10Log.LASE.laser1_distance*1e-2;
 IN_SENSOR.laserDown1.flag = V10Log.LASE.laser1_valid;
-IN_SENSOR.laserDown1.strength = 0*ones(size(IN_SENSOR.radar1.Range));
-IN_SENSOR.laserDown1.nChange = zeros(size(IN_SENSOR.laserDown1.time));
+IN_SENSOR.laserDown1.strength = 0*ones(size(V10Log.LASE.laser1_valid));
+IN_SENSOR.laserDown1.nChange = zeros(size(V10Log.LASE.laser1_valid));
 if sum(IN_SENSOR.laserDown1.nChange) == 0
     disp('[laserDown1] nChange 没有正常赋值');
 end
+IN_SENSOR.laserDown1 = removeSameTime(IN_SENSOR.laserDown1);
 %% laserDown2
 disp('[laserDown2] 结构体未解析')
 IN_SENSOR.laserDown2.time = V10Log.LASE.TimeUS/timeScale;
 IN_SENSOR.laserDown2.range = V10Log.LASE.laser2_distance*1e-2;
 IN_SENSOR.laserDown2.flag = V10Log.LASE.laser2_valid;
-IN_SENSOR.laserDown2.strength = 0*ones(size(IN_SENSOR.radar1.Range));
-IN_SENSOR.laserDown2.nChange = zeros(size(IN_SENSOR.laserDown2.time));
+IN_SENSOR.laserDown2.strength = 0*ones(size(V10Log.LASE.laser2_valid));
+IN_SENSOR.laserDown2.nChange = zeros(size(V10Log.LASE.laser2_valid));
 if sum(IN_SENSOR.laserDown2.nChange) == 0
     disp('[laserDown2] nChange 没有正常赋值');
 end
+IN_SENSOR.laserDown2 = removeSameTime(IN_SENSOR.laserDown2);
 %% radarLongForward1
 disp('[radarLongForward1] 结构体未解析')
 IN_SENSOR.radarLongForward1.time = IN_SENSOR.radar1.time;
@@ -271,4 +301,12 @@ if any(temp)
     flag = true;
 else
     flag = false;
+end
+% 取出时间不重复的index
+function IN_STRUCT = removeSameTime(IN_STRUCT)
+time = IN_STRUCT.time;
+children = fieldnames(IN_STRUCT);
+idx_diff = find(diff(time));
+for i = 1:length(children)
+    IN_STRUCT.(children{i}) = IN_STRUCT.(children{i})(idx_diff);
 end

@@ -27,7 +27,8 @@ for i_file = 1:DecodeParam.nFile
 %     try
         IN_SENSOR = V10_Decode_Sensors(V10Log);
         FlightLog_Original = V10_Decode_FlightLog_Orignal(V10Log);
-        FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);        
+%         FlightLog_SecondProc = V10_Decode_FlightLog_SecondProc(V10Log);   
+        V10_Decode_FlightLog_SecondProc
         %
         saveFileName{i_file} = [GLOBAL_PARAM.dirDataFileForDecode,'仿真数据_',DecodeParam.nameDataFile{i_file}];%['D:\work\V1000_firmware\数据处理\V10\仿真日志.mat'];
         save(saveFileName{i_file},'IN_SENSOR','FlightLog_Original','FlightLog_SecondProc');

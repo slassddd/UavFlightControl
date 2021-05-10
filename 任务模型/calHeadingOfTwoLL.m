@@ -1,7 +1,7 @@
 function heading_rad = calHeadingOfTwoLL(LL0,LL1)
 % 计算 LL1 相对 LL0 的角度
 % LL0: 原点的纬度、经度[deg]
-% LL1: 点的纬度、经度[deg]
+% LL1: 目标点的纬度、经度[deg]
 % -------------------------------
 % example:
 % calHeadingOfTwoLL([40 179],[41 -179])*57.3

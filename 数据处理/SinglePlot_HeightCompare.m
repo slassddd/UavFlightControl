@@ -18,7 +18,8 @@ subplot(223)
 plot(IN_SENSOR.radar1.time,IN_SENSOR.radar1.Range);hold on;
 plot(IN_SENSOR.laserDown1.time,IN_SENSOR.laserDown1.range);hold on;
 plot(IN_SENSOR.laserDown2.time,IN_SENSOR.laserDown2.range);hold on;
+plot(FlightLog_Original.OUT_TASKFLIGHTPARAM.time,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2);hold on;
 xlabel('time(sec)')
 ylabel('高度(m)')
 grid on;
-legend('radar1','laserDown1','laserDown2')
+legend('radar1','laserDown1','laserDown2','Task')

@@ -49,6 +49,10 @@ tempTime = T_taskLog_MavCmd.("记录时间");
 command = T_taskLog_MavCmd.var1(idxSel,1);
 param1 = T_taskLog_MavCmd.var1(idxSel,2);
 
+idxSel = find(command~=0);
+command = command(idxSel);
+param1 = param1(idxSel);
+
 maxNum_cmd = 200;
 for i = 1:maxNum_cmd
     if i <= length(idxSel)
