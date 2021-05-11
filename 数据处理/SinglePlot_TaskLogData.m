@@ -77,6 +77,18 @@ for i = 1:length(timeLidarStop)
 end
 if 1 % 绘制雷达开关机
     figure('Name','雷达开关机点');
+    % 航点
+    llaPath = [];
+    pathStruct = FlightLog_SecondProc.IN_MAVLINK.mavlink_mission_item_def;
+    for i = 1:length(pathStruct)
+        thisPathPoint = pathStruct(i);
+        llaPath(i,:) = double([thisPathPoint.x,thisPathPoint.y,thisPathPoint.z]);
+        if sum(llaPath(i,:)) == 0
+            llaPath(i,:) = [];
+            break;
+        end
+    end
+    % 飞行轨迹
     flightLLA = [FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA0,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA1,FlightLog_Original.OUT_TASKFLIGHTPARAM.curLLA2];
     nonzeroIdx = find(flightLLA(:,1)~=0 & flightLLA(:,2)~=0);
     nonzeroIdx(1:10) = [];
@@ -84,19 +96,27 @@ if 1 % 绘制雷达开关机
     plot(flightLLA(:,2),flightLLA(:,1),'-');hold on;grid on;
     plot(llaLidarBegin(:,3),llaLidarBegin(:,2),'go');hold on;grid on;
     plot(llaLidarStop(:,3),llaLidarStop(:,2),'r+');hold on;grid on;
-    legend('航线','开机','关机')
+    plot(llaPath(:,2),llaPath(:,1),'ko');hold on;
+    plot(llaPath(1,2),llaPath(1,1),'co');hold on;
+    legend('航线','开机','关机','航点','home点')
     xlabel('经度')
     ylabel('纬度')
     axis equal
+    for i = 1:size(llaPath,1)
+        thisOne = llaPath(i,:);
+        str = sprintf('[path %03d]: %.5f %.5f',i-1,thisOne(2),thisOne(1));
+        tempT = text(thisOne(2)+5e-5,thisOne(1),str);
+        tempT.Color = 'k';
+    end    
     for i = 1:length(timeLidarBegin)
         thisOne = llaLidarBegin(i,:);
-        str = sprintf('[%.2f sec]: %.6f %.6f',thisOne(1),thisOne(3),thisOne(2));
+        str = sprintf('[%.2f sec]: %.5f %.5f',thisOne(1),thisOne(3),thisOne(2));
         tempT = text(thisOne(3)+5e-5,thisOne(2)+2e-5,str);
         tempT.Color = 'g';
     end
     for i = 1:length(timeLidarStop)
         thisOne = llaLidarStop(i,:);
-        str = sprintf('[%.2f sec]: %.6f %.6f',thisOne(1),thisOne(3),thisOne(2));
+        str = sprintf('[%.2f sec]: %.5f %.5f',thisOne(1),thisOne(3),thisOne(2));
         tempT = text(thisOne(3)+5e-5,thisOne(2)-2e-5,str);
         tempT.Color = 'r';
     end
