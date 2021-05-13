@@ -236,7 +236,8 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         warnShotDistIntervalBig (336),
         HeightStatus (337),
         Land_Height_Step_NotJudge (338),
-        
+        VerticalMove_Pause (339),
+        VerticalMove_Continue (340),
         
         
         % 

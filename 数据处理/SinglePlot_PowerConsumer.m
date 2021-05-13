@@ -1,8 +1,14 @@
 function InfoTable = SinglePlot_PowerConsumer(structData,uavMode)
 fprintf('----------------------------------------------\n')
+% 去掉时间小于10s的数据
+children = fieldnames(structData);
+idxExcludeByTime = find(structData.time>10); 
+for i = 1:length(children)
+    structData.(children{i}) = structData.(children{i})(idxExcludeByTime); 
+end
+uavMode = uavMode(idxExcludeByTime(1):end);
 % time = baseTime;
 time = structData.time;
-children = fieldnames(structData);
 % 去掉时间子项
 idx = strcmp(children,'time'); 
 children(idx) = [];
@@ -90,8 +96,8 @@ Struct_InAir.t0 = Struct_TakeOff(1).t0;
 Struct_InAir.tf = Struct_Land(end).tf;
 Struct_InAir.du = Struct_InAir.tf - Struct_InAir.t0;
 
-Struct_InAir.p0 = structData.AllTheTimePowerConsume(Struct_TakeOff.idx(1));
-Struct_InAir.pf = structData.AllTheTimePowerConsume(Struct_Land.idx(end));
+Struct_InAir.p0 = Struct_TakeOff.p0;
+Struct_InAir.pf = Struct_Land.pf;
 Struct_InAir.pErr = Struct_InAir.p0-Struct_InAir.pf;
 % 单位时间耗电量 [%/sec]
 Struct_InAir.powerPerSec_up = round((Struct_InAir.pErr+0.9)/Struct_InAir.du,3);
@@ -265,56 +271,95 @@ else
         idxSel{1} = 1;
     end
 end
+current = [];
+voltage = [];
+power = [];
 for i_p = 1:nPhase
-    tempStruct(i_p).time = timeAll(idxSel{i_p});
-    tempStruct(i_p).idx = idxAll(idxSel{i_p});
-    if isempty(tempStruct(i_p).time)
+    thisTime{i_p} = timeAll(idxSel{i_p});
+    idx{i_p} = idxAll(idxSel{i_p});
+    if isempty(thisTime{i_p})
         warning('SingPlot_PowerConsumer函数中错误')
         continue; 
     end
-    tempStruct(i_p).t0 = tempStruct(i_p).time(1);
-    tempStruct(i_p).tf = tempStruct(i_p).time(end);
-    tempStruct(i_p).du = tempStruct(i_p).tf - tempStruct(i_p).t0;
-    tempStruct(i_p).p0 = structData.AllTheTimePowerConsume(tempStruct(i_p).idx(1));
-    tempStruct(i_p).pf = structData.AllTheTimePowerConsume(tempStruct(i_p).idx(end));
-    tempStruct(i_p).pErr = tempStruct(i_p).p0-tempStruct(i_p).pf;
-    tempStruct(i_p).powerPerSec_up = round((tempStruct(i_p).pErr+0.9)/(tempStruct(i_p).du+0.1),3);
-    tempStruct(i_p).powerPerSec_mid = round(max(0.1,tempStruct(i_p).pErr)/(tempStruct(i_p).du+0.1),3);
-    tempStruct(i_p).powerPerSec_low = round(max(0.1,tempStruct(i_p).pErr-0.9)/(tempStruct(i_p).du+0.1),3);
-    tempStruct(i_p).duPerPower_low = 1/tempStruct(i_p).powerPerSec_up;
-    tempStruct(i_p).duPerPower_mid = 1/tempStruct(i_p).powerPerSec_mid;
-    tempStruct(i_p).duPerPower_up = 1/tempStruct(i_p).powerPerSec_low;
-    tempStruct(i_p).averageCurrent = mean(structData.AllTheTimeCurrent(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
-    tempStruct(i_p).averageVoltage = mean(structData.AllTheTimeVoltage(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
-    tempStruct(i_p).averagePower = mean(structData.AllTheTimeCurrent(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)).*...
-        structData.AllTheTimeVoltage(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
-    if i_p == 1
-        Struct = tempStruct;
-    else
-        Struct.du = [Struct.du, tempStruct(i_p).du];
-        Struct.pErr = [Struct.pErr, tempStruct(i_p).pErr];
-        Struct.powerPerSec_up = [Struct.powerPerSec_up, tempStruct(i_p).powerPerSec_up];
-        Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
-        Struct.powerPerSec_low = [Struct.powerPerSec_low, tempStruct(i_p).powerPerSec_low];
-        Struct.duPerPower_low = [Struct.duPerPower_low, tempStruct(i_p).duPerPower_low];
-        Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
-        Struct.duPerPower_up = [Struct.duPerPower_up, tempStruct(i_p).duPerPower_up];
-        Struct.averageCurrent = [Struct.averageCurrent tempStruct(i_p).averageCurrent];
-        Struct.averageVoltage = [Struct.averageVoltage tempStruct(i_p).averageVoltage];
-        Struct.averagePower = [Struct.averagePower tempStruct(i_p).averagePower];
-    end    
+    t0(i_p) = thisTime{i_p}(1);
+    tf(i_p) = thisTime{i_p}(end);
+    du(i_p) = tf(i_p) - t0(i_p);
+    p0(i_p) = structData.AllTheTimePowerConsume(idx{i_p}(1));
+    pf(i_p) = structData.AllTheTimePowerConsume(idx{i_p}(end));
+    pErr(i_p) = p0(i_p)-pf(i_p);
+    current = [current;structData.AllTheTimeCurrent(idx{i_p}(1):idx{i_p}(end))];
+    voltage = [voltage;structData.AllTheTimeVoltage(idx{i_p}(1):idx{i_p}(end))];
+    power = current.*voltage;
 end
-Struct.t0 = tempStruct(1).t0;
-Struct.tf = tempStruct(end).tf;
-Struct.du = round(sum(Struct.du),2);
-Struct.pErr = round(sum(Struct.pErr),2);
-Struct.powerPerSec_up = round(mean(Struct.powerPerSec_up),3);
-Struct.powerPerSec_mid = round(mean(Struct.powerPerSec_mid),3);
-Struct.powerPerSec_low = round(mean(Struct.powerPerSec_low),3);
-Struct.duPerPower_low = round(mean(Struct.duPerPower_low),3);
-Struct.powerPerSec_mid = round(mean(Struct.powerPerSec_mid),3);
-Struct.duPerPower_up = round(mean(Struct.duPerPower_up),3);
-Struct.averageCurrent = round(abs(mean(Struct.averageCurrent)/1000),3);
-Struct.averageVoltage = round(mean(Struct.averageVoltage)/1000,3);
-Struct.averagePower = round(abs(mean(Struct.averagePower)/1000/1000),3);
-Struct.estimateWh = round(1/3600 * Struct.du * abs(Struct.averagePower),3);
+tempStruct.t0 = t0(1);
+tempStruct.tf = tf(end);
+tempStruct.p0 = p0(1);
+tempStruct.pf = pf(end);
+tempStruct.du = sum(du);
+tempStruct.pErr = sum(pErr);
+tempStruct.powerPerSec_up = (tempStruct.pErr+0.9)/(tempStruct.du);
+tempStruct.powerPerSec_mid = max(0,tempStruct.pErr)/(tempStruct.du);
+tempStruct.powerPerSec_low = max(0,tempStruct.pErr-0.9)/(tempStruct.du);
+tempStruct.duPerPower_low = 1/tempStruct.powerPerSec_up;
+tempStruct.duPerPower_mid = 1/tempStruct.powerPerSec_mid;
+tempStruct.duPerPower_up = 1/tempStruct.powerPerSec_low;
+tempStruct.averageCurrent = mean(current);
+tempStruct.averageVoltage = mean(voltage);
+tempStruct.averagePower = mean(power);
+
+Struct.t0 = tempStruct.t0;
+Struct.tf = tempStruct.tf;
+Struct.p0 = tempStruct.p0;
+Struct.pf = tempStruct.pf;
+Struct.du = round(tempStruct.du,2);
+Struct.pErr = round(tempStruct.pErr,2);
+Struct.powerPerSec_up = round(mean(tempStruct.powerPerSec_up),3);
+Struct.powerPerSec_mid = round(mean(tempStruct.powerPerSec_mid),3);
+Struct.powerPerSec_low = round(mean(tempStruct.powerPerSec_low),3);
+Struct.duPerPower_low = round(mean(tempStruct.duPerPower_low),3);
+Struct.duPerPower_mid = round(mean(tempStruct.duPerPower_mid),3);
+Struct.duPerPower_up = round(mean(tempStruct.duPerPower_up),3);
+Struct.averageCurrent = round(abs(mean(tempStruct.averageCurrent)/1000),3);
+Struct.averageVoltage = round(mean(tempStruct.averageVoltage)/1000,3);
+Struct.averagePower = round(abs(mean(tempStruct.averagePower)/1000/1000),3);
+Struct.estimateWh = round(1/3600 * tempStruct.du * abs(Struct.averagePower),3);
+
+% for i_p = 1:nPhase
+%     tempStruct(i_p).time = timeAll(idxSel{i_p});
+%     tempStruct(i_p).idx = idxAll(idxSel{i_p});
+%     if isempty(tempStruct(i_p).time)
+%         warning('SingPlot_PowerConsumer函数中错误')
+%         continue; 
+%     end
+%     tempStruct(i_p).t0 = tempStruct(i_p).time(1);
+%     tempStruct(i_p).tf = tempStruct(i_p).time(end);
+%     tempStruct(i_p).du = tempStruct(i_p).tf - tempStruct(i_p).t0;
+%     tempStruct(i_p).p0 = structData.AllTheTimePowerConsume(tempStruct(i_p).idx(1));
+%     tempStruct(i_p).pf = structData.AllTheTimePowerConsume(tempStruct(i_p).idx(end));
+%     tempStruct(i_p).pErr = tempStruct(i_p).p0-tempStruct(i_p).pf;
+%     tempStruct(i_p).powerPerSec_up = round((tempStruct(i_p).pErr+0.9)/(tempStruct(i_p).du+0.1),3);
+%     tempStruct(i_p).powerPerSec_mid = round(max(0.1,tempStruct(i_p).pErr)/(tempStruct(i_p).du+0.1),3);
+%     tempStruct(i_p).powerPerSec_low = round(max(0.1,tempStruct(i_p).pErr-0.9)/(tempStruct(i_p).du+0.1),3);
+%     tempStruct(i_p).duPerPower_low = 1/tempStruct(i_p).powerPerSec_up;
+%     tempStruct(i_p).duPerPower_mid = 1/tempStruct(i_p).powerPerSec_mid;
+%     tempStruct(i_p).duPerPower_up = 1/tempStruct(i_p).powerPerSec_low;
+%     tempStruct(i_p).averageCurrent = mean(structData.AllTheTimeCurrent(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
+%     tempStruct(i_p).averageVoltage = mean(structData.AllTheTimeVoltage(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
+%     tempStruct(i_p).averagePower = mean(structData.AllTheTimeCurrent(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)).*...
+%         structData.AllTheTimeVoltage(tempStruct(i_p).idx(1):tempStruct(i_p).idx(end)));
+%     if i_p == 1
+%         Struct = tempStruct;
+%     else
+%         Struct.du = [Struct.du, tempStruct(i_p).du];
+%         Struct.pErr = [Struct.pErr, tempStruct(i_p).pErr];
+%         Struct.powerPerSec_up = [Struct.powerPerSec_up, tempStruct(i_p).powerPerSec_up];
+%         Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
+%         Struct.powerPerSec_low = [Struct.powerPerSec_low, tempStruct(i_p).powerPerSec_low];
+%         Struct.duPerPower_low = [Struct.duPerPower_low, tempStruct(i_p).duPerPower_low];
+%         Struct.powerPerSec_mid = [Struct.powerPerSec_mid, tempStruct(i_p).powerPerSec_mid];
+%         Struct.duPerPower_up = [Struct.duPerPower_up, tempStruct(i_p).duPerPower_up];
+%         Struct.averageCurrent = [Struct.averageCurrent tempStruct(i_p).averageCurrent];
+%         Struct.averageVoltage = [Struct.averageVoltage tempStruct(i_p).averageVoltage];
+%         Struct.averagePower = [Struct.averagePower tempStruct(i_p).averagePower];
+%     end    
+% end

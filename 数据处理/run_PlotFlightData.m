@@ -134,6 +134,14 @@ if plotenable.TaskLogData
         disp('[任务事件Log] 失败')
     end
 end
+% 绘制轨迹事件地图
+if 1 
+    try
+        SinglePlot_TrajAndEvent(FlightLog_Original,FlightLog_SecondProc);
+    catch 
+        disp('[轨迹事件地图] 失败')
+    end
+end
 % 飞行性能
 if plotenable.FlightPerf
     try
