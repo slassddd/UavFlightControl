@@ -6,6 +6,9 @@ switch type
         dirMat = [GLOBAL_PARAM.project.RootFolder{1},'\resources\savedata\','bin日志读取路径.mat'];
     case 'mat'
         dirMat = [GLOBAL_PARAM.project.RootFolder{1},'\resources\savedata\','mat日志读取路径.mat'];
+    otherwise
+        dirMat = [GLOBAL_PARAM.project.RootFolder{1},'\resources\savedata\','bin日志读取路径.mat'];
+        type = '*';
 end
 try
     temp = load(dirMat);

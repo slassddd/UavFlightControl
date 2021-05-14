@@ -4,7 +4,10 @@ setGlobalParams();
 DecodeParam.evokeDir = cd; % 调用该函数时matlab的当前文件夹位置
 DecodeParam.nameDecodeFile = which(mfilename);
 DecodeParam.dirDecodeFile = fileparts(DecodeParam.nameDecodeFile);
-[DecodeParam.nameDataFile,isSuccess] = selFileToDecode('mat');if ~isSuccess,return;end
+[DecodeParam.nameDataFile,isSuccess] = selFileToDecode('any');if ~isSuccess,return;end
+if strcmp(DecodeParam.nameDataFile{1}(end-3:end),'.bin')
+    DecodeParam.nameDataFile{1}(end-2:end) = 'mat';
+end
 cd(GLOBAL_PARAM.dirDataFileForDecode)
 %
 DecodeParam.nFile = length(DecodeParam.nameDataFile);%
