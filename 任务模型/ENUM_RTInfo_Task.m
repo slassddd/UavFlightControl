@@ -238,7 +238,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         Land_Height_Step_NotJudge (338),
         VerticalMove_Pause (339),
         VerticalMove_Continue (340),
-        
+        Land_HasLandCond_TwoLaser (341),
         
         % 
         ReciveCmd_GoHome (1201),

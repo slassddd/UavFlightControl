@@ -10,7 +10,7 @@ STRUCT_mavlink_mission_item_def = Simulink.Bus.createMATLABStruct('mavlink_missi
 % Simulink.Bus.createMATLABStruct('BUS_TASK_COMMON_OutParam');
 %% 航线参数
 m2deg = 1/111e3;
-GSParam.PATH.pathHeight = 150;
+GSParam.PATH.pathHeight = 100;
 homeHeight = GSParam.PATH.pathHeight + 0*200;
 GroundStationParam.groundAltitude = 200;
 GroundStationParam.mavlinkHome = [40.04 180 homeHeight]; %  lat lon alt
@@ -39,12 +39,12 @@ switch pathExmpale
         ndata = size(data,1);
         GSParam.PATH.paths_m(1:ndata,:) = data;
     case 2 % 单区航线
-        pathoffset = [-0.2e3,-1.5e3]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
+        pathoffset = [-0.2e3,-1e3]*m2deg.*[1,1/cos(GroundStationParam.mavlinkHome(1)*pi/180)];
         idxUnitedPath = 1;
-        UnitedPath(idxUnitedPath).nPoints = 8;
+        UnitedPath(idxUnitedPath).nPoints = 2;
         UnitedPath(idxUnitedPath).lon_left = 1e3;
-        UnitedPath(idxUnitedPath).lon_right = 2e3;
-        UnitedPath(idxUnitedPath).lat_space = 20;
+        UnitedPath(idxUnitedPath).lon_right = 1.2e3;
+        UnitedPath(idxUnitedPath).lat_space = 120;
         UnitedPath(idxUnitedPath).height = GSParam.PATH.pathHeight;
         UnitedPath(idxUnitedPath).angle = 0*pi;
         UnitedPath(idxUnitedPath).offset = [0,0];
