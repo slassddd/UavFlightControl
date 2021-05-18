@@ -253,20 +253,25 @@ catch ME
 end
 %%
 %% PowerConsume
-FlightLog_Original.PowerConsume.time = V10Log.PowerConsume.TimeUS/timeScale;
-FlightLog_Original.PowerConsume.AllTheTimeVoltage = V10Log.PowerConsume.AllTheTimeVoltage; % create struct
-FlightLog_Original.PowerConsume.AllTheTimeCurrent = V10Log.PowerConsume.AllTheTimeCurrent; % create struct
-FlightLog_Original.PowerConsume.AllTheTimePowerConsume = V10Log.PowerConsume.AllTheTimePowerConsume; % create struct
-FlightLog_Original.PowerConsume.GroundStandby = V10Log.PowerConsume.GroundStandby; % create struct
-FlightLog_Original.PowerConsume.TakeOff = V10Log.PowerConsume.TakeOff; % create struct
-FlightLog_Original.PowerConsume.HoverAdjust = V10Log.PowerConsume.HoverAdjust; % create struct
-FlightLog_Original.PowerConsume.Rotor2fix = V10Log.PowerConsume.Rotor2fix; % create struct
-FlightLog_Original.PowerConsume.HoverUp = V10Log.PowerConsume.HoverUp; % create struct
-FlightLog_Original.PowerConsume.PathFollow = V10Log.PowerConsume.PathFollow; % create struct
-FlightLog_Original.PowerConsume.GoHome = V10Log.PowerConsume.GoHome; % create struct
-FlightLog_Original.PowerConsume.HoverDown = V10Log.PowerConsume.HoverDown; % create struct
-FlightLog_Original.PowerConsume.Fix2Rotor = V10Log.PowerConsume.Fix2Rotor; % create struct
-FlightLog_Original.PowerConsume.Land = V10Log.PowerConsume.Land; % create struct
+try
+    FlightLog_Original.PowerConsume.time = V10Log.PowerConsume.TimeUS/timeScale;
+    FlightLog_Original.PowerConsume.AllTheTimeVoltage = V10Log.PowerConsume.AllTheTimeVoltage; % create struct
+    FlightLog_Original.PowerConsume.AllTheTimeCurrent = V10Log.PowerConsume.AllTheTimeCurrent; % create struct
+    FlightLog_Original.PowerConsume.AllTheTimePowerConsume = V10Log.PowerConsume.AllTheTimePowerConsume; % create struct
+    FlightLog_Original.PowerConsume.GroundStandby = V10Log.PowerConsume.GroundStandby; % create struct
+    FlightLog_Original.PowerConsume.TakeOff = V10Log.PowerConsume.TakeOff; % create struct
+    FlightLog_Original.PowerConsume.HoverAdjust = V10Log.PowerConsume.HoverAdjust; % create struct
+    FlightLog_Original.PowerConsume.Rotor2fix = V10Log.PowerConsume.Rotor2fix; % create struct
+    FlightLog_Original.PowerConsume.HoverUp = V10Log.PowerConsume.HoverUp; % create struct
+    FlightLog_Original.PowerConsume.PathFollow = V10Log.PowerConsume.PathFollow; % create struct
+    FlightLog_Original.PowerConsume.GoHome = V10Log.PowerConsume.GoHome; % create struct
+    FlightLog_Original.PowerConsume.HoverDown = V10Log.PowerConsume.HoverDown; % create struct
+    FlightLog_Original.PowerConsume.Fix2Rotor = V10Log.PowerConsume.Fix2Rotor; % create struct
+    FlightLog_Original.PowerConsume.Land = V10Log.PowerConsume.Land; % create struct
+catch ME
+    fprintf('[PowerConsume] ')
+    disp(ME.message);
+end
 %% OUT_NAVI2FIRM
 try
     FlightLog_Original.OUT_NAVI2FIRM.isNavFilterGood = V10Log.OUT_TASKFLIGHTPARAM.isNavFilterGood; % create struct

@@ -373,6 +373,8 @@ switch Param.autoDecodeFileType
         str = sprintf('function %s = %s(logFile)\n',Param.outputName,Param.autoDecodeFileName);
         fwrite(fileID,str);
 end
+str = sprintf('%% This .m file is generated automatically by %s.m\n',mfilename);
+fwrite(fileID,str);
 str = sprintf('%% example: %s = %s(''%s'')\n',Param.outputName,Param.autoDecodeFileName,DataParser.logName);
 fwrite(fileID,str);
 str = sprintf('%% computer name: %s\n',char(getHostName(java.net.InetAddress.getLocalHost)));

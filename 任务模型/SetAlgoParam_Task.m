@@ -57,7 +57,7 @@ TASK_PARAM_V1000.airspeedOffset = 7; % 空速管堵的情况下对空速测量�
 TASK_PARAM_V1000.levelFixcurrentThreshold = 35e3; % 固定翼模式下电流异常阈值 [mA]
 TASK_PARAM_V1000.beginHeight_expandRadiusInHoverUp = 400; % 盘旋上升模式中，盘旋半径外扩高度起始值 [m]
 TASK_PARAM_V1000.k_expandRadiusInHoverUp = 2; % 盘旋上升模式中，盘旋半径外扩比例系数（1height to 2radius） [m]
-TASK_PARAM_V1000.maxRadiusInHoverUp = 60 ; % 150 盘旋上升模式中，半径外扩作用下的最大盘旋半径 [m]
+TASK_PARAM_V1000.maxRadiusInHoverUp = 60; % 150 盘旋上升模式中，半径外扩作用下的最大盘旋半径 [m]
 TASK_PARAM_V1000.isLandMarkMoving = TASK_PARAM_V1000.nanFlag;% (3120) (TASK_PARAM_V1000.nanFlag)  激活着陆点移动，数值表示移动方向[deg]   3230表示移动速度3m/s,移动方向230°. 当等于nanFlag(-99999)表示未激活
 TASK_PARAM_V1000.enableSpeedAdd = true ; % 激活速度补偿，在定空速策略下，当与大风时，地速过低，可以开启该功能减少空速反馈值（变相提高空速目标）
 TASK_PARAM_V1000.enable8calib = false; % 使能8字校准
@@ -72,7 +72,7 @@ TASK_PARAM_V1000.durationToLand_noGPS = 150; % 激活立即降落，当GPS完全
 TASK_PARAM_V1000.remainingLife_LosePowerIn60sec = 10; % 电量阈值[%]，达到该值后飞机将在60sec后失去动力
 TASK_PARAM_V1000.addH_SwitchHoverDownMode = 300; % 盘旋下降模式切换高度(无动力下滑切换有动力下滑)：该高度+旋翼切换高度=实际HoverDown模式切换高度
 TASK_PARAM_V1000.heightThr_CanAutoToRotor = 160; % 允许程序自动判定转旋翼的最大离地高度阈值[m]
-TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 0.1; % 接地时关闭动力延迟时间[sec]
+TASK_PARAM_V1000.delaySecOfTurnOffPower_Land = 1; % 接地时关闭动力延迟时间[sec]
 TASK_PARAM_V1000.maxNumBattery = 16; % 最大电池组数,所有机型保持一致
 TASK_PARAM_V1000.nBattery = 3; % 实际使用电池组数，不同机型可不同
 TASK_PARAM_V1000.VdLimit_FixLevel = 4; % 固定翼平飞下Vd的限制
@@ -86,7 +86,7 @@ TASK_PARAM_V1000.coefBatteryLife = [1 1;
 TASK_PARAM_V1000.enableFlap = false; % 使能襟翼增升/减升
 TASK_PARAM_V1000.addAirspeedWhenGoHome = 4; % 返航模式中的提速量
 TASK_PARAM_V1000.radarOnOffDelay = 2.5; % 雷达开关机最小间隔时间
-% TASK_PARAM_V1000.isLaserRangeDownUsed = [false false false]; % 下视激光测距是否接入: [true false false]表示1号接入，2、3号未接入
+% TASK_PARAM_V10.nLaserRangeDownUsed = 0; % 下视激光测距数量，0表示没有配备激光测距
 %% V10参数
 TASK_PARAM_V10 = TASK_PARAM_V1000;
 TASK_PARAM_V10.low_battery_alarm_set = 30; %
@@ -112,7 +112,7 @@ TASK_PARAM_V10.coefBatteryLife = [6 1;
                                   -1 1;];
 TASK_PARAM_V10.enableFlap = true;            
 TASK_PARAM_V10.maxClimbSpeed_fixMode = 2.2;
-% TASK_PARAM_V10.isLaserRangeDownUsed = [true true false]; % 下视激光测距是否接入: [true false false]表示1号接入，2、3号未接入
+% TASK_PARAM_V10.nLaserRangeDownUsed = 2; % 下视激光测距数量，0表示没有配备激光测距
 
 assert(TASK_PARAM_V10.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V10电池组数设置错误')
 assert(TASK_PARAM_V1000.nBattery<=TASK_PARAM_V1000.maxNumBattery,'V1000电池组数设置错误')

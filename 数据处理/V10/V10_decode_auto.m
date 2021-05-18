@@ -1,10 +1,11 @@
 function V10Log = V10_decode_auto(logFile)
-% example: V10Log = V10_decode_auto('2021-04-19 11-46-19.bin-5869976.mat')
+% This .m file is generated automatically by generateDecodeFile.m
+% example: V10Log = V10_decode_auto('17ÿ 8 30%ÿÿÿ.mat')
 % computer name: DESKTOP-QLU0EFU
-% generate date: 28-Apr-2021
+% generate date: 18-May-2021
 % Matlab version: 9.9.0.1467703 (R2020b)
-% protocol file: V10_v20210416_11.txt
-% data file: 2021-04-19 11-46-19.bin-5869976.mat
+% protocol file: V10_v20210518_10.txt
+% data file: 17ÿ 8 30%ÿÿÿ.mat
 % logFile: .mat log file
 load(logFile);
 %% ARP1
@@ -67,6 +68,46 @@ V10Log.MAG2.Sum = MAG2(:,11);                                    %  10. | Sum   
 catch ME
 	disp(ME.message);
 end
+%% MGC1
+try
+V10Log.MGC1.TimeUS = MGC1(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
+V10Log.MGC1.A(:,1) = MGC1(:,3);                                  %   2. | A0       | A[0]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,2) = MGC1(:,4);                                  %   3. | A1       | A[1]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,3) = MGC1(:,5);                                  %   4. | A2       | A[2]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,4) = MGC1(:,6);                                  %   5. | A3       | A[3]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,5) = MGC1(:,7);                                  %   6. | A4       | A[4]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,6) = MGC1(:,8);                                  %   7. | A5       | A[5]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,7) = MGC1(:,9);                                  %   8. | A6       | A[6]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,8) = MGC1(:,10);                                 %   9. | A7       | A[7]                           | [F]   | [10:10]    | 
+V10Log.MGC1.A(:,9) = MGC1(:,11);                                 %  10. | A8       | A[8]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,1) = MGC1(:,12);                                 %  11. | B0       | B[0]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,2) = MGC1(:,13);                                 %  12. | B1       | B[1]                           | [F]   | [10:10]    | 
+V10Log.MGC1.B(:,3) = MGC1(:,14);                                 %  13. | B2       | B[2]                           | [F]   | [10:10]    | 
+V10Log.MGC1.K = MGC1(:,15);                                      %  14. | K        | K                              | [F]   | [10:10]    | 
+V10Log.MGC1.Sum = MGC1(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [10:10]    | 
+catch ME
+	disp(ME.message);
+end
+%% MGC2
+try
+V10Log.MGC2.TimeUS = MGC2(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
+V10Log.MGC2.A(:,1) = MGC2(:,3);                                  %   2. | A0       | A[0]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,2) = MGC2(:,4);                                  %   3. | A1       | A[1]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,3) = MGC2(:,5);                                  %   4. | A2       | A[2]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,4) = MGC2(:,6);                                  %   5. | A3       | A[3]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,5) = MGC2(:,7);                                  %   6. | A4       | A[4]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,6) = MGC2(:,8);                                  %   7. | A5       | A[5]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,7) = MGC2(:,9);                                  %   8. | A6       | A[6]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,8) = MGC2(:,10);                                 %   9. | A7       | A[7]                           | [F]   | [10:10]    | 
+V10Log.MGC2.A(:,9) = MGC2(:,11);                                 %  10. | A8       | A[8]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,1) = MGC2(:,12);                                 %  11. | B0       | B[0]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,2) = MGC2(:,13);                                 %  12. | B1       | B[1]                           | [F]   | [10:10]    | 
+V10Log.MGC2.B(:,3) = MGC2(:,14);                                 %  13. | B2       | B[2]                           | [F]   | [10:10]    | 
+V10Log.MGC2.K = MGC2(:,15);                                      %  14. | K        | K                              | [F]   | [10:10]    | 
+V10Log.MGC2.Sum = MGC2(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [10:10]    | 
+catch ME
+	disp(ME.message);
+end
 %% BAR1
 try
 V10Log.BAR1.TimeUS = BAR1(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [10:10]    | 
@@ -113,7 +154,8 @@ V10Log.IMU1.gx = IMU1(:,6);                                      %   5. | gx    
 V10Log.IMU1.gy = IMU1(:,7);                                      %   6. | gy       | gy                             | [F]   | [1:4]      | 
 V10Log.IMU1.gz = IMU1(:,8);                                      %   7. | gz       | gz                             | [F]   | [1:4]      | 
 V10Log.IMU1.temperature = IMU1(:,9);                             %   8. | temp     | temperature                    | [F]   | [1:4]      | 
-V10Log.IMU1.temp_pwm = IMU1(:,11);                               %   9. | pwm      | temp_pwm                       | [F]   | [1:4]      | 
+V10Log.IMU1.temp_pwm = IMU1(:,10);                               %   9. | IO_0     | temp_pwm                       | [F]   | [1:4]      | 
+V10Log.IMU1.Sum = IMU1(:,11);                                    %  10. | Sum      | Sum                            | [U8]  | [1:4]      | 
 catch ME
 	disp(ME.message);
 end
@@ -206,10 +248,19 @@ end
 %% GPSE
 try
 V10Log.GPSE.TimeUS = GPSE(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [50:50]    | 
-V10Log.GPSE.decode_error_cnt = GPSE(:,13);                       %   2. | err1     | decode_error_cnt               | [U8]  | [50:50]    | 
-V10Log.GPSE.decode_crc_error_cnt = GPSE(:,14);                   %   3. | err2     | decode_crc_error_cnt           | [U8]  | [50:50]    | 
-V10Log.GPSE.decode_psrdop_cnt = GPSE(:,15);                      %   4. | err3     | decode_psrdop_cnt              | [U8]  | [50:50]    | 
-V10Log.GPSE.oem718d_decode_status = GPSE(:,16);                  %   5. | err4     | oem718d_decode_status          | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_error_cnt = GPSE(:,3);                        %   2. | er1      | decode_error_cnt               | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_crc_error_cnt = GPSE(:,4);                    %   3. | er2      | decode_crc_error_cnt           | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_psrdop_cnt = GPSE(:,5);                       %   4. | er3      | decode_psrdop_cnt              | [U8]  | [50:50]    | 
+V10Log.GPSE.oem718d_decode_status = GPSE(:,6);                   %   5. | er4      | oem718d_decode_status          | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_bestpos_cnt = GPSE(:,7);                      %   6. | er5      | decode_bestpos_cnt             | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_bestvel_cnt = GPSE(:,8);                      %   7. | er6      | decode_bestvel_cnt             | [U8]  | [50:50]    | 
+V10Log.GPSE.decode_heading_cnt = GPSE(:,9);                      %   8. | er7      | decode_heading_cnt             | [U8]  | [50:50]    | 
+V10Log.GPSE.rev1 = GPSE(:,10);                                   %   9. | er8      | rev1                           | [U32] | [50:50]    | 
+V10Log.GPSE.rev2 = GPSE(:,11);                                   %  10. | er9      | rev2                           | [U32] | [50:50]    | 
+V10Log.GPSE.gps_week = GPSE(:,13);                               %  11. | week     | gps_week                       | [U16] | [50:50]    | 
+V10Log.GPSE.gps_time_ms = GPSE(:,14);                            %  12. | ms       | gps_time_ms                    | [U32] | [50:50]    | 
+V10Log.GPSE.sol_status = GPSE(:,15);                             %  13. | stat     | sol_status                     | [U16] | [50:50]    | 
+V10Log.GPSE.Sum = GPSE(:,16);                                    %  14. | Sum      | Sum                            | [U8]  | [50:50]    | 
 catch ME
 	disp(ME.message);
 end
@@ -240,6 +291,24 @@ V10Log.UBXE.decode_crc_error_cnt = UBXE(:,4);                    %   3. | err2  
 V10Log.UBXE.decode_psrdop_cnt = UBXE(:,5);                       %   4. | err3     | decode_psrdop_cnt              | [U8]  | [100:100]  | 
 V10Log.UBXE.nak_error = UBXE(:,6);                               %   5. | err4     | nak_error                      | [U8]  | [100:100]  | 
 V10Log.UBXE.Sum = UBXE(:,7);                                     %   6. | Sum      | Sum                            | [U8]  | [100:100]  | 
+catch ME
+	disp(ME.message);
+end
+%% RCIN
+try
+V10Log.RCIN.TimeUS = RCIN(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [7:7]      | 
+V10Log.RCIN.frame_lost_cnt = RCIN(:,3);                          %   2. | LCNT     | frame_lost_cnt                 | [U32] | [7:7]      | 
+V10Log.RCIN.channel_1_roll = RCIN(:,4);                          %   3. | C1       | channel_1_roll                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_2_pitch = RCIN(:,5);                         %   4. | C2       | channel_2_pitch                | [U16] | [7:7]      | 
+V10Log.RCIN.channel_3_throttle = RCIN(:,6);                      %   5. | C3       | channel_3_throttle             | [U16] | [7:7]      | 
+V10Log.RCIN.channel_4_yaw = RCIN(:,7);                           %   6. | C4       | channel_4_yaw                  | [U16] | [7:7]      | 
+V10Log.RCIN.channel_5_Auto = RCIN(:,8);                          %   7. | C5       | channel_5_Auto                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_6_tilt = RCIN(:,9);                          %   8. | C6       | channel_6_tilt                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_7_D = RCIN(:,10);                            %   9. | C7       | channel_7_D                    | [U16] | [7:7]      | 
+V10Log.RCIN.channel_8_C = RCIN(:,11);                            %  10. | C8       | channel_8_C                    | [U16] | [7:7]      | 
+V10Log.RCIN.channel_9_Lock = RCIN(:,12);                         %  11. | C9       | channel_9_Lock                 | [U16] | [7:7]      | 
+V10Log.RCIN.channel_F = RCIN(:,13);                              %  12. | C10      | channel_F                      | [U16] | [7:7]      | 
+V10Log.RCIN.Sum = RCIN(:,14);                                    %  13. | Sum      | Sum                            | [U8]  | [7:7]      | 
 catch ME
 	disp(ME.message);
 end
@@ -324,181 +393,769 @@ V10Log.LASE.Sum = LASE(:,8);                                     %   7. | Sum   
 catch ME
 	disp(ME.message);
 end
+%% H750
+try
+V10Log.H750.TimeUS = H750(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:100]  | 
+catch ME
+	disp(ME.message);
+end
+%% BT00
+try
+V10Log.BT00.TimeUS = BT00(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT00.bat_pack_num = BT00(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT00.Design_Cap = BT00(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT00.Design_Volt = BT00(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT00.Manufacture_Date = BT00(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT00.Serial_Num = BT00(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT00.FW_Version = BT00(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT00.Run_Time_To_Empty = BT00(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT00.Average_Time_To_Empty = BT00(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT00.Rx_Count = BT00(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT00.Cycle_Count = BT00(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT00.Total_Cycles = BT00(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT00.SOH = BT00(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT00.Sum = BT00(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT01
+try
+V10Log.BT01.TimeUS = BT01(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT01.Temperature(:,1) = BT01(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT01.Temperature(:,2) = BT01(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT01.Temperature(:,3) = BT01(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT01.ASOC = BT01(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT01.RSOC = BT01(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT01.Rem_Cap = BT01(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT01.FCC = BT01(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT01.Safty_Status = BT01(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT01.Other_Status = BT01(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT01.Balance_Status = BT01(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT01.Power_State = BT01(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT01.flag = BT01(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT01.Sum = BT01(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT02
+try
+V10Log.BT02.TimeUS = BT02(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT02.Voltage(:,1) = BT02(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT02.Voltage(:,2) = BT02(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,1) = BT02(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,2) = BT02(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,3) = BT02(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,4) = BT02(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,5) = BT02(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,6) = BT02(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,7) = BT02(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT02.Cell_Volt(:,8) = BT02(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT02.Now_Current(:,1) = BT02(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT02.Now_Current(:,2) = BT02(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT02.Average_Current = BT02(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT02.Sum = BT02(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT10
+try
+V10Log.BT10.TimeUS = BT10(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT10.bat_pack_num = BT10(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT10.Design_Cap = BT10(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT10.Design_Volt = BT10(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT10.Manufacture_Date = BT10(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT10.Serial_Num = BT10(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT10.FW_Version = BT10(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT10.Run_Time_To_Empty = BT10(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT10.Average_Time_To_Empty = BT10(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT10.Rx_Count = BT10(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT10.Cycle_Count = BT10(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT10.Total_Cycles = BT10(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT10.SOH = BT10(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT10.Sum = BT10(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT11
+try
+V10Log.BT11.TimeUS = BT11(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT11.Temperature(:,1) = BT11(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT11.Temperature(:,2) = BT11(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT11.Temperature(:,3) = BT11(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT11.ASOC = BT11(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT11.RSOC = BT11(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT11.Rem_Cap = BT11(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT11.FCC = BT11(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT11.Safty_Status = BT11(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT11.Other_Status = BT11(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT11.Balance_Status = BT11(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT11.Power_State = BT11(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT11.flag = BT11(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT11.Sum = BT11(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT12
+try
+V10Log.BT12.TimeUS = BT12(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT12.Voltage(:,1) = BT12(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT12.Voltage(:,2) = BT12(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,1) = BT12(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,2) = BT12(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,3) = BT12(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,4) = BT12(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,5) = BT12(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,6) = BT12(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,7) = BT12(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT12.Cell_Volt(:,8) = BT12(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT12.Now_Current(:,1) = BT12(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT12.Now_Current(:,2) = BT12(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT12.Average_Current = BT12(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT12.Sum = BT12(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT20
+try
+V10Log.BT20.TimeUS = BT20(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT20.bat_pack_num = BT20(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT20.Design_Cap = BT20(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT20.Design_Volt = BT20(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT20.Manufacture_Date = BT20(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT20.Serial_Num = BT20(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT20.FW_Version = BT20(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT20.Run_Time_To_Empty = BT20(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT20.Average_Time_To_Empty = BT20(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT20.Rx_Count = BT20(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT20.Cycle_Count = BT20(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT20.Total_Cycles = BT20(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT20.SOH = BT20(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT20.Sum = BT20(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT21
+try
+V10Log.BT21.TimeUS = BT21(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT21.Temperature(:,1) = BT21(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT21.Temperature(:,2) = BT21(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT21.Temperature(:,3) = BT21(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT21.ASOC = BT21(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT21.RSOC = BT21(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT21.Rem_Cap = BT21(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT21.FCC = BT21(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT21.Safty_Status = BT21(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT21.Other_Status = BT21(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT21.Balance_Status = BT21(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT21.Power_State = BT21(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT21.flag = BT21(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT21.Sum = BT21(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT22
+try
+V10Log.BT22.TimeUS = BT22(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT22.Voltage(:,1) = BT22(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT22.Voltage(:,2) = BT22(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,1) = BT22(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,2) = BT22(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,3) = BT22(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,4) = BT22(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,5) = BT22(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,6) = BT22(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,7) = BT22(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT22.Cell_Volt(:,8) = BT22(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT22.Now_Current(:,1) = BT22(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT22.Now_Current(:,2) = BT22(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT22.Average_Current = BT22(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT22.Sum = BT22(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT30
+try
+V10Log.BT30.TimeUS = BT30(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT30.bat_pack_num = BT30(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT30.Design_Cap = BT30(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT30.Design_Volt = BT30(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT30.Manufacture_Date = BT30(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT30.Serial_Num = BT30(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT30.FW_Version = BT30(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT30.Run_Time_To_Empty = BT30(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT30.Average_Time_To_Empty = BT30(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT30.Rx_Count = BT30(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT30.Cycle_Count = BT30(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT30.Total_Cycles = BT30(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT30.SOH = BT30(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT30.Sum = BT30(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT31
+try
+V10Log.BT31.TimeUS = BT31(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT31.Temperature(:,1) = BT31(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT31.Temperature(:,2) = BT31(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT31.Temperature(:,3) = BT31(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT31.ASOC = BT31(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT31.RSOC = BT31(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT31.Rem_Cap = BT31(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT31.FCC = BT31(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT31.Safty_Status = BT31(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT31.Other_Status = BT31(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT31.Balance_Status = BT31(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT31.Power_State = BT31(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT31.flag = BT31(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT31.Sum = BT31(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT32
+try
+V10Log.BT32.TimeUS = BT32(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT32.Voltage(:,1) = BT32(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT32.Voltage(:,2) = BT32(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,1) = BT32(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,2) = BT32(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,3) = BT32(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,4) = BT32(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,5) = BT32(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,6) = BT32(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,7) = BT32(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT32.Cell_Volt(:,8) = BT32(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT32.Now_Current(:,1) = BT32(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT32.Now_Current(:,2) = BT32(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT32.Average_Current = BT32(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT32.Sum = BT32(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT40
+try
+V10Log.BT40.TimeUS = BT40(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT40.bat_pack_num = BT40(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT40.Design_Cap = BT40(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT40.Design_Volt = BT40(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT40.Manufacture_Date = BT40(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT40.Serial_Num = BT40(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT40.FW_Version = BT40(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT40.Run_Time_To_Empty = BT40(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT40.Average_Time_To_Empty = BT40(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT40.Rx_Count = BT40(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT40.Cycle_Count = BT40(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT40.Total_Cycles = BT40(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT40.SOH = BT40(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT40.Sum = BT40(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT41
+try
+V10Log.BT41.TimeUS = BT41(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT41.Temperature(:,1) = BT41(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT41.Temperature(:,2) = BT41(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT41.Temperature(:,3) = BT41(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT41.ASOC = BT41(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT41.RSOC = BT41(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT41.Rem_Cap = BT41(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT41.FCC = BT41(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT41.Safty_Status = BT41(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT41.Other_Status = BT41(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT41.Balance_Status = BT41(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT41.Power_State = BT41(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT41.flag = BT41(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT41.Sum = BT41(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT42
+try
+V10Log.BT42.TimeUS = BT42(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT42.Voltage(:,1) = BT42(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT42.Voltage(:,2) = BT42(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,1) = BT42(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,2) = BT42(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,3) = BT42(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,4) = BT42(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,5) = BT42(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,6) = BT42(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,7) = BT42(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT42.Cell_Volt(:,8) = BT42(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT42.Now_Current(:,1) = BT42(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT42.Now_Current(:,2) = BT42(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT42.Average_Current = BT42(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT42.Sum = BT42(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT50
+try
+V10Log.BT50.TimeUS = BT50(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT50.bat_pack_num = BT50(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT50.Design_Cap = BT50(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT50.Design_Volt = BT50(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT50.Manufacture_Date = BT50(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT50.Serial_Num = BT50(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT50.FW_Version = BT50(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT50.Run_Time_To_Empty = BT50(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT50.Average_Time_To_Empty = BT50(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT50.Rx_Count = BT50(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT50.Cycle_Count = BT50(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT50.Total_Cycles = BT50(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT50.SOH = BT50(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT50.Sum = BT50(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT51
+try
+V10Log.BT51.TimeUS = BT51(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT51.Temperature(:,1) = BT51(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT51.Temperature(:,2) = BT51(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT51.Temperature(:,3) = BT51(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT51.ASOC = BT51(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT51.RSOC = BT51(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT51.Rem_Cap = BT51(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT51.FCC = BT51(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT51.Safty_Status = BT51(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT51.Other_Status = BT51(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT51.Balance_Status = BT51(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT51.Power_State = BT51(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT51.flag = BT51(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT51.Sum = BT51(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT52
+try
+V10Log.BT52.TimeUS = BT52(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT52.Voltage(:,1) = BT52(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT52.Voltage(:,2) = BT52(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,1) = BT52(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,2) = BT52(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,3) = BT52(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,4) = BT52(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,5) = BT52(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,6) = BT52(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,7) = BT52(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT52.Cell_Volt(:,8) = BT52(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT52.Now_Current(:,1) = BT52(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT52.Now_Current(:,2) = BT52(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT52.Average_Current = BT52(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT52.Sum = BT52(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT60
+try
+V10Log.BT60.TimeUS = BT60(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT60.bat_pack_num = BT60(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT60.Design_Cap = BT60(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT60.Design_Volt = BT60(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT60.Manufacture_Date = BT60(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT60.Serial_Num = BT60(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT60.FW_Version = BT60(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT60.Run_Time_To_Empty = BT60(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT60.Average_Time_To_Empty = BT60(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT60.Rx_Count = BT60(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT60.Cycle_Count = BT60(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT60.Total_Cycles = BT60(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT60.SOH = BT60(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT60.Sum = BT60(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT61
+try
+V10Log.BT61.TimeUS = BT61(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT61.Temperature(:,1) = BT61(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT61.Temperature(:,2) = BT61(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT61.Temperature(:,3) = BT61(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT61.ASOC = BT61(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT61.RSOC = BT61(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT61.Rem_Cap = BT61(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT61.FCC = BT61(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT61.Safty_Status = BT61(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT61.Other_Status = BT61(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT61.Balance_Status = BT61(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT61.Power_State = BT61(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT61.flag = BT61(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT61.Sum = BT61(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT62
+try
+V10Log.BT62.TimeUS = BT62(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT62.Voltage(:,1) = BT62(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT62.Voltage(:,2) = BT62(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,1) = BT62(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,2) = BT62(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,3) = BT62(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,4) = BT62(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,5) = BT62(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,6) = BT62(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,7) = BT62(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT62.Cell_Volt(:,8) = BT62(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT62.Now_Current(:,1) = BT62(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT62.Now_Current(:,2) = BT62(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT62.Average_Current = BT62(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT62.Sum = BT62(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT70
+try
+V10Log.BT70.TimeUS = BT70(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT70.bat_pack_num = BT70(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT70.Design_Cap = BT70(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT70.Design_Volt = BT70(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT70.Manufacture_Date = BT70(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT70.Serial_Num = BT70(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT70.FW_Version = BT70(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT70.Run_Time_To_Empty = BT70(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT70.Average_Time_To_Empty = BT70(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT70.Rx_Count = BT70(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT70.Cycle_Count = BT70(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT70.Total_Cycles = BT70(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT70.SOH = BT70(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT70.Sum = BT70(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT71
+try
+V10Log.BT71.TimeUS = BT71(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT71.Temperature(:,1) = BT71(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT71.Temperature(:,2) = BT71(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT71.Temperature(:,3) = BT71(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT71.ASOC = BT71(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT71.RSOC = BT71(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT71.Rem_Cap = BT71(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT71.FCC = BT71(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT71.Safty_Status = BT71(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT71.Other_Status = BT71(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT71.Balance_Status = BT71(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT71.Power_State = BT71(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT71.flag = BT71(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT71.Sum = BT71(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT72
+try
+V10Log.BT72.TimeUS = BT72(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT72.Voltage(:,1) = BT72(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT72.Voltage(:,2) = BT72(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,1) = BT72(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,2) = BT72(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,3) = BT72(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,4) = BT72(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,5) = BT72(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,6) = BT72(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,7) = BT72(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT72.Cell_Volt(:,8) = BT72(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT72.Now_Current(:,1) = BT72(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT72.Now_Current(:,2) = BT72(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT72.Average_Current = BT72(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT72.Sum = BT72(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT80
+try
+V10Log.BT80.TimeUS = BT80(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT80.bat_pack_num = BT80(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT80.Design_Cap = BT80(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT80.Design_Volt = BT80(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT80.Manufacture_Date = BT80(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT80.Serial_Num = BT80(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT80.FW_Version = BT80(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT80.Run_Time_To_Empty = BT80(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT80.Average_Time_To_Empty = BT80(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT80.Rx_Count = BT80(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT80.Cycle_Count = BT80(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT80.Total_Cycles = BT80(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT80.SOH = BT80(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT80.Sum = BT80(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT81
+try
+V10Log.BT81.TimeUS = BT81(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT81.Temperature(:,1) = BT81(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT81.Temperature(:,2) = BT81(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT81.Temperature(:,3) = BT81(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT81.ASOC = BT81(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT81.RSOC = BT81(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT81.Rem_Cap = BT81(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT81.FCC = BT81(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT81.Safty_Status = BT81(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT81.Other_Status = BT81(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT81.Balance_Status = BT81(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT81.Power_State = BT81(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT81.flag = BT81(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT81.Sum = BT81(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT82
+try
+V10Log.BT82.TimeUS = BT82(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT82.Voltage(:,1) = BT82(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT82.Voltage(:,2) = BT82(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,1) = BT82(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,2) = BT82(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,3) = BT82(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,4) = BT82(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,5) = BT82(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,6) = BT82(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,7) = BT82(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT82.Cell_Volt(:,8) = BT82(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT82.Now_Current(:,1) = BT82(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT82.Now_Current(:,2) = BT82(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT82.Average_Current = BT82(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT82.Sum = BT82(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT90
+try
+V10Log.BT90.TimeUS = BT90(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT90.bat_pack_num = BT90(:,3);                            %   2. | num      | bat_pack_num                   | [U8]  | [100:1000] | 
+V10Log.BT90.Design_Cap = BT90(:,4);                              %   3. | cap      | Design_Cap                     | [U16] | [100:1000] | 
+V10Log.BT90.Design_Volt = BT90(:,5);                             %   4. | vol      | Design_Volt                    | [U16] | [100:1000] | 
+V10Log.BT90.Manufacture_Date = BT90(:,6);                        %   5. | manu     | Manufacture_Date               | [U16] | [100:1000] | 
+V10Log.BT90.Serial_Num = BT90(:,7);                              %   6. | ser      | Serial_Num                     | [U16] | [100:1000] | 
+V10Log.BT90.FW_Version = BT90(:,8);                              %   7. | fw       | FW_Version                     | [U16] | [100:1000] | 
+V10Log.BT90.Run_Time_To_Empty = BT90(:,9);                       %   8. | t1       | Run_Time_To_Empty              | [U16] | [100:1000] | 
+V10Log.BT90.Average_Time_To_Empty = BT90(:,10);                  %   9. | t2       | Average_Time_To_Empty          | [U16] | [100:1000] | 
+V10Log.BT90.Rx_Count = BT90(:,11);                               %  10. | rxc      | Rx_Count                       | [U16] | [100:1000] | 
+V10Log.BT90.Cycle_Count = BT90(:,12);                            %  11. | cyc1     | Cycle_Count                    | [U16] | [100:1000] | 
+V10Log.BT90.Total_Cycles = BT90(:,13);                           %  12. | cyc2     | Total_Cycles                   | [U16] | [100:1000] | 
+V10Log.BT90.SOH = BT90(:,14);                                    %  13. | SOH      | SOH                            | [U16] | [100:1000] | 
+V10Log.BT90.Sum = BT90(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT91
+try
+V10Log.BT91.TimeUS = BT91(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT91.Temperature(:,1) = BT91(:,3);                        %   2. | tp1      | Temperature[0]                 | [U16] | [100:1000] | 
+V10Log.BT91.Temperature(:,2) = BT91(:,4);                        %   3. | tp2      | Temperature[1]                 | [U16] | [100:1000] | 
+V10Log.BT91.Temperature(:,3) = BT91(:,5);                        %   4. | tp3      | Temperature[2]                 | [U16] | [100:1000] | 
+V10Log.BT91.ASOC = BT91(:,6);                                    %   5. | ASOC     | ASOC                           | [U8]  | [100:1000] | 
+V10Log.BT91.RSOC = BT91(:,7);                                    %   6. | RSOC     | RSOC                           | [U8]  | [100:1000] | 
+V10Log.BT91.Rem_Cap = BT91(:,8);                                 %   7. | rcap     | Rem_Cap                        | [U16] | [100:1000] | 
+V10Log.BT91.FCC = BT91(:,9);                                     %   8. | fcc      | FCC                            | [U16] | [100:1000] | 
+V10Log.BT91.Safty_Status = BT91(:,10);                           %   9. | ss       | Safty_Status                   | [U16] | [100:1000] | 
+V10Log.BT91.Other_Status = BT91(:,11);                           %  10. | os       | Other_Status                   | [U16] | [100:1000] | 
+V10Log.BT91.Balance_Status = BT91(:,12);                         %  11. | bs       | Balance_Status                 | [U16] | [100:1000] | 
+V10Log.BT91.Power_State = BT91(:,13);                            %  12. | ps       | Power_State                    | [U8]  | [100:1000] | 
+V10Log.BT91.flag = BT91(:,14);                                   %  13. | flag     | flag                           | [U8]  | [100:1000] | 
+V10Log.BT91.Sum = BT91(:,15);                                    %  14. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
+%% BT92
+try
+V10Log.BT92.TimeUS = BT92(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:1000] | 
+V10Log.BT92.Voltage(:,1) = BT92(:,3);                            %   2. | v1       | Voltage[0]                     | [U16] | [100:1000] | 
+V10Log.BT92.Voltage(:,2) = BT92(:,4);                            %   3. | v2       | Voltage[1]                     | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,1) = BT92(:,5);                          %   4. | cv1      | Cell_Volt[0]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,2) = BT92(:,6);                          %   5. | cv2      | Cell_Volt[1]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,3) = BT92(:,7);                          %   6. | cv3      | Cell_Volt[2]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,4) = BT92(:,8);                          %   7. | cv4      | Cell_Volt[3]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,5) = BT92(:,9);                          %   8. | cv5      | Cell_Volt[4]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,6) = BT92(:,10);                         %   9. | cv6      | Cell_Volt[5]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,7) = BT92(:,11);                         %  10. | cv7      | Cell_Volt[6]                   | [U16] | [100:1000] | 
+V10Log.BT92.Cell_Volt(:,8) = BT92(:,12);                         %  11. | cv8      | Cell_Volt[7]                   | [U16] | [100:1000] | 
+V10Log.BT92.Now_Current(:,1) = BT92(:,13);                       %  12. | c1       | Now_Current[0]                 | [i32] | [100:1000] | 
+V10Log.BT92.Now_Current(:,2) = BT92(:,14);                       %  13. | c2       | Now_Current[1]                 | [i32] | [100:1000] | 
+V10Log.BT92.Average_Current = BT92(:,15);                        %  14. | ac       | Average_Current                | [i32] | [100:1000] | 
+V10Log.BT92.Sum = BT92(:,16);                                    %  15. | Sum      | Sum                            | [U8]  | [100:1000] | 
+catch ME
+	disp(ME.message);
+end
 %% ALG0
 try
-V10Log.ALG0.TimeUS = ALG0(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:96]   | 
-V10Log.ALG0.FC_Version = ALG0(:,3);                              %   2. | FcV      | FC_Version                     | [U16] | [100:96]   | 
-V10Log.ALG0.Logic_Version = ALG0(:,4);                           %   3. | LogicV   | Logic_Version                  | [U16] | [100:96]   | 
-V10Log.ALG0.Driver_Version = ALG0(:,5);                          %   4. | DriV     | Driver_Version                 | [U16] | [100:96]   | 
-V10Log.ALG0.reset_status = ALG0(:,6);                            %   5. | Rst      | reset_status                   | [U16] | [100:96]   | 
-V10Log.ALG0.Sum = ALG0(:,7);                                     %   6. | Sum      | Sum                            | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.TimeUS = ALG0(:,2);                            %   1. | TimeUS   | TimeUS                         | [U32] | [100:96]   | 
+V10Log.ALGO_STATE.FC_Version = ALG0(:,3);                        %   2. | FcV      | FC_Version                     | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.Logic_Version = ALG0(:,4);                     %   3. | LogicV   | Logic_Version                  | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.Driver_Version = ALG0(:,5);                    %   4. | DriV     | Driver_Version                 | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.reset_status = ALG0(:,6);                      %   5. | Rst      | reset_status                   | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.Sum = ALG0(:,7);                               %   6. | Sum      | Sum                            | [U8]  | [100:96]   | 
 catch ME
 	disp(ME.message);
 end
 %% ALG1
 try
-V10Log.ALG1.TimeUS = ALG1(:,3);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [100:96]   | 
-V10Log.ALG1.time_algo_imu = ALG1(:,4);                           %   2. | tImu     | time_algo_imu                  | [U32] | [100:96]   | 
-V10Log.ALG1.time_algo_pwm = ALG1(:,5);                           %   3. | tPwm     | time_algo_pwm                  | [U32] | [100:96]   | 
-V10Log.ALG1.time_algo_exe = ALG1(:,7);                           %   4. | tExe     | time_algo_exe                  | [U32] | [100:96]   | 
-V10Log.ALG1.remote_lock = ALG1(:,8);                             %   5. | rk       | remote_lock                    | [U8]  | [100:96]   | 
-V10Log.ALG1.switch_lock_0 = ALG1(:,9);                           %   6. | sw0      | switch_lock_0                  | [U8]  | [100:96]   | 
-V10Log.ALG1.switch_lock_1 = ALG1(:,10);                          %   7. | sw1      | switch_lock_1                  | [U8]  | [100:96]   | 
-V10Log.ALG1.ground_station_lock = ALG1(:,11);                    %   8. | gsk      | ground_station_lock            | [U8]  | [100:96]   | 
-V10Log.ALG1.extend_lock_status = ALG1(:,12);                     %   9. | ek       | extend_lock_status             | [U8]  | [100:96]   | 
-V10Log.ALG1.fc_simulation = ALG1(:,13);                          %  10. | simu     | fc_simulation                  | [U8]  | [100:96]   | 
-V10Log.ALG1.ground_station_connect = ALG1(:,14);                 %  11. | gsc      | ground_station_connect         | [U8]  | [100:96]   | 
-V10Log.ALG1.ground_station_timeout = ALG1(:,16);                 %  12. | gst      | ground_station_timeout         | [U16] | [100:96]   | 
-V10Log.ALG1.ground_station_count = ALG1(:,17);                   %  13. | gscn     | ground_station_count           | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.TimeUS = ALG1(:,2);                            %   1. | Tim      | TimeUS                         | [U32] | [100:96]   | 
+V10Log.ALGO_STATE.time_algo_imu = ALG1(:,3);                     %   2. | tImu     | time_algo_imu                  | [U32] | [100:96]   | 
+V10Log.ALGO_STATE.time_algo_pwm = ALG1(:,4);                     %   3. | tPwm     | time_algo_pwm                  | [U32] | [100:96]   | 
+V10Log.ALGO_STATE.time_algo_exe = ALG1(:,5);                     %   4. | tExe     | time_algo_exe                  | [U32] | [100:96]   | 
+V10Log.ALGO_STATE.remote_lock = ALG1(:,7);                       %   5. | rk       | remote_lock                    | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.switch_lock_0 = ALG1(:,8);                     %   6. | sw0      | switch_lock_0                  | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.switch_lock_1 = ALG1(:,9);                     %   7. | sw1      | switch_lock_1                  | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.ground_station_lock = ALG1(:,10);              %   8. | gsk      | ground_station_lock            | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.extend_lock_status = ALG1(:,11);               %   9. | ek       | extend_lock_status             | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.fc_simulation = ALG1(:,12);                    %  10. | simu     | fc_simulation                  | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.ground_station_connect = ALG1(:,13);           %  11. | gsc      | ground_station_connect         | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.ground_station_timeout = ALG1(:,14);           %  12. | gst      | ground_station_timeout         | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.ground_station_count = ALG1(:,15);             %  13. | gsn      | ground_station_count           | [U16] | [100:96]   | 
+V10Log.ALGO_STATE.flight_over = ALG1(:,16);                      %  14. | fv       | flight_over                    | [U8]  | [100:96]   | 
+V10Log.ALGO_STATE.Sum = ALG1(:,17);                              %  15. | Sum      | Sum                            | [U8]  | [100:96]   | 
 catch ME
 	disp(ME.message);
 end
 %% ALG2
 try
-V10Log.ALG2.TimeUS = ALG2(:,2);                                  %   1. | TimeUS   | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALG2.exe_time = ALG2(:,3);                                %   2. | exe      | exe_time                       | [U32] | [12:12]    | 
-V10Log.ALG2.algo_remot_roll = ALG2(:,4);                         %   3. | rol      | algo_remot_roll                | [F]   | [12:12]    | 
-V10Log.ALG2.algo_remot_pitch = ALG2(:,5);                        %   4. | pit      | algo_remot_pitch               | [F]   | [12:12]    | 
-V10Log.ALG2.algo_remot_yaw = ALG2(:,6);                          %   5. | yaw      | algo_remot_yaw                 | [F]   | [12:12]    | 
-V10Log.ALG2.algo_remot_throttle = ALG2(:,7);                     %   6. | thr      | algo_remot_throttle            | [F]   | [12:12]    | 
-V10Log.ALG2.algo_remot_tilt_angle_in = ALG2(:,8);                %   7. | tilt     | algo_remot_tilt_angle_in       | [F]   | [12:12]    | 
-V10Log.ALG2.Sum = ALG2(:,9);                                     %   8. | Sum      | Sum                            | [U8]  | [12:12]    | 
+V10Log.ALGO_STATE.TimeUS = ALG2(:,2);                            %   1. | TimeUS   | TimeUS                         | [U32] | [12:12]    | 
+V10Log.ALGO_STATE.exe_time = ALG2(:,3);                          %   2. | exe      | exe_time                       | [U32] | [12:12]    | 
+V10Log.ALGO_STATE.algo_remot_roll = ALG2(:,4);                   %   3. | rol      | algo_remot_roll                | [F]   | [12:12]    | 
+V10Log.ALGO_STATE.algo_remot_pitch = ALG2(:,5);                  %   4. | pit      | algo_remot_pitch               | [F]   | [12:12]    | 
+V10Log.ALGO_STATE.algo_remot_yaw = ALG2(:,6);                    %   5. | yaw      | algo_remot_yaw                 | [F]   | [12:12]    | 
+V10Log.ALGO_STATE.algo_remot_throttle = ALG2(:,7);               %   6. | thr      | algo_remot_throttle            | [F]   | [12:12]    | 
+V10Log.ALGO_STATE.algo_remot_tilt_angle_in = ALG2(:,8);          %   7. | tilt     | algo_remot_tilt_angle_in       | [F]   | [12:12]    | 
+V10Log.ALGO_STATE.Sum = ALG2(:,9);                               %   8. | Sum      | Sum                            | [U8]  | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD1
 try
-V10Log.ALD1.TimeUS = ALD1(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD1.time_log = ALD1(:,3);                                %   2. | time     | time_log                       | [U32] | [12:12]    | 
-V10Log.ALD1.time_exe = ALD1(:,4);                                %   3. | exe      | time_exe                       | [U32] | [12:12]    | 
-V10Log.ALD1.mode = ALD1(:,5);                                    %   4. | mode     | mode                           | [U8]  | [12:12]    | 
-V10Log.ALD1.palne_mode = ALD1(:,6);                              %   5. | plmod    | palne_mode                     | [U8]  | [12:12]    | 
-V10Log.ALD1.flightTaskMode = ALD1(:,7);                          %   6. | fmod     | flightTaskMode                 | [U8]  | [12:12]    | 
-V10Log.ALD1.PathMode = ALD1(:,8);                                %   7. | ptmod    | PathMode                       | [U8]  | [12:12]    | 
-V10Log.ALD1.limit_pos_up = ALD1(:,9);                            %   8. | posup    | limit_pos_up                   | [U8]  | [12:12]    | 
-V10Log.ALD1.throttle_upper = ALD1(:,10);                         %   9. | thup     | throttle_upper                 | [U8]  | [12:12]    | 
-V10Log.ALD1.throttle_lower = ALD1(:,11);                         %  10. | thlo     | throttle_lower                 | [U8]  | [12:12]    | 
-V10Log.ALD1.Sum = ALD1(:,12);                                    %  11. | Sum      | Sum                            | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD1(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.time_log = ALD1(:,3);                            %   2. | time     | time_log                       | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.time_exe = ALD1(:,4);                            %   3. | exe      | time_exe                       | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.mode = ALD1(:,5);                                %   4. | mode     | mode                           | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.palne_mode = ALD1(:,6);                          %   5. | plmod    | palne_mode                     | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.flightTaskMode = ALD1(:,7);                      %   6. | fmod     | flightTaskMode                 | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.PathMode = ALD1(:,8);                            %   7. | ptmod    | PathMode                       | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.limit_pos_up = ALD1(:,9);                        %   8. | posup    | limit_pos_up                   | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.throttle_upper = ALD1(:,10);                     %   9. | thup     | throttle_upper                 | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.throttle_lower = ALD1(:,11);                     %  10. | thlo     | throttle_lower                 | [U8]  | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD1(:,12);                                %  11. | Sum      | Sum                            | [U8]  | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD2
 try
-V10Log.ALD2.TimeUS = ALD2(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD2.roll = ALD2(:,3);                                    %   2. | rol      | roll                           | [F]   | [12:12]    | 
-V10Log.ALD2.pitch = ALD2(:,4);                                   %   3. | pit      | pitch                          | [F]   | [12:12]    | 
-V10Log.ALD2.yaw = ALD2(:,5);                                     %   4. | yaw      | yaw                            | [F]   | [12:12]    | 
-V10Log.ALD2.roll_in = ALD2(:,6);                                 %   5. | rin      | roll_in                        | [F]   | [12:12]    | 
-V10Log.ALD2.pitch_in = ALD2(:,7);                                %   6. | pin      | pitch_in                       | [F]   | [12:12]    | 
-V10Log.ALD2.yaw_in = ALD2(:,8);                                  %   7. | yin      | yaw_in                         | [F]   | [12:12]    | 
-V10Log.ALD2.throttle_in = ALD2(:,9);                             %   8. | tin      | throttle_in                    | [F]   | [12:12]    | 
-V10Log.ALD2.pwm_out(:,1) = ALD2(:,10);                           %   9. | pw0      | pwm_out[0]                     | [F]   | [12:12]    | 
-V10Log.ALD2.pwm_out(:,2) = ALD2(:,11);                           %  10. | pw1      | pwm_out[1]                     | [F]   | [12:12]    | 
-V10Log.ALD2.pwm_out(:,3) = ALD2(:,12);                           %  11. | pw2      | pwm_out[2]                     | [F]   | [12:12]    | 
-V10Log.ALD2.pwm_out(:,4) = ALD2(:,13);                           %  12. | pw3      | pwm_out[3]                     | [F]   | [12:12]    | 
-V10Log.ALD2.tail_tilt = ALD2(:,14);                              %  13. | til      | tail_tilt                      | [F]   | [12:12]    | 
-V10Log.ALD2.pwm_tail = ALD2(:,15);                               %  14. | pwm      | pwm_tail                       | [F]   | [12:12]    | 
-V10Log.ALD2.Sum = ALD2(:,16);                                    %  15. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD2(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.roll = ALD2(:,3);                                %   2. | rol      | roll                           | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pitch = ALD2(:,4);                               %   3. | pit      | pitch                          | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.yaw = ALD2(:,5);                                 %   4. | yaw      | yaw                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.roll_in = ALD2(:,6);                             %   5. | rin      | roll_in                        | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pitch_in = ALD2(:,7);                            %   6. | pin      | pitch_in                       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.yaw_in = ALD2(:,8);                              %   7. | yin      | yaw_in                         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.throttle_in = ALD2(:,9);                         %   8. | tin      | throttle_in                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pwm_out(:,1) = ALD2(:,10);                       %   9. | pw0      | pwm_out[0]                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pwm_out(:,2) = ALD2(:,11);                       %  10. | pw1      | pwm_out[1]                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pwm_out(:,3) = ALD2(:,12);                       %  11. | pw2      | pwm_out[2]                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pwm_out(:,4) = ALD2(:,13);                       %  12. | pw3      | pwm_out[3]                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.tail_tilt = ALD2(:,14);                          %  13. | til      | tail_tilt                      | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pwm_tail = ALD2(:,15);                           %  14. | pwm      | pwm_tail                       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD2(:,16);                                %  15. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD3
 try
-V10Log.ALD3.TimeUS = ALD3(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD3.yaw_out = ALD3(:,3);                                 %   2. | yout     | yaw_out                        | [F]   | [12:12]    | 
-V10Log.ALD3.k_flap = ALD3(:,4);                                  %   3. | flap     | k_flap                         | [F]   | [12:12]    | 
-V10Log.ALD3.current_loc(:,1) = ALD3(:,5);                        %   4. | cl0      | current_loc[0]                 | [F]   | [12:12]    | 
-V10Log.ALD3.current_loc(:,2) = ALD3(:,6);                        %   5. | cl1      | current_loc[1]                 | [F]   | [12:12]    | 
-V10Log.ALD3.curr_vel(:,1) = ALD3(:,7);                           %   6. | cv0      | curr_vel[0]                    | [F]   | [12:12]    | 
-V10Log.ALD3.curr_vel(:,2) = ALD3(:,8);                           %   7. | cv1      | curr_vel[1]                    | [F]   | [12:12]    | 
-V10Log.ALD3.curr_vel(:,3) = ALD3(:,9);                           %   8. | cv2      | curr_vel[2]                    | [F]   | [12:12]    | 
-V10Log.ALD3.curr_pos(:,1) = ALD3(:,10);                          %   9. | cp0      | curr_pos[0]                    | [F]   | [12:12]    | 
-V10Log.ALD3.curr_pos(:,2) = ALD3(:,11);                          %  10. | cp1      | curr_pos[1]                    | [F]   | [12:12]    | 
-V10Log.ALD3.rate_target_ang_vel(:,1) = ALD3(:,12);               %  11. | rvl0     | rate_target_ang_vel[0]         | [F]   | [12:12]    | 
-V10Log.ALD3.rate_target_ang_vel(:,2) = ALD3(:,13);               %  12. | rvl1     | rate_target_ang_vel[1]         | [F]   | [12:12]    | 
-V10Log.ALD3.rate_target_ang_vel(:,3) = ALD3(:,14);               %  13. | rvl2     | rate_target_ang_vel[2]         | [F]   | [12:12]    | 
-V10Log.ALD3.Sum = ALD3(:,15);                                    %  14. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD3(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.yaw_out = ALD3(:,3);                             %   2. | yout     | yaw_out                        | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.k_flap = ALD3(:,4);                              %   3. | flap     | k_flap                         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.current_loc(:,1) = ALD3(:,5);                    %   4. | cl0      | current_loc[0]                 | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.current_loc(:,2) = ALD3(:,6);                    %   5. | cl1      | current_loc[1]                 | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_vel(:,1) = ALD3(:,7);                       %   6. | cv0      | curr_vel[0]                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_vel(:,2) = ALD3(:,8);                       %   7. | cv1      | curr_vel[1]                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_vel(:,3) = ALD3(:,9);                       %   8. | cv2      | curr_vel[2]                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_pos(:,1) = ALD3(:,10);                      %   9. | cp0      | curr_pos[0]                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_pos(:,2) = ALD3(:,11);                      %  10. | cp1      | curr_pos[1]                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.rate_target_ang_vel(:,1) = ALD3(:,12);           %  11. | rvl0     | rate_target_ang_vel[0]         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.rate_target_ang_vel(:,2) = ALD3(:,13);           %  12. | rvl1     | rate_target_ang_vel[1]         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.rate_target_ang_vel(:,3) = ALD3(:,14);           %  13. | rvl2     | rate_target_ang_vel[2]         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD3(:,15);                                %  14. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD4
 try
-V10Log.ALD4.TimeUS = ALD4(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_rate(:,1) = ALD4(:,3);         %   2. | er0      | attitude_target_euler_rate[0]  | [F]   | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_rate(:,2) = ALD4(:,4);         %   3. | er1      | attitude_target_euler_rate[1]  | [F]   | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_rate(:,3) = ALD4(:,5);         %   4. | er2      | attitude_target_euler_rate[2]  | [F]   | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_angle(:,1) = ALD4(:,6);        %   5. | ea0      | attitude_target_euler_angle[0] | [F]   | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_angle(:,2) = ALD4(:,7);        %   6. | ea1      | attitude_target_euler_angle[1] | [F]   | [12:12]    | 
-V10Log.ALD4.attitude_target_euler_angle(:,3) = ALD4(:,8);        %   7. | ea2      | attitude_target_euler_angle[2] | [F]   | [12:12]    | 
-V10Log.ALD4.pos_target(:,1) = ALD4(:,9);                         %   8. | ptg0     | pos_target[0]                  | [F]   | [12:12]    | 
-V10Log.ALD4.pos_target(:,2) = ALD4(:,10);                        %   9. | ptg1     | pos_target[1]                  | [F]   | [12:12]    | 
-V10Log.ALD4.pos_target(:,3) = ALD4(:,11);                        %  10. | ptg2     | pos_target[2]                  | [F]   | [12:12]    | 
-V10Log.ALD4.vel_target(:,1) = ALD4(:,12);                        %  11. | vtg0     | vel_target[0]                  | [F]   | [12:12]    | 
-V10Log.ALD4.vel_target(:,2) = ALD4(:,13);                        %  12. | vtg1     | vel_target[1]                  | [F]   | [12:12]    | 
-V10Log.ALD4.vel_target(:,3) = ALD4(:,14);                        %  13. | vtg2     | vel_target[2]                  | [F]   | [12:12]    | 
-V10Log.ALD4.Sum = ALD4(:,15);                                    %  14. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD4(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_rate(:,1) = ALD4(:,3);     %   2. | er0      | attitude_target_euler_rate[0]  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_rate(:,2) = ALD4(:,4);     %   3. | er1      | attitude_target_euler_rate[1]  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_rate(:,3) = ALD4(:,5);     %   4. | er2      | attitude_target_euler_rate[2]  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_angle(:,1) = ALD4(:,6);    %   5. | ea0      | attitude_target_euler_angle[0] | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_angle(:,2) = ALD4(:,7);    %   6. | ea1      | attitude_target_euler_angle[1] | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_target_euler_angle(:,3) = ALD4(:,8);    %   7. | ea2      | attitude_target_euler_angle[2] | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_target(:,1) = ALD4(:,9);                     %   8. | ptg0     | pos_target[0]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_target(:,2) = ALD4(:,10);                    %   9. | ptg1     | pos_target[1]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_target(:,3) = ALD4(:,11);                    %  10. | ptg2     | pos_target[2]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.vel_target(:,1) = ALD4(:,12);                    %  11. | vtg0     | vel_target[0]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.vel_target(:,2) = ALD4(:,13);                    %  12. | vtg1     | vel_target[1]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.vel_target(:,3) = ALD4(:,14);                    %  13. | vtg2     | vel_target[2]                  | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD4(:,15);                                %  14. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD5
 try
-V10Log.ALD5.TimeUS = ALD5(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD5.accel_target(:,1) = ALD5(:,3);                       %   2. | acc0     | accel_target[0]                | [F]   | [12:12]    | 
-V10Log.ALD5.accel_target(:,2) = ALD5(:,4);                       %   3. | acc1     | accel_target[1]                | [F]   | [12:12]    | 
-V10Log.ALD5.accel_target(:,3) = ALD5(:,5);                       %   4. | acc2     | accel_target[2]                | [F]   | [12:12]    | 
-V10Log.ALD5.attitude_error_vector(:,1) = ALD5(:,6);              %   5. | vect0    | attitude_error_vector[0]       | [F]   | [12:12]    | 
-V10Log.ALD5.attitude_error_vector(:,2) = ALD5(:,7);              %   6. | vect1    | attitude_error_vector[1]       | [F]   | [12:12]    | 
-V10Log.ALD5.attitude_error_vector(:,3) = ALD5(:,8);              %   7. | vect2    | attitude_error_vector[2]       | [F]   | [12:12]    | 
-V10Log.ALD5.pos_error(:,1) = ALD5(:,9);                          %   8. | per0     | pos_error[0]                   | [F]   | [12:12]    | 
-V10Log.ALD5.pos_error(:,2) = ALD5(:,10);                         %   9. | per1     | pos_error[1]                   | [F]   | [12:12]    | 
-V10Log.ALD5.pos_error(:,3) = ALD5(:,11);                         %  10. | per2     | pos_error[2]                   | [F]   | [12:12]    | 
-V10Log.ALD5.vel_desired(:,3) = ALD5(:,12);                       %  11. | veld2    | vel_desired[2]                 | [F]   | [12:12]    | 
-V10Log.ALD5.Sum = ALD5(:,13);                                    %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD5(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.accel_target(:,1) = ALD5(:,3);                   %   2. | acc0     | accel_target[0]                | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.accel_target(:,2) = ALD5(:,4);                   %   3. | acc1     | accel_target[1]                | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.accel_target(:,3) = ALD5(:,5);                   %   4. | acc2     | accel_target[2]                | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_error_vector(:,1) = ALD5(:,6);          %   5. | vect0    | attitude_error_vector[0]       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_error_vector(:,2) = ALD5(:,7);          %   6. | vect1    | attitude_error_vector[1]       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.attitude_error_vector(:,3) = ALD5(:,8);          %   7. | vect2    | attitude_error_vector[2]       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_error(:,1) = ALD5(:,9);                      %   8. | per0     | pos_error[0]                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_error(:,2) = ALD5(:,10);                     %   9. | per1     | pos_error[1]                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pos_error(:,3) = ALD5(:,11);                     %  10. | per2     | pos_error[2]                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.vel_desired(:,3) = ALD5(:,12);                   %  11. | veld2    | vel_desired[2]                 | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD5(:,13);                                %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD6
 try
-V10Log.ALD6.TimeUS = ALD6(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD6.z_accel_meas = ALD6(:,3);                            %   2. | zacm     | z_accel_meas                   | [F]   | [12:12]    | 
-V10Log.ALD6.climb_rate_cms = ALD6(:,4);                          %   3. | clrc     | climb_rate_cms                 | [F]   | [12:12]    | 
-V10Log.ALD6.throttle_filter = ALD6(:,5);                         %   4. | tfil     | throttle_filter                | [F]   | [12:12]    | 
-V10Log.ALD6.nav_pitch_cd = ALD6(:,6);                            %   5. | navcd    | nav_pitch_cd                   | [F]   | [12:12]    | 
-V10Log.ALD6.vel_forward_last_pct = ALD6(:,7);                    %   6. | vlpct    | vel_forward_last_pct           | [F]   | [12:12]    | 
-V10Log.ALD6.k_rudder = ALD6(:,8);                                %   7. | krud     | k_rudder                       | [F]   | [12:12]    | 
-V10Log.ALD6.k_elevator = ALD6(:,9);                              %   8. | kele     | k_elevator                     | [F]   | [12:12]    | 
-V10Log.ALD6.k_throttle = ALD6(:,10);                             %   9. | kthr     | k_throttle                     | [F]   | [12:12]    | 
-V10Log.ALD6.k_aileron = ALD6(:,11);                              %  10. | kail     | k_aileron                      | [F]   | [12:12]    | 
-V10Log.ALD6.curr_alt = ALD6(:,12);                               %  11. | curalt   | curr_alt                       | [F]   | [12:12]    | 
-V10Log.ALD6.Sum = ALD6(:,13);                                    %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD6(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.z_accel_meas = ALD6(:,3);                        %   2. | zacm     | z_accel_meas                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.climb_rate_cms = ALD6(:,4);                      %   3. | clrc     | climb_rate_cms                 | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.throttle_filter = ALD6(:,5);                     %   4. | tfil     | throttle_filter                | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.nav_pitch_cd = ALD6(:,6);                        %   5. | navcd    | nav_pitch_cd                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.vel_forward_last_pct = ALD6(:,7);                %   6. | vlpct    | vel_forward_last_pct           | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.k_rudder = ALD6(:,8);                            %   7. | krud     | k_rudder                       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.k_elevator = ALD6(:,9);                          %   8. | kele     | k_elevator                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.k_throttle = ALD6(:,10);                         %   9. | kthr     | k_throttle                     | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.k_aileron = ALD6(:,11);                          %  10. | kail     | k_aileron                      | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.curr_alt = ALD6(:,12);                           %  11. | curalt   | curr_alt                       | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD6(:,13);                                %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD7
 try
-V10Log.ALD7.TimeUS = ALD7(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD7.weathervane_last_output = ALD7(:,3);                 %   2. | weat     | weathervane_last_output        | [F]   | [12:12]    | 
-V10Log.ALD7.roll_target = ALD7(:,4);                             %   3. | rotg     | roll_target                    | [F]   | [12:12]    | 
-V10Log.ALD7.pitch_target = ALD7(:,5);                            %   4. | pitg     | pitch_target                   | [F]   | [12:12]    | 
-V10Log.ALD7.roll_target_pilot = ALD7(:,6);                       %   5. | rotp     | roll_target_pilot              | [F]   | [12:12]    | 
-V10Log.ALD7.pitch_dem = ALD7(:,7);                               %   6. | pitdm    | pitch_dem                      | [F]   | [12:12]    | 
-V10Log.ALD7.hgt_dem = ALD7(:,8);                                 %   7. | hgtdm    | hgt_dem                        | [F]   | [12:12]    | 
-V10Log.ALD7.throttle_dem = ALD7(:,9);                            %   8. | thdm     | throttle_dem                   | [F]   | [12:12]    | 
-V10Log.ALD7.latAccDem = ALD7(:,10);                              %   9. | accdm    | latAccDem                      | [F]   | [12:12]    | 
-V10Log.ALD7.aspeed = ALD7(:,11);                                 %  10. | aspd     | aspeed                         | [F]   | [12:12]    | 
-V10Log.ALD7.pitch_target_pilot = ALD7(:,12);                     %  11. | pitpi    | pitch_target_pilot             | [F]   | [12:12]    | 
-V10Log.ALD7.Sum = ALD7(:,13);                                    %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD7(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.weathervane_last_output = ALD7(:,3);             %   2. | weat     | weathervane_last_output        | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.roll_target = ALD7(:,4);                         %   3. | rotg     | roll_target                    | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pitch_target = ALD7(:,5);                        %   4. | pitg     | pitch_target                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.roll_target_pilot = ALD7(:,6);                   %   5. | rotp     | roll_target_pilot              | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pitch_dem = ALD7(:,7);                           %   6. | pitdm    | pitch_dem                      | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.hgt_dem = ALD7(:,8);                             %   7. | hgtdm    | hgt_dem                        | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.throttle_dem = ALD7(:,9);                        %   8. | thdm     | throttle_dem                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.latAccDem = ALD7(:,10);                          %   9. | accdm    | latAccDem                      | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.aspeed = ALD7(:,11);                             %  10. | aspd     | aspeed                         | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.pitch_target_pilot = ALD7(:,12);                 %  11. | pitpi    | pitch_target_pilot             | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD7(:,13);                                %  12. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
 %% ALD8
 try
-V10Log.ALD8.TimeUS = ALD8(:,2);                                  %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.ALD8.WP_i = ALD8(:,3);                                    %   2. | WP_i     | WP_i                           | [F]   | [12:12]    | 
-V10Log.ALD8.sl_heightCmd = ALD8(:,4);                            %   3. | hgtcmd   | sl_heightCmd                   | [F]   | [12:12]    | 
-V10Log.ALD8.sl_maxClimbSpeed = ALD8(:,5);                        %   4. | clmspd   | sl_maxClimbSpeed               | [F]   | [12:12]    | 
-V10Log.ALD8.sl_flightTaskMode = ALD8(:,6);                       %   5. | fmode    | sl_flightTaskMode              | [F]   | [12:12]    | 
-V10Log.ALD8.Sum = ALD8(:,7);                                     %   6. | Sm       | Sum                            | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.TimeUS = ALD8(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.BUS_CTRL.WP_i = ALD8(:,3);                                %   2. | WP_i     | WP_i                           | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.sl_heightCmd = ALD8(:,4);                        %   3. | hgtcmd   | sl_heightCmd                   | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.sl_maxClimbSpeed = ALD8(:,5);                    %   4. | clmspd   | sl_maxClimbSpeed               | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.sl_flightTaskMode = ALD8(:,6);                   %   5. | fmode    | sl_flightTaskMode              | [F]   | [12:12]    | 
+V10Log.BUS_CTRL.Sum = ALD8(:,7);                                 %   6. | Sm       | Sum                            | [F]   | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
@@ -697,7 +1354,7 @@ end
 %% AL13
 try
 V10Log.OUT_TASKMODE.TimeUS = AL13(:,2);                          %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
-V10Log.OUT_TASKMODE.airspeedCmd = AL13(:,4);                     %   2. | aspCmd   | airspeedCmd                    | [F]   | [12:12]    | 
+V10Log.OUT_TASKMODE.airspeedCmd = AL13(:,4);                     %   2. | aspcmd   | airspeedCmd                    | [F]   | [12:12]    | 
 V10Log.OUT_TASKMODE.LLATaskInterrupt(:,1) = AL13(:,5);           %   3. | LL0      | LLATaskInterrupt[0]            | [F]   | [12:12]    | 
 V10Log.OUT_TASKMODE.LLATaskInterrupt(:,2) = AL13(:,6);           %   4. | LL1      | LLATaskInterrupt[1]            | [F]   | [12:12]    | 
 V10Log.OUT_TASKMODE.LLATaskInterrupt(:,3) = AL13(:,7);           %   5. | LL2      | LLATaskInterrupt[2]            | [F]   | [12:12]    | 
@@ -848,7 +1505,8 @@ end
 try
 V10Log.Debug_GroundStationShow.TimeUS = AL23(:,2);               %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
 V10Log.Debug_GroundStationShow.windSpeed_ms = AL23(:,3);         %   2. | wspd     | windSpeed_ms                   | [F]   | [12:12]    | 
-V10Log.Debug_GroundStationShow.groundSpeed_ms = AL23(:,5);       %   3. | gsPd     | groundSpeed_ms                 | [F]   | [12:12]    | 
+V10Log.Debug_GroundStationShow.groundSpeed_ms = AL23(:,4);       %   3. | gspd     | groundSpeed_ms                 | [F]   | [12:12]    | 
+V10Log.Debug_GroundStationShow.Sum = AL23(:,5);                  %   4. | Sm       | Sum                            | [U8]  | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
@@ -898,6 +1556,36 @@ try
 V10Log.OUT_SYSTEMINFO.TimeUS = AL29(:,2);                        %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
 V10Log.OUT_SYSTEMINFO.uavModel = AL29(:,3);                      %   2. | modl     | uavModel                       | [U8]  | [12:12]    | 
 V10Log.OUT_SYSTEMINFO.Sum = AL29(:,4);                           %   3. | Sm       | Sum                            | [U8]  | [12:12]    | 
+catch ME
+	disp(ME.message);
+end
+%% AL31
+try
+V10Log.nChange1.TimeUS = AL31(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.nChange1.IMU1_Control_nChange = AL31(:,3);                %   2. | imc1     | IMU1_Control_nChange           | [U8]  | [12:12]    | 
+V10Log.nChange1.IMU1_nChange = AL31(:,4);                        %   3. | im1      | IMU1_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.IMU2_nChange = AL31(:,5);                        %   4. | im2      | IMU2_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.IMU3_nChange = AL31(:,6);                        %   5. | im3      | IMU3_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.IMU4_nChange = AL31(:,7);                        %   6. | im4      | IMU4_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.airspeed1_nChange = AL31(:,8);                   %   7. | ar1      | airspeed1_nChange              | [U8]  | [12:12]    | 
+V10Log.nChange1.airspeed2_nChange = AL31(:,9);                   %   8. | ar2      | airspeed2_nChange              | [U8]  | [12:12]    | 
+V10Log.nChange1.mag1_nChange = AL31(:,10);                       %   9. | mg1      | mag1_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.mag2_nChange = AL31(:,11);                       %  10. | mg2      | mag2_nChange                   | [U8]  | [12:12]    | 
+V10Log.nChange1.baro1_nChange = AL31(:,12);                      %  11. | br1      | baro1_nChange                  | [U8]  | [12:12]    | 
+V10Log.nChange1.baro2_nChange = AL31(:,13);                      %  12. | br2      | baro2_nChange                  | [U8]  | [12:12]    | 
+V10Log.nChange1.laserDown1_nChange = AL31(:,14);                 %  13. | la1      | laserDown1_nChange             | [U8]  | [12:12]    | 
+V10Log.nChange1.laserDown2_nChange = AL31(:,15);                 %  14. | la2      | laserDown2_nChange             | [U8]  | [12:12]    | 
+V10Log.nChange1.um482_nChange = AL31(:,16);                      %  15. | gps      | um482_nChange                  | [U8]  | [12:12]    | 
+V10Log.nChange1.Sum = AL31(:,17);                                %  16. | Sm       | Sum                            | [U8]  | [12:12]    | 
+catch ME
+	disp(ME.message);
+end
+%% AL32
+try
+V10Log.nChange2.TimeUS = AL32(:,2);                              %   1. | Tim      | TimeUS                         | [U32] | [12:12]    | 
+V10Log.nChange2.ublox1_nChange = AL32(:,3);                      %   2. | ubx      | ublox1_nChange                 | [U8]  | [12:12]    | 
+V10Log.nChange2.radar1_nChange = AL32(:,4);                      %   3. | nra15    | radar1_nChange                 | [U8]  | [12:12]    | 
+V10Log.nChange2.Sum = AL32(:,5);                                 %   4. | Sm       | Sum                            | [U8]  | [12:12]    | 
 catch ME
 	disp(ME.message);
 end
