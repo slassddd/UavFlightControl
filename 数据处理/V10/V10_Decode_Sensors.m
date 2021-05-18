@@ -147,15 +147,30 @@ if sum(IN_SENSOR.mag2.nChange) == 0
     disp('[mag2] nChange 没有正常赋值');
 end
 %% Radar
-IN_SENSOR.radar1.time = V10Log.NRA.TimeUS/timeScale;
-IN_SENSOR.radar1.SNR = V10Log.NRA.SNR;
-IN_SENSOR.radar1.Flag = V10Log.NRA.Flag;
-IN_SENSOR.radar1.Range = V10Log.NRA.Range;
-IN_SENSOR.radar1.nChange = zeros(size(V10Log.NRA.TimeUS));
-if sum(IN_SENSOR.radar1.nChange) == 0
-    disp('[radar1] nChange 没有正常赋值');
+try
+    childName = 'NRA';
+    IN_SENSOR.radar1.time = V10Log.NRA.TimeUS/timeScale;
+    IN_SENSOR.radar1.SNR = V10Log.NRA.SNR;
+    IN_SENSOR.radar1.Flag = V10Log.NRA.Flag;
+    IN_SENSOR.radar1.Range = V10Log.NRA.Range;
+    IN_SENSOR.radar1.nChange = zeros(size(V10Log.NRA.TimeUS));
+    if sum(IN_SENSOR.radar1.nChange) == 0
+        disp('[radar1] nChange 没有正常赋值');
+    end
+    IN_SENSOR.radar1 = removeSameTime(IN_SENSOR.radar1);
+catch
+    try
+        V10Log.(childName)
+    catch
+        IN_SENSOR.radar1.time = 9999;
+        IN_SENSOR.radar1.SNR = 9999;
+        IN_SENSOR.radar1.Flag = 9999;
+        IN_SENSOR.radar1.Range = 9999;
+        IN_SENSOR.radar1.nChange = 9999;
+        IN_SENSOR.radar1 = removeSameTime(IN_SENSOR.radar1);
+        fprintf('当前协议中没有 %s 的解析信息\n',childName)
+    end
 end
-IN_SENSOR.radar1 = removeSameTime(IN_SENSOR.radar1);
 %% ublox1
 IN_SENSOR.ublox1.time = V10Log.UBX.TimeUS/timeScale;
 IN_SENSOR.ublox1.velE = V10Log.UBX.velE;

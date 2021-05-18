@@ -238,10 +238,10 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
     thisStructFullName = newAllStructFullName{i};
     thisComment = newComment{i};
     thisStructShortName = getToken(thisFullName,'fullname');
-    fprintf('\t\t%s\n',thisStructShortName);
-    if i == 12
+    if strcmp(thisStructFullName,'H750')
         sl = 1;
     end
+    fprintf('\t\t%s\n',thisStructShortName);
     isLabelFind = false; % Label 查找标志
     for i_label = 1:length(nameLabel) % 遍历label变量找到与协议中对应的项
         thisVarLabel = nameLabel{i_label};
@@ -252,7 +252,7 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
             for i_subvar = 1:length(eval(thisShortName)) %
                 subName_FromShort = eval([thisShortName,'{i_subvar}']);
                 isFind = false;
-                for j_subvar = 1:length(eval(thisVarLabel)  )
+                for j_subvar = 1:length(eval(thisVarLabel))
                     subName_FromLabel = eval([thisVarLabel,'{j_subvar}']);
                     if strcmp(subName_FromShort,subName_FromLabel)
                         eval([thisStructShortName,'_idx(',num2str(idxMatch),') = ',num2str(j_subvar),';']);
@@ -262,6 +262,9 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
                     end
                 end
                 if ~isFind
+                    
+                    eval([thisStructShortName,'_idx(',num2str(idxMatch),') = 1;']);
+                    idxMatch = idxMatch + 1;
 %                     fprintf('\t\t\t%s 没有匹配\n',subName_FromShort);
                     fprintf('\t\t\t解析协议中 %s 的第 %d 个变量为 %s, 数据文件中 %s 不包含该变量名称\n',...
                         tokenLabel,i_subvar,subName_FromShort,thisVarLabel);
@@ -288,6 +291,7 @@ for i = 1:nStructInProtocol % 遍历协议中的结构体
                     structNameToWrite = thisStructFullName;
             end
             subName_FromFull = eval([thisFullName,'{',num2str(k),'};']);
+            subName_FromFull = strrep(subName_FromFull,'.','_');
             comment_FromComment = eval([thisComment,'{',num2str(k),'};']);
             comment_FromComment = strrep(comment_FromComment,'	','');
             comment_FromComment = strrep(comment_FromComment,' ','');

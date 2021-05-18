@@ -239,6 +239,7 @@ classdef ENUM_RTInfo_Task < Simulink.IntEnumType
         VerticalMove_Pause (339),
         VerticalMove_Continue (340),
         Land_HasLandCond_TwoLaser (341),
+        Lidar_isTimeEnoughForOnOff (342),
         
         % 
         ReciveCmd_GoHome (1201),
